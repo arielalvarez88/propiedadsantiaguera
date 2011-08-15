@@ -1,0 +1,1728 @@
+Jul 12 15:19:58 [info] CREATE TABLE `schema_migrations` (
+`version` varchar(255)
+) ;
+Jul 12 15:19:58 [info] CREATE UNIQUE INDEX idx_schema_migrations_version ON `schema_migrations`(version)
+Jul 12 15:19:58 [info] SELECT version FROM schema_migrations
+Jul 12 15:19:58 [info] SELECT version FROM schema_migrations
+Jul 12 15:19:58 [info] SELECT version FROM schema_migrations
+Jul 12 15:19:58 [info] INSERT INTO schema_migrations (version) VALUES ('20110712164924')
+Jul 12 15:20:48 [info] SELECT version FROM schema_migrations
+Jul 12 15:20:48 [info] SELECT version FROM schema_migrations
+Jul 12 15:20:48 [info] SELECT version FROM schema_migrations
+Jul 12 15:22:27 [info] SELECT version FROM schema_migrations
+Jul 12 15:22:27 [info] SELECT version FROM schema_migrations
+Jul 12 15:22:27 [info] SELECT version FROM schema_migrations
+Jul 12 15:23:00 [info] SELECT version FROM schema_migrations
+Jul 12 15:23:00 [info] SELECT version FROM schema_migrations
+Jul 12 15:23:00 [info] SELECT version FROM schema_migrations
+Jul 12 15:27:19 [info] SELECT version FROM schema_migrations
+Jul 12 15:27:19 [info] SELECT version FROM schema_migrations
+Jul 12 15:27:19 [info] SELECT version FROM schema_migrations
+Jul 12 15:27:19 [info] CREATE TABLE `prueba` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`prueba` varchar(255)
+) ;
+Jul 12 15:27:19 [info] INSERT INTO schema_migrations (version) VALUES ('20110712192326')
+Jul 12 15:30:13 [info] SELECT version FROM schema_migrations
+Jul 12 15:30:13 [info] SELECT version FROM schema_migrations
+Jul 12 15:30:13 [info] SELECT version FROM schema_migrations
+Jul 12 15:30:13 [info] DROP TABLE `prueba`
+Jul 12 15:30:13 [info] DELETE FROM schema_migrations WHERE version = '20110712192326'
+Jul 12 15:30:38 [info] SELECT version FROM schema_migrations
+Jul 12 15:30:38 [info] SELECT version FROM schema_migrations
+Jul 12 15:30:38 [info] SELECT version FROM schema_migrations
+Jul 12 15:30:38 [info] DROP TABLE `prueba`
+Jul 12 17:15:59 [info] CREATE TABLE `schema_migrations` (
+`version` varchar(255)
+) ;
+Jul 12 17:15:59 [info] CREATE UNIQUE INDEX idx_schema_migrations_version ON `schema_migrations`(version)
+Jul 12 17:15:59 [info] SELECT version FROM schema_migrations
+Jul 12 17:15:59 [info] SELECT version FROM schema_migrations
+Jul 12 17:15:59 [info] SELECT version FROM schema_migrations
+Jul 12 17:16:59 [info] SELECT version FROM schema_migrations
+Jul 12 17:16:59 [info] SELECT version FROM schema_migrations
+Jul 12 17:16:59 [info] SELECT version FROM schema_migrations
+Jul 12 17:17:20 [info] SELECT version FROM schema_migrations
+Jul 12 17:17:20 [info] SELECT version FROM schema_migrations
+Jul 12 17:17:20 [info] SELECT version FROM schema_migrations
+Jul 12 17:19:25 [info] SELECT version FROM schema_migrations
+Jul 12 17:19:25 [info] SELECT version FROM schema_migrations
+Jul 12 17:19:25 [info] SELECT version FROM schema_migrations
+Jul 12 17:19:25 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 12 17:19:25 [info] INSERT INTO schema_migrations (version) VALUES ('20110712200701')
+Jul 14 16:02:04 [info] SELECT version FROM schema_migrations
+Jul 14 16:02:04 [info] SELECT version FROM schema_migrations
+Jul 14 16:02:04 [info] SELECT version FROM schema_migrations
+Jul 14 16:02:51 [info] SELECT version FROM schema_migrations
+Jul 14 16:02:51 [info] SELECT version FROM schema_migrations
+Jul 14 16:02:51 [info] SELECT version FROM schema_migrations
+Jul 14 16:02:51 [info] DROP TABLE `propiedades`
+Jul 14 16:02:51 [info] DELETE FROM schema_migrations WHERE version = '20110712200701'
+Jul 14 16:07:57 [info] SELECT version FROM schema_migrations
+Jul 14 16:07:57 [info] SELECT version FROM schema_migrations
+Jul 14 16:07:57 [info] SELECT version FROM schema_migrations
+Jul 14 16:09:08 [info] SELECT version FROM schema_migrations
+Jul 14 16:09:08 [info] SELECT version FROM schema_migrations
+Jul 14 16:09:08 [info] SELECT version FROM schema_migrations
+Jul 14 16:09:19 [info] SELECT version FROM schema_migrations
+Jul 14 16:09:19 [info] SELECT version FROM schema_migrations
+Jul 14 16:09:19 [info] SELECT version FROM schema_migrations
+Jul 14 16:09:48 [info] SELECT version FROM schema_migrations
+Jul 14 16:09:48 [info] SELECT version FROM schema_migrations
+Jul 14 16:09:48 [info] SELECT version FROM schema_migrations
+Jul 14 16:09:57 [info] SELECT version FROM schema_migrations
+Jul 14 16:09:57 [info] SELECT version FROM schema_migrations
+Jul 14 16:09:57 [info] SELECT version FROM schema_migrations
+Jul 14 16:09:59 [info] SELECT version FROM schema_migrations
+Jul 14 16:09:59 [info] SELECT version FROM schema_migrations
+Jul 14 16:09:59 [info] SELECT version FROM schema_migrations
+Jul 14 16:10:18 [info] SELECT version FROM schema_migrations
+Jul 14 16:10:18 [info] SELECT version FROM schema_migrations
+Jul 14 16:10:18 [info] SELECT version FROM schema_migrations
+Jul 14 16:11:11 [info] SELECT version FROM schema_migrations
+Jul 14 16:11:11 [info] SELECT version FROM schema_migrations
+Jul 14 16:11:11 [info] SELECT version FROM schema_migrations
+Jul 14 16:15:34 [info] SELECT version FROM schema_migrations
+Jul 14 16:15:34 [info] SELECT version FROM schema_migrations
+Jul 14 16:15:34 [info] SELECT version FROM schema_migrations
+Jul 14 16:15:34 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:15:34 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 16:16:25 [info] SELECT version FROM schema_migrations
+Jul 14 16:16:25 [info] SELECT version FROM schema_migrations
+Jul 14 16:16:25 [info] SELECT version FROM schema_migrations
+Jul 14 16:16:25 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:17:57 [info] SELECT version FROM schema_migrations
+Jul 14 16:17:57 [info] SELECT version FROM schema_migrations
+Jul 14 16:18:03 [info] SELECT version FROM schema_migrations
+Jul 14 16:18:03 [info] SELECT version FROM schema_migrations
+Jul 14 16:18:03 [info] SELECT version FROM schema_migrations
+Jul 14 16:18:03 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:20:39 [info] SELECT version FROM schema_migrations
+Jul 14 16:20:39 [info] SELECT version FROM schema_migrations
+Jul 14 16:20:39 [info] SELECT version FROM schema_migrations
+Jul 14 16:20:39 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:20:43 [info] SELECT version FROM schema_migrations
+Jul 14 16:20:43 [info] SELECT version FROM schema_migrations
+Jul 14 16:20:43 [info] SELECT version FROM schema_migrations
+Jul 14 16:20:43 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:22:25 [info] CREATE TABLE `schema_migrations` (
+`version` varchar(255)
+) ;
+Jul 14 16:22:25 [info] CREATE UNIQUE INDEX idx_schema_migrations_version ON `schema_migrations`(version)
+Jul 14 16:22:25 [info] SELECT version FROM schema_migrations
+Jul 14 16:22:25 [info] SELECT version FROM schema_migrations
+Jul 14 16:22:25 [info] SELECT version FROM schema_migrations
+Jul 14 16:22:25 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:22:25 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 16:22:25 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 14 16:23:23 [info] SELECT version FROM schema_migrations
+Jul 14 16:23:23 [info] SELECT version FROM schema_migrations
+Jul 14 16:23:23 [info] SELECT version FROM schema_migrations
+Jul 14 16:23:23 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:24:22 [info] SELECT version FROM schema_migrations
+Jul 14 16:24:22 [info] SELECT version FROM schema_migrations
+Jul 14 16:24:22 [info] SELECT version FROM schema_migrations
+Jul 14 16:24:22 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:25:17 [info] CREATE TABLE `schema_migrations` (
+`version` varchar(255)
+) ;
+Jul 14 16:25:17 [info] CREATE UNIQUE INDEX idx_schema_migrations_version ON `schema_migrations`(version)
+Jul 14 16:25:17 [info] SELECT version FROM schema_migrations
+Jul 14 16:25:17 [info] SELECT version FROM schema_migrations
+Jul 14 16:25:24 [info] SELECT version FROM schema_migrations
+Jul 14 16:25:24 [info] SELECT version FROM schema_migrations
+Jul 14 16:25:27 [info] SELECT version FROM schema_migrations
+Jul 14 16:25:27 [info] SELECT version FROM schema_migrations
+Jul 14 16:26:04 [info] SELECT version FROM schema_migrations
+Jul 14 16:26:04 [info] SELECT version FROM schema_migrations
+Jul 14 16:26:04 [info] SELECT version FROM schema_migrations
+Jul 14 16:26:04 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:26:04 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 16:26:04 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 14 16:27:10 [info] SELECT version FROM schema_migrations
+Jul 14 16:27:10 [info] SELECT version FROM schema_migrations
+Jul 14 16:27:10 [info] SELECT version FROM schema_migrations
+Jul 14 16:27:10 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:27:14 [info] SELECT version FROM schema_migrations
+Jul 14 16:27:14 [info] SELECT version FROM schema_migrations
+Jul 14 16:27:14 [info] SELECT version FROM schema_migrations
+Jul 14 16:27:14 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:27:20 [info] SELECT version FROM schema_migrations
+Jul 14 16:27:20 [info] SELECT version FROM schema_migrations
+Jul 14 16:27:20 [info] SELECT version FROM schema_migrations
+Jul 14 16:27:20 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:27:48 [info] CREATE TABLE `schema_migrations` (
+`version` varchar(255)
+) ;
+Jul 14 16:27:48 [info] CREATE UNIQUE INDEX idx_schema_migrations_version ON `schema_migrations`(version)
+Jul 14 16:27:48 [info] SELECT version FROM schema_migrations
+Jul 14 16:27:48 [info] SELECT version FROM schema_migrations
+Jul 14 16:27:48 [info] SELECT version FROM schema_migrations
+Jul 14 16:27:48 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:27:48 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 16:27:48 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 14 16:27:48 [info] CREATE TABLE `tipos_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(50)
+) ;
+Jul 14 16:29:11 [info] CREATE TABLE `schema_migrations` (
+`version` varchar(255)
+) ;
+Jul 14 16:29:11 [info] CREATE UNIQUE INDEX idx_schema_migrations_version ON `schema_migrations`(version)
+Jul 14 16:29:11 [info] SELECT version FROM schema_migrations
+Jul 14 16:29:11 [info] SELECT version FROM schema_migrations
+Jul 14 16:29:11 [info] SELECT version FROM schema_migrations
+Jul 14 16:29:11 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:29:11 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 16:29:11 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 14 16:29:11 [info] CREATE TABLE `tipos_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(50)
+) ;
+Jul 14 16:37:46 [info] SELECT version FROM schema_migrations
+Jul 14 16:37:46 [info] SELECT version FROM schema_migrations
+Jul 14 16:37:46 [info] SELECT version FROM schema_migrations
+Jul 14 16:37:46 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:38:01 [info] SELECT version FROM schema_migrations
+Jul 14 16:38:01 [info] SELECT version FROM schema_migrations
+Jul 14 16:38:01 [info] SELECT version FROM schema_migrations
+Jul 14 16:38:01 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:38:05 [info] SELECT version FROM schema_migrations
+Jul 14 16:38:05 [info] SELECT version FROM schema_migrations
+Jul 14 16:38:05 [info] SELECT version FROM schema_migrations
+Jul 14 16:38:05 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:42:23 [info] SELECT version FROM schema_migrations
+Jul 14 16:42:23 [info] SELECT version FROM schema_migrations
+Jul 14 16:42:23 [info] SELECT version FROM schema_migrations
+Jul 14 16:42:23 [info] DROP TABLE `propiedades`
+Jul 14 16:42:23 [info] DROP TABLE `usuarios`
+Jul 14 16:42:23 [info] DROP TABLE `archivos`
+Jul 14 16:42:23 [info] DROP TABLE `tipos_usuarios`
+Jul 14 16:42:23 [info] DROP TABLE `tipos_usuarios_usuarios`
+Jul 14 16:45:38 [info] SELECT version FROM schema_migrations
+Jul 14 16:45:38 [info] SELECT version FROM schema_migrations
+Jul 14 16:45:38 [info] SELECT version FROM schema_migrations
+Jul 14 16:45:38 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:45:38 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 16:45:38 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 14 16:45:38 [info] CREATE TABLE `tipos_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(50)
+) ;
+Jul 14 16:45:38 [info] CREATE TABLE `tipos_usuarios_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_usuario_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 16:45:38 [info] CREATE TABLE `tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 16:45:38 [info] CREATE TABLE `porpiedades_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 16:45:38 [info] CREATE TABLE `estados_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 16:45:38 [info] SHOW DATABASES
+Jul 14 16:45:38 [info] CREATE DATABASE `estados_propiedades`
+Jul 14 16:46:56 [info] SELECT version FROM schema_migrations
+Jul 14 16:46:56 [info] SELECT version FROM schema_migrations
+Jul 14 16:46:56 [info] SELECT version FROM schema_migrations
+Jul 14 16:46:56 [info] DROP TABLE `propiedades`
+Jul 14 16:46:56 [info] DROP TABLE `usuarios`
+Jul 14 16:46:56 [info] DROP TABLE `archivos`
+Jul 14 16:46:56 [info] DROP TABLE `tipos_usuarios`
+Jul 14 16:46:56 [info] DROP TABLE `tipos_usuarios_usuarios`
+Jul 14 16:46:56 [info] DROP TABLE `propiedades`
+Jul 14 16:47:29 [info] SELECT version FROM schema_migrations
+Jul 14 16:47:29 [info] SELECT version FROM schema_migrations
+Jul 14 16:47:29 [info] SELECT version FROM schema_migrations
+Jul 14 16:47:29 [info] DROP TABLE `propiedades`
+Jul 14 16:47:37 [info] SELECT version FROM schema_migrations
+Jul 14 16:47:37 [info] SELECT version FROM schema_migrations
+Jul 14 16:47:37 [info] SELECT version FROM schema_migrations
+Jul 14 16:47:37 [info] DROP TABLE `propiedades`
+Jul 14 16:48:46 [info] CREATE TABLE `schema_migrations` (
+`version` varchar(255)
+) ;
+Jul 14 16:48:46 [info] CREATE UNIQUE INDEX idx_schema_migrations_version ON `schema_migrations`(version)
+Jul 14 16:48:46 [info] SELECT version FROM schema_migrations
+Jul 14 16:48:46 [info] SELECT version FROM schema_migrations
+Jul 14 16:48:46 [info] SELECT version FROM schema_migrations
+Jul 14 16:48:46 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:48:46 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 16:48:46 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 14 16:48:46 [info] CREATE TABLE `tipos_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(50)
+) ;
+Jul 14 16:48:46 [info] CREATE TABLE `tipos_usuarios_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_usuario_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 16:48:46 [info] CREATE TABLE `tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 16:48:46 [info] CREATE TABLE `porpiedades_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 16:48:46 [info] CREATE TABLE `estados_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 16:48:46 [info] CREATE TABLE `porpiedades_tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`tipo_propiedad_id` int(11)
+) ;
+Jul 14 16:48:46 [info] CREATE TABLE `estados_propiedades_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`estado_propiedad_id` int(11),
+`propiedad_id` int(11)
+) ;
+Jul 14 16:48:46 [info] CREATE TABLE `tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 16:48:46 [info] CREATE TABLE `archivos_tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_archivo_id` int(11),
+`archivo_id` int(11)
+) ;
+Jul 14 16:48:46 [info] CREATE TABLE `estados_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(255)
+) ;
+Jul 14 16:49:57 [info] SELECT version FROM schema_migrations
+Jul 14 16:49:57 [info] SELECT version FROM schema_migrations
+Jul 14 16:49:57 [info] SELECT version FROM schema_migrations
+Jul 14 16:49:57 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:50:12 [info] CREATE TABLE `schema_migrations` (
+`version` varchar(255)
+) ;
+Jul 14 16:50:12 [info] CREATE UNIQUE INDEX idx_schema_migrations_version ON `schema_migrations`(version)
+Jul 14 16:50:12 [info] SELECT version FROM schema_migrations
+Jul 14 16:50:12 [info] SELECT version FROM schema_migrations
+Jul 14 16:50:12 [info] SELECT version FROM schema_migrations
+Jul 14 16:50:12 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:50:12 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 16:50:12 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 14 16:50:12 [info] CREATE TABLE `tipos_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(50)
+) ;
+Jul 14 16:50:12 [info] CREATE TABLE `tipos_usuarios_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_usuario_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 16:50:12 [info] CREATE TABLE `tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 16:50:12 [info] CREATE TABLE `porpiedades_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 16:50:12 [info] CREATE TABLE `estados_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 16:50:12 [info] CREATE TABLE `porpiedades_tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`tipo_propiedad_id` int(11)
+) ;
+Jul 14 16:50:12 [info] CREATE TABLE `estados_propiedades_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`estado_propiedad_id` int(11),
+`propiedad_id` int(11)
+) ;
+Jul 14 16:50:12 [info] CREATE TABLE `tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 16:50:12 [info] CREATE TABLE `archivos_tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_archivo_id` int(11),
+`archivo_id` int(11)
+) ;
+Jul 14 16:50:12 [info] CREATE TABLE `estados_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 16:51:48 [info] CREATE TABLE `schema_migrations` (
+`version` varchar(255)
+) ;
+Jul 14 16:51:48 [info] CREATE UNIQUE INDEX idx_schema_migrations_version ON `schema_migrations`(version)
+Jul 14 16:51:48 [info] SELECT version FROM schema_migrations
+Jul 14 16:51:48 [info] SELECT version FROM schema_migrations
+Jul 14 16:51:48 [info] SELECT version FROM schema_migrations
+Jul 14 16:51:48 [info] CREATE TABLE `tipos_usuarios_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_usuario_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 16:51:48 [info] CREATE TABLE `tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 16:51:48 [info] CREATE TABLE `porpiedades_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 16:51:48 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:51:48 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 16:51:48 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 14 16:51:48 [info] CREATE TABLE `tipos_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(50)
+) ;
+Jul 14 16:51:48 [info] CREATE TABLE `tipos_usuarios_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_usuario_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 16:52:24 [info] CREATE TABLE `schema_migrations` (
+`version` varchar(255)
+) ;
+Jul 14 16:52:24 [info] CREATE UNIQUE INDEX idx_schema_migrations_version ON `schema_migrations`(version)
+Jul 14 16:52:24 [info] SELECT version FROM schema_migrations
+Jul 14 16:52:24 [info] SELECT version FROM schema_migrations
+Jul 14 16:52:24 [info] SELECT version FROM schema_migrations
+Jul 14 16:52:24 [info] CREATE TABLE `tipos_usuarios_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_usuario_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 16:52:24 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:52:24 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 16:52:24 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 14 16:52:24 [info] CREATE TABLE `tipos_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(50)
+) ;
+Jul 14 16:52:24 [info] CREATE TABLE `tipos_usuarios_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_usuario_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 16:52:56 [info] CREATE TABLE `schema_migrations` (
+`version` varchar(255)
+) ;
+Jul 14 16:52:56 [info] CREATE UNIQUE INDEX idx_schema_migrations_version ON `schema_migrations`(version)
+Jul 14 16:52:56 [info] SELECT version FROM schema_migrations
+Jul 14 16:52:56 [info] SELECT version FROM schema_migrations
+Jul 14 16:52:56 [info] SELECT version FROM schema_migrations
+Jul 14 16:52:56 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 16:52:56 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 16:52:56 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 14 16:52:56 [info] CREATE TABLE `tipos_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(50)
+) ;
+Jul 14 16:52:56 [info] CREATE TABLE `tipos_usuarios_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_usuario_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 16:52:56 [info] CREATE TABLE `tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 16:52:56 [info] CREATE TABLE `porpiedades_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 16:52:56 [info] CREATE TABLE `estados_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 16:52:56 [info] CREATE TABLE `porpiedades_tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`tipo_propiedad_id` int(11)
+) ;
+Jul 14 16:52:56 [info] CREATE TABLE `estados_propiedades_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`estado_propiedad_id` int(11),
+`propiedad_id` int(11)
+) ;
+Jul 14 16:52:56 [info] CREATE TABLE `tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 16:52:56 [info] CREATE TABLE `archivos_tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_archivo_id` int(11),
+`archivo_id` int(11)
+) ;
+Jul 14 16:52:56 [info] INSERT INTO schema_migrations (version) VALUES ('20110712200701')
+Jul 14 16:58:01 [info] SELECT version FROM schema_migrations
+Jul 14 16:58:01 [info] SELECT version FROM schema_migrations
+Jul 14 16:58:01 [info] SELECT version FROM schema_migrations
+Jul 14 16:58:01 [info] DROP TABLE `propiedades`
+Jul 14 16:58:01 [info] DROP TABLE `usuarios`
+Jul 14 16:58:01 [info] DROP TABLE `archivos`
+Jul 14 16:58:01 [info] DROP TABLE `tipos_usuarios`
+Jul 14 16:58:01 [info] DROP TABLE `tipos_usuarios_usuarios`
+Jul 14 16:58:01 [info] DROP TABLE `tipos_propiedades`
+Jul 14 16:58:01 [info] DROP TABLE `propiedades_usuarios`
+Jul 14 17:00:23 [info] CREATE TABLE `schema_migrations` (
+`version` varchar(255)
+) ;
+Jul 14 17:00:23 [info] CREATE UNIQUE INDEX idx_schema_migrations_version ON `schema_migrations`(version)
+Jul 14 17:00:23 [info] SELECT version FROM schema_migrations
+Jul 14 17:00:23 [info] SELECT version FROM schema_migrations
+Jul 14 17:00:23 [info] SELECT version FROM schema_migrations
+Jul 14 17:00:23 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 17:00:23 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 17:00:23 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 14 17:00:23 [info] CREATE TABLE `tipos_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(50)
+) ;
+Jul 14 17:00:23 [info] CREATE TABLE `tipos_usuarios_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_usuario_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 17:00:23 [info] CREATE TABLE `tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 17:00:23 [info] CREATE TABLE `propiedades_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 17:00:23 [info] CREATE TABLE `estados_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 17:00:23 [info] CREATE TABLE `porpiedades_tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`tipo_propiedad_id` int(11)
+) ;
+Jul 14 17:00:23 [info] CREATE TABLE `estados_propiedades_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`estado_propiedad_id` int(11),
+`propiedad_id` int(11)
+) ;
+Jul 14 17:00:23 [info] CREATE TABLE `tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 17:00:23 [info] CREATE TABLE `archivos_tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_archivo_id` int(11),
+`archivo_id` int(11)
+) ;
+Jul 14 17:00:23 [info] INSERT INTO schema_migrations (version) VALUES ('20110712200701')
+Jul 14 17:00:28 [info] SELECT version FROM schema_migrations
+Jul 14 17:00:28 [info] SELECT version FROM schema_migrations
+Jul 14 17:00:28 [info] SELECT version FROM schema_migrations
+Jul 14 17:00:28 [info] DROP TABLE `propiedades`
+Jul 14 17:00:28 [info] DROP TABLE `usuarios`
+Jul 14 17:00:28 [info] DROP TABLE `archivos`
+Jul 14 17:00:28 [info] DROP TABLE `tipos_usuarios`
+Jul 14 17:00:28 [info] DROP TABLE `tipos_usuarios_usuarios`
+Jul 14 17:00:28 [info] DROP TABLE `tipos_propiedades`
+Jul 14 17:00:28 [info] DROP TABLE `propiedades_usuarios`
+Jul 14 17:00:28 [info] DROP TABLE `estados_propiedades`
+Jul 14 17:00:28 [info] DROP TABLE `propiedades_tipos_propiedades`
+Jul 14 17:01:08 [info] CREATE TABLE `schema_migrations` (
+`version` varchar(255)
+) ;
+Jul 14 17:01:08 [info] CREATE UNIQUE INDEX idx_schema_migrations_version ON `schema_migrations`(version)
+Jul 14 17:01:08 [info] SELECT version FROM schema_migrations
+Jul 14 17:01:08 [info] SELECT version FROM schema_migrations
+Jul 14 17:01:08 [info] SELECT version FROM schema_migrations
+Jul 14 17:01:08 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 17:01:08 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 17:01:08 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 14 17:01:08 [info] CREATE TABLE `tipos_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(50)
+) ;
+Jul 14 17:01:08 [info] CREATE TABLE `tipos_usuarios_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_usuario_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 17:01:08 [info] CREATE TABLE `tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 17:01:08 [info] CREATE TABLE `propiedades_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 17:01:08 [info] CREATE TABLE `estados_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 17:01:08 [info] CREATE TABLE `propiedades_tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`tipo_propiedad_id` int(11)
+) ;
+Jul 14 17:01:08 [info] CREATE TABLE `estados_propiedades_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`estado_propiedad_id` int(11),
+`propiedad_id` int(11)
+) ;
+Jul 14 17:01:08 [info] CREATE TABLE `tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 17:01:08 [info] CREATE TABLE `archivos_tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_archivo_id` int(11),
+`archivo_id` int(11)
+) ;
+Jul 14 17:01:08 [info] INSERT INTO schema_migrations (version) VALUES ('20110712200701')
+Jul 14 17:01:10 [info] SELECT version FROM schema_migrations
+Jul 14 17:01:10 [info] SELECT version FROM schema_migrations
+Jul 14 17:01:10 [info] SELECT version FROM schema_migrations
+Jul 14 17:01:10 [info] DROP TABLE `propiedades`
+Jul 14 17:01:10 [info] DROP TABLE `usuarios`
+Jul 14 17:01:10 [info] DROP TABLE `archivos`
+Jul 14 17:01:10 [info] DROP TABLE `tipos_usuarios`
+Jul 14 17:01:10 [info] DROP TABLE `tipos_usuarios_usuarios`
+Jul 14 17:01:10 [info] DROP TABLE `tipos_propiedades`
+Jul 14 17:01:10 [info] DROP TABLE `propiedades_usuarios`
+Jul 14 17:01:10 [info] DROP TABLE `estados_propiedades`
+Jul 14 17:01:10 [info] DROP TABLE `propiedades_tipos_propiedades`
+Jul 14 17:01:10 [info] DROP TABLE `estados_propiedades_propiedades`
+Jul 14 17:01:10 [info] DROP TABLE `tipos_archivos`
+Jul 14 17:01:10 [info] DROP TABLE `archivos_tipos_archivos`
+Jul 14 17:01:10 [info] DELETE FROM schema_migrations WHERE version = '20110712200701'
+Jul 14 17:01:14 [info] SELECT version FROM schema_migrations
+Jul 14 17:01:14 [info] SELECT version FROM schema_migrations
+Jul 14 17:01:14 [info] SELECT version FROM schema_migrations
+Jul 14 17:01:14 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 17:01:14 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 17:01:14 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 14 17:01:14 [info] CREATE TABLE `tipos_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(50)
+) ;
+Jul 14 17:01:14 [info] CREATE TABLE `tipos_usuarios_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_usuario_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 17:01:14 [info] CREATE TABLE `tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 17:01:14 [info] CREATE TABLE `propiedades_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 17:01:14 [info] CREATE TABLE `estados_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 17:01:14 [info] CREATE TABLE `propiedades_tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`tipo_propiedad_id` int(11)
+) ;
+Jul 14 17:01:14 [info] CREATE TABLE `estados_propiedades_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`estado_propiedad_id` int(11),
+`propiedad_id` int(11)
+) ;
+Jul 14 17:01:14 [info] CREATE TABLE `tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 17:01:14 [info] CREATE TABLE `archivos_tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_archivo_id` int(11),
+`archivo_id` int(11)
+) ;
+Jul 14 17:01:14 [info] INSERT INTO schema_migrations (version) VALUES ('20110712200701')
+Jul 14 17:01:21 [info] SELECT version FROM schema_migrations
+Jul 14 17:01:21 [info] SELECT version FROM schema_migrations
+Jul 14 17:01:21 [info] SELECT version FROM schema_migrations
+Jul 14 17:01:21 [info] DROP TABLE `propiedades`
+Jul 14 17:01:21 [info] DROP TABLE `usuarios`
+Jul 14 17:01:21 [info] DROP TABLE `archivos`
+Jul 14 17:01:21 [info] DROP TABLE `tipos_usuarios`
+Jul 14 17:01:21 [info] DROP TABLE `tipos_usuarios_usuarios`
+Jul 14 17:01:21 [info] DROP TABLE `tipos_propiedades`
+Jul 14 17:01:21 [info] DROP TABLE `propiedades_usuarios`
+Jul 14 17:01:21 [info] DROP TABLE `estados_propiedades`
+Jul 14 17:01:21 [info] DROP TABLE `propiedades_tipos_propiedades`
+Jul 14 17:01:21 [info] DROP TABLE `estados_propiedades_propiedades`
+Jul 14 17:01:21 [info] DROP TABLE `tipos_archivos`
+Jul 14 17:01:21 [info] DROP TABLE `archivos_tipos_archivos`
+Jul 14 17:01:21 [info] DELETE FROM schema_migrations WHERE version = '20110712200701'
+Jul 14 17:02:14 [info] SELECT version FROM schema_migrations
+Jul 14 17:02:14 [info] SELECT version FROM schema_migrations
+Jul 14 17:02:14 [info] SELECT version FROM schema_migrations
+Jul 14 17:02:14 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 17:02:14 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`usuario` varchar(20),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 17:02:14 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 14 17:02:14 [info] CREATE TABLE `tipos_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(50)
+) ;
+Jul 14 17:02:14 [info] CREATE TABLE `tipos_usuarios_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_usuario_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 17:02:14 [info] CREATE TABLE `tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 17:02:14 [info] CREATE TABLE `propiedades_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 17:02:14 [info] CREATE TABLE `estados_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 17:02:14 [info] CREATE TABLE `propiedades_tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`tipo_propiedad_id` int(11)
+) ;
+Jul 14 17:02:14 [info] CREATE TABLE `estados_propiedades_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`estado_propiedad_id` int(11),
+`propiedad_id` int(11)
+) ;
+Jul 14 17:02:14 [info] CREATE TABLE `tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 17:02:14 [info] CREATE TABLE `archivos_tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_archivo_id` int(11),
+`archivo_id` int(11)
+) ;
+Jul 14 17:02:14 [info] INSERT INTO schema_migrations (version) VALUES ('20110712200701')
+Jul 14 17:02:20 [info] SELECT version FROM schema_migrations
+Jul 14 17:02:20 [info] SELECT version FROM schema_migrations
+Jul 14 17:02:20 [info] SELECT version FROM schema_migrations
+Jul 14 17:02:20 [info] DROP TABLE `propiedades`
+Jul 14 17:02:20 [info] DROP TABLE `usuarios`
+Jul 14 17:02:20 [info] DROP TABLE `archivos`
+Jul 14 17:02:20 [info] DROP TABLE `tipos_usuarios`
+Jul 14 17:02:20 [info] DROP TABLE `tipos_usuarios_usuarios`
+Jul 14 17:02:20 [info] DROP TABLE `tipos_propiedades`
+Jul 14 17:02:20 [info] DROP TABLE `propiedades_usuarios`
+Jul 14 17:02:20 [info] DROP TABLE `estados_propiedades`
+Jul 14 17:02:20 [info] DROP TABLE `propiedades_tipos_propiedades`
+Jul 14 17:02:20 [info] DROP TABLE `estados_propiedades_propiedades`
+Jul 14 17:02:20 [info] DROP TABLE `tipos_archivos`
+Jul 14 17:02:20 [info] DROP TABLE `archivos_tipos_archivos`
+Jul 14 17:02:20 [info] DELETE FROM schema_migrations WHERE version = '20110712200701'
+Jul 14 17:04:25 [info] SELECT version FROM schema_migrations
+Jul 14 17:04:25 [info] SELECT version FROM schema_migrations
+Jul 14 17:04:25 [info] SELECT version FROM schema_migrations
+Jul 14 17:04:25 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 14 17:04:25 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`usuario` varchar(20),
+`clave` varchar(40),
+`email` varchar(30),
+`pagina_web` varchar(30),
+`descripcion` varchar(100)
+) ;
+Jul 14 17:04:25 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 14 17:04:25 [info] CREATE TABLE `tipos_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(50)
+) ;
+Jul 14 17:04:25 [info] CREATE TABLE `tipos_usuarios_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_usuario_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 17:04:25 [info] CREATE TABLE `tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 17:04:25 [info] CREATE TABLE `propiedades_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 14 17:04:25 [info] CREATE TABLE `estados_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 17:04:25 [info] CREATE TABLE `propiedades_tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`tipo_propiedad_id` int(11)
+) ;
+Jul 14 17:04:25 [info] CREATE TABLE `estados_propiedades_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`estado_propiedad_id` int(11),
+`propiedad_id` int(11)
+) ;
+Jul 14 17:04:25 [info] CREATE TABLE `tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 14 17:04:25 [info] CREATE TABLE `archivos_tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_archivo_id` int(11),
+`archivo_id` int(11)
+) ;
+Jul 14 17:04:25 [info] INSERT INTO schema_migrations (version) VALUES ('20110712200701')
+Jul 14 18:09:16 [info] SELECT version FROM schema_migrations
+Jul 14 18:09:16 [info] SELECT version FROM schema_migrations
+Jul 14 18:09:16 [info] SELECT version FROM schema_migrations
+Jul 15 09:36:54 [info] SELECT version FROM schema_migrations
+Jul 15 09:36:54 [info] SELECT version FROM schema_migrations
+Jul 15 09:36:54 [info] SELECT version FROM schema_migrations
+Jul 15 09:36:54 [info] DROP TABLE `propiedades`
+Jul 15 09:36:54 [info] DROP TABLE `usuarios`
+Jul 15 09:36:54 [info] DROP TABLE `archivos`
+Jul 15 09:36:54 [info] DROP TABLE `tipos_usuarios`
+Jul 15 09:36:54 [info] DROP TABLE `tipos_usuarios_usuarios`
+Jul 15 09:36:54 [info] DROP TABLE `tipos_propiedades`
+Jul 15 09:36:54 [info] DROP TABLE `propiedades_usuarios`
+Jul 15 09:36:54 [info] DROP TABLE `estados_propiedades`
+Jul 15 09:36:54 [info] DROP TABLE `propiedades_tipos_propiedades`
+Jul 15 09:36:54 [info] DROP TABLE `estados_propiedades_propiedades`
+Jul 15 09:36:54 [info] DROP TABLE `tipos_archivos`
+Jul 15 09:36:54 [info] DROP TABLE `archivos_tipos_archivos`
+Jul 15 09:36:54 [info] DELETE FROM schema_migrations WHERE version = '20110712200701'
+Jul 15 09:48:26 [info] SELECT version FROM schema_migrations
+Jul 15 09:48:26 [info] SELECT version FROM schema_migrations
+Jul 15 09:48:26 [info] SELECT version FROM schema_migrations
+Jul 15 09:49:03 [info] SELECT version FROM schema_migrations
+Jul 15 09:49:03 [info] SELECT version FROM schema_migrations
+Jul 15 09:49:03 [info] SELECT version FROM schema_migrations
+Jul 15 09:50:31 [info] SELECT version FROM schema_migrations
+Jul 15 09:50:31 [info] SELECT version FROM schema_migrations
+Jul 15 09:50:31 [info] SELECT version FROM schema_migrations
+Jul 15 09:50:31 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`direccion` varchar(255),
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 15 09:50:31 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`clave` varchar(40),
+`pagina_web` varchar(30),
+`descripcion` varchar(100),
+`foto` varchar(100) DEFAULT '/images/usuarios/defaultUserPicture.png'
+) ;
+Jul 15 09:50:31 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 15 09:50:31 [info] CREATE TABLE `tipos_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(50)
+) ;
+Jul 15 09:50:31 [info] CREATE TABLE `tipos_usuarios_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_usuario_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 15 09:50:31 [info] CREATE TABLE `tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 15 09:50:31 [info] CREATE TABLE `propiedades_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 15 09:50:31 [info] CREATE TABLE `estados_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 15 09:50:31 [info] CREATE TABLE `propiedades_tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`tipo_propiedad_id` int(11)
+) ;
+Jul 15 09:50:31 [info] CREATE TABLE `estados_propiedades_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`estado_propiedad_id` int(11),
+`propiedad_id` int(11)
+) ;
+Jul 15 09:50:31 [info] CREATE TABLE `tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 15 09:50:31 [info] CREATE TABLE `archivos_tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_archivo_id` int(11),
+`archivo_id` int(11)
+) ;
+Jul 15 09:50:31 [info] CREATE TABLE `caracteristicas_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(30),
+`descripcion` varchar(40)
+) ;
+Jul 15 09:50:31 [info] CREATE TABLE `caracteristicas_propiedades_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`caracteristica_propiedad_id` int(11),
+`propiedad_id` int(11)
+) ;
+Jul 15 09:50:31 [info] INSERT INTO schema_migrations (version) VALUES ('20110712200701')
+Jul 15 09:51:36 [info] SELECT version FROM schema_migrations
+Jul 15 09:51:36 [info] SELECT version FROM schema_migrations
+Jul 15 09:51:36 [info] SELECT version FROM schema_migrations
+Jul 15 09:51:36 [info] DROP TABLE `propiedades`
+Jul 15 09:51:36 [info] DROP TABLE `usuarios`
+Jul 15 09:51:36 [info] DROP TABLE `archivos`
+Jul 15 09:51:36 [info] DROP TABLE `tipos_usuarios`
+Jul 15 09:51:36 [info] DROP TABLE `tipos_usuarios_usuarios`
+Jul 15 09:51:36 [info] DROP TABLE `tipos_propiedades`
+Jul 15 09:51:36 [info] DROP TABLE `propiedades_usuarios`
+Jul 15 09:51:36 [info] DROP TABLE `estados_propiedades`
+Jul 15 09:51:36 [info] DROP TABLE `propiedades_tipos_propiedades`
+Jul 15 09:51:36 [info] DROP TABLE `estados_propiedades_propiedades`
+Jul 15 09:51:36 [info] DROP TABLE `tipos_archivos`
+Jul 15 09:51:36 [info] DROP TABLE `archivos_tipos_archivos`
+Jul 15 09:51:36 [info] DROP TABLE `caracteristicas_propiedades`
+Jul 15 09:51:36 [info] DROP TABLE `caracteristicas_propiedades_propiedades`
+Jul 15 09:51:36 [info] DELETE FROM schema_migrations WHERE version = '20110712200701'
+Jul 15 09:51:39 [info] SELECT version FROM schema_migrations
+Jul 15 09:51:39 [info] SELECT version FROM schema_migrations
+Jul 15 09:51:39 [info] SELECT version FROM schema_migrations
+Jul 15 09:51:39 [info] CREATE TABLE `propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`direccion` varchar(255),
+`precio_venta` float,
+`precio_venta_dolares` tinyint(1),
+`precio_alquiler` float,
+`precio_alquiler_dolares` tinyint(1),
+`sector` varchar(40),
+`coordenadas` varchar(100),
+`visitas` int(11),
+`habitaciones` int(3),
+`banos` int(3),
+`salas` int(3),
+`cocinas` int(3),
+`parqueos` int(3),
+`terreno` float,
+`construccion` float,
+`niveles` int(3)
+) ;
+Jul 15 09:51:39 [info] CREATE TABLE `usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`apellido` varchar(20),
+`email` varchar(30),
+`clave` varchar(40),
+`pagina_web` varchar(30),
+`descripcion` varchar(100),
+`foto` varchar(100) DEFAULT '/images/usuarios/defaultUserPicture.png'
+) ;
+Jul 15 09:51:39 [info] CREATE TABLE `archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`ruta` varchar(255)
+) ;
+Jul 15 09:51:39 [info] CREATE TABLE `tipos_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(50)
+) ;
+Jul 15 09:51:39 [info] CREATE TABLE `tipos_usuarios_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_usuario_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 15 09:51:39 [info] CREATE TABLE `tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 15 09:51:39 [info] CREATE TABLE `propiedades_usuarios` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`usuario_id` int(11)
+) ;
+Jul 15 09:51:39 [info] CREATE TABLE `estados_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 15 09:51:39 [info] CREATE TABLE `propiedades_tipos_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`propiedad_id` int(11),
+`tipo_propiedad_id` int(11)
+) ;
+Jul 15 09:51:39 [info] CREATE TABLE `estados_propiedades_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`estado_propiedad_id` int(11),
+`propiedad_id` int(11)
+) ;
+Jul 15 09:51:39 [info] CREATE TABLE `tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(20),
+`descripcion` varchar(40)
+) ;
+Jul 15 09:51:39 [info] CREATE TABLE `archivos_tipos_archivos` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`tipo_archivo_id` int(11),
+`archivo_id` int(11)
+) ;
+Jul 15 09:51:39 [info] CREATE TABLE `caracteristicas_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(30),
+`descripcion` varchar(40)
+) ;
+Jul 15 09:51:39 [info] CREATE TABLE `caracteristicas_propiedades_propiedades` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`caracteristica_propiedad_id` int(11),
+`propiedad_id` int(11)
+) ;
+Jul 15 09:51:39 [info] INSERT INTO schema_migrations (version) VALUES ('20110712200701')
