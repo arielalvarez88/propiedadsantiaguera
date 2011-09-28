@@ -6,21 +6,20 @@
  */
 
 $config = array(
-    'signupEmpresa'=>array(
+    'signupCompany'=>array(
         array(
-            'field' => 'signup-empresa',
-            'label' => 'nombre',
+            'field' => 'signup-company-name',
+            'label' => 'nombre de la compañía',
             'rules' => 'required|max_length[20]'
-        ),
-        array(
-            'field' => 'signup-clave',
+        ), array(
+            'field' => 'signup-password',
             'label' => 'contraseña',
             'rules' => 'required'
         ),
         array(
-            'field' => 'signup-confirmar-clave',
+            'field' => 'signup-password-confirmation',
             'label' => 'la confirmación de contraseña',
-            'rules' => 'required|matches[signup-clave]'
+            'rules' => 'required|matches[signup-password]'
           
         ),
         array(
@@ -30,26 +29,26 @@ $config = array(
         )
     ),
     
-    'signupParticular'=>array(
+    'signupClient'=>array(
         array(
-            'field' => 'signup-nombre',
+            'field' => 'signup-name',
             'label' => 'nombre',
             'rules' => 'required|max_length[20]'
         ),
         array(
-            'field' => 'signup-apellido',
+            'field' => 'signup-lastname',
             'label' => 'apellido',
             'rules' => 'required|max_length[20]'
         ),
         array(
-            'field' => 'signup-clave',
+            'field' => 'signup-password',
             'label' => 'contraseña',
             'rules' => 'required'
         ),
         array(
-            'field' => 'signup-confirmar-clave',
+            'field' => 'signup-password-confirmation',
             'label' => 'la confirmación de contraseña',
-            'rules' => 'required|matches[signup-clave]'
+            'rules' => 'required|matches[signup-password]'
           
         ),
         array(

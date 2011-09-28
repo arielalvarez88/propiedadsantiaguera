@@ -11,10 +11,10 @@ class Form_getter extends CI_Controller{
         echo 'tamo en form_getter';
     }
     
-    function signup_informacion_general($tipoCliente)
+    function signup_informacion_general($clientType)
     {
         
-        $viewData['tipoCliente'] = $tipoCliente;
+        $viewData['clientType'] = $clientType;
         echo $this->load->view('forms/signup_informacion_general',$viewData,true);
     }
 }

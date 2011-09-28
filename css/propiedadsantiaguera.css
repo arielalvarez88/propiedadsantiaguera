@@ -1321,20 +1321,20 @@ margin-bottom: 10px;
 
 /*Propiedades END*/
 
-/*sign-up-form*/
-#sign-up-form
+/*signup-form*/
+#signup-form
 {
     color:black;
 }
 
-#sign-up-form #signup-informacion-general label, #sign-up-form #signup-informacion-general input
+#signup-form #signup-informacion-general label, #signup-form #signup-informacion-general input
 {
     display:block;
     float:left;
     
 }
 
-#sign-up-form #signup-informacion-general label
+#signup-form #signup-informacion-general label
 {
       clear: left;
     margin-bottom: 10px;
@@ -1353,6 +1353,12 @@ margin-bottom: 10px;
     width: 390px;
 }
 
+#signup-form-clear-button
+{
+    cursor: pointer;
+    
+}
+
 #signup-info-text, #signup-info-photos
 {
     float: left;
@@ -1367,7 +1373,13 @@ margin-bottom: 10px;
 {
     float:left;
 }
-/*sign-up-form ENDS*/
+
+
+#signup-address
+{
+    float: left;
+}
+/*signup-form ENDS*/
 
 
 /*Blocks End*/

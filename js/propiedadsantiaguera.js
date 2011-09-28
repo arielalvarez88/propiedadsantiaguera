@@ -152,18 +152,64 @@ initializePhotoUploader = function(uploadButton)
         }
     });
 }
-intializeSignUpFormSection = function(){
+
+
+Form = function (formWrapperSelector, sendButtonSelector, recivingScriptUrl, cleanButtonSelector, validationObjects){
     
-   
-    $('#new-user-type-value').change(function(){
-        var userType = $(this).val();    
-        $.post('/ajax/form_getter/signup_informacion_general/'+userType,function(formHtml){
-            appendHtml('#new-user-type',formHtml);
-            var uploadButton = $('#signup-upload-photo-button');
-            initializePhotoUploader(uploadButton);            
-        });
+    var thisObject = this;
+    this.form = $(formWrapperSelector);
+    this.cleanButton = $(cleanButtonSelector);        
+    this.sendButton = $(sendButtonSelector);
+    this.recivingScriptUrl = recivingScriptUrl;
+ 
+    
+    var i=0;
+    
+    (function(){
+        
+        thisObject.cleanButton.click(function(){
+        
+        var dataInputs = thisObject.form.find('input, textarea');
+        
+        for(i=0; i<dataInputs.length; i++)
+        {
+            $(dataInputs[i]).val('');
+        }
     });
+    })()                
     
+};
+
+ValidationObject = function(inputSelector,validatingFunction)
+{
+    var thisObject = this;
+    this.input = $(inputSelector);
+    this.validate = function(){validatingFunction(inputSelector)};
+    
+}
+
+
+emailValidationFunction = function(inputSelector)
+{
+    var emailValidationRegex =  /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
+    var inputValue = $(inputSelector).val();
+    return emailValidationRegex.test(inputValue);
+}
+
+
+
+
+
+
+intializeForms = function(){
+    
+   var forms = { 
+   
+    signupForm : new Form('#signup-informacion-general','#signup-form-send-button','/prueba','#signup-form-clear-button')
+    
+    
+    };
+
     var btnUpload=$('#signup-upload-photo-button');
     if(btnUpload.length>0)
         initializePhotoUploader(btnUpload);
@@ -178,6 +224,42 @@ appendHtml = function (selector,newHtml)
     $(selector).append(newHtml);
 }
 
+
+FormChooserElement = function(elementSelector,eventString,valueToUrlJsonsArray,selectorOfNewFormContainer)
+{
+    var thisObject = this;
+    this.newFormContainer = $(selectorOfNewFormContainer);
+    this.chooserElement= $(elementSelector);    
+    
+    if(!valueToUrlJsonsArray instanceof Array)
+        throw "FormChooserElement recieves an Array";
+    
+    this.chooserElement.bind(eventString,function(){
+        var i=0;
+        for(i=0; i < valueToUrlJsonsArray.length; i++)
+        {
+            if(thisObject.chooserElement.val() == valueToUrlJsonsArray[i].value)
+                {
+                    $.post(valueToUrlJsonsArray[i].url,function(html){
+                        thisObject.newFormContainer.find('.optional-form').remove();                        
+                        thisObject.newFormContainer.append(html);
+                        intializeForms();
+                        initializeFormChooserElements();
+                    });
+                }
+            
+        }
+        
+            
+    });
+}
+
+
+initializeFormChooserElements = function(){
+    var signupChooser = new FormChooserElement('#new-user-type-value','change',[{value: 'client', url:'/ajax/form_getter/signup_informacion_general/client'},{value: 'company', url:'/ajax/form_getter/signup_informacion_general/company'}],'#signup-form');
+    
+};
+
 $(document).ready
 {
     
@@ -189,15 +271,15 @@ $(document).ready
     
     initilizeFrontPageSlideShow();
     initializePropiedadViewer();
+    
     if(blockExists('agentes-header'))
     {
         intializeAgentesHeaderSection();
     }
     
-    if(blockExists('sign-up-form'))
-    {
-        intializeSignUpFormSection();
-    }
+    initializeFormChooserElements();
+    intializeForms();
+ 
     
     var map = $('#property-ubication-gmap-map');
     if(map.length>0)

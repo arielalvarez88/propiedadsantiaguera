@@ -1726,3 +1726,30 @@ Jul 15 09:51:39 [info] CREATE TABLE `caracteristicas_propiedades_propiedades` (
 `propiedad_id` int(11)
 ) ;
 Jul 15 09:51:39 [info] INSERT INTO schema_migrations (version) VALUES ('20110712200701')
+Sep 27 11:16:36 [info] CREATE TABLE `schema_migrations` (
+`version` varchar(255)
+) ;
+Sep 27 11:16:36 [info] CREATE UNIQUE INDEX idx_schema_migrations_version ON `schema_migrations`(version)
+Sep 27 11:16:36 [info] SELECT version FROM schema_migrations
+Sep 27 11:16:36 [info] SELECT version FROM schema_migrations
+Sep 27 11:16:36 [info] SELECT version FROM schema_migrations
+Sep 27 11:16:36 [info] CREATE TABLE `users` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`name` varchar(20),
+`lastname` varchar(20),
+`email` varchar(40),
+`password` varchar(40),
+`web_page` varchar(60),
+`description` text,
+`photo` varchar(60),
+`tel` varchar(10),
+`cel` varchar(10),
+`fax` varchar(10),
+`rnc` varchar(20),
+`address` text(20),
+`registration_date` datetime,
+`payment_status` tinyint(1),
+`total_posts` int(11),
+`posts_left` int(11)
+) ;
+Sep 27 11:16:36 [info] INSERT INTO schema_migrations (version) VALUES ('20110712200701')

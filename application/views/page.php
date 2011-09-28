@@ -1,5 +1,6 @@
  <?php
 $loggedUser = User_handler::getLoggedUser();
+
 $thisPage = str_replace('/', '-', uri_string());
  ?>
 <html>
@@ -17,8 +18,8 @@ $thisPage = str_replace('/', '-', uri_string());
                         <div id="login">
                             <p>
                                 <?php if($loggedUser):?>
-                                <span id="saludo-usuario">Bienvenido <?php echo $loggedUser->nombre.', ';?></span>
-                                <a class="no-decoration-anchor" href="/loggout/<?php echo $thisPage;?>">loggout </a>
+                                <span id="saludo-usuario">Bienvenido <?php echo $loggedUser->name.', ';?></span>
+                                <a class="no-decoration-anchor" href="/loggout</a>
                                 <span class="vertical-serparator"> | </span>
                                 <?php endif;?>
                                 <a class="no-decoration-anchor" href="#">Somos</a>

@@ -28,11 +28,11 @@ class User_handler {
                 self::$CIObject = & get_instance();
     }
 
-    public static function login($email, $clave) {
+    public static function login($email, $password) {
 
 
-        $userObject = new Usuario();
-        $userObject->where(array("email"=>$email, "clave" => $clave))->get();
+        $userObject = new User();
+        $userObject->where(array("email"=>$email, "password" => $password))->get();
         if (isset($userObject->id) && $userObject->id != 0) {
             
             self::createCI();
@@ -52,9 +52,9 @@ class User_handler {
         self::$CIObject->input->set_cookie('user');
     }
     
-    public static function loginAndSaveInCookies($email, $clave) {
+    public static function loginAndSaveInCookies($email, $password) {
         
-        $user = self::login($email, $clave);
+        $user = self::login($email, $password);
     
         if (!$user)
             return false;
@@ -93,7 +93,7 @@ class User_handler {
         if(!$userId)
             return false;
             
-        $user = new Usuario();
+        $user = new User();
         
         $user->get_user_id($userId);
       
