@@ -23,7 +23,7 @@ class CreandoTablas extends Ruckusing_BaseMigration {
         $users->column('total_posts', 'integer');
         $users->column('posts_left', 'integer');
         
-//        
+
 //        $propiedades = $this->create_table('properties');
 //        $propiedades->column('address', 'text');
 //        $propiedades->column('sell_price_dollars', 'integer');

@@ -86,14 +86,13 @@ class User_handler {
             return $user;
         
         $userId = self::$CIObject->input->cookie('user',true);
-        
-          echo 'tamo aqui';
-        var_dump($userId);
-        return;
+                      
+       
         if(!$userId)
             return false;
             
         $user = new User();
+        
         
         $user->get_user_id($userId);
       
