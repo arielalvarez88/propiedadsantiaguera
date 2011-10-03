@@ -31,12 +31,12 @@ $config = array(
     
     'signupClient'=>array(
         array(
-            'field' => 'signup-name',
+            'field' => 'signup-client-name',
             'label' => 'nombre',
             'rules' => 'required|max_length[20]'
         ),
         array(
-            'field' => 'signup-lastname',
+            'field' => 'signup-client-lastname',
             'label' => 'apellido',
             'rules' => 'required|max_length[20]'
         ),
