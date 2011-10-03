@@ -1,0 +1,21 @@
+git checkout -b ariel_inscribir_propiedades
+git push origin ariel_inscribir_propiedades
+
+para bajar lo ke tengo en otro branch :
+git checkout nombre_del_branch
+git pull
+git checkout ariel_inscribir_propiedades
+git merge nombre_del_branch
+
+para hacer merge con el master branch:
+
+git checkout master
+git pull
+git merge ariel_inscribir_propiedades
+git push
+
+
+borrar un branch:
+
+git branch -d ariel_inscribir_propiedades
+git push origin :ariel_inscribir_propiedades
