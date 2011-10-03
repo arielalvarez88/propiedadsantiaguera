@@ -32,7 +32,11 @@ class User_handler {
 
 
         $userObject = new User();
-        $userObject->where(array("email"=>$email, "password" => $password))->get();
+        $userObject->where('email', $email);
+        $userObject->where('password', $password);
+        $userObject->get();
+        
+        
         if (isset($userObject->id) && $userObject->id != 0) {
             
             self::createCI();
@@ -93,9 +97,8 @@ class User_handler {
             
         $user = new User();
         
-        
-        $user->get_user_id($userId);
-      
+        $user->where('id =', $userId);
+        var_dump($user->name);
         if($user)
             return $user;
         

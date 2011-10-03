@@ -13,7 +13,7 @@
 class Prueba extends CI_Controller{
     //put your code here
     public function index(){
-        echo 'eto e una prueba';
+        
     }
 }
 

@@ -106,52 +106,6 @@ intializeAgentesHeaderSection = function(){
     });
 }
 
-initializePhotoUploader = function(uploadButton)
-{
-   
-    var btnUpload=$('#signup-upload-photo-button');  
-    var statusMessages=$('#signup-upload-photo-status');  
-    var photoPreview = $('#signup-upload-photo-preview');
-        
-    new AjaxUpload('signup-upload-photo-button', {
-        action: 'ajax/fileuploader/photo',
-        responseType: 'json',
-        onChange : function(file , ext) {
-            if ( $('select').val() == 0 ) {
-                alert("Please select a directory, then Upload");
-                return false;
-            }
-        },
-        onSubmit : function(file , ext){
-            // Allow only images. You should add security check on the server-side.
-            if (ext && /^(gif|jpg|jpeg|png)$/i.test(ext)){
-                /* Change status text */
-               statusMessages.html('Subiendo el archivo...');
-                var directory = 111;
-                this.setData({
-                    'directory': directory
-                });
-                
-            } else {
-
-                statusMessages.html('Solo se permiten imagenes.');
-   
-                return false;
-            }
-        },
-        onComplete : function(file, response){
-      
-            if (response.success) {
-                 
-                 photoPreview.attr('src',response.filePath);
-                   
-            } else {
-               
-               statusMessages.html('Se ha producido un error, por favor intentelo denuevo.');
-            }
-        }
-    });
-}
 
 
 Form = function (formWrapperSelector, sendButtonSelector, recivingScriptUrl, cleanButtonSelector, validationObjects){
@@ -210,11 +164,6 @@ intializeForms = function(){
     
     };
 
-    var btnUpload=$('#signup-upload-photo-button');
-    if(btnUpload.length>0)
-        initializePhotoUploader(btnUpload);
-  
-
     
     
 }
@@ -260,6 +209,21 @@ initializeFormChooserElements = function(){
     
 };
 
+Overlay = function (selector, optionalClosebuttonSelector)
+{
+    $(selector).fancybox({type:'inline', padding:0,margin:0, showCloseButton: false});
+    $(optionalClosebuttonSelector).click(function(){
+        $.fancybox.close();
+    });
+    
+}
+
+initializeOverlays = function(){
+    var login = new Overlay('#login-link','#login-close-button');
+    
+};
+
+
 $(document).ready
 {
     
@@ -279,7 +243,7 @@ $(document).ready
     
     initializeFormChooserElements();
     intializeForms();
- 
+    initializeOverlays();
     
     var map = $('#property-ubication-gmap-map');
     if(map.length>0)
