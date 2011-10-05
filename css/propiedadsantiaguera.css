@@ -112,7 +112,7 @@ p, ul
 
 #login form input.login-input
 {
-    background-color: transparent;
+    background: transparent url('/images/login/inputBg.png') top center no-repeat;
     border:0;
     height:33px;
     width:220px;
