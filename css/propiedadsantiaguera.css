@@ -94,7 +94,7 @@ p, ul
     z-index: 1000;
         
 }
-#login-password
+#login-password, #login-password-clear
 {
     top: 155px;
 }

@@ -123,13 +123,13 @@ Form = function (formWrapperSelector, sendButtonSelector, recivingScriptUrl, cle
         
         thisObject.cleanButton.click(function(){
         
-        var dataInputs = thisObject.form.find('input, textarea');
+            var dataInputs = thisObject.form.find('input, textarea');
         
-        for(i=0; i<dataInputs.length; i++)
-        {
-            $(dataInputs[i]).val('');
-        }
-    });
+            for(i=0; i<dataInputs.length; i++)
+            {
+                $(dataInputs[i]).val('');
+            }
+        });
     })()                
     
 };
@@ -138,7 +138,9 @@ ValidationObject = function(inputSelector,validatingFunction)
 {
     var thisObject = this;
     this.input = $(inputSelector);
-    this.validate = function(){validatingFunction(inputSelector)};
+    this.validate = function(){
+        validatingFunction(inputSelector)
+        };
     
 }
 
@@ -153,13 +155,72 @@ emailValidationFunction = function(inputSelector)
 
 
 
+InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswordInputSelector){
+    
+    var thisObject = this;
+    this.input = $(inputSelector);
+    this.optionalClearPasswordInput = $(optionalClearPasswordInputSelector);
+        
+    this.isPasswordField = typeof optionalClearPasswordInputSelector == 'undefined'? false : true;
+        
+    if(this.isPasswordField)
+    {
+        this.optionalClearPasswordInput.val(defaultText);
+    }
+    else
+    {
+        this.input.val(defaultText);
+    }
+        
+    this.optionalClearPasswordInput.click(function(){
+            
+        thisObject.optionalClearPasswordInput.hide();
+        thisObject.input.show();
+        thisObject.input.focus();
+    });
+        
+        
+    this.input.click(function(){
+            
+        if($(this).val()== defaultText)
+            $(this).val("");
+            
+            
+    });
+            
+         
+            
+                
+    this.input.blur(function(event){
+        if($(event.target).val() == "")
+        {
+            $(event.target).val(defaultText);
+                
+                
+            if(thisObject.isPasswordField)
+            {
+                thisObject.optionalClearPasswordInput.val(defaultText);
+                thisObject.input.hide();
+                thisObject.optionalClearPasswordInput.show();
+                thisObject.input.val('');
+                 
+            }
+        }
+            
+            
+    });
+    
 
+ 
+
+    
+}
 
 intializeForms = function(){
     
-   var forms = { 
+    var forms = { 
    
-    signupForm : new Form('#signup-informacion-general','#signup-form-send-button','/prueba','#signup-form-clear-button')
+        signupForm : new Form('#signup-informacion-general','#signup-form-send-button','/prueba','#signup-form-clear-button')
     
     
     };
@@ -188,14 +249,14 @@ FormChooserElement = function(elementSelector,eventString,valueToUrlJsonsArray,s
         for(i=0; i < valueToUrlJsonsArray.length; i++)
         {
             if(thisObject.chooserElement.val() == valueToUrlJsonsArray[i].value)
-                {
-                    $.post(valueToUrlJsonsArray[i].url,function(html){
-                        thisObject.newFormContainer.find('.optional-form').remove();                        
-                        thisObject.newFormContainer.append(html);
-                        intializeForms();
-                        initializeFormChooserElements();
-                    });
-                }
+            {
+                $.post(valueToUrlJsonsArray[i].url,function(html){
+                    thisObject.newFormContainer.find('.optional-form').remove();                        
+                    thisObject.newFormContainer.append(html);
+                    intializeForms();
+                    initializeFormChooserElements();
+                });
+            }
             
         }
         
@@ -205,13 +266,24 @@ FormChooserElement = function(elementSelector,eventString,valueToUrlJsonsArray,s
 
 
 initializeFormChooserElements = function(){
-    var signupChooser = new FormChooserElement('#new-user-type-value','change',[{value: 'client', url:'/ajax/form_getter/signup_informacion_general/client'},{value: 'company', url:'/ajax/form_getter/signup_informacion_general/company'}],'#signup-form');
+    var signupChooser = new FormChooserElement('#new-user-type-value','change',[{
+        value: 'client', 
+        url:'/ajax/form_getter/signup_informacion_general/client'
+    },{
+        value: 'company', 
+        url:'/ajax/form_getter/signup_informacion_general/company'
+    }],'#signup-form');
     
 };
 
 Overlay = function (selector, optionalClosebuttonSelector)
 {
-    $(selector).fancybox({type:'inline', padding:0,margin:0, showCloseButton: false});
+    $(selector).fancybox({
+        type:'inline', 
+        padding:0,
+        margin:0, 
+        showCloseButton: false
+    });
     $(optionalClosebuttonSelector).click(function(){
         $.fancybox.close();
     });
@@ -223,7 +295,10 @@ initializeOverlays = function(){
     
 };
 
-
+initializeInputsWithDefaultText = function(){
+    var loginEmail = new InputsWithDefaultText('#login-email', 'Email');
+    var password = new InputsWithDefaultText('#login-password', 'Contraseña','#login-password-clear');
+};
 $(document).ready
 {
     
@@ -244,7 +319,7 @@ $(document).ready
     initializeFormChooserElements();
     intializeForms();
     initializeOverlays();
-    
+    initializeInputsWithDefaultText();
     var map = $('#property-ubication-gmap-map');
     if(map.length>0)
         drawPropertyUbication('16,16');
