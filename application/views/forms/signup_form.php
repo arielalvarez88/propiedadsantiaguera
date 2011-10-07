@@ -9,7 +9,7 @@
  <?php if (isset($errores) && $errores): ?>
         <div class="error-messages"><?php echo $errores; ?></div>
     <?php endif; ?>
-<form id="signup-informacion-general" method="post" action="<?php echo base_url(); ?>signup/validate" accept-charset="utf-8">
+<form id="signup-informacion-general" method="post" action="<?php echo base_url(); ?>usuario/validate" accept-charset="utf-8">
 
    
     <div id="signup-info-text">

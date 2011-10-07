@@ -67,8 +67,7 @@ p, ul
    width:646px;
    height:334px;
    position: relative;
-   
-   
+
 }
 #login form
 {
@@ -79,7 +78,12 @@ p, ul
     margin:85px 10px;
     float:right;*/
 }
-
+#login-title
+{
+    position: absolute;
+    top:55px;
+    left:325px;   
+}
 #login-close-button
 {
     display: block;
@@ -96,17 +100,16 @@ p, ul
 }
 #login-password, #login-password-clear
 {
-    top: 155px;
+    top: 130px;
 }
 #login-email
-{
-    
-    top: 95px;
+{   
+    top: 85px;
 }
 #login-submit
 {
     position: absolute;
-    top:206px;
+    top:196px;
     left:325px;
 }
 
@@ -114,10 +117,10 @@ p, ul
 {
     background: transparent url('/images/login/inputBg.png') top center no-repeat;
     border:0;
-    height:33px;
+    height:53px;
     width:220px;
     border: 0;
-    padding: 10px 0;
+    padding: 15px 10px;
     position: absolute;
     left: 374px;
     outline: none;
@@ -126,7 +129,7 @@ p, ul
 #login form a
 {
     position:absolute;
-    top:213px;   
+    top:203px;   
     left:435px;
     text-decoration:none;
     font-size:0.9em;
@@ -140,7 +143,46 @@ p, ul
 }
 
 /************ Login block end *******************/
-
+/*********** Password Reset Form  **********/
+#login #password-reset-form
+{
+    width:200px;
+}
+#password-reset-form p
+{
+    position:absolute;
+    top:52px;
+    left:333px;
+    width:300px;   
+    color:#304900;
+}
+#password-reset-form p span
+{
+    font-size:12pt;
+    font-weight:bold;
+    color:#5A8300;
+}
+#password-reset-form input#password-reset-input
+{
+    background: transparent url('/images/login/inputBg.png') top center no-repeat;
+    border:0;
+    height:53px;
+    width:220px;
+    border: 0;
+    padding: 15px 10px;
+    position: absolute;
+    left: 360px;
+    top:120px;
+    outline: none;
+/*    margin:0 0 23px;*/
+}
+#password-reset-submit
+{
+    position: absolute;
+    top:174px;
+    left:360px;
+}
+/********************Password reset form end***********************/
 
 #banner{
     

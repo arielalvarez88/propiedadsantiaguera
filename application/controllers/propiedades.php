@@ -11,6 +11,11 @@ class Propiedades extends CI_Controller
         $this->load->view('page',$data);
     }
     
+    public function agregar_propiedades()
+    {
+        $this->load->view('forms/add_properties_form.php');
+    }
+    
     public function ver($id=null)
     {
         if(!($id && is_numeric($id) && $id >= 1))
@@ -30,6 +35,30 @@ class Propiedades extends CI_Controller
         
         $this->load->view('page',$data);
             
+    }
+    
+    
+    
+     private function signup_form_error() {
+
+        $repopulateForm['name'] = $this->input->post('signup-name');
+        $repopulateForm['lastname'] = $this->input->post('signup-lastname');
+        $repopulateForm['company'] = $this->input->post('signup-company');
+        $repopulateForm['email'] = $this->input->post('signup-email');
+        $repopulateForm['tel'] = $this->input->post('signup-tel');
+        $repopulateForm['cel'] = $this->input->post('signup-cel');
+        $repopulateForm['website'] = $this->input->post('signup-website');
+        $repopulateForm['description'] = $this->input->post('description');
+        $repopulateForm['clientType'] = $this->input->post('signup-client-type');
+       
+       
+        $repopulateForm['errores'] = validation_errors();
+
+        $signUpData['signUpForm'] = $this->load->view('blocks/newUserType', '', true);
+        $signUpData['signUpForm'] .= $this->load->view('forms/signup_informacion_general', $repopulateForm, true);
+        
+        $data['topLeftSide'] = $this->load->view('blocks/signUpForm', $signUpData, true);
+        $this->load->view('page.php', $data);
     }
 }
 ?>

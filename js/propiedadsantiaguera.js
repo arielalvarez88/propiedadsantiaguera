@@ -140,7 +140,7 @@ ValidationObject = function(inputSelector,validatingFunction)
     this.input = $(inputSelector);
     this.validate = function(){
         validatingFunction(inputSelector)
-        };
+    };
     
 }
 
@@ -235,45 +235,59 @@ appendHtml = function (selector,newHtml)
 }
 
 
-FormChooserElement = function(elementSelector,eventString,valueToUrlJsonsArray,selectorOfNewFormContainer)
+ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,selectorOfNewFormContainer,elementType)
 {
     var thisObject = this;
     this.newFormContainer = $(selectorOfNewFormContainer);
     this.chooserElement= $(elementSelector);    
     
     if(!valueToUrlJsonsArray instanceof Array)
-        throw "FormChooserElement recieves an Array";
+        throw "ViewLoaderElement recieves an Array";
     
     this.chooserElement.bind(eventString,function(){
         var i=0;
-        for(i=0; i < valueToUrlJsonsArray.length; i++)
+        if(elementType == 'a')
         {
-            if(thisObject.chooserElement.val() == valueToUrlJsonsArray[i].value)
-            {
-                $.post(valueToUrlJsonsArray[i].url,function(html){
-                    thisObject.newFormContainer.find('.optional-form').remove();                        
-                    thisObject.newFormContainer.append(html);
-                    intializeForms();
-                    initializeFormChooserElements();
-                });
-            }
+            $.post(valueToUrlJsonsArray[0].url,valueToUrlJsonsArray[i].data,function(html){
+                thisObject.newFormContainer.find('.optional-form').remove();                        
+                thisObject.newFormContainer.append(html);
+                initializeInputsWithDefaultText();
+            });
             
         }
+        else
+        {
+            for(i=0; i < valueToUrlJsonsArray.length; i++)
+            {
+                if(thisObject.chooserElement.val() == valueToUrlJsonsArray[i].value)
+                {
+                    $.post(valueToUrlJsonsArray[i].url,valueToUrlJsonsArray[i].data,function(html){
+                        thisObject.newFormContainer.find('.optional-form').remove();                        
+                        thisObject.newFormContainer.append(html);
+                        intializeForms();
+                        initializeViewLoaderElements();
+                    });
+                }
+            }
+                      
+        }
+                    
+            
+        });
         
             
-    });
-}
+    };
 
 
-initializeFormChooserElements = function(){
-    var signupChooser = new FormChooserElement('#new-user-type-value','change',[{
-        value: 'client', 
-        url:'/ajax/form_getter/signup_informacion_general/client'
-    },{
-        value: 'company', 
-        url:'/ajax/form_getter/signup_informacion_general/company'
-    }],'#signup-form');
-    
+
+initializeViewLoaderElements = function(){
+    var signupChooser = new ViewLoaderElement('#new-user-type-value','change',[{value: 'client', url:'/ajax/view_loader/forms/signup_form', data: {clientType: 'client'}},{value: 'company', url:'/ajax/view_loader/forms/signup_form', data: {clientType: 'company'}}],'#signup-form');   
+
+var forgotPassword = new ViewLoaderElement('#login-password-reset-button','click',[{
+        value: '', 
+        url:'/ajax/form_getter/passwordRecovery'
+    }],'#login','a');
+
 };
 
 Overlay = function (selector, optionalClosebuttonSelector)
@@ -289,16 +303,25 @@ Overlay = function (selector, optionalClosebuttonSelector)
     });
     
 }
+initializeInputsWithDefaultText = function(){
+ var loginEmail = new InputsWithDefaultText('#login-email', 'Email');
+ var loginPassword = new InputsWithDefaultText('#login-password', 'Contraseña', '#login-password-clear');
+ var resetPasswordEmail = new InputsWithDefaultText('#password-reset-input', 'Email');
+    
+};
+
 
 initializeOverlays = function(){
     var login = new Overlay('#login-link','#login-close-button');
     
 };
 
-initializeInputsWithDefaultText = function(){
-    var loginEmail = new InputsWithDefaultText('#login-email', 'Email');
-    var password = new InputsWithDefaultText('#login-password', 'Contraseña','#login-password-clear');
+initializeMaps = function() {
+    var map = $('#property-ubication-gmap-map');
+    if(map.length>0)
+        drawPropertyUbication('16,16');
 };
+
 $(document).ready
 {
     
@@ -311,18 +334,15 @@ $(document).ready
     initilizeFrontPageSlideShow();
     initializePropiedadViewer();
     
-    if(blockExists('agentes-header'))
-    {
-        intializeAgentesHeaderSection();
-    }
     
-    initializeFormChooserElements();
+    intializeAgentesHeaderSection();
+    
+    initializeInputsWithDefaultText();
+    initializeViewLoaderElements();
     intializeForms();
     initializeOverlays();
-    initializeInputsWithDefaultText();
-    var map = $('#property-ubication-gmap-map');
-    if(map.length>0)
-        drawPropertyUbication('16,16');
+    initializeMaps();
+    
 }
 
 
