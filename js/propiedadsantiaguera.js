@@ -123,13 +123,13 @@ Form = function (formWrapperSelector, sendButtonSelector, recivingScriptUrl, cle
         
         thisObject.cleanButton.click(function(){
         
-        var dataInputs = thisObject.form.find('input, textarea');
+            var dataInputs = thisObject.form.find('input, textarea');
         
-        for(i=0; i<dataInputs.length; i++)
-        {
-            $(dataInputs[i]).val('');
-        }
-    });
+            for(i=0; i<dataInputs.length; i++)
+            {
+                $(dataInputs[i]).val('');
+            }
+        });
     })()                
     
 };
@@ -138,7 +138,9 @@ ValidationObject = function(inputSelector,validatingFunction)
 {
     var thisObject = this;
     this.input = $(inputSelector);
-    this.validate = function(){validatingFunction(inputSelector)};
+    this.validate = function(){
+        validatingFunction(inputSelector)
+    };
     
 }
 
@@ -153,13 +155,72 @@ emailValidationFunction = function(inputSelector)
 
 
 
+InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswordInputSelector){
+    
+    var thisObject = this;
+    this.input = $(inputSelector);
+    this.optionalClearPasswordInput = $(optionalClearPasswordInputSelector);
+        
+    this.isPasswordField = typeof optionalClearPasswordInputSelector == 'undefined'? false : true;
+        
+    if(this.isPasswordField)
+    {
+        this.optionalClearPasswordInput.val(defaultText);
+    }
+    else
+    {
+        this.input.val(defaultText);
+    }
+        
+    this.optionalClearPasswordInput.click(function(){
+            
+        thisObject.optionalClearPasswordInput.hide();
+        thisObject.input.show();
+        thisObject.input.focus();
+    });
+        
+        
+    this.input.click(function(){
+            
+        if($(this).val()== defaultText)
+            $(this).val("");
+            
+            
+    });
+            
+         
+            
+                
+    this.input.blur(function(event){
+        if($(event.target).val() == "")
+        {
+            $(event.target).val(defaultText);
+                
+                
+            if(thisObject.isPasswordField)
+            {
+                thisObject.optionalClearPasswordInput.val(defaultText);
+                thisObject.input.hide();
+                thisObject.optionalClearPasswordInput.show();
+                thisObject.input.val('');
+                 
+            }
+        }
+            
+            
+    });
+    
 
+ 
+
+    
+}
 
 intializeForms = function(){
     
-   var forms = { 
+    var forms = { 
    
-    signupForm : new Form('#signup-informacion-general','#signup-form-send-button','/prueba','#signup-form-clear-button')
+        signupForm : new Form('#signup-informacion-general','#signup-form-send-button','/prueba','#signup-form-clear-button')
     
     
     };
@@ -185,9 +246,20 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
     
     this.chooserElement.bind(eventString,function(){
         var i=0;
-        for(i=0; i < valueToUrlJsonsArray.length; i++)
+        if(elementType == 'a')
         {
-            if(thisObject.chooserElement.val() == valueToUrlJsonsArray[i].value)
+            $.post(valueToUrlJsonsArray[0].url,function(html){
+                thisObject.newFormContainer.find('.optional-form').remove();                        
+                thisObject.newFormContainer.append(html);
+                initializeInputsWithDefaultText();
+            });
+            
+        }
+        else
+        {
+            for(i=0; i < valueToUrlJsonsArray.length; i++)
+            {
+                if(thisObject.chooserElement.val() == valueToUrlJsonsArray[i].value)
                 {
                     $.post(valueToUrlJsonsArray[i].url,valueToUrlJsonsArray[i].data,function(html){
                         thisObject.newFormContainer.find('.optional-form').remove();                        
@@ -196,6 +268,10 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
                         initializeViewLoaderElements();
                     });
                 }
+            }
+                      
+        }
+                    
             
         }
         
@@ -206,11 +282,22 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
 
 initializeViewLoaderElements = function(){
     var signupChooser = new ViewLoaderElement('#new-user-type-value','change',[{value: 'client', url:'/ajax/view_loader/forms/signup_form', data: {clientType: 'client'}},{value: 'company', url:'/ajax/view_loader/forms/signup_form', data: {clientType: 'company'}}],'#signup-form');   
+
+var forgotPassword = new FormChooserElement('#login-password-reset-button','click',[{
+        value: '', 
+        url:'/ajax/form_getter/passwordRecovery'
+    }],'#login','a');
+
 };
 
 Overlay = function (selector, optionalClosebuttonSelector)
 {
-    $(selector).fancybox({type:'inline', padding:0,margin:0, showCloseButton: false});
+    $(selector).fancybox({
+        type:'inline', 
+        padding:0,
+        margin:0, 
+        showCloseButton: false
+    });
     $(optionalClosebuttonSelector).click(function(){
         $.fancybox.close();
     });
