@@ -140,7 +140,7 @@ ValidationObject = function(inputSelector,validatingFunction)
     this.input = $(inputSelector);
     this.validate = function(){
         validatingFunction(inputSelector)
-        };
+    };
     
 }
 
@@ -235,7 +235,7 @@ appendHtml = function (selector,newHtml)
 }
 
 
-FormChooserElement = function(elementSelector,eventString,valueToUrlJsonsArray,selectorOfNewFormContainer)
+FormChooserElement = function(elementSelector,eventString,valueToUrlJsonsArray,selectorOfNewFormContainer,elementType)
 {
     var thisObject = this;
     this.newFormContainer = $(selectorOfNewFormContainer);
@@ -246,20 +246,32 @@ FormChooserElement = function(elementSelector,eventString,valueToUrlJsonsArray,s
     
     this.chooserElement.bind(eventString,function(){
         var i=0;
-        for(i=0; i < valueToUrlJsonsArray.length; i++)
+        if(elementType == 'a')
         {
-            if(thisObject.chooserElement.val() == valueToUrlJsonsArray[i].value)
-            {
-                $.post(valueToUrlJsonsArray[i].url,function(html){
-                    thisObject.newFormContainer.find('.optional-form').remove();                        
-                    thisObject.newFormContainer.append(html);
-                    intializeForms();
-                    initializeFormChooserElements();
-                });
-            }
+            $.post(valueToUrlJsonsArray[0].url,function(html){
+                thisObject.newFormContainer.find('.optional-form').remove();                        
+                thisObject.newFormContainer.append(html);
+                initializeInputsWithDefaultText();
+            });
             
         }
-        
+        else
+        {
+            for(i=0; i < valueToUrlJsonsArray.length; i++)
+            {
+                if(thisObject.chooserElement.val() == valueToUrlJsonsArray[i].value)
+                {
+                    $.post(valueToUrlJsonsArray[i].url,function(html){
+                        thisObject.newFormContainer.find('.optional-form').remove();                        
+                        thisObject.newFormContainer.append(html);
+                        intializeForms();
+                        initializeFormChooserElements();
+                    });
+                }
+            }
+                      
+        }
+                    
             
     });
 }
@@ -273,7 +285,11 @@ initializeFormChooserElements = function(){
         value: 'company', 
         url:'/ajax/form_getter/signup_informacion_general/company'
     }],'#signup-form');
-    
+    var forgotPassword = new FormChooserElement('#login-password-reset-button','click',[{
+        value: '', 
+        url:'/ajax/form_getter/passwordRecovery'
+    }],'#login','a');
+
 };
 
 Overlay = function (selector, optionalClosebuttonSelector)
@@ -298,6 +314,7 @@ initializeOverlays = function(){
 initializeInputsWithDefaultText = function(){
     var loginEmail = new InputsWithDefaultText('#login-email', 'Email');
     var password = new InputsWithDefaultText('#login-password', 'Contraseña','#login-password-clear');
+    var restePasswordEmail = new InputsWithDefaultText('#password-reset-input', 'Email');
 };
 $(document).ready
 {
