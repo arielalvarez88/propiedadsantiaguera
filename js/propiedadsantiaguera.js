@@ -235,7 +235,7 @@ appendHtml = function (selector,newHtml)
 }
 
 
-ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,selectorOfNewFormContainer)
+ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,selectorOfNewFormContainer,elementType)
 {
     var thisObject = this;
     this.newFormContainer = $(selectorOfNewFormContainer);
@@ -248,7 +248,7 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
         var i=0;
         if(elementType == 'a')
         {
-            $.post(valueToUrlJsonsArray[0].url,function(html){
+            $.post(valueToUrlJsonsArray[0].url,valueToUrlJsonsArray[i].data,function(html){
                 thisObject.newFormContainer.find('.optional-form').remove();                        
                 thisObject.newFormContainer.append(html);
                 initializeInputsWithDefaultText();
@@ -273,17 +273,17 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
         }
                     
             
-        }
+        });
         
             
-    });
-}
+    };
+
 
 
 initializeViewLoaderElements = function(){
     var signupChooser = new ViewLoaderElement('#new-user-type-value','change',[{value: 'client', url:'/ajax/view_loader/forms/signup_form', data: {clientType: 'client'}},{value: 'company', url:'/ajax/view_loader/forms/signup_form', data: {clientType: 'company'}}],'#signup-form');   
 
-var forgotPassword = new FormChooserElement('#login-password-reset-button','click',[{
+var forgotPassword = new ViewLoaderElement('#login-password-reset-button','click',[{
         value: '', 
         url:'/ajax/form_getter/passwordRecovery'
     }],'#login','a');
@@ -303,6 +303,13 @@ Overlay = function (selector, optionalClosebuttonSelector)
     });
     
 }
+initializeInputsWithDefaultText = function(){
+ var loginEmail = new InputsWithDefaultText('#login-email', 'Email');
+ var loginPassword = new InputsWithDefaultText('#login-password', 'Contraseña', '#login-password-clear');
+ var resetPasswordEmail = new InputsWithDefaultText('#password-reset-input', 'Email');
+    
+};
+
 
 initializeOverlays = function(){
     var login = new Overlay('#login-link','#login-close-button');
@@ -330,7 +337,7 @@ $(document).ready
     
     intializeAgentesHeaderSection();
     
-    
+    initializeInputsWithDefaultText();
     initializeViewLoaderElements();
     intializeForms();
     initializeOverlays();
