@@ -235,14 +235,14 @@ appendHtml = function (selector,newHtml)
 }
 
 
-FormChooserElement = function(elementSelector,eventString,valueToUrlJsonsArray,selectorOfNewFormContainer,elementType)
+ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,selectorOfNewFormContainer)
 {
     var thisObject = this;
     this.newFormContainer = $(selectorOfNewFormContainer);
     this.chooserElement= $(elementSelector);    
     
     if(!valueToUrlJsonsArray instanceof Array)
-        throw "FormChooserElement recieves an Array";
+        throw "ViewLoaderElement recieves an Array";
     
     this.chooserElement.bind(eventString,function(){
         var i=0;
@@ -261,11 +261,11 @@ FormChooserElement = function(elementSelector,eventString,valueToUrlJsonsArray,s
             {
                 if(thisObject.chooserElement.val() == valueToUrlJsonsArray[i].value)
                 {
-                    $.post(valueToUrlJsonsArray[i].url,function(html){
+                    $.post(valueToUrlJsonsArray[i].url,valueToUrlJsonsArray[i].data,function(html){
                         thisObject.newFormContainer.find('.optional-form').remove();                        
                         thisObject.newFormContainer.append(html);
                         intializeForms();
-                        initializeFormChooserElements();
+                        initializeViewLoaderElements();
                     });
                 }
             }
@@ -273,19 +273,17 @@ FormChooserElement = function(elementSelector,eventString,valueToUrlJsonsArray,s
         }
                     
             
+        }
+        
+            
     });
 }
 
 
-initializeFormChooserElements = function(){
-    var signupChooser = new FormChooserElement('#new-user-type-value','change',[{
-        value: 'client', 
-        url:'/ajax/form_getter/signup_informacion_general/client'
-    },{
-        value: 'company', 
-        url:'/ajax/form_getter/signup_informacion_general/company'
-    }],'#signup-form');
-    var forgotPassword = new FormChooserElement('#login-password-reset-button','click',[{
+initializeViewLoaderElements = function(){
+    var signupChooser = new ViewLoaderElement('#new-user-type-value','change',[{value: 'client', url:'/ajax/view_loader/forms/signup_form', data: {clientType: 'client'}},{value: 'company', url:'/ajax/view_loader/forms/signup_form', data: {clientType: 'company'}}],'#signup-form');   
+
+var forgotPassword = new FormChooserElement('#login-password-reset-button','click',[{
         value: '', 
         url:'/ajax/form_getter/passwordRecovery'
     }],'#login','a');
@@ -316,6 +314,13 @@ initializeInputsWithDefaultText = function(){
     var password = new InputsWithDefaultText('#login-password', 'Contraseña','#login-password-clear');
     var resetPasswordEmail = new InputsWithDefaultText('#password-reset-input', 'Email');
 };
+
+initializeMaps = function() {
+    var map = $('#property-ubication-gmap-map');
+    if(map.length>0)
+        drawPropertyUbication('16,16');
+};
+
 $(document).ready
 {
     
@@ -328,18 +333,15 @@ $(document).ready
     initilizeFrontPageSlideShow();
     initializePropiedadViewer();
     
-    if(blockExists('agentes-header'))
-    {
-        intializeAgentesHeaderSection();
-    }
     
-    initializeFormChooserElements();
+    intializeAgentesHeaderSection();
+    
+    
+    initializeViewLoaderElements();
     intializeForms();
     initializeOverlays();
-    initializeInputsWithDefaultText();
-    var map = $('#property-ubication-gmap-map');
-    if(map.length>0)
-        drawPropertyUbication('16,16');
+    initializeMaps();
+    
 }
 
 
