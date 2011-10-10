@@ -314,7 +314,7 @@ initializeOverlays = function(){
 initializeInputsWithDefaultText = function(){
     var loginEmail = new InputsWithDefaultText('#login-email', 'Email');
     var password = new InputsWithDefaultText('#login-password', 'Contraseña','#login-password-clear');
-    var restePasswordEmail = new InputsWithDefaultText('#password-reset-input', 'Email');
+    var resetPasswordEmail = new InputsWithDefaultText('#password-reset-input', 'Email');
 };
 $(document).ready
 {
