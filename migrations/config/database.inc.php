@@ -17,11 +17,11 @@ $ruckusing_db_config = array(
 
 	'test' 					=> array(
 			'type' 			=> 'mysql',
-			'host' 			=> 'localhost',
+			'host' 			=> 'mysql.5050mkt.com',
 			'port'			=> 3306,
 			'database' 	=> 'php_migrator_test',
-			'user' 			=> 'root',
-			'password' 	=> ''
+			'user' 			=> '5050mkt',
+			'password' 	=> 'sle9her'
 	),
 	'production' 		=> array(
 			'type' 			=> 'mysql',
