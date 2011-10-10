@@ -110,8 +110,7 @@ class Usuario extends CI_Controller{
             echo 'Usuario no existe';
         }
     }
-    
-<<<<<<< HEAD
+
     private function password_reset_confirm($token)
     {
             $success = $usuario->update('password', $token);   
@@ -127,8 +126,7 @@ class Usuario extends CI_Controller{
             }
         
     }
-        
-=======
+
      private function error() {
 
         $repopulateForm['name'] = $this->input->post('signup-name');
@@ -151,7 +149,7 @@ class Usuario extends CI_Controller{
         $this->load->view('page.php', $data);
     }
     
->>>>>>> 2ec43acf35bcce62b79f87833367da1d1f1e51f1
+
 
 }
 ?>
