@@ -7,15 +7,10 @@
 
 class loggout extends CI_Controller
 {
-    public function index($lastPage = false)
+    public function index()
     {
         User_handler::loggout();
-        if($lastPage)
-            $lastPage = str_replace ('-', '/', $lastPage);
-        else
-            $lastPage = '/';
-        
-        redirect($lastePage);
+        redirect('/');
     }
 }
 ?>

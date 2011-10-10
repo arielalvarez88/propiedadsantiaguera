@@ -3,7 +3,7 @@
     <div id="propiedades-mas-visitadas-slideshow">
         <div class="propiedades-mas-visitadas-slide">
             <div class="propiedades-mas-visitadas-propiedad">
-                <img class="propiedades-mas-visitadas-propiedad-screenshot" src="/images/frontPageAdevertising/advertise.png"/>
+                <img class="propiedades-mas-visitadas-propiedad-screenshot" alt="property-photo" src=""/>
                 <h2 class="propiedades-mas-visitadas-propiedad-titulo">Titulo de la casa</h2>
                 <p>
                     <span class="propiedades-mas-visitadas-propiedad-sector">Cerros de gurabo</span>

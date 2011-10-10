@@ -1,11 +1,15 @@
  <?php
+ 
 $loggedUser = User_handler::getLoggedUser();
+
 $thisPage = str_replace('/', '-', uri_string());
+
  ?>
 <html>
 
     <head>
         <link rel="stylesheet" type="text/css" href="/css/propiedadsantiaguera.css"/>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
@@ -14,22 +18,22 @@ $thisPage = str_replace('/', '-', uri_string());
                 <div id="banner-container">
                     <div id="banner">
 
-                        <div id="login">
+                        <div id="login-links">
                             <p>
                                 <?php if($loggedUser):?>
-                                <span id="saludo-usuario">Bienvenido <?php echo $loggedUser->nombre.', ';?></span>
-                                <a class="no-decoration-anchor" href="/loggout/<?php echo $thisPage;?>">loggout </a>
+                                <span id="saludo-usuario">Bienvenido <?php echo $loggedUser->name.', ';?></span>
+                                <a class="no-decoration-anchor" href="/userController/logout">logout</a>
                                 <span class="vertical-serparator"> | </span>
                                 <?php endif;?>
                                 <a class="no-decoration-anchor" href="#">Somos</a>
                                 <span class="vertical-serparator"> | </span>
                                   <?php if(!$loggedUser):?>
-                                <a class="no-decoration-anchor" href="#">Login Usuarios</a>
+                                <a id="login-link" class="no-decoration-anchor" href="#login">Login Usuarios</a>
                                  <span class="vertical-serparator"> | </span>
                                 <?php endif;?>
                                 
                                
-                                <a class="no-decoration-anchor" href="#">Ayuda</a>
+                                <a id="header-help" class="no-decoration-anchor" href="#login">Ayuda</a>
                             </p>
 
 
@@ -162,11 +166,29 @@ $thisPage = str_replace('/', '-', uri_string());
 
             </div>
         </div>
-        <script src="/js/jquery-1.6.1.min.js" type="text/javascript" ></script>
-        <script src="/js/jquery-ui-1.8.14.custom.min.js" type="text/javascript" ></script>        
-        <script src="/js/jquery.cycle.all.js" type="text/javascript" ></script>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-        <script type="text/javascript" src="/js/ajaxupload.js"></script>
-        <script src="/js/propiedadsantiaguera.js" type="text/javascript" ></script>
+        
+        <div style="display:none;">
+            <div id="login">
+                <a id="login-close-button" href="#js"></a>
+                <form action="/userController/login" method="post" class="optional-form">
+                    <img src="/images/login/loginTitle.png" alt="Login" id="login-title"/>
+                    <input id="login-email" type="text" name="login-email" class="login-input" /><br/>
+                    
+                    <input id="login-password-clear" type="text" name="login-password" class="login-input" /><br/>
+                    <input id="login-password" type="password" name="login-password" class="login-input" style="display:none;"/>
+                    <input id="login-submit" type="image" src="<?php echo base_url();?>images/login/loginButton.png" alt="login"/> 
+                    <a href="#" id="login-password-reset-button">&iquest;Olvido su contrase&ntilde;a?</a>
+                </form>
+            </div>
+        </div>
+        
+        
+        <script type="text/javascript" src="/js/jquery-1.6.1.min.js" type="text/javascript" ></script>
+        <script type="text/javascript" src="/js/jquery-ui-1.8.14.custom.min.js" type="text/javascript" ></script>        
+        <script type="text/javascript" src="/js/jquery.cycle.all.js" type="text/javascript" ></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>        
+        <script type="text/javascript" src="/js/jquery.fancybox-1.3.4.js" type="text/javascript" ></script>
+        <script type="text/javascript" src="/js/propiedadsantiaguera.js" type="text/javascript" ></script>
+        
     </body>
 </html>

@@ -11,29 +11,29 @@
  * @author  	Simon Stenhouse
  * @link    	http://stensi.com
  */
-class Usuario extends DataMapper {
+class User extends DataMapper {
 
-    var $has_one = array("tipo_usuario");
-    var $has_many = array("propiedades");
+//    var $has_one = array("tipo_usuario");
+//    var $has_many = array("propiedades");
     var $validation = array(
         array(
-            'field' => 'nombre',
+            'field' => 'name',
             'label' => 'nombre',
             'rules' => array('required', 'trim', 'utf8')
         ),
         array(
-            'field' => 'apellido',
+            'field' => 'lastname',
             'label' => 'apellido',
             'rules' => array('trim', 'max_length' => 40, 'utf8')
         ),
         array(
-            'field' => 'clave',
+            'field' => 'password',
             'label' => 'clave',
             'rules' => array('required', 'trim', 'max_length' => 40, 'encrypt')
         ),
         array(
             'field' => 'email',
-            'label' => 'Email Address',
+            'label' => 'dirección de email',
             'rules' => array('required', 'trim', 'unique', 'valid_email')
         )
     );
