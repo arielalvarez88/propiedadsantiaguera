@@ -40,7 +40,7 @@ class Usuario extends CI_Controller{
     }
     
     
-    private function validate() {
+    public function validate() {
     
        
         $clientType = $this->input->post('signup-client-type');
