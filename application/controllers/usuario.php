@@ -4,10 +4,15 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-ini_set('display_errors','1');
+//ini_set('display_errors','1');
 
 class Usuario extends CI_Controller{
     
+    public function __construct() {
+        parent::__construct();
+        $this->load->library('password_reset_template.php');
+        $this->load->library('password_reset_success_template.php');
+    }
     
     
     
