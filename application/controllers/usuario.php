@@ -43,10 +43,7 @@ class Usuario extends CI_Controller{
     
     
     public function validate() {
-    
-       
-        var_dump($this->input->post());
-        die;
+
         $clientType = $this->input->post('signup-client-type');
 
         $validationType = $clientType == 'client'? 'signupClient' : 'signupCompany'; 
