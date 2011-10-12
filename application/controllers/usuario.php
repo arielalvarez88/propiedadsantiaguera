@@ -88,7 +88,7 @@ class Usuario extends CI_Controller{
         
     }
             
-    private function password_reset_request()
+    public function password_reset_request()
     {
         $email = $this->input->post('email');
         
