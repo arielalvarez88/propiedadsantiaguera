@@ -6,27 +6,21 @@
  */
 //ini_set('display_errors','1');
 
-class Usuario extends CI_Controller{
+class Usuario extends CI_Controller
+{
     
     public function __construct() {
         parent::__construct();
         $this->load->library('password_reset_template.php');
         $this->load->library('password_reset_success_template.php');
     }
-    
-    
-    
+  
     public function login()
-    {   
-        
-        $email = $this->input->post('login-email');
-        
+    {         
+        $email = $this->input->post('login-email');     
         $password = sha1($this->input->post('login-password'));        
         User_handler::login($email, $password);        
-        redirect(base_url());
-        
-            
-        
+        redirect(base_url());       
     }
     
     
@@ -34,12 +28,11 @@ class Usuario extends CI_Controller{
     {
                 User_handler::loggout();        
                 redirect(base_url());
-
     }
     
     public function signup()
     {
-          $signUpData['signUpForm'] = $this->load->view('blocks/newUserType', '', true);
+        $signUpData['signUpForm'] = $this->load->view('blocks/newUserType', '', true);
         $clientType['clientType'] = 'client';
         $signUpData['signUpForm'] .= $this->load->view('forms/signup_form.php', $clientType, true);
         $data['topLeftSide'] = $this->load->view('blocks/signUpForm', $signUpData, true);        
@@ -114,6 +107,7 @@ class Usuario extends CI_Controller{
                 $send_email = new Mailer();
                 $template   = new Password_reset_template($token);
                 $send_email->send_email($template, $client_name, $email, $token);
+                
             }
             else
             {

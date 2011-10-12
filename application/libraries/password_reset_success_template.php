@@ -22,6 +22,7 @@ class password_reset_success_template implements Iemail_template
         $text = 'Hola '.$client_name.' su nuevo password es: '. $this->token;
         return $text;
     }
+    
 }
 ?>
 
