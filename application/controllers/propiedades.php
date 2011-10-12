@@ -13,7 +13,8 @@ class Propiedades extends CI_Controller
     
     public function agregar_propiedades()
     {
-        $this->load->view('forms/add_properties_form.php');
+        $blocks['topLeftSide'] = $this->load->view('forms/add_properties_form.php','',true);
+        $this->load->view('page',$blocks);
     }
     
     public function ver($id=null)
@@ -29,7 +30,6 @@ class Propiedades extends CI_Controller
         $data['topRightSide'] .=$this->load->view('blocks/sharePropertyWithAFriend',$propiedadObject,true);
         $data['bottomLeftSide'] =$this->load->view('blocks/propertyInfo',$propiedadObject,true);
         $data['bottomLeftSide'] .= $this->load->view('blocks/propertyUbicationGmap',$propiedadObject,true);
-
         $data['bottomRightSide'] =$this->load->view('blocks/solicitudDeInformacion',$propiedadObject,true);
         
         

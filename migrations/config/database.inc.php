@@ -17,19 +17,19 @@ $ruckusing_db_config = array(
 
 	'test' 					=> array(
 			'type' 			=> 'mysql',
-			'host' 			=> 'localhost',
-			'port'			=> 3306,
-			'database' 	=> 'php_migrator_test',
-			'user' 			=> 'root',
-			'password' 	=> ''
-	),
-	'production' 		=> array(
-			'type' 			=> 'mysql',
-			'host' 			=> 'mysql.propiedad_santiaguera.com',
+			'host' 			=> 'mysql.5050mkt.com',
 			'port'			=> 3306,
 			'database' 	=> 'propiedad_santiaguera',
 			'user' 			=> '5050mkt',
-			'password' 	=> ''
+			'password' 	=> 'sle9her'
+	),
+	'production' 		=> array(
+			'type' 			=> 'mysql',
+			'host' 			=> 'mysql.5050mkt.com',
+			'port'			=> 3306,
+			'database' 	=> 'propiedad_santiaguera',
+			'user' 			=> '5050mkt',
+			'password' 	=> 'sle9her'
 	)
 	
 );

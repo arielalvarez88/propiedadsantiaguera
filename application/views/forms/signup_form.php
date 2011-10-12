@@ -9,8 +9,10 @@
  <?php if (isset($errores) && $errores): ?>
         <div class="error-messages"><?php echo $errores; ?></div>
     <?php endif; ?>
-<form id="signup-informacion-general" method="post" action="<?php echo base_url(); ?>usuario/validate" accept-charset="utf-8">
-
+      
+            
+            <form id="signup-informacion-general" method="post" action="<?php echo base_url();?>usuario/validate" accept-charset="utf-8">
+                
    
     <div id="signup-info-text">
         
@@ -63,13 +65,13 @@
         <input type="hidden" value="<?php echo $clientType; ?>" name="signup-client-type"/>
 
         <input id="signup-form-send-button" type="image" src="/images/common/formSubmitButton.png"/>
-        <img id="signup-form-clear-button" type="image" src="/images/common/formCleanButton.png"/>
+        <img id="signup-form-clear-button" src="/images/common/formCleanButton.png"/>
     </div>
 
 
     <div id="signup-info-fotos">
         <div id="signup-info-profile-picture">
-            <img id="signup-upload-photo-preview" src=""> <h3>Foto del usuario</h3>
+<!--            <img id="signup-upload-photo-preview" src=""/> <h3>Foto del usuario</h3>-->
             <input name="signup-upload-photo-textbox" type="text" id="signup-upload-photo-textbox"/> <a href="#javascript" id="signup-upload-photo-button" >Elegir un Archivo<a/>
             <p id="signup-upload-photo-status"></p>
         </div>
@@ -78,8 +80,10 @@
                     Somos una agencia inmobiliaria que pone a disposición del mercado Dominicano, una amplia variedad de propiedades localizadas en las principales ciudades del país. Contamos con un equipo de agentes comprometidos en asesorar a las personas interesadas en adquirir una propiedad, para lograr una buena inversión.
         </p>
 
-
+            
     </div>
 
-</form>
+            </form>
+
+        
 </div>
