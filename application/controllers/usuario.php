@@ -4,6 +4,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+ini_set('display_errors','1');
+
 class Usuario extends CI_Controller{
     
     
@@ -51,10 +53,11 @@ class Usuario extends CI_Controller{
         {
                 $this->error();
         }
-        
-        
         else
+        {
             $this->save_user();
+        }
+            
     }
     
     private function save_user()
@@ -156,8 +159,6 @@ class Usuario extends CI_Controller{
        
         $repopulateForm['errores'] = validation_errors();
 
-        var_dump( $repopulateForm['errores']);
-        die;
         $signUpData['signUpForm'] = $this->load->view('blocks/newUserType', '', true);
         $signUpData['signUpForm'] .= $this->load->view('forms/signup_form', $repopulateForm, true);
         
