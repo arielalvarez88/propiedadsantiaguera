@@ -92,7 +92,7 @@ class Usuario extends CI_Controller{
     {
         $email = $this->input->post('email');
         
-        $usuario = new Usuario();
+        $usuario = new User();
         $usuario->where('email', $email);
         $usuario->get();
         $usuario->email;
