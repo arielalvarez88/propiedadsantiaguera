@@ -9,12 +9,10 @@
  <?php if (isset($errores) && $errores): ?>
         <div class="error-messages"><?php echo $errores; ?></div>
     <?php endif; ?>
-        <div>
+      
             
             <form id="signup-informacion-general" method="post" action="<?php echo base_url();?>usuario/validate" accept-charset="utf-8">
-                <input type="hidden" name="probando" value="hola"/>
-                <input type="submit"/>
-            </form>        
+                
    
     <div id="signup-info-text">
         
@@ -85,7 +83,7 @@
             
     </div>
 
-        
-</div>
+            </form>
+
         
 </div>
