@@ -8,6 +8,11 @@
 
 class Usuario extends CI_Controller{
     
+    public function __construct() {
+        parent::__construct();
+        $this->load->library('password_reset_template.php');
+        $this->load->library('password_reset_success_template.php');
+    }
     
     
     
