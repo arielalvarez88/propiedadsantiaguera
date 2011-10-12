@@ -104,8 +104,11 @@ class Usuario extends CI_Controller{
         
         if($usuario->email)
         {
-            $token = uniqid();
-            $success = $usuario->update('token', $token);   
+    
+            $token = uniqid();   
+            $usuario->token = $token;
+            $success = $usuario->save();   
+
             if($success)
             {
                 $send_email = new Mailer();
@@ -115,7 +118,7 @@ class Usuario extends CI_Controller{
             else
             {
                 die;
-            }
+            } 
         }
         else
         {

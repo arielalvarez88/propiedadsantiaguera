@@ -7,7 +7,7 @@ require_once 'Iemail_template.php';
 class password_reset_success_template implements Iemail_template
 {
     private $token;
-    public function __construct($token)
+    public function __construct($token=null)
     {
         $this->token = $token;
     }
@@ -17,9 +17,9 @@ class password_reset_success_template implements Iemail_template
         return 'Cambio de password exitoso';
     }
     
-    public function email_template($client_name, $token)
+    public function email_template($client_name)
     {
-        $text = 'Hola '.$client_name.' su nuevo password es: '. $token;
+        $text = 'Hola '.$client_name.' su nuevo password es: '. $this->token;
         return $text;
     }
 }

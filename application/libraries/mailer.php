@@ -8,7 +8,7 @@ class mailer
 {
     private function send_email($template, $client_name, $email, $token)
     {
-        mail($email, $template->get_subject(), $template->email_template(),$headers);
+        mail($email, $template->get_subject(), $template->email_template($client_name),$headers);
 
     }
 }
