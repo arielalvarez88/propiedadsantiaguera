@@ -63,7 +63,7 @@
         <input type="hidden" value="<?php echo $clientType; ?>" name="signup-client-type"/>
 
         <input id="signup-form-send-button" type="image" src="/images/common/formSubmitButton.png"/>
-        <img id="signup-form-clear-button" type="image" src="/images/common/formCleanButton.png"/>
+        <img id="signup-form-clear-button" src="/images/common/formCleanButton.png"/>
     </div>
 
 
