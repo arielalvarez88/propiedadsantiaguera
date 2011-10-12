@@ -80,9 +80,7 @@ class Usuario extends CI_Controller{
         $newUser->save();
         
         User_handler::loginAndSaveInCookies($newUser->email, $newUser->password);
-        $userDebug = new User();
-        $userDebug->where('email',$newUser->email);
-        $userDebug->get();
+       
         redirect('/');
 
         
@@ -135,16 +133,25 @@ class Usuario extends CI_Controller{
     }
 
      private function error() {
-
-        $repopulateForm['name'] = $this->input->post('signup-name');
-        $repopulateForm['lastname'] = $this->input->post('signup-lastname');
-        $repopulateForm['company'] = $this->input->post('signup-company');
+         
+         $repopulateForm = array();
+         if($this->input->post('signup-client-name'))
+         {
+            $repopulateForm['clientName'] = $this->input->post('signup-client-name');
+            $repopulateForm['clientLastname'] = $this->input->post('signup-client-lastname');
+         }
+        else
+            $repopulateForm['companyName'] = $this->input->post('signup-company-name');
+        
+        $repopulateForm['company'] = $this->input->post('signup-company-name');
         $repopulateForm['email'] = $this->input->post('signup-email');
         $repopulateForm['tel'] = $this->input->post('signup-tel');
         $repopulateForm['cel'] = $this->input->post('signup-cel');
+        $repopulateForm['fax'] = $this->input->post('signup-fax');
         $repopulateForm['website'] = $this->input->post('signup-website');
-        $repopulateForm['description'] = $this->input->post('description');
+        $repopulateForm['description'] = $this->input->post('signup-description');
         $repopulateForm['clientType'] = $this->input->post('signup-client-type');
+        $repopulateForm['rnc'] = $this->input->post('signup-rnc');
        
        
         $repopulateForm['errores'] = validation_errors();
