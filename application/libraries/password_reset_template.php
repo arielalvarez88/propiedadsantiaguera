@@ -7,8 +7,8 @@ require_once 'Iemail_template.php';
 
 class Password_reset_template implements Iemail_template
 {
-    private $token;
-    public function __construct($token)
+    public $token;
+    public function __construct($token=null)
     {
         $this->token = $token;
     }
