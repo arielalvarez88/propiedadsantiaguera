@@ -254,7 +254,7 @@
     <div id="property-form-photos">
 
 
-        <ul id="property-form-photos-first-column">
+        <ul id="property-form-photos-first-column" class="property-form-photos-column">
             <?php for ($i = 1; $i <= 5; $i++): ?>
                 <li>
                     <span><?php echo $i; ?>.</span> <input value="Buscar" type="file" name="property-photo-<?php echo $i; ?>"/>
@@ -263,7 +263,7 @@
 
         </ul>
 
-        <ul id="property-form-photos-first-column">
+        <ul id="property-form-photos-first-column" class="property-form-photos-column">
             <?php for ($i = 6; $i <= 10; $i++): ?>
                 <li>
                     <span><?php echo $i; ?>.</span> <input value="Buscar" type="file" name="property-photo-<?php echo $i; ?>"/>
@@ -274,5 +274,10 @@
 
 
     </div>
+    
+     <div class="form-buttons">
+            <input id="property-form-send-button" class="form-send-button" type="image" src="/images/common/formSubmitButton.png"/>
+            <img id="property-form-clear-button" class="form-clear-button" src="/images/common/formCleanButton.png"/>
+        </div>
 
 </form>

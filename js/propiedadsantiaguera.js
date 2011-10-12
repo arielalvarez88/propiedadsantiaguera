@@ -216,16 +216,12 @@ InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswor
     
 }
 
-intializeForms = function(){
+intializeForms = function()
+{
     
-    var forms = { 
-   
-        signupForm : new Form('#signup-informacion-general','#signup-form-send-button','/prueba','#signup-form-clear-button')
-    
-    
-    };
-
-    
+        var signupForm = new Form('#signup-informacion-general','#signup-form-send-button','/prueba','#signup-form-clear-button');
+        var propertyForm = new Form('#property-form','#property-form-send-button','/prueba','#signup-form-clear-button')
+        
     
 }
 

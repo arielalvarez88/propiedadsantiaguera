@@ -24,28 +24,7 @@ class CreandoTablas extends Ruckusing_BaseMigration {
         $users->column('posts_left', 'integer');
         
 
-//        $propiedades = $this->create_table('properties');
-//        $propiedades->column('address', 'text');
-//        $propiedades->column('sell_price_dollars', 'integer');
-//        $propiedades->column('sell_price_pesos', 'integer');
-//        $propiedades->column('rent_price_dollars', 'integer');                
-//        $propiedades->column('rent_price_pesos', 'integer');
-//        $propiedades->column('display_property', 'bolean');
-//        $propiedades->column('sector', 'string', array('limit' => 40));        
-//        $propiedades->column('coordenates', 'string', array('limit' => 100));        
-//        $propiedades->column('visits', 'integer');
-//        $propiedades->column('bedrooms', 'integer', array('limit' => 3));
-//        $propiedades->column('bathrooms', 'integer', array('limit' => 3));
-//        $propiedades->column('livingrooms', 'integer', array('limit' => 3));
-//        $propiedades->column('kitchens', 'integer', array('limit' => 3));
-//        $propiedades->column('parkings', 'integer', array('limit' => 3));
-//        $propiedades->column('terrain', 'float');
-//        $propiedades->column('construction', 'float');
-//        $propiedades->column('stories', 'integer', array('limit' => 3));
-//        $propiedades->column('last_payment', 'integer', array('limit' => 3));
-//        $propiedades->column('post_date', 'integer', array('limit' => 3));
-//        $propiedades->column('max_photos_number', 'integer', array('limit' => 2));
-//        $propiedades->column('photos_number', 'integer', array('limit' => 2));
+
 //        
 //        
 //        $propertyTypes = $this->create_table('property-types');
