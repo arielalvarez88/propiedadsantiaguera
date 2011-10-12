@@ -157,6 +157,7 @@ class Usuario extends CI_Controller{
         $repopulateForm['errores'] = validation_errors();
 
         var_dump( $repopulateForm['errores']);
+        die;
         $signUpData['signUpForm'] = $this->load->view('blocks/newUserType', '', true);
         $signUpData['signUpForm'] .= $this->load->view('forms/signup_form', $repopulateForm, true);
         
