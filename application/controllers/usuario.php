@@ -49,6 +49,8 @@ class Usuario extends CI_Controller{
         
         if ($this->form_validation->run($validationType) == false)
         {
+            echo 'error';
+            die;
                 $this->error();
         }
         
