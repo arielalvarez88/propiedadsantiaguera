@@ -20,9 +20,9 @@ class Password_reset_template implements Iemail_template
     
     public function email_template($client_name)
     {
-        $this->token;
+        $token = $this->token;
         $text = 'Hola '.$client_name.' hemos recibido una solicitud de cambio de password
-        <a href="http://www.propiedadsantiguera.com/usuario/password_reset_confirm/'.$token.'" />Click aqu&iacute;</a>';
+        http://www.propiedadsantiguera.com/usuario/password_reset_confirm/'.$token.'"/>';
     
         return $text;
     }
