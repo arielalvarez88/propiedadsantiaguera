@@ -5,7 +5,7 @@
  * and open the template in the editor.
  */
 ?>
-<form action="" method="" id="password-reset-form" >
+<form action="/usuario/password_reset_request" method="POST" id="password-reset-form" >
     <p><span>&iquest;Olvido su contrase&ntilde;a?</span></br> <strong>No hay problema.</strong>
         Le enviaremos un E-mail con instrucciones para crear una contrase&ntilde;a nueva.</p>
     <input type="text" name="email" id="password-reset-input"/>

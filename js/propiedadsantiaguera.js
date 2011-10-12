@@ -216,16 +216,12 @@ InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswor
     
 }
 
-intializeForms = function(){
+intializeForms = function()
+{
     
-    var forms = { 
-   
-        signupForm : new Form('#signup-informacion-general','#signup-form-send-button','/prueba','#signup-form-clear-button')
-    
-    
-    };
-
-    
+        var signupForm = new Form('#signup-informacion-general','#signup-form-send-button','/prueba','#signup-form-clear-button');
+        var propertyForm = new Form('#property-form','#property-form-send-button','/prueba','#signup-form-clear-button')
+        
     
 }
 
@@ -314,6 +310,12 @@ initializeInputsWithDefaultText = function(){
 initializeOverlays = function(){
     var login = new Overlay('#login-link','#login-close-button');
     
+};
+
+initializeInputsWithDefaultText = function(){
+    var loginEmail = new InputsWithDefaultText('#login-email', 'Email');
+    var password = new InputsWithDefaultText('#login-password', 'Contraseña','#login-password-clear');
+    var resetPasswordEmail = new InputsWithDefaultText('#password-reset-input', 'Email');
 };
 
 initializeMaps = function() {

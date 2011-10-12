@@ -539,6 +539,13 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     padding-left: 31px;
 }
 
+#property-form-photos
+{
+    height: 128px;
+}
+
+
+
 #property-form-description-column3
 {
     margin-right: 0;
@@ -567,6 +574,11 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     width: 238px;
 }
 
+.property-form-photos-column
+{
+    float: left;
+    margin-right: 45px;
+}
 
  /* property-form ENDS*/
  
@@ -1622,9 +1634,6 @@ margin-bottom: 10px;
     width: 200px;
 }
 
-#signup-informacion-general input {
-    margin-bottom: 20px;
-}
 
 #signup-descripcion{
   clear: both;
@@ -1722,6 +1731,16 @@ span.required{
 #saludo-usuario
 {
     font-weight: bold;
+}
+
+.form-buttons
+{
+    margin: 20px 0;
+}
+
+.form-clear-button
+{
+    cursor: pointer;
 }
 /*clases utiles ENDS*/
 
