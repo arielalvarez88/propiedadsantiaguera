@@ -48,7 +48,10 @@ class Usuario extends CI_Controller{
         $validationType = $clientType == 'client'? 'signupClient' : 'signupCompany'; 
         
         if ($this->form_validation->run($validationType) == false)
-            $this->error();
+        {
+                $this->error();
+        }
+        
         
         else
             $this->save_user();
@@ -56,11 +59,12 @@ class Usuario extends CI_Controller{
     
     private function save_user()
     {
+       
         $newUser = new User();
         $userInfo = $this->input->post();
 
 
-        $newUser->name = isset($userInfo['signup-client-name'])? $userInfo['signup-cleint-name'] : $userInfo['signup-company-name'];        
+        $newUser->name = isset($userInfo['signup-client-name'])? $userInfo['signup-client-name'] : $userInfo['signup-company-name'];        
         if(isset($userInfo['signup-apellido']))
             $newUser->lastname = $userInfo['signup-lastname'];       
         $newUser->email = $userInfo['signup-email'];
@@ -70,12 +74,15 @@ class Usuario extends CI_Controller{
         $newUser->fax = $userInfo['signup-fax'];
         $newUser->website = $userInfo['signup-website'];        
         $newUser->rnc = $userInfo['signup-rnc'];
-        $newUser->address = $userInfo['signup-adress'];
+        $newUser->address = $userInfo['signup-address'];
         $newUser->description = $userInfo['signup-description'];
         
         $newUser->save();
         
         User_handler::loginAndSaveInCookies($newUser->email, $newUser->password);
+        $userDebug = new User();
+        $userDebug->where('email',$newUser->email);
+        $userDebug->get();
         redirect('/');
 
         
@@ -143,7 +150,7 @@ class Usuario extends CI_Controller{
         $repopulateForm['errores'] = validation_errors();
 
         $signUpData['signUpForm'] = $this->load->view('blocks/newUserType', '', true);
-        $signUpData['signUpForm'] .= $this->load->view('forms/signup_informacion_general', $repopulateForm, true);
+        $signUpData['signUpForm'] .= $this->load->view('forms/signup_form', $repopulateForm, true);
         
         $data['topLeftSide'] = $this->load->view('blocks/signUpForm', $signUpData, true);
         $this->load->view('page.php', $data);
