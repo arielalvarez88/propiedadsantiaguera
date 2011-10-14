@@ -110,6 +110,7 @@ MessageCallback = function (response,successMessage,failureMessage)
 {
     this.getMessage = function()
     {
+        console.log(response);
         if(response.success)
         {
             alert(succesMessage);
