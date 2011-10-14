@@ -111,13 +111,13 @@ MessageCallback = function (response,successMessage,failureMessage)
     this.getMessage = function()
     {
         console.log(response.success);
-        if(response.success == true)
+        if(response.success == false)
         {
-            alert(succesMessage);
+            alert(failureMessage);
         }
         else
         {
-            alert(failureMessage);
+            alert(succesMessage);
         } 
     };
     
