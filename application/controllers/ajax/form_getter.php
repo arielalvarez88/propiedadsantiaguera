@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 class Form_getter extends CI_Controller
-{
-    
+{   
     function index()
     {
         echo 'tamo en form_getter';
