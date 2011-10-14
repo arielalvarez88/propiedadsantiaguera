@@ -117,7 +117,7 @@ MessageCallback = function (response,successMessage,failureMessage)
         }
         else
         {
-            alert(succesMessage);
+            alert(successMessage);
         } 
     };
     
