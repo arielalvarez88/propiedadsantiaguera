@@ -141,8 +141,8 @@
                     <label for="property-form-description-service-room">Cuarto de Servicio:<span class="required">*</span></label> 
                 </li>
                 <li>
-                    <input id="property-form-description-service-room" type="checkbox" name="property-service-room"/>
-                    <label for="property-form-description-service-room">Cuarto de Servicio:<span class="required">*</span></label> 
+                    <input id="property-form-description-pool" type="checkbox" name="property-pool"/>
+                    <label for="property-form-description-pool">Piscina:<span class="required">*</span></label> 
                 </li>
                 <li>
                     <input id="property-form-description-service-room" type="checkbox" name="property-service-room"/>

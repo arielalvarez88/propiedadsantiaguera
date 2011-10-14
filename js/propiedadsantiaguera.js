@@ -108,7 +108,7 @@ intializeAgentesHeaderSection = function(){
 
 
 
-Form = function (formWrapperSelector, sendButtonSelector, recivingScriptUrl, cleanButtonSelector, validationObjects){
+Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajaxForm, recivingScriptUrl){
     
     var thisObject = this;
     this.form = $(formWrapperSelector);
@@ -219,8 +219,8 @@ InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswor
 intializeForms = function()
 {
     
-        var signupForm = new Form('#signup-informacion-general','#signup-form-send-button','/prueba','#signup-form-clear-button');
-        var propertyForm = new Form('#property-form','#property-form-send-button','/prueba','#signup-form-clear-button')
+        var signupForm = new Form('#signup-informacion-general','#signup-form-send-button','#signup-form-clear-button');
+        var propertyForm = new Form('#property-form','#property-form-send-button','#property-form-clear-button');
         
     
 }
@@ -284,6 +284,12 @@ var forgotPassword = new ViewLoaderElement('#login-password-reset-button','click
         url:'/ajax/form_getter/passwordRecovery'
     }],'#login','a');
 
+
+var propertyTypePassword = new ViewLoaderElement('#login-password-reset-button','click',[{
+        value: '', 
+        url:'/ajax/form_getter/passwordRecovery'
+    }],'#login','a');
+
 };
 
 Overlay = function (selector, optionalClosebuttonSelector)
@@ -335,7 +341,6 @@ $(document).ready
     
     initilizeFrontPageSlideShow();
     initializePropiedadViewer();
-    
     
     intializeAgentesHeaderSection();
     

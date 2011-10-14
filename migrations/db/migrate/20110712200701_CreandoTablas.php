@@ -27,13 +27,7 @@ class CreandoTablas extends Ruckusing_BaseMigration {
 
 //        
 //        
-//        $propertyTypes = $this->create_table('property-types');
-//        $propertyTypes->column('name', 'string');
-//        $propertyTypes->column('description', 'text');
-//        
-//        $propertyTypesJoin = $this->create_table('properties_property-types');
-//        $propertyTypesJoin->column('property_id', 'string');
-//        $propertyTypesJoin->column('property_type_id', 'string');
+
 //        
 //        
 //        $propertyStatus = $this->create_table('property-statuses');
