@@ -140,7 +140,7 @@ class Usuario extends CI_Controller {
         if ($success) 
         {
             $send_email = new Mailer();
-            $template = new password_reset_success_template($token);
+            $template = new password_reset_success_template($new_token);
             $send_email->send_email($template, $usuario->name, $usuario->email, $new_token);
         } else {
             die;
