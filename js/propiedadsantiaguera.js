@@ -97,10 +97,12 @@ blockExists = function(idName){
 
 intializeAgentesHeaderSection = function(){
 
+$('#agentes-header-inmobliarias').unbind('click');
     $('#agentes-header-inmobliarias').click(function(){
         $('#agentes-pager-header').html('INMOBILARIAS');
     });
     
+    $('#agentes-header-agentes').unbind('click');
     $('#agentes-header-agentes').click(function(){
         $('#agentes-pager-header').html('AGENTES');
     });
@@ -137,7 +139,7 @@ Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, a
     var i=0;
     
     (function(){
-        
+        thisObject.cleanButton.unbind("click");
         thisObject.cleanButton.click(function(){
         
             var dataInputs = thisObject.form.find('input, textarea');
@@ -148,9 +150,10 @@ Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, a
             }
         });
     })() 
-    console.log(ajax);
+    
     if (ajax)
     {
+        $(sendButtonSelector).unbind('click');
         $(sendButtonSelector).click(function(event){
             event.preventDefault();
             var info = {};
@@ -212,7 +215,8 @@ InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswor
     {
         this.input.val(defaultText);
     }
-        
+    
+this.optionalClearPasswordInput.unbind('click');    
     this.optionalClearPasswordInput.click(function(){
             
         thisObject.optionalClearPasswordInput.hide();
@@ -220,7 +224,7 @@ InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswor
         thisObject.input.focus();
     });
         
-        
+    this.input.unbind('click');    
     this.input.click(function(){
             
         if($(this).val()== defaultText)
@@ -301,6 +305,8 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
                 
         });
     }
+    
+    this.chooserElement.unbind('click');
     this.chooserElement.bind(eventString,function(){
         var i=0;
         if(elementType == 'a')
@@ -366,6 +372,8 @@ Overlay = function (selector, optionalClosebuttonSelector)
         margin:0, 
         showCloseButton: false
     });
+    
+    $(optionalClosebuttonSelector).unbind('click');
     $(optionalClosebuttonSelector).click(function(){
         $.fancybox.close();
     });

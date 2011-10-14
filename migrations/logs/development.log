@@ -1753,3 +1753,41 @@ Sep 27 11:16:36 [info] CREATE TABLE `users` (
 `posts_left` int(11)
 ) ;
 Sep 27 11:16:36 [info] INSERT INTO schema_migrations (version) VALUES ('20110712200701')
+Oct 14 15:37:31 [info] SELECT version FROM schema_migrations
+Oct 14 15:37:31 [info] SELECT version FROM schema_migrations
+Oct 14 15:37:31 [info] SELECT version FROM schema_migrations
+Oct 14 15:37:31 [info] ALTER TABLE `users` ADD `token` varchar(13)
+Oct 14 15:37:31 [info] INSERT INTO schema_migrations (version) VALUES ('20111012154325')
+Oct 14 15:38:00 [info] SELECT version FROM schema_migrations
+Oct 14 15:38:00 [info] SELECT version FROM schema_migrations
+Oct 14 15:38:00 [info] SELECT version FROM schema_migrations
+Oct 14 15:38:00 [info] CREATE TABLE `properties` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`address` text,
+`sell_price_dollars` int(11),
+`sell_price_pesos` int(11),
+`rent_price_dollars` int(11),
+`rent_price_pesos` int(11),
+`display_property` tinyint(1) DEFAULT '0',
+`sector` varchar(40),
+`coordenates` varchar(100),
+`visits` int(11) DEFAULT '0',
+`bedrooms` int(3),
+`bathrooms` int(3),
+`livingrooms` int(3),
+`kitchens` int(3),
+`parkings` int(3),
+`terrain` int(4),
+`construction` int(4),
+`stories` int(3),
+`last_payment` int(3),
+`post_date` int(3),
+`max_photos_number` int(2),
+`photos_number` int(2)
+) ;
+Oct 14 15:38:00 [info] CREATE TABLE `property-types` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`name` varchar(255),
+`description` text
+) ;
+Oct 14 15:38:00 [info] INSERT INTO property-types (name,description) VALUES  ('Casa','casa')
