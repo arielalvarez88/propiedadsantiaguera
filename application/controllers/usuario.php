@@ -88,7 +88,7 @@ class Usuario extends CI_Controller
             
     public function password_reset_request()
     {
-        $email = $this->input->post('email');
+        $email = $this->input->post('password-reset-input');
         
         $usuario = new User();
         $usuario->where('email', $email);
