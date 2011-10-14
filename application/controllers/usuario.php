@@ -131,8 +131,14 @@ class Usuario extends CI_Controller {
         $usuario->where('token', $token);
         $usuario->get();
         
-        $success = $usuario->update('password', $token);
-        if ($success) {
+        $new_token = uniqid();
+        
+        $usuario->password = $new_token;
+        $usuario->token = '';
+        
+        $success = $usuario->save();
+        if ($success) 
+        {
             $send_email = new Mailer();
             $template = new password_reset_success_template($token);
             $send_email->send_email($template, $usuario->name, $usuario->email, $token);
