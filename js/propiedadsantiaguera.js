@@ -266,6 +266,8 @@ intializeForms = function(){
         new MessageCallback(response, 'Email enviado', 'Error trate luego').getMessage();
         
     });
+
+        var propertyForm = new Form('#property-form','#property-form-send-button','#property-form-clear-button');
     
     
 
@@ -346,6 +348,12 @@ initializeViewLoaderElements = function(){
         url:'/ajax/form_getter/passwordRecovery'
     }],'#login','a');
 
+
+var propertyTypePassword = new ViewLoaderElement('#login-password-reset-button','click',[{
+        value: '', 
+        url:'/ajax/form_getter/passwordRecovery'
+    }],'#login','a');
+
 };
 
 
@@ -398,7 +406,6 @@ $(document).ready
     
     initilizeFrontPageSlideShow();
     initializePropiedadViewer();
-    
     
     intializeAgentesHeaderSection();
     initializeInputsWithDefaultText();
