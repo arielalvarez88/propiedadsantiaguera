@@ -131,16 +131,15 @@ class Usuario extends CI_Controller
         
         if($usuario->email)
         {
-    
             $token = uniqid();   
             $usuario->token = $token;
-            $success = $usuario->save();   
+            $success = $usuario->save();        
 
             if($success)
             {
                 $send_email = new Mailer();
                 $template   = new Password_reset_template($token);
-                $send_email->send_email($template, $client_name, $email, $token);
+                $send_email->send_email($template, $usuario->name, $email, $token);
                 
             }
             else
@@ -154,7 +153,7 @@ class Usuario extends CI_Controller
         }
     }
 
-    private function password_reset_confirm($token)
+    public function password_reset_confirm($token)
     {
             $success = $usuario->update('password', $token);   
             if($success)
