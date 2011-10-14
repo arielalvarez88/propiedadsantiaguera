@@ -18,8 +18,7 @@ class Usuario extends CI_Controller {
     public function login() {
         $email = $this->input->post('login-email');
         $password = sha1($this->input->post('login-password'));
-        var_dump($password);
-        die();
+     
         User_handler::login($email, $password);
         redirect(base_url());
     }
