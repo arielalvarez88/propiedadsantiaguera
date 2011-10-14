@@ -106,7 +106,7 @@ class Usuario extends CI_Controller
             {
                 $send_email = new Mailer();
                 $template   = new Password_reset_template($token);
-                $response->success = $send_email->send_email($template, $client_name, $email, $token);
+                $response->success = $send_email->send_email($template, $usuario->name, $email, $token);
                 echo json_encode($response);
             }
             else
