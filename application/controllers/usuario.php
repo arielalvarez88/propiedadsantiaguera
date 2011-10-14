@@ -106,6 +106,40 @@ class Usuario extends CI_Controller
             {
                 $send_email = new Mailer();
                 $template   = new Password_reset_template($token);
+                $response->success = $send_email->send_email($template, $client_name, $email, $token);
+                echo json_encode($response);
+            }
+            else
+            {
+                die;
+            } 
+        }
+        else
+        {
+            echo 'Usuario no existe';
+        }
+    }
+    
+    public function password_reset_request_success()
+    {
+        $email = $this->input->post('email');
+        
+        $usuario = new User();
+        $usuario->where('email', $email);
+        $usuario->get();
+        $usuario->email;
+        
+        if($usuario->email)
+        {
+    
+            $token = uniqid();   
+            $usuario->token = $token;
+            $success = $usuario->save();   
+
+            if($success)
+            {
+                $send_email = new Mailer();
+                $template   = new Password_reset_template($token);
                 $send_email->send_email($template, $client_name, $email, $token);
                 
             }

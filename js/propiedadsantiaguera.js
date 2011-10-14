@@ -106,9 +106,25 @@ intializeAgentesHeaderSection = function(){
     });
 }
 
+MessageCallback = function (response,successMessage,failureMessage)
+{
+    this.getMessage = function()
+    {
+        if(response.success)
+        {
+            alert(succesMessage);
+        }
+        else
+        {
+            alert(failureMessage);
+        } 
+    };
+    
+   
 
+};
 
-Form = function (formWrapperSelector, sendButtonSelector, recivingScriptUrl, cleanButtonSelector, validationObjects){
+Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,messageCallbackFunction){
     
     var thisObject = this;
     this.form = $(formWrapperSelector);
@@ -130,9 +146,33 @@ Form = function (formWrapperSelector, sendButtonSelector, recivingScriptUrl, cle
                 $(dataInputs[i]).val('');
             }
         });
-    })()                
+    })() 
+    console.log(ajax);
+    if (ajax)
+    {
+        $(sendButtonSelector).click(function(event){
+            event.preventDefault();
+            var info = {};
+            
+            var inputs = thisObject.form.children('input');
+            
+            console.log(inputs);
+            for(i = 0; i < inputs.length; i++)
+            {
+                 
+                info[$(inputs[i]).attr('id')] = $(inputs[i]).val();
+            }
+            
+            
+            $.post(recivingScriptUrl, info ,function(response){messageCallbackFunction(response);});
+        });
+
+    }
     
 };
+
+
+
 
 ValidationObject = function(inputSelector,validatingFunction)
 {
@@ -218,12 +258,15 @@ InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswor
 
 intializeForms = function(){
     
-    var forms = { 
    
-        signupForm : new Form('#signup-informacion-general','#signup-form-send-button','/prueba','#signup-form-clear-button')
+    var  signupForm = new Form('#signup-informacion-general','#signup-form-send-button','#signup-form-clear-button');
+    var forgotPassword = new Form('#password-reset-form', '#password-reset-submit', '', true, '/usuario/password_reset_request', function(response){
+    
+        new MessageCallback(response, 'Email enviado', 'Error trate luego').getMessage();
+        
+    });
     
     
-    };
 
     
     
@@ -244,16 +287,23 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
     if(!valueToUrlJsonsArray instanceof Array)
         throw "ViewLoaderElement recieves an Array";
     
+    this.formRemove = function (scriptUrl, postVariables) 
+    {
+        $.post(scriptUrl,postVariables,function(html){
+            thisObject.newFormContainer.find('.optional-form').remove();                        
+            thisObject.newFormContainer.append(html);
+            intializeForms();
+            initializeViewLoaderElements();
+            initializeInputsWithDefaultText();
+                
+        });
+    }
     this.chooserElement.bind(eventString,function(){
         var i=0;
         if(elementType == 'a')
         {
-            $.post(valueToUrlJsonsArray[0].url,valueToUrlJsonsArray[i].data,function(html){
-                thisObject.newFormContainer.find('.optional-form').remove();                        
-                thisObject.newFormContainer.append(html);
-                initializeInputsWithDefaultText();
-            });
-            
+            thisObject.formRemove(valueToUrlJsonsArray[0].url,valueToUrlJsonsArray[0].data);
+                   
         }
         else
         {
@@ -261,34 +311,43 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
             {
                 if(thisObject.chooserElement.val() == valueToUrlJsonsArray[i].value)
                 {
-                    $.post(valueToUrlJsonsArray[i].url,valueToUrlJsonsArray[i].data,function(html){
-                        thisObject.newFormContainer.find('.optional-form').remove();                        
-                        thisObject.newFormContainer.append(html);
-                        intializeForms();
-                        initializeViewLoaderElements();
-                    });
+                   thisObject.formRemove(valueToUrlJsonsArray[i].url,valueToUrlJsonsArray[i].data);
                 }
             }
                       
         }
                     
             
-        });
+    });
         
             
-    };
+};
 
 
 
 initializeViewLoaderElements = function(){
-    var signupChooser = new ViewLoaderElement('#new-user-type-value','change',[{value: 'client', url:'/ajax/view_loader/forms/signup_form', data: {clientType: 'client'}},{value: 'company', url:'/ajax/view_loader/forms/signup_form', data: {clientType: 'company'}}],'#signup-form');   
+    var signupChooser = new ViewLoaderElement('#new-user-type-value','change',[{
+        value: 'client', 
+        url:'/ajax/view_loader/forms/signup_form', 
+        data: {
+            clientType: 'client'
+        }
+    },{
+        value: 'company', 
+        url:'/ajax/view_loader/forms/signup_form', 
+        data: {
+            clientType: 'company'
+        }
+    }],'#signup-form');   
 
-var forgotPassword = new ViewLoaderElement('#login-password-reset-button','click',[{
+    var forgotPassword = new ViewLoaderElement('#login-password-reset-button','click',[{
         value: '', 
         url:'/ajax/form_getter/passwordRecovery'
     }],'#login','a');
 
 };
+
+
 
 Overlay = function (selector, optionalClosebuttonSelector)
 {
@@ -304,9 +363,9 @@ Overlay = function (selector, optionalClosebuttonSelector)
     
 }
 initializeInputsWithDefaultText = function(){
- var loginEmail = new InputsWithDefaultText('#login-email', 'Email');
- var loginPassword = new InputsWithDefaultText('#login-password', 'Contraseña', '#login-password-clear');
- var resetPasswordEmail = new InputsWithDefaultText('#password-reset-input', 'Email');
+    var loginEmail = new InputsWithDefaultText('#login-email', 'Email');
+    var loginPassword = new InputsWithDefaultText('#login-password', 'Contraseña', '#login-password-clear');
+    var resetPasswordEmail = new InputsWithDefaultText('#password-reset-input', 'Email');
     
 };
 
@@ -329,8 +388,7 @@ initializeMaps = function() {
 };
 
 $(document).ready
-{
-    
+{   
     var ieCssFixes = '<link rel="stylesheet" type="text/css" href="http://'+ window.location.hostname +'/css/propiedadsantiaguera-ie-fixes.css"/>' ;
     if($.browser.msie)
     {
@@ -342,14 +400,12 @@ $(document).ready
     
     
     intializeAgentesHeaderSection();
-    
     initializeInputsWithDefaultText();
     initializeViewLoaderElements();
     intializeForms();
     initializeOverlays();
     initializeMaps();
-    /*comentario*/
-    
+/*comentario*/    
 }
 
 
