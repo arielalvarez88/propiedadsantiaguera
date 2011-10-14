@@ -305,6 +305,8 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
                 
         });
     }
+    
+    this.chooserElement.unbind('click');
     this.chooserElement.bind(eventString,function(){
         var i=0;
         if(elementType == 'a')
