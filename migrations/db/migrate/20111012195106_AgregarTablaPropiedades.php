@@ -18,7 +18,7 @@ class AgregarTablaPropiedades extends Ruckusing_BaseMigration {
         $propiedades->column('livingrooms', 'integer', array('limit' => 3));
         $propiedades->column('kitchens', 'integer', array('limit' => 3));
         $propiedades->column('parkings', 'integer', array('limit' => 3));
-        $propiedades->column('terrain', 'interger',array('limit' => 4));
+        $propiedades->column('terrain', 'integer',array('limit' => 4));
         $propiedades->column('construction', 'integer',array('limit' => 4));
         $propiedades->column('stories', 'integer', array('limit' => 3));
         $propiedades->column('last_payment', 'integer', array('limit' => 3));
@@ -32,14 +32,14 @@ class AgregarTablaPropiedades extends Ruckusing_BaseMigration {
         $propertyTypes->column('description', 'text');        
         $propertyTypes->finish();
         
-        $this->execute("INSERT INTO property-types (name,description) VALUES  ('Casa','casa')");
-        $this->execute("INSERT INTO property-types (name,description) VALUES  ('Apartamento','Apartamento')");
-        $this->execute("INSERT INTO property-types (name,description) VALUES  ('Solar','Solar')");
-        $this->execute("INSERT INTO property-types (name,description) VALUES  ('Penthouse','Penthouse')");
-        $this->execute("INSERT INTO property-types (name,description) VALUES  ('Local Comercial','Local Comercial')");
-        $this->execute("INSERT INTO property-types (name,description) VALUES  ('Edificio','Edificio')");
-        $this->execute("INSERT INTO property-types (name,description) VALUES  ('Nave industrial','Nave industrial')");
-        $this->execute("INSERT INTO property-types (name,description) VALUES  ('Oficina','Oficina')");
+        $this->execute("INSERT INTO property-types (name,description) VALUES ('Casa','casa');");
+        $this->execute("INSERT INTO property-types (name,description) VALUES  ('Apartamento','Apartamento');");
+        $this->execute("INSERT INTO property-types (name,description) VALUES  ('Solar','Solar');");
+        $this->execute("INSERT INTO property-types (name,description) VALUES  ('Penthouse','Penthouse');");
+        $this->execute("INSERT INTO property-types (name,description) VALUES  ('Local Comercial','Local Comercial');");
+        $this->execute("INSERT INTO property-types (name,description) VALUES  ('Edificio','Edificio');");
+        $this->execute("INSERT INTO property-types (name,description) VALUES  ('Nave industrial','Nave industrial');");
+        $this->execute("INSERT INTO property-types (name,description) VALUES  ('Oficina','Oficina');");
         
         $propertyTypesJoin = $this->create_table('properties_property-types');
         $propertyTypesJoin->column('property_id', 'string');
