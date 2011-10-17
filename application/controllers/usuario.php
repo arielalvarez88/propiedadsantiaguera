@@ -149,11 +149,11 @@ class Usuario extends CI_Controller {
             $template = new password_reset_success_template($new_token);
             $send_email->send_email($template, $usuario->name, $usuario->email, $new_token);
             $response ['success']= true;
-            $data['topLeftSide'] = $this->load->view('password_reset_confirmed',$response,true);
+            $data['topLeftSide'] = $this->load->view('blocks/password_reset_confirmed',$response,true);
 
         } else {
             $response ['success']= false;
-            $data['topLeftSide'] = $this->load->view('password_reset_confirmed',$response,true);
+            $data['topLeftSide'] = $this->load->view('blocks/password_reset_confirmed',$response,true);
         }
         $this->load->view('page.php', $data);
     }
