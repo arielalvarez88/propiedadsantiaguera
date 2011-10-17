@@ -270,6 +270,18 @@ intializeForms = function(){
         new MessageCallback(response, 'Email enviado', 'Error trate luego').getMessage();
         
     });
+    
+    var loginForm = new Form('#login form', '#login-submit', '', true, '/usuario/login', function(response){
+        
+        if(!response.success)
+        {
+            alert('Email/Password incorrectos');
+            $('#login-email').val('');
+            $('#login-password').val('');           
+        }
+
+        
+    });
 
         var propertyForm = new Form('#property-form','#property-form-send-button','#property-form-clear-button');
     
