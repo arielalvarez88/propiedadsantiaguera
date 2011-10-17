@@ -27,6 +27,12 @@ class Usuario extends CI_Controller {
         echo json_encode($response);
         
     }
+    
+    public function loginform() 
+    {
+      //$this->load->view('page.php');
+      $this->load->view('blocks/login');       
+    }
 
     public function logout() {
         User_handler::loggout();

@@ -97,7 +97,7 @@ blockExists = function(idName){
 
 intializeAgentesHeaderSection = function(){
 
-$('#agentes-header-inmobliarias').unbind('click');
+    $('#agentes-header-inmobliarias').unbind('click');
     $('#agentes-header-inmobliarias').click(function(){
         $('#agentes-pager-header').html('INMOBILARIAS');
     });
@@ -168,7 +168,9 @@ Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, a
             }
             
             
-            $.post(recivingScriptUrl, info ,function(response){messageCallbackFunction(response);});
+            $.post(recivingScriptUrl, info ,function(response){
+                messageCallbackFunction(response);
+            });
         });
 
     }
@@ -216,7 +218,7 @@ InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswor
         this.input.val(defaultText);
     }
     
-this.optionalClearPasswordInput.unbind('focus');    
+    this.optionalClearPasswordInput.unbind('focus');    
     this.optionalClearPasswordInput.focus(function(){
             
         thisObject.optionalClearPasswordInput.hide();
@@ -263,6 +265,8 @@ this.optionalClearPasswordInput.unbind('focus');
 
 intializeForms = function(){
     
+    initializeInputsWithDefaultText();
+
    
     var  signupForm = new Form('#signup-informacion-general','#signup-form-send-button','#signup-form-clear-button');
     var forgotPassword = new Form('#password-reset-form', '#password-reset-submit', '', true, '/usuario/password_reset_request', function(response){
@@ -283,7 +287,7 @@ intializeForms = function(){
         
     });
 
-        var propertyForm = new Form('#property-form','#property-form-send-button','#property-form-clear-button');
+    var propertyForm = new Form('#property-form','#property-form-send-button','#property-form-clear-button');
     
     
 
@@ -332,7 +336,7 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
             {
                 if(thisObject.chooserElement.val() == valueToUrlJsonsArray[i].value)
                 {
-                   thisObject.formRemove(valueToUrlJsonsArray[i].url,valueToUrlJsonsArray[i].data);
+                    thisObject.formRemove(valueToUrlJsonsArray[i].url,valueToUrlJsonsArray[i].data);
                 }
             }
                       
@@ -367,7 +371,7 @@ initializeViewLoaderElements = function(){
     }],'#login','a');
 
 
-var propertyTypePassword = new ViewLoaderElement('#login-password-reset-button','click',[{
+    var propertyTypePassword = new ViewLoaderElement('#login-password-reset-button','click',[{
         value: '', 
         url:'/ajax/form_getter/passwordRecovery'
     }],'#login','a');
@@ -379,10 +383,15 @@ var propertyTypePassword = new ViewLoaderElement('#login-password-reset-button',
 Overlay = function (selector, optionalClosebuttonSelector)
 {
     $(selector).fancybox({
-        type:'inline', 
+        type:'ajax', 
         padding:0,
         margin:0, 
-        showCloseButton: false
+        showCloseButton: false,
+        onComplete: function (){
+            intializeForms(); 
+            initializeViewLoaderElements();
+        }
+        
     });
     
     $(optionalClosebuttonSelector).unbind('click');
@@ -428,7 +437,6 @@ $(document).ready
     initializePropiedadViewer();
     
     intializeAgentesHeaderSection();
-    initializeInputsWithDefaultText();
     initializeViewLoaderElements();
     intializeForms();
     initializeOverlays();
