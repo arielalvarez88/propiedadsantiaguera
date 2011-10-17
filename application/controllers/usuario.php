@@ -20,7 +20,13 @@ class Usuario extends CI_Controller {
         $password = sha1($this->input->post('login-password'));
      
         User_handler::login($email, $password);
-        redirect(base_url());
+        $usuario = User_handler::getLoggedUser();
+        $response = new stdClass();
+        $response->success = $usuario->id ?  true : false;
+     
+        echo json_encode($response);
+        
+        //redirect(base_url());
     }
 
     public function logout() {
