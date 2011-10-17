@@ -216,16 +216,16 @@ InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswor
         this.input.val(defaultText);
     }
     
-this.optionalClearPasswordInput.unbind('click');    
-    this.optionalClearPasswordInput.click(function(){
+this.optionalClearPasswordInput.unbind('focus');    
+    this.optionalClearPasswordInput.focus(function(){
             
         thisObject.optionalClearPasswordInput.hide();
         thisObject.input.show();
         thisObject.input.focus();
     });
         
-    this.input.unbind('click');    
-    this.input.click(function(){
+    this.input.unbind('focus');    
+    this.input.focus(function(){
             
         if($(this).val()== defaultText)
             $(this).val("");
