@@ -28,7 +28,7 @@ $thisPage = str_replace('/', '-', uri_string());
                                 <a class="no-decoration-anchor" href="#">Somos</a>
                                 <span class="vertical-serparator"> | </span>
                                   <?php if(!$loggedUser):?>
-                                <a id="login-link" class="no-decoration-anchor" href="#login">Login Usuarios</a>
+                                <a id="login-link" class="no-decoration-anchor" href="/usuario/loginform">Login Usuarios</a>
                                  <span class="vertical-serparator"> | </span>
                                 <?php endif;?>
                                 
@@ -167,21 +167,7 @@ $thisPage = str_replace('/', '-', uri_string());
             </div>
         </div>
         
-        <div style="display:none;">
-            <div id="login">
-                <a id="login-close-button" href="#js"></a>
-                <form action="/usuario/login" method="post" class="optional-form">
-                    <img src="/images/login/loginTitle.png" alt="Login" id="login-title"/>
-                    <input id="login-email" type="text" name="login-email" class="login-input" /><br/>
-                    
-                    <input id="login-password-clear" type="text" class="login-input" /><br/>
-                    <input id="login-password" type="password" name="login-password" class="login-input" style="display:none;"/>
-                    <input id="login-submit" type="image" src="<?php echo base_url();?>images/login/loginButton.png" alt="login"/> 
-                    <a href="#" id="login-password-reset-button">&iquest;Olvido su contrase&ntilde;a?</a>
-                </form>
-            </div>
-        </div>
-        
+ 
         
         <script type="text/javascript" src="/js/jquery-1.6.1.min.js" type="text/javascript" ></script>
         <script type="text/javascript" src="/js/jquery-ui-1.8.14.custom.min.js" type="text/javascript" ></script>        
