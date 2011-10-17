@@ -26,7 +26,6 @@ class Usuario extends CI_Controller {
      
         echo json_encode($response);
         
-        //redirect(base_url());
     }
 
     public function logout() {
@@ -142,16 +141,21 @@ class Usuario extends CI_Controller {
         
         $usuario->password = $new_token;
         $usuario->token = '';
-        
+        $data = '';
         $success = $usuario->save();
         if ($success) 
         {
             $send_email = new Mailer();
             $template = new password_reset_success_template($new_token);
             $send_email->send_email($template, $usuario->name, $usuario->email, $new_token);
+            $response ['success']= true;
+            $data['topLeftSide'] = $this->load->view('password_reset_confirmed',$response,true);
+
         } else {
-            die;
+            $response ['success']= false;
+            $data['topLeftSide'] = $this->load->view('password_reset_confirmed',$response,true);
         }
+        $this->load->view('page.php', $data);
     }
 
     private function error() {
