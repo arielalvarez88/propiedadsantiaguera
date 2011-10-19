@@ -143,6 +143,7 @@ p, ul
 }
 
 /************ Login block end *******************/
+
 /*********** Password Reset Form  **********/
 #login #password-reset-form
 {
@@ -210,7 +211,7 @@ p, ul
 
 #idiomas-container
 {
-        float: right;
+    float: right;
     height: 17px;
     padding: 5px;
     
@@ -1655,9 +1656,18 @@ margin-bottom: 10px;
 }
 #signup-descripcion-ejemplo
 {
-    background-image: url('/images/common/exampleTextBackground.png');
-    width : 234px;
-    height: 248px;
+    background: url('/images/common/exampleTextBackground.png')top center no-repeat;
+      height: 260px;
+    margin: 20px;
+    padding: 20px;
+    width: 234px;
+}
+#signup-descripcion-ejemplo p
+{
+    width:215px;
+    font-size: 9pt;
+    padding: 28px 13px 0 16px;
+    width: 200px;
 }
 #signup-info-fotos
 {
