@@ -1130,6 +1130,7 @@ class CI_Form_validation {
 	function numeric($str)
 	{
 		return (bool)preg_match( '/^[\-+]?[0-9]*\.?[0-9]+$/', $str);
+                
 
 	}
 

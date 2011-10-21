@@ -58,55 +58,52 @@ $config = array(
         )
     ),
     'property' => array(
+    
         array(
             'field' => 'property-type',
-            'label' => 'tipo de propiedad',
-            'rules' => 'required'),
+            'label' => 'sector',
+            'rules' => 'required'
+        ),
         array(
             'field' => 'property-sector',
             'label' => 'sector',
-            'rules' => 'required')
-        ),
-        array(
-            'field' => 'property-status',
-            'label' => 'Vender/Alquilar',
             'rules' => 'required'
         ),
         array(
             'field' => 'property-terrain',
             'label' => 'terreno',
-            'rules' => 'numeric'),
+            'rules' => 'required|numeric'),
     array(
             'field' => 'property-construction',
             'label' => 'construccion',
-            'rules' => 'numeric'),
+            'rules' => 'required|numeric'),
     array(
             'field' => 'property-stories',
             'label' => 'niveles',
-            'rules' => 'numeric'),
+            'rules' => 'required|numeric'),
     array(
             'field' => 'property-bedrooms',
             'label' => 'habitaciones',
-            'rules' => 'numeric'),
+            'rules' => 'required|numeric'),
     array(
             'field' => 'property-bathrooms',
             'label' => 'baños',
-            'rules' => 'numeric'),
+            'rules' => 'required|numeric'),
     array(
-            'field' => 'property-livinroom',
+            'field' => 'property-livingrooms',
             'label' => 'salas',
-            'rules' => 'numeric'),
+            'rules' => 'required|numeric'),
     array(
             'field' => 'property-kitchens',
             'label' => 'cocinas',
-            'rules' => 'numeric'),
+            'rules' => 'required|numeric'),
     array(
             'field' => 'property-parkings',
             'label' => 'parqueos',
-            'rules' => 'numeric'),
+            'rules' => 'required|numeric')
     
     
-    
+    )   
             
 );
 ?>

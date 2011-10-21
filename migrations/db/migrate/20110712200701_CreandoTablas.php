@@ -4,7 +4,7 @@ class CreandoTablas extends Ruckusing_BaseMigration {
 
     public function up() {
         
-        
+        $this->execute("SET NAMES 'utf8'");
         $users = $this->create_table('users');
         $users->column('name', 'string', array('limit' => 20));
         $users->column('lastname', 'string', array('limit' => 20));
@@ -21,7 +21,8 @@ class CreandoTablas extends Ruckusing_BaseMigration {
         $users->column('registration_date', 'datetime');
         $users->column('payment_status', 'boolean');
         $users->column('total_posts', 'integer');
-        $users->column('posts_left', 'integer');
+        $users->column('posts_left', 'integer', array('default'=>0));
+        
         
 
 
