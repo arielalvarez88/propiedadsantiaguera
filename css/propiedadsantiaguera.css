@@ -1,6 +1,7 @@
 *{
     margin:0;
     padding:0;
+    font-family: museo;
 }
 body{
     
@@ -59,6 +60,7 @@ p, ul
 {
  
 }
+
 
 /**********  Login Block and children ***********/
 #login
@@ -182,6 +184,7 @@ p, ul
     top:174px;
     left:360px;
 }
+
 /********************Password reset form end***********************/
 
 #banner{
@@ -419,6 +422,24 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 /* END of Drupal Menu*/
 
+/*please_login*/
+
+#please-login
+{
+    color: black;
+    min-height: 150px;
+}
+
+#please-login h1
+{
+    margin-bottom: 30px;
+}
+#please-login p
+{
+    font-size: 1.3em;
+}
+
+/*please_login ENDs*/
 
  /* property-form */
  #property-form
@@ -430,11 +451,23 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
  {
      list-style: none;
  }
+
+ #property-form-description
+ {
+     min-height: 925px;
+ }
  
  #property-form-description label {
     display: block;
     float: left;
-    width: 120px;
+    width: 105px;
+}
+
+
+
+#property-form-description #property-form-description-column3 label
+{
+    width: 75px;
 }
 
 
@@ -445,30 +478,31 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     clear: both;
 }
 
+#property-form-description-address-container textarea
+{
+    
+    width: 236px;
+}
 
+#property-form-description ul li#property-form-description-address-container
+{
+    height: auto;
+}
 #property-form-description select, #property-form-description input
 {
     display: block;
     float: left;
     height: 23px;
-    width: 118px;
+    width: 43px;
     border: 4px solid #e9e9e9;
     margin-bottom: 9px;
     
     
 }
 
-#property-form-description-description
-{
-    float: left;
-}
 
-#property-form-description-description
-{
-    float: left;
-}
-
-#property-form-description-description textarea
+#property-form-description-description textarea, 
+#property-form-description-address-container textarea
 {
     border: 4px solid #e9e9e9;
 }
@@ -478,63 +512,86 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     margin-bottom: 20px;
 }
 
+#property-form-description-description textarea
+{
+    width: 343px;
+    height: 160px;
+}
+
 #property-form-description-description textarea, 
 #property-form-description-description label
 {
     clear: both;
-    width: auto;
+    
     float: none;
 }
 
-#property-form-description-characteristics
+#property-form-description-description label
+{
+    width: auto;
+}
+
+#property-form-description-features label
+{
+    width: 221px;
+}
+
+#property-form-description-features ul
+{
+    width: 245px;
+}
+
+#property-form-description-features
 {
     
     background-color: #f7f7f7;
-    clear: left;
     float: left;
-    height: 302px;
-    width: 320px;
-    margin-right: 44px;
+    height: 745px;
+    width: 530px;
+    
+    
     
 }
-#property-form-description-characteristics h3{
+
+
+#property-form-description-features h3{
     background: white;
     padding-bottom: 17px;
     
 }
-#property-form-description-characteristics input
+#property-form-description-features input
 {
     display: block;
     float: left;
     width: 20px;
     height: auto;
 }
-#property-form-description-characteristics  ul li
+#property-form-description-features  ul li
 {
     list-style: none;
     float: left;
    
 }
-#property-form-description-characteristics-column1
+#property-form-description-features-column1
 {
    
     padding-left: 20px;
 }
 
-#property-form-description-characteristics-column2
+#property-form-description-features-column2
 {
     padding-right: 20px;
 }
 
-.property-form-description-characteristics-column
+.property-form-description-features-column
 {
     padding-top: 20px;
     padding-bottom: 20px;
     float: left;
-    width: 140px;
+    width: 241px;
 }
 
-#property-form-description, #property-form-close-places, #property-form-photos
+#property-form-description, #property-form-photos
 {
     padding-left: 31px;
 }
@@ -543,13 +600,34 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 {
     height: 128px;
 }
+#property-form-description-column-container
+{
+    margin-bottom: 25px;
+    min-height: 154px;
+}
+  
+#property-form-description-close-places
+{
+    float: left;
+    margin-right: 25px;
+}
 
 
-
-#property-form-description-column3
+#property-form-description-column4
 {
     margin-right: 0;
 }
+
+#property-form-description-column4 label
+{
+   width: 150px;
+}
+
+#property-form-description-column4 input
+{
+    width: 90px;
+}
+
 
 .property-form-description-column {
     float: left;
@@ -563,10 +641,30 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     maring-right: 20px;
 }
 
+#property-form-close-places-column2 label
+{
+    width: 105px;
+}
+#property-form-close-places input
+{
+    width: auto;
+    height: auto;
+}
 #property-form-close-places-column1
 {
     margin-right: 0;
 }
+
+#property-form-close-places label
+{
+     padding: 0 10px;
+    width: 310px;
+}
+
+#property-form-close-places h3{
+    margin: 25px 0 21px;
+}
+
 
 #property-form-description-column1 select, 
 #property-form-description-column1 input
@@ -1719,14 +1817,7 @@ span.required{
     border: 1px solid red;
 }
 
-.error-messages
-{
-  background-color: #FCCECC;
-    border: 1px solid red;
-    color: red;
-    margin-bottom: 15px;
-    padding: 5px;
-}
+
 
 #saludo-usuario
 {
@@ -1741,6 +1832,35 @@ span.required{
 .form-clear-button
 {
     cursor: pointer;
+}
+
+
+.error-messages, .info-messages
+{
+     padding: 5px 5px;
+    margin: 5px 0;
+    width: 935px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.error-messages
+{
+  background-color: #FCCECC;
+    border: 1px solid red;
+    color: red;
+    
+    
+}
+
+.info-messages
+{
+    background-color: #75BC3B;
+    color: white;
+    
+    
+    
+   
 }
 /*clases utiles ENDS*/
 

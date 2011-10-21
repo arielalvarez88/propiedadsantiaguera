@@ -9,8 +9,8 @@ $thisPage = str_replace('/', '-', uri_string());
 
     <head>
         <link rel="stylesheet" type="text/css" href="/css/propiedadsantiaguera.css"/>
-        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
     </head>
     <body>
         <div id="wrapper">
@@ -189,6 +189,7 @@ $thisPage = str_replace('/', '-', uri_string());
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>        
         <script type="text/javascript" src="/js/jquery.fancybox-1.3.4.js" type="text/javascript" ></script>
         <script type="text/javascript" src="/js/propiedadsantiaguera.js" type="text/javascript" ></script>
-        
+        <script type="text/javascript" src="http://use.typekit.com/awd1xwd.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     </body>
 </html>

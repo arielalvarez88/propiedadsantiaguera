@@ -52,7 +52,7 @@ $autoload['packages'] = array(APPPATH.'third_party');
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database','datamapper','session','user_handler','form_validation','mailer');
+$autoload['libraries'] = array('database','datamapper','session','user_handler','form_validation','mailer','environment_vars');
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('user');
+$autoload['model'] = array('user','property','property_type');
 
 
 /* End of file autoload.php */

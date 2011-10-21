@@ -75,6 +75,37 @@ class Usuario extends CI_Controller {
         redirect('/');
     }
 
+    public function comprar_plan($plan_name)
+    {
+        $user = User_handler::getLoggedUser();
+        if(!$user->id || !$plan_name)
+        {
+            redirect("/please_login");
+        }
+        
+        switch($plan_name)
+        {
+            case "plan-basico":
+                $user->posts_left += 1;
+                break;
+            case "plan-plus":
+                $user->posts_left += 5;
+                break;
+            case "plan-agente":
+                $user->posts_left += 10;
+                break;
+            case "plan-inmobilaria":
+                $user->posts_left += 25;
+                break;
+        }
+        
+        $user->save();
+            
+        
+        
+    }
+    
+    
     public function password_reset_request() {
         $email = $this->input->post('password-reset-input');
 
