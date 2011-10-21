@@ -11,8 +11,8 @@ $ruckusing_db_config = array(
      'host'      => 'localhost',
      'port'      => 3306,
      'database'  => 'propiedad_santiaguera',
-     'user'      => '5050mkt',
-     'password'  => 'sle9her'
+     'user'      => 'root',
+     'password'  => 'root'
   ),
 
 	'test' 					=> array(

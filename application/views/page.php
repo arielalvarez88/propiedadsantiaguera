@@ -39,17 +39,21 @@ $thisPage = str_replace('/', '-', uri_string());
                                     <a class="no-decoration-anchor" href="/userController/logout">logout</a>
                                     <span class="vertical-serparator"> | </span>
 <?php endif; ?>
-                                <a class="no-decoration-anchor" href="#">Somos</a>
-                                <span class="vertical-serparator"> | </span>
+                                <a id="login-link" class="no-decoration-anchor" href="/usuario/loginform">LOG IN</a>
+                                
+                                <span class="vertical-serparator"><img src="/images/dude_icon.png" alt="dude"/></span>
 <?php if (!$loggedUser): ?>
-                                    <a id="login-link" class="no-decoration-anchor" href="/usuario/loginform">Login Usuarios</a>
-                                    <span class="vertical-serparator"> | </span>
+                                    <a class="no-decoration-anchor" href="#">CONTACTENOS</a>
+                                    <span class="vertical-serparator"><img src="/images/phone_icon.png" alt="dude"/></span>
 <?php endif; ?>
 
 
-                                <a id="header-help" class="no-decoration-anchor" href="#login">Ayuda</a>
-
-                            </p>    
+                                <a id="header-help" class="no-decoration-anchor" href="#login">AYUDA</a>
+                                <span class="vertical-serparator"><img src="/images/help_icon.png" alt="help"/></span>
+                            </p>  
+                            <div id="banner-image">
+                                <img src="/images/banner_top.png" alt="banner top"/>
+                            </div>
                         </div>
                        
 
