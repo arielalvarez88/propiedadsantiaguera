@@ -15,9 +15,9 @@ class Portada extends CI_Controller {
     {
      
         
-        $data['header'] = $this->load->view('blocks/header','',true);
-        $data['topLeftSide'] = $this->load->view('blocks/basicFilter','',true);
-        $data['topCenterSide'] = $this->load->view('blocks/frontPageSlideShow','',true);
+        $data['header'] = $this->load->view('blocks/header','',true);        
+        $data['topLeftSide'] = $this->load->view('blocks/frontPageSlideShow','',true);
+        $data['topLeftSide'].= $this->load->view('blocks/basicFilter','',true);
         $data['topRightSide'] = $this->load->view('blocks/advertising','',true);
         $data['topRightSide'] .= $this->load->view('blocks/subscribe','',true);
         $menuTiposDePropiedadData['sectionName'] = 'portada';
