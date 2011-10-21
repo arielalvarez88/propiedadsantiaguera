@@ -1872,12 +1872,35 @@ span.required{
 .info-messages
 {
     background-color: #75BC3B;
-    color: white;
-    
-    
-    
-   
+    color: white;  
 }
+
+/***** plans table ******/
+#planes
+{
+    color:#333;
+}
+#planes th.regular_title
+{
+    background:url('/images/regular_plan_title_bg.png') top left repeat-x transparent;
+    padding:10px 20px;
+    color:#F7C803;
+}
+#planes th.plus_title
+{
+    background:url('/images/main_plan_header.png') top center no-repeat transparent; 
+}
+.info_col
+{
+    text-align: right;
+    font-size: 10pt;
+    color:red;
+}
+
+
+
+
+/*********/
 /*clases utiles ENDS*/
 
 /*

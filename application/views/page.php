@@ -67,7 +67,7 @@ $thisPage = str_replace('/', '-', uri_string());
                     <ul class="primary-links"><li class="menu-111 first"><a title="" href="<?php echo base_url(); ?>">INICIO</a></li>
                         <li class="menu-269"><a title="" href="/propiedades">PROPIEDADES</a></li>
                         <li class="menu-270"><a title="" href="/agentes">AGENTES</a></li>
-                        <li class="menu-271"><a title="" href="http://www.google.com">PRECIOS Y PLANES</a></li>
+                        <li class="menu-271"><a title="" href="/planes">PRECIOS Y PLANES</a></li>
                         <li class="menu-272 last"><a title="" href="http://www.google.com">CONTACTO</a></li>
                     </ul>                   
                 </div>
