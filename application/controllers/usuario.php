@@ -20,7 +20,18 @@ class Usuario extends CI_Controller {
         $password = sha1($this->input->post('login-password'));
      
         User_handler::login($email, $password);
-        redirect(base_url());
+        $usuario = User_handler::getLoggedUser();
+        $response = new stdClass();
+        $response->success = $usuario->id ?  true : false;
+     
+        echo json_encode($response);
+        
+    }
+    
+    public function loginform() 
+    {
+      //$this->load->view('page.php');
+      $this->load->view('blocks/login');       
     }
 
     public function logout() {
@@ -163,14 +174,25 @@ class Usuario extends CI_Controller {
         $usuario->where('token', $token);
         $usuario->get();
         
-        $success = $usuario->update('password', $token);
-        if ($success) {
+        $new_token = uniqid();
+        
+        $usuario->password = $new_token;
+        $usuario->token = '';
+        $data = '';
+        $success = $usuario->save();
+        if ($success) 
+        {
             $send_email = new Mailer();
-            $template = new password_reset_success_template($token);
-            $send_email->send_email($template, $usuario->name, $usuario->email, $token);
+            $template = new password_reset_success_template($new_token);
+            $send_email->send_email($template, $usuario->name, $usuario->email, $new_token);
+            $response ['success']= true;
+            $data['topLeftSide'] = $this->load->view('blocks/password_reset_confirmed',$response,true);
+
         } else {
-            die;
+            $response ['success']= false;
+            $data['topLeftSide'] = $this->load->view('blocks/password_reset_confirmed',$response,true);
         }
+        $this->load->view('page.php', $data);
     }
 
     private function error() {

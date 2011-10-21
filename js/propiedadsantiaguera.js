@@ -218,16 +218,16 @@ InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswor
         this.input.val(defaultText);
     }
     
-    this.optionalClearPasswordInput.unbind('click');    
-    this.optionalClearPasswordInput.click(function(){
+    this.optionalClearPasswordInput.unbind('focus');    
+    this.optionalClearPasswordInput.focus(function(){
             
         thisObject.optionalClearPasswordInput.hide();
         thisObject.input.show();
         thisObject.input.focus();
     });
         
-    this.input.unbind('click');    
-    this.input.click(function(){
+    this.input.unbind('focus');    
+    this.input.focus(function(){
             
         if($(this).val()== defaultText)
             $(this).val("");
@@ -265,11 +265,25 @@ InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswor
 
 intializeForms = function(){
     
+    initializeInputsWithDefaultText();
+
    
     var  signupForm = new Form('#signup-informacion-general','#signup-form-send-button','#signup-form-clear-button');
     var forgotPassword = new Form('#password-reset-form', '#password-reset-submit', '', true, '/usuario/password_reset_request', function(response){
     
         new MessageCallback(response, 'Email enviado', 'Error trate luego').getMessage();
+        
+    });
+    
+    var loginForm = new Form('#login form', '#login-submit', '', true, '/usuario/login', function(response){
+        
+        if(!response.success)
+        {
+            alert('Email/Password incorrectos');
+            $('#login-email').val('');
+            $('#login-password').val('');           
+        }
+
         
     });
 
@@ -384,10 +398,15 @@ initializeViewLoaderElements = function(){
 Overlay = function (selector, optionalClosebuttonSelector)
 {
     $(selector).fancybox({
-        type:'inline', 
+        type:'ajax', 
         padding:0,
         margin:0, 
-        showCloseButton: false
+        showCloseButton: false,
+        onComplete: function (){
+            intializeForms(); 
+            initializeViewLoaderElements();
+        }
+        
     });
     
     $(optionalClosebuttonSelector).unbind('click');
@@ -457,7 +476,6 @@ $(document).ready
     initilizeFrontPageSlideShow();
     initializePropiedadViewer();    
     intializeAgentesHeaderSection();
-    initializeInputsWithDefaultText();
     initializeViewLoaderElements();
     intializeForms();
     initializeOverlays();
