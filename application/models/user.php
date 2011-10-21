@@ -14,7 +14,7 @@
 class User extends DataMapper {
 
 //    var $has_one = array("tipo_usuario");
-//    var $has_many = array("propiedades");
+    var $has_many = array("property");
     var $validation = array(
         array(
             'field' => 'name',
@@ -50,6 +50,17 @@ class User extends DataMapper {
         
     
     }
+    
+    public function get_number_of_properties()
+    {
+        return $this->properties->get_paged()->paged->total_rows;
+    }
+    
+    public function can_create_property()
+    {
+        return $this->get_number_of_properties() <= $this->posts_left * 3;
+    }
+    
 
     // --------------------------------------------------------------------
 

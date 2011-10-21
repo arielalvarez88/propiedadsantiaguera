@@ -310,10 +310,10 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
     if(!valueToUrlJsonsArray instanceof Array)
         throw "ViewLoaderElement recieves an Array";
     
-    this.formRemove = function (scriptUrl, postVariables) 
+    this.swapOptionalViews = function (scriptUrl, postVariables) 
     {
         $.post(scriptUrl,postVariables,function(html){
-            thisObject.newFormContainer.find('.optional-form').remove();                        
+            thisObject.newFormContainer.find('.optional-form, .optional-view').remove();                        
             thisObject.newFormContainer.append(html);
             intializeForms();
             initializeViewLoaderElements();
@@ -322,12 +322,12 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
         });
     }
     
-    this.chooserElement.unbind('click');
+    this.chooserElement.unbind(eventString);
     this.chooserElement.bind(eventString,function(){
         var i=0;
         if(elementType == 'a')
         {
-            thisObject.formRemove(valueToUrlJsonsArray[0].url,valueToUrlJsonsArray[0].data);
+            thisObject.swapOptionalViews(valueToUrlJsonsArray[0].url,valueToUrlJsonsArray[0].data);
                    
         }
         else
@@ -336,7 +336,7 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
             {
                 if(thisObject.chooserElement.val() == valueToUrlJsonsArray[i].value)
                 {
-                    thisObject.formRemove(valueToUrlJsonsArray[i].url,valueToUrlJsonsArray[i].data);
+                    thisObject.swapOptionalViews(valueToUrlJsonsArray[i].url,valueToUrlJsonsArray[i].data);
                 }
             }
                       
@@ -370,11 +370,26 @@ initializeViewLoaderElements = function(){
         url:'/ajax/form_getter/passwordRecovery'
     }],'#login','a');
 
+    
+    var propertyTypeRepopulate = {'property_sell_price_us' : $('#property-form-description-sell-price-us').val(), 'property_sell_price_dr' : $('#property-form-description-sell-price-dr').val(), 'property_rent_price_us' : $('#property-form-description-rent-price-us').val(), 'property_rent_price_dr' : $('#property-form-description-sell-rent-dr').val()};
 
-    var propertyTypePassword = new ViewLoaderElement('#login-password-reset-button','click',[{
-        value: '', 
-        url:'/ajax/form_getter/passwordRecovery'
-    }],'#login','a');
+    
+    
+    
+    
+    var propertyTypePassword = new ViewLoaderElement('#property-form-description-status','change',[{
+            value: 'sell', 
+            url:'/ajax/view_loader/sell_rent_inputs',
+            data: {status: 'sell', repopulate : propertyTypeRepopulate}
+        },{
+            value: 'rent', 
+            url:'/ajax/view_loader/sell_rent_inputs',
+            data: {status: 'rent', repopulate : propertyTypeRepopulate}
+        },{
+            value: 'sell-rent', 
+            url:'/ajax/view_loader/sell_rent_inputs',
+            data: {status: 'sell-rent', repopulate : propertyTypeRepopulate}
+        }],'#property-form-description-column-container');
 
 };
 
@@ -425,8 +440,33 @@ initializeMaps = function() {
         drawPropertyUbication('16,16');
 };
 
+
+extendJquery = function (){
+    
+    $.extend({
+        getUrlVars: function(){
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for(var i = 0; i < hashes.length; i++)
+            {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        },
+        getUrlVar: function(name){
+            return $.getUrlVars()[name];
+        }
+    });
+};
+    
+
+
+
 $(document).ready
 {   
+    extendJquery();
     var ieCssFixes = '<link rel="stylesheet" type="text/css" href="http://'+ window.location.hostname +'/css/propiedadsantiaguera-ie-fixes.css"/>' ;
     if($.browser.msie)
     {
@@ -434,13 +474,13 @@ $(document).ready
     }
     
     initilizeFrontPageSlideShow();
-    initializePropiedadViewer();
-    
+    initializePropiedadViewer();    
     intializeAgentesHeaderSection();
     initializeViewLoaderElements();
     intializeForms();
     initializeOverlays();
     initializeMaps();
+    
 /*comentario*/    
 }
 

@@ -4,9 +4,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-class TipoUsuario extends DataMapper
+class Property_close_place extends DataMapper
 {
+
+    var $has_many  = array("property");
     
 }
 ?>
