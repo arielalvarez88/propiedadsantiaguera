@@ -420,6 +420,171 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 /* END of Drupal Menu*/
 
 
+ /* property-form */
+ #property-form
+ {
+     color: black;
+ }
+ 
+ #property-form ul
+ {
+     list-style: none;
+ }
+ 
+ #property-form-description label {
+    display: block;
+    float: left;
+    width: 120px;
+}
+
+
+#property-form-description ul li
+{
+    height: 31px;
+    float: left;
+    clear: both;
+}
+
+
+#property-form-description select, #property-form-description input
+{
+    display: block;
+    float: left;
+    height: 23px;
+    width: 118px;
+    border: 4px solid #e9e9e9;
+    margin-bottom: 9px;
+    
+    
+}
+
+#property-form-description-description
+{
+    float: left;
+}
+
+#property-form-description-description
+{
+    float: left;
+}
+
+#property-form-description-description textarea
+{
+    border: 4px solid #e9e9e9;
+}
+
+#property-form-description-description h3
+{
+    margin-bottom: 20px;
+}
+
+#property-form-description-description textarea, 
+#property-form-description-description label
+{
+    clear: both;
+    width: auto;
+    float: none;
+}
+
+#property-form-description-characteristics
+{
+    
+    background-color: #f7f7f7;
+    clear: left;
+    float: left;
+    height: 302px;
+    width: 320px;
+    margin-right: 44px;
+    
+}
+#property-form-description-characteristics h3{
+    background: white;
+    padding-bottom: 17px;
+    
+}
+#property-form-description-characteristics input
+{
+    display: block;
+    float: left;
+    width: 20px;
+    height: auto;
+}
+#property-form-description-characteristics  ul li
+{
+    list-style: none;
+    float: left;
+   
+}
+#property-form-description-characteristics-column1
+{
+   
+    padding-left: 20px;
+}
+
+#property-form-description-characteristics-column2
+{
+    padding-right: 20px;
+}
+
+.property-form-description-characteristics-column
+{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    float: left;
+    width: 140px;
+}
+
+#property-form-description, #property-form-close-places, #property-form-photos
+{
+    padding-left: 31px;
+}
+
+#property-form-photos
+{
+    height: 128px;
+}
+
+
+
+#property-form-description-column3
+{
+    margin-right: 0;
+}
+
+.property-form-description-column {
+    float: left;
+    list-style: none outside none;
+    margin-right: 20px;
+}
+
+.property-form-close-places-column
+{
+    float: left;
+    maring-right: 20px;
+}
+
+#property-form-close-places-column1
+{
+    margin-right: 0;
+}
+
+#property-form-description-column1 select, 
+#property-form-description-column1 input
+{
+    width: 238px;
+}
+
+.property-form-photos-column
+{
+    float: left;
+    margin-right: 45px;
+}
+
+ /* property-form ENDS*/
+ 
+
+
+
 #center-section{
 
 
@@ -1469,9 +1634,6 @@ margin-bottom: 10px;
     width: 200px;
 }
 
-#signup-informacion-general input {
-    margin-bottom: 20px;
-}
 
 #signup-descripcion{
   clear: both;
@@ -1527,10 +1689,11 @@ margin-bottom: 10px;
 
 .form-divisor{
 
-       background-image: url("/images/common/formDivisor.png");
+       background: url("/images/common/formDivisor.png") no-repeat center center;
     height: 15px;
-    margin: 20px 0;
+    padding:  20px 0;
     width: 549px;
+    clear: both;
 }
 
 .form-section-header
@@ -1568,6 +1731,16 @@ span.required{
 #saludo-usuario
 {
     font-weight: bold;
+}
+
+.form-buttons
+{
+    margin: 20px 0;
+}
+
+.form-clear-button
+{
+    cursor: pointer;
 }
 /*clases utiles ENDS*/
 
