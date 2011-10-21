@@ -79,9 +79,9 @@
             <p id="signup-upload-photo-status"></p>
         </div>
 
-        <p id="signup-descripcion-ejemplo">
-                    Somos una agencia inmobiliaria que pone a disposición del mercado Dominicano, una amplia variedad de propiedades localizadas en las principales ciudades del país. Contamos con un equipo de agentes comprometidos en asesorar a las personas interesadas en adquirir una propiedad, para lograr una buena inversión.
-        </p>
+        <div id="signup-descripcion-ejemplo">
+             
+        </div>
 
             
     </div>

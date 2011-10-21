@@ -56,7 +56,54 @@ $config = array(
             'label' => 'email',
             'rules' => 'required|max_length[30]|valid_email'
         )
-    )
+    ),
+    'property' => array(
+    
+        array(
+            'field' => 'property-type',
+            'label' => 'sector',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'property-sector',
+            'label' => 'sector',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'property-terrain',
+            'label' => 'terreno',
+            'rules' => 'required|numeric'),
+    array(
+            'field' => 'property-construction',
+            'label' => 'construccion',
+            'rules' => 'required|numeric'),
+    array(
+            'field' => 'property-stories',
+            'label' => 'niveles',
+            'rules' => 'required|numeric'),
+    array(
+            'field' => 'property-bedrooms',
+            'label' => 'habitaciones',
+            'rules' => 'required|numeric'),
+    array(
+            'field' => 'property-bathrooms',
+            'label' => 'baños',
+            'rules' => 'required|numeric'),
+    array(
+            'field' => 'property-livingrooms',
+            'label' => 'salas',
+            'rules' => 'required|numeric'),
+    array(
+            'field' => 'property-kitchens',
+            'label' => 'cocinas',
+            'rules' => 'required|numeric'),
+    array(
+            'field' => 'property-parkings',
+            'label' => 'parqueos',
+            'rules' => 'required|numeric')
+    
+    
+    )   
             
 );
 ?>
