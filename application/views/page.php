@@ -1,15 +1,13 @@
- <?php
- 
+<?php
 $loggedUser = User_handler::getLoggedUser();
 
 $thisPage = str_replace('/', '-', uri_string());
-
- ?>
+?>
 <html>
 
     <head>
         <link rel="stylesheet" type="text/css" href="/css/propiedadsantiaguera.css"/>
-        
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
@@ -17,27 +15,42 @@ $thisPage = str_replace('/', '-', uri_string());
             <div id="header">
                 <div id="banner-container">
                     <div id="banner">
+                           <div id="idiomas-container">
+                                <span>Idioma:</span>
+                                <ul id="idomas-list">
+                                    <li class="idiomas-item" id="espanol">
+                                        <a class="no-decoration-anchor" href="#">
+                                            <img src="/images/spanishFlag.png" class="no-decoration-anchor"/>
+                                        </a>
+                                    </li>
+                                    <li class="idiomas-item" id="ingles">
+                                        <a class="no-decoration-anchor" href="#">
+                                            <img src="/images/englishFlag.png" class="no-decoration-anchor">
+                                        </a>
 
+                                    </li>
+                                </ul>
+                            </div>
                         <div id="login-links">
                             <p>
-                                <?php if($loggedUser):?>
-                                <span id="saludo-usuario">Bienvenido <?php echo $loggedUser->name.', ';?></span>
-                                <a class="no-decoration-anchor" href="/userController/logout">logout</a>
-                                <span class="vertical-serparator"> | </span>
-                                <?php endif;?>
+<?php if ($loggedUser): ?>
+                                    <span id="saludo-usuario">Bienvenido <?php echo $loggedUser->name . ', '; ?></span>
+                                    <a class="no-decoration-anchor" href="/userController/logout">logout</a>
+                                    <span class="vertical-serparator"> | </span>
+<?php endif; ?>
                                 <a class="no-decoration-anchor" href="#">Somos</a>
                                 <span class="vertical-serparator"> | </span>
-                                  <?php if(!$loggedUser):?>
-                                <a id="login-link" class="no-decoration-anchor" href="#login">Login Usuarios</a>
-                                 <span class="vertical-serparator"> | </span>
-                                <?php endif;?>
-                                
-                               
+<?php if (!$loggedUser): ?>
+                                    <a id="login-link" class="no-decoration-anchor" href="/usuario/loginform">Login Usuarios</a>
+                                    <span class="vertical-serparator"> | </span>
+<?php endif; ?>
+
+
                                 <a id="header-help" class="no-decoration-anchor" href="#login">Ayuda</a>
-                            </p>
 
-
+                            </p>    
                         </div>
+                       
 
                         <div id="logo">
                             <img alt="logo" src="/images/logo.png">
@@ -46,78 +59,61 @@ $thisPage = str_replace('/', '-', uri_string());
                 </div>
 
                 <div id="top-menu-container">
-                    <ul class="primary-links"><li class="menu-111 first"><a title="" href="<?php echo base_url();?>">INICIO</a></li>
+                    <ul class="primary-links"><li class="menu-111 first"><a title="" href="<?php echo base_url(); ?>">INICIO</a></li>
                         <li class="menu-269"><a title="" href="/propiedades">PROPIEDADES</a></li>
                         <li class="menu-270"><a title="" href="/agentes">AGENTES</a></li>
                         <li class="menu-271"><a title="" href="http://www.google.com">PRECIOS Y PLANES</a></li>
                         <li class="menu-272 last"><a title="" href="http://www.google.com">CONTACTO</a></li>
-                    </ul>                    
-                    <div id="idiomas-container">
-                        <span>Idioma:</span>
-                        <ul id="idomas-list">
-                            <li class="idiomas-item" id="espanol">
-                                <a class="no-decoration-anchor" href="#">
-                                    <img src="/images/spanishFlag.png" class="no-decoration-anchor"/>
-                                </a>
-                            </li>
-                            <li class="idiomas-item" id="ingles">
-                                <a class="no-decoration-anchor" href="#">
-                                    <img src="/images/englishFlag.png" class="no-decoration-anchor">
-                                </a>
-
-                            </li>
-                        </ul>
-                    </div>
-
+                    </ul>                   
                 </div>
             </div>
             <div id="content">
-                <?php if (isset($topLeftSide) || isset($topCenterSide) || isset($topRightSide)): ?>
+<?php if (isset($topLeftSide) || isset($topCenterSide) || isset($topRightSide)): ?>
                     <div id="top-section">
-                        <?php if (isset($topLeftSide)): ?>
+                    <?php if (isset($topLeftSide)): ?>
                             <div id="top-left-side">
-                                <?php echo $topLeftSide; ?>
+                            <?php echo $topLeftSide; ?>
                             </div>
-                        <?php endif; ?>
+                            <?php endif; ?>
 
                         <?php if (isset($topCenterSide)): ?>
                             <div id="top-center-side">
-                                <?php echo $topCenterSide; ?>
+                            <?php echo $topCenterSide; ?>
                             </div>
-                        <?php endif; ?>
+                            <?php endif; ?>
 
                         <?php if (isset($topRightSide)): ?>
 
                             <div id="top-right-side">
-                                <?php echo $topRightSide; ?>
+        <?php echo $topRightSide; ?>
                             </div>
-                        <?php endif; ?>
+                            <?php endif; ?>
                     </div>
-                <?php endif; ?>
+                    <?php endif; ?>
 
                 <?php if (isset($centerSection)): ?>
 
                     <div id="center-section">
-                        <?php echo $centerSection; ?>
+    <?php echo $centerSection; ?>
                     </div>
-                <?php endif; ?>
+                    <?php endif; ?>
 
                 <?php if (isset($bottomLeftSide) || isset($bottomRightSide)): ?>
                     <div id="bottom-section">
-                        <?php if (isset($bottomLeftSide)): ?>
+                    <?php if (isset($bottomLeftSide)): ?>
                             <div id="bottom-left-side">
-                                <?php echo $bottomLeftSide; ?>
+                            <?php echo $bottomLeftSide; ?>
                             </div>
-                        <?php endif; ?>
+                            <?php endif; ?>
 
                         <?php if (isset($bottomRightSide)): ?>
                             <div id="bottom-right-side">
-                                <?php echo $bottomRightSide; ?>
+                            <?php echo $bottomRightSide; ?>
                             </div>
-                        <?php endif; ?>
+                            <?php endif; ?>
                     </div>
 
-                <?php endif; ?>
+<?php endif; ?>
 
 
             </div>
@@ -166,29 +162,15 @@ $thisPage = str_replace('/', '-', uri_string());
 
             </div>
         </div>
-        
-        <div style="display:none;">
-            <div id="login">
-                <a id="login-close-button" href="#js"></a>
-                <form action="/userController/login" method="post" class="optional-form">
-                    <img src="/images/login/loginTitle.png" alt="Login" id="login-title"/>
-                    <input id="login-email" type="text" name="login-email" class="login-input" /><br/>
-                    
-                    <input id="login-password-clear" type="text" name="login-password" class="login-input" /><br/>
-                    <input id="login-password" type="password" name="login-password" class="login-input" style="display:none;"/>
-                    <input id="login-submit" type="image" src="<?php echo base_url();?>images/login/loginButton.png" alt="login"/> 
-                    <a href="#" id="login-password-reset-button">&iquest;Olvido su contrase&ntilde;a?</a>
-                </form>
-            </div>
-        </div>
-        
-        
+
+
+
         <script type="text/javascript" src="/js/jquery-1.6.1.min.js" type="text/javascript" ></script>
         <script type="text/javascript" src="/js/jquery-ui-1.8.14.custom.min.js" type="text/javascript" ></script>        
         <script type="text/javascript" src="/js/jquery.cycle.all.js" type="text/javascript" ></script>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>        
         <script type="text/javascript" src="/js/jquery.fancybox-1.3.4.js" type="text/javascript" ></script>
         <script type="text/javascript" src="/js/propiedadsantiaguera.js" type="text/javascript" ></script>
-        
+
     </body>
 </html>

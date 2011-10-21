@@ -37,9 +37,60 @@ class Propiedades extends CI_Controller
             
     }
     
+    public function validate(){
+                
+        
+        if ($this->form_validation->run('property') == false)
+        {
+                $this->error();
+        }
+        else
+        {
+            $this->save_property();
+        }
+    }
     
-    
-     private function signup_form_error() {
+    private function save_property()
+    {
+        $newProperty = new Property();
+        
+        
+        $newPropertyInfo = $this->input->post();
+        $newProperty->terrain = $newProperty['property-terrain'];
+        $newProperty->bathrooms = $newProperty['property-bathrooms'];
+        $newProperty->sector = $newProperty['property-sector'];
+        $newProperty->construction = $newProperty['property-sector'];
+        $newProperty->livinrooms = $newProperty['property-livinrooms'];
+        $newProperty->address = $newProperty['property-address'];
+        $newProperty->stories = $newProperty['property-stories'];
+        $newProperty->kitchens = $newProperty['property-kitchens'];
+        $newProperty->status = $newProperty['property-status'];
+        $newProperty->bedrooms = $newProperty['property-bedrooms'];
+        $newProperty->parkings = $newProperty['property-parkings'];
+        $newProperty->sell_price_dollars = $newProperty['property-selling_prices_dollars'];
+        $newProperty->sell_price_pesos = $newProperty['property-selling_prices_dollars'];
+        $newProperty->rent_price_dollars = $newProperty['rent_price_dollars'];
+        $newProperty->rent_price_pesos = $newProperty['rent_price_pesos'];
+        
+        
+        $newUser->password = $userInfo['signup-bedrooms'];
+        
+        $newUser->tel = $userInfo['signup-tel'];
+        $newUser->cel = $userInfo['signup-cel'];
+        $newUser->fax = $userInfo['signup-fax'];
+        $newUser->website = $userInfo['signup-website'];        
+        $newUser->rnc = $userInfo['signup-rnc'];
+        $newUser->address = $userInfo['signup-address'];
+        $newUser->description = $userInfo['signup-description'];
+        
+        $newUser->save();
+        
+        User_handler::loginAndSaveInCookies($newUser->email, $newUser->password);
+        
+    }
+
+
+    private function signup_form_error() {
 
         $repopulateForm['name'] = $this->input->post('signup-name');
         $repopulateForm['lastname'] = $this->input->post('signup-lastname');

@@ -7,8 +7,8 @@ require_once 'Iemail_template.php';
 
 class Password_reset_template implements Iemail_template
 {
-    private $token;
-    public function __construct($token)
+    public $token;
+    public function __construct($token=null)
     {
         $this->token = $token;
     }
@@ -20,10 +20,9 @@ class Password_reset_template implements Iemail_template
     
     public function email_template($client_name)
     {
-        $this->token;
+        $token = $this->token;
         $text = 'Hola '.$client_name.' hemos recibido una solicitud de cambio de password
-        <a href="http://www.propiedadsantiguera.com/usuario/password_reset_confirm/'.$token.'" />Click aqu&iacute;</a>';
-    
+        http://www.propiedadsantiaguera.5050mkt.com/usuario/password_reset_confirm/'.$token;  
         return $text;
     }
     
