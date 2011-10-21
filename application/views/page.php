@@ -170,8 +170,8 @@ $thisPage = str_replace('/', '-', uri_string());
 
 
 
-        <script type="text/javascript" src="/js/jquery-1.6.1.min.js" type="text/javascript" ></script>
-        <script type="text/javascript" src="/js/jquery-ui-1.8.14.custom.min.js" type="text/javascript" ></script>        
+        <script type="text/javascript" src="/js/jquery-1.6.4.min.js" type="text/javascript" ></script>
+        <script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript" ></script>        
         <script type="text/javascript" src="/js/jquery.cycle.all.js" type="text/javascript" ></script>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>        
         <script type="text/javascript" src="/js/jquery.fancybox-1.3.4.js" type="text/javascript" ></script>
