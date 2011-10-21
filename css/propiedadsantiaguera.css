@@ -291,7 +291,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 .primary-links li a:hover
 {
-    background: #F9Ca02 url('/images/flecha.png') center 24px no-repeat;   
+    background:url("/images/flecha.png") no-repeat scroll center 23px #F9CA02;  
 }
 
 .primary-links 
