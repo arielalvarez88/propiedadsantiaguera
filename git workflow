@@ -17,5 +17,5 @@ git push
 
 borrar un branch:
 
-git branch -d ariel_inscribir_propiedades
-git push origin :ariel_inscribir_propiedades
+git branch -d ariel_inscribir_propiedades (borra un branch local)
+git push origin :ariel_inscribir_propiedades (borra un branch remoto)

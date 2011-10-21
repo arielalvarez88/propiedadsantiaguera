@@ -22,10 +22,7 @@ class Signup extends CI_Controller {
         $repopulateForm['website'] = $this->input->post('signup-website');
         $repopulateForm['description'] = $this->input->post('description');
         $repopulateForm['clientType'] = $this->input->post('signup-client-type');
-       
-       
         $repopulateForm['errores'] = validation_errors();
-
         $signUpData['signUpForm'] = $this->load->view('blocks/newUserType', '', true);
         $signUpData['signUpForm'] .= $this->load->view('forms/signup_informacion_general', $repopulateForm, true);
         
