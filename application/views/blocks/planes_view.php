@@ -4,60 +4,88 @@
  * and open the template in the editor.
  */
 ?>
-<table id="planes">
-    	<colgroup class="info_col" span="1"/></colgroup>
-    	<colgroup class="basic_plan_col" /></colgroup>
-    	<colgroup class="plus_plan_col" /></colgroup>
-    	<colgroup class="agent_plan_col" /></colgroup>
-    	<colgroup class="realty_plan_col" /></colgroup>
+<div id="planes_holder">
+<table id="planes_detail">
+        <tr>
+            <td>NUMERO DE PROPIEDADES</td>
+        </tr>
+        <tr>
+            <td>DURACION POR PROPIEDAD</td>
+        </tr>
+        <tr>
+            <td>FOTOS</td>
+        </tr>
+        <tr>
+            <td>VIDEO</td>
+        </tr>
+        <tr>
+            <td>DESCUENTO EN BANNERS PUBLICITARIOS</td>
+        </tr>
+        <tr>
+            <td>CREACION DE SOLICITUD Y ENVIAR PROPUESTA DE SOLICITUDES</td>
+        </tr>
+        <tr>
+            <td>INFORMACION EN INGLES Y ESPA&Ntilde;OL</td>
+        </tr>
+        <tr>
+            <td>LOCALIZACION DE LA PROPIEDAD EN GOOGLE MAPS</td>
+        </tr>
+        <tr>
+            <td>IMPRESION DE LA PROPIEDAD EN FORMATO PDF</td>
+        </tr>
+        <tr>
+            <td>VIDEOS COMPARTIDOS EN EL WEBSITE DEL USUARIO</td>
+        </tr>
+</table>
     
-    
+<table id="planes_data">
+        <thead>
         <tr>
-            <th scope="col"></th><th scope="col" class="regular_title">BASICO</th><th scope="col" class="plus_title">PLUS</th><th scope="col" class="regular_title">AGENTE</th><th scope="col" class="regular_title">INMOBILIARIA</th>
+            <th>BASICO</th><th>PLUS</th><th>AGENTE</th><th>INMOBILIARIA</th>
         </tr>
-    
- 
+        </thead>
+        <tbody>
         <tr>
-            <td>NUMERO DE PROPIEDADES</td> <td>1</td> <td>5</td> <td>10</td> <td>25</td>
-        </tr>
-        <tr>
-            <td>DURACION POR PROPIEDAD</td> <td>30</td> <td>30</td> <td>30</td> <td>30</td>
+           <td>1</td> <td>5</td> <td>10</td> <td>25</td>
         </tr>
         <tr>
-            <td>FOTOS</td> <td>10</td> <td>10</td> <td>15</td> <td>15</td>
+           <td>30</td> <td>30</td> <td>30</td> <td>30</td>
         </tr>
         <tr>
-            <td>VIDEO</td> <td></td> <td></td> <td></td> <td></td>
+           <td>10</td> <td>10</td> <td>15</td> <td>15</td>
         </tr>
         <tr>
-            <td>DESCUENTO EN BANNERS PUBLICITARIOS</td> <td>5%</td> <td>5%</td> <td>10%</td> <td>10%</td>
+           <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td>
         </tr>
         <tr>
-            <td>CREACION DE SOLICITUD Y ENVIAR PROPUESTA DE SOLICITUDES</td> <td></td> <td></td> <td></td> <td></td>
+            <td>5%</td> <td>5%</td> <td>10%</td> <td>10%</td>
         </tr>
         <tr>
-            <td>INFORMACION EN INGLES Y ESPA&Ntilde;OL</td> <td></td> <td></td> <td></td> <td></td>
+            <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td>
         </tr>
         <tr>
-            <td>LOCALIZACION DE LA PROPIEDAD EN GOOGLE MAPS</td> <td></td> <td></td> <td></td> <td></td>
+            <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td>
         </tr>
         <tr>
-            <td>IMPRESION DE LA PROPIEDAD EN FORMATO PDF</td> <td></td> <td></td> <td></td> <td></td>
+           <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td>
         </tr>
         <tr>
-            <td>VIDEOS COMPARTIDOS EN EL WEBSITE DEL USUARIO</td> <td></td> <td></td> <td></td> <td></td>
+            <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td>
         </tr>
         <tr>
-            <td></td> <td>RD$1,500</td> <td>RD$6,000</td> <td>RD$10,000</td> <td>RD$20,000</td> 
+            <td><img src="/images/x.png" alt="x"/></td> <td><img src="/images/x.png" alt="x"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td>
         </tr>
         <tr>
-            <td></td> <td>RD$1,500/Propiedad</td> <td>RD$1,200/Propiedad</td> <td>RD$1,000/Propiedad</td> <td>RD$800/Propiedad</td>
+            <td>RD$1,500<br><span>RD$1,500/Propiedad</span></td> <td>RD$6,000</br><span>RD$1,200/Propiedad</span></td> <td>RD$10,000</br><span>RD$1,000/Propiedad</span></td> <td>RD$20,000</br><span>RD$800/Propiedad</span></td> 
         </tr>
         <tr>
-            <td></td> <td>Elegir Plan</td> <td>Elegir Plan</td> <td>Elegir Plan</td> <td>Elegir Plan</td>
-        </tr>
+            <td>Elegir Plan</td> <td>Elegir Plan</td> <td>Elegir Plan</td> <td>Elegir Plan</td>
+        </tr
         <tr>
-            <td></td> <td></td> <td></td> <td></td> <td></td>
+            <td colspan="4">&nbsp;</td>
         </tr>
+        
+        </tbody>
 
 </table>
+</div>
