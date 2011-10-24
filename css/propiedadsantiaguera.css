@@ -13,6 +13,11 @@ body{
     font-family: museo, helvetica, arial, sans-serif;
 }
 
+#bottom, #center-section 
+{
+    clear: both;
+}
+
 h1,h2,h3,h4,h5,h6{
     margin:0;
 }
@@ -227,11 +232,12 @@ p, ul
 }
 #top-menu-container
 {
-    background-color: #76bc3b;
-    height: 32px;
-    -moz-border-radius:6px;
-    margin:10px 0;
-    padding:0 0 12px 0;
+    background-color: #76BC3B;
+    border-radius: 6px 6px 6px 6px;
+    height: 44px;
+    margin: 10px 0;
+    
+    position: relative;
 }
 
 .top-menu-item
@@ -284,8 +290,7 @@ img.no-decoration-anchor,a.no-decoration-anchor,a.no-decoration-anchor:visited,a
 {
     font-weight:bold;
     color: white;
-    display: block;
-    float: left;
+    display: inline;    
     height: 27px;
     list-style: none outside none;
     text-align: right;
@@ -294,13 +299,12 @@ img.no-decoration-anchor,a.no-decoration-anchor,a.no-decoration-anchor:visited,a
 ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited 
 {
     color: white;
-    display: block;
+    
     height: 17px;
     padding: 5px 10px 10px;
     text-decoration: none;
-    float:right;
+ 
 }
-
 .primary-links li a:hover
 {
     background:url("/images/flecha.png") no-repeat scroll center 23px #F9CA02;  
@@ -308,10 +312,9 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 .primary-links 
 {
-    height:27px;
-    float:right;
-    padding-top:12px;
-    padding-right: 40px;
+  position: absolute;
+  right: 20px;
+  top:18px;
 }
 
 #footer
@@ -880,6 +883,11 @@ div.footer-section a{
     
 }
 
+#basic-filter-price-slider-max-display
+{
+    float: right;
+}
+
 #basic-filter-price-slider
 {
        width: 259px;
@@ -888,6 +896,8 @@ div.footer-section a{
 
 
 /****** basic-filter ENDS*******/
+
+
 
 
 /* Blocks */
@@ -945,6 +955,12 @@ div.footer-section a{
 
 /*front-page-slide-show END*/
 
+/******* front-page-banner*******/
+#front-page-banner
+{
+    padding: 10px 0;
+}
+/*******front-page-banner ENDS*******/
 
 
 /*front-page-advertising*/
@@ -982,15 +998,31 @@ div.footer-section a{
 /*subscribe ENDS*/
 
 
-/*propiedades-mas-visitadas*/
-#propiedades-mas-visitadas-header {
-    background-image: url("/images/propiedadesMasVisitadas/propiedadesMasVisitadasHeaderBackground.png");
-    height: 36px;
-    margin: 0;
-    padding-left: 20px;
-    padding-top: 20px;
+/*most-viewed-properties*/
+#most-viewed-properties
+{
+    margin-right: 5px;    
+    height: 329px;
 }
-.propiedades-mas-visitadas-propiedad-titulo
+
+#most-viewed-properties, #most-viewed-properties-properties-container {
+    color: black;
+    
+    width: 532px;
+    
+}
+
+
+
+#most-viewed-properties-header {
+    
+     color: #76BB3A;
+    font-size: 1.4em;
+    margin: 0 0 5px;
+    padding: 10px 0 0 15px;
+}
+
+.most-viewed-properties-property-title
 {
     background-image: url("/images/propiedadesMasVisitadas/propiedadesMasVisitadasTitleBackground.png");
     color: white;
@@ -1002,94 +1034,69 @@ div.footer-section a{
     width: 176px;
 }
 
-.propiedades-mas-visitadas-propiedad p{
+.most-viewed-properties-property p{
     margin:0;
 }
-.propiedades-mas-visitadas-propiedad span{
+.most-viewed-properties-property span{
     display:block;
 }
-.propiedades-mas-visitadas-propiedad span.propiedades-mas-visitadas-propiedad-precio{
+.most-viewed-properties-property span.most-viewed-properties-property-price{
     color:#247f12;
     display:inline;
 }
 
-.propiedades-mas-visitadas-propiedad
+
+.most-viewed-properties-property-screenshot{
+    
+    width: 248px;
+    height: 164px;
+
+
+}
+
+#most-viewed-properties-first-property {
+    border-right: 1px solid #CCCCCC;
+}
+
+
+.most-viewed-properties-property
 {
-    height: 254px;
-    padding: 10px 10px 0;
-    width: 195px;
-
+    width: auto;
+    
+    float: left;
+    padding: 0 5px;
 }
 
-.propiedades-mas-visitadas-propiedad-screenshot{
-    border: 4px solid #76bc3b;
-    width: 191px;
-    height: 158px;
-
-
-}
-
-
-
-#propiedades-mas-visitadas-slideshow
+#most-viewed-properties-properties-container
 {
-    background-image: url('/images/propiedadesMasVisitadas/propiedadesMasVisitadasBackground.png');
+    margin: 0 5px;
 }
 
-#propiedades-mas-visitadas {
+/*most-viewed-properties END*/
+
+/*proerties-of-the-week*/
+#properties-of-the-week {
     color: black;
-    width: 644px;
-    height: 320px;
-    margin-right: 5px;
+    height: 327px;
+    width: 417px;    
+    background-image: url('/images/common/whiteToGrayGradient_H327.png');
 }
-/*propiedades-mas-visitadas END*/
 
-/*propiedades de la semana*/
-#propiedades-de-la-semana
-{
-    width:296px;
-    height: 320px;
-    color: black;
-}
-#propiedades-de-la-semana-header
-{
-    background-image: url("/images/propiedadesMasVisitadas/propiedadesMasVisitadasHeaderBackground.png");
+#properties-of-the-week-header {
+    color: #76BB3A;
     font-size: 1.4em;
-    height: 36px;
-    margin: 0;
-    padding-left: 10px;
-    padding-top: 20px;
-    width: 286px;
+    margin: 0 0 5px;
+    padding: 10px 0 0 15px;
 }
 
-#propiedades-de-la-semana-propiedad-titulo
+
+#properties-of-the-week-video
 {
-    background-image: url("/images/propiedadesMasVisitadas/propiedadesMasVisitadasTitleBackground.png");
-    color: white;
-    font-size: 1.2em;
-    height: 20px;
-    margin: 5px 0;
-    padding-left: 5px;
-    padding-right: 5px;
-    width: 176px;
-}
-#propiedades-de-la-semana-propiedad
-{
-    background-image: url("/images/propiedadesMasVisitadas/propiedadesMasVisitadasBackground.png");
-    height: 259px;
-    padding-top: 5px;
-}
-#propiedades-de-la-semana-propiedad-video
-{
-    width:282px;
-    height: 209px;
+    width:403px;
+    height: 281px;
     margin-left: auto;
     margin-right: auto;
     display:block;
-}
-
-#propiedades-de-la-semana-propiedad-sector{
-
 }
 
 

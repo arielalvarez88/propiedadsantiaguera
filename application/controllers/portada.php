@@ -21,9 +21,10 @@ class Portada extends CI_Controller {
         $data['topRightSide'] = $this->load->view('blocks/advertising','',true);        
         $data['topRightSide'] .= $this->load->view('blocks/tired_message','',true);
         $menuTiposDePropiedadData['sectionName'] = 'portada';
-        $data['centerSection'] = $this->load->view('blocks/menuTiposDePropiedad',$menuTiposDePropiedadData,true);
-        $data['bottomLeftSide'] = $this->load->view('blocks/propiedadesMasVisitadas','',true);
-        $data['bottomRightSide'] = $this->load->view('blocks/propiedadesDeLaSemana','',true);
+        $data['bottomLeftSide'] = $this->load->view('blocks/properties_of_the_week','',true);
+        $data['bottomRightSide'] = $this->load->view('blocks/propiedadesMasVisitadas','',true);
+        $data['bottom'] = $this->load->view('blocks/front_page_banner','',true);
+        
 
 
         $this->load->view('page',$data);
