@@ -1808,8 +1808,8 @@ div.footer-section a{
     color: white;
 }
 
-.form-divisor{
-
+.form-divisor
+{
     background: url("/images/common/formDivisor.png") no-repeat center center;
     height: 15px;
     padding:  20px 0;
@@ -1870,10 +1870,8 @@ span.required{
 .error-messages
 {
   background-color: #FCCECC;
-    border: 1px solid red;
-    color: red;
-    
-    
+  border: 1px solid red;
+  color: red;    
 }
 
 .info-messages
@@ -1883,25 +1881,53 @@ span.required{
 }
 
 /***** plans table ******/
-#planes
+#planes_holder
 {
+    background:url('/images/plans_diagonal_line_bg.png') repeat transparent;
+    padding:10px 15px;
+}
+#planes_detail
+{
+    float:left;
+    width:22%;
     color:#333;
+    font-size:9pt;
+    text-align:right;
+    margin-top:135px;
 }
-#planes th.regular_title
+#planes_detail td
 {
-    background:url('/images/regular_plan_title_bg.png') top left repeat-x transparent;
-    padding:10px 20px;
-    color:#F7C803;
+    padding-bottom: 10px;
 }
-#planes th.plus_title
+#planes_data
 {
-    background:url('/images/main_plan_header.png') top center no-repeat transparent; 
+    background:url('/images/plans_table.png') no-repeat top right transparent;
+    color:#333;
+    width:705px;
+    text-align: center;
+    height: 860px;
+}
+#planes_data th
+{
+    color:#fa0;
+    padding-top: 22px;
+}
+
+#planes_data tr,#planes_data td
+{
+    padding:17px 0;
+}
+#planes_data thead
+{
+    height:116px;
+}
+#planes_data tbody
+{
+    height: 600px;
 }
 .info_col
 {
-    text-align: right;
-    font-size: 10pt;
-    color:red;
+
 }
 
 
