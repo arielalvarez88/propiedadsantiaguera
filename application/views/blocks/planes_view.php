@@ -46,37 +46,37 @@
         </thead>
         <tbody>
         <tr>
-           <td>1</td> <td>5</td> <td>10</td> <td>25</td>
+           <td>1</td> <td class="white">5</td> <td>10</td> <td class="white">25</td>
         </tr>
         <tr>
-           <td>30</td> <td>30</td> <td>30</td> <td>30</td>
+           <td>30</td> <td class="white">30</td> <td>30</td> <td class="white">30</td>
         </tr>
         <tr>
-           <td>10</td> <td>10</td> <td>15</td> <td>15</td>
+           <td>10</td> <td class="white">10</td> <td>15</td> <td class="white">15</td>
         </tr>
         <tr>
-           <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td>
+           <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
         </tr>
         <tr>
-            <td>5%</td> <td>5%</td> <td>10%</td> <td>10%</td>
+            <td>5%</td> <td class="white">5%</td> <td>10%</td> <td class="white">10%</td>
         </tr>
         <tr>
-            <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td>
+            <td><img src="/images/check.png" alt="check"/></td  > <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
         </tr>
         <tr>
-            <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td>
+            <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
         </tr>
         <tr>
-           <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td>
+           <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
         </tr>
         <tr>
-            <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td>
+            <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
         </tr>
         <tr>
-            <td><img src="/images/x.png" alt="x"/></td> <td><img src="/images/x.png" alt="x"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td>
+            <td><img src="/images/x.png" alt="x"/></td> <td><img src="/images/x.png" alt="x"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
         </tr>
         <tr>
-            <td>RD$1,500<br><span>RD$1,500/Propiedad</span></td> <td>RD$6,000</br><span>RD$1,200/Propiedad</span></td> <td>RD$10,000</br><span>RD$1,000/Propiedad</span></td> <td>RD$20,000</br><span>RD$800/Propiedad</span></td> 
+            <td>RD$1,500<br><span>RD$1,500/Propiedad</span></td> <td>RD$6,000</br><span class="white">RD$1,200/Propiedad</span></td> <td>RD$10,000</br><span>RD$1,000/Propiedad</span></td> <td>RD$20,000</br><span class="white">RD$800/Propiedad</span></td> 
         </tr>
         <tr>
             <td>Elegir Plan</td> <td>Elegir Plan</td> <td>Elegir Plan</td> <td>Elegir Plan</td>
