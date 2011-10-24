@@ -697,10 +697,101 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     margin-right: 45px;
 }
 
-/* property-form ENDS*/
+/*property-form ENDS*/
+
+/***popular-neighborhoods***/
+
+#popular-neighborhoods
+{
+    border: 1px solid #E7E7E7;
+    color: black;
+    float: left;
+    height: 246px;
+    width: 302px;
+    
+}
+#popular-neighborhoods ul
+{
+    margin-left: 6px;
+}
+    
 
 
+.front-page-module-header img
+{
+    margin-right: 7px;
+}
 
+#popular-neighborhoods a
+{
+    float: right;
+    color: #99cd6c;
+    
+    
+}
+
+#popular-neighborhoods-header
+{
+ 
+}
+
+#popular-neighborhoods ul li
+{
+    list-style: none outside none;
+    margin: 3px 0;
+}
+
+#popular-neighborhoods ul li img
+{
+       height: 9px;
+    margin-right: 2px;
+    width: 7px;
+}
+
+
+/***popular-neighborhoods ENDS***/
+
+
+/***buy-blueprints-link***/
+#buy-blueprints-link
+{
+    background-color: #F9CA02;
+    color: black;
+    display: block;
+    float: left;
+    font-size: 2.7em;
+    font-weight: bold;
+    height: 168px;
+    margin: 0 7px;
+    padding: 40px 0;
+    text-align: center;
+    width: 309px;
+}
+/***buy-blueprints-link ENDS***/
+
+/***tools-center***/
+
+#tools-center
+{
+    width: 330px;
+    height: 246px;
+    float: left;
+}
+
+#tools-center-slideshow
+{
+       height: 152px;
+}
+
+#tools-center-pager a
+{
+    display: block;
+    float: left;
+    width: 81px;
+    height: 58px;
+    background-image: url('/images/common/whiteToGrayGradient.png');
+}
+/***tools-center ENDS***/
 
 #center-section{
 
@@ -1852,12 +1943,22 @@ span.required{
     margin: 20px 0;
 }
 
+
 .form-clear-button
 {
     cursor: pointer;
 }
 
 
+
+.front-page-module-header
+{
+       background-image: url("/images/common/whiteToGrayGradient_H327.png");
+    background-position: 0 219px;
+    color: #76B939;
+    height: 21px;
+    padding: 7px 0 7px 10px;tools-
+}
 .error-messages, .info-messages
 {
      padding: 5px 5px;
