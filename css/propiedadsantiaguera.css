@@ -2004,7 +2004,7 @@ span.required{
 {
     background:url('/images/plans_table.png') no-repeat top right transparent;
     color:#333;
-    width:705px;
+    width:687px;
     text-align: center;
     height: 860px;
 }
@@ -2016,7 +2016,15 @@ span.required{
 
 #planes_data tr,#planes_data td
 {
-    padding:17px 0;
+    padding:15px 0;
+}
+#planes_data td span
+{
+    font-size:8pt;
+}
+#planes_data .white
+{
+    color:#fff
 }
 #planes_data thead
 {
