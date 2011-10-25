@@ -16,36 +16,36 @@ $thisPage = str_replace('/', '-', uri_string());
             <div id="header">
                 <div id="banner-container">
                     <div id="banner">
-                           <div id="idiomas-container">
-                                <span>Idioma:</span>
-                                <ul id="idomas-list">
-                                    <li class="idiomas-item" id="espanol">
-                                        <a class="no-decoration-anchor" href="#">
-                                            <img src="/images/spanishFlag.png" class="no-decoration-anchor"/>
-                                        </a>
-                                    </li>
-                                    <li class="idiomas-item" id="ingles">
-                                        <a class="no-decoration-anchor" href="#">
-                                            <img src="/images/englishFlag.png" class="no-decoration-anchor">
-                                        </a>
+                        <div id="idiomas-container">
+                            <span>Idioma:</span>
+                            <ul id="idomas-list">
+                                <li class="idiomas-item" id="espanol">
+                                    <a class="no-decoration-anchor" href="#">
+                                        <img src="/images/spanishFlag.png" class="no-decoration-anchor"/>
+                                    </a>
+                                </li>
+                                <li class="idiomas-item" id="ingles">
+                                    <a class="no-decoration-anchor" href="#">
+                                        <img src="/images/englishFlag.png" class="no-decoration-anchor">
+                                    </a>
 
-                                    </li>
-                                </ul>
-                            </div>
+                                </li>
+                            </ul>
+                        </div>
                         <div id="login-links">
                             <p>
-<?php if ($loggedUser): ?>
+                                <?php if ($loggedUser): ?>
                                     <span id="saludo-usuario">Bienvenido <?php echo $loggedUser->name . ', '; ?></span>
                                     <a class="no-decoration-anchor" href="/userController/logout">logout</a>
                                     <span class="vertical-serparator"> | </span>
-<?php endif; ?>
+                                <?php endif; ?>
                                 <a id="login-link" class="no-decoration-anchor" href="/usuario/loginform">LOG IN</a>
-                                
+
                                 <span class="vertical-serparator"><img src="/images/dude_icon.png" alt="dude"/></span>
-<?php if (!$loggedUser): ?>
+                                <?php if (!$loggedUser): ?>
                                     <a class="no-decoration-anchor" href="#">CONTACTENOS</a>
                                     <span class="vertical-serparator"><img src="/images/phone_icon.png" alt="dude"/></span>
-<?php endif; ?>
+                                <?php endif; ?>
 
 
                                 <a id="header-help" class="no-decoration-anchor" href="#login">AYUDA</a>
@@ -55,7 +55,7 @@ $thisPage = str_replace('/', '-', uri_string());
                                 <img src="/images/banner_top.png" alt="banner top"/>
                             </div>
                         </div>
-                       
+
 
                         <div id="logo">
                             <img alt="logo" src="/images/logo.png">
@@ -73,55 +73,55 @@ $thisPage = str_replace('/', '-', uri_string());
                 </div>
             </div>
             <div id="content">
-<?php if (isset($topLeftSide) || isset($topCenterSide) || isset($topRightSide)): ?>
+                <?php if (isset($topLeftSide) || isset($topCenterSide) || isset($topRightSide)): ?>
                     <div id="top-section">
-                    <?php if (isset($topLeftSide)): ?>
+                        <?php if (isset($topLeftSide)): ?>
                             <div id="top-left-side">
-                            <?php echo $topLeftSide; ?>
+                                <?php echo $topLeftSide; ?>
                             </div>
-                            <?php endif; ?>
+                        <?php endif; ?>
 
                         <?php if (isset($topCenterSide)): ?>
                             <div id="top-center-side">
-                            <?php echo $topCenterSide; ?>
+                                <?php echo $topCenterSide; ?>
                             </div>
-                            <?php endif; ?>
+                        <?php endif; ?>
 
                         <?php if (isset($topRightSide)): ?>
 
                             <div id="top-right-side">
-        <?php echo $topRightSide; ?>
+                                <?php echo $topRightSide; ?>
                             </div>
-                            <?php endif; ?>
+                        <?php endif; ?>
                     </div>
-                    <?php endif; ?>
+                <?php endif; ?>
 
                 <?php if (isset($centerSection)): ?>
 
                     <div id="center-section">
-    <?php echo $centerSection; ?>
+                        <?php echo $centerSection; ?>
                     </div>
-                    <?php endif; ?>
+                <?php endif; ?>
 
                 <?php if (isset($bottomLeftSide) || isset($bottomRightSide)): ?>
                     <div id="bottom-section">
-                    <?php if (isset($bottomLeftSide)): ?>
+                        <?php if (isset($bottomLeftSide)): ?>
                             <div id="bottom-left-side">
-                            <?php echo $bottomLeftSide; ?>
+                                <?php echo $bottomLeftSide; ?>
                             </div>
-                            <?php endif; ?>
+                        <?php endif; ?>
 
                         <?php if (isset($bottomRightSide)): ?>
                             <div id="bottom-right-side">
-                            <?php echo $bottomRightSide; ?>
+                                <?php echo $bottomRightSide; ?>
                             </div>
-                            <?php endif; ?>
-                        
+                        <?php endif; ?>
+
                         <?php if (isset($bottom)): ?>
                             <div id="bottom">
-                            <?php echo $bottom; ?>
+                                <?php echo $bottom; ?>
                             </div>
-                            <?php endif; ?>
+                        <?php endif; ?>
                     </div>
 
                 <?php endif; ?>
@@ -131,46 +131,11 @@ $thisPage = str_replace('/', '-', uri_string());
             <div id="contet-footer-divisor"></div>
 
             <div id="footer">
-                <div id="footer-left-side">
+                <img id="footer-logo" src="/images/logo.png"/>
+                <p id="footer-message">Propiedad Snatiaguera es una plataforma virtual que conecta al público en general con un amplio rango de suplidores de calidad a nivel nacional para la planificación, organización y realización de todo tuipo de eventos.</p>
+                <div id="newsletter">
 
-                    <div id="footer-propiedades">
-                        <div id="footer-propiedad1" class="footer-propiedad">
-                            <p><img id="footer-propiedad1-icon" src="/images/footer/footerSectionIcon1.png"/><a id="footer-propiedad1-link"  class="no-decoration-anchor">Propiedades de Lujo</a></p>
-                        </div>
-
-                        <div id="footer-propiedad2" class="footer-propiedad">
-                            <p><img  id="footer-propiedad2-icon" src="/images/footer/footerSectionIcon2.png"/><a id="footer-propiedad2-link" class="no-decoration-anchor">Terrenos</a></p>
-                        </div>
-                    </div>
-                    <ul id="secondary-links">
-                        <li class="secondary-link"><a class="no-decoration-anchor" href="<?php base_url(); ?>">INICIO</a> | </li>
-                        <li class="secondary-link"><a class="no-decoration-anchor" href="<?php base_url(); ?>">PROPIEDADES</a> | </li>
-                        <li class="secondary-link"><a class="no-decoration-anchor" href="<?php base_url(); ?>">AGENTES</a> | </li>
-                        <li class="secondary-link"><a class="no-decoration-anchor" href="<?php base_url(); ?>">PUBL&Iacute;CATE</a> |</li>
-                        <li class="secondary-link"><a class="no-decoration-anchor" href="<?php base_url(); ?>">CONTACTENOS</a></li>
-
-                    </ul>
-                    <p id="footer-copyright" >Copyright 2011 propiedadsantiaguera.com | Todos los derechos reservados.</p>
                 </div>
-                <div id="footer-right-side">
-
-                    <div id="footer-social">
-                        <p>
-                            <span id="footer-siguenos"> Siguenos en: </span> 
-                            <a href="http://www.facebook.com/pages/5050MKT/175725589155037" class="footer-social-icon"><img class="no-decoration-anchor" src="/images/footer/facebookIcon.png"/></a>
-                            <a href="http://twitter.com/#!/5050MKT" class="footer-social-icon"><img  class="no-decoration-anchor" src="/images/footer/tweeterIcon.png"/></a>
-                            <a href="#no-link" class="footer-social-icon no-decoration-anchor"><img class="no-decoration-anchor" src="/images/footer/punticosIcon.png"/></a>
-                            <a href="#no-link" class="footer-social-icon no-decoration-anchor"><img class="no-decoration-anchor" src="/images/footer/youtubeIcon.png"/></a>
-                        </p>
-                    </div>
-                    <div id="footer-logo">
-                        <img src="/images/footer/footerLogo.png"/>
-                    </div>
-                    <div id="footer-firma">
-                        <img src="/images/footer/firma.png"/>
-                    </div>
-                </div>
-
             </div>
         </div>
 

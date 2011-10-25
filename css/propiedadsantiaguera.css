@@ -767,6 +767,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     text-align: center;
     width: 309px;
 }
+
 /***buy-blueprints-link ENDS***/
 
 /***tools-center***/
@@ -785,11 +786,15 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #tools-center-pager a
 {
+    background-image: url("/images/common/whiteToGrayGradient.png");
+    background-position: 0 169px;
+    border-right: 1px solid #EDEDED;
     display: block;
     float: left;
+    height: 41px;
+    padding: 10px 0;
+    text-align: center;
     width: 81px;
-    height: 58px;
-    background-image: url('/images/common/whiteToGrayGradient.png');
 }
 /***tools-center ENDS***/
 
@@ -801,10 +806,14 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #contet-footer-divisor
 {
-    background-color: #4a4a4a;
-    height: 14px;
+    background-image: url("/images/common/stripesGradient.jpg");
+    background-position: 0 13px;
     clear: both;
+    height: 14px;
 }
+
+
+/**footer**/
 #footer{
     color: #76BC3B;
     padding: 30px;
@@ -820,6 +829,25 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 }
 
+#footer-logo
+{
+    float: left;
+    display: block;
+    border-right: 1px solid #cccccc;
+}
+#footer-message, #newsletter
+{
+    
+}
+
+#footer-message
+{
+    width: 379px;
+    height: 59px;
+    
+}
+
+/**footer ENDS**/
 div.footer-section a{
     color: white;
     font-size: 1.5em;
