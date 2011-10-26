@@ -7,34 +7,63 @@
 <div id="planes_holder">
 <table id="planes_detail">
         <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+                <tr>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr>
             <td>NUMERO DE PROPIEDADES</td>
+        </tr>
+                <tr>
+            <td>&nbsp;</td>
         </tr>
         <tr>
             <td>DURACION POR PROPIEDAD</td>
         </tr>
+                <tr>
+            <td>&nbsp;</td>
+        </tr>
         <tr>
             <td>FOTOS</td>
+        </tr>
+                <tr>
+            <td>&nbsp;</td>
         </tr>
         <tr>
             <td>VIDEO</td>
         </tr>
+
         <tr>
             <td>DESCUENTO EN BANNERS PUBLICITARIOS</td>
         </tr>
+  
         <tr>
-            <td>CREACION DE SOLICITUD Y ENVIAR PROPUESTA DE SOLICITUDES</td>
+            <td></br>CREACION DE SOLICITUD Y ENVIAR PROPUESTA DE SOLICITUDES</td>
+        </tr>
+  
+        <tr>
+            <td></br>INFORMACION EN INGLES Y ESPA&Ntilde;OL</td>
         </tr>
         <tr>
-            <td>INFORMACION EN INGLES Y ESPA&Ntilde;OL</td>
+            <td></br>LOCALIZACION DE LA PROPIEDAD EN GOOGLE MAPS</td>
+        </tr>
+        
+        <tr>
+            <td></br>IMPRESION DE LA PROPIEDAD EN FORMATO PDF</td>
         </tr>
         <tr>
-            <td>LOCALIZACION DE LA PROPIEDAD EN GOOGLE MAPS</td>
-        </tr>
-        <tr>
-            <td>IMPRESION DE LA PROPIEDAD EN FORMATO PDF</td>
-        </tr>
-        <tr>
-            <td>VIDEOS COMPARTIDOS EN EL WEBSITE DEL USUARIO</td>
+            <td></br>VIDEOS COMPARTIDOS EN EL WEBSITE DEL USUARIO</td>
         </tr>
 </table>
     
@@ -79,13 +108,14 @@
             <td>RD$1,500<br><span>RD$1,500/Propiedad</span></td> <td>RD$6,000</br><span class="white">RD$1,200/Propiedad</span></td> <td>RD$10,000</br><span>RD$1,000/Propiedad</span></td> <td>RD$20,000</br><span class="white">RD$800/Propiedad</span></td> 
         </tr>
         <tr>
-            <td>Elegir Plan</td> <td>Elegir Plan</td> <td>Elegir Plan</td> <td>Elegir Plan</td>
-        </tr
+            <td><a href="usuario/comprar-plan/basico"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="usuario/comprar-plan/plus"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="usuario/comprar-plan/agente"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="usuario/comprar-plan/inmobiliaria"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td>
+        </tr>
+         </tbody>
+         <tfoot>
         <tr>
             <td colspan="4">&nbsp;</td>
         </tr>
-        
-        </tbody>
-
+         </tfoot>
+         
 </table>
 </div>

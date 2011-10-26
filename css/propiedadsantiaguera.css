@@ -1874,11 +1874,12 @@ span.required{
 #planes_detail
 {
     float:left;
-    width:22%;
+    width:24%;
+    padding-right: 10px;
     color:#333;
     font-size:9pt;
     text-align:right;
-    margin-top:135px;
+    margin-top:0;
 }
 #planes_detail td
 {
@@ -1886,11 +1887,12 @@ span.required{
 }
 #planes_data
 {
-    background:url('/images/plans_table.png') no-repeat top right transparent;
+    background:url('/images/plans_table.png') no-repeat top center transparent;
     color:#333;
     width:687px;
     text-align: center;
     height: 860px;
+    border-collapse:collapse;
 }
 #planes_data th
 {
@@ -1898,9 +1900,18 @@ span.required{
     padding-top: 22px;
 }
 
-#planes_data tr,#planes_data td
+#planes_data tbody tr,#planes_data tbody td
 {
     padding:15px 0;
+    border-top: 1px solid #AFBBA1;
+}
+#planes_data tr
+{
+    margin:0;
+}
+#planes_data tbody tr:first-child td, #planes_data tbody tr:first-child
+{
+    border:0;
 }
 #planes_data td span
 {
@@ -1918,9 +1929,9 @@ span.required{
 {
     height: 600px;
 }
-.info_col
+#planes_data a img
 {
-
+   border:0;
 }
 
 
