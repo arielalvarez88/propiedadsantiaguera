@@ -34,7 +34,7 @@ $thisPage = str_replace('/', '-', uri_string());
                         </div>
                         <div id="login-links">
                             <p>
-                                <?php if ($loggedUser): ?>
+                                <?php if ($loggedUser && $loggedUser->name): ?>
                                     <span id="saludo-usuario">Bienvenido <?php echo $loggedUser->name . ', '; ?></span>
                                     <a class="no-decoration-anchor" href="/userController/logout">logout</a>
                                     <span class="vertical-serparator"> | </span>
@@ -58,7 +58,7 @@ $thisPage = str_replace('/', '-', uri_string());
 
 
                         <div id="logo">
-                            <img alt="logo" src="/images/logo.png">
+                            <a href="/"><img alt="logo" src="/images/logo.png"><a/>
                         </div>
                     </div>
                 </div>
@@ -131,11 +131,28 @@ $thisPage = str_replace('/', '-', uri_string());
             <div id="contet-footer-divisor"></div>
 
             <div id="footer">
-                <img id="footer-logo" src="/images/logo.png"/>
-                <p id="footer-message">Propiedad Snatiaguera es una plataforma virtual que conecta al público en general con un amplio rango de suplidores de calidad a nivel nacional para la planificación, organización y realización de todo tuipo de eventos.</p>
-                <div id="newsletter">
+
+                <div id="footer-left-side">
+                    <img id="footer-logo" src="/images/logo.png"/>
+                    <p id="footer-message">Propiedad Snatiaguera es una plataforma virtual que conecta al público en general con un amplio rango de suplidores de calidad a nivel nacional para la planificación, organización y realización de todo tuipo de eventos.</p>
 
                 </div>
+
+                <div id="footer-right-side">
+                    <div id="newsletter">
+                        <h3>Newsletter</h3>
+                        <p >Recibe ofertas e informaciones sobre nuestros servicios</p>
+                        <div class="round-corners" id="newsletter-email-container">
+                            <input type="text" id="newsletter-input" class="round-corners"> 
+                            <a href="#javascript" class="no-decoration-anchor round-corners" id="newsletter-subscribe-button">Suscríbete</a>
+                        </div>
+
+                    </div>
+                    <a href="http://www.5050mkt.com" id="footer-makers-logo"><img src="/images/common/5050mktLogo.png"/></a>
+                     
+                </div>
+
+
             </div>
         </div>
 

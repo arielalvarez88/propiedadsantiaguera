@@ -98,7 +98,7 @@ class User_handler {
         $user = new User();
         
         $user->where('id =', $userId);
-        var_dump($user->name);
+        
         if($user)
             return $user;
         

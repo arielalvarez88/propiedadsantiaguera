@@ -5,7 +5,7 @@
 }
 body{
 
-    color: white;
+    color: black;
     font-family: arial;
     font-size: small;
     font-weight: normal;
@@ -804,22 +804,28 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     overflow:hidden;
 }
 
+
 #contet-footer-divisor
 {
-    background-image: url("/images/common/stripesGradient.jpg");
+      background-image: url("/images/common/stripesGradient.jpg");
     background-position: 0 13px;
     clear: both;
     height: 14px;
+    margin: 0 0 20px;
+    position: relative;
+    top: 10px;
 }
 
-
+#footer-makers-logo
+{
+      float:right;
+      margin-top: 20px;
+}
 /**footer**/
 #footer{
-    color: #76BC3B;
-    padding: 30px;
-    background-image: url("/images/footerBackground.png");
-
-    height: 185px;
+color: #76BC3B;
+    height: 155px;
+    padding: 15px 10px;;
 
 }
 
@@ -831,20 +837,62 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #footer-logo
 {
-    float: left;
-    display: block;
-    border-right: 1px solid #cccccc;
-}
-#footer-message, #newsletter
-{
+      float: left;
+    margin-right: 10px;
     
 }
+#newsletter h3
+{
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+#newsletter p
+{
+    width: 194px;
+    margin-bottom: 5px;
+}
+
+#newsletter-email-container 
+{
+    width: 298px;
+    height: 32px;
+    border: 4px solid #cccccc;
+    border-radius: 5px;
+    
+}
+#newsletter-email-container input
+{
+    height: 32px;
+    width: 226px;
+    border: none;
+    border-radius: 5px;
+}
+
+#newsletter-subscribe-button
+{
+     background-color: #76BC3B;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    display: block;
+    float: right;
+    height: 16px;
+    margin: 1px;
+    padding: 7px 0;
+    text-align: center;
+    width: 69px;
+     
+}
+
 
 #footer-message
 {
-    width: 379px;
-    height: 59px;
-    
+ border-left: 2px solid #CCCCCC;
+    float: left;
+    height: 51px;
+    padding: 10px 0 25px 20px;
+    width: 351px;
+        color: #666666;
 }
 
 /**footer ENDS**/
@@ -988,6 +1036,8 @@ div.footer-section a{
 #basic-filter
 {
     width: 627px;
+    height: 202px;
+    background-image: url("/images/common/stripesGradient.jpg");
     
 }
 
@@ -1047,7 +1097,7 @@ div.footer-section a{
 
 #front-page-slide-show
 {
-    margin-right: 15px;
+    margin-right: 18px;
 }
 #front-page-slide-show-pager {
  float: left;
@@ -1078,6 +1128,7 @@ div.footer-section a{
 #front-page-banner
 {
     padding: 10px 0;
+    text-align: center;
 }
 /*******front-page-banner ENDS*******/
 
@@ -1117,23 +1168,40 @@ div.footer-section a{
 /*subscribe ENDS*/
 
 
-/*most-viewed-properties*/
-#most-viewed-properties
+
+/*********agents-properties-pager*********/
+
+#agents-properties-pager-container
 {
-    margin-right: 5px;    
+    
+}
+
+#agents-properties-pager-container #properties-pager, #agents-properties-pager-container #properties-pager-properties-container {
+    
+    width: 797px;
+    height: 636px;
+}
+
+/*********agents-properties-pager ENDS*********/
+
+
+/*properties-pager*/
+#properties-pager
+{
+    
     height: 329px;
+    background-image: url("/images/common/stripesGradient_H496.jpg");
 }
 
-#most-viewed-properties, #most-viewed-properties-properties-container {
+
+#properties-pager, #properties-pager-properties-container {
     color: black;
-    
     width: 532px;
-    
 }
 
 
 
-#most-viewed-properties-header {
+#properties-pager-header {
     
      color: #76BB3A;
     font-size: 1.4em;
@@ -1141,7 +1209,7 @@ div.footer-section a{
     padding: 10px 0 0 15px;
 }
 
-.most-viewed-properties-property-title
+.properties-pager-property-title
 {
     background-image: url("/images/propiedadesMasVisitadas/propiedadesMasVisitadasTitleBackground.png");
     color: white;
@@ -1153,19 +1221,22 @@ div.footer-section a{
     width: 176px;
 }
 
-.most-viewed-properties-property p{
-    margin:0;
+.properties-pager-desc{
+    color: #666666;
+    margin-top: 10px;
 }
-.most-viewed-properties-property span{
+.properties-pager-property span{
     display:block;
 }
-.most-viewed-properties-property span.most-viewed-properties-property-price{
-    color:#247f12;
-    display:inline;
+
+
+
+.properties-pager-property span.properties-pager-property-price{
+   
 }
 
 
-.most-viewed-properties-property-screenshot{
+.properties-pager-property-screenshot{
     
     width: 248px;
     height: 164px;
@@ -1173,32 +1244,35 @@ div.footer-section a{
 
 }
 
-#most-viewed-properties-first-property {
+.properties-pager-property {
     border-right: 1px solid #CCCCCC;
 }
 
 
-.most-viewed-properties-property
+.properties-pager-property
 {
-    width: auto;
-    
     float: left;
-    padding: 0 5px;
+    padding: 0 8px;
+    margin: 10px 0;
+    width: 249px;      
+     color:#247f12;
+    display:inline;
 }
 
-#most-viewed-properties-properties-container
+.properties-pager-last-property
 {
-    margin: 0 5px;
+    border: none;
 }
 
-/*most-viewed-properties END*/
+/*properties-pager END*/
 
 /*proerties-of-the-week*/
 #properties-of-the-week {
+   background-image: url("/images/common/whiteToGrayGradient_H327.png");
     color: black;
     height: 327px;
-    width: 417px;    
-    background-image: url('/images/common/whiteToGrayGradient_H327.png');
+    margin-right: 11px;
+    width: 417px;
 }
 
 #properties-of-the-week-header {
@@ -1566,7 +1640,8 @@ div.footer-section a{
 }
 #agentes-banner
 {
-    background-image: url("/images/common/headerBackground.png");
+    
+    color: #76bc3b;
     height: 33px;
     padding: 0 0 0 5px;
     width: 728px;
@@ -1578,13 +1653,22 @@ div.footer-section a{
     margin-left: 7px;
     margin-top: 6px;
 }
+
+
+#agentes-header-inmobliarias
+{
+    margin: 0 15px 0 10px;
+}
 /*agentes-header END*/
 
 /*agentes-pager*/
 #agentes-pager-header
 {
-    background-color: #76BC3B;
-    height: 32px;
+     background-color: #76BC3B;
+    border-radius: 8px;
+    font-size: 1.8em;
+    height: 29px;
+    padding: 1px 0;
     position: relative;
     text-align: center;
     top: -16px;
@@ -1595,14 +1679,15 @@ div.footer-section a{
 
 #agentes-pager
 {
-    border: 1px solid #9a9a9a;
+    border: 5px solid #D8D8D8;
+    border-radius: 20px 20px 20px 20px;
     height: 440px;
     margin-top: 40px;
     padding: 0 10px;
     width: 923px;
 }
 .agentes-pager-agente{
-    border-right: 1px solid black;
+    
     float: left;
     margin: 10px 0 10px 17px;
     padding: 0 17px 0 0;
@@ -1639,14 +1724,17 @@ div.footer-section a{
 
 
 /*user-info*/
-#user-info
-{
-    background-image: url("/images/common/whiteToGrayGradient.png");
-    height: 285px;
+#user-info {
     margin-right: 8px;
     padding: 10px;
-    width: 692px;
+    width: 617px;
 }
+
+#user-info-company
+{
+    clear: both;
+}
+
 #user-info-name-description
 {
 
@@ -1657,31 +1745,38 @@ div.footer-section a{
 
 }
 
+#user-info-card-photo
+{
+    display: block;
+    float: left;
+}
+
+
+#user-info-company img{
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+#user-info-company p
+{
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+    
+    
 #user-info-name
 {
-    background-color: #87D742;
+ 
     color: black;
-    float: left;
-    height: 25px;
-    margin-bottom: 20px;
-    padding-left: 5px;
-    width: 309px;
+    font-size: 1.5em;
 }
 #user-info-description
 {
-    clear: both;
-    padding-left: 5px;
+    float: left;
 }
 
-#user-info-card
-{
-    background-color: #87D742;
-    color: black;
-    float: left;
-    height: 262px;
-    padding: 10px;
-    width: 179px;
-}
+
 #user-properties-header
 {
     background-image: url("/images/common/headerBackground.png");
@@ -1690,6 +1785,17 @@ div.footer-section a{
     padding-left: 5px;
     width: 940px;
 }
+#user-info-company img, #user-info-company p
+{
+    float: left;
+}
+
+
+#user-info-company p
+{
+    width:  400px;
+}
+
 #user-info p, #user-info img {
     margin-bottom: 10px;
     display: block;
@@ -1699,6 +1805,8 @@ div.footer-section a{
 {
     font-weight: bold;
 }
+
+
 /*user-info END*/
 
 /*user-properties-viewer*/
