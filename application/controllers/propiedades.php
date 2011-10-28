@@ -18,8 +18,7 @@ class Propiedades extends CI_Controller {
             $blocks['topLeftSide'] = $this->load->view('forms/add_properties_form.php', $view_variables, true);
             $this->load->view('page', $blocks);
         } else {
-            $blocks['topLeftSide'] = $this->load->view('blocks/please_login', '', true);
-            $this->load->view('page', $blocks);
+            $this->show_please_login();
         }
     }
 

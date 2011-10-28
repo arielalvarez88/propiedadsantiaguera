@@ -15,23 +15,51 @@ class Usuario extends CI_Controller {
         $this->load->library('password_reset_success_template.php');
     }
 
-    public function login() {
-        $email = $this->input->post('login-email');
-        $password = sha1($this->input->post('login-password'));
-     
-        User_handler::login($email, $password);
-        $usuario = User_handler::getLoggedUser();
-        $response = new stdClass();
-        $response->success = $usuario->id ?  true : false;
-     
-        echo json_encode($response);
+  
+
+    public function panel($section = 'propiedades')
+    {
+        
+        $user = User_handler::getLoggedUser();
+        if(!$user || !$user->id)
+        {
+            $this->show_please_login();
+            return;
+        }
+        
+        $user_info['user'] = $user;
+        $panel_view = array();
+        
+        
+        switch($section)
+        {
+            case 'propiedades':
+                $panel_view['topLeftSide'] = $this->load->view('blocks/panels_property_section',$user_info,true);
+            break;
+        }
+        
+        
+        $this->load->view('page',$panel_view);
+        
+        
         
     }
     
-    public function loginform() 
-    {
-      //$this->load->view('page.php');
-      $this->load->view('blocks/login');       
+    public function login() {
+        $email = $this->input->post('login-email');
+        $password = sha1($this->input->post('login-password'));
+
+        $usuario = User_handler::loginAndSaveInCookies($email, $password);   
+        
+        $response = new stdClass();
+        $response->success = is_object($usuario) && $usuario->id ? true : false;
+
+        echo json_encode($response);
+    }
+
+    public function loginform() {
+//$this->load->view('page.php');
+        $this->load->view('blocks/login');
     }
 
     public function logout() {
@@ -39,10 +67,11 @@ class Usuario extends CI_Controller {
         redirect(base_url());
     }
 
-    public function signup() {
+    public function signup($repopulate_form = array()) {
         $signUpData['signUpForm'] = $this->load->view('blocks/newUserType', '', true);
         $clientType['clientType'] = 'client';
-        $signUpData['signUpForm'] .= $this->load->view('forms/signup_form.php', $clientType, true);
+        $form_data = array_merge($repopulate_form, $clientType);
+        $signUpData['signUpForm'] .= $this->load->view('forms/signup_form.php', $form_data, true);
         $data['topLeftSide'] = $this->load->view('blocks/signUpForm', $signUpData, true);
         $this->load->view('page.php', $data);
     }
@@ -52,15 +81,58 @@ class Usuario extends CI_Controller {
         $clientType = $this->input->post('signup-client-type');
 
         $validationType = $clientType == 'client' ? 'signupClient' : 'signupCompany';
-
+        $user_photo_path = '';
         if ($this->form_validation->run($validationType) == false) {
+
             $this->error();
-        } else {
-            $this->save_user();
+        } else {            
+
+            if (isset($_FILES['signup-photo']) && $_FILES['signup-photo']['size']) {
+                 
+                $user_photo_config['upload_path'] = Environment_vars::$environment_vars['user_photos_dir_path'];
+                $user_photo_config['file_name'] = time() ;                
+                $user_photo_config['allowed_types'] = 'gif|jpg|png';
+                $user_photo_config['max_size'] = '1000';
+                $this->load->library('upload', $user_photo_config);
+
+                if (!$this->upload->do_upload('signup-photo')) {
+                    $errores['errores'] = $this->upload->display_errors();
+                    $this->reppopulate_signup_form($errores);
+                    return;
+                }
+                $user_photo_info = $this->upload->data();
+                $user_photo_path = $user_photo_info['full_path'];
+            }                  
+                    $this->save_user($user_photo_path);
+
         }
     }
 
-    private function save_user() {
+    private function reppopulate_signup_form($extra_parameters=array()) {
+
+        $repopulateForm = array();
+        if ($this->input->post('signup-client-name')) {
+            $repopulateForm['clientName'] = $this->input->post('signup-client-name');
+            $repopulateForm['clientLastname'] = $this->input->post('signup-client-lastname');
+        }
+        else
+            $repopulateForm['companyName'] = $this->input->post('signup-company-name');
+
+        $repopulateForm['company'] = $this->input->post('signup-company-name');
+        $repopulateForm['email'] = $this->input->post('signup-email');
+        $repopulateForm['tel'] = $this->input->post('signup-tel');
+        $repopulateForm['cel'] = $this->input->post('signup-cel');
+        $repopulateForm['fax'] = $this->input->post('signup-fax');
+        $repopulateForm['website'] = $this->input->post('signup-website');
+        $repopulateForm['description'] = $this->input->post('signup-description');
+        $repopulateForm['clientType'] = $this->input->post('signup-client-type');
+        $repopulateForm['rnc'] = $this->input->post('signup-rnc');
+
+        $repopulateForm = array_merge($repopulateForm, $extra_parameters);
+        $this->signup($repopulateForm);
+    }
+
+    private function save_user($photo_file_path = false) {
 
         $newUser = new User();
         $userInfo = $this->input->post();
@@ -79,6 +151,10 @@ class Usuario extends CI_Controller {
         $newUser->address = $userInfo['signup-address'];
         $newUser->description = $userInfo['signup-description'];
 
+
+       if($photo_file_path)
+        $newUser->photo = $photo_file_path;
+
         $newUser->save();
 
         User_handler::loginAndSaveInCookies($newUser->email, $newUser->password);
@@ -86,16 +162,13 @@ class Usuario extends CI_Controller {
         redirect('/');
     }
 
-    public function comprar_plan($plan_name)
-    {
+    public function comprar_plan($plan_name) {
         $user = User_handler::getLoggedUser();
-        if(!$user->id || !$plan_name)
-        {
+        if (!$user->id || !$plan_name) {
             redirect("/please_login");
         }
-        
-        switch($plan_name)
-        {
+
+        switch ($plan_name) {
             case "plan-basico":
                 $user->posts_left += 1;
                 break;
@@ -109,14 +182,10 @@ class Usuario extends CI_Controller {
                 $user->posts_left += 25;
                 break;
         }
-        
+
         $user->save();
-            
-        
-        
     }
-    
-    
+
     public function password_reset_request() {
         $email = $this->input->post('password-reset-input');
 
@@ -173,56 +242,33 @@ class Usuario extends CI_Controller {
         $usuario = new User();
         $usuario->where('token', $token);
         $usuario->get();
-        
+
         $new_token = uniqid();
-        
+
         $usuario->password = $new_token;
         $usuario->token = '';
         $data = '';
         $success = $usuario->save();
-        if ($success) 
-        {
+        if ($success) {
             $send_email = new Mailer();
             $template = new password_reset_success_template($new_token);
             $send_email->send_email($template, $usuario->name, $usuario->email, $new_token);
-            $response ['success']= true;
-            $data['topLeftSide'] = $this->load->view('blocks/password_reset_confirmed',$response,true);
-
+            $response ['success'] = true;
+            $data['topLeftSide'] = $this->load->view('blocks/password_reset_confirmed', $response, true);
         } else {
-            $response ['success']= false;
-            $data['topLeftSide'] = $this->load->view('blocks/password_reset_confirmed',$response,true);
+            $response ['success'] = false;
+            $data['topLeftSide'] = $this->load->view('blocks/password_reset_confirmed', $response, true);
         }
         $this->load->view('page.php', $data);
     }
 
     private function error() {
 
-        $repopulateForm = array();
-        if ($this->input->post('signup-client-name')) {
-            $repopulateForm['clientName'] = $this->input->post('signup-client-name');
-            $repopulateForm['clientLastname'] = $this->input->post('signup-client-lastname');
-        }
-        else
-            $repopulateForm['companyName'] = $this->input->post('signup-company-name');
-
-        $repopulateForm['company'] = $this->input->post('signup-company-name');
-        $repopulateForm['email'] = $this->input->post('signup-email');
-        $repopulateForm['tel'] = $this->input->post('signup-tel');
-        $repopulateForm['cel'] = $this->input->post('signup-cel');
-        $repopulateForm['fax'] = $this->input->post('signup-fax');
-        $repopulateForm['website'] = $this->input->post('signup-website');
-        $repopulateForm['description'] = $this->input->post('signup-description');
-        $repopulateForm['clientType'] = $this->input->post('signup-client-type');
-        $repopulateForm['rnc'] = $this->input->post('signup-rnc');
 
 
         $repopulateForm['errores'] = validation_errors();
 
-        $signUpData['signUpForm'] = $this->load->view('blocks/newUserType', '', true);
-        $signUpData['signUpForm'] .= $this->load->view('forms/signup_form', $repopulateForm, true);
-
-        $data['topLeftSide'] = $this->load->view('blocks/signUpForm', $signUpData, true);
-        $this->load->view('page.php', $data);
+        $this->reppopulate_signup_form($repopulateForm);
     }
 
 }
