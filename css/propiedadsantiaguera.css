@@ -1952,7 +1952,7 @@ span.required{
 }
 #planes_holder #p_right
 {
-    margin-left:460px;
+    margin-left:476px;
 }
 #info_importante_title
 {
@@ -2003,6 +2003,19 @@ span.required{
 #info_importante_content p span a
 {
     color:inherit;
+}
+#info_segura
+{
+   background: url('/images/lock.png') top left no-repeat;
+   color:#333;
+   width:655px;
+   height:400px;
+   margin:10px auto;
+   padding:2px 0 0 76px;
+}
+#info_segura p{
+    font-size:8pt;
+    padding-left:5px;
 }
 
 /********* Plans ends **************/
