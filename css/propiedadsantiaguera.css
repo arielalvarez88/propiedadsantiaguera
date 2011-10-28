@@ -30,6 +30,10 @@ p, ul
     background-color: white;
     margin-left: auto;
     margin-right: auto;
+<<<<<<< HEAD
+=======
+    padding: 10px;
+>>>>>>> darwin_updated_views
     width: 960px;
     background:none;
 }
@@ -2207,6 +2211,8 @@ span.required{
 {
     background:url('/images/plans_diagonal_line_bg.png') repeat transparent;
     padding:10px 15px;
+    width:95%;
+    margin:0 auto;
 }
 #planes_detail
 {
@@ -2284,15 +2290,15 @@ span.required{
 #planes_holder #p_left
 {
     float: left;
-    margin-left:4px;
+    margin-left:0;
     padding-top: 30px;
     padding-bottom: 0;
 }
 #planes_holder #p_right
 {
-    margin-left:476px;
+    margin-left:460px;
 }
-#info_importante_title
+.info_importante_title
 {
     background: url('/images/info_importante_title_bg.png') top center no-repeat;
     padding: 25px 0 45px;
@@ -2302,13 +2308,13 @@ span.required{
 {
     background: url('/images/info_importante_bg.png') top center no-repeat;
     color:#333;
-    padding:20px;
-    width: 946px;
+    padding:10px 20px;
+    width: 912px;
     height: 386px;
 }
 #info_importante_content #dl_left, #info_importante_content #dl_right
 {
-    width: 440px;
+    width: 418px;
     padding:15px;
 }
 #info_importante_content #dl_left dt, #info_importante_content #dl_right dt
@@ -2317,7 +2323,7 @@ span.required{
 }
 #info_importante_content #dl_left dd, #info_importante_content #dl_right dd
 {
-    margin:5px 0 15px;
+    margin:5px 0 12px;
 }
 #info_importante_content #dl_left
 {
@@ -2347,7 +2353,7 @@ span.required{
    background: url('/images/lock.png') top left no-repeat;
    color:#333;
    width:655px;
-   height:400px;
+   height:90px;
    margin:10px auto;
    padding:17px 0 0 70px;
 }
