@@ -2275,6 +2275,7 @@ span.required{
 #planes_holder #p_left, #planes_holder #p_right
 {
     background-color: #999999;
+    color:#fff;
     font-size: 18pt;
     font-weight: lighter;
     height: 82px;
@@ -2305,7 +2306,7 @@ span.required{
     color:#333;
     padding:20px;
     width: 946px;
-    height: 420px;
+    height: 386px;
 }
 #info_importante_content #dl_left, #info_importante_content #dl_right
 {
@@ -2350,7 +2351,7 @@ span.required{
    width:655px;
    height:400px;
    margin:10px auto;
-   padding:2px 0 0 76px;
+   padding:17px 0 0 70px;
 }
 #info_segura p{
     font-size:8pt;
