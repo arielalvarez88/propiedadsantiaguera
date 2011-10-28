@@ -261,7 +261,54 @@ InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswor
  
 
     
-}
+};
+
+
+Slider = function(parentSelector,minValue,maxValue,minInitialPosition,maxInitialPosition,minDisplaySelector,maxDisplaySelector,step){
+    
+    this.parent = $(parentSelector);
+    this.minValue = minValue;
+    this.maxValue = maxValue;
+    this.minInitialValue = minInitialPosition;
+    this.maxInitialValue = maxInitialPosition;
+    this.minDisplay =$(minDisplaySelector);
+    this.maxDisplay = $(maxDisplaySelector);
+    this.step = step;
+   
+    var biggerThan = this.maxInitialValue >= 20000000? 'Más de ': '';
+    this.minDisplay.html("$" + commify('' + this.minInitialValue));
+    this.maxDisplay.html(biggerThan + "$" + commify('' + this.maxInitialValue));
+    
+    var sliderObject = this;
+    
+    
+                        
+    $(this.parent).slider({
+        range: true,
+        min: minValue,
+        max: maxValue,
+        step:sliderObject.step,
+        values: [ sliderObject.minInitialValue , sliderObject.maxInitialValue ],
+        slide: function( event, ui ) {
+            var bigger = ui.values[ 1 ] >= 20000000? 'Más de ' : '';
+            sliderObject.minDisplay.html( "$" + commify('' + ui.values[ 0 ]));
+            sliderObject.maxDisplay .html(bigger + "$" + commify('' + ui.values[ 1 ]));
+        }
+        
+    });
+    
+   $(this.parent).slider("option","values",[sliderObject.minInitialValue, sliderObject.maxInitialValue]);
+    this.getRange = function()
+    {
+        return $(sliderObject.parent).slider("values");
+      
+    };
+   
+    
+    
+    $('.ui-slider-horizontal .ui-slider-range').attr('left','9.75%');
+};
+
 
 intializeForms = function(){
     
@@ -461,7 +508,61 @@ extendJquery = function (){
     });
 };
     
+function commify(num) {
+    var Num = num;
+    var newNum = "";
+    var newNum2 = "";
+    var count = 0;
+    
+    //check for decimal number
+    if (Num.indexOf('.') != -1){  //number ends with a decimal point
+        if (Num.indexOf('.') == Num.length-1){
+            Num += "00";
+        }
+        if (Num.indexOf('.') == Num.length-2){ //number ends with a single digit
+            Num += "0";
+        }
+        
+        var a = Num.split("."); 
+        Num = a[0];   //the part we will commify
+        var end = a[1] //the decimal place we will ignore and add back later
+    }
+    else {
+        var end = "00";
+    }  
+ 
+    //this loop actually adds the commas   
+    for (var k = Num.length-1; k >= 0; k--){
+        var oneChar = Num.charAt(k);
+        if (count == 3){
+            newNum += ",";
+            newNum += oneChar;
+            count = 1;
+            continue;
+        }
+        else {
+            newNum += oneChar;
+            count ++;
+        }
+    }  //but now the string is reversed!
+   
+    //re-reverse the string
+    for (var k = newNum.length-1; k >= 0; k--){
+        var oneChar = newNum.charAt(k);
+        newNum2 += oneChar;
+    }
+   
+    // add dollar sign and decimal ending from above
+    newNum2 = newNum2;
+    return newNum2;
+};
 
+
+    
+initializeSliders = function () {
+  
+    var frontPageBasicFilterSlider = new Slider('#basic-filter-price-slider', 1000000, 100000000, 1000000, 100000000, '#basic-filter-price-slider-min-display', '#basic-filter-price-slider-max-display', 500000);
+};
 
 
 $(document).ready
@@ -477,6 +578,7 @@ $(document).ready
     initializePropiedadViewer();    
     intializeAgentesHeaderSection();
     initializeViewLoaderElements();
+    initializeSliders();
     intializeForms();
     initializeOverlays();
     initializeMaps();
