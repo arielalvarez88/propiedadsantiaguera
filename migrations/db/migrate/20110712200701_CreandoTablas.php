@@ -12,7 +12,7 @@ class CreandoTablas extends Ruckusing_BaseMigration {
         $users->column('password', 'string', array('limit' => 40));
         $users->column('website', 'string', array('limit' => 60));
         $users->column('description', 'text');
-        $users->column('photo', 'string', array('limit' => 60));
+        $users->column('photo', 'string');
         $users->column('tel', 'string', array('limit' => 10));
         $users->column('cel', 'string', array('limit' => 10));
         $users->column('fax', 'string', array('limit' => 10));

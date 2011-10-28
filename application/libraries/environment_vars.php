@@ -74,7 +74,8 @@ class Environment_vars {
             "walk-in-closet" => 42
             
             
-        )
+        ),
+        'user_photos_dir_path' => '/var/www/propiedadsantiaguera/images/userPhotos/'        
     );
 
 }

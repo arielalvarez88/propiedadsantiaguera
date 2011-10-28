@@ -5,12 +5,17 @@
 }
 body{
 
-    color: white;
+    color: black;
     font-family: arial;
     font-size: small;
     font-weight: normal;
     background:none;
     font-family: museo, helvetica, arial, sans-serif;
+}
+
+#bottom, #center-section 
+{
+    clear: both;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -152,6 +157,89 @@ p, ul
 
 /************ Login block end *******************/
 
+/************ panels-propery-section-menu*******************/
+
+
+#panels-property-section-menu
+{
+    width: 960px;
+    height: 300px;
+}
+
+#panels-property-section-menu-header
+{
+      color: #76B939;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+#panels-property-section-menu-create-property
+{
+    background-color: #80CC3F;
+    border-radius: 5px;
+    color: white;
+    display: block;
+    font-size: 1.2em;
+    height: 28px;
+    padding: 10px 0 0;
+    text-align: center;
+    width: 195px;
+}
+#panels-property-section-header-container
+{
+    float: left;
+}
+
+#panels-property-section-menu-properties-counter
+{
+     background-image: url("/images/common/greenPattern.jpg");
+    float: right;
+    height: 136px;
+    padding-top: 28px;
+    width: 247px;
+}
+
+#panels-property-section-menu-properties-counter h2
+{
+   background-image: url("/images/common/stripesGradient_H496.jpg");
+    background-position: 0 64px;
+    color: #595959;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    padding: 6px;
+    text-align: center;
+}
+
+#panels-property-section-menu-properties-counter div{
+   border-right: 1px solid #D9E1D2;
+    float: left;
+    text-align: center;
+    width: 81px;
+}
+
+#panels-property-section-properties-counter-menu-left
+{
+    
+}
+#panels-property-section-menu-properties-counter p, #panels-property-section-menu-properties-counter span
+{
+    display: block;
+}
+
+#panels-property-section-menu-properties-counter p
+{
+   color: #595959;
+    margin-bottom: 10px;
+}
+
+#panels-property-section-menu-properties-counter span
+{
+   color: #76B939;
+    font-size: 3em;
+}
+    
+/************ panels-propery-section-menu ENDS*******************/
+
 
 /************ tired-message *************/
 
@@ -227,11 +315,12 @@ p, ul
 }
 #top-menu-container
 {
-    background-color: #76bc3b;
-    height: 32px;
-    -moz-border-radius:6px;
-    margin:10px 0;
-    padding:0 0 12px 0;
+    background-color: #76BC3B;
+    border-radius: 6px 6px 6px 6px;
+    height: 44px;
+    margin: 10px 0;
+    
+    position: relative;
 }
 
 .top-menu-item
@@ -272,6 +361,7 @@ p, ul
 img.no-decoration-anchor,a.no-decoration-anchor,a.no-decoration-anchor:visited,a.no-decoration-anchor:active , .portada-center-item-icon{
     text-decoration: none;
     border: none;
+    color: black;
 }
 
 .noStyleList
@@ -284,8 +374,7 @@ img.no-decoration-anchor,a.no-decoration-anchor,a.no-decoration-anchor:visited,a
 {
     font-weight:bold;
     color: white;
-    display: block;
-    float: left;
+    display: inline;    
     height: 27px;
     list-style: none outside none;
     text-align: right;
@@ -294,13 +383,12 @@ img.no-decoration-anchor,a.no-decoration-anchor,a.no-decoration-anchor:visited,a
 ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited 
 {
     color: white;
-    display: block;
+    
     height: 17px;
     padding: 5px 10px 10px;
     text-decoration: none;
-    float:right;
+ 
 }
-
 .primary-links li a:hover
 {
     background:url("/images/flecha.png") no-repeat scroll center 23px #F9CA02;  
@@ -308,10 +396,9 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 .primary-links 
 {
-    height:27px;
-    float:right;
-    padding-top:12px;
-    padding-right: 40px;
+  position: absolute;
+  right: 20px;
+  top:18px;
 }
 
 #footer
@@ -694,10 +781,106 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     margin-right: 45px;
 }
 
-/* property-form ENDS*/
+/*property-form ENDS*/
+
+/***popular-neighborhoods***/
+
+#popular-neighborhoods
+{
+    border: 1px solid #E7E7E7;
+    color: black;
+    float: left;
+    height: 246px;
+    width: 302px;
+    
+}
+#popular-neighborhoods ul
+{
+    margin-left: 6px;
+}
+    
 
 
+.front-page-module-header img
+{
+    margin-right: 7px;
+}
 
+#popular-neighborhoods a
+{
+    float: right;
+    color: #99cd6c;
+    
+    
+}
+
+#popular-neighborhoods-header
+{
+ 
+}
+
+#popular-neighborhoods ul li
+{
+    list-style: none outside none;
+    margin: 3px 0;
+}
+
+#popular-neighborhoods ul li img
+{
+       height: 9px;
+    margin-right: 2px;
+    width: 7px;
+}
+
+
+/***popular-neighborhoods ENDS***/
+
+
+/***buy-blueprints-link***/
+#buy-blueprints-link
+{
+    background-color: #F9CA02;
+    color: black;
+    display: block;
+    float: left;
+    font-size: 2.7em;
+    font-weight: bold;
+    height: 168px;
+    margin: 0 7px;
+    padding: 40px 0;
+    text-align: center;
+    width: 309px;
+}
+
+/***buy-blueprints-link ENDS***/
+
+/***tools-center***/
+
+#tools-center
+{
+    width: 330px;
+    height: 246px;
+    float: left;
+}
+
+#tools-center-slideshow
+{
+       height: 152px;
+}
+
+#tools-center-pager a
+{
+    background-image: url("/images/common/whiteToGrayGradient.png");
+    background-position: 0 169px;
+    border-right: 1px solid #EDEDED;
+    display: block;
+    float: left;
+    height: 41px;
+    padding: 10px 0;
+    text-align: center;
+    width: 81px;
+}
+/***tools-center ENDS***/
 
 #center-section{
 
@@ -705,18 +888,28 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     overflow:hidden;
 }
 
+
 #contet-footer-divisor
 {
-    background-color: #4a4a4a;
-    height: 14px;
+      background-image: url("/images/common/stripesGradient_H496.jpg");
+    background-position: 0 13px;
     clear: both;
+    height: 14px;
+    margin: 0 0 20px;
+    position: relative;
+    top: 10px;
 }
-#footer{
-    color: #76BC3B;
-    padding: 30px;
-    background-image: url("/images/footerBackground.png");
 
-    height: 185px;
+#footer-makers-logo
+{
+      float:right;
+      margin-top: 20px;
+}
+/**footer**/
+#footer{
+color: #76BC3B;
+    height: 155px;
+    padding: 15px 10px;;
 
 }
 
@@ -726,6 +919,67 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 }
 
+#footer-logo
+{
+      float: left;
+    margin-right: 10px;
+    
+}
+#newsletter h3
+{
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+#newsletter p
+{
+    width: 194px;
+    margin-bottom: 5px;
+}
+
+#newsletter-email-container 
+{
+    width: 298px;
+    height: 32px;
+    border: 4px solid #cccccc;
+    border-radius: 5px;
+    
+}
+#newsletter-email-container input
+{
+    height: 32px;
+    width: 226px;
+    border: none;
+    border-radius: 5px;
+}
+
+#newsletter-subscribe-button
+{
+     background-color: #76BC3B;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    display: block;
+    float: right;
+    height: 16px;
+    margin: 1px;
+    padding: 7px 0;
+    text-align: center;
+    width: 69px;
+     
+}
+
+
+#footer-message
+{
+ border-left: 2px solid #CCCCCC;
+    float: left;
+    height: 51px;
+    padding: 10px 0 25px 20px;
+    width: 351px;
+        color: #666666;
+}
+
+/**footer ENDS**/
 div.footer-section a{
     color: white;
     font-size: 1.5em;
@@ -866,6 +1120,8 @@ div.footer-section a{
 #basic-filter
 {
     width: 627px;
+    height: 202px;
+    background-image: url("/images/common/stripesGradient_H496.jpg");
     
 }
 
@@ -880,6 +1136,11 @@ div.footer-section a{
     
 }
 
+#basic-filter-price-slider-max-display
+{
+    float: right;
+}
+
 #basic-filter-price-slider
 {
        width: 259px;
@@ -888,6 +1149,8 @@ div.footer-section a{
 
 
 /****** basic-filter ENDS*******/
+
+
 
 
 /* Blocks */
@@ -918,7 +1181,7 @@ div.footer-section a{
 
 #front-page-slide-show
 {
-    margin-right: 15px;
+    margin-right: 18px;
 }
 #front-page-slide-show-pager {
  float: left;
@@ -945,6 +1208,13 @@ div.footer-section a{
 
 /*front-page-slide-show END*/
 
+/******* front-page-banner*******/
+#front-page-banner
+{
+    padding: 10px 0;
+    text-align: center;
+}
+/*******front-page-banner ENDS*******/
 
 
 /*front-page-advertising*/
@@ -982,15 +1252,48 @@ div.footer-section a{
 /*subscribe ENDS*/
 
 
-/*propiedades-mas-visitadas*/
-#propiedades-mas-visitadas-header {
-    background-image: url("/images/propiedadesMasVisitadas/propiedadesMasVisitadasHeaderBackground.png");
-    height: 36px;
-    margin: 0;
-    padding-left: 20px;
-    padding-top: 20px;
+
+/*********agents-properties-pager*********/
+
+#agents-properties-pager-container
+{
+    
 }
-.propiedades-mas-visitadas-propiedad-titulo
+
+#agents-properties-pager-container #properties-pager, #agents-properties-pager-container #properties-pager-properties-container {
+    
+    width: 797px;
+    height: 636px;
+}
+
+/*********agents-properties-pager ENDS*********/
+
+
+/*properties-pager*/
+#properties-pager
+{
+    
+    height: 329px;
+    background-image: url("/images/common/stripesGradient_H496.jpg");
+}
+
+
+#properties-pager, #properties-pager-properties-container {
+    color: black;
+    width: 532px;
+}
+
+
+
+#properties-pager-header {
+    
+     color: #76BB3A;
+    font-size: 1.4em;
+    margin: 0 0 5px;
+    padding: 10px 0 0 15px;
+}
+
+.properties-pager-property-title
 {
     background-image: url("/images/propiedadesMasVisitadas/propiedadesMasVisitadasTitleBackground.png");
     color: white;
@@ -1002,94 +1305,75 @@ div.footer-section a{
     width: 176px;
 }
 
-.propiedades-mas-visitadas-propiedad p{
-    margin:0;
+.properties-pager-desc{
+    color: #666666;
+    margin-top: 10px;
 }
-.propiedades-mas-visitadas-propiedad span{
+.properties-pager-property span{
     display:block;
 }
-.propiedades-mas-visitadas-propiedad span.propiedades-mas-visitadas-propiedad-precio{
-    color:#247f12;
+
+
+
+.properties-pager-property span.properties-pager-property-price{
+   
+}
+
+
+.properties-pager-property-screenshot{
+    
+    width: 248px;
+    height: 164px;
+
+
+}
+
+.properties-pager-property {
+    border-right: 1px solid #CCCCCC;
+}
+
+
+.properties-pager-property
+{
+    float: left;
+    padding: 0 8px;
+    margin: 10px 0;
+    width: 249px;      
+     color:#247f12;
     display:inline;
 }
 
-.propiedades-mas-visitadas-propiedad
+.properties-pager-last-property
 {
-    height: 254px;
-    padding: 10px 10px 0;
-    width: 195px;
-
+    border: none;
 }
 
-.propiedades-mas-visitadas-propiedad-screenshot{
-    border: 4px solid #76bc3b;
-    width: 191px;
-    height: 158px;
+/*properties-pager END*/
 
-
-}
-
-
-
-#propiedades-mas-visitadas-slideshow
-{
-    background-image: url('/images/propiedadesMasVisitadas/propiedadesMasVisitadasBackground.png');
-}
-
-#propiedades-mas-visitadas {
+/*proerties-of-the-week*/
+#properties-of-the-week {
+   background-image: url("/images/common/whiteToGrayGradient_H327.png");
     color: black;
-    width: 644px;
-    height: 320px;
-    margin-right: 5px;
+    height: 327px;
+    margin-right: 11px;
+    width: 417px;
 }
-/*propiedades-mas-visitadas END*/
 
-/*propiedades de la semana*/
-#propiedades-de-la-semana
-{
-    width:296px;
-    height: 320px;
-    color: black;
-}
-#propiedades-de-la-semana-header
-{
-    background-image: url("/images/propiedadesMasVisitadas/propiedadesMasVisitadasHeaderBackground.png");
+#properties-of-the-week-header {
+    color: #76BB3A;
     font-size: 1.4em;
-    height: 36px;
-    margin: 0;
-    padding-left: 10px;
-    padding-top: 20px;
-    width: 286px;
+    margin: 0 0 5px;
+    padding: 10px 0 0 15px;
 }
 
-#propiedades-de-la-semana-propiedad-titulo
+
+#properties-of-the-week-video
 {
-    background-image: url("/images/propiedadesMasVisitadas/propiedadesMasVisitadasTitleBackground.png");
-    color: white;
-    font-size: 1.2em;
-    height: 20px;
-    margin: 5px 0;
-    padding-left: 5px;
-    padding-right: 5px;
-    width: 176px;
-}
-#propiedades-de-la-semana-propiedad
-{
-    background-image: url("/images/propiedadesMasVisitadas/propiedadesMasVisitadasBackground.png");
-    height: 259px;
-    padding-top: 5px;
-}
-#propiedades-de-la-semana-propiedad-video
-{
-    width:282px;
-    height: 209px;
+    width:403px;
+    height: 281px;
     margin-left: auto;
     margin-right: auto;
     display:block;
-}
-
-#propiedades-de-la-semana-propiedad-sector{
-
 }
 
 
@@ -1440,7 +1724,8 @@ div.footer-section a{
 }
 #agentes-banner
 {
-    background-image: url("/images/common/headerBackground.png");
+    
+    color: #76bc3b;
     height: 33px;
     padding: 0 0 0 5px;
     width: 728px;
@@ -1452,13 +1737,22 @@ div.footer-section a{
     margin-left: 7px;
     margin-top: 6px;
 }
+
+
+#agentes-header-inmobliarias
+{
+    margin: 0 15px 0 10px;
+}
 /*agentes-header END*/
 
 /*agentes-pager*/
 #agentes-pager-header
 {
-    background-color: #76BC3B;
-    height: 32px;
+     background-color: #76BC3B;
+    border-radius: 8px;
+    font-size: 1.8em;
+    height: 29px;
+    padding: 1px 0;
     position: relative;
     text-align: center;
     top: -16px;
@@ -1469,14 +1763,15 @@ div.footer-section a{
 
 #agentes-pager
 {
-    border: 1px solid #9a9a9a;
+    border: 5px solid #D8D8D8;
+    border-radius: 20px 20px 20px 20px;
     height: 440px;
     margin-top: 40px;
     padding: 0 10px;
     width: 923px;
 }
 .agentes-pager-agente{
-    border-right: 1px solid black;
+    
     float: left;
     margin: 10px 0 10px 17px;
     padding: 0 17px 0 0;
@@ -1513,14 +1808,17 @@ div.footer-section a{
 
 
 /*user-info*/
-#user-info
-{
-    background-image: url("/images/common/whiteToGrayGradient.png");
-    height: 285px;
+#user-info {
     margin-right: 8px;
     padding: 10px;
-    width: 692px;
+    width: 617px;
 }
+
+#user-info-company
+{
+    clear: both;
+}
+
 #user-info-name-description
 {
 
@@ -1531,31 +1829,38 @@ div.footer-section a{
 
 }
 
+#user-info-card-photo
+{
+    display: block;
+    float: left;
+}
+
+
+#user-info-company img{
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+#user-info-company p
+{
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+    
+    
 #user-info-name
 {
-    background-color: #87D742;
+ 
     color: black;
-    float: left;
-    height: 25px;
-    margin-bottom: 20px;
-    padding-left: 5px;
-    width: 309px;
+    font-size: 1.5em;
 }
 #user-info-description
 {
-    clear: both;
-    padding-left: 5px;
+    float: left;
 }
 
-#user-info-card
-{
-    background-color: #87D742;
-    color: black;
-    float: left;
-    height: 262px;
-    padding: 10px;
-    width: 179px;
-}
+
 #user-properties-header
 {
     background-image: url("/images/common/headerBackground.png");
@@ -1564,6 +1869,17 @@ div.footer-section a{
     padding-left: 5px;
     width: 940px;
 }
+#user-info-company img, #user-info-company p
+{
+    float: left;
+}
+
+
+#user-info-company p
+{
+    width:  400px;
+}
+
 #user-info p, #user-info img {
     margin-bottom: 10px;
     display: block;
@@ -1573,6 +1889,8 @@ div.footer-section a{
 {
     font-weight: bold;
 }
+
+
 /*user-info END*/
 
 /*user-properties-viewer*/
@@ -1743,6 +2061,7 @@ div.footer-section a{
 #signup-descripcion{
     clear: both;
     display: block;
+    float: left;
     height: 180px;
     margin-bottom: 20px;
     width: 390px;
@@ -1754,16 +2073,15 @@ div.footer-section a{
 
 }
 
-#signup-info-text, #signup-info-photos
-{
-    float: left;
-}
+
 #signup-descripcion-ejemplo
 {
-    background: url('/images/common/exampleTextBackground.png')top center no-repeat;
+    background: url("/images/common/exampleTextBackground.png") no-repeat;
+    float: left;
     height: 260px;
-    margin: 20px;
-    padding: 20px;
+    position: relative;
+    right: -50px;
+    top: -27px;
     width: 234px;
 }
 #signup-descripcion-ejemplo p
@@ -1843,7 +2161,9 @@ span.required{
 .form-buttons
 {
     margin: 20px 0;
+    clear: both;
 }
+
 
 .form-clear-button
 {
@@ -1851,6 +2171,15 @@ span.required{
 }
 
 
+
+.front-page-module-header
+{
+       background-image: url("/images/common/whiteToGrayGradient_H327.png");
+    background-position: 0 219px;
+    color: #76B939;
+    height: 21px;
+    padding: 7px 0 7px 10px;
+}
 .error-messages, .info-messages
 {
     padding: 5px 5px;

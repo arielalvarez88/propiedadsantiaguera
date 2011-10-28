@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+<div id="advertising">
+    <img src="/images/frontPageAdvertising/advertise.png"/>
+=======
+<div id="front-page-advertising">
+    <img src="/images/popular_sign.png" alt="popular"/>
+>>>>>>> origin/darwin_updated_views
+</div>

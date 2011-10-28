@@ -170,7 +170,7 @@ Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, a
             
             $.post(recivingScriptUrl, info ,function(response){
                 messageCallbackFunction(response);
-            });
+            },'json');
         });
 
     }
@@ -297,7 +297,7 @@ Slider = function(parentSelector,minValue,maxValue,minInitialPosition,maxInitial
         
     });
     
-   $(this.parent).slider("option","values",[sliderObject.minInitialValue, sliderObject.maxInitialValue]);
+    $(this.parent).slider("option","values",[sliderObject.minInitialValue, sliderObject.maxInitialValue]);
     this.getRange = function()
     {
         return $(sliderObject.parent).slider("values");
@@ -324,11 +324,17 @@ intializeForms = function(){
     
     var loginForm = new Form('#login form', '#login-submit', '', true, '/usuario/login', function(response){
         
-        if(!response.success)
+        if(response.success)
+        {
+            
+            window.location.href = window.location.href;
+        
+        }
+        else
         {
             alert('Email/Password incorrectos');
             $('#login-email').val('');
-            $('#login-password').val('');           
+            $('#login-password').val('');   
         }
 
         
@@ -418,25 +424,39 @@ initializeViewLoaderElements = function(){
     }],'#login','a');
 
     
-    var propertyTypeRepopulate = {'property_sell_price_us' : $('#property-form-description-sell-price-us').val(), 'property_sell_price_dr' : $('#property-form-description-sell-price-dr').val(), 'property_rent_price_us' : $('#property-form-description-rent-price-us').val(), 'property_rent_price_dr' : $('#property-form-description-sell-rent-dr').val()};
+    var propertyTypeRepopulate = {
+        'property_sell_price_us' : $('#property-form-description-sell-price-us').val(), 
+        'property_sell_price_dr' : $('#property-form-description-sell-price-dr').val(), 
+        'property_rent_price_us' : $('#property-form-description-rent-price-us').val(), 
+        'property_rent_price_dr' : $('#property-form-description-sell-rent-dr').val()
+        };
 
     
     
     
     
     var propertyTypePassword = new ViewLoaderElement('#property-form-description-status','change',[{
-            value: 'sell', 
-            url:'/ajax/view_loader/sell_rent_inputs',
-            data: {status: 'sell', repopulate : propertyTypeRepopulate}
-        },{
-            value: 'rent', 
-            url:'/ajax/view_loader/sell_rent_inputs',
-            data: {status: 'rent', repopulate : propertyTypeRepopulate}
-        },{
-            value: 'sell-rent', 
-            url:'/ajax/view_loader/sell_rent_inputs',
-            data: {status: 'sell-rent', repopulate : propertyTypeRepopulate}
-        }],'#property-form-description-column-container');
+        value: 'sell', 
+        url:'/ajax/view_loader/sell_rent_inputs',
+        data: {
+            status: 'sell', 
+            repopulate : propertyTypeRepopulate
+        }
+    },{
+        value: 'rent', 
+        url:'/ajax/view_loader/sell_rent_inputs',
+        data: {
+            status: 'rent', 
+            repopulate : propertyTypeRepopulate
+        }
+    },{
+        value: 'sell-rent', 
+        url:'/ajax/view_loader/sell_rent_inputs',
+        data: {
+            status: 'sell-rent', 
+            repopulate : propertyTypeRepopulate
+        }
+    }],'#property-form-description-column-container');
 
 };
 
@@ -452,6 +472,7 @@ Overlay = function (selector, optionalClosebuttonSelector)
         onComplete: function (){
             intializeForms(); 
             initializeViewLoaderElements();
+            initializeOverlays();
         }
         
     });
