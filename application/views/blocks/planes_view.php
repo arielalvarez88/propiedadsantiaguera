@@ -158,7 +158,7 @@ Si tiene alguna pregunta con relación al proceso de la promoción de su
 propiedad, no dude en comunicarse con nosotros y 
 le contestaremos en la brevedad posible.</br></br>
 
-<strong>Aquí les detallamos las <a href="#">políticas de seguridad</a> y <a href="#">términos de uso</a>.</strong></p>
+<span><strong>Aquí les detallamos las <a href="#">políticas de seguridad</a> y <a href="#">términos de uso</a>.</strong></span></p>
 </div>
 
 <div id="info_segura">

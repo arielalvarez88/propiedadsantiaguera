@@ -1995,6 +1995,15 @@ span.required{
     clear:both;
     margin:284px auto 10px;
 }
+#info_importante_content p span
+{
+    font-size: 8pt;
+    font-style: italic;
+}
+#info_importante_content p span a
+{
+    color:inherit;
+}
 
 /********* Plans ends **************/
 
