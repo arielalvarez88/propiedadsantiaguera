@@ -544,23 +544,23 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 /*please_login ENDs*/
 
- /* property-form */
- #property-form
- {
-     color: black;
- }
- 
- #property-form ul
- {
-     list-style: none;
- }
+/* property-form */
+#property-form
+{
+    color: black;
+}
 
- #property-form-description
- {
-     min-height: 925px;
- }
- 
- #property-form-description label {
+#property-form ul
+{
+    list-style: none;
+}
+
+#property-form-description
+{
+    min-height: 925px;
+}
+
+#property-form-description label {
     display: block;
     float: left;
     width: 105px;
@@ -583,7 +583,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #property-form-description-address-container textarea
 {
-    
+
     width: 236px;
 }
 
@@ -625,7 +625,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 #property-form-description-description label
 {
     clear: both;
-    
+
     float: none;
 }
 
@@ -646,14 +646,14 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #property-form-description-features
 {
-    
+
     background-color: #f7f7f7;
     float: left;
     height: 745px;
     width: 530px;
-    
-    
-    
+
+
+
 }
 
 
@@ -708,7 +708,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     margin-bottom: 25px;
     min-height: 154px;
 }
-  
+
 #property-form-description-close-places
 {
     float: left;
@@ -723,7 +723,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #property-form-description-column4 label
 {
-   width: 150px;
+    width: 150px;
 }
 
 #property-form-description-column4 input
@@ -760,7 +760,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #property-form-close-places label
 {
-     padding: 0 10px;
+    padding: 0 10px;
     width: 310px;
 }
 
@@ -2182,7 +2182,7 @@ span.required{
 }
 .error-messages, .info-messages
 {
-     padding: 5px 5px;
+    padding: 5px 5px;
     margin: 5px 0;
     width: 935px;
     font-size: 1.2em;
@@ -2191,9 +2191,9 @@ span.required{
 
 .error-messages
 {
-  background-color: #FCCECC;
-  border: 1px solid red;
-  color: red;    
+    background-color: #FCCECC;
+    border: 1px solid red;
+    color: red;    
 }
 
 .info-messages
@@ -2211,11 +2211,12 @@ span.required{
 #planes_detail
 {
     float:left;
-    width:22%;
+    width:24%;
+    padding-right: 10px;
     color:#333;
     font-size:9pt;
     text-align:right;
-    margin-top:135px;
+    margin-top:0;
 }
 #planes_detail td
 {
@@ -2223,11 +2224,12 @@ span.required{
 }
 #planes_data
 {
-    background:url('/images/plans_table.png') no-repeat top right transparent;
+    background:url('/images/plans_table.png') no-repeat top center transparent;
     color:#333;
     width:687px;
     text-align: center;
     height: 860px;
+    border-collapse:collapse;
 }
 #planes_data th
 {
@@ -2235,9 +2237,18 @@ span.required{
     padding-top: 22px;
 }
 
-#planes_data tr,#planes_data td
+#planes_data tbody tr,#planes_data tbody td
 {
     padding:15px 0;
+    border-top: 1px solid #AFBBA1;
+}
+#planes_data tr
+{
+    margin:0;
+}
+#planes_data tbody tr:first-child td, #planes_data tbody tr:first-child
+{
+    border:0;
 }
 #planes_data td span
 {
@@ -2255,15 +2266,98 @@ span.required{
 {
     height: 600px;
 }
-.info_col
+#planes_data a img
 {
-
+    border:0;
+}
+#planes_holder #p_left, #planes_holder #p_right
+{
+    background-color: #999999;
+    color:#fff;
+    font-size: 18pt;
+    font-weight: lighter;
+    height: 82px;
+    padding: 15px;
+    width: 46%;
+    margin: 10px auto;
+}
+#planes_holder #p_left
+{
+    float: left;
+    margin-left:4px;
+    padding-top: 30px;
+    padding-bottom: 0;
+}
+#planes_holder #p_right
+{
+    margin-left:476px;
+}
+#info_importante_title
+{
+    background: url('/images/info_importante_title_bg.png') top center no-repeat;
+    padding: 25px 0 45px;
+    text-align: center;
+}
+#info_importante_content
+{
+    background: url('/images/info_importante_bg.png') top center no-repeat;
+    color:#333;
+    padding:20px;
+    width: 946px;
+    height: 386px;
+}
+#info_importante_content #dl_left, #info_importante_content #dl_right
+{
+    width: 440px;
+    padding:15px;
+}
+#info_importante_content #dl_left dt, #info_importante_content #dl_right dt
+{
+    font-weight: bold;
+}
+#info_importante_content #dl_left dd, #info_importante_content #dl_right dd
+{
+    margin:5px 0 15px;
+}
+#info_importante_content #dl_left
+{
+    float: left;
+}
+#info_importante_content #dl_right
+{
+    float: right;
+}
+#info_importante_content p
+{
+    width:97%;
+    clear:both;
+    margin:284px auto 10px;
+}
+#info_importante_content p span
+{
+    font-size: 8pt;
+    font-style: italic;
+}
+#info_importante_content p span a
+{
+    color:inherit;
+}
+#info_segura
+{
+   background: url('/images/lock.png') top left no-repeat;
+   color:#333;
+   width:655px;
+   height:400px;
+   margin:10px auto;
+   padding:17px 0 0 70px;
+}
+#info_segura p{
+    font-size:8pt;
+    padding-left:5px;
 }
 
+/********* Plans ends **************/
 
-
-
-/*********/
 /*clases utiles ENDS*/
 
 /*
