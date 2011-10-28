@@ -134,7 +134,7 @@ $thisPage = str_replace('/', '-', uri_string());
 
                 <div id="footer-left-side">
                     <img id="footer-logo" src="/images/logo.png"/>
-                    <p id="footer-message">Propiedad Snatiaguera es una plataforma virtual que conecta al público en general con un amplio rango de suplidores de calidad a nivel nacional para la planificación, organización y realización de todo tuipo de eventos.</p>
+                    <p id="footer-message">Propiedad Santiaguera es una plataforma virtual que conecta al público en general con un amplio rango de suplidores de calidad a nivel nacional para la planificación, organización y realización de todo tuipo de eventos.</p>
 
                 </div>
 

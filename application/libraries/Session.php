@@ -113,7 +113,7 @@ class CI_Session {
 				$_SESSION[$key] = $val;
 			}
 		}
-                echo 'ta grabando';
+                
 	}
 
 	/**

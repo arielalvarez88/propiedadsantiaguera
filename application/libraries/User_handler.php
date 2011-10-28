@@ -37,11 +37,12 @@ class User_handler {
         $userObject->get();
         
         
-        if (isset($userObject->id) && $userObject->id != 0) {
+        if (isset($userObject) && $userObject->id != 0) {
             
             self::createCI();
             $CI = self::$CIObject;
             self::saveInSession($userObject);
+            
             return $userObject;
         }
 
@@ -60,7 +61,7 @@ class User_handler {
         
         $user = self::login($email, $password);
     
-        if (!$user)
+        if (!isset($user->id) || !$user->id)
             return false;
         
     self::createCI();

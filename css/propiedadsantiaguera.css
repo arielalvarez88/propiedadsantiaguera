@@ -157,6 +157,89 @@ p, ul
 
 /************ Login block end *******************/
 
+/************ panels-propery-section-menu*******************/
+
+
+#panels-property-section-menu
+{
+    width: 960px;
+    height: 300px;
+}
+
+#panels-property-section-menu-header
+{
+      color: #76B939;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+#panels-property-section-menu-create-property
+{
+    background-color: #80CC3F;
+    border-radius: 5px;
+    color: white;
+    display: block;
+    font-size: 1.2em;
+    height: 28px;
+    padding: 10px 0 0;
+    text-align: center;
+    width: 195px;
+}
+#panels-property-section-header-container
+{
+    float: left;
+}
+
+#panels-property-section-menu-properties-counter
+{
+     background-image: url("/images/common/greenPattern.jpg");
+    float: right;
+    height: 136px;
+    padding-top: 28px;
+    width: 247px;
+}
+
+#panels-property-section-menu-properties-counter h2
+{
+   background-image: url("/images/common/stripesGradient_H496.jpg");
+    background-position: 0 64px;
+    color: #595959;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    padding: 6px;
+    text-align: center;
+}
+
+#panels-property-section-menu-properties-counter div{
+   border-right: 1px solid #D9E1D2;
+    float: left;
+    text-align: center;
+    width: 81px;
+}
+
+#panels-property-section-properties-counter-menu-left
+{
+    
+}
+#panels-property-section-menu-properties-counter p, #panels-property-section-menu-properties-counter span
+{
+    display: block;
+}
+
+#panels-property-section-menu-properties-counter p
+{
+   color: #595959;
+    margin-bottom: 10px;
+}
+
+#panels-property-section-menu-properties-counter span
+{
+   color: #76B939;
+    font-size: 3em;
+}
+    
+/************ panels-propery-section-menu ENDS*******************/
+
 
 /************ tired-message *************/
 
@@ -278,6 +361,7 @@ p, ul
 img.no-decoration-anchor,a.no-decoration-anchor,a.no-decoration-anchor:visited,a.no-decoration-anchor:active , .portada-center-item-icon{
     text-decoration: none;
     border: none;
+    color: black;
 }
 
 .noStyleList
@@ -807,7 +891,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #contet-footer-divisor
 {
-      background-image: url("/images/common/stripesGradient.jpg");
+      background-image: url("/images/common/stripesGradient_H496.jpg");
     background-position: 0 13px;
     clear: both;
     height: 14px;
@@ -1037,7 +1121,7 @@ div.footer-section a{
 {
     width: 627px;
     height: 202px;
-    background-image: url("/images/common/stripesGradient.jpg");
+    background-image: url("/images/common/stripesGradient_H496.jpg");
     
 }
 
@@ -1977,6 +2061,7 @@ div.footer-section a{
 #signup-descripcion{
     clear: both;
     display: block;
+    float: left;
     height: 180px;
     margin-bottom: 20px;
     width: 390px;
@@ -1988,16 +2073,15 @@ div.footer-section a{
 
 }
 
-#signup-info-text, #signup-info-photos
-{
-    float: left;
-}
+
 #signup-descripcion-ejemplo
 {
-    background: url('/images/common/exampleTextBackground.png')top center no-repeat;
+    background: url("/images/common/exampleTextBackground.png") no-repeat;
+    float: left;
     height: 260px;
-    margin: 20px;
-    padding: 20px;
+    position: relative;
+    right: -50px;
+    top: -27px;
     width: 234px;
 }
 #signup-descripcion-ejemplo p
@@ -2077,6 +2161,7 @@ span.required{
 .form-buttons
 {
     margin: 20px 0;
+    clear: both;
 }
 
 
@@ -2093,7 +2178,7 @@ span.required{
     background-position: 0 219px;
     color: #76B939;
     height: 21px;
-    padding: 7px 0 7px 10px;tools-
+    padding: 7px 0 7px 10px;
 }
 .error-messages, .info-messages
 {

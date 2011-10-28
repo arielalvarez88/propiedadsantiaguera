@@ -60,6 +60,14 @@ class CI_Controller {
 	{
 		return self::$instance;
 	}
+        
+                public function show_please_login()
+                {
+                    $blocks['topLeftSide'] = $this->load->view('blocks/please_login', '', true);
+                    $this->load->view('page', $blocks);
+                }
+        
+                
 }
 // END Controller class
 
