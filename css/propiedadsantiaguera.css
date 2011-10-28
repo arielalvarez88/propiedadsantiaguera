@@ -2237,6 +2237,126 @@ span.required{
     padding-top: 22px;
 }
 
+<<<<<<< HEAD
+=======
+#planes_data tbody tr,#planes_data tbody td
+{
+    padding:15px 0;
+    border-top: 1px solid #AFBBA1;
+}
+#planes_data tr
+{
+    margin:0;
+}
+#planes_data tbody tr:first-child td, #planes_data tbody tr:first-child
+{
+    border:0;
+}
+#planes_data td span
+{
+    font-size:8pt;
+}
+#planes_data .white
+{
+    color:#fff
+}
+#planes_data thead
+{
+    height:116px;
+}
+#planes_data tbody
+{
+    height: 600px;
+}
+#planes_data a img
+{
+    border:0;
+}
+#planes_holder #p_left, #planes_holder #p_right
+{
+    background-color: #999999;
+    font-size: 18pt;
+    font-weight: lighter;
+    height: 82px;
+    padding: 15px;
+    width: 46%;
+    margin: 10px auto;
+}
+#planes_holder #p_left
+{
+    float: left;
+    margin-left:4px;
+    padding-top: 30px;
+    padding-bottom: 0;
+}
+#planes_holder #p_right
+{
+    margin-left:476px;
+}
+#info_importante_title
+{
+    background: url('/images/info_importante_title_bg.png') top center no-repeat;
+    padding: 25px 0 45px;
+    text-align: center;
+}
+#info_importante_content
+{
+    background: url('/images/info_importante_bg.png') top center no-repeat;
+    color:#333;
+    padding:20px;
+    width: 946px;
+    height: 420px;
+}
+#info_importante_content #dl_left, #info_importante_content #dl_right
+{
+    width: 440px;
+    padding:15px;
+}
+#info_importante_content #dl_left dt, #info_importante_content #dl_right dt
+{
+    font-weight: bold;
+}
+#info_importante_content #dl_left dd, #info_importante_content #dl_right dd
+{
+    margin:5px 0 15px;
+}
+#info_importante_content #dl_left
+{
+    float: left;
+}
+#info_importante_content #dl_right
+{
+    float: right;
+}
+#info_importante_content p
+{
+    width:97%;
+    clear:both;
+    margin:284px auto 10px;
+}
+#info_importante_content p span
+{
+    font-size: 8pt;
+    font-style: italic;
+}
+#info_importante_content p span a
+{
+    color:inherit;
+}
+#info_segura
+{
+   background: url('/images/lock.png') top left no-repeat;
+   color:#333;
+   width:655px;
+   height:400px;
+   margin:10px auto;
+   padding:2px 0 0 76px;
+}
+#info_segura p{
+    font-size:8pt;
+    padding-left:5px;
+}
+>>>>>>> origin/darwin_updated_views
 
 
 
