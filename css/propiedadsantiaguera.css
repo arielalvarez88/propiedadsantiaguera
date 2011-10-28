@@ -26,7 +26,7 @@ p, ul
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
-    width: 945px;
+    width: 980px;
     background:none;
 }
 /************ header *************/
@@ -440,23 +440,23 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 /*please_login ENDs*/
 
- /* property-form */
- #property-form
- {
-     color: black;
- }
- 
- #property-form ul
- {
-     list-style: none;
- }
+/* property-form */
+#property-form
+{
+    color: black;
+}
 
- #property-form-description
- {
-     min-height: 925px;
- }
- 
- #property-form-description label {
+#property-form ul
+{
+    list-style: none;
+}
+
+#property-form-description
+{
+    min-height: 925px;
+}
+
+#property-form-description label {
     display: block;
     float: left;
     width: 105px;
@@ -479,7 +479,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #property-form-description-address-container textarea
 {
-    
+
     width: 236px;
 }
 
@@ -521,7 +521,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 #property-form-description-description label
 {
     clear: both;
-    
+
     float: none;
 }
 
@@ -542,14 +542,14 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #property-form-description-features
 {
-    
+
     background-color: #f7f7f7;
     float: left;
     height: 745px;
     width: 530px;
-    
-    
-    
+
+
+
 }
 
 
@@ -604,7 +604,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     margin-bottom: 25px;
     min-height: 154px;
 }
-  
+
 #property-form-description-close-places
 {
     float: left;
@@ -619,7 +619,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #property-form-description-column4 label
 {
-   width: 150px;
+    width: 150px;
 }
 
 #property-form-description-column4 input
@@ -656,7 +656,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #property-form-close-places label
 {
-     padding: 0 10px;
+    padding: 0 10px;
     width: 310px;
 }
 
@@ -1845,7 +1845,7 @@ span.required{
 
 .error-messages, .info-messages
 {
-     padding: 5px 5px;
+    padding: 5px 5px;
     margin: 5px 0;
     width: 935px;
     font-size: 1.2em;
@@ -1854,9 +1854,9 @@ span.required{
 
 .error-messages
 {
-  background-color: #FCCECC;
-  border: 1px solid red;
-  color: red;    
+    background-color: #FCCECC;
+    border: 1px solid red;
+    color: red;    
 }
 
 .info-messages
@@ -1931,13 +1931,73 @@ span.required{
 }
 #planes_data a img
 {
-   border:0;
+    border:0;
+}
+#planes_holder #p_left, #planes_holder #p_right
+{
+    background-color: #999999;
+    font-size: 18pt;
+    font-weight: lighter;
+    height: 82px;
+    padding: 15px;
+    width: 46%;
+    margin: 10px auto;
+}
+#planes_holder #p_left
+{
+    float: left;
+    margin-left:4px;
+    padding-top: 30px;
+    padding-bottom: 0;
+}
+#planes_holder #p_right
+{
+    margin-left:460px;
+}
+#info_importante_title
+{
+    background: url('/images/info_importante_title_bg.png') top center no-repeat;
+    padding: 25px 0 45px;
+    text-align: center;
+}
+#info_importante_content
+{
+    background: url('/images/info_importante_bg.png') top center no-repeat;
+    color:#333;
+    padding:20px;
+    width: 946px;
+    height: 420px;
+}
+#info_importante_content #dl_left, #info_importante_content #dl_right
+{
+    width: 440px;
+    padding:15px;
+}
+#info_importante_content #dl_left dt, #info_importante_content #dl_right dt
+{
+    font-weight: bold;
+}
+#info_importante_content #dl_left dd, #info_importante_content #dl_right dd
+{
+    margin:5px 0 15px;
+}
+#info_importante_content #dl_left
+{
+    float: left;
+}
+#info_importante_content #dl_right
+{
+    float: right;
+}
+#info_importante_content p
+{
+    width:97%;
+    clear:both;
+    margin:284px auto 10px;
 }
 
+/********* Plans ends **************/
 
-
-
-/*********/
 /*clases utiles ENDS*/
 
 
