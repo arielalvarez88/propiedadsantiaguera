@@ -64,6 +64,7 @@ class Propiedades extends CI_Controller {
 
         $newProperty = new Property();
         $newPropertyInfo = $this->input->post();
+        $newProperty->title = $newPropertyInfo['property-title'];
         $newProperty->terrain = $newPropertyInfo['property-terrain'];
         $newProperty->bathrooms = $newPropertyInfo['property-bathrooms'];
         $newProperty->sector = $newPropertyInfo['property-sector'];
@@ -74,8 +75,7 @@ class Propiedades extends CI_Controller {
         $newProperty->kitchens = $newPropertyInfo['property-kitchens'];
         $newProperty->status = $newPropertyInfo['property-status'];
         $newProperty->bedrooms = $newPropertyInfo['property-bedrooms'];
-        $newProperty->parkings = $newPropertyInfo['property-parkings'];
-
+        $newProperty->parkings = $newPropertyInfo['property-parkings'];        
         $newProperty->sell_price_us = isset($newPropertyInfo['property-sell-price-us']) ? $newPropertyInfo['property-sell-price-us'] : null;
         $newProperty->sell_price_dr = isset($newPropertyInfo['property-sell-price-dr']) ? $newPropertyInfo['property-sell-price-dr'] : null;
         $newProperty->rent_price_us = isset($newPropertyInfo['property-rent-price-us']) ? $newPropertyInfo['property-rent-price-us'] : null;

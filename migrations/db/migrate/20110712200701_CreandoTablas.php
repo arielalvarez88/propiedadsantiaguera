@@ -20,7 +20,7 @@ class CreandoTablas extends Ruckusing_BaseMigration {
         $users->column('address', 'text', array('limit' => 100));
         $users->column('registration_date', 'datetime');
         $users->column('payment_status', 'boolean');
-        $users->column('total_posts', 'integer');
+        $users->column('total_posts', 'integer');        
         $users->column('posts_left', 'integer', array('default'=>0));
         
         

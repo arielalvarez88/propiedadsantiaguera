@@ -159,13 +159,94 @@ p, ul
 
 /************ panels-propery-section-menu*******************/
 
-
-#panels-property-section-menu
-{
-    width: 960px;
-    height: 300px;
+#panels-property-section-menu-tabs {
+    border-bottom: 2px solid #76BC3B;
+    height: 28px;
+    margin-bottom: 20px;
 }
 
+.panels-properties-pager-property-info h2 {
+    background-color: #76BC3B;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    padding: 5px 0;
+    text-align: center;
+    width: 173px;
+}
+
+.panels-properties-pager-property-info-buttons {
+    height: 30px;
+}
+
+#panels-properties-pager .panels-properties-pager-property-info-buttons a {
+ background-color: #76BC3B;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    display: block;
+    float: left;
+    font-size: 1.2em;
+    margin-right: 10px;
+    padding: 6px 20px;
+}
+
+.panels-properties-pager-property-info-buttons div {
+    float: left;
+    padding-top: 10px;
+}
+
+.panels-properties-pager-property-info h2, .panels-properties-pager-property-info p, .panels-properties-pager-property-info div {
+    margin-bottom: 15px;
+}
+
+.panels-properties-pager-property img {
+    display: block;
+    float: left;
+    margin-right: 20px;
+}
+.panels-properties-pager-property-info {
+    float: left;
+}
+
+.panels-properties-pager-property {
+    float: left;
+    margin-bottom: 15px;
+    width: 480px;
+}
+
+
+
+#panels-property-section-pager {
+    clear: both;
+}
+
+
+#panels-property-section-menu-tabs a:hover
+{
+    text-decoration: underline;
+}
+
+#panels-property-section-menu-tabs a {
+   background-color: #F5F5F5;
+    border-radius: 5px 5px 0 0;
+    color: #8EC55C;
+    display: block;
+    float: left;
+    font-weight: bold;
+    height: 16px;
+    padding: 6px 20px;
+}
+
+#panels-property-section-menu-tabs a.selected
+{
+    background-color: #76bc3b;
+    color: white;
+    
+}
+
+#panels-property-section-menu {
+    height: 185px;
+    width: 960px;
+}
 #panels-property-section-menu-header
 {
       color: #76B939;
@@ -706,7 +787,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 #property-form-description-column-container
 {
     margin-bottom: 25px;
-    min-height: 154px;
+    min-height: 200px;
 }
 
 #property-form-description-close-places

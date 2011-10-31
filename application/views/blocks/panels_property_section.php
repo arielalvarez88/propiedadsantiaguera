@@ -29,5 +29,17 @@
         </div>
     </div>
     
+    <div id="panels-property-section-menu-tabs">
+        <a id="panels-property-section-menu-tabs-published" class="selected no-decoration-anchor view-loader-element" href="#javascript">Publicadas</a>
+        <a id="panels-property-section-menu-tabs-created" class="no-decoration-anchor view-loader-element" href="#javascript">Creadas</a>
+    </div>
+    
+
+    
+    <div id="panels-property-section-pager">
+        <?php echo $pager;?>
+    </div>
+    
+    
     
 </div>
