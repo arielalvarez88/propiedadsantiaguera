@@ -23,16 +23,26 @@ class Propiedades extends CI_Controller {
     }
 
     public function ver($id=null) {
-        if (!($id && is_numeric($id) && $id >= 1))
-            echo 'error';
-
-        $propiedadObject['propiedad'] = 'prueba';
-        $data['topLeftSide'] = $this->load->view('blocks/propiedadViewer', $propiedadObject, true);
-        $data['topRightSide'] = $this->load->view('blocks/userViewer', $propiedadObject, true);
+        
+        $no_id_passed = !$id;
+        if($no_id_passed)
+            redirect ("/propiedades");
+        
+        $user = $this->get_logged_user_or_redirect_to_please_login();
+        $property_to_show = $user->property->where("id",$id)->get();
+        $propiedadObject['property'] = $property_to_show;
+        $property_cant_be_shown = !$property_to_show->display_property;
+        
+        if($property_cant_be_shown)
+            redirect ("/propiedades");
+        
+        
+        $data['topLeftSide'] = $this->load->view('blocks/property_viewer', $propiedadObject, true);
+        $data['topRightSide'] = $this->load->view('blocks/user_viewer', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/monedaPrecio', $propiedadObject, true);
-        $data['topRightSide'] .=$this->load->view('blocks/pdfConverter', $propiedadObject, true);
+        $data['topRightSide'] .=$this->load->view('blocks/pdf_converter', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/sharePropertyWithAFriend', $propiedadObject, true);
-        $data['bottomLeftSide'] = $this->load->view('blocks/propertyInfo', $propiedadObject, true);
+        $data['bottomLeftSide'] = $this->load->view('blocks/property_info',  $propiedadObject['property'] , true);
         $data['bottomLeftSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propiedadObject, true);
         $data['bottomRightSide'] = $this->load->view('blocks/solicitudDeInformacion', $propiedadObject, true);
 
@@ -75,12 +85,12 @@ class Propiedades extends CI_Controller {
         $newProperty->kitchens = $newPropertyInfo['property-kitchens'];
         $newProperty->status = $newPropertyInfo['property-status'];
         $newProperty->bedrooms = $newPropertyInfo['property-bedrooms'];
-        $newProperty->parkings = $newPropertyInfo['property-parkings'];        
+        $newProperty->parkings = $newPropertyInfo['property-parkings']; 
         $newProperty->sell_price_us = isset($newPropertyInfo['property-sell-price-us']) ? $newPropertyInfo['property-sell-price-us'] : null;
         $newProperty->sell_price_dr = isset($newPropertyInfo['property-sell-price-dr']) ? $newPropertyInfo['property-sell-price-dr'] : null;
         $newProperty->rent_price_us = isset($newPropertyInfo['property-rent-price-us']) ? $newPropertyInfo['property-rent-price-us'] : null;
         $newProperty->rent_price_dr = isset($newPropertyInfo['property-rent-price-dr']) ? $newPropertyInfo['property-rent-price-dr'] : null;
-        $newProperty->type = Environment_vars::$environment_vars["property_types"][$newPropertyInfo['property-type']];
+        $newProperty->type = Environment_vars::$environment_vars["property_types"][$newPropertyInfo['property-type']]['id'];
 
         if ($newPropertyInfo['property-status'] == "sell" || $newPropertyInfo['property-status'] == "sell-rent") {
             $newProperty->sell_price_dollars = $newPropertyInfo['property-sell-price-us'];
@@ -129,6 +139,50 @@ class Propiedades extends CI_Controller {
 
         $messages['info_messages'] = 'Su propiedad fue agregada con éxito';
         $this->agregar_propiedades($messages);
+    }
+    
+    
+    public  function guardar_cambios_publicar()
+    {
+        $user = $this->get_logged_user_or_redirect_to_please_login();        
+          
+        $number_of_properties_user_want_to_publish = count($this->input->post())-3;
+        $number_of_properties_user_can_publish = $user->posts_left;
+        
+     
+        if($number_of_properties_user_want_to_publish > $number_of_properties_user_can_publish)                                            
+        {
+
+        
+            $messages['errors'] = "No posee suficientes propiedades compradas.";
+            $this->session->set_userdata(array("messages" => $messages));
+            redirect("/usuario/panel/propiedades/creadas/");                
+            
+        }
+           
+            
+        
+        $user_properties = $user->property->get();
+        foreach($user_properties as $property)
+        {  
+            
+            $property_selector = "publish-property-".$property->id;            
+            
+            $property_selected_to_publish = $this->input->post($property_selector);
+            if($property_selected_to_publish)                            
+            {
+                
+                $property->display_property = 1 ; 
+                $property->save();
+                $user->posts_left--;
+            }
+                
+                    
+        }
+        
+        $user->save();
+        redirect("/usuario/panel/propiedades/publicadas");
+        
     }
 
     private function add_property_error() {

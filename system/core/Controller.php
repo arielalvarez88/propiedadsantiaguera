@@ -60,15 +60,19 @@ class CI_Controller {
     }
 
     public function show_please_login() {
-        $blocks['topLeftSide'] = $this->load->view('blocks/please_login', '', true);
-        $this->load->view('page', $blocks);
+        redirect("/please_login");
+        
     }
 
     public function get_logged_user_or_redirect_to_please_login() {
             $user = User_handler::getLoggedUser();
             $user_is_not_logged = !$user->id;
             if ($user_is_not_logged) 
+            {
                 $this->show_please_login();
+                
+            }
+                
             else
                 return $user;
                

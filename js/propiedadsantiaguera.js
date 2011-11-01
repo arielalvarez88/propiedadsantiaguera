@@ -52,8 +52,8 @@ initializePropiedadViewer = function (){
     });
     $('#propiedad-viewer-slidesshow-pager').cycle({ 
         fx:     'scrollHorz', 
-        prev:   '#propiedad-viewer-previousPager', 
-        next:   '#propiedad-viewer-nextPager', 
+        prev:   '#propiedad-viewer-previous-pager', 
+        next:   '#propiedad-viewer-next-pager', 
         after: hideNextorPrevious,
         timeout: 0 
     });
@@ -83,8 +83,8 @@ drawPropertyUbication = function(latitudeAndLongitude)
 hideNextorPrevious = function (curr, next, opts){
 
     var index = opts.currSlide;
-    $('#propiedad-viewer-previousPager')[index == 0 ? 'hide' : 'show']();
-    $('#propiedad-viewer-nextPager')[index == opts.slideCount - 1 ? 'hide' : 'show']();   
+    $('#propiedad-viewer-previous-pager')[index == 0 ? 'hide' : 'show']();
+    $('#propiedad-viewer-next-pager')[index == opts.slideCount - 1 ? 'hide' : 'show']();   
 }
 
 blockExists = function(idName){

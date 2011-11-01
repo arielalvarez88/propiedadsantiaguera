@@ -4,6 +4,9 @@
  */
 class Environment_vars {
 
+    public static $maps = array(
+        "property_type_to_name" => array(1 => "casa", 2=> "apartamento", 3=> "solar", 4=>"penthhouse", 5=>"centro comercial", 6=> "edificio", 7=>"nave industrial", 8=> "oficina", 9 =>"finca")
+    );
     public static $environment_vars = array(
         "property_types" => array(
             "house" => 1,
@@ -15,7 +18,7 @@ class Environment_vars {
             "warehouse" => 7,
             "office" => 8,
             "land" => 9
-        ),
+        ),        
         "property_close_places" => array(
             "close-malls" => 1,
             "close-supermarkets" => 2,
