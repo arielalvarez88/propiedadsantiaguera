@@ -61,10 +61,13 @@
                         </option>
                     </select>
                 </li>
-
+                <li>
+                    <label for="property-form-description-title">T&iacute;tulo:<span class="required">*</span></label> 
+                    <input type="text" id="property-form-description-title" name="property-title" <?php echo isset($property_title) ? 'value="' . $property_title . '"' : ''; ?>/>
+                </li>
                 <li>
                     <label for="property-form-description-sector">Sector:</label> 
-                    <input type="text" id="property-form-description-sector" name="property-sector" <?php echo isset($property_sector) ? 'value="' . $property_type . '"' : ''; ?>/>
+                    <input type="text" id="property-form-description-sector" name="property-sector" <?php echo isset($property_sector) ? 'value="' . $property_sector . '"' : ''; ?>/>
                 </li>
 
 
@@ -126,7 +129,7 @@
 
                 <li>
                     <label for="property-form-description-livingrooms">Salas:<span class="required">*</span></label> 
-                    <input type="text" id="property-form-description-livingrooms" name="property-livingrooms" <?php echo isset($property_livingrooms)? 'value="' . $property_livingrooms . '"' : ''; ?>/>
+                    <input type="text" id="property-form-description-livingrooms" name="property-livingrooms" <?php echo isset($property_livingrooms) ? 'value="' . $property_livingrooms . '"' : ''; ?>/>
                 </li>
 
                 <li>
@@ -136,7 +139,7 @@
 
                 <li>
                     <label for="property-form-description-parkings">Parqueos:<span class="required">*</span></label> 
-                    <input type="text" id="property-form-description-parkings" name="property-parkings" <?php echo isset($property_parkings)? 'value="' . $property_parkings . '"' : ''; ?>/>
+                    <input type="text" id="property-form-description-parkings" name="property-parkings" <?php echo isset($property_parkings) ? 'value="' . $property_parkings . '"' : ''; ?>/>
                 </li>
 
 
@@ -150,12 +153,12 @@
                     <?php if (!isset($property_status) || !(strpos($property_status, "sell") === false)): ?>
                         <li>
                             <label for="property-form-description-sell-price-us">Precio de Venta $US:</label> 
-                            <input type="text" name="property-sell-price-us" id="property-form-description-sell-price-us" <?php echo isset( $property_sell_price_us) ? 'value="' . $property_sell_price_us . '"' : '' ?>/>
+                            <input type="text" name="property-sell-price-us" id="property-form-description-sell-price-us" <?php echo isset($property_sell_price_us) ? 'value="' . $property_sell_price_us . '"' : '' ?>/>
                         </li>
 
                         <li>
                             <label for="property-form-description-sell-price-dr">Precio de Venta $RD:</label> 
-                            <input type="text" name="property-sell-price-dr" id="property-form-description-sell-price-dr" <?php echo isset($property_sell_price_dr) ? 'value="'.$property_sell_price_dr. '"' : '' ?>/>
+                            <input type="text" name="property-sell-price-dr" id="property-form-description-sell-price-dr" <?php echo isset($property_sell_price_dr) ? 'value="' . $property_sell_price_dr . '"' : '' ?>/>
                         </li>
 
                     <?php endif; ?>            
@@ -163,14 +166,14 @@
                     <?php if (isset($property_status) && !(strpos($property_status, "rent") === false)): ?>
                         <li>
                             <label for="property-form-description-rent-price-us">Precio de Alquiler $US:</label> 
-                            <input type="text" name="property-rent-price-us" id="property-form-description-rent-price-us" <?php echo isset($property_rent_price_us) ? 'value="' . $property_rent_price_us. '"' : '' ?>/>
+                            <input type="text" name="property-rent-price-us" id="property-form-description-rent-price-us" <?php echo isset($property_rent_price_us) ? 'value="' . $property_rent_price_us . '"' : '' ?>/>
                         </li>
 
 
 
                         <li>
                             <label for="property-form-description-rent-price-dr">Precio de Alquiler $RD:</label> 
-                            <input type="text" name="property-rent-price-dr" id="property-form-description-rent-price-dr" <?php echo isset($property_rent_price_dr) ? 'value="' . $property_rent_price_dr. '"' : '' ?>/>
+                            <input type="text" name="property-rent-price-dr" id="property-form-description-rent-price-dr" <?php echo isset($property_rent_price_dr) ? 'value="' . $property_rent_price_dr . '"' : '' ?>/>
                         </li>
 
                     <?php endif; ?>

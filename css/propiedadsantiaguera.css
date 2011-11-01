@@ -159,13 +159,102 @@ p, ul
 
 /************ panels-propery-section-menu*******************/
 
-
-#panels-property-section-menu
-{
-    width: 960px;
-    height: 300px;
+#panels-property-section-menu-tabs {
+    border-bottom: 2px solid #76BC3B;
+    height: 28px;
+    margin-bottom: 20px;
 }
 
+  .panels-properties-pager-property-info h2 a.panels-properties-pager-property-info-title-link{
+    color: white;
+}
+
+.panels-properties-pager-property-info h2 {
+    background-color: #76BC3B;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    height: 24px;
+    padding: 7px 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.panels-properties-pager-property-info-buttons {
+    height: 30px;
+}
+
+#panels-properties-pager-submit-button
+{
+    clear: both;
+    display: block;
+}
+
+#panels-properties-pager .panels-properties-pager-property-info-buttons a {
+ background-color: #76BC3B;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    display: block;
+    float: left;
+    font-size: 1.2em;
+    margin-right: 10px;
+    padding: 6px 20px;
+}
+
+
+
+.panels-properties-pager-property-info h2, .panels-properties-pager-property-info p, .panels-properties-pager-property-info div {
+    margin-bottom: 15px;
+}
+
+.panels-properties-pager-property img {
+    display: block;
+    float: left;
+    margin-right: 20px;
+}
+.panels-properties-pager-property-info {
+    float: left;
+}
+
+.panels-properties-pager-property {
+    float: left;
+    margin-bottom: 15px;
+    width: 480px;
+}
+
+
+
+#panels-property-section-pager {
+    clear: both;
+}
+
+
+#panels-property-section-menu-tabs a:hover
+{
+    text-decoration: underline;
+}
+
+#panels-property-section-menu-tabs a {
+   background-color: #F5F5F5;
+    border-radius: 5px 5px 0 0;
+    color: #8EC55C;
+    display: block;
+    float: left;
+    font-weight: bold;
+    height: 16px;
+    padding: 6px 20px;
+}
+
+#panels-property-section-menu-tabs a.selected
+{
+    background-color: #76bc3b;
+    color: white;
+    
+}
+
+#panels-property-section-menu {
+    height: 185px;
+    width: 960px;
+}
 #panels-property-section-menu-header
 {
       color: #76B939;
@@ -706,7 +795,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 #property-form-description-column-container
 {
     margin-bottom: 25px;
-    min-height: 154px;
+    min-height: 200px;
 }
 
 #property-form-description-close-places
@@ -1366,7 +1455,10 @@ div.footer-section a{
     padding: 10px 0 0 15px;
 }
 
-
+.propiedad-viewer-detalle span
+{
+    font-weight: bold;
+}
 #properties-of-the-week-video
 {
     width:403px;
@@ -1380,14 +1472,21 @@ div.footer-section a{
 /*propiedades de la semana end*/
 
 /*propiedad-viewer*/
-#propiedad-viewer
+
+
+#propiedad-viewer-detalles
 {
+    list-style: none;
+}
+
+
+#propiedad-viewer {
     background-color: #76BC3B;
+    color: white;
     height: 387px;
     margin-right: 5px;
     padding: 10px;
     width: 660px;
-
 }
 .propiedad-viewer-detalle{
     background-image: url("/images/propiedadesViewer/detallesItemBackground.png");
@@ -1405,11 +1504,11 @@ div.footer-section a{
 {
 
     color: black;
+    font-weight: bold;
 }
-#propiedad-viewer-images-side
-{
+#propiedad-viewer-images-side {
     clear: both;
-    float: left;
+    height: 271px;
 }
 .propiedad-viewer-slideshow-selector
 {
@@ -1417,12 +1516,18 @@ div.footer-section a{
     height: 49px;
     margin: 3px 7px;
 }
+#propiedad-viewer-slidesshow-pager {
+    float: left;
+    height: 55px;
+    width: 570px;
+}
 #propiedad-viewer-slidesshow-pager
 {
-    float:left;
-    width: 359px;
-    height: 55px;
+    
 }
+
+
+
 #propiedad-viewer-top
 {
     height: 50px;
@@ -1434,17 +1539,20 @@ div.footer-section a{
     cursor: pointer;
 }
 #propiedad-viewer-pagers{
+      clear: both;
+    height: 65px;
     margin-top: 10px;
 }
-#propiedad-viewer-detalles-side
-{
+#propiedad-viewer-detalles-side {
     float: left;
-    margin-left: 10px;
-    width: 240px;
+    margin-left: 12px;
+    width: 199px;
 }
 
 #propiedad-viewer-header h2
 {
+   font-size: 2.4em;
+    line-height: 1em;
     margin: 0;
 }
 #propiedad-viewer-ref
@@ -1461,6 +1569,12 @@ div.footer-section a{
     -moz-border-radius: 0 20px 20px 20px;
     border-radius: 0 20px 20px 20px;
 }
+
+#propiedad-viewer-slideshow
+{
+    float: left;
+}
+
 #propiedad-viewer-ref img
 {
     height: 41px;
@@ -1475,25 +1589,27 @@ div.footer-section a{
 }
 .propiedad-viewer-slide
 {
-    width: 409px;
-    height: 249px;
+    width: 449px;
+    height: 254px;
 }
 /*propiedad-viewer END*/
 
 /*user-viewer*/
 
 
+#user-viewer-container {
+    background-image: url("/images/common/whiteToGrayGradient.png");
+    color: black;
+    height: 221px;
+    padding-top: 5px;
+    position: relative;
+    width: 275px;
+}
 
 
 #user-viewer
 {
-    background-image: url("/images/common/whiteToGrayGradient.png");
-    color: black;
-    height: 196px;
-    padding-left: 9px;
-    padding-top: 30px;
-    position: relative;
-    width: 251px;
+    padding: 0 10px;
 }
 
 #user-viewer-company
@@ -1535,43 +1651,48 @@ div.footer-section a{
     padding-left: 10px;
     width: 133px;
 }
-#user-viewer-user-propiedades
-{
-
-    bottom: 0px;
+#user-viewer-user-propiedades {
+    background-image: url("/images/userViewer/userPropiedadesBackground.png");
+    bottom: 0;
+    color: white;
     display: block;
     height: 17px;
     left: 0;
     padding-top: 4px;
     position: absolute;
     text-align: center;
-    width: 260px;
-    background-image: url('/images/userViewer/userPropiedadesBackground.png');
+    width: 275px;
 }
 #user-viewer-data {
     clear: both;
     height: 150px;
     width: 250px;
 }
-
 #user-viewer-info p {
-    font-size: 0.8em;
+    font-size: 1.3em;
+}
+
+#user-viewer-user-email
+{
+      clear: both;
+    font-size: 1.6em;
+    text-align: center;
 }
 /*user-viewer END*/
 
 
 /*moneda-precio*/
-#moneda-precio
-{
-    background-image: url("/images/common/whiteToGrayGradient.png");
+#moneda-precio {
+  background-image: url("/images/common/whiteToGrayGradient.png");
+    background-position: 0 -90px;
     clear: both;
     color: black;
-
     font-size: 0.8em;
     height: 68px;
+    margin-bottom: 10px;
     padding-left: 10px;
     padding-top: 13px;
-    width: 250px;
+    width: 265px;
 }
 /*moneda-precio ends*/
 

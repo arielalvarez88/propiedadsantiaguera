@@ -4582,3 +4582,601 @@ Oct 27 11:53:39 [info] CREATE TABLE `properties_property_close_places` (
 `property_close_place_id` int(11)
 ) ;
 Oct 27 11:53:39 [info] INSERT INTO schema_migrations (version) VALUES ('20111017160845')
+Oct 28 16:39:28 [info] SELECT version FROM schema_migrations
+Oct 28 16:39:28 [info] SELECT version FROM schema_migrations
+Oct 28 16:39:28 [info] SELECT version FROM schema_migrations
+Oct 28 16:39:28 [info] INSERT INTO schema_migrations (version) VALUES ('20111028200953')
+Oct 28 16:39:28 [info] ALTER TABLE users  ADD COLUMN graphical_services_left INT(3);
+Oct 28 16:39:53 [info] SELECT version FROM schema_migrations
+Oct 28 16:39:53 [info] SELECT version FROM schema_migrations
+Oct 28 16:39:53 [info] SELECT version FROM schema_migrations
+Oct 28 16:39:53 [info] ALTER TABLE users  ADD COLUMN graphical_services_left INT(3);
+Oct 28 16:39:53 [info] INSERT INTO schema_migrations (version) VALUES ('20111028202325')
+Oct 28 16:41:21 [info] SELECT version FROM schema_migrations
+Oct 28 16:41:21 [info] SELECT version FROM schema_migrations
+Oct 28 16:41:21 [info] SELECT version FROM schema_migrations
+Oct 28 16:41:32 [info] SELECT version FROM schema_migrations
+Oct 28 16:41:32 [info] SELECT version FROM schema_migrations
+Oct 28 16:41:32 [info] SELECT version FROM schema_migrations
+Oct 28 16:41:35 [info] SELECT version FROM schema_migrations
+Oct 28 16:41:35 [info] SELECT version FROM schema_migrations
+Oct 28 16:41:35 [info] SELECT version FROM schema_migrations
+Oct 28 16:41:35 [info] ALTER TABLE drop column graphical_services_left;
+Oct 28 16:41:59 [info] SELECT version FROM schema_migrations
+Oct 28 16:41:59 [info] SELECT version FROM schema_migrations
+Oct 28 16:41:59 [info] SELECT version FROM schema_migrations
+Oct 28 16:41:59 [info] ALTER TABLE users drop column graphical_services_left;
+Oct 28 16:41:59 [info] DELETE FROM schema_migrations WHERE version = '20111028202325'
+Oct 28 16:41:59 [info] DROP TABLE `plans`
+Oct 28 16:44:13 [info] SELECT version FROM schema_migrations
+Oct 28 16:44:13 [info] SELECT version FROM schema_migrations
+Oct 28 16:44:13 [info] SELECT version FROM schema_migrations
+Oct 28 16:44:13 [info] DROP TABLE `plans`
+Oct 28 16:46:25 [info] SELECT version FROM schema_migrations
+Oct 28 16:46:25 [info] SELECT version FROM schema_migrations
+Oct 28 16:46:25 [info] SELECT version FROM schema_migrations
+Oct 28 16:46:25 [info] DROP TABLE `plans`
+Oct 28 16:47:00 [info] SELECT version FROM schema_migrations
+Oct 28 16:47:00 [info] SELECT version FROM schema_migrations
+Oct 28 16:47:00 [info] SELECT version FROM schema_migrations
+Oct 28 16:47:00 [info] DROP TABLE `plans`
+Oct 28 16:47:00 [info] DELETE FROM schema_migrations WHERE version = '20111028200953'
+Oct 28 16:47:00 [info] DROP TABLE `property_close_places`
+Oct 28 16:47:00 [info] DROP TABLE `properties_property_close_places`
+Oct 28 16:47:00 [info] DELETE FROM schema_migrations WHERE version = '20111017160845'
+Oct 28 16:47:00 [info] DROP TABLE `property_features`
+Oct 28 16:47:00 [info] DROP TABLE `properties_property_features`
+Oct 28 16:47:00 [info] DELETE FROM schema_migrations WHERE version = '20111014185936'
+Oct 28 16:47:00 [info] DROP TABLE `property_types`
+Oct 28 16:47:00 [info] DROP TABLE `properties_property_types`
+Oct 28 16:47:00 [info] DELETE FROM schema_migrations WHERE version = '20111014135238'
+Oct 28 16:47:00 [info] DROP TABLE `properties`
+Oct 28 16:47:00 [info] DROP TABLE `properties_users`
+Oct 28 16:47:00 [info] DELETE FROM schema_migrations WHERE version = '20111012195106'
+Oct 28 16:47:00 [info] ALTER TABLE `users` DROP `token`
+Oct 28 16:47:00 [info] DELETE FROM schema_migrations WHERE version = '20111012154325'
+Oct 28 16:47:00 [info] DROP TABLE `users`
+Oct 28 16:47:00 [info] DELETE FROM schema_migrations WHERE version = '20110712200701'
+Oct 28 16:47:04 [info] SELECT version FROM schema_migrations
+Oct 28 16:47:04 [info] SELECT version FROM schema_migrations
+Oct 28 16:47:04 [info] SELECT version FROM schema_migrations
+Oct 28 16:47:04 [info] SET NAMES 'utf8'
+Oct 28 16:47:04 [info] CREATE TABLE `users` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`name` varchar(20),
+`lastname` varchar(20),
+`email` varchar(40),
+`password` varchar(40),
+`website` varchar(60),
+`description` text,
+`photo` varchar(255),
+`tel` varchar(10),
+`cel` varchar(10),
+`fax` varchar(10),
+`rnc` varchar(20),
+`address` text(100),
+`registration_date` datetime,
+`payment_status` tinyint(1),
+`total_posts` int(11),
+`posts_left` int(11) DEFAULT '0'
+) ;
+Oct 28 16:47:04 [info] INSERT INTO schema_migrations (version) VALUES ('20110712200701')
+Oct 28 16:47:04 [info] SET NAMES 'utf8'
+Oct 28 16:47:04 [info] ALTER TABLE `users` ADD `token` varchar(13)
+Oct 28 16:47:04 [info] INSERT INTO schema_migrations (version) VALUES ('20111012154325')
+Oct 28 16:47:04 [info] SET NAMES 'utf8'
+Oct 28 16:47:04 [info] CREATE TABLE `properties` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`address` text,
+`sell_price_us` int(11),
+`sell_price_dr` int(11),
+`rent_price_us` int(11),
+`rent_price_dr` int(11),
+`display_property` tinyint(1) DEFAULT '0',
+`sector` varchar(40),
+`coordenates` varchar(100),
+`visits` int(11) DEFAULT '0',
+`bedrooms` int(3),
+`bathrooms` int(3),
+`livingrooms` int(3),
+`kitchens` int(3),
+`parkings` int(3),
+`terrain` int(4),
+`construction` int(4),
+`stories` int(3),
+`last_payment` int(3),
+`post_date` int(3),
+`max_photos_number` int(2),
+`photos_number` int(2),
+`type` int(2)
+) ;
+Oct 28 16:47:04 [info] CREATE TABLE `properties_users` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`property_id` text,
+`user_id` int(11)
+) ;
+Oct 28 16:47:04 [info] INSERT INTO schema_migrations (version) VALUES ('20111012195106')
+Oct 28 16:47:04 [info] SET NAMES 'utf8'
+Oct 28 16:47:04 [info] CREATE TABLE `property_types` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`name` varchar(255),
+`description` text
+) ;
+Oct 28 16:47:04 [info] INSERT INTO property_types (name,description) VALUES  ('Casa','casa')
+Oct 28 16:47:04 [info] INSERT INTO property_types (name,description) VALUES  ('Apartamento','Apartamento')
+Oct 28 16:47:04 [info] INSERT INTO property_types (name,description) VALUES  ('Solar','Solar')
+Oct 28 16:47:04 [info] INSERT INTO property_types (name,description) VALUES  ('Penthouse','Penthouse')
+Oct 28 16:47:04 [info] INSERT INTO property_types (name,description) VALUES  ('Local Comercial','Local Comercial')
+Oct 28 16:47:04 [info] INSERT INTO property_types (name,description) VALUES  ('Edificio','Edificio')
+Oct 28 16:47:04 [info] INSERT INTO property_types (name,description) VALUES  ('Nave industrial','Nave industrial')
+Oct 28 16:47:04 [info] INSERT INTO property_types (name,description) VALUES  ('Oficina','Oficina')
+Oct 28 16:47:04 [info] INSERT INTO property_types (name,description) VALUES  ('Finca','Finca')
+Oct 28 16:47:04 [info] CREATE TABLE `properties_property_types` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`property_id` int(11),
+`property_type_id` int(11)
+) ;
+Oct 28 16:47:04 [info] INSERT INTO schema_migrations (version) VALUES ('20111014135238')
+Oct 28 16:47:04 [info] SET NAMES 'utf8'
+Oct 28 16:47:04 [info] CREATE TABLE `property_features` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`name` varchar(255),
+`description` text
+) ;
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Ascensor','Ascensor')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Area de juegos','Area de Juegos')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Ascensor','Ascensor')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Area de lavado','Area de lavado')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Balcon','Balcon')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Baños en áreas recreativas','Baños en áreas recreativas')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Calentador de agua eléctrico','Calentador de agua eléctrico')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Calentador de agua de gas','Calentador de gas')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Caseta de guardianes','Caseta de guardianes')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Cisterna','Cisterna')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Closet de ropa blanca','Closet de ropa blanca')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Cocina equipada','Cocina equipada')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Comedor','Comedor')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Construcción antisísmica','Construcción antisísmica')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Cornisas en yeso','Cornisas en yeso')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Cuarto de máquinas','Cuarto de máquinas')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Cuarto de servicio con baño','Cuarto de servicio con baño')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Desayunador','Desayunador')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Despensa','Despensa')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Dormitorio principal con baño','Dormitorio principal con baño')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Estar familiar','Estar familiar')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Gas común','Gas común')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Grifería importada','Grifería importada')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Intercom','Intercom')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Jacuzzi','Jacuzzi')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Jardín','Jardín')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Kiosco','Kiosco')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Lobby','Lobby')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Marquesina doble','Marquesina doble')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Medio baño para visitas','Medio baño para visitas')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Recibidor','Recibidor')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Parqueos extra','Parqueos extra')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Patio con jardín','Patio con jardín')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Piscina','Piscina')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Pisos en mármol','Pisos en mármol')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Planta eléctrica','Planta eléctrica')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Piscina','Piscina')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Pisos en mármol','Pisos en mármol')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Planta eléctrica','Planta eléctrica')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Terminación en caoba','Terminación en caoba')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Terraza','Terraza')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Todos los servicios pre-instalados','Todos los servicios pre-instalados')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Topes de granito en la cocina','Topes de granito en la cocina')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Portón eléctrico a control remoto','Portón eléctrico a control remoto')
+Oct 28 16:47:04 [info] INSERT INTO property_features (name,description) VALUES  ('Walk in closet','Walk in closet')
+Oct 28 16:47:04 [info] CREATE TABLE `properties_property_features` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`property_id` int(11),
+`property_feature_id` int(11)
+) ;
+Oct 28 16:47:04 [info] INSERT INTO schema_migrations (version) VALUES ('20111014185936')
+Oct 28 16:47:04 [info] SET NAMES 'utf8'
+Oct 28 16:47:04 [info] CREATE TABLE `property_close_places` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`name` varchar(40),
+`description` text
+) ;
+Oct 28 16:47:04 [info] INSERT INTO property_close_places (name,description) VALUES ('Centros Comerciales','Centros Comerciales')
+Oct 28 16:47:04 [info] INSERT INTO property_close_places (name,description) VALUES ('Supermercados','Supermecados')
+Oct 28 16:47:04 [info] INSERT INTO property_close_places (name,description) VALUES ('Colmados','Colmados')
+Oct 28 16:47:04 [info] INSERT INTO property_close_places (name,description) VALUES ('Centros Educativos','Centros Educativos')
+Oct 28 16:47:04 [info] INSERT INTO property_close_places (name,description) VALUES ('Establecimientos de Comida','Establecimientos de Comida')
+Oct 28 16:47:04 [info] INSERT INTO property_close_places (name,description) VALUES ('Panaderias','Panaderias')
+Oct 28 16:47:04 [info] INSERT INTO property_close_places (name,description) VALUES ('Gimnasios','Gimnasios')
+Oct 28 16:47:04 [info] INSERT INTO property_close_places (name,description) VALUES ('Transporte Publico','Rutas de transporte publico')
+Oct 28 16:47:04 [info] INSERT INTO property_close_places (name,description) VALUES ('Ferreterias','Ferreterias')
+Oct 28 16:47:04 [info] INSERT INTO property_close_places (name,description) VALUES ('Farmacias','Farmacias')
+Oct 28 16:47:04 [info] CREATE TABLE `properties_property_close_places` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`property_id` int(11),
+`property_close_place_id` int(11)
+) ;
+Oct 28 16:47:04 [info] INSERT INTO schema_migrations (version) VALUES ('20111017160845')
+Oct 28 16:47:04 [info] INSERT INTO schema_migrations (version) VALUES ('20111028200953')
+Oct 28 16:47:04 [info] ALTER TABLE users  ADD COLUMN graphical_services_left INT(3);
+Oct 28 16:47:04 [info] INSERT INTO schema_migrations (version) VALUES ('20111028202325')
+Oct 31 10:29:02 [info] SELECT version FROM schema_migrations
+Oct 31 10:29:03 [info] SELECT version FROM schema_migrations
+Oct 31 10:29:03 [info] SELECT version FROM schema_migrations
+Oct 31 10:29:03 [info] ALTER TABLE users drop column graphical_services_left;
+Oct 31 10:29:03 [info] DELETE FROM schema_migrations WHERE version = '20111028202325'
+Oct 31 10:29:03 [info] DROP TABLE `plans`
+Oct 31 10:30:22 [info] SELECT version FROM schema_migrations
+Oct 31 10:30:22 [info] SELECT version FROM schema_migrations
+Oct 31 10:30:22 [info] SELECT version FROM schema_migrations
+Oct 31 10:30:22 [info] DROP TABLE `plans`
+Oct 31 10:30:22 [info] DELETE FROM schema_migrations WHERE version = '20111028200953'
+Oct 31 10:30:22 [info] DROP TABLE `property_close_places`
+Oct 31 10:30:22 [info] DROP TABLE `properties_property_close_places`
+Oct 31 10:30:22 [info] DELETE FROM schema_migrations WHERE version = '20111017160845'
+Oct 31 10:30:22 [info] DROP TABLE `property_features`
+Oct 31 10:30:22 [info] DROP TABLE `properties_property_features`
+Oct 31 10:30:22 [info] DELETE FROM schema_migrations WHERE version = '20111014185936'
+Oct 31 10:30:22 [info] DROP TABLE `property_types`
+Oct 31 10:30:22 [info] DROP TABLE `properties_property_types`
+Oct 31 10:30:22 [info] DELETE FROM schema_migrations WHERE version = '20111014135238'
+Oct 31 10:30:22 [info] DROP TABLE `properties`
+Oct 31 10:30:22 [info] DROP TABLE `properties_users`
+Oct 31 10:30:22 [info] DELETE FROM schema_migrations WHERE version = '20111012195106'
+Oct 31 10:30:22 [info] ALTER TABLE `users` DROP `token`
+Oct 31 10:30:22 [info] DELETE FROM schema_migrations WHERE version = '20111012154325'
+Oct 31 10:30:41 [info] SELECT version FROM schema_migrations
+Oct 31 10:30:41 [info] SELECT version FROM schema_migrations
+Oct 31 10:30:41 [info] SELECT version FROM schema_migrations
+Oct 31 10:30:41 [info] SET NAMES 'utf8'
+Oct 31 10:30:41 [info] ALTER TABLE `users` ADD `token` varchar(13)
+Oct 31 10:30:41 [info] INSERT INTO schema_migrations (version) VALUES ('20111012154325')
+Oct 31 10:30:41 [info] SET NAMES 'utf8'
+Oct 31 10:30:55 [info] SELECT version FROM schema_migrations
+Oct 31 10:30:55 [info] SELECT version FROM schema_migrations
+Oct 31 10:30:55 [info] SELECT version FROM schema_migrations
+Oct 31 10:30:55 [info] ALTER TABLE `users` DROP `token`
+Oct 31 10:30:55 [info] DELETE FROM schema_migrations WHERE version = '20111012154325'
+Oct 31 10:31:01 [info] SELECT version FROM schema_migrations
+Oct 31 10:31:01 [info] SELECT version FROM schema_migrations
+Oct 31 10:31:01 [info] SELECT version FROM schema_migrations
+Oct 31 10:31:01 [info] SET NAMES 'utf8'
+Oct 31 10:31:01 [info] ALTER TABLE `users` ADD `token` varchar(13)
+Oct 31 10:31:01 [info] INSERT INTO schema_migrations (version) VALUES ('20111012154325')
+Oct 31 10:31:01 [info] SET NAMES 'utf8'
+Oct 31 10:32:31 [info] SELECT version FROM schema_migrations
+Oct 31 10:32:31 [info] SELECT version FROM schema_migrations
+Oct 31 10:32:31 [info] SELECT version FROM schema_migrations
+Oct 31 10:32:31 [info] ALTER TABLE `users` DROP `token`
+Oct 31 10:32:31 [info] DELETE FROM schema_migrations WHERE version = '20111012154325'
+Oct 31 10:32:35 [info] SELECT version FROM schema_migrations
+Oct 31 10:32:35 [info] SELECT version FROM schema_migrations
+Oct 31 10:32:35 [info] SELECT version FROM schema_migrations
+Oct 31 10:32:35 [info] SET NAMES 'utf8'
+Oct 31 10:32:35 [info] ALTER TABLE `users` ADD `token` varchar(13)
+Oct 31 10:32:35 [info] INSERT INTO schema_migrations (version) VALUES ('20111012154325')
+Oct 31 10:32:35 [info] SET NAMES 'utf8'
+Oct 31 10:34:06 [info] SELECT version FROM schema_migrations
+Oct 31 10:34:06 [info] SELECT version FROM schema_migrations
+Oct 31 10:34:06 [info] SELECT version FROM schema_migrations
+Oct 31 10:34:06 [info] ALTER TABLE `users` DROP `token`
+Oct 31 10:34:06 [info] DELETE FROM schema_migrations WHERE version = '20111012154325'
+Oct 31 10:34:08 [info] SELECT version FROM schema_migrations
+Oct 31 10:34:08 [info] SELECT version FROM schema_migrations
+Oct 31 10:34:08 [info] SELECT version FROM schema_migrations
+Oct 31 10:34:08 [info] SET NAMES 'utf8'
+Oct 31 10:34:08 [info] ALTER TABLE `users` ADD `token` varchar(13)
+Oct 31 10:34:08 [info] INSERT INTO schema_migrations (version) VALUES ('20111012154325')
+Oct 31 10:34:08 [info] SET NAMES 'utf8'
+Oct 31 10:34:08 [info] CREATE TABLE `properties` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`title` varchar(50),
+`address` text,
+`sell_price_us` int(11),
+`sell_price_dr` int(11),
+`rent_price_us` int(11),
+`rent_price_dr` int(11),
+`display_property` tinyint(1) DEFAULT '0',
+`sector` varchar(40),
+`coordenates` varchar(100),
+`visits` int(11) DEFAULT '0',
+`bedrooms` int(3),
+`bathrooms` int(3),
+`livingrooms` int(3),
+`kitchens` int(3),
+`parkings` int(3),
+`terrain` int(4),
+`construction` int(4),
+`stories` int(3),
+`last_payment` int(3),
+`post_date` int(3),
+`max_photos_number` int(2),
+`photos_number` int(2),
+`type` int(2)
+) ;
+Oct 31 10:34:08 [info] CREATE TABLE `properties_users` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`property_id` text,
+`user_id` int(11)
+) ;
+Oct 31 10:34:08 [info] INSERT INTO schema_migrations (version) VALUES ('20111012195106')
+Oct 31 10:34:08 [info] SET NAMES 'utf8'
+Oct 31 10:34:08 [info] CREATE TABLE `property_types` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`name` varchar(255),
+`description` text
+) ;
+Oct 31 10:34:08 [info] INSERT INTO property_types (name,description) VALUES  ('Casa','casa')
+Oct 31 10:34:08 [info] INSERT INTO property_types (name,description) VALUES  ('Apartamento','Apartamento')
+Oct 31 10:34:08 [info] INSERT INTO property_types (name,description) VALUES  ('Solar','Solar')
+Oct 31 10:34:08 [info] INSERT INTO property_types (name,description) VALUES  ('Penthouse','Penthouse')
+Oct 31 10:34:08 [info] INSERT INTO property_types (name,description) VALUES  ('Local Comercial','Local Comercial')
+Oct 31 10:34:08 [info] INSERT INTO property_types (name,description) VALUES  ('Edificio','Edificio')
+Oct 31 10:34:08 [info] INSERT INTO property_types (name,description) VALUES  ('Nave industrial','Nave industrial')
+Oct 31 10:34:08 [info] INSERT INTO property_types (name,description) VALUES  ('Oficina','Oficina')
+Oct 31 10:34:08 [info] INSERT INTO property_types (name,description) VALUES  ('Finca','Finca')
+Oct 31 10:34:08 [info] CREATE TABLE `properties_property_types` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`property_id` int(11),
+`property_type_id` int(11)
+) ;
+Oct 31 10:34:08 [info] INSERT INTO schema_migrations (version) VALUES ('20111014135238')
+Oct 31 10:34:08 [info] SET NAMES 'utf8'
+Oct 31 10:34:08 [info] CREATE TABLE `property_features` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`name` varchar(255),
+`description` text
+) ;
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Ascensor','Ascensor')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Area de juegos','Area de Juegos')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Ascensor','Ascensor')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Area de lavado','Area de lavado')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Balcon','Balcon')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Baños en áreas recreativas','Baños en áreas recreativas')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Calentador de agua eléctrico','Calentador de agua eléctrico')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Calentador de agua de gas','Calentador de gas')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Caseta de guardianes','Caseta de guardianes')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Cisterna','Cisterna')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Closet de ropa blanca','Closet de ropa blanca')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Cocina equipada','Cocina equipada')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Comedor','Comedor')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Construcción antisísmica','Construcción antisísmica')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Cornisas en yeso','Cornisas en yeso')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Cuarto de máquinas','Cuarto de máquinas')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Cuarto de servicio con baño','Cuarto de servicio con baño')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Desayunador','Desayunador')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Despensa','Despensa')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Dormitorio principal con baño','Dormitorio principal con baño')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Estar familiar','Estar familiar')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Gas común','Gas común')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Grifería importada','Grifería importada')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Intercom','Intercom')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Jacuzzi','Jacuzzi')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Jardín','Jardín')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Kiosco','Kiosco')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Lobby','Lobby')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Marquesina doble','Marquesina doble')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Medio baño para visitas','Medio baño para visitas')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Recibidor','Recibidor')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Parqueos extra','Parqueos extra')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Patio con jardín','Patio con jardín')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Piscina','Piscina')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Pisos en mármol','Pisos en mármol')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Planta eléctrica','Planta eléctrica')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Piscina','Piscina')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Pisos en mármol','Pisos en mármol')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Planta eléctrica','Planta eléctrica')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Terminación en caoba','Terminación en caoba')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Terraza','Terraza')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Todos los servicios pre-instalados','Todos los servicios pre-instalados')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Topes de granito en la cocina','Topes de granito en la cocina')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Portón eléctrico a control remoto','Portón eléctrico a control remoto')
+Oct 31 10:34:08 [info] INSERT INTO property_features (name,description) VALUES  ('Walk in closet','Walk in closet')
+Oct 31 10:34:08 [info] CREATE TABLE `properties_property_features` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`property_id` int(11),
+`property_feature_id` int(11)
+) ;
+Oct 31 10:34:08 [info] INSERT INTO schema_migrations (version) VALUES ('20111014185936')
+Oct 31 10:34:08 [info] SET NAMES 'utf8'
+Oct 31 10:34:08 [info] CREATE TABLE `property_close_places` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`name` varchar(40),
+`description` text
+) ;
+Oct 31 10:34:08 [info] INSERT INTO property_close_places (name,description) VALUES ('Centros Comerciales','Centros Comerciales')
+Oct 31 10:34:08 [info] INSERT INTO property_close_places (name,description) VALUES ('Supermercados','Supermecados')
+Oct 31 10:34:08 [info] INSERT INTO property_close_places (name,description) VALUES ('Colmados','Colmados')
+Oct 31 10:34:08 [info] INSERT INTO property_close_places (name,description) VALUES ('Centros Educativos','Centros Educativos')
+Oct 31 10:34:08 [info] INSERT INTO property_close_places (name,description) VALUES ('Establecimientos de Comida','Establecimientos de Comida')
+Oct 31 10:34:08 [info] INSERT INTO property_close_places (name,description) VALUES ('Panaderias','Panaderias')
+Oct 31 10:34:08 [info] INSERT INTO property_close_places (name,description) VALUES ('Gimnasios','Gimnasios')
+Oct 31 10:34:08 [info] INSERT INTO property_close_places (name,description) VALUES ('Transporte Publico','Rutas de transporte publico')
+Oct 31 10:34:08 [info] INSERT INTO property_close_places (name,description) VALUES ('Ferreterias','Ferreterias')
+Oct 31 10:34:08 [info] INSERT INTO property_close_places (name,description) VALUES ('Farmacias','Farmacias')
+Oct 31 10:34:08 [info] CREATE TABLE `properties_property_close_places` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`property_id` int(11),
+`property_close_place_id` int(11)
+) ;
+Oct 31 10:34:08 [info] INSERT INTO schema_migrations (version) VALUES ('20111017160845')
+Oct 31 10:34:08 [info] CREATE TABLE `plans` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(255),
+`description` varchar(255),
+`property_numbers` int(3),
+`graphical_services_number` int(11)
+) ;
+Oct 31 10:34:08 [info] INSERT INTO schema_migrations (version) VALUES ('20111028200953')
+Oct 31 10:34:08 [info] ALTER TABLE users  ADD COLUMN graphical_services_left INT(3);
+Oct 31 10:34:08 [info] INSERT INTO schema_migrations (version) VALUES ('20111028202325')
+Oct 31 10:52:19 [info] SELECT version FROM schema_migrations
+Oct 31 10:52:19 [info] SELECT version FROM schema_migrations
+Oct 31 10:52:19 [info] SELECT version FROM schema_migrations
+Oct 31 10:52:19 [info] ALTER TABLE users drop column graphical_services_left;
+Oct 31 10:52:19 [info] DELETE FROM schema_migrations WHERE version = '20111028202325'
+Oct 31 10:52:19 [info] DROP TABLE `plans`
+Oct 31 10:52:19 [info] DELETE FROM schema_migrations WHERE version = '20111028200953'
+Oct 31 10:52:19 [info] DROP TABLE `property_close_places`
+Oct 31 10:52:19 [info] DROP TABLE `properties_property_close_places`
+Oct 31 10:52:19 [info] DELETE FROM schema_migrations WHERE version = '20111017160845'
+Oct 31 10:52:19 [info] DROP TABLE `property_features`
+Oct 31 10:52:19 [info] DROP TABLE `properties_property_features`
+Oct 31 10:52:19 [info] DELETE FROM schema_migrations WHERE version = '20111014185936'
+Oct 31 10:52:19 [info] DROP TABLE `property_types`
+Oct 31 10:52:19 [info] DROP TABLE `properties_property_types`
+Oct 31 10:52:19 [info] DELETE FROM schema_migrations WHERE version = '20111014135238'
+Oct 31 10:52:19 [info] DROP TABLE `properties`
+Oct 31 10:52:19 [info] DROP TABLE `properties_users`
+Oct 31 10:52:19 [info] DELETE FROM schema_migrations WHERE version = '20111012195106'
+Oct 31 10:52:19 [info] ALTER TABLE `users` DROP `token`
+Oct 31 10:52:19 [info] DELETE FROM schema_migrations WHERE version = '20111012154325'
+Oct 31 10:52:21 [info] SELECT version FROM schema_migrations
+Oct 31 10:52:21 [info] SELECT version FROM schema_migrations
+Oct 31 10:52:21 [info] SELECT version FROM schema_migrations
+Oct 31 10:52:21 [info] SET NAMES 'utf8'
+Oct 31 10:52:21 [info] ALTER TABLE `users` ADD `token` varchar(13)
+Oct 31 10:52:21 [info] INSERT INTO schema_migrations (version) VALUES ('20111012154325')
+Oct 31 10:52:21 [info] SET NAMES 'utf8'
+Oct 31 10:52:21 [info] CREATE TABLE `properties` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`title` varchar(50),
+`address` text,
+`sell_price_us` int(11),
+`sell_price_dr` int(11),
+`rent_price_us` int(11),
+`rent_price_dr` int(11),
+`display_property` tinyint(1) DEFAULT '0',
+`days_left` int(11) DEFAULT '0',
+`sector` varchar(40),
+`coordenates` varchar(100),
+`visits` int(11) DEFAULT '0',
+`bedrooms` int(3),
+`bathrooms` int(3),
+`livingrooms` int(3),
+`kitchens` int(3),
+`parkings` int(3),
+`terrain` int(4),
+`construction` int(4),
+`stories` int(3),
+`last_payment` int(3),
+`post_date` int(3),
+`max_photos_number` int(2),
+`photos_number` int(2),
+`type` int(2)
+) ;
+Oct 31 10:52:21 [info] CREATE TABLE `properties_users` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`property_id` text,
+`user_id` int(11)
+) ;
+Oct 31 10:52:21 [info] INSERT INTO schema_migrations (version) VALUES ('20111012195106')
+Oct 31 10:52:21 [info] SET NAMES 'utf8'
+Oct 31 10:52:21 [info] CREATE TABLE `property_types` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`name` varchar(255),
+`description` text
+) ;
+Oct 31 10:52:21 [info] INSERT INTO property_types (name,description) VALUES  ('Casa','casa')
+Oct 31 10:52:21 [info] INSERT INTO property_types (name,description) VALUES  ('Apartamento','Apartamento')
+Oct 31 10:52:21 [info] INSERT INTO property_types (name,description) VALUES  ('Solar','Solar')
+Oct 31 10:52:21 [info] INSERT INTO property_types (name,description) VALUES  ('Penthouse','Penthouse')
+Oct 31 10:52:21 [info] INSERT INTO property_types (name,description) VALUES  ('Local Comercial','Local Comercial')
+Oct 31 10:52:21 [info] INSERT INTO property_types (name,description) VALUES  ('Edificio','Edificio')
+Oct 31 10:52:21 [info] INSERT INTO property_types (name,description) VALUES  ('Nave industrial','Nave industrial')
+Oct 31 10:52:21 [info] INSERT INTO property_types (name,description) VALUES  ('Oficina','Oficina')
+Oct 31 10:52:21 [info] INSERT INTO property_types (name,description) VALUES  ('Finca','Finca')
+Oct 31 10:52:21 [info] CREATE TABLE `properties_property_types` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`property_id` int(11),
+`property_type_id` int(11)
+) ;
+Oct 31 10:52:21 [info] INSERT INTO schema_migrations (version) VALUES ('20111014135238')
+Oct 31 10:52:21 [info] SET NAMES 'utf8'
+Oct 31 10:52:21 [info] CREATE TABLE `property_features` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`name` varchar(255),
+`description` text
+) ;
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Ascensor','Ascensor')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Area de juegos','Area de Juegos')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Ascensor','Ascensor')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Area de lavado','Area de lavado')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Balcon','Balcon')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Baños en áreas recreativas','Baños en áreas recreativas')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Calentador de agua eléctrico','Calentador de agua eléctrico')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Calentador de agua de gas','Calentador de gas')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Caseta de guardianes','Caseta de guardianes')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Cisterna','Cisterna')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Closet de ropa blanca','Closet de ropa blanca')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Cocina equipada','Cocina equipada')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Comedor','Comedor')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Construcción antisísmica','Construcción antisísmica')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Cornisas en yeso','Cornisas en yeso')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Cuarto de máquinas','Cuarto de máquinas')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Cuarto de servicio con baño','Cuarto de servicio con baño')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Desayunador','Desayunador')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Despensa','Despensa')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Dormitorio principal con baño','Dormitorio principal con baño')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Estar familiar','Estar familiar')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Gas común','Gas común')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Grifería importada','Grifería importada')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Intercom','Intercom')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Jacuzzi','Jacuzzi')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Jardín','Jardín')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Kiosco','Kiosco')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Lobby','Lobby')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Marquesina doble','Marquesina doble')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Medio baño para visitas','Medio baño para visitas')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Recibidor','Recibidor')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Parqueos extra','Parqueos extra')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Patio con jardín','Patio con jardín')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Piscina','Piscina')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Pisos en mármol','Pisos en mármol')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Planta eléctrica','Planta eléctrica')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Piscina','Piscina')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Pisos en mármol','Pisos en mármol')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Planta eléctrica','Planta eléctrica')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Terminación en caoba','Terminación en caoba')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Terraza','Terraza')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Todos los servicios pre-instalados','Todos los servicios pre-instalados')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Topes de granito en la cocina','Topes de granito en la cocina')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Portón eléctrico a control remoto','Portón eléctrico a control remoto')
+Oct 31 10:52:21 [info] INSERT INTO property_features (name,description) VALUES  ('Walk in closet','Walk in closet')
+Oct 31 10:52:21 [info] CREATE TABLE `properties_property_features` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`property_id` int(11),
+`property_feature_id` int(11)
+) ;
+Oct 31 10:52:21 [info] INSERT INTO schema_migrations (version) VALUES ('20111014185936')
+Oct 31 10:52:21 [info] SET NAMES 'utf8'
+Oct 31 10:52:21 [info] CREATE TABLE `property_close_places` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`name` varchar(40),
+`description` text
+) ;
+Oct 31 10:52:21 [info] INSERT INTO property_close_places (name,description) VALUES ('Centros Comerciales','Centros Comerciales')
+Oct 31 10:52:21 [info] INSERT INTO property_close_places (name,description) VALUES ('Supermercados','Supermecados')
+Oct 31 10:52:21 [info] INSERT INTO property_close_places (name,description) VALUES ('Colmados','Colmados')
+Oct 31 10:52:21 [info] INSERT INTO property_close_places (name,description) VALUES ('Centros Educativos','Centros Educativos')
+Oct 31 10:52:21 [info] INSERT INTO property_close_places (name,description) VALUES ('Establecimientos de Comida','Establecimientos de Comida')
+Oct 31 10:52:21 [info] INSERT INTO property_close_places (name,description) VALUES ('Panaderias','Panaderias')
+Oct 31 10:52:21 [info] INSERT INTO property_close_places (name,description) VALUES ('Gimnasios','Gimnasios')
+Oct 31 10:52:21 [info] INSERT INTO property_close_places (name,description) VALUES ('Transporte Publico','Rutas de transporte publico')
+Oct 31 10:52:21 [info] INSERT INTO property_close_places (name,description) VALUES ('Ferreterias','Ferreterias')
+Oct 31 10:52:21 [info] INSERT INTO property_close_places (name,description) VALUES ('Farmacias','Farmacias')
+Oct 31 10:52:21 [info] CREATE TABLE `properties_property_close_places` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`property_id` int(11),
+`property_close_place_id` int(11)
+) ;
+Oct 31 10:52:21 [info] INSERT INTO schema_migrations (version) VALUES ('20111017160845')
+Oct 31 10:52:21 [info] CREATE TABLE `plans` (
+`id` int(11) UNSIGNED auto_increment PRIMARY KEY,
+`nombre` varchar(255),
+`description` varchar(255),
+`property_numbers` int(3),
+`graphical_services_number` int(11)
+) ;
+Oct 31 10:52:21 [info] INSERT INTO schema_migrations (version) VALUES ('20111028200953')
+Oct 31 10:52:21 [info] ALTER TABLE users  ADD COLUMN graphical_services_left INT(3);
+Oct 31 10:52:21 [info] INSERT INTO schema_migrations (version) VALUES ('20111028202325')

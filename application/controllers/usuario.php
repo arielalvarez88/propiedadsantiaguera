@@ -15,26 +15,52 @@ class Usuario extends CI_Controller {
         $this->load->library('password_reset_success_template.php');
     }
 
-  
+   
 
-    public function panel($section = 'propiedades')
+    public function get_user_published_properties_pager($print='')
+    {
+      
+        $user =$this->get_logged_user_or_redirect_to_please_login();        
+        $properties_pager_info['properties'] = $user->property->where('display_property',1)->get_iterated();
+        $properties_pager_info['section'] = "published";
+        $return_in_string_instead_of_printing = $print ? false : true;
+             
+        return  $this->load->view('blocks/panels_properties_pager',$properties_pager_info,$return_in_string_instead_of_printing);
+
+    }
+    
+
+
+
+    public function get_user_created_properties_pager($print='')
     {
         
-        $user = User_handler::getLoggedUser();
-        if(!$user || !$user->id)
-        {
-            $this->show_please_login();
-            return;
-        }
+        $user = $this->get_logged_user_or_redirect_to_please_login();
+        $properties_pager_info['properties'] = $user->property->get_iterated();
+        $properties_pager_info['section'] = "created";
+        $return_in_string_instead_of_printing = $print ? false : true;
+        return  $this->load->view('blocks/panels_properties_pager',$properties_pager_info,$return_in_string_instead_of_printing);
+
+    }
+    
+    
+    
+    public function panel($section = 'propiedades', $subsection ='publicadas', $messages = array())
+    {
         
-        $user_info['user'] = $user;
+        $messages = $messages ? $messages : $this->session->userdata("messages");
+       
+        $user = $this->get_logged_user_or_redirect_to_please_login();                        
         $panel_view = array();
-        
         
         switch($section)
         {
             case 'propiedades':
-                $panel_view['topLeftSide'] = $this->load->view('blocks/panels_property_section',$user_info,true);
+                $section_info['user'] = $user;
+                $section_info['subsession'] = $user;
+                $section_info['messages'] = $messages;
+                $section_info['pager'] = empty($subsection ) || $subsection == 'publicadas' ? $this->get_user_published_properties_pager() : $this->get_user_created_properties_pager();
+                $panel_view['topLeftSide'] = $this->load->view('blocks/panels_property_section',$section_info,true);
             break;
         }
         
