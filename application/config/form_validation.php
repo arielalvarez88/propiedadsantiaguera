@@ -59,6 +59,11 @@ $config = array(
     ),
     'property' => array(
     
+            array(
+            'field' => 'property-title',
+            'label' => 'título',
+            'rules' => 'required'
+        ),
         array(
             'field' => 'property-type',
             'label' => 'sector',

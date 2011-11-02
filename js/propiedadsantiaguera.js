@@ -52,8 +52,8 @@ initializePropiedadViewer = function (){
     });
     $('#propiedad-viewer-slidesshow-pager').cycle({ 
         fx:     'scrollHorz', 
-        prev:   '#propiedad-viewer-previousPager', 
-        next:   '#propiedad-viewer-nextPager', 
+        prev:   '#propiedad-viewer-previous-pager', 
+        next:   '#propiedad-viewer-next-pager', 
         after: hideNextorPrevious,
         timeout: 0 
     });
@@ -83,8 +83,8 @@ drawPropertyUbication = function(latitudeAndLongitude)
 hideNextorPrevious = function (curr, next, opts){
 
     var index = opts.currSlide;
-    $('#propiedad-viewer-previousPager')[index == 0 ? 'hide' : 'show']();
-    $('#propiedad-viewer-nextPager')[index == opts.slideCount - 1 ? 'hide' : 'show']();   
+    $('#propiedad-viewer-previous-pager')[index == 0 ? 'hide' : 'show']();
+    $('#propiedad-viewer-next-pager')[index == opts.slideCount - 1 ? 'hide' : 'show']();   
 }
 
 blockExists = function(idName){
@@ -373,14 +373,23 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
             initializeInputsWithDefaultText();
                 
         });
-    }
+    };
+    
+    
+    this.putSelectedClassToClickedElement = function()
+    {
+       $('.view-loader-element ').removeClass('selected');
+       this.chooserElement.addClass('selected');       
+    };
     
     this.chooserElement.unbind(eventString);
-    this.chooserElement.bind(eventString,function(){
+    this.chooserElement.bind(eventString,function(event){
+        event.preventDefault();
         var i=0;
         if(elementType == 'a')
         {
             thisObject.swapOptionalViews(valueToUrlJsonsArray[0].url,valueToUrlJsonsArray[0].data);
+            thisObject.putSelectedClassToClickedElement();
                    
         }
         else
@@ -390,6 +399,7 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
                 if(thisObject.chooserElement.val() == valueToUrlJsonsArray[i].value)
                 {
                     thisObject.swapOptionalViews(valueToUrlJsonsArray[i].url,valueToUrlJsonsArray[i].data);
+                    thisObject.putSelectedClassToClickedElement();
                 }
             }
                       
@@ -422,6 +432,19 @@ initializeViewLoaderElements = function(){
         value: '', 
         url:'/ajax/form_getter/passwordRecovery'
     }],'#login','a');
+
+
+    var propertiesPanelPublishedButton = new ViewLoaderElement('#panels-property-section-menu-tabs-published','click',[{
+        value: '', 
+        url:'/usuario/get_user_published_properties_pager/print'
+    }],'#panels-property-section-pager','a');
+
+var propertiesPanelCreatedButton = new ViewLoaderElement('#panels-property-section-menu-tabs-created','click',[{
+        value: '', 
+        url:'/usuario/get_user_created_properties_pager/print'
+    }],'#panels-property-section-pager','a');
+
+
 
     
     var propertyTypeRepopulate = {

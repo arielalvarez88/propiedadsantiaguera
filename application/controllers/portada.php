@@ -33,6 +33,8 @@ class Portada extends CI_Controller {
         $this->load->view('page',$data);
     }
     
+    
+    
    
 }
 
