@@ -17,8 +17,9 @@
                     
                         <?php if($section == 'published'):?>
                             <p>Tiempo Restante: <?php echo $property->days_left;?></p>
-                            <input id="panels-properties-pager-property-info-buttons-reactivation" type="checkbox"/>
+                            
                             <div>
+                                <input id="panels-properties-pager-property-info-buttons-reactivation" name="panels-properties-pager-property-info-buttons-ractivation-<?php echo $property->id;?>" type="checkbox"/>
                                 <label for="panels-properties-pager-property-info-buttons-reactivation">Auto reactivacion </label>
                             </div>
                             <a href="/propiedades/editar_propiedades/<?php echo $property->id;?>" class="no-decoration-anchor">Detalles</a> 
@@ -26,7 +27,7 @@
                             <?php else:?>
                             <div>
                                 <lable for="panels-properties-pager-property-info-buttons-publish">Publicar</lable>
-                                <input name="publish-property-<?php echo $property->id;?>" id="panels-properties-pager-property-info-buttons-publish" type="checkbox"/>
+                                <input name="publish-property-<?php echo $property->id;?>" id="panels-properties-pager-property-info-buttons-publish" type="checkbox" <?php echo $property->display_property ? 'checked="checked" disabled="disabled"':"" ;?>/>
                             </div>
                             
                              <a href="/propiedades/editar_propiedades/<?php echo $property->id;?>" class="no-decoration-anchor">Detalles</a> 
