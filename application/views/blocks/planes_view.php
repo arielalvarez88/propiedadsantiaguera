@@ -158,7 +158,7 @@ Si tiene alguna pregunta con relación al proceso de la promoción de su
 propiedad, no dude en comunicarse con nosotros y 
 le contestaremos en la brevedad posible.</br></br>
 
-<strong>Aquí les detallamos las <a href="#">políticas de seguridad</a> y <a href="#">términos de uso</a>.</strong></p>
+<span><strong>Aquí les detallamos las <a href="#">políticas de seguridad</a> y <a href="#">términos de uso</a>.</strong></span></p>
 </div>
 
 <div id="info_segura">
@@ -166,4 +166,4 @@ le contestaremos en la brevedad posible.</br></br>
 <p>En Propiedad Santiaguera utilizamos servidores de última tecnología localizados en los Estados Unidos, 
 los cuales están protegidos bajo vigilancia las 24 horas del día. Nuestra infraestructura 
 es constantemente actualizada con los últimos lineamientos de seguridad.</p>
-</div>
+</div>  
