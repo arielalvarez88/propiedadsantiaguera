@@ -25,15 +25,16 @@ p, ul
 {
     margin:0;
 }
+a img
+{
+    border:0;
+}
 
 #wrapper{
     background-color: white;
     margin-left: auto;
     margin-right: auto;
-<<<<<<< HEAD
-=======
     padding: 10px;
->>>>>>> darwin_updated_views
     width: 960px;
     background:none;
 }
@@ -172,7 +173,7 @@ p, ul
 
 #panels-property-section-menu-header
 {
-      color: #76B939;
+    color: #76B939;
     font-size: 2em;
     margin-bottom: 15px;
 }
@@ -196,7 +197,7 @@ p, ul
 
 #panels-property-section-menu-properties-counter
 {
-     background-image: url("/images/common/greenPattern.jpg");
+    background-image: url("/images/common/greenPattern.jpg");
     float: right;
     height: 136px;
     padding-top: 28px;
@@ -205,7 +206,7 @@ p, ul
 
 #panels-property-section-menu-properties-counter h2
 {
-   background-image: url("/images/common/stripesGradient_H496.jpg");
+    background-image: url("/images/common/stripesGradient_H496.jpg");
     background-position: 0 64px;
     color: #595959;
     font-size: 1.2em;
@@ -215,7 +216,7 @@ p, ul
 }
 
 #panels-property-section-menu-properties-counter div{
-   border-right: 1px solid #D9E1D2;
+    border-right: 1px solid #D9E1D2;
     float: left;
     text-align: center;
     width: 81px;
@@ -223,7 +224,7 @@ p, ul
 
 #panels-property-section-properties-counter-menu-left
 {
-    
+
 }
 #panels-property-section-menu-properties-counter p, #panels-property-section-menu-properties-counter span
 {
@@ -232,16 +233,16 @@ p, ul
 
 #panels-property-section-menu-properties-counter p
 {
-   color: #595959;
+    color: #595959;
     margin-bottom: 10px;
 }
 
 #panels-property-section-menu-properties-counter span
 {
-   color: #76B939;
+    color: #76B939;
     font-size: 3em;
 }
-    
+
 /************ panels-propery-section-menu ENDS*******************/
 
 
@@ -249,7 +250,7 @@ p, ul
 
 #tired-message
 {
-  background-color: #F9CA02;
+    background-color: #F9CA02;
     color: black;
     height: 156px;
     padding: 20px;
@@ -321,9 +322,10 @@ p, ul
 {
     background-color: #76BC3B;
     border-radius: 6px 6px 6px 6px;
+    -moz-border-radius: 6px 6px 6px 6px;
     height: 44px;
     margin: 10px 0;
-    
+
     position: relative;
 }
 
@@ -387,11 +389,11 @@ img.no-decoration-anchor,a.no-decoration-anchor,a.no-decoration-anchor:visited,a
 ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited 
 {
     color: white;
-    
+
     height: 17px;
     padding: 5px 10px 10px;
     text-decoration: none;
- 
+
 }
 .primary-links li a:hover
 {
@@ -400,9 +402,9 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 .primary-links 
 {
-  position: absolute;
-  right: 20px;
-  top:18px;
+    position: absolute;
+    right: 20px;
+    top:18px;
 }
 
 #footer
@@ -796,13 +798,13 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     float: left;
     height: 246px;
     width: 302px;
-    
+
 }
 #popular-neighborhoods ul
 {
     margin-left: 6px;
 }
-    
+
 
 
 .front-page-module-header img
@@ -814,13 +816,13 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 {
     float: right;
     color: #99cd6c;
-    
-    
+
+
 }
 
 #popular-neighborhoods-header
 {
- 
+
 }
 
 #popular-neighborhoods ul li
@@ -831,7 +833,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #popular-neighborhoods ul li img
 {
-       height: 9px;
+    height: 9px;
     margin-right: 2px;
     width: 7px;
 }
@@ -869,7 +871,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #tools-center-slideshow
 {
-       height: 152px;
+    height: 152px;
 }
 
 #tools-center-pager a
@@ -895,7 +897,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #contet-footer-divisor
 {
-      background-image: url("/images/common/stripesGradient_H496.jpg");
+    background-image: url("/images/common/stripesGradient_H496.jpg");
     background-position: 0 13px;
     clear: both;
     height: 14px;
@@ -906,12 +908,12 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #footer-makers-logo
 {
-      float:right;
-      margin-top: 20px;
+    float:right;
+    margin-top: 20px;
 }
 /**footer**/
 #footer{
-color: #76BC3B;
+    color: #76BC3B;
     height: 155px;
     padding: 15px 10px;;
 
@@ -925,9 +927,9 @@ color: #76BC3B;
 
 #footer-logo
 {
-      float: left;
+    float: left;
     margin-right: 10px;
-    
+
 }
 #newsletter h3
 {
@@ -947,7 +949,7 @@ color: #76BC3B;
     height: 32px;
     border: 4px solid #cccccc;
     border-radius: 5px;
-    
+
 }
 #newsletter-email-container input
 {
@@ -959,7 +961,7 @@ color: #76BC3B;
 
 #newsletter-subscribe-button
 {
-     background-color: #76BC3B;
+    background-color: #76BC3B;
     border-radius: 5px 5px 5px 5px;
     color: white;
     display: block;
@@ -969,18 +971,18 @@ color: #76BC3B;
     padding: 7px 0;
     text-align: center;
     width: 69px;
-     
+
 }
 
 
 #footer-message
 {
- border-left: 2px solid #CCCCCC;
+    border-left: 2px solid #CCCCCC;
     float: left;
     height: 51px;
     padding: 10px 0 25px 20px;
     width: 351px;
-        color: #666666;
+    color: #666666;
 }
 
 /**footer ENDS**/
@@ -1081,12 +1083,12 @@ div.footer-section a{
 
 #basic-filter-advanced-filter-link
 {
-       margin: 0 5px;
+    margin: 0 5px;
     position: relative;
     text-decoration: underline;
     top: -14px;
-    
-    
+
+
 }
 #basic-filter p 
 {
@@ -1095,7 +1097,7 @@ div.footer-section a{
 #basic-filter-left-size, #basic-filter-right-size
 {
     float: left;
-    
+
 }
 
 #basic-filter #basic-filter-type
@@ -1113,12 +1115,12 @@ div.footer-section a{
 
 #basic-filter select
 {
-   border: 4px solid #E7E7E7;
+    border: 4px solid #E7E7E7;
     display: block;
     height: 30px;
     margin-bottom: 10px;
     width: 276px;
-    
+
 }
 
 #basic-filter
@@ -1126,7 +1128,7 @@ div.footer-section a{
     width: 627px;
     height: 202px;
     background-image: url("/images/common/stripesGradient_H496.jpg");
-    
+
 }
 
 #basic-filter *
@@ -1137,7 +1139,7 @@ div.footer-section a{
 #basic-filter-price-slider-display
 {
     color: black;
-    
+
 }
 
 #basic-filter-price-slider-max-display
@@ -1147,7 +1149,7 @@ div.footer-section a{
 
 #basic-filter-price-slider
 {
-       width: 259px;
+    width: 259px;
     height: 20px;
 }
 
@@ -1188,7 +1190,7 @@ div.footer-section a{
     margin-right: 18px;
 }
 #front-page-slide-show-pager {
- float: left;
+    float: left;
     position: absolute;
     right: 20px;
     top:0;
@@ -1225,7 +1227,7 @@ div.footer-section a{
 
 #advertising img
 {
-    
+
 }
 
 
@@ -1261,11 +1263,11 @@ div.footer-section a{
 
 #agents-properties-pager-container
 {
-    
+
 }
 
 #agents-properties-pager-container #properties-pager, #agents-properties-pager-container #properties-pager-properties-container {
-    
+
     width: 797px;
     height: 636px;
 }
@@ -1276,7 +1278,7 @@ div.footer-section a{
 /*properties-pager*/
 #properties-pager
 {
-    
+
     height: 329px;
     background-image: url("/images/common/stripesGradient_H496.jpg");
 }
@@ -1290,8 +1292,8 @@ div.footer-section a{
 
 
 #properties-pager-header {
-    
-     color: #76BB3A;
+
+    color: #76BB3A;
     font-size: 1.4em;
     margin: 0 0 5px;
     padding: 10px 0 0 15px;
@@ -1320,12 +1322,12 @@ div.footer-section a{
 
 
 .properties-pager-property span.properties-pager-property-price{
-   
+
 }
 
 
 .properties-pager-property-screenshot{
-    
+
     width: 248px;
     height: 164px;
 
@@ -1343,7 +1345,7 @@ div.footer-section a{
     padding: 0 8px;
     margin: 10px 0;
     width: 249px;      
-     color:#247f12;
+    color:#247f12;
     display:inline;
 }
 
@@ -1356,7 +1358,7 @@ div.footer-section a{
 
 /*proerties-of-the-week*/
 #properties-of-the-week {
-   background-image: url("/images/common/whiteToGrayGradient_H327.png");
+    background-image: url("/images/common/whiteToGrayGradient_H327.png");
     color: black;
     height: 327px;
     margin-right: 11px;
@@ -1728,7 +1730,7 @@ div.footer-section a{
 }
 #agentes-banner
 {
-    
+
     color: #76bc3b;
     height: 33px;
     padding: 0 0 0 5px;
@@ -1752,7 +1754,7 @@ div.footer-section a{
 /*agentes-pager*/
 #agentes-pager-header
 {
-     background-color: #76BC3B;
+    background-color: #76BC3B;
     border-radius: 8px;
     font-size: 1.8em;
     height: 29px;
@@ -1775,7 +1777,7 @@ div.footer-section a{
     width: 923px;
 }
 .agentes-pager-agente{
-    
+
     float: left;
     margin: 10px 0 10px 17px;
     padding: 0 17px 0 0;
@@ -1851,11 +1853,11 @@ div.footer-section a{
     margin-top: 5px;
 }
 
-    
-    
+
+
 #user-info-name
 {
- 
+
     color: black;
     font-size: 1.5em;
 }
@@ -2178,7 +2180,7 @@ span.required{
 
 .front-page-module-header
 {
-       background-image: url("/images/common/whiteToGrayGradient_H327.png");
+    background-image: url("/images/common/whiteToGrayGradient_H327.png");
     background-position: 0 219px;
     color: #76B939;
     height: 21px;
@@ -2350,12 +2352,12 @@ span.required{
 }
 #info_segura
 {
-   background: url('/images/lock.png') top left no-repeat;
-   color:#333;
-   width:655px;
-   height:90px;
-   margin:10px auto;
-   padding:17px 0 0 70px;
+    background: url('/images/lock.png') top left no-repeat;
+    color:#333;
+    width:655px;
+    height:90px;
+    margin:10px auto;
+    padding:17px 0 0 70px;
 }
 #info_segura p{
     font-size:8pt;
@@ -2374,7 +2376,7 @@ span.required{
  * http://jquery.org/license
  *
  * http://docs.jquery.com/UI/Theming/API
- */
+*/
 
 /* Layout helpers
 ----------------------------------*/
@@ -2419,7 +2421,7 @@ span.required{
  * http://docs.jquery.com/UI/Theming/API
  *
  * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Trebuchet%20MS,%20Tahoma,%20Verdana,%20Arial,%20sans-serif&fwDefault=bold&fsDefault=1.1em&cornerRadius=4px&bgColorHeader=f6a828&bgTextureHeader=12_gloss_wave.png&bgImgOpacityHeader=35&borderColorHeader=e78f08&fcHeader=ffffff&iconColorHeader=ffffff&bgColorContent=eeeeee&bgTextureContent=03_highlight_soft.png&bgImgOpacityContent=100&borderColorContent=dddddd&fcContent=333333&iconColorContent=222222&bgColorDefault=f6f6f6&bgTextureDefault=02_glass.png&bgImgOpacityDefault=100&borderColorDefault=cccccc&fcDefault=1c94c4&iconColorDefault=ef8c08&bgColorHover=fdf5ce&bgTextureHover=02_glass.png&bgImgOpacityHover=100&borderColorHover=fbcb09&fcHover=c77405&iconColorHover=ef8c08&bgColorActive=ffffff&bgTextureActive=02_glass.png&bgImgOpacityActive=65&borderColorActive=fbd850&fcActive=eb8f00&iconColorActive=ef8c08&bgColorHighlight=ffe45c&bgTextureHighlight=03_highlight_soft.png&bgImgOpacityHighlight=75&borderColorHighlight=fed22f&fcHighlight=363636&iconColorHighlight=228ef1&bgColorError=b81900&bgTextureError=08_diagonals_thick.png&bgImgOpacityError=18&borderColorError=cd0a0a&fcError=ffffff&iconColorError=ffd27a&bgColorOverlay=666666&bgTextureOverlay=08_diagonals_thick.png&bgImgOpacityOverlay=20&opacityOverlay=50&bgColorShadow=000000&bgTextureShadow=01_flat.png&bgImgOpacityShadow=10&opacityShadow=20&thicknessShadow=5px&offsetTopShadow=-5px&offsetLeftShadow=-5px&cornerRadiusShadow=5px
- */
+*/
 
 
 /* Component containers
@@ -2663,7 +2665,7 @@ span.required{
  * http://jquery.org/license
  *
  * http://docs.jquery.com/UI/Resizable#theming
- */
+*/
 .ui-resizable { position: relative;}
 .ui-resizable-handle { position: absolute;font-size: 0.1px;z-index: 99999; display: block; }
 .ui-resizable-disabled .ui-resizable-handle, .ui-resizable-autohide .ui-resizable-handle { display: none; }
@@ -2682,7 +2684,7 @@ span.required{
  * http://jquery.org/license
  *
  * http://docs.jquery.com/UI/Selectable#theming
- */
+*/
 .ui-selectable-helper { position: absolute; z-index: 100; border:1px dotted black; }
 /*
  * jQuery UI Accordion 1.8.16
@@ -2692,7 +2694,7 @@ span.required{
  * http://jquery.org/license
  *
  * http://docs.jquery.com/UI/Accordion#theming
- */
+*/
 /* IE/Win - Fix animation bug - #4615 */
 .ui-accordion { width: 100%; }
 .ui-accordion .ui-accordion-header { cursor: pointer; position: relative; margin-top: 1px; zoom: 1; }
@@ -2711,7 +2713,7 @@ span.required{
  * http://jquery.org/license
  *
  * http://docs.jquery.com/UI/Autocomplete#theming
- */
+*/
 .ui-autocomplete { position: absolute; cursor: default; }	
 
 /* workarounds */
@@ -2725,36 +2727,36 @@ span.required{
  * http://jquery.org/license
  *
  * http://docs.jquery.com/UI/Menu#theming
- */
+*/
 .ui-menu {
-	list-style:none;
-	padding: 2px;
-	margin: 0;
-	display:block;
-	float: left;
+    list-style:none;
+    padding: 2px;
+    margin: 0;
+    display:block;
+    float: left;
 }
 .ui-menu .ui-menu {
-	margin-top: -3px;
+    margin-top: -3px;
 }
 .ui-menu .ui-menu-item {
-	margin:0;
-	padding: 0;
-	zoom: 1;
-	float: left;
-	clear: left;
-	width: 100%;
+    margin:0;
+    padding: 0;
+    zoom: 1;
+    float: left;
+    clear: left;
+    width: 100%;
 }
 .ui-menu .ui-menu-item a {
-	text-decoration:none;
-	display:block;
-	padding:.2em .4em;
-	line-height:1.5;
-	zoom:1;
+    text-decoration:none;
+    display:block;
+    padding:.2em .4em;
+    line-height:1.5;
+    zoom:1;
 }
 .ui-menu .ui-menu-item a.ui-state-hover,
 .ui-menu .ui-menu-item a.ui-state-active {
-	font-weight: normal;
-	margin: -1px;
+    font-weight: normal;
+    margin: -1px;
 }
 /*
  * jQuery UI Button 1.8.16
@@ -2764,7 +2766,7 @@ span.required{
  * http://jquery.org/license
  *
  * http://docs.jquery.com/UI/Button#theming
- */
+*/
 .ui-button { display: inline-block; position: relative; padding: 0; margin-right: .1em; text-decoration: none !important; cursor: pointer; text-align: center; zoom: 1; overflow: visible; } /* the overflow property removes extra width in IE */
 .ui-button-icon-only { width: 2.2em; } /* to make room for the icon, a width needs to be set here */
 button.ui-button-icon-only { width: 2.4em; } /* button elements seem to need a little more width */
@@ -2793,7 +2795,7 @@ input.ui-button { padding: .4em 1em; }
 .ui-buttonset .ui-button { margin-left: 0; margin-right: -.3em; }
 
 /* workarounds */
-button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra padding in Firefox */
+button.ui-button:-moz-focus-inner { border: 0; padding: 0; } /* reset extra padding in Firefox */
 /*
  * jQuery UI Dialog 1.8.16
  *
@@ -2802,7 +2804,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
  * http://jquery.org/license
  *
  * http://docs.jquery.com/UI/Dialog#theming
- */
+*/
 .ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: hidden; }
 .ui-dialog .ui-dialog-titlebar { padding: .4em 1em; position: relative;  }
 .ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .1em 0; } 
@@ -2823,7 +2825,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
  * http://jquery.org/license
  *
  * http://docs.jquery.com/UI/Slider#theming
- */
+*/
 .ui-slider { position: relative; text-align: left; }
 .ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 1.2em; height: 1.7em; cursor: default; }
 .ui-slider .ui-slider-range { position: absolute; z-index: 1; font-size: .7em; display: block; border: 0; background-position: 0 0; }
@@ -2846,7 +2848,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
  * http://jquery.org/license
  *
  * http://docs.jquery.com/UI/Tabs#theming
- */
+*/
 .ui-tabs { position: relative; padding: .2em; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
 .ui-tabs .ui-tabs-nav { margin: 0; padding: .2em .2em 0; }
 .ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
@@ -2864,7 +2866,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
  * http://jquery.org/license
  *
  * http://docs.jquery.com/UI/Datepicker#theming
- */
+*/
 .ui-datepicker { width: 17em; padding: .2em .2em 0; display: none; }
 .ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; }
 .ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { position:absolute; top: 2px; width: 1.8em; height: 1.8em; }
@@ -2931,7 +2933,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
  * http://jquery.org/license
  *
  * http://docs.jquery.com/UI/Progressbar#theming
- */
+*/
 .ui-progressbar { height:2em; text-align: left; }
 .ui-progressbar .ui-progressbar-value {margin: -1px; height:100%; }
 
@@ -3260,3 +3262,58 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 .fancybox-ie #fancybox-bg-w { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_shadow_w.png', sizingMethod='scale'); }
 .fancybox-ie #fancybox-bg-nw { filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fancybox/fancy_shadow_nw.png', sizingMethod='scale'); }
 /*fancybox ENDS*/
+
+/********************** Property types styles *********************/
+#property_types_title
+{
+    background:url('/images/property_types_title_bg.png') repeat-x bottom left;
+    padding:15px 0 10px 20px;
+    color:#76BC3B;
+    margin-bottom:0;
+        border-radius:9px 9px 0 0;
+    -moz-border-radius:9px 9px 0 0; 
+    -webkit-border-radius:9px 9px 0 0;
+}
+#property_types_holder
+{
+    margin:0 auto 10px;
+    text-align:center;
+    background:url('/images/property_types_bg.png') repeat-x 1px 1px;
+    border-radius:0 0 9px 9px;
+    -moz-border-radius:0 0 9px 9px; 
+    -webkit-border-radius:0 0 9px 9px;
+    height:380px;
+    padding:0;
+}
+#property_types_holder table
+{
+    text-align:center;
+    width:95%;
+    margin-top:30px;
+    height:340px;
+    font-size:10pt;
+    font-weight:bold;
+    color:#76BC3B;
+}
+#property_types_holder table tr td
+{
+    padding:10px;
+    margin:0;
+}
+#property_types_holder table tr td a
+{
+    margin: 0;
+    padding:78px 40px;
+    background:url('/images/property_type_gray_bg.png') top center no-repeat;
+}
+#property_types_holder table tr td a:hover
+{
+    background:url('/images/property_type_green_bg.png') top center no-repeat;  
+}
+#property_types_holder table tr td a img
+{
+    height:60px;
+}
+
+
+/********************* End property types styles ******************/
