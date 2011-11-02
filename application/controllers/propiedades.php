@@ -141,10 +141,7 @@ class Propiedades extends CI_Controller {
         $messages['info_messages'] = 'Su propiedad fue agregada con éxito';
         $this->agregar_propiedades($messages);
     }
-<<<<<<< HEAD
-    
-<<<<<<< HEAD
-    
+
     public  function guardar_cambios_publicar()
     {
         $user = $this->get_logged_user_or_redirect_to_please_login();        
