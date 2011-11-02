@@ -5,11 +5,8 @@ class Propiedades extends CI_Controller {
 
 
     public function index() {
-        $data['topLeftSide'] = $this->load->view('blocks/propiedades', '', true);
-        $data['topRightSide'] = $this->load->view('blocks/advertising', '', true);
-        $data['topRightSide'] .= $this->load->view('blocks/subscribe', '', true);
-        $menuTiposDePropiedadData['sectionName'] = 'propiedades';
-        $data['topLeftSide'] .= $this->load->view('blocks/menuTiposDePropiedad', $menuTiposDePropiedadData, true);
+         $data['header'] = $this->load->view('blocks/header', '', true);
+        $data['centerSection'] = $this->load->view('blocks/property_types', '', true);
         $this->load->view('page', $data);
     }
 
@@ -182,13 +179,10 @@ class Propiedades extends CI_Controller {
         
         $user->save();
         redirect("/usuario/panel/propiedades/publicadas");
-=======
-    public function edit_property($property_id)
-    {
-=======
 
+    }
     public function edit_property($property_id) {
->>>>>>> origin/darwin_edit_properties
+
         $property = new Property();
         $property->where('id', $property_id);
         $property->get();
@@ -272,11 +266,7 @@ class Propiedades extends CI_Controller {
 
         $blocks['topLeftSide'] = $this->load->view('forms/add_properties_form.php', $repopulateForm, true);
         $this->load->view('page', $blocks);
-<<<<<<< HEAD
->>>>>>> origin/darwin_edit_properties
-        
-=======
->>>>>>> origin/darwin_edit_properties
+
     }
 
     private function add_property_error() {
@@ -368,11 +358,6 @@ class Propiedades extends CI_Controller {
         $this->agregar_propiedades($repopulateForm);
     }
 
-    public function property_types() {
-        $data['header'] = $this->load->view('blocks/header', '', true);
-        $data['centerSection'] = $this->load->view('blocks/property_types', '', true);
-        $this->load->view('page', $data);
-    }
 
 }
 
