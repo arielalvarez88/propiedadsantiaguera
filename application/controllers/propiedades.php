@@ -63,14 +63,13 @@ class Propiedades extends CI_Controller {
 
     private function save_property() {
         $user = User_handler::getLoggedUser();
-        
-        if (!$user->can_create_property()) 
-        {
+
+        if (!$user->can_create_property()) {
 
             $repopulateForm['errors'] = "Usted ha sobrepasado el límite de propiedades creadas permitidas. Para poder agregar otra propiedad debe comprar otro paquete o borrar una de las existentes.";
             $this->agregar_propiedades($repopulateForm);
             return;
-        }            
+        }
 
         $newProperty = new Property();
         $newPropertyInfo = $this->input->post();
@@ -185,6 +184,92 @@ class Propiedades extends CI_Controller {
         
     }
 
+    public function edit_property($property_id) {
+        $property = new Property();
+        $property->where('id', $property_id);
+        $property->get();
+
+        $repopulateForm = array();
+
+        $repopulateForm['property_type'] = $property->type;
+        $repopulateForm['property_sector'] = $property->property_sector;
+        $repopulateForm['property_address'] = $property->property_address;
+        $repopulateForm['property_status'] = $property->property_status;
+        $repopulateForm['property_sell_price_us'] = $property->property_sell_price_us;
+        $repopulateForm['property_rent_price_us'] = $property->property_rent_price_us;
+        $repopulateForm['property_sell_price_dr'] = $property->property_sell_price_dr;
+        $repopulateForm['property_rent_price_dr'] = $property->property_rent_price_dr;
+
+        $repopulateForm['property_terrain'] = $property->property_terrain;
+        $repopulateForm['property_construction'] = $property->property_construction;
+        $repopulateForm['property_histories'] = $property->property_histories;
+        $repopulateForm['property_bedrooms'] = $property->property_bedrooms;
+        $repopulateForm['property_bathrooms'] = $property->property_bathrooms;
+        $repopulateForm['property_livinrooms'] = $property->property_livinrooms;
+        $repopulateForm['property_kitchens'] = $property->property_kitchens;
+        $repopulateForm['property_parkings'] = $property->property_parkings;
+
+
+        $repopulateForm['close_malls)'] = $property->close_malls;
+        $repopulateForm['close_supermarkets'] = $property->close_supermarkets;
+        $repopulateForm['close_grocery_stores'] = $property->close_grocery_stores;
+        $repopulateForm['close_schools'] = $property->close_schools;
+        $repopulateForm['close_restaurants'] = $property->close_restaurants;
+        $repopulateForm['close_bakeries'] = $property->close_bakeries;
+        $repopulateForm['close_gyms'] = $property->close_gyms;
+        //$repopulateForm['close_public_transport'] = $property->close_public_transport;
+        $repopulateForm['close_hardware_stores'] = $property->close_hardware_stores;
+        $repopulateForm['close_drug_stores'] = $property->close_drug_stores;
+
+
+        $repopulateForm['elevator'] = $property->elevator;
+        $repopulateForm['game_area'] = $property->game_area;
+        $repopulateForm['wash_area'] = $property->wash_area;
+        $repopulateForm['balcony'] = $property->balcony;
+        $repopulateForm['electric_water_heater'] = $property->electric_water_heater;
+        $repopulateForm['gas_water_heater'] = $property->gas_water_heater;
+        $repopulateForm['watchman_stand'] = $property->watchman_stand;
+        $repopulateForm['cistern'] = $property->cistern;
+        $repopulateForm['white_clothes_closer'] = $property->white_clothes_closer;
+        $repopulateForm['equiped_kitchen'] = $property->equiped_kitchen;
+        $repopulateForm['dinning_room'] = $property->dinning_room;
+        $repopulateForm['antisismic_construction'] = $property->antisismic_construction;
+        $repopulateForm['plaster_cornices'] = $property->plaster_cornices;
+        $repopulateForm['machine_room'] = $property->machine_room;
+        $repopulateForm['utility_room_bathroom'] = $property->utility_room_bathroom;
+        $repopulateForm['pantry'] = $property->pantry;
+        $repopulateForm['principal_room_bathroom'] = $property->principal_room_bathroom;
+        $repopulateForm['trash_chute'] = $property->trash_chute;
+        $repopulateForm['famaily_room'] = $property->famaily_room;
+        $repopulateForm['common_gas'] = $property->common_gas;
+        $repopulateForm['imported_fittings'] = $property->imported_fittings;
+        $repopulateForm['intercom'] = $property->intercom;
+        $repopulateForm['jacuzzi'] = $property->jacuzzi;
+        $repopulateForm['garden'] = $property->garden;
+        $repopulateForm['kiosk'] = $property->kiosk;
+        $repopulateForm['lobby'] = $property->lobby;
+        $repopulateForm['double_garage'] = $property->double_garage;
+        $repopulateForm['half_bathroom'] = $property->half_bathroom;
+        $repopulateForm['features_receiver'] = $property->features_receiver;
+        $repopulateForm['lobby'] = $property->lobby;
+        $repopulateForm['extra_parkings'] = $property->extra_parkings;
+        $repopulateForm['patio_with_garden'] = $property->patio_with_garden;
+        $repopulateForm['pool'] = $property->pool;
+        $repopulateForm['marmol_floors'] = $property->marmol_floors;
+        $repopulateForm['electric_plant'] = $property->electric_plant;
+        $repopulateForm['mahogany_terminations'] = $property->mahogany_terminations;
+        $repopulateForm['terrace'] = $property->terrace;
+        $repopulateForm['pre_installed_services'] = $property->pre_installed_services;
+        $repopulateForm['granite_countertops'] = $property->granite_countertops;
+        $repopulateForm['electric_gate'] = $property->electric_gate;
+        $repopulateForm['walk_in_closet'] = $property->walk_in_closet;
+
+
+
+        $blocks['topLeftSide'] = $this->load->view('forms/add_properties_form.php', $repopulateForm, true);
+        $this->load->view('page', $blocks);
+    }
+
     private function add_property_error() {
 
         $repopulateForm = array();
@@ -272,6 +357,12 @@ class Propiedades extends CI_Controller {
 
 
         $this->agregar_propiedades($repopulateForm);
+    }
+
+    public function property_types() {
+        $data['header'] = $this->load->view('blocks/header', '', true);
+        $data['centerSection'] = $this->load->view('blocks/property_types', '', true);
+        $this->load->view('page', $data);
     }
 
 }
