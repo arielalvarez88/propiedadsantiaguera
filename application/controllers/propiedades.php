@@ -141,9 +141,7 @@ class Propiedades extends CI_Controller {
         $messages['info_messages'] = 'Su propiedad fue agregada con éxito';
         $this->agregar_propiedades($messages);
     }
-<<<<<<< HEAD
-    
-<<<<<<< HEAD
+
     
     public  function guardar_cambios_publicar()
     {
@@ -185,13 +183,11 @@ class Propiedades extends CI_Controller {
         
         $user->save();
         redirect("/usuario/panel/propiedades/publicadas");
-=======
-    public function edit_property($property_id)
-    {
-=======
+
+    }
+
 
     public function edit_property($property_id) {
->>>>>>> origin/darwin_edit_properties
         $property = new Property();
         $property->where('id', $property_id);
         $property->get();
@@ -275,11 +271,7 @@ class Propiedades extends CI_Controller {
 
         $blocks['topLeftSide'] = $this->load->view('forms/add_properties_form.php', $repopulateForm, true);
         $this->load->view('page', $blocks);
-<<<<<<< HEAD
->>>>>>> origin/darwin_edit_properties
-        
-=======
->>>>>>> origin/darwin_edit_properties
+
     }
 
     private function add_property_error() {
