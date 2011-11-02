@@ -2,6 +2,8 @@
 
 class Propiedades extends CI_Controller {
 
+
+
     public function index() {
         $data['topLeftSide'] = $this->load->view('blocks/propiedades', '', true);
         $data['topRightSide'] = $this->load->view('blocks/advertising', '', true);
