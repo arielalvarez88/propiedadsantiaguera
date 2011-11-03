@@ -378,8 +378,8 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
     
     this.putSelectedClassToClickedElement = function()
     {
-       $('.view-loader-element ').removeClass('selected');
-       this.chooserElement.addClass('selected');       
+        $('.view-loader-element ').removeClass('selected');
+        this.chooserElement.addClass('selected');       
     };
     
     this.chooserElement.unbind(eventString);
@@ -439,7 +439,7 @@ initializeViewLoaderElements = function(){
         url:'/usuario/get_user_published_properties_pager/print'
     }],'#panels-property-section-pager','a');
 
-var propertiesPanelCreatedButton = new ViewLoaderElement('#panels-property-section-menu-tabs-created','click',[{
+    var propertiesPanelCreatedButton = new ViewLoaderElement('#panels-property-section-menu-tabs-created','click',[{
         value: '', 
         url:'/usuario/get_user_created_properties_pager/print'
     }],'#panels-property-section-pager','a');
@@ -452,7 +452,7 @@ var propertiesPanelCreatedButton = new ViewLoaderElement('#panels-property-secti
         'property_sell_price_dr' : $('#property-form-description-sell-price-dr').val(), 
         'property_rent_price_us' : $('#property-form-description-rent-price-us').val(), 
         'property_rent_price_dr' : $('#property-form-description-sell-rent-dr').val()
-        };
+    };
 
     
     
@@ -609,6 +609,67 @@ initializeSliders = function () {
 };
 
 
+
+
+
+InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInputSelector, calculateButtonSelector, responseInputSelector)
+{
+    var thisObject = this;
+    this.mountInput = $(mountInputSelector);
+    this.rateInput = $(rateInputSelector);
+    this.yearsInput = $(yearsInputSelector);
+    this.calculateButton = $(calculateButtonSelector);
+    this.responseInput = $(responseInputSelector);
+    
+    
+    
+    this.calculateEvent = function(){
+        
+        var mount = Number(thisObject.mountInput.val());
+        var rate = Number(thisObject.rateInput.val());
+        var years = Number(thisObject.yearsInput.val());
+        
+        
+        
+        var valiidateForInterest = function(mount,rate,years)
+        {
+            
+            for(index in arguments)
+            {
+                
+                    
+                    
+                if(typeof arguments[index] != 'number')
+                {
+                    
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+        
+        
+          
+        if(valiidateForInterest(mount,rate,years))
+        {
+                thisObject.responseInput.val(mount + rate) ;
+        }
+        
+        
+    };
+        
+    
+  thisObject.calculateButton.click(thisObject.calculateEvent);
+    
+};
+
+initializeInterestsCalculators = function()
+{
+    var interestCalculator = new InterestsCalculator("#interests-calculator-mount", "#interests-calculator-rate", "#interests-calculator-years", "#interests-calculator-calculate-button", "#interests-calculator-result");
+};
+
+
 $(document).ready
 {   
     extendJquery();
@@ -626,6 +687,7 @@ $(document).ready
     intializeForms();
     initializeOverlays();
     initializeMaps();
+    initializeInterestsCalculators();
     
 /*comentario*/    
 }

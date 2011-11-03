@@ -41,7 +41,7 @@
                 <img class="properties-pager-property-screenshot" alt="property-photo" src="/images/common/propertyThumb.png"/>
                 <h2 class="properties-pager-property-title">Titulo de la casa</h2>
                 <p class="properties-pager-info">
-                    <span class="properties-pager-proerty-sector">Cerros de gurabo</span>
+                    <span class="properties-pager-property-sector">Cerros de gurabo</span>
                     Precio:<span class="properties-pager-property-price">RD$ 10,000,000</span>
                 </p>
                 <p class="properties-pager-desc">
