@@ -51,7 +51,8 @@ class Propiedades extends CI_Controller {
 
     public function validate() {
 
-        if ($this->form_validation->run('property') == false) {
+        if ($this->form_validation->run('property') == false) 
+        {
 
             $this->add_property_error();
         } else {

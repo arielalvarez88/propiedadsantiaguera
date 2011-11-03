@@ -10,7 +10,7 @@ class Please_login extends CI_Controller
 
     public function index(){
         $user = User_handler::getLoggedUser();
-        $user_is_logged = $user->id;
+        $user_is_logged = isset($user->id) && $user->id;
         if($user_is_logged)
             redirect (base_url());
         

@@ -15,68 +15,52 @@ class Usuario extends CI_Controller {
         $this->load->library('password_reset_success_template.php');
     }
 
-   
+    public function get_user_published_properties_pager($print='') {
 
-    public function get_user_published_properties_pager($print='')
-    {
-      
-        $user =$this->get_logged_user_or_redirect_to_please_login();        
-        $properties_pager_info['properties'] = $user->property->where('display_property',1)->get_iterated();
+        $user = $this->get_logged_user_or_redirect_to_please_login();
+        $properties_pager_info['properties'] = $user->property->where('display_property', 1)->get_iterated();
         $properties_pager_info['section'] = "published";
         $return_in_string_instead_of_printing = $print ? false : true;
-             
-        return  $this->load->view('blocks/panels_properties_pager',$properties_pager_info,$return_in_string_instead_of_printing);
 
+        return $this->load->view('blocks/panels_properties_pager', $properties_pager_info, $return_in_string_instead_of_printing);
     }
-    
 
+    public function get_user_created_properties_pager($print='') {
 
-
-    public function get_user_created_properties_pager($print='')
-    {
-        
         $user = $this->get_logged_user_or_redirect_to_please_login();
         $properties_pager_info['properties'] = $user->property->get_iterated();
         $properties_pager_info['section'] = "created";
         $return_in_string_instead_of_printing = $print ? false : true;
-        return  $this->load->view('blocks/panels_properties_pager',$properties_pager_info,$return_in_string_instead_of_printing);
-
+        return $this->load->view('blocks/panels_properties_pager', $properties_pager_info, $return_in_string_instead_of_printing);
     }
-    
-    
-    
-    public function panel($section = 'propiedades', $subsection ='publicadas', $messages = array())
-    {
-        
+
+    public function panel($section = 'propiedades', $subsection ='publicadas', $messages = array()) {
+
         $messages = $messages ? $messages : $this->session->userdata("messages");
-       
-        $user = $this->get_logged_user_or_redirect_to_please_login();                        
+
+        $user = $this->get_logged_user_or_redirect_to_please_login();
         $panel_view = array();
-        
-        switch($section)
-        {
+
+        switch ($section) {
             case 'propiedades':
                 $section_info['user'] = $user;
                 $section_info['subsession'] = $user;
                 $section_info['messages'] = $messages;
-                $section_info['pager'] = empty($subsection ) || $subsection == 'publicadas' ? $this->get_user_published_properties_pager() : $this->get_user_created_properties_pager();
-                $panel_view['topLeftSide'] = $this->load->view('blocks/panels_property_section',$section_info,true);
-            break;
+                $section_info['pager'] = empty($subsection) || $subsection == 'publicadas' ? $this->get_user_published_properties_pager() : $this->get_user_created_properties_pager();
+                $panel_view['topLeftSide'] = $this->load->view('blocks/panels_property_section', $section_info, true);
+                break;
         }
-        
-        
-        $this->load->view('page',$panel_view);
-        
-        
-        
+
+
+        $this->load->view('page', $panel_view);
     }
-    
+
     public function login() {
         $email = $this->input->post('login-email');
         $password = sha1($this->input->post('login-password'));
 
-        $usuario = User_handler::loginAndSaveInCookies($email, $password);   
-        
+        $usuario = User_handler::loginAndSaveInCookies($email, $password);
+
         $response = new stdClass();
         $response->success = is_object($usuario) && $usuario->id ? true : false;
 
@@ -108,30 +92,34 @@ class Usuario extends CI_Controller {
 
         $validationType = $clientType == 'client' ? 'signupClient' : 'signupCompany';
         $user_photo_path = '';
-        if ($this->form_validation->run($validationType) == false) {
+        $user_info_is_invalid = $this->form_validation->run($validationType) == false;
+        if ($user_info_is_invalid) {
 
             $this->error();
-        } else {            
-
-            if (isset($_FILES['signup-photo']) && $_FILES['signup-photo']['size']) {
-                 
-                $user_photo_config['upload_path'] = Environment_vars::$environment_vars['user_photos_dir_path'];
-                $user_photo_config['file_name'] = time() ;                
-                $user_photo_config['allowed_types'] = 'gif|jpg|png';
-                $user_photo_config['max_size'] = '1000';
-                $this->load->library('upload', $user_photo_config);
-
-                if (!$this->upload->do_upload('signup-photo')) {
-                    $errores['errores'] = $this->upload->display_errors();
-                    $this->reppopulate_signup_form($errores);
-                    return;
-                }
-                $user_photo_info = $this->upload->data();
-                $user_photo_path = $user_photo_info['full_path'];
-            }                  
-                    $this->save_user($user_photo_path);
-
+            return;
+        } elseif (File_handler::file_to_upload_exits("signup-photo")) {
+            
+            try
+            {
+                $user_photo_path_in_array = File_handler::save_photos(array("signup-photo"), Environment_vars::$environment_vars['user_photos_dir_path'], 2048);
+            }
+            catch(Exception $error)
+            {
+                $this->error(array("errors" => $error->getMessage()));
+                return;
+            }
+            
+            $user_files_hasnt_errors = $user_photo_path_in_array;
+            
+            if($user_files_hasnt_errors)
+                $user_photo_path = $user_photo_path_in_array[0];
+            
         }
+        
+        if($user_photo_path)        
+            $this->save_user($user_photo_path);
+        else
+            $this->save_user();
     }
 
     private function reppopulate_signup_form($extra_parameters=array()) {
@@ -178,8 +166,8 @@ class Usuario extends CI_Controller {
         $newUser->description = $userInfo['signup-description'];
 
 
-       if($photo_file_path)
-        $newUser->photo = $photo_file_path;
+        if ($photo_file_path)
+            $newUser->photo = $photo_file_path;
 
         $newUser->save();
 
@@ -189,22 +177,22 @@ class Usuario extends CI_Controller {
     }
 
     public function comprar_plan($plan_name) {
-        $user = User_handler::getLoggedUser();
+        $user = $this->get_logged_user_or_redirect_to_please_login();
         if (!$user->id || !$plan_name) {
             redirect("/please_login");
         }
 
         switch ($plan_name) {
-            case "plan-basico":
+            case "basico":
                 $user->posts_left += 1;
                 break;
-            case "plan-plus":
+            case "plus":
                 $user->posts_left += 5;
                 break;
-            case "plan-agente":
+            case "agente":
                 $user->posts_left += 10;
                 break;
-            case "plan-inmobilaria":
+            case "inmobilaria":
                 $user->posts_left += 25;
                 break;
         }
@@ -288,13 +276,16 @@ class Usuario extends CI_Controller {
         $this->load->view('page.php', $data);
     }
 
-    private function error() {
+    private function error($messages = array()) {
 
 
 
-        $repopulateForm['errores'] = validation_errors();
+        if(isset($messages['errors']))
+            $messages['errors'] .=  "\n".validation_errors();
+        else
+            $messages['errors'] =  validation_errors();
 
-        $this->reppopulate_signup_form($repopulateForm);
+        $this->reppopulate_signup_form($messages);
     }
 
 }
