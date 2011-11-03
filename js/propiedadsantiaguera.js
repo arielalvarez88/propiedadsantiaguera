@@ -623,8 +623,8 @@ InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInpu
     
     
     
-    this.calculateEvent = function(){
-        
+    this.calculateEvent = function(event){
+        event.preventDefault();
         var mount = Number(thisObject.mountInput.val());
         var rate = Number(thisObject.rateInput.val());
         var years = Number(thisObject.yearsInput.val());
