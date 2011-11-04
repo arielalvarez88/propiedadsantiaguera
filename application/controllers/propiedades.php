@@ -2,17 +2,6 @@
 
 class Propiedades extends CI_Controller {
 
-
-
-    public function index() {
-        $data['topLeftSide'] = $this->load->view('blocks/propiedades', '', true);
-        $data['topRightSide'] = $this->load->view('blocks/advertising', '', true);
-        $data['topRightSide'] .= $this->load->view('blocks/subscribe', '', true);
-        $menuTiposDePropiedadData['sectionName'] = 'propiedades';
-        $data['topLeftSide'] .= $this->load->view('blocks/menuTiposDePropiedad', $menuTiposDePropiedadData, true);
-        $this->load->view('page', $data);
-    }
-
     public function agregar_propiedades($view_variables = null) {
         $user = User_handler::getLoggedUser();
 
@@ -25,26 +14,26 @@ class Propiedades extends CI_Controller {
     }
 
     public function ver($id=null) {
-        
+
         $no_id_passed = !$id;
-        if($no_id_passed)
-            redirect ("/propiedades");
-        
+        if ($no_id_passed)
+            redirect("/propiedades");
+
         $user = $this->get_logged_user_or_redirect_to_please_login();
-        $property_to_show = $user->property->where("id",$id)->get();
+        $property_to_show = $user->property->where("id", $id)->get();
         $propiedadObject['property'] = $property_to_show;
         $property_cant_be_shown = !$property_to_show->display_property;
-        
-        if($property_cant_be_shown)
-            redirect ("/propiedades");
-        
-        
+
+        if ($property_cant_be_shown)
+            redirect("/propiedades");
+
+
         $data['topLeftSide'] = $this->load->view('blocks/property_viewer', $propiedadObject, true);
         $data['topRightSide'] = $this->load->view('blocks/user_viewer', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/monedaPrecio', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/pdf_converter', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/sharePropertyWithAFriend', $propiedadObject, true);
-        $data['bottomLeftSide'] = $this->load->view('blocks/property_info',  $propiedadObject['property'] , true);
+        $data['bottomLeftSide'] = $this->load->view('blocks/property_info', $propiedadObject['property'], true);
         $data['bottomLeftSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propiedadObject, true);
         $data['bottomRightSide'] = $this->load->view('blocks/solicitudDeInformacion', $propiedadObject, true);
 
@@ -86,7 +75,7 @@ class Propiedades extends CI_Controller {
         $newProperty->kitchens = $newPropertyInfo['property-kitchens'];
         $newProperty->status = $newPropertyInfo['property-status'];
         $newProperty->bedrooms = $newPropertyInfo['property-bedrooms'];
-        $newProperty->parkings = $newPropertyInfo['property-parkings']; 
+        $newProperty->parkings = $newPropertyInfo['property-parkings'];
         $newProperty->sell_price_us = isset($newPropertyInfo['property-sell-price-us']) ? $newPropertyInfo['property-sell-price-us'] : null;
         $newProperty->sell_price_dr = isset($newPropertyInfo['property-sell-price-dr']) ? $newPropertyInfo['property-sell-price-dr'] : null;
         $newProperty->rent_price_us = isset($newPropertyInfo['property-rent-price-us']) ? $newPropertyInfo['property-rent-price-us'] : null;
@@ -141,80 +130,67 @@ class Propiedades extends CI_Controller {
         $messages['info_messages'] = 'Su propiedad fue agregada con éxito';
         $this->agregar_propiedades($messages);
     }
-<<<<<<< HEAD
-    
-<<<<<<< HEAD
-    
-    public  function guardar_cambios_publicar()
-    {
-        $user = $this->get_logged_user_or_redirect_to_please_login();        
-          
-        $number_of_properties_user_want_to_publish = count($this->input->post())-3;
-        $number_of_properties_user_can_publish = $user->posts_left;
-        
-     
-        if($number_of_properties_user_want_to_publish > $number_of_properties_user_can_publish)                                            
-        {
 
-        
+    public function guardar_cambios_publicar() {
+        $user = $this->get_logged_user_or_redirect_to_please_login();
+
+        $number_of_properties_user_want_to_publish = count($this->input->post()) - 3;
+        $number_of_properties_user_can_publish = $user->posts_left;
+
+
+        if ($number_of_properties_user_want_to_publish > $number_of_properties_user_can_publish) {
+
+
             $messages['errors'] = "No posee suficientes propiedades compradas.";
             $this->session->set_userdata(array("messages" => $messages));
-            redirect("/usuario/panel/propiedades/creadas/");                
-            
+            redirect("/usuario/panel/propiedades/creadas/");
         }
-           
-            
-        
+
+
+
         $user_properties = $user->property->get();
-        foreach($user_properties as $property)
-        {  
-            
-            $property_selector = "publish-property-".$property->id;            
-            
+        foreach ($user_properties as $property) {
+
+            $property_selector = "publish-property-" . $property->id;
+
             $property_selected_to_publish = $this->input->post($property_selector);
-            if($property_selected_to_publish)                            
-            {
-                
-                $property->display_property = 1 ; 
+            if ($property_selected_to_publish) {
+
+                $property->display_property = 1;
                 $property->save();
                 $user->posts_left--;
             }
-                
-                    
         }
-        
+
         $user->save();
         redirect("/usuario/panel/propiedades/publicadas");
-=======
-    public function edit_property($property_id)
-    {
-=======
+    }
 
-    public function edit_property($property_id) {
->>>>>>> origin/darwin_edit_properties
+    public function editar_propiedades($property_id) {
         $property = new Property();
         $property->where('id', $property_id);
         $property->get();
 
         $repopulateForm = array();
 
-        $repopulateForm['property_type'] = $property->type;
-        $repopulateForm['property_sector'] = $property->property_sector;
-        $repopulateForm['property_address'] = $property->property_address;
-        $repopulateForm['property_status'] = $property->property_status;
-        $repopulateForm['property_sell_price_us'] = $property->property_sell_price_us;
-        $repopulateForm['property_rent_price_us'] = $property->property_rent_price_us;
-        $repopulateForm['property_sell_price_dr'] = $property->property_sell_price_dr;
-        $repopulateForm['property_rent_price_dr'] = $property->property_rent_price_dr;
 
-        $repopulateForm['property_terrain'] = $property->property_terrain;
-        $repopulateForm['property_construction'] = $property->property_construction;
-        $repopulateForm['property_histories'] = $property->property_histories;
-        $repopulateForm['property_bedrooms'] = $property->property_bedrooms;
-        $repopulateForm['property_bathrooms'] = $property->property_bathrooms;
-        $repopulateForm['property_livinrooms'] = $property->property_livinrooms;
-        $repopulateForm['property_kitchens'] = $property->property_kitchens;
-        $repopulateForm['property_parkings'] = $property->property_parkings;
+        $repopulateForm['property_type'] = $property->type;
+        $repopulateForm['property_sector'] = $property->sector;
+        $repopulateForm['property_address'] = $property->address;
+        $repopulateForm['property_status'] = $property->status;
+        $repopulateForm['property_sell_price_us'] = number_format($property->sell_price_us);
+        $repopulateForm['property_rent_price_us'] = number_format($property->rent_price_us);
+        $repopulateForm['property_sell_price_dr'] = number_format($property->sell_price_dr);
+        $repopulateForm['property_rent_price_dr'] = number_format($property->rent_price_dr);
+
+        $repopulateForm['property_terrain'] = $property->terrain;
+        $repopulateForm['property_construction'] = $property->construction;
+        $repopulateForm['property_histories'] = $property->histories;
+        $repopulateForm['property_bedrooms'] = $property->bedrooms;
+        $repopulateForm['property_bathrooms'] = $property->bathrooms;
+        $repopulateForm['property_livinrooms'] = $property->livinrooms;
+        $repopulateForm['property_kitchens'] = $property->kitchens;
+        $repopulateForm['property_parkings'] = $property->parkings;
 
 
         $repopulateForm['close_malls)'] = $property->close_malls;
@@ -224,7 +200,7 @@ class Propiedades extends CI_Controller {
         $repopulateForm['close_restaurants'] = $property->close_restaurants;
         $repopulateForm['close_bakeries'] = $property->close_bakeries;
         $repopulateForm['close_gyms'] = $property->close_gyms;
-        //$repopulateForm['close_public_transport'] = $property->close_public_transport;
+        $repopulateForm['close_public_transport'] = $property->close_public_transport;
         $repopulateForm['close_hardware_stores'] = $property->close_hardware_stores;
         $repopulateForm['close_drug_stores'] = $property->close_drug_stores;
 
@@ -275,11 +251,6 @@ class Propiedades extends CI_Controller {
 
         $blocks['topLeftSide'] = $this->load->view('forms/add_properties_form.php', $repopulateForm, true);
         $this->load->view('page', $blocks);
-<<<<<<< HEAD
->>>>>>> origin/darwin_edit_properties
-        
-=======
->>>>>>> origin/darwin_edit_properties
     }
 
     private function add_property_error() {
@@ -371,7 +342,7 @@ class Propiedades extends CI_Controller {
         $this->agregar_propiedades($repopulateForm);
     }
 
-    public function property_types() {
+    public function index() {
         $data['header'] = $this->load->view('blocks/header', '', true);
         $data['centerSection'] = $this->load->view('blocks/property_types', '', true);
         $this->load->view('page', $data);

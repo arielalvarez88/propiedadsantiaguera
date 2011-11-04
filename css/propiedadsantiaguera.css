@@ -2364,10 +2364,8 @@ span.required{
 {
     color:#fa0;
     padding-top: 22px;
+    height:116px;
 }
-
-<<<<<<< HEAD
-=======
 #planes_data tbody tr,#planes_data tbody td
 {
     padding:15px 0;
@@ -2486,7 +2484,6 @@ span.required{
     font-size:8pt;
     padding-left:5px;
 }
->>>>>>> origin/darwin_updated_views
 
 
 
