@@ -139,6 +139,10 @@ class Propiedades extends CI_Controller {
         $this->agregar_propiedades($messages);
     }
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> origin/darwin_edit_properties
     public  function guardar_cambios_publicar()
     {
         $user = $this->get_logged_user_or_redirect_to_please_login();        
@@ -179,10 +183,19 @@ class Propiedades extends CI_Controller {
         
         $user->save();
         redirect("/usuario/panel/propiedades/publicadas");
+<<<<<<< HEAD
+=======
+
+    }
+
+>>>>>>> origin/darwin_edit_properties
 
     }
     public function edit_property($property_id) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/darwin_edit_properties
         $property = new Property();
         $property->where('id', $property_id);
         $property->get();
