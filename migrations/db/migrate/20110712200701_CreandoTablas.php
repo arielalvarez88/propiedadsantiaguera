@@ -79,18 +79,7 @@ class CreandoTablas extends Ruckusing_BaseMigration {
 //        $plans->column('number_of_properties', 'string', array('limit' => 3));
 //        
 //        
-//        $files = $this->create_table('files');
-//        $files->column('name', 'string', array('limit' => 20));
-//        $files->column('description', 'text');
-//        $files->column('path', 'string', array('limit' => 3));
-//        
-//        $fileTypes = $this->create_table('file-types');
-//        $fileTypes->column('name', 'string', array('limit' => 20));
-//        $fileTypes->column('description', 'text');
-//        
-//        $fileTypesJoin = $this->create_table('files_file-types');
-//        $fileTypesJoin->column('name', 'string', array('limit' => 20));
-//        $fileTypesJoin->column('description', 'text');
+
         
 
         $users->finish();

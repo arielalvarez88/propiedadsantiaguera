@@ -2,6 +2,14 @@
 
 class Propiedades extends CI_Controller {
 
+
+
+    public function index() {
+         $data['header'] = $this->load->view('blocks/header', '', true);
+        $data['centerSection'] = $this->load->view('blocks/property_types', '', true);
+        $this->load->view('page', $data);
+    }
+
     public function agregar_propiedades($view_variables = null) {
         $user = User_handler::getLoggedUser();
 
@@ -43,7 +51,8 @@ class Propiedades extends CI_Controller {
 
     public function validate() {
 
-        if ($this->form_validation->run('property') == false) {
+        if ($this->form_validation->run('property') == false) 
+        {
 
             $this->add_property_error();
         } else {
@@ -131,10 +140,11 @@ class Propiedades extends CI_Controller {
         $this->agregar_propiedades($messages);
     }
 
-    public function guardar_cambios_publicar() {
-        $user = $this->get_logged_user_or_redirect_to_please_login();
-
-        $number_of_properties_user_want_to_publish = count($this->input->post()) - 3;
+    public  function guardar_cambios_publicar()
+    {
+        $user = $this->get_logged_user_or_redirect_to_please_login();        
+          
+        $number_of_properties_user_want_to_publish = count($this->input->post())-3;
         $number_of_properties_user_can_publish = $user->posts_left;
 
 
@@ -251,6 +261,7 @@ class Propiedades extends CI_Controller {
 
         $blocks['topLeftSide'] = $this->load->view('forms/add_properties_form.php', $repopulateForm, true);
         $this->load->view('page', $blocks);
+
     }
 
     private function add_property_error() {
@@ -342,11 +353,7 @@ class Propiedades extends CI_Controller {
         $this->agregar_propiedades($repopulateForm);
     }
 
-    public function index() {
-        $data['header'] = $this->load->view('blocks/header', '', true);
-        $data['centerSection'] = $this->load->view('blocks/property_types', '', true);
-        $this->load->view('page', $data);
-    }
+ 
 
 }
 

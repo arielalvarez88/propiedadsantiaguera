@@ -1216,7 +1216,7 @@ div.footer-section a{
 {
     width: 627px;
     height: 202px;
-    background-image: url("/images/common/stripesGradient_H496.jpg");
+    background-image: url("/images/common/stripesGradient_H433.png");
 
 }
 
@@ -1368,8 +1368,9 @@ div.footer-section a{
 #properties-pager
 {
 
-    height: 329px;
-    background-image: url("/images/common/stripesGradient_H496.jpg");
+    height: 327px;
+    background-image: url("/images/common/stripesGradient_H433.png");
+        
 }
 
 
@@ -1404,7 +1405,9 @@ div.footer-section a{
     color: #666666;
     margin-top: 10px;
 }
-.properties-pager-property span{
+
+.properties-pager-property-sector
+{
     display:block;
 }
 
@@ -1444,6 +1447,68 @@ div.footer-section a{
 }
 
 /*properties-pager END*/
+
+
+/***interests-calculator ***/
+
+#interests-calculator input {
+  border: 4px solid #E1E1E1;
+    height: 36px;
+    margin: 5px 0;
+    width: 238px;
+}
+#interests-calculator p {
+    font-weight: bold;
+    margin: 3px 0;
+}
+#interests-calculator {
+         color: #76BB3A;
+    padding: 0 10px;
+    width: 351px;
+}
+
+
+#interests-calculator p lable
+{
+    margin-right: 30px;
+}
+   
+#interests-calculator h2 {
+    
+       
+    background-image: url("/images/common/darkStripesGradient.jpg");
+    border-radius: 5px 5px 0 0;
+    font-size: 2em;
+    padding: 10px;
+}
+
+#interests-calculator div
+{
+        background: url("/images/common/stripesGradient_H433.png") repeat scroll 0 0 transparent;
+    border-radius: 0 0 5px 5px;
+    padding: 0 10px;
+}
+
+
+#interests-calculator input#interests-calculator-result {
+    width: 140px;
+}
+
+#interests-calculator a {
+    background-color: #7FCB3F;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    display: block;
+    font-size: 1.3em;
+    margin: 15px 0;
+    padding: 6px 10px;
+    text-align: center;
+    width: 119px;
+}
+
+
+/***interests-calculator END***/
+
 
 /*proerties-of-the-week*/
 #properties-of-the-week {
@@ -3400,7 +3465,7 @@ button.ui-button:-moz-focus-inner { border: 0; padding: 0; } /* reset extra padd
 {
     margin:0 auto 10px;
     text-align:center;
-    background:url('/images/property_types_bg.png') repeat-x 1px 1px;
+    background: url('/images/common/stripesGradient_H433.png') repeat-x 1px 1px;
     border-radius:0 0 9px 9px;
     -moz-border-radius:0 0 9px 9px; 
     -webkit-border-radius:0 0 9px 9px;
