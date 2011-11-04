@@ -196,15 +196,15 @@ class Propiedades extends CI_Controller {
 
         $repopulateForm['property_terrain'] = $property->terrain;
         $repopulateForm['property_construction'] = $property->construction;
-        $repopulateForm['property_histories'] = $property->histories;
+        $repopulateForm['property_stories'] = $property->stories;
         $repopulateForm['property_bedrooms'] = $property->bedrooms;
         $repopulateForm['property_bathrooms'] = $property->bathrooms;
-        $repopulateForm['property_livinrooms'] = $property->livinrooms;
+        $repopulateForm['property_livingrooms'] = $property->livingrooms;
         $repopulateForm['property_kitchens'] = $property->kitchens;
         $repopulateForm['property_parkings'] = $property->parkings;
 
 
-        $repopulateForm['close_malls)'] = $property->close_malls;
+        $repopulateForm['close_malls'] = $property->close_malls;
         $repopulateForm['close_supermarkets'] = $property->close_supermarkets;
         $repopulateForm['close_grocery_stores'] = $property->close_grocery_stores;
         $repopulateForm['close_schools'] = $property->close_schools;

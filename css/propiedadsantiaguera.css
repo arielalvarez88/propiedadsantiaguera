@@ -2492,6 +2492,7 @@ span.required{
     background: url('/images/info_importante_title_bg.png') top center no-repeat;
     padding: 25px 0 45px;
     text-align: center;
+    color:#fff;
 }
 #info_importante_content
 {
