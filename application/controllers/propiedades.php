@@ -183,6 +183,7 @@ class Propiedades extends CI_Controller {
 
         $repopulateForm = array();
 
+        
 
         $repopulateForm['property_type'] = $property->type;
         $repopulateForm['property_sector'] = $property->sector;
