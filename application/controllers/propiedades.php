@@ -137,6 +137,7 @@ public function __construct()
         }
     }
 
+    
     private function save_property($properties_photos_filenames = array()) {
         $user = User_handler::getLoggedUser();
 
