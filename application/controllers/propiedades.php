@@ -178,6 +178,8 @@ public function __construct()
         }
 
 
+        
+        
         $new_property_close_places = new Property_close_place();
         $new_property_features = new Property_feature();
 
