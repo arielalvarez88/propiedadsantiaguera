@@ -97,11 +97,9 @@ public function __construct()
         $data['topRightSide'] .=$this->load->view('blocks/monedaPrecio', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/pdf_converter', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/sharePropertyWithAFriend', $propiedadObject, true);
-<<<<<<< HEAD
+
         $data['bottomLeftSide'] = $this->load->view('blocks/property_info', $propiedadObject, true);
-=======
-        $data['bottomLeftSide'] = $this->load->view('blocks/property_info', $propiedadObject['property'], true);
->>>>>>> origin/master
+
         $data['bottomLeftSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propiedadObject, true);
         $data['bottomRightSide'] = $this->load->view('blocks/solicitudDeInformacion', $propiedadObject, true);
 
