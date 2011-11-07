@@ -5,6 +5,7 @@
 class Environment_vars {
 
     public static $maps = array(
+        
         "file_type_to_id" => array("photo" => 1, "video" =>2),
         "property_type_to_name" => array(1 => "casa", 2=> "apartamento", 3=> "solar", 4=>"penthhouse", 5=>"centro comercial", 6=> "edificio", 7=>"nave industrial", 8=> "oficina", 9 =>"finca")
     );
