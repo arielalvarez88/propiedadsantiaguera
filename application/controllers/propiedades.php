@@ -137,6 +137,7 @@ public function __construct()
         }
     }
 
+    
     private function save_property($properties_photos_filenames = array()) {
         $user = User_handler::getLoggedUser();
 
@@ -177,6 +178,8 @@ public function __construct()
         }
 
 
+        
+        
         $new_property_close_places = new Property_close_place();
         $new_property_features = new Property_feature();
 
