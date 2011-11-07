@@ -78,8 +78,9 @@ class Environment_vars {
             
             
         ),
-        'user_photos_dir_path' => '/home/jinfante/propiedadsantiaguera.5050mkt.com/images/userPhotos',
-        'properties_photos_dir_path' => '/home/jinfante/propiedadsantiaguera.5050mkt.com/images/propertiesPhotos'
+        'user_photos_dir_path' => '/images/userPhotos',
+        'properties_photos_dir_path' => 
+'/images/propertiesPhotos'
     );
 
 }
