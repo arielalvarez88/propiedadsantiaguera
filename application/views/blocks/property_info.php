@@ -1,5 +1,6 @@
 <?php 
 $property_features = $property->property_feature->get();
+
 ?>
 
 <div id="property-info">

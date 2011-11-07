@@ -12,7 +12,7 @@
     </div>
 <?php endif; ?>
 
-<form id="property-form" method="post" action="<?php echo base_url(); ?>propiedades/validate">
+<form id="property-form" method="post" action="<?php echo base_url(); ?>propiedades/validate" enctype="multipart/form-data">
     <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber1.png"/><span>Descripci&oacute;n de Propiedad</span></p>
     <div id="property-form-description">
         <div id="property-form-description-column-container">

@@ -23,8 +23,12 @@ class CreandoTablas extends Ruckusing_BaseMigration {
         $users->column('total_posts', 'integer');        
         $users->column('posts_left', 'integer', array('default'=>0));
         
+       
         
-
+        
+       
+        
+        
 
 //        
 //        

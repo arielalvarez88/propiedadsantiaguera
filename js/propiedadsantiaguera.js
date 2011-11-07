@@ -47,7 +47,7 @@ initializePropiedadViewer = function (){
         activePagerClass: 'propiedad-viewer-active-selector',
         pagerAnchorBuilder: function (idx, slide){
             
-            return '#propiedad-viewer-slidesshow-pager ul li a:eq(' +idx +')'; 
+            return '.propiedad-viewer-slideshow-selector-'+idx; 
         }
     });
     $('#propiedad-viewer-slidesshow-pager').cycle({ 

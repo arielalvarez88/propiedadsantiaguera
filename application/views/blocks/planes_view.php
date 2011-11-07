@@ -108,7 +108,7 @@
             <td>RD$1,500<br><span>RD$1,500/Propiedad</span></td> <td>RD$6,000</br><span class="white">RD$1,200/Propiedad</span></td> <td>RD$10,000</br><span>RD$1,000/Propiedad</span></td> <td>RD$20,000</br><span class="white">RD$800/Propiedad</span></td> 
         </tr>
         <tr>
-            <td><a href="usuario/comprar_plan/basico"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="usuario/comprar_plan/plus"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="usuario/comprar_plan/agente"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="usuario/comprar_plan/inmobiliaria"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td>
+            <td><a href="/usuario/comprar_plan/basico"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="/usuario/comprar_plan/plus"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="/usuario/comprar_plan/agente"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="/usuario/comprar_plan/inmobiliaria"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td>
         </tr>
          </tbody>
          <tfoot>
