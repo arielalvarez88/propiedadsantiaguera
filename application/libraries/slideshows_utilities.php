@@ -28,10 +28,16 @@ class Slideshows_utilities
     {
         
         $length = count($elementsArray);
-        if($length <= $setsSize)
-            return $elementsArray;
-        
         $imagesSets = array();
+        
+        if($length <= $setsSize)
+        {
+            $imagesSets [] = $elementsArray;
+            return $elementsArray;
+        }
+            
+        
+        
          
         
         
