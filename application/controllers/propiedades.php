@@ -101,6 +101,8 @@ class Propiedades extends CI_Controller {
         }
 
 
+        
+        
         $new_property_close_places = new Property_close_place();
         $new_property_features = new Property_feature();
 
