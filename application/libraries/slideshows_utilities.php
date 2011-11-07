@@ -33,7 +33,7 @@ class Slideshows_utilities
         if($length <= $setsSize)
         {
             $imagesSets [] = $elementsArray;
-            return $elementsArray;
+            return $imagesSets;
         }
             
         
