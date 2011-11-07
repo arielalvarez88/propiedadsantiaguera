@@ -26,7 +26,11 @@ class Slideshows_utilities
     
         public static function getPagerSubset($elementsArray, $setsSize)
     {
+        
         $length = count($elementsArray);
+        if($length <= $setsSize)
+            return $elementsArray;
+        
         $imagesSets = array();
          
         
