@@ -179,7 +179,7 @@ a img
     border-radius: 5px 5px 5px 5px;
     color: white;
     height: 24px;
-    padding: 7px 0;
+    padding: 7px 10px;
     text-align: center;
     overflow: hidden;
 }
@@ -222,7 +222,7 @@ a img
 
 .panels-properties-pager-property {
     float: left;
-    margin-bottom: 15px;
+    margin-bottom: 75px;
     width: 480px;
 }
 
@@ -1592,9 +1592,9 @@ div.footer-section a{
     height: 55px;
     width: 570px;
 }
-#propiedad-viewer-slidesshow-pager
+#propiedad-viewer-slidesshow-pager ul
 {
-    
+    list-style: none;
 }
 
 

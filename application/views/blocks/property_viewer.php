@@ -1,6 +1,6 @@
 <?php
-$lowercase_property_type = Environment_vars::$maps['property_type_to_name'][$property->id];
-$type = ucwords($lowercase_property_type);
+
+
 ?>
 <div id="propiedad-viewer">
     <div id="propiedad-viewer-top">
@@ -18,20 +18,19 @@ $type = ucwords($lowercase_property_type);
 
     <div id="propiedad-viewer-images-side">
         <div id="propiedad-viewer-slideshow">
-            <img class="propiedad-viewer-slide" src="/images/centerSectionItem2Icon_1.png"/>
-            <img class="propiedad-viewer-slide" src="/images/centerSectionItem2Icon_1.png"/>
-            <img class="propiedad-viewer-slide" src="/images/centerSectionItem2Icon_1.png"/>
-            <img class="propiedad-viewer-slide" src="/images/centerSectionItem2Icon_1.png"/>
-            <img class="propiedad-viewer-slide" src="/images/centerSectionItem2Icon_1.png"/>
-            <img class="propiedad-viewer-slide" src="/images/centerSectionItem2Icon_1.png"/>
-
+           
+                        
+                        <?php foreach ($property_photos_paths as $property_photo_path): ?>
+                            <img class="propiedad-viewer-slide" src="<?php echo $property_photo_path; ?>" alt="imagen-propiedad"/>                            
+                        <?php endforeach; ?>
+           
         </div>
 
         <div id="propiedad-viewer-detalles-side">
             <h2>Detalles</h2>
             <h3 id="propiedad-viewer-detalles-tipo"></h3>
             <ul id="propiedad-viewer-detalles">
-                <li class="propiedad-viewer-detalle"><span>Tipo:</span> <?php echo $type; ?></li>
+                <li class="propiedad-viewer-detalle"><span>Tipo:</span> <?php echo $property_type; ?></li>
                 <li class="propiedad-viewer-detalle"><span>Habitaciones:</span> <?php echo $property->bedrooms; ?></li>            
                 <li class="propiedad-viewer-detalle"><span>Ba&ntilde;os:</span> <?php echo $property->bathrooms; ?></li>
                 <li class="propiedad-viewer-detalle"><span>Pisos:</span> <?php echo $property->stories; ?></li>
@@ -58,23 +57,16 @@ $type = ucwords($lowercase_property_type);
         <div id="propiedad-viewer-pagers-pager">
             <img id="propiedad-viewer-previous-pager" src="/images/propiedadesViewer/previousPager.png" class="propiedad-viewer-pager-selector"/>
             <div id="propiedad-viewer-slidesshow-pager">
-                <ul>
-                    <li><a><img class="propiedad-viewer-slideshow-selector" src="/images/centerSectionItem2Icon_1.png"/></a></li>
-                    <li><a><img class="propiedad-viewer-slideshow-selector" src="/images/centerSectionItem2Icon_1.png"/></a></li>
-                    <li><a><img class="propiedad-viewer-slideshow-selector" src="/images/centerSectionItem2Icon_1.png"/></a></li>
-                    <li><a><img class="propiedad-viewer-slideshow-selector" src="/images/centerSectionItem2Icon_1.png"/></a></li>
-                    <li><a><img class="propiedad-viewer-slideshow-selector" src="/images/centerSectionItem2Icon_1.png"/></a></li>
-                    <li><a><img class="propiedad-viewer-slideshow-selector" src="/images/centerSectionItem2Icon_1.png"/></a></li>
-                </ul>
 
-                <ul>
-                    <li><a><img class="propiedad-viewer-slideshow-selector" src="/images/centerSectionItem2Icon_1.png"/></a></li>
-                    <li><a><img class="propiedad-viewer-slideshow-selector" src="/images/centerSectionItem2Icon_1.png"/></a></li>
-                    <li><a><img class="propiedad-viewer-slideshow-selector" src="/images/centerSectionItem2Icon_1.png"/></a></li>
-                    <li><a><img class="propiedad-viewer-slideshow-selector" src="/images/centerSectionItem2Icon_1.png"/></a></li>
-                    <li><a><img class="propiedad-viewer-slideshow-selector" src="/images/centerSectionItem2Icon_1.png"/></a></li>
-                    <li><a><img class="propiedad-viewer-slideshow-selector" src="/images/centerSectionItem2Icon_1.png"/></a></li>
-                </ul>
+
+                <?php foreach ($property_photos_pagers_groups as $property_photos_pagers_group): ?>
+                    <ul>
+                        <?php foreach ($property_photos_pagers_group as $property_pager_photo): ?>
+                            <li><a><?php echo $property_pager_photo;?></a></li>
+                    
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endforeach; ?>
 
             </div>
             <img id="propiedad-viewer-next-pager" src="/images/propiedadesViewer/nextPager.png" class="propiedad-viewer-pager-selector"/>
