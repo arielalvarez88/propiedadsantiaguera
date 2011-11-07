@@ -97,7 +97,11 @@ public function __construct()
         $data['topRightSide'] .=$this->load->view('blocks/monedaPrecio', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/pdf_converter', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/sharePropertyWithAFriend', $propiedadObject, true);
+<<<<<<< HEAD
         $data['bottomLeftSide'] = $this->load->view('blocks/property_info', $propiedadObject, true);
+=======
+        $data['bottomLeftSide'] = $this->load->view('blocks/property_info', $propiedadObject['property'], true);
+>>>>>>> origin/master
         $data['bottomLeftSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propiedadObject, true);
         $data['bottomRightSide'] = $this->load->view('blocks/solicitudDeInformacion', $propiedadObject, true);
 
@@ -276,41 +280,42 @@ public function __construct()
         redirect("/usuario/panel/propiedades/publicadas");
     }
 
-    public function edit_property($property_id) {
-
+    public function editar_propiedades($property_id) {
         $property = new Property();
         $property->where('id', $property_id);
         $property->get();
 
         $repopulateForm = array();
 
+        
+
         $repopulateForm['property_type'] = $property->type;
-        $repopulateForm['property_sector'] = $property->property_sector;
-        $repopulateForm['property_address'] = $property->property_address;
-        $repopulateForm['property_status'] = $property->property_status;
-        $repopulateForm['property_sell_price_us'] = $property->property_sell_price_us;
-        $repopulateForm['property_rent_price_us'] = $property->property_rent_price_us;
-        $repopulateForm['property_sell_price_dr'] = $property->property_sell_price_dr;
-        $repopulateForm['property_rent_price_dr'] = $property->property_rent_price_dr;
+        $repopulateForm['property_sector'] = $property->sector;
+        $repopulateForm['property_address'] = $property->address;
+        $repopulateForm['property_status'] = $property->status;
+        $repopulateForm['property_sell_price_us'] = number_format($property->sell_price_us);
+        $repopulateForm['property_rent_price_us'] = number_format($property->rent_price_us);
+        $repopulateForm['property_sell_price_dr'] = number_format($property->sell_price_dr);
+        $repopulateForm['property_rent_price_dr'] = number_format($property->rent_price_dr);
 
-        $repopulateForm['property_terrain'] = $property->property_terrain;
-        $repopulateForm['property_construction'] = $property->property_construction;
-        $repopulateForm['property_histories'] = $property->property_histories;
-        $repopulateForm['property_bedrooms'] = $property->property_bedrooms;
-        $repopulateForm['property_bathrooms'] = $property->property_bathrooms;
-        $repopulateForm['property_livinrooms'] = $property->property_livinrooms;
-        $repopulateForm['property_kitchens'] = $property->property_kitchens;
-        $repopulateForm['property_parkings'] = $property->property_parkings;
+        $repopulateForm['property_terrain'] = $property->terrain;
+        $repopulateForm['property_construction'] = $property->construction;
+        $repopulateForm['property_stories'] = $property->stories;
+        $repopulateForm['property_bedrooms'] = $property->bedrooms;
+        $repopulateForm['property_bathrooms'] = $property->bathrooms;
+        $repopulateForm['property_livingrooms'] = $property->livingrooms;
+        $repopulateForm['property_kitchens'] = $property->kitchens;
+        $repopulateForm['property_parkings'] = $property->parkings;
 
 
-        $repopulateForm['close_malls)'] = $property->close_malls;
+        $repopulateForm['close_malls'] = $property->close_malls;
         $repopulateForm['close_supermarkets'] = $property->close_supermarkets;
         $repopulateForm['close_grocery_stores'] = $property->close_grocery_stores;
         $repopulateForm['close_schools'] = $property->close_schools;
         $repopulateForm['close_restaurants'] = $property->close_restaurants;
         $repopulateForm['close_bakeries'] = $property->close_bakeries;
         $repopulateForm['close_gyms'] = $property->close_gyms;
-        //$repopulateForm['close_public_transport'] = $property->close_public_transport;
+        $repopulateForm['close_public_transport'] = $property->close_public_transport;
         $repopulateForm['close_hardware_stores'] = $property->close_hardware_stores;
         $repopulateForm['close_drug_stores'] = $property->close_drug_stores;
 
@@ -451,6 +456,8 @@ public function __construct()
 
         $this->agregar_propiedades($repopulateForm);
     }
+
+ 
 
 }
 

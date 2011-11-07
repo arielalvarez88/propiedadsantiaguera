@@ -3,6 +3,7 @@
     padding:0;
     font-family: museo;
 }
+
 body{
 
     color: black;
@@ -2429,10 +2430,8 @@ span.required{
 {
     color:#fa0;
     padding-top: 22px;
+    height:116px;
 }
-
-<<<<<<< HEAD
-=======
 #planes_data tbody tr,#planes_data tbody td
 {
     padding:15px 0;
@@ -2493,6 +2492,7 @@ span.required{
     background: url('/images/info_importante_title_bg.png') top center no-repeat;
     padding: 25px 0 45px;
     text-align: center;
+    color:#fff;
 }
 #info_importante_content
 {
@@ -2551,7 +2551,6 @@ span.required{
     font-size:8pt;
     padding-left:5px;
 }
->>>>>>> origin/darwin_updated_views
 
 
 
