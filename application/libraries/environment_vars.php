@@ -33,6 +33,7 @@ class Environment_vars {
             "close-drug-stores" => 10,
             
         ),
+        
         "property_features" => array(
             "elevator" => 1,
             "game-area" => 2,
