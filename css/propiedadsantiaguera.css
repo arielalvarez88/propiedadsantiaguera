@@ -34,11 +34,11 @@ a img
 #wrapper{
     background-color: white;
     margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
+    margin-right: auto;    
     width: 960px;
     background:none;
 }
+
 /************ header *************/
 #login-links
 {
@@ -213,9 +213,15 @@ a img
     list-style: none outside none;
     padding: 13px 0;
 }
+
+#upper-panel ul a {
+    color: white;
+}
+
 #upper-panel {
     width: 100%;
     z-index: 99999;
+    color:white;
 }
 
 
@@ -226,6 +232,29 @@ a img
 
 /***upper-panel ENDS***/
 
+
+
+/****Panels-account****/
+#panels-account-plans td span {
+    display: block;
+    float: left;
+    width: 96px;
+    text-align: left;
+}
+
+#panels-account-plans {
+    background-image: url("/images/plans_diagonal_line_bg.png");
+    text-align: center;
+    vertical-align: middle;
+}
+
+#panels-account-plans-header-row
+{
+    
+}
+
+
+/****Panels-account ENDS****/
 
 /************ panels-propery-section-menu*******************/
 
@@ -999,16 +1028,16 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 /***buy-blueprints-link***/
 #buy-blueprints-link
 {
-    background-color: #F9CA02;
-    color: black;
+/*    background-color: #F9CA02;*/
+/*    color: black;*/
     display: block;
     float: left;
-    font-size: 2.7em;
+/*    font-size: 2.7em;
     font-weight: bold;
-    height: 168px;
+    height: 168px;*/
     margin: 0 7px;
-    padding: 40px 0;
-    text-align: center;
+/*    padding: 40px 0;
+    text-align: center;*/
     width: 309px;
 }
 
@@ -1475,6 +1504,19 @@ div.footer-section a{
 {
     display:block;
 }
+
+.green-button
+{
+    background-color: #84D341;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    font-size: 0.8em;
+    padding: 4px 13px;
+    text-align: center;
+    text-decoration: none;
+}
+
+
 
 
 
