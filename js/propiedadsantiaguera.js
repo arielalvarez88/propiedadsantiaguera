@@ -653,14 +653,14 @@ InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInpu
           
         if(valiidateForInterest(mount,rate,years))
         {
-                thisObject.responseInput.val(mount + rate) ;
+            thisObject.responseInput.val(mount + rate) ;
         }
         
         
     };
         
     
-  thisObject.calculateButton.click(thisObject.calculateEvent);
+    thisObject.calculateButton.click(thisObject.calculateEvent);
     
 };
 
@@ -669,6 +669,45 @@ initializeInterestsCalculators = function()
     var interestCalculator = new InterestsCalculator("#interests-calculator-mount", "#interests-calculator-rate", "#interests-calculator-years", "#interests-calculator-calculate-button", "#interests-calculator-result");
 };
 
+
+HideShowElement = function(linkSelector, arrowsSelector, elementToShowOrHideSelector){
+    if( typeof linkSelector != "string" || typeof arrowsSelector != "string" || typeof elementToShowOrHideSelector != "string" )
+        throw "All parameters should be selectors of tpye String.";
+    
+    var thisObject =this;
+    this.eventButton = $(linkSelector);
+    this.arrows = $(arrowsSelector);
+    this.elementToHideOrShow = $(elementToShowOrHideSelector);
+    
+    this.hideShowEvent = function(event)
+    {
+        event.preventDefault();
+        if(thisObject.elementToHideOrShow.is(":visible"))
+            thisObject.elementToHideOrShow.hide();
+        else
+            thisObject.elementToHideOrShow.show();      
+        
+        $.each(thisObject.arrows, function(index,element){
+            var jqueryElement = $(element);
+            if(jqueryElement.is(":visible"))
+                jqueryElement.hide();
+            else
+                jqueryElement.show();      
+        });
+        
+         
+        
+    }
+    
+    this.eventButton.unbind("click");
+    this.eventButton.click(thisObject.hideShowEvent);
+    
+    
+};
+
+intializeHideShowElements = function(){
+    var upperMenuHideOrShow = new HideShowElement("#upper-panel-hide-show", "#upper-panel-hide-show img", "#upper-panel ul");
+};
 
 $(document).ready
 {   
@@ -688,7 +727,7 @@ $(document).ready
     initializeOverlays();
     initializeMaps();
     initializeInterestsCalculators();
-    
+    intializeHideShowElements();
 /*comentario*/    
 }
 

@@ -163,6 +163,72 @@ a img
 
 /************ Login block end *******************/
 
+
+/***upper-panel ***/
+#logout-button {
+    background-image: url("/images/upperPanel/logoutButtonGradient.png");
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    display: block;
+    float: right;
+    font-size: 0.7em;
+    padding: 3px 10px;
+    text-decoration: none;
+}
+#upper-panel-curve-part {
+    background-image: url("/images/upperPanel/curvePart.png");
+    background-position: 0 -1px;
+    height: 32px;
+    padding: 1px 18px 0;
+    position: absolute;
+    right: 20px;
+    width: 281px;
+}
+
+#upper-panel-curve-part p, #logout-button {
+    margin: 5px 12px 0;
+}
+
+#upper-panel ul li a {
+    display: block;
+    padding: 0 10px;
+}
+
+#upper-panel-curve-part p, 
+#upper-panel ul li a,
+#upper-panel ul li,
+#upper-panel-hide-show
+{
+    float: left;
+}
+
+
+
+#upper-panel-curve-part a img {
+    width: 24px;
+}
+#upper-panel ul {
+    background-color: 76bc3b;
+    color: white;
+    height: 31px;
+    list-style: none;
+    padding: 30px 0;
+}
+#upper-panel {
+    position: fixed;
+    width: 100%;
+    z-index: 99999;
+}
+
+
+
+
+
+
+
+/***upper-panel ENDS***/
+
+
 /************ panels-propery-section-menu*******************/
 
 #panels-property-section-menu-tabs {
@@ -2382,6 +2448,10 @@ span.required{
     font-weight: bold;
 }
 
+.hidden
+{
+    display: none;
+}
 .error-messages
 {
     background-color: #FCCECC;
