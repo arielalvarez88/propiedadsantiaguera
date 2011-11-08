@@ -52,9 +52,10 @@ $thisPage = str_replace('/', '-', uri_string());
                             <p>
                                 <?php if (!$loggedUser || !$loggedUser->name):?>
                                     <a id="login-link" class="no-decoration-anchor" href="/usuario/loginform">LOG IN</a>
+                                    <span class="vertical-serparator"><img src="/images/dude_icon.png" alt="dude"/></span>
                                 <?php endif;?>
                                     
-                                <span class="vertical-serparator"><img src="/images/dude_icon.png" alt="dude"/></span>
+                                
                                 <?php if (!$loggedUser): ?>
                                     <a class="no-decoration-anchor" href="#">CONTACTENOS</a>
                                     <span class="vertical-serparator"><img src="/images/phone_icon.png" alt="dude"/></span>
