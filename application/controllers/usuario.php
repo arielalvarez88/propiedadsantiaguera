@@ -15,24 +15,7 @@ class Usuario extends CI_Controller {
         $this->load->library('password_reset_success_template.php');
     }
 
-    public function get_user_published_properties_pager($print='') {
-
-        $user = $this->get_logged_user_or_redirect_to_please_login();
-        $properties_pager_info['properties'] = $user->property->where('display_property', 1)->get_iterated();
-        $properties_pager_info['section'] = "published";
-        $return_in_string_instead_of_printing = $print ? false : true;
-
-        return $this->load->view('blocks/panels_properties_pager', $properties_pager_info, $return_in_string_instead_of_printing);
-    }
-
-    public function get_user_created_properties_pager($print='') {
-
-        $user = $this->get_logged_user_or_redirect_to_please_login();
-        $properties_pager_info['properties'] = $user->property->get_iterated();
-        $properties_pager_info['section'] = "created";
-        $return_in_string_instead_of_printing = $print ? false : true;
-        return $this->load->view('blocks/panels_properties_pager', $properties_pager_info, $return_in_string_instead_of_printing);
-    }
+   
 
     public function panel($section = 'propiedades', $subsection ='publicadas', $messages = array()) {
 

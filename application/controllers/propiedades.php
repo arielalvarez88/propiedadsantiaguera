@@ -258,7 +258,7 @@ public function __construct()
 
             $messages['errors'] = "No posee suficientes propiedades compradas.";
             $this->session->set_userdata(array("messages" => $messages));
-            redirect("/usuario/panel/propiedades/creadas/");
+            redirect("/panel/propiedades/creadas/");
         }
 
 

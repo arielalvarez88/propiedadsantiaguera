@@ -436,12 +436,12 @@ initializeViewLoaderElements = function(){
 
     var propertiesPanelPublishedButton = new ViewLoaderElement('#panels-property-section-menu-tabs-published','click',[{
         value: '', 
-        url:'/usuario/get_user_published_properties_pager/print'
+        url:'/panel/get_user_published_properties_pager/print'
     }],'#panels-property-section-pager','a');
 
     var propertiesPanelCreatedButton = new ViewLoaderElement('#panels-property-section-menu-tabs-created','click',[{
         value: '', 
-        url:'/usuario/get_user_created_properties_pager/print'
+        url:'/panel/get_user_created_properties_pager/print'
     }],'#panels-property-section-pager','a');
 
 
