@@ -179,9 +179,8 @@ a img
     background-image: url("/images/upperPanel/curvePart.png");
     background-position: 0 -1px;
     height: 32px;
+    left: 1127px;
     padding: 1px 18px 0;
-    position: absolute;
-    right: 20px;
     width: 281px;
 }
 
@@ -208,14 +207,13 @@ a img
     width: 24px;
 }
 #upper-panel ul {
-    background-color: 76bc3b;
+    background-color: #76BC3B;
     color: white;
-    height: 31px;
-    list-style: none;
-    padding: 30px 0;
+    height: 20px;
+    list-style: none outside none;
+    padding: 13px 0;
 }
 #upper-panel {
-    position: fixed;
     width: 100%;
     z-index: 99999;
 }
