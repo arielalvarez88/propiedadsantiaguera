@@ -83,6 +83,7 @@ class Environment_vars {
         ),
         
         'user_photos_dir_path' => '/images/userPhotos/',
+        'user_photos_thumbs_dir_path' => '/images/userPhotosThumbs/',
         'properties_photos_dir_path' => '/images/propertiesPhotos/',
         'properties_photos_thumbs_dir_path' => '/images/propertiesPhotosThumbs/'
         

@@ -25,6 +25,10 @@ class Panel extends CI_Controller {
     {
          $user = $this->get_logged_user_or_redirect_to_please_login();
          $view_variables['user'] = $user;
+         $image_helper = new Image_helper();
+         $user_photo_thumb =  $image_helper->get_user_photo_thumb_version($user->photo);
+         
+         $view_variables['user_photo_thumb'] = $user_photo_thumb;
          $account_panel_view ['topLeftSide']= $this->load->view("blocks/panels_account",$view_variables,true);
          $this->load->view("page",$account_panel_view);
     }
