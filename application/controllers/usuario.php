@@ -15,24 +15,7 @@ class Usuario extends CI_Controller {
         $this->load->library('password_reset_success_template.php');
     }
 
-    public function get_user_published_properties_pager($print='') {
-
-        $user = $this->get_logged_user_or_redirect_to_please_login();
-        $properties_pager_info['properties'] = $user->property->where('display_property', 1)->get_iterated();
-        $properties_pager_info['section'] = "published";
-        $return_in_string_instead_of_printing = $print ? false : true;
-
-        return $this->load->view('blocks/panels_properties_pager', $properties_pager_info, $return_in_string_instead_of_printing);
-    }
-
-    public function get_user_created_properties_pager($print='') {
-
-        $user = $this->get_logged_user_or_redirect_to_please_login();
-        $properties_pager_info['properties'] = $user->property->get_iterated();
-        $properties_pager_info['section'] = "created";
-        $return_in_string_instead_of_printing = $print ? false : true;
-        return $this->load->view('blocks/panels_properties_pager', $properties_pager_info, $return_in_string_instead_of_printing);
-    }
+   
 
     public function panel($section = 'propiedades', $subsection ='publicadas', $messages = array()) {
 
@@ -101,7 +84,9 @@ class Usuario extends CI_Controller {
             
             try
             {
-                $user_photo_path_in_array = File_handler::save_photos(array("signup-photo"), Environment_vars::$environment_vars['user_photos_dir_path'], 2048);
+                
+                $upload_path = realpath("./".Environment_vars::$environment_vars['user_photos_dir_path']);
+                $user_photo_path_in_array = File_handler::save_photos(array("signup-photo"), $upload_path, 2048);
             }
             catch(Exception $error)
             {
@@ -146,7 +131,7 @@ class Usuario extends CI_Controller {
         $this->signup($repopulateForm);
     }
 
-    private function save_user($photo_file_path = false) {
+    private function save_user($photo_file_name = false) {
 
         $newUser = new User();
         $userInfo = $this->input->post();
@@ -167,7 +152,7 @@ class Usuario extends CI_Controller {
 
 
         if ($photo_file_path)
-            $newUser->photo = $photo_file_path;
+            $newUser->photo = base_url (). Environment_vars::$environment_vars['user_photos_dir_path'].$photo_file_path;
 
         $newUser->save();
 
@@ -177,10 +162,7 @@ class Usuario extends CI_Controller {
     }
 
     public function comprar_plan($plan_name) {
-        $user = $this->get_logged_user_or_redirect_to_please_login();
-        if (!$user->id || !$plan_name) {
-            redirect("/please_login");
-        }
+        $user = $this->get_logged_user_or_redirect_to_please_login();        
 
         switch ($plan_name) {
             case "basico":
@@ -192,7 +174,7 @@ class Usuario extends CI_Controller {
             case "agente":
                 $user->posts_left += 10;
                 break;
-            case "inmobilaria":
+            case "inmobiliaria":
                 $user->posts_left += 25;
                 break;
         }

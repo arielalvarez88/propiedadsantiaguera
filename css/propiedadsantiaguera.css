@@ -34,11 +34,11 @@ a img
 #wrapper{
     background-color: white;
     margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
+    margin-right: auto;    
     width: 960px;
     background:none;
 }
+
 /************ header *************/
 #login-links
 {
@@ -163,6 +163,99 @@ a img
 
 /************ Login block end *******************/
 
+
+/***upper-panel ***/
+#logout-button {
+    background-image: url("/images/upperPanel/logoutButtonGradient.png");
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    display: block;
+    float: right;
+    font-size: 0.7em;
+    padding: 3px 10px;
+    text-decoration: none;
+}
+#upper-panel-curve-part {
+    background-image: url("/images/upperPanel/curvePart.png");
+    background-position: 0 -1px;
+    height: 32px;
+    left: 1127px;
+    padding: 1px 18px 0;
+    width: 281px;
+}
+
+#upper-panel-curve-part p, #logout-button {
+    margin: 5px 12px 0;
+}
+
+#upper-panel ul li a {
+    display: block;
+    padding: 0 10px;
+}
+
+#upper-panel-curve-part p, 
+#upper-panel ul li a,
+#upper-panel ul li,
+#upper-panel-hide-show
+{
+    float: left;
+}
+
+
+
+#upper-panel-curve-part a img {
+    width: 24px;
+}
+#upper-panel ul {
+    background-color: #76BC3B;
+    color: white;
+    height: 20px;
+    list-style: none outside none;
+    padding: 13px 0;
+}
+
+#upper-panel ul a {
+    color: white;
+}
+
+#upper-panel {
+    width: 100%;
+    z-index: 99999;
+    color:white;
+}
+
+
+
+
+
+
+
+/***upper-panel ENDS***/
+
+
+
+/****Panels-account****/
+#panels-account-plans td span {
+    display: block;
+    float: left;
+    width: 96px;
+    text-align: left;
+}
+
+#panels-account-plans {
+    background-image: url("/images/plans_diagonal_line_bg.png");
+    text-align: center;
+    vertical-align: middle;
+}
+
+#panels-account-plans-header-row
+{
+    
+}
+
+
+/****Panels-account ENDS****/
+
 /************ panels-propery-section-menu*******************/
 
 #panels-property-section-menu-tabs {
@@ -180,7 +273,7 @@ a img
     border-radius: 5px 5px 5px 5px;
     color: white;
     height: 24px;
-    padding: 7px 0;
+    padding: 7px 10px;
     text-align: center;
     overflow: hidden;
 }
@@ -223,7 +316,7 @@ a img
 
 .panels-properties-pager-property {
     float: left;
-    margin-bottom: 15px;
+    margin-bottom: 75px;
     width: 480px;
 }
 
@@ -935,16 +1028,16 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 /***buy-blueprints-link***/
 #buy-blueprints-link
 {
-    background-color: #F9CA02;
-    color: black;
+/*    background-color: #F9CA02;*/
+/*    color: black;*/
     display: block;
     float: left;
-    font-size: 2.7em;
+/*    font-size: 2.7em;
     font-weight: bold;
-    height: 168px;
+    height: 168px;*/
     margin: 0 7px;
-    padding: 40px 0;
-    text-align: center;
+/*    padding: 40px 0;
+    text-align: center;*/
     width: 309px;
 }
 
@@ -1412,6 +1505,19 @@ div.footer-section a{
     display:block;
 }
 
+.green-button
+{
+    background-color: #84D341;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    font-size: 0.8em;
+    padding: 4px 13px;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+
 
 
 .properties-pager-property span.properties-pager-property-price{
@@ -1593,9 +1699,9 @@ div.footer-section a{
     height: 55px;
     width: 570px;
 }
-#propiedad-viewer-slidesshow-pager
+#propiedad-viewer-slidesshow-pager ul
 {
-    
+    list-style: none;
 }
 
 
@@ -2382,6 +2488,10 @@ span.required{
     font-weight: bold;
 }
 
+.hidden
+{
+    display: none;
+}
 .error-messages
 {
     background-color: #FCCECC;

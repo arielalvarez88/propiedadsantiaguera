@@ -12,6 +12,22 @@ $thisPage = str_replace('/', '-', uri_string());
 
     </head>
     <body>
+        <?php if ($loggedUser && $loggedUser->name): ?>
+            <div id="upper-panel">
+                <ul class="hidden">
+                    <li><a class="no-decoration-anchor">RESUMEN</a>|</li>
+                    <li><a class="no-decoration-anchor" href="/panel/propiedades">PROPIEDADES</a>|</li>
+                    <li><a class="no-decoration-anchor" href="/panel/cuenta">CUENTA</a>|</li>
+                    <li><a class="no-decoration-anchor ">SOLICITUDES</a></li>
+                </ul>
+                <div id="upper-panel-curve-part">
+                    <a class="no-decoration-anchor" href="#javascript" id="upper-panel-hide-show"><img class="hide-show-arrow"  src="/images/upperPanel/downArrow.png" alt="flecha-abajo" class="visible"/> <img  class="hidden"  src="/images/upperPanel/upArrow.png" alt="flecha-arriba"/></a><p>Bienvenido, <?php echo $loggedUser->name; ?> </p><a id="logout-button" href="/usuario/logout">SALIR</a>
+                </div>
+
+            </div>
+
+        <?php endif; ?>
+        
         <div id="wrapper">
             <div id="header">
                 <div id="banner-container">
@@ -34,14 +50,12 @@ $thisPage = str_replace('/', '-', uri_string());
                         </div>
                         <div id="login-links">
                             <p>
-                                <?php if ($loggedUser && $loggedUser->name): ?>
-                                    <span id="saludo-usuario">Bienvenido <?php echo $loggedUser->name . ', '; ?></span>
-                                    <a class="no-decoration-anchor" href="/userController/logout">logout</a>
-                                    <span class="vertical-serparator"> | </span>
-                                <?php endif; ?>
-                                <a id="login-link" class="no-decoration-anchor" href="/usuario/loginform">LOG IN</a>
-
-                                <span class="vertical-serparator"><img src="/images/dude_icon.png" alt="dude"/></span>
+                                <?php if (!$loggedUser || !$loggedUser->name):?>
+                                    <a id="login-link" class="no-decoration-anchor" href="/usuario/loginform">LOG IN</a>
+                                    <span class="vertical-serparator"><img src="/images/dude_icon.png" alt="dude"/></span>
+                                <?php endif;?>
+                                    
+                                
                                 <?php if (!$loggedUser): ?>
                                     <a class="no-decoration-anchor" href="#">CONTACTENOS</a>
                                     <span class="vertical-serparator"><img src="/images/phone_icon.png" alt="dude"/></span>
@@ -149,7 +163,7 @@ $thisPage = str_replace('/', '-', uri_string());
 
                     </div>
                     <a href="http://www.5050mkt.com" id="footer-makers-logo"><img src="/images/common/5050mktLogo.png"/></a>
-                     
+
                 </div>
 
 

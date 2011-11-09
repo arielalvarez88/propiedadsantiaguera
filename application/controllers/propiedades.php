@@ -1,11 +1,15 @@
 <?php
 
 class Propiedades extends CI_Controller {
-
-
-
+public function __construct()
+{
+    parent::__construct();
+    
+    $this->load->library("image_helper");
+}
     public function index() {
-         $data['header'] = $this->load->view('blocks/header', '', true);
+        
+        $data['header'] = $this->load->view('blocks/header', '', true);
         $data['centerSection'] = $this->load->view('blocks/property_types', '', true);
         $this->load->view('page', $data);
     }
@@ -28,20 +32,74 @@ class Propiedades extends CI_Controller {
             redirect("/propiedades");
 
         $user = $this->get_logged_user_or_redirect_to_please_login();
-        $property_to_show = $user->property->where("id", $id)->get();
-        $propiedadObject['property'] = $property_to_show;
-        $property_cant_be_shown = !$property_to_show->display_property;
+        $property = $user->property->where("id", $id)->get();
+        
+        $propiedadObject['property'] = $property;
+        $property_cant_be_shown = !$property->display_property;
 
         if ($property_cant_be_shown)
             redirect("/propiedades");
 
 
-        $data['topLeftSide'] = $this->load->view('blocks/property_viewer', $propiedadObject, true);
+        $property_viewer_data['property'] = $property;
+        
+        
+        $lowercase_property_type = Environment_vars::$maps['property_type_to_name'][$property->type];
+        $property_type = ucwords($lowercase_property_type);
+        
+        
+        $property_viewer_data['property_type'] = $property_type;
+                                        
+        $slideshow_helper = new Slideshows_utilities();
+        $property_photos = $property->file->where("type", Environment_vars::$maps['file_type_to_id']['photo'])->get_iterated();
+        $property_image_thumbs_paths = array();
+        $image_helper = new Image_helper();
+        
+         $property_pager_slides_html = array();
+         $i = 0;
+         
+        foreach($property_photos as $property_photo)
+        {
+            
+            $photo_path_pieaces= explode("/", $property_photo->path);
+            
+            $photo_filename = $photo_path_pieaces[count($photo_path_pieaces) -1];
+            
+
+            
+            $photo_thumb_full_path = Environment_vars::$environment_vars['properties_photos_thumbs_dir_path'].$photo_filename;
+            if($image_helper->resize($property_photo->path, "449", "254"))
+            {
+                
+                $property_image_thumbs_paths [] = $photo_thumb_full_path;
+                
+                 $property_pager_slides_html [] = '<img  src="' . $photo_thumb_full_path . '"  class="propiedad-viewer-slideshow-selector propiedad-viewer-slideshow-selector-' . $i . '"/>';
+                  $i++;
+            }
+            
+            
+        }
+        $property_viewer_data['property_photos_paths'] = $property_image_thumbs_paths;
+
+     
+
+        
+
+
+        $property_photos_pagers_groups= $slideshow_helper->getPagerSubset($property_pager_slides_html, 6);
+    
+        $property_viewer_data['property_photos_pagers_groups'] = $property_photos_pagers_groups;
+
+
+
+        $data['topLeftSide'] = $this->load->view('blocks/property_viewer', $property_viewer_data, true);
         $data['topRightSide'] = $this->load->view('blocks/user_viewer', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/monedaPrecio', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/pdf_converter', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/sharePropertyWithAFriend', $propiedadObject, true);
-        $data['bottomLeftSide'] = $this->load->view('blocks/property_info', $propiedadObject['property'], true);
+
+        $data['bottomLeftSide'] = $this->load->view('blocks/property_info', $propiedadObject, true);
+
         $data['bottomLeftSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propiedadObject, true);
         $data['bottomRightSide'] = $this->load->view('blocks/solicitudDeInformacion', $propiedadObject, true);
 
@@ -51,17 +109,36 @@ class Propiedades extends CI_Controller {
 
     public function validate() {
 
-        if ($this->form_validation->run('property') == false) 
-        {
+        $properties_photos_filenames = array();
+        if ($this->form_validation->run('property') == false) {
 
             $this->add_property_error();
         } else {
+            try {
+                $photos_inputs_names = array();
+                for ($i = 1; $i <= 10; $i++) {
+                    $photos_inputs_names[] = "property-photo-" . $i;
+                }
 
-            $this->save_property();
+                $upload_path = realpath("./" . Environment_vars::$environment_vars['properties_photos_dir_path']);
+
+                $properties_photos_filenames = File_handler::save_photos($photos_inputs_names, $upload_path, 5000);
+            } catch (Exception $e) {
+                $messages['errors'] = $e->getMessage();
+
+                $this->agregar_propiedades($messages);
+
+                return;
+            }
+
+
+
+            $this->save_property($properties_photos_filenames);
         }
     }
 
-    private function save_property() {
+    
+    private function save_property($properties_photos_filenames = array()) {
         $user = User_handler::getLoggedUser();
 
         if (!$user->can_create_property()) {
@@ -89,7 +166,7 @@ class Propiedades extends CI_Controller {
         $newProperty->sell_price_dr = isset($newPropertyInfo['property-sell-price-dr']) ? $newPropertyInfo['property-sell-price-dr'] : null;
         $newProperty->rent_price_us = isset($newPropertyInfo['property-rent-price-us']) ? $newPropertyInfo['property-rent-price-us'] : null;
         $newProperty->rent_price_dr = isset($newPropertyInfo['property-rent-price-dr']) ? $newPropertyInfo['property-rent-price-dr'] : null;
-        $newProperty->type = Environment_vars::$environment_vars["property_types"][$newPropertyInfo['property-type']]['id'];
+        $newProperty->type = Environment_vars::$environment_vars["property_types"][$newPropertyInfo['property-type']];
 
         if ($newPropertyInfo['property-status'] == "sell" || $newPropertyInfo['property-status'] == "sell-rent") {
             $newProperty->sell_price_dollars = $newPropertyInfo['property-sell-price-us'];
@@ -101,6 +178,8 @@ class Propiedades extends CI_Controller {
         }
 
 
+        
+        
         $new_property_close_places = new Property_close_place();
         $new_property_features = new Property_feature();
 
@@ -125,6 +204,33 @@ class Propiedades extends CI_Controller {
 
 
 
+        $transactioner = new File();
+        $file_getter = new File();
+
+        $transactioner->trans_start();
+        foreach ($properties_photos_filenames as $property_filename) {
+
+            if (!$property_filename)
+                continue;
+
+            $file = new File();
+            $file->path = Environment_vars::$environment_vars['properties_photos_dir_path'] . $property_filename;
+            $file->type = Environment_vars::$maps['file_type_to_id']['photo'];
+            $file->save();
+
+            $file_getter->or_where("id", $file->id);
+        }
+
+        $transactioner->trans_complete();
+        $transactioner->trans_commit();
+        $new_property_files = $file_getter->get()->all;
+        ;
+
+
+
+
+
+
 
 
 
@@ -132,7 +238,7 @@ class Propiedades extends CI_Controller {
         $newPropertyType->get_by_id(Environment_vars::$environment_vars['property_types'][$newPropertyInfo['property-type']]);
 
 
-        $newProperty->save(array($newPropertyType, $new_property_close_places->all, $new_property_features->all, $user));
+        $newProperty->save(array($newPropertyType, $new_property_close_places->all, $new_property_features->all, $user, $new_property_files));
 
 
 
@@ -140,11 +246,10 @@ class Propiedades extends CI_Controller {
         $this->agregar_propiedades($messages);
     }
 
-    public  function guardar_cambios_publicar()
-    {
-        $user = $this->get_logged_user_or_redirect_to_please_login();        
-          
-        $number_of_properties_user_want_to_publish = count($this->input->post())-3;
+    public function guardar_cambios_publicar() {
+        $user = $this->get_logged_user_or_redirect_to_please_login();
+
+        $number_of_properties_user_want_to_publish = count($this->input->post()) - 3;
         $number_of_properties_user_can_publish = $user->posts_left;
 
 
@@ -153,7 +258,7 @@ class Propiedades extends CI_Controller {
 
             $messages['errors'] = "No posee suficientes propiedades compradas.";
             $this->session->set_userdata(array("messages" => $messages));
-            redirect("/usuario/panel/propiedades/creadas/");
+            redirect("/panel/propiedades/creadas/");
         }
 
 
@@ -223,7 +328,6 @@ class Propiedades extends CI_Controller {
         
         $blocks['topLeftSide'] = $this->load->view('forms/add_properties_form.php', $repopulateForm, true);
         $this->load->view('page', $blocks);
-
     }
 
     private function add_property_error() {

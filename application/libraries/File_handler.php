@@ -8,6 +8,7 @@
 class File_handler {
 
     public static function file_to_upload_exits($input_name) {
+        
         return isset($_FILES[$input_name]) && $_FILES[$input_name]['size'];
     }
 
@@ -17,7 +18,7 @@ class File_handler {
         $photos_full_paths = array();
         foreach ($inputs_names as $input_name) {
 
-
+      
             if (File_handler::file_to_upload_exits($input_name)) {
 
                 $photo_config['upload_path'] = $upload_path;
@@ -27,12 +28,14 @@ class File_handler {
                 $CI_Helper->load->library('upload', $photo_config);
 
                 if (!$CI_Helper->upload->do_upload($input_name)) {                                        
-                    throw new Exception("Se produjo un error al subir sus fotos, asegurese que sus archivos sean fotos e intentelo denuevo.");
+                    throw new Exception("Se produjo un error al subir sus fotos, asegúrese que sus archivos sean fotos e intentelo denuevo.");
                 }
                 $user_photo_info = $CI_Helper->upload->data();
-                $photos_full_paths[] = $user_photo_info['full_path'];
+    
+                $photos_full_paths[] = $user_photo_info['file_name'];
             }
         }
+      
         if ($photos_full_paths)
             return $photos_full_paths;
 
