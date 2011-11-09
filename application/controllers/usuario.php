@@ -15,8 +15,6 @@ class Usuario extends CI_Controller {
         $this->load->library('password_reset_success_template.php');
     }
 
-   
-
     public function panel($section = 'propiedades', $subsection ='publicadas', $messages = array()) {
 
         $messages = $messages ? $messages : $this->session->userdata("messages");
@@ -69,46 +67,57 @@ class Usuario extends CI_Controller {
         $this->load->view('page.php', $data);
     }
 
-    public function validate() {
+    public function validate($editing_old_user =false) {
 
         $clientType = $this->input->post('signup-client-type');
 
         $validationType = $clientType == 'client' ? 'signupClient' : 'signupCompany';
         $user_photo_path = '';
+
+
         $user_info_is_invalid = $this->form_validation->run($validationType) == false;
         if ($user_info_is_invalid) {
 
             $this->error();
             return;
         } elseif (File_handler::file_to_upload_exits("signup-photo")) {
-            
-            try
-            {
-                
-                $upload_path = realpath("./".Environment_vars::$environment_vars['user_photos_dir_path']);
+
+
+            try {
+
+                $upload_path = realpath("./" . Environment_vars::$environment_vars['user_photos_dir_path']);
                 $user_photo_path_in_array = File_handler::save_photos(array("signup-photo"), $upload_path, 2048);
-            }
-            catch(Exception $error)
-            {
+            } catch (Exception $error) {
                 $this->error(array("errors" => $error->getMessage()));
                 return;
             }
-            
+
             $user_files_hasnt_errors = $user_photo_path_in_array;
-            
-            if($user_files_hasnt_errors)
+
+            if ($user_files_hasnt_errors)
                 $user_photo_path = $user_photo_path_in_array[0];
-            
         }
-        
-        if($user_photo_path)        
+
+        if (!$editing_old_user) {
+            $email_already_exists = User::email_exists($this->input->post('signup-email'));
+
+            if ($email_already_exists) {
+                $messages['errors'] = "El email " . $this->input->post('signup-email') . " ya existe en nuestra base de datos";
+                $this->reppopulate_signup_form($messages);
+                return;
+            }
+        }
+
+
+        if ($user_photo_path)
             $this->save_user($user_photo_path);
         else
             $this->save_user();
     }
 
-    private function reppopulate_signup_form($extra_parameters=array()) {
+    private function reppopulate_signup_form($extra_parameters=array(), $repopulate_info = array()) {
 
+        
         $repopulateForm = array();
         if ($this->input->post('signup-client-name')) {
             $repopulateForm['clientName'] = $this->input->post('signup-client-name');
@@ -151,8 +160,8 @@ class Usuario extends CI_Controller {
         $newUser->description = $userInfo['signup-description'];
 
 
-        if ($photo_file_path)
-            $newUser->photo = base_url (). Environment_vars::$environment_vars['user_photos_dir_path'].$photo_file_path;
+        if ($photo_file_name)
+            $newUser->photo = Environment_vars::$environment_vars['user_photos_dir_path'] . $photo_file_name;
 
         $newUser->save();
 
@@ -161,8 +170,13 @@ class Usuario extends CI_Controller {
         redirect('/');
     }
 
+    public function editar($id=null){
+        $user = $this->get_logged_user_or_redirect_to_please_login();
+        //$this->reppopulate_signup_form($user);
+    }
+    
     public function comprar_plan($plan_name) {
-        $user = $this->get_logged_user_or_redirect_to_please_login();        
+        $user = $this->get_logged_user_or_redirect_to_please_login();
 
         switch ($plan_name) {
             case "basico":
@@ -262,10 +276,10 @@ class Usuario extends CI_Controller {
 
 
 
-        if(isset($messages['errors']))
-            $messages['errors'] .=  "\n".validation_errors();
+        if (isset($messages['errors']))
+            $messages['errors'] .= "\n" . validation_errors();
         else
-            $messages['errors'] =  validation_errors();
+            $messages['errors'] = validation_errors();
 
         $this->reppopulate_signup_form($messages);
     }

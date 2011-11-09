@@ -5,7 +5,7 @@
         <h2>Precio y Planes</h2>
         <p id="panels-account-recomendation">Adquiere m&aacute;s espacios y disfruta de todos nuestros beneficios.</p>
 
-        <div id="panels-account-plans-cotainer">
+        <div id="panels-account-plans-container">
         <table id="panels-account-plans">
             <thead>
                 <tr id="panels-account-plans-header-row">
@@ -90,7 +90,7 @@
             
         </div>
         
-        <div id="panels-account-offers-cotainer">
+        <div id="panels-account-offers-container">
         <div id="panels-account-offers">
             <h2>Oferta</h2>
             <div>
@@ -110,4 +110,37 @@
 
     </div>
 
+    <div>
+        
+    </div>
+    
+    <h2 id="panels-account-user-info-header">Informaci&oacute;n Personal</h2>
+    <div id="panels-account-user-info-summary">
+        
+            <img src="<?php echo $user_photo_thumb;?>"/>
+            <div>
+                <p class="panels-account-user-info-summary-title">Nombre</p>
+                <p><?php echo $user->name;?></p>
+                
+                <p class="panels-account-user-info-summary-title">Email</p>
+                <p><?php echo $user->email;?></p>
+                
+                <p class="panels-account-user-info-summary-title"> Empresal</p>
+                <p><?php echo $user->name;?></p>
+                
+                
+                <p class="panels-account-user-info-summary-title">Tel&eacute;fono / Celular</p>
+                <p><?php echo $user->tel? $user->tel : 'N/A';?> / <?php echo $user->cel? $user->cel : 'N/A';?></p>
+                
+                
+        </div>
+        
+        
+        
+    </div>
+    <p>
+        <a id="panels-account-edit-button" class="green-button" href="/usuario/editar"> Editar Informaci&oacute;n</a>
+    </p>
+    
+    
 </div>

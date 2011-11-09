@@ -72,6 +72,18 @@ class User extends DataMapper {
         return $this->get_number_of_properties() <= $this->posts_left * 3;
     }
     
+    public static function email_exists($email='')
+    {
+        if(!$email)
+            return false;
+        
+        $possible_user = new User();
+        $possible_user->where("email",$email)->get();
+        
+        $if_user_exists = $possible_user->id;
+        return (bool) $if_user_exists;
+        
+    }
 
 
     // --------------------------------------------------------------------
