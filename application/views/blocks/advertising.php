@@ -1,3 +1,3 @@
 <div id="advertising">
-    <img src="/images/frontPageAdvertising/1.jpg"/>
+    <img src="/images/frontPageAdvertising/advertise.png"/>
 </div>

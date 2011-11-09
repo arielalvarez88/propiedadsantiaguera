@@ -56,10 +56,10 @@ $thisPage = str_replace('/', '-', uri_string());
                                 <?php endif;?>
                                     
                                 
-                                <?php if (!$loggedUser): ?>
+                                
                                     <a class="no-decoration-anchor" href="#">CONTACTENOS</a>
                                     <span class="vertical-serparator"><img src="/images/phone_icon.png" alt="dude"/></span>
-                                <?php endif; ?>
+                                
 
 
                                 <a id="header-help" class="no-decoration-anchor" href="#login">AYUDA</a>
