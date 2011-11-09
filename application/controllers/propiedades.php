@@ -177,14 +177,18 @@ class Propiedades extends CI_Controller {
     }
 
     public function editar_propiedades($property_id) {
+        
         $property = new Property();
         $property->where('id', $property_id);
         $property->get();
+        $map_features = Environment_vars::$maps['property_feature_to_name'];
+        $map_close_places = Environment_vars::$maps['property_close_places'];
 
         $repopulateForm = array();
-
+ 
         
-
+        $repopulateForm['property_title'] = $property->title;
+        $repopulateForm['property_description'] = $property->description;
         $repopulateForm['property_type'] = $property->type;
         $repopulateForm['property_sector'] = $property->sector;
         $repopulateForm['property_address'] = $property->address;
@@ -203,63 +207,20 @@ class Propiedades extends CI_Controller {
         $repopulateForm['property_kitchens'] = $property->kitchens;
         $repopulateForm['property_parkings'] = $property->parkings;
 
-
-        $repopulateForm['close_malls'] = $property->close_malls;
-        $repopulateForm['close_supermarkets'] = $property->close_supermarkets;
-        $repopulateForm['close_grocery_stores'] = $property->close_grocery_stores;
-        $repopulateForm['close_schools'] = $property->close_schools;
-        $repopulateForm['close_restaurants'] = $property->close_restaurants;
-        $repopulateForm['close_bakeries'] = $property->close_bakeries;
-        $repopulateForm['close_gyms'] = $property->close_gyms;
-        $repopulateForm['close_public_transport'] = $property->close_public_transport;
-        $repopulateForm['close_hardware_stores'] = $property->close_hardware_stores;
-        $repopulateForm['close_drug_stores'] = $property->close_drug_stores;
-
-
-        $repopulateForm['elevator'] = $property->elevator;
-        $repopulateForm['game_area'] = $property->game_area;
-        $repopulateForm['wash_area'] = $property->wash_area;
-        $repopulateForm['balcony'] = $property->balcony;
-        $repopulateForm['electric_water_heater'] = $property->electric_water_heater;
-        $repopulateForm['gas_water_heater'] = $property->gas_water_heater;
-        $repopulateForm['watchman_stand'] = $property->watchman_stand;
-        $repopulateForm['cistern'] = $property->cistern;
-        $repopulateForm['white_clothes_closer'] = $property->white_clothes_closer;
-        $repopulateForm['equiped_kitchen'] = $property->equiped_kitchen;
-        $repopulateForm['dinning_room'] = $property->dinning_room;
-        $repopulateForm['antisismic_construction'] = $property->antisismic_construction;
-        $repopulateForm['plaster_cornices'] = $property->plaster_cornices;
-        $repopulateForm['machine_room'] = $property->machine_room;
-        $repopulateForm['utility_room_bathroom'] = $property->utility_room_bathroom;
-        $repopulateForm['pantry'] = $property->pantry;
-        $repopulateForm['principal_room_bathroom'] = $property->principal_room_bathroom;
-        $repopulateForm['trash_chute'] = $property->trash_chute;
-        $repopulateForm['famaily_room'] = $property->famaily_room;
-        $repopulateForm['common_gas'] = $property->common_gas;
-        $repopulateForm['imported_fittings'] = $property->imported_fittings;
-        $repopulateForm['intercom'] = $property->intercom;
-        $repopulateForm['jacuzzi'] = $property->jacuzzi;
-        $repopulateForm['garden'] = $property->garden;
-        $repopulateForm['kiosk'] = $property->kiosk;
-        $repopulateForm['lobby'] = $property->lobby;
-        $repopulateForm['double_garage'] = $property->double_garage;
-        $repopulateForm['half_bathroom'] = $property->half_bathroom;
-        $repopulateForm['features_receiver'] = $property->features_receiver;
-        $repopulateForm['lobby'] = $property->lobby;
-        $repopulateForm['extra_parkings'] = $property->extra_parkings;
-        $repopulateForm['patio_with_garden'] = $property->patio_with_garden;
-        $repopulateForm['pool'] = $property->pool;
-        $repopulateForm['marmol_floors'] = $property->marmol_floors;
-        $repopulateForm['electric_plant'] = $property->electric_plant;
-        $repopulateForm['mahogany_terminations'] = $property->mahogany_terminations;
-        $repopulateForm['terrace'] = $property->terrace;
-        $repopulateForm['pre_installed_services'] = $property->pre_installed_services;
-        $repopulateForm['granite_countertops'] = $property->granite_countertops;
-        $repopulateForm['electric_gate'] = $property->electric_gate;
-        $repopulateForm['walk_in_closet'] = $property->walk_in_closet;
-
-
-
+        $property_features = $property->property_features->get();
+        
+        foreach($property_features as $property_feature)
+        {
+            $repopulateForm[$map_features[$property_feature->id]] = true;
+        }
+        
+        $property_close_places = $property->property_close_places->get();
+        
+        foreach($property_close_places as $property_close_place)
+        {
+            $repopulateForm[$map_close_places[$property_close_place->id]] = true;
+        }
+        
         $blocks['topLeftSide'] = $this->load->view('forms/add_properties_form.php', $repopulateForm, true);
         $this->load->view('page', $blocks);
 

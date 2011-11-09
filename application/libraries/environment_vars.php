@@ -2,10 +2,66 @@
 
 /*
  */
+
 class Environment_vars {
 
     public static $maps = array(
-        "property_type_to_name" => array(1 => "casa", 2=> "apartamento", 3=> "solar", 4=>"penthhouse", 5=>"centro comercial", 6=> "edificio", 7=>"nave industrial", 8=> "oficina", 9 =>"finca")
+        "property_type_to_name" => array(1 => "casa", 2 => "apartamento", 3 => "solar", 4 => "penthhouse", 5 => "centro comercial", 6 => "edificio", 7 => "nave industrial", 8 => "oficina", 9 => "finca"),
+        "property_feature_to_name" => array(
+            1 => "elevator",
+            2 => "game-area",
+            3 => "wash-area",
+            4 => "balcony",
+            5 => "recreative-areas-bathrooms",
+            6 => "electric-water-heater",
+            7 => "gas-water-heater",
+            8 => "watchman-stand",
+            9 => "cistern",
+            10 =>"white-clothes-closet",
+            11 =>"kitchen",
+            12 =>"dinning-room",
+            13 =>"antisismic-construction",
+            14 =>"plaster-cornices",
+            15 =>"machine-room",
+            16 =>"utility-room-bathroom",
+            17 =>"counter-top",
+            18 =>"pantry",
+            19 =>"trash-chute",
+            20 =>"principal-room-bathroom",
+            21 =>"family-room",
+            22 =>"common-gas",
+            23 =>"imported-fittings",
+            24 =>"intercom",
+            25 =>"jacuzzi",
+            26 =>"garden",
+            27 =>"kiosk",
+            28 =>"lobby",
+            29 =>"double-garage",
+            30 =>"half-bathroom",
+            31 =>"receiver",
+            32 =>"extra-parkings",
+            33 =>"patio-with-garden",
+            34 =>"pool",
+            35 =>"marmol-floors",
+            36 =>"electric-plant",
+            37 =>"mahogany-terminations",
+            38 =>"terrace",
+            39 =>"pre-installed-services",
+            40 =>"granite-countertops",
+            41 =>"electric-gate",
+            42 =>"walk-in-closet"),
+        "property_close_places" => array(
+            1 => "close_malls",
+            2 => "close_supermarkets",
+            3 => "close_grocery_stores",
+            4 => "close_schools",
+            5 => "close_restaurants",
+            6 => "close_bakeries",
+            7 => "close_gyms",
+            8 => "close_public_transport",
+            9 => "close_hardware_stores",
+            10 => "close_drug_stores"
+        )
     );
     public static $environment_vars = array(
         "property_types" => array(
@@ -18,7 +74,7 @@ class Environment_vars {
             "warehouse" => 7,
             "office" => 8,
             "land" => 9
-        ),        
+        ),
         "property_close_places" => array(
             "close-malls" => 1,
             "close-supermarkets" => 2,
@@ -28,9 +84,8 @@ class Environment_vars {
             "close-bakeries" => 6,
             "close-gyms" => 7,
             "close-public-transport" => 8,
-            "close-harware-stores" => 9,
-            "close-drug-stores" => 10,
-            
+            "close-hardware-stores" => 9,
+            "close-drug-stores" => 10
         ),
         "property_features" => array(
             "elevator" => 1,
@@ -46,7 +101,7 @@ class Environment_vars {
             "kitchen" => 11,
             "dinning-room" => 12,
             "antisismic-construction" => 13,
-            "plaster-cornices"=>14,
+            "plaster-cornices" => 14,
             "machine-room" => 15,
             "utility-room-bathroom" => 16,
             "counter-top" => 17,
@@ -56,7 +111,7 @@ class Environment_vars {
             "family-room" => 21,
             "common-gas" => 22,
             "imported-fittings" => 23,
-            "intercom" =>24,
+            "intercom" => 24,
             "jacuzzi" => 25,
             "garden" => 26,
             "kiosk" => 27,
@@ -74,11 +129,8 @@ class Environment_vars {
             "pre-installed-services" => 39,
             "granite-countertops" => 40,
             "electric-gate" => 41,
-            "walk-in-closet" => 42
-            
-            
-        ),
-        'user_photos_dir_path' => '/var/www/propiedadsantiaguera/images/userPhotos/'        
+            "walk-in-closet" => 42),
+        'user_photos_dir_path' => '/var/www/propiedadsantiaguera/images/userPhotos/'
     );
 
 }

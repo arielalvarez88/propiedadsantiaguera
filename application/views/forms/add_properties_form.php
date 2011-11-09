@@ -89,7 +89,7 @@
 
                 <li id="property-form-description-address-container">
                     <label for="property-form-description-address">Direcci&oacute;n:<span class="required">*</span></label> 
-                    <textarea id="property-form-description-address" name="property-address"> </textarea>
+                    <textarea id="property-form-description-address" name="property-address"><?php echo isset($property_address) ? $property_address : ''; ?></textarea>
                 </li>
 
 
@@ -115,8 +115,8 @@
                     <input type="text" id="property-form-description-stories" name="property-stories" <?php echo isset($property_stories) ? 'value="' . $property_stories . '"' : ''; ?>/>
                 </li>
                 <li>
-                    <label for="property-form-description-bedrooms">Habitaciones:<span class="required" <?php echo isset($property_bedrooms) ? 'value="' . $property_bedrooms . '"' : ''; ?>>*</span></label> 
-                    <input type="text" id="property-form-description-bedrooms" name="property-bedrooms"/>
+                    <label for="property-form-description-bedrooms">Habitaciones:<span class="required">*</span></label> 
+                    <input type="text" id="property-form-description-bedrooms" name="property-bedrooms" <?php echo isset($property_bedrooms) ? 'value="' . $property_bedrooms . '"' : ''; ?>/>
                 </li>
             </ul>
 
@@ -193,7 +193,7 @@
             <div id="property-form-description-description">
 
                 <h3>Descripci&oacute;n de la propiedad:<span class="required">*</span></h3>
-                <textarea id="property-form-description-price" name="property-description"></textarea>
+                <textarea id="property-form-description-price" name="property-description"><?php echo isset($property_description) ? $property_description : ''; ?></textarea>
             </div>
 
             <div id="property-form-close-places">
@@ -315,7 +315,7 @@
 
 
                 <li>
-                    <input id="property-form-description-features-white-clothes-closet" type="checkbox" name="white-clothes-closet" <?php echo isset($white_clothes_closer) && $white_clothes_closer ? 'checked="on"' : ''; ?>/>
+                    <input id="property-form-description-features-white-clothes-closet" type="checkbox" name="white-clothes-closet" <?php echo isset($white_clothes_closet) && $white_clothes_closet ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-white-clothes-closet">Closet de ropa Blanca</label> 
                 </li>
 
@@ -376,7 +376,7 @@
                 </li>
 
                 <li>
-                    <input id="property-form-description-features-family-room" type="checkbox" name="family-room" <?php echo isset($famaily_room) && $famaily_room ? 'checked="on"' : ''; ?>/>
+                    <input id="property-form-description-features-family-room" type="checkbox" name="family-room" <?php echo isset($family_room) && $family_room ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-family-room">Estar familiar</label> 
                 </li>
             </ul>
