@@ -234,26 +234,97 @@ a img
 
 
 
-/****Panels-account****/
-#panels-account-plans td span {
-    display: block;
-    float: left;
-    width: 96px;
-    text-align: left;
-}
 
+
+/****Panels-account****/
+#panels-account
+{
+    width: 960px;
+}
 #panels-account-plans {
-    background-image: url("/images/plans_diagonal_line_bg.png");
+    background-image: url("/images/common/grayPattern.png");
+    border: medium none;
+    border-collapse: collapse;
+    border-radius: 10px 10px 10px 10px;
     text-align: center;
     vertical-align: middle;
+    width: 602px;
+    height: 228px;
 }
 
 #panels-account-plans-header-row
 {
-    
+    background-image: url('/images/panelsAccount/plansTableHeaderBackground.png');
+}
+
+#panels-account-plans td, #panels-account-plans th {
+    padding: 10px;
 }
 
 
+#panels-account-plans-cotainer
+{
+    float: left;
+}
+
+
+#panels-account-offers-cotainer
+{
+    float: right;
+}
+
+#panels-account-plans h2
+{
+    color: #76b939;
+}
+
+
+
+#panels-account-available
+{
+    font-weight: bold;
+    margin: 10px 0;
+}
+#panels-account-recomendation
+{
+    margin-bottom: 10px;
+    clear: both;
+}
+
+#panels-account-itbis-cancel 
+{
+    clear: both;
+    height: 40px;
+}
+#panels-account-itbis-cancel  a
+{
+    float: right;
+    font-size: 1.2em;
+}
+
+#panels-account-offers
+{
+        background-image: url('/images/common/grayPattern.png');
+}
+
+#panels-account-offers h2
+{
+    background-image: url('/images/common/greenPattern.png');
+}
+
+#panels-account-itbis-cancel  p{
+    float: left;
+}
+
+
+#panels-account-plans-last-row td
+{
+    padding-bottom: 15px;
+}
+
+#panels-account-plans-first-row td{
+    padding-top: 15px;
+}
 /****Panels-account ENDS****/
 
 /************ panels-propery-section-menu*******************/
@@ -1408,9 +1479,9 @@ div.footer-section a{
 
 /*front-page-advertising*/
 
-#advertising img
+#advertising
 {
-
+margin-bottom: 5px;
 }
 
 
@@ -2508,7 +2579,7 @@ span.required{
 /***** plans table ******/
 #planes_holder
 {
-    background:url('/images/plans_diagonal_line_bg.png') repeat transparent;
+    background:url('/images/common/grayPattern.png') repeat transparent;
     padding:10px 15px;
     width:95%;
     margin:0 auto;
