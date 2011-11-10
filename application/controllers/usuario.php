@@ -13,6 +13,9 @@ class Usuario extends CI_Controller {
         parent::__construct();
         $this->load->library('password_reset_template.php');
         $this->load->library('password_reset_success_template.php');
+
+        $this->load->library('User_info_getter_from_object');
+        $this->load->library('User_info_getter_from_post');
     }
 
     public function panel($section = 'propiedades', $subsection ='publicadas', $messages = array()) {
@@ -58,27 +61,33 @@ class Usuario extends CI_Controller {
         redirect(base_url());
     }
 
-    public function signup($repopulate_form = array()) {
+    public function signup($extra_parameters = array()) {
         $signUpData['signUpForm'] = $this->load->view('blocks/newUserType', '', true);
         $clientType['clientType'] = 'client';
-        $form_data = array_merge($repopulate_form, $clientType);
+        $form_data = array_merge($extra_parameters, $clientType);
         $signUpData['signUpForm'] .= $this->load->view('forms/signup_form.php', $form_data, true);
         $data['topLeftSide'] = $this->load->view('blocks/signUpForm', $signUpData, true);
         $this->load->view('page.php', $data);
     }
 
-    public function validate($editing_old_user =false) {
+    public function validate($editing_existing_user =false) {
 
         $clientType = $this->input->post('signup-client-type');
-
-        $validationType = $clientType == 'client' ? 'signupClient' : 'signupCompany';
+        $validationType = '';
+        if($editing_existing_user)
+            $validationType = $clientType == 'client' ? 'edit_client' : 'edit_company';
+        else
+            $validationType = $clientType == 'client' ? 'signupClient' : 'signupCompany';
+        
         $user_photo_path = '';
 
 
         $user_info_is_invalid = $this->form_validation->run($validationType) == false;
         if ($user_info_is_invalid) {
-
-            $this->error();
+            $extra_parameters = array();
+            if ($editing_existing_user)
+                $extra_parameters['edit'] = true;
+            $this->error($extra_parameters);
             return;
         } elseif (File_handler::file_to_upload_exits("signup-photo")) {
 
@@ -88,7 +97,11 @@ class Usuario extends CI_Controller {
                 $upload_path = realpath("./" . Environment_vars::$environment_vars['user_photos_dir_path']);
                 $user_photo_path_in_array = File_handler::save_photos(array("signup-photo"), $upload_path, 2048);
             } catch (Exception $error) {
-                $this->error(array("errors" => $error->getMessage()));
+                $extra_parameters = array();
+                if ($editing_existing_user)
+                    $extra_parameters['edit'] = true;
+                $extra_parameters['errors'] = $error->getMessage();
+                $this->signup($extra_parameters);
                 return;
             }
 
@@ -98,7 +111,7 @@ class Usuario extends CI_Controller {
                 $user_photo_path = $user_photo_path_in_array[0];
         }
 
-        if (!$editing_old_user) {
+        if (!$editing_existing_user) {
             $email_already_exists = User::email_exists($this->input->post('signup-email'));
 
             if ($email_already_exists) {
@@ -110,44 +123,49 @@ class Usuario extends CI_Controller {
 
 
         if ($user_photo_path)
-            $this->save_user($user_photo_path);
+            $this->save_user($user_photo_path,$editing_existing_user);
         else
-            $this->save_user();
+            $this->save_user('',$editing_existing_user);
     }
 
-    private function reppopulate_signup_form($extra_parameters=array(), $repopulate_info = array()) {
+    private function reppopulate_signup_form($extra_parameters=array(), $repopulate_object = false) {
 
-        
+        $user = $this->get_logged_user_or_redirect_to_please_login();
         $repopulateForm = array();
-        if ($this->input->post('signup-client-name')) {
-            $repopulateForm['clientName'] = $this->input->post('signup-client-name');
-            $repopulateForm['clientLastname'] = $this->input->post('signup-client-lastname');
+        $user_info_getter = $repopulate_object ? new User_info_getter_from_object($repopulate_object) : new User_info_getter_from_post($this->input->post());
+
+
+        if ($this->input->post('signup-client-name') || $user_info_getter->get_type() == "client") {
+            $repopulateForm['clientName'] = $user_info_getter->get_name();
+
+            $repopulateForm['clientLastname'] = $user_info_getter->get_lastname();
         }
         else
-            $repopulateForm['companyName'] = $this->input->post('signup-company-name');
+            $repopulateForm['companyName'] = $user_info_getter->get_name();
 
-        $repopulateForm['company'] = $this->input->post('signup-company-name');
-        $repopulateForm['email'] = $this->input->post('signup-email');
-        $repopulateForm['tel'] = $this->input->post('signup-tel');
-        $repopulateForm['cel'] = $this->input->post('signup-cel');
-        $repopulateForm['fax'] = $this->input->post('signup-fax');
-        $repopulateForm['website'] = $this->input->post('signup-website');
-        $repopulateForm['description'] = $this->input->post('signup-description');
-        $repopulateForm['clientType'] = $this->input->post('signup-client-type');
-        $repopulateForm['rnc'] = $this->input->post('signup-rnc');
+        $repopulateForm['email'] = $user_info_getter->get_email();
+        $repopulateForm['tel'] = $user_info_getter->get_tel();
+        ;
+        $repopulateForm['cel'] = $user_info_getter->get_cel();
+        $repopulateForm['fax'] = $user_info_getter->get_fax();
+        $repopulateForm['website'] = $user_info_getter->get_website();
+        $repopulateForm['description'] = $user_info_getter->get_description();
+        $repopulateForm['clientType'] = $user_info_getter->get_type();
+        $repopulateForm['rnc'] = $user_info_getter->get_rnc();
 
         $repopulateForm = array_merge($repopulateForm, $extra_parameters);
         $this->signup($repopulateForm);
-    }
+        }
 
-    private function save_user($photo_file_name = false) {
+        private function save_user($photo_file_name = false, $editing_existing_user=false) {
 
-        $newUser = new User();
+        $newUser = $editing_existing_user? $this->get_logged_user_or_redirect_to_please_login() : new User();
+        
         $userInfo = $this->input->post();
 
 
-        $newUser->name = isset($userInfo['signup-client-name']) ? $userInfo['signup-client-name'] : $userInfo['signup-company-name'];
-        if (isset($userInfo['signup-apellido']))
+        $newUser->name = isset($userInfo['signup-name']) ? $userInfo['signup-name'] : $userInfo['signup-company-name'];
+        if (isset($userInfo['signup-lastname']))
             $newUser->lastname = $userInfo['signup-lastname'];
         $newUser->email = $userInfo['signup-email'];
         $newUser->password = $userInfo['signup-password'];
@@ -170,11 +188,11 @@ class Usuario extends CI_Controller {
         redirect('/');
     }
 
-    public function editar($id=null){
+    public function editar() {
         $user = $this->get_logged_user_or_redirect_to_please_login();
-        //$this->reppopulate_signup_form($user);
+        $this->reppopulate_signup_form(array("edit" => true, "client_type" => "edit_client"), $user);
     }
-    
+
     public function comprar_plan($plan_name) {
         $user = $this->get_logged_user_or_redirect_to_please_login();
 
