@@ -34,11 +34,11 @@ a img
 #wrapper{
     background-color: white;
     margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
+    margin-right: auto;    
     width: 960px;
     background:none;
 }
+
 /************ header *************/
 #login-links
 {
@@ -213,9 +213,15 @@ a img
     list-style: none outside none;
     padding: 13px 0;
 }
+
+#upper-panel ul a {
+    color: white;
+}
+
 #upper-panel {
     width: 100%;
     z-index: 99999;
+    color:white;
 }
 
 
@@ -226,6 +232,153 @@ a img
 
 /***upper-panel ENDS***/
 
+
+
+
+
+/****Panels-account****/
+#panels-account
+{
+    width: 960px;
+}
+#panels-account-plans {
+    background-image: url("/images/common/grayPattern.png");
+    border: medium none;
+    border-collapse: collapse;
+    border-radius: 10px 10px 10px 10px;
+    text-align: center;
+    vertical-align: middle;
+    width: 602px;
+    height: 228px;
+}
+
+#panels-account-plans-header-row
+{
+    background-image: url('/images/panelsAccount/plansTableHeaderBackground.png');
+}
+
+#panels-account-plans td, #panels-account-plans th {
+    padding: 10px;
+}
+
+
+#panels-account-plans-container
+{
+    float: left;
+}
+
+
+#panels-account-offers-container
+{
+    float: right;
+}
+
+#panels-account-plans h2
+{
+    color: #76b939;
+}
+
+
+
+#panels-account-available
+{
+    font-weight: bold;
+    margin: 10px 0;
+}
+#panels-account-recomendation
+{
+    margin-bottom: 10px;
+    clear: both;
+}
+
+#panels-account-itbis-cancel 
+{
+    clear: both;
+    height: 40px;
+}
+#panels-account-itbis-cancel  a
+{
+    float: right;
+    font-size: 1.2em;
+}
+
+#panels-account-offers {
+    background-image: url("/images/common/grayPattern.png");
+    border-radius: 15px 15px 15px 15px;
+    height: 228px;
+    text-align: center;
+    width: 265px;
+}
+
+#panels-account-offers-container a {
+    display: block;
+    font-size: 1.2em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 139px;
+}
+
+#panels-account-offers, #panels-account-plans
+{
+    margin-bottom: 15px;
+}
+
+#panels-account-offers h2 {
+    background-image: url("/images/common/greenPattern.png");
+    border-radius: 8px 8px 0 0;
+    padding: 10px;
+}
+
+#panels-account-itbis-cancel  p{
+    float: left;
+}
+
+
+#panels-account-user-info-summary div p.panels-account-user-info-summary-title
+{
+    color: #7dc73e;
+    margin: 2px 0;
+    font-weight: bold;
+}
+
+#panels-account-plans-last-row td
+{
+    padding-bottom: 15px;
+}
+
+#panels-account-plans-first-row td{
+    padding-top: 15px;
+}
+
+#panels-account-user-info-summary div p {
+    margin: 2px 0 6px 0;
+}
+#panels-account-user-info-summary div {
+    float: left;
+}
+#panels-account-user-info-summary img {
+    border: 2px solid #77BD3D;
+    display: block;
+    float: left;
+    margin-right: 20px;
+}
+
+#panels-account-user-info-header
+{
+    clear: both;
+    color: #76b939;    
+    margin-bottom: 20px;
+}
+
+#panels-account-user-info-summary {
+    background-color: #F5F5F5;
+    border-radius: 10px 10px 10px 10px;
+    height: 195px;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 470px;
+}
+/****Panels-account ENDS****/
 
 /************ panels-propery-section-menu*******************/
 
@@ -999,16 +1152,16 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 /***buy-blueprints-link***/
 #buy-blueprints-link
 {
-    background-color: #F9CA02;
-    color: black;
+/*    background-color: #F9CA02;*/
+/*    color: black;*/
     display: block;
     float: left;
-    font-size: 2.7em;
+/*    font-size: 2.7em;
     font-weight: bold;
-    height: 168px;
+    height: 168px;*/
     margin: 0 7px;
-    padding: 40px 0;
-    text-align: center;
+/*    padding: 40px 0;
+    text-align: center;*/
     width: 309px;
 }
 
@@ -1379,9 +1532,9 @@ div.footer-section a{
 
 /*front-page-advertising*/
 
-#advertising img
+#advertising
 {
-
+margin-bottom: 5px;
 }
 
 
@@ -1475,6 +1628,20 @@ div.footer-section a{
 {
     display:block;
 }
+
+.green-button
+{
+    background-color: #84D341;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    font-size: 0.8em;
+    padding: 4px 13px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+
 
 
 
@@ -2466,7 +2633,7 @@ span.required{
 /***** plans table ******/
 #planes_holder
 {
-    background:url('/images/plans_diagonal_line_bg.png') repeat transparent;
+    background:url('/images/common/grayPattern.png') repeat transparent;
     padding:10px 15px;
     width:95%;
     margin:0 auto;

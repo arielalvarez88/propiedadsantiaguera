@@ -6,7 +6,7 @@
  */
 
 $config = array(
-    'signupCompany'=>array(
+    'signupCompany' => array(
         array(
             'field' => 'signup-company-name',
             'label' => 'nombre de la compañía',
@@ -20,7 +20,6 @@ $config = array(
             'field' => 'signup-password-confirmation',
             'label' => 'la confirmación de contraseña',
             'rules' => 'required|matches[signup-password]'
-          
         ),
         array(
             'field' => 'signup-email',
@@ -28,15 +27,14 @@ $config = array(
             'rules' => 'required|max_length[30]|valid_email'
         )
     ),
-    
-    'signupClient'=>array(
+    'signupClient' => array(
         array(
-            'field' => 'signup-client-name',
+            'field' => 'signup-name',
             'label' => 'nombre',
             'rules' => 'required|max_length[20]'
         ),
         array(
-            'field' => 'signup-client-lastname',
+            'field' => 'signup-lastname',
             'label' => 'apellido',
             'rules' => 'required|max_length[20]'
         ),
@@ -49,7 +47,33 @@ $config = array(
             'field' => 'signup-password-confirmation',
             'label' => 'la confirmación de contraseña',
             'rules' => 'required|matches[signup-password]'
-          
+        ),
+        array(
+            'field' => 'signup-email',
+            'label' => 'email',
+            'rules' => 'required|max_length[30]|valid_email'
+        )
+    ),
+    'edit_client' => array(
+        array(
+            'field' => 'signup-name',
+            'label' => 'nombre',
+            'rules' => 'required|max_length[20]'
+        ),
+        array(
+            'field' => 'signup-lastname',
+            'label' => 'apellido',
+            'rules' => 'required|max_length[20]'
+        ),
+        array(
+            'field' => 'signup-password',
+            'label' => 'contraseña',
+            'rules' => ''
+        ),
+        array(
+            'field' => 'signup-password-confirmation',
+            'label' => 'la confirmación de contraseña',
+            'rules' => 'matches[signup-password]'
         ),
         array(
             'field' => 'signup-email',
@@ -58,8 +82,7 @@ $config = array(
         )
     ),
     'property' => array(
-    
-            array(
+        array(
             'field' => 'property-title',
             'label' => 'título',
             'rules' => 'required'
@@ -78,37 +101,34 @@ $config = array(
             'field' => 'property-terrain',
             'label' => 'terreno',
             'rules' => 'required|numeric'),
-    array(
+        array(
             'field' => 'property-construction',
             'label' => 'construccion',
             'rules' => 'required|numeric'),
-    array(
+        array(
             'field' => 'property-stories',
             'label' => 'niveles',
             'rules' => 'required|numeric'),
-    array(
+        array(
             'field' => 'property-bedrooms',
             'label' => 'habitaciones',
             'rules' => 'required|numeric'),
-    array(
+        array(
             'field' => 'property-bathrooms',
             'label' => 'baños',
             'rules' => 'required|numeric'),
-    array(
+        array(
             'field' => 'property-livingrooms',
             'label' => 'salas',
             'rules' => 'required|numeric'),
-    array(
+        array(
             'field' => 'property-kitchens',
             'label' => 'cocinas',
             'rules' => 'required|numeric'),
-    array(
+        array(
             'field' => 'property-parkings',
             'label' => 'parqueos',
             'rules' => 'required|numeric')
-    
-    
-    )   
-            
+    )
 );
 ?>

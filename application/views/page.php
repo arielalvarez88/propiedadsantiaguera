@@ -15,10 +15,10 @@ $thisPage = str_replace('/', '-', uri_string());
         <?php if ($loggedUser && $loggedUser->name): ?>
             <div id="upper-panel">
                 <ul class="hidden">
-                    <li><a>RESUMEN</a>|</li>
-                    <li><a href="/usuario/panel/propiedades">PROPIEDADES</a>|</li>
-                    <li><a>CUENTA</a>|</li>
-                    <li><a>SOLICITUDES</a></li>
+                    <li><a class="no-decoration-anchor">RESUMEN</a>|</li>
+                    <li><a class="no-decoration-anchor" href="/panel/propiedades">PROPIEDADES</a>|</li>
+                    <li><a class="no-decoration-anchor" href="/panel/cuenta">CUENTA</a>|</li>
+                    <li><a class="no-decoration-anchor ">SOLICITUDES</a></li>
                 </ul>
                 <div id="upper-panel-curve-part">
                     <a class="no-decoration-anchor" href="#javascript" id="upper-panel-hide-show"><img class="hide-show-arrow"  src="/images/upperPanel/downArrow.png" alt="flecha-abajo" class="visible"/> <img  class="hidden"  src="/images/upperPanel/upArrow.png" alt="flecha-arriba"/></a><p>Bienvenido, <?php echo $loggedUser->name; ?> </p><a id="logout-button" href="/usuario/logout">SALIR</a>
@@ -56,10 +56,10 @@ $thisPage = str_replace('/', '-', uri_string());
                                 <?php endif;?>
                                     
                                 
-                                <?php if (!$loggedUser): ?>
+                                
                                     <a class="no-decoration-anchor" href="#">CONTACTENOS</a>
                                     <span class="vertical-serparator"><img src="/images/phone_icon.png" alt="dude"/></span>
-                                <?php endif; ?>
+                                
 
 
                                 <a id="header-help" class="no-decoration-anchor" href="#login">AYUDA</a>
