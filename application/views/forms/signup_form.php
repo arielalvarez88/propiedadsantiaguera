@@ -7,7 +7,7 @@
 <?php if (isset($errors) && $errors): ?>
         <div class="error-messages"><?php echo $errors; ?></div>
     <?php endif; ?>
-
+  
 
         
         <form enctype="multipart/form-data" id="signup-informacion-general" accept-charset="utf-8" method="post" action="<?php echo base_url();?>usuario/validate<?php echo $edit? '/edit' : '';?>">

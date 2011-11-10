@@ -66,6 +66,7 @@ class Usuario extends CI_Controller {
         $clientType['clientType'] = 'client';
         $form_data = array_merge($extra_parameters, $clientType);
         $signUpData['signUpForm'] .= $this->load->view('forms/signup_form.php', $form_data, true);
+        $signUpData = array_merge($signUpData, $signUpData);
         $data['topLeftSide'] = $this->load->view('blocks/signUpForm', $signUpData, true);
         $this->load->view('page.php', $data);
     }
@@ -185,12 +186,17 @@ class Usuario extends CI_Controller {
 
         User_handler::loginAndSaveInCookies($newUser->email, $newUser->password);
 
-        redirect('/');
+        if($editing_existing_user)
+            $this->editar (array("messages" => "Su información fue editada con éxito."));
+        else
+            redirect('/');
     }
 
-    public function editar() {
+    public function editar($extra_paramaters = array()) {
         $user = $this->get_logged_user_or_redirect_to_please_login();
-        $this->reppopulate_signup_form(array("edit" => true, "client_type" => "edit_client"), $user);
+        $parameters = array("edit" => true, "client_type" => "edit_client");
+        $all_parameters = array_merge($parameters,$extra_paramaters);
+        $this->reppopulate_signup_form($all_parameters, $user);
     }
 
     public function comprar_plan($plan_name) {
