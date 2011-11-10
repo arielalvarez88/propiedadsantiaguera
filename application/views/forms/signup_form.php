@@ -10,7 +10,7 @@
 
 
         
-        <form enctype="multipart/form-data" id="signup-informacion-general" accept-charset="utf-8" method="post" action="<?php echo base_url();?>usuario/validate">
+        <form enctype="multipart/form-data" id="signup-informacion-general" accept-charset="utf-8" method="post" action="<?php echo base_url();?>usuario/validate<?php echo $edit? '/edit' : '';?>">
 
 
         <div id="signup-info-text">
@@ -18,14 +18,14 @@
 <?php if ($clientType == 'company'): ?>
 
                 <label for="signup-company-name">Empresa:<span class="required">*</span></label> 
-                <input <?php echo isset($companyname) ? 'value="' . $companyName . '"' : ''; ?> class="required" name="signup-company-name" type="text" id="signup-company-name"/>
+                <input <?php echo isset($companyName) ? 'value="' . $companyName . '"' : ''; ?> class="required" name="signup-company-name" type="text" id="signup-company-name"/>
 
 <?php else: ?>        
                 <label for="signup-client-name">Nombre:<span class="required">*</span></label> 
-                <input <?php echo isset($clientName) ? 'value="' . $clientName . '"' : ''; ?> name="signup-client-name" class="required" type="text" id="signup-client-name"/>
+                <input <?php echo isset($clientName) ? 'value="' . $clientName . '"' : ''; ?> name="signup-name" class="required" type="text" id="signup-client-name"/>
 
                 <label for="signup-client-lastname">Apellido:<span class="required">*</span></label> 
-                <input <?php echo isset($clientLastname) ? 'value="' . $clientLastname . '"' : ''; ?> name="signup-client-lastname" class="required" type="text" id="signup-client-lastname"/>
+                <input <?php echo isset($clientLastname) ? 'value="' . $clientLastname . '"' : ''; ?> name="signup-lastname" class="required" type="text" id="signup-client-lastname"/>
 <?php endif; ?>
 
 
