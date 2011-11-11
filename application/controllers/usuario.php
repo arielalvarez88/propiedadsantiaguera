@@ -162,6 +162,8 @@ class Usuario extends CI_Controller {
 
         $newUser = $editing_existing_user? $this->get_logged_user_or_redirect_to_please_login() : new User();
         
+
+        
         $userInfo = $this->input->post();
 
 
@@ -169,7 +171,8 @@ class Usuario extends CI_Controller {
         if (isset($userInfo['signup-lastname']))
             $newUser->lastname = $userInfo['signup-lastname'];
         $newUser->email = $userInfo['signup-email'];
-        $newUser->password = $userInfo['signup-password'];
+        if($userInfo['signup-password'])
+            $newUser->password = $userInfo['signup-password'];
         $newUser->tel = $userInfo['signup-tel'];
         $newUser->cel = $userInfo['signup-cel'];
         $newUser->fax = $userInfo['signup-fax'];
@@ -182,8 +185,9 @@ class Usuario extends CI_Controller {
         if ($photo_file_name)
             $newUser->photo = Environment_vars::$environment_vars['user_photos_dir_path'] . $photo_file_name;
 
+        
         $newUser->save();
-
+        
         User_handler::loginAndSaveInCookies($newUser->email, $newUser->password);
 
         if($editing_existing_user)
