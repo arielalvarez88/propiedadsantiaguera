@@ -43,9 +43,11 @@ class User_handler {
             $CI = self::$CIObject;
             self::saveInSession($userObject);
             
+  
             return $userObject;
         }
 
+   
 
         return false;
     }
