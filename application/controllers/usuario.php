@@ -146,7 +146,7 @@ class Usuario extends CI_Controller {
 
         $repopulateForm['email'] = $user_info_getter->get_email();
         $repopulateForm['tel'] = $user_info_getter->get_tel();
-        ;
+        
         $repopulateForm['cel'] = $user_info_getter->get_cel();
         $repopulateForm['fax'] = $user_info_getter->get_fax();
         $repopulateForm['website'] = $user_info_getter->get_website();
