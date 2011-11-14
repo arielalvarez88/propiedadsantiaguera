@@ -3,6 +3,7 @@
     padding:0;
     font-family: museo;
 }
+
 body{
 
     color: black;
@@ -33,11 +34,11 @@ a img
 #wrapper{
     background-color: white;
     margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
+    margin-right: auto;    
     width: 960px;
     background:none;
 }
+
 /************ header *************/
 #login-links
 {
@@ -162,6 +163,223 @@ a img
 
 /************ Login block end *******************/
 
+
+/***upper-panel ***/
+#logout-button {
+    background-image: url("/images/upperPanel/logoutButtonGradient.png");
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    display: block;
+    float: right;
+    font-size: 0.7em;
+    padding: 3px 10px;
+    text-decoration: none;
+}
+#upper-panel-curve-part {
+    background-image: url("/images/upperPanel/curvePart.png");
+    background-position: 0 -1px;
+    height: 32px;
+    left: 1127px;
+    padding: 1px 18px 0;
+    width: 281px;
+}
+
+#upper-panel-curve-part p, #logout-button {
+    margin: 5px 12px 0;
+}
+
+#upper-panel ul li a {
+    display: block;
+    padding: 0 10px;
+}
+
+#upper-panel-curve-part p, 
+#upper-panel ul li a,
+#upper-panel ul li,
+#upper-panel-hide-show
+{
+    float: left;
+}
+
+
+
+#upper-panel-curve-part a img {
+    width: 24px;
+}
+#upper-panel ul {
+    background-color: #76BC3B;
+    color: white;
+    height: 20px;
+    list-style: none outside none;
+    padding: 13px 0;
+}
+
+#upper-panel ul a {
+    color: white;
+}
+
+#upper-panel {
+    width: 100%;
+    z-index: 99999;
+    color:white;
+}
+
+
+
+
+
+
+
+/***upper-panel ENDS***/
+
+
+
+
+
+/****Panels-account****/
+#panels-account
+{
+    width: 960px;
+}
+#panels-account-plans {
+    background-image: url("/images/common/grayPattern.png");
+    border: medium none;
+    border-collapse: collapse;
+    border-radius: 10px 10px 10px 10px;
+    text-align: center;
+    vertical-align: middle;
+    width: 602px;
+    height: 228px;
+}
+
+#panels-account-plans-header-row
+{
+    background-image: url('/images/panelsAccount/plansTableHeaderBackground.png');
+}
+
+#panels-account-plans td, #panels-account-plans th {
+    padding: 10px;
+}
+
+
+#panels-account-plans-container
+{
+    float: left;
+}
+
+
+#panels-account-offers-container
+{
+    float: right;
+}
+
+#panels-account-plans h2
+{
+    color: #76b939;
+}
+
+
+
+#panels-account-available
+{
+    font-weight: bold;
+    margin: 10px 0;
+}
+#panels-account-recomendation
+{
+    margin-bottom: 10px;
+    clear: both;
+}
+
+#panels-account-itbis-cancel 
+{
+    clear: both;
+    height: 40px;
+}
+#panels-account-itbis-cancel  a
+{
+    float: right;
+    font-size: 1.2em;
+}
+
+#panels-account-offers {
+    background-image: url("/images/common/grayPattern.png");
+    border-radius: 15px 15px 15px 15px;
+    height: 228px;
+    text-align: center;
+    width: 265px;
+}
+
+#panels-account-offers-container a {
+    display: block;
+    font-size: 1.2em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 139px;
+}
+
+#panels-account-offers, #panels-account-plans
+{
+    margin-bottom: 15px;
+}
+
+#panels-account-offers h2 {
+    background-image: url("/images/common/greenPattern.png");
+    border-radius: 8px 8px 0 0;
+    padding: 10px;
+}
+
+#panels-account-itbis-cancel  p{
+    float: left;
+}
+
+
+#panels-account-user-info-summary div p.panels-account-user-info-summary-title
+{
+    color: #7dc73e;
+    margin: 2px 0;
+    font-weight: bold;
+}
+
+#panels-account-plans-last-row td
+{
+    padding-bottom: 15px;
+}
+
+#panels-account-plans-first-row td{
+    padding-top: 15px;
+}
+
+#panels-account-user-info-summary div p {
+    margin: 2px 0 6px 0;
+}
+#panels-account-user-info-summary div {
+    float: left;
+}
+#panels-account-user-info-summary img {
+    border: 2px solid #77BD3D;
+    display: block;
+    float: left;
+    margin-right: 20px;
+}
+
+#panels-account-user-info-header
+{
+    clear: both;
+    color: #76b939;    
+    margin-bottom: 20px;
+}
+
+#panels-account-user-info-summary {
+    background-color: #F5F5F5;
+    border-radius: 10px 10px 10px 10px;
+    height: 195px;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 470px;
+}
+/****Panels-account ENDS****/
+
 /************ panels-propery-section-menu*******************/
 
 #panels-property-section-menu-tabs {
@@ -179,7 +397,7 @@ a img
     border-radius: 5px 5px 5px 5px;
     color: white;
     height: 24px;
-    padding: 7px 0;
+    padding: 7px 10px;
     text-align: center;
     overflow: hidden;
 }
@@ -222,7 +440,7 @@ a img
 
 .panels-properties-pager-property {
     float: left;
-    margin-bottom: 15px;
+    margin-bottom: 75px;
     width: 480px;
 }
 
@@ -934,16 +1152,16 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 /***buy-blueprints-link***/
 #buy-blueprints-link
 {
-    background-color: #F9CA02;
-    color: black;
+/*    background-color: #F9CA02;*/
+/*    color: black;*/
     display: block;
     float: left;
-    font-size: 2.7em;
+/*    font-size: 2.7em;
     font-weight: bold;
-    height: 168px;
+    height: 168px;*/
     margin: 0 7px;
-    padding: 40px 0;
-    text-align: center;
+/*    padding: 40px 0;
+    text-align: center;*/
     width: 309px;
 }
 
@@ -1216,7 +1434,7 @@ div.footer-section a{
 {
     width: 627px;
     height: 202px;
-    background-image: url("/images/common/stripesGradient_H496.jpg");
+    background-image: url("/images/common/stripesGradient_H433.png");
 
 }
 
@@ -1314,9 +1532,9 @@ div.footer-section a{
 
 /*front-page-advertising*/
 
-#advertising img
+#advertising
 {
-
+margin-bottom: 5px;
 }
 
 
@@ -1368,8 +1586,9 @@ div.footer-section a{
 #properties-pager
 {
 
-    height: 329px;
-    background-image: url("/images/common/stripesGradient_H496.jpg");
+    height: 327px;
+    background-image: url("/images/common/stripesGradient_H433.png");
+        
 }
 
 
@@ -1404,9 +1623,25 @@ div.footer-section a{
     color: #666666;
     margin-top: 10px;
 }
-.properties-pager-property span{
+
+.properties-pager-property-sector
+{
     display:block;
 }
+
+.green-button
+{
+    background-color: #84D341;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    font-size: 0.8em;
+    padding: 4px 13px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+
 
 
 
@@ -1444,6 +1679,68 @@ div.footer-section a{
 }
 
 /*properties-pager END*/
+
+
+/***interests-calculator ***/
+
+#interests-calculator input {
+  border: 4px solid #E1E1E1;
+    height: 36px;
+    margin: 5px 0;
+    width: 238px;
+}
+#interests-calculator p {
+    font-weight: bold;
+    margin: 3px 0;
+}
+#interests-calculator {
+         color: #76BB3A;
+    padding: 0 10px;
+    width: 351px;
+}
+
+
+#interests-calculator p lable
+{
+    margin-right: 30px;
+}
+   
+#interests-calculator h2 {
+    
+       
+    background-image: url("/images/common/darkStripesGradient.jpg");
+    border-radius: 5px 5px 0 0;
+    font-size: 2em;
+    padding: 10px;
+}
+
+#interests-calculator div
+{
+        background: url("/images/common/stripesGradient_H433.png") repeat scroll 0 0 transparent;
+    border-radius: 0 0 5px 5px;
+    padding: 0 10px;
+}
+
+
+#interests-calculator input#interests-calculator-result {
+    width: 140px;
+}
+
+#interests-calculator a {
+    background-color: #7FCB3F;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    display: block;
+    font-size: 1.3em;
+    margin: 15px 0;
+    padding: 6px 10px;
+    text-align: center;
+    width: 119px;
+}
+
+
+/***interests-calculator END***/
+
 
 /*proerties-of-the-week*/
 #properties-of-the-week {
@@ -1527,9 +1824,9 @@ div.footer-section a{
     height: 55px;
     width: 570px;
 }
-#propiedad-viewer-slidesshow-pager
+#propiedad-viewer-slidesshow-pager ul
 {
-    
+    list-style: none;
 }
 
 
@@ -2316,6 +2613,10 @@ span.required{
     font-weight: bold;
 }
 
+.hidden
+{
+    display: none;
+}
 .error-messages
 {
     background-color: #FCCECC;
@@ -2332,7 +2633,7 @@ span.required{
 /***** plans table ******/
 #planes_holder
 {
-    background:url('/images/plans_diagonal_line_bg.png') repeat transparent;
+    background:url('/images/common/grayPattern.png') repeat transparent;
     padding:10px 15px;
     width:95%;
     margin:0 auto;
@@ -2364,10 +2665,8 @@ span.required{
 {
     color:#fa0;
     padding-top: 22px;
+    height:116px;
 }
-
-<<<<<<< HEAD
-=======
 #planes_data tbody tr,#planes_data tbody td
 {
     padding:15px 0;
@@ -2428,6 +2727,7 @@ span.required{
     background: url('/images/info_importante_title_bg.png') top center no-repeat;
     padding: 25px 0 45px;
     text-align: center;
+    color:#fff;
 }
 #info_importante_content
 {
@@ -2486,7 +2786,6 @@ span.required{
     font-size:8pt;
     padding-left:5px;
 }
->>>>>>> origin/darwin_updated_views
 
 
 
@@ -3403,7 +3702,7 @@ button.ui-button:-moz-focus-inner { border: 0; padding: 0; } /* reset extra padd
 {
     margin:0 auto 10px;
     text-align:center;
-    background:url('/images/property_types_bg.png') repeat-x 1px 1px;
+    background: url('/images/common/stripesGradient_H433.png') repeat-x 1px 1px;
     border-radius:0 0 9px 9px;
     -moz-border-radius:0 0 9px 9px; 
     -webkit-border-radius:0 0 9px 9px;

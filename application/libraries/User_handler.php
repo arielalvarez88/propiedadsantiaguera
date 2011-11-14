@@ -43,9 +43,11 @@ class User_handler {
             $CI = self::$CIObject;
             self::saveInSession($userObject);
             
+  
             return $userObject;
         }
 
+   
 
         return false;
     }
@@ -87,10 +89,12 @@ class User_handler {
         self::createCI();
         $user = self::$CIObject->session->userdata('user');
         
+        
         if($user)
             return $user;
         
         $userId = self::$CIObject->input->cookie('user',true);
+
                       
        
         if(!$userId)
@@ -98,9 +102,9 @@ class User_handler {
             
         $user = new User();
         
-        $user->where('id =', $userId);
+        $user->where('id =', $userId)->get();
         
-        if($user)
+        if($user->id)
             return $user;
         
         return false;

@@ -47,7 +47,7 @@ initializePropiedadViewer = function (){
         activePagerClass: 'propiedad-viewer-active-selector',
         pagerAnchorBuilder: function (idx, slide){
             
-            return '#propiedad-viewer-slidesshow-pager ul li a:eq(' +idx +')'; 
+            return '.propiedad-viewer-slideshow-selector-'+idx; 
         }
     });
     $('#propiedad-viewer-slidesshow-pager').cycle({ 
@@ -378,8 +378,8 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
     
     this.putSelectedClassToClickedElement = function()
     {
-       $('.view-loader-element ').removeClass('selected');
-       this.chooserElement.addClass('selected');       
+        $('.view-loader-element ').removeClass('selected');
+        this.chooserElement.addClass('selected');       
     };
     
     this.chooserElement.unbind(eventString);
@@ -436,12 +436,12 @@ initializeViewLoaderElements = function(){
 
     var propertiesPanelPublishedButton = new ViewLoaderElement('#panels-property-section-menu-tabs-published','click',[{
         value: '', 
-        url:'/usuario/get_user_published_properties_pager/print'
+        url:'/panel/get_user_published_properties_pager/print'
     }],'#panels-property-section-pager','a');
 
-var propertiesPanelCreatedButton = new ViewLoaderElement('#panels-property-section-menu-tabs-created','click',[{
+    var propertiesPanelCreatedButton = new ViewLoaderElement('#panels-property-section-menu-tabs-created','click',[{
         value: '', 
-        url:'/usuario/get_user_created_properties_pager/print'
+        url:'/panel/get_user_created_properties_pager/print'
     }],'#panels-property-section-pager','a');
 
 
@@ -452,7 +452,7 @@ var propertiesPanelCreatedButton = new ViewLoaderElement('#panels-property-secti
         'property_sell_price_dr' : $('#property-form-description-sell-price-dr').val(), 
         'property_rent_price_us' : $('#property-form-description-rent-price-us').val(), 
         'property_rent_price_dr' : $('#property-form-description-sell-rent-dr').val()
-        };
+    };
 
     
     
@@ -609,6 +609,106 @@ initializeSliders = function () {
 };
 
 
+
+
+
+InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInputSelector, calculateButtonSelector, responseInputSelector)
+{
+    var thisObject = this;
+    this.mountInput = $(mountInputSelector);
+    this.rateInput = $(rateInputSelector);
+    this.yearsInput = $(yearsInputSelector);
+    this.calculateButton = $(calculateButtonSelector);
+    this.responseInput = $(responseInputSelector);
+    
+    
+    
+    this.calculateEvent = function(event){
+        event.preventDefault();
+        var mount = Number(thisObject.mountInput.val());
+        var rate = Number(thisObject.rateInput.val());
+        var years = Number(thisObject.yearsInput.val());
+        
+        
+        
+        var valiidateForInterest = function(mount,rate,years)
+        {
+            
+            for(index in arguments)
+            {
+                
+                    
+                    
+                if(typeof arguments[index] != 'number')
+                {
+                    
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+        
+        
+          
+        if(valiidateForInterest(mount,rate,years))
+        {
+            thisObject.responseInput.val(mount + rate) ;
+        }
+        
+        
+    };
+        
+    
+    thisObject.calculateButton.click(thisObject.calculateEvent);
+    
+};
+
+initializeInterestsCalculators = function()
+{
+    var interestCalculator = new InterestsCalculator("#interests-calculator-mount", "#interests-calculator-rate", "#interests-calculator-years", "#interests-calculator-calculate-button", "#interests-calculator-result");
+};
+
+
+HideShowElement = function(linkSelector, arrowsSelector, elementToShowOrHideSelector){
+    if( typeof linkSelector != "string" || typeof arrowsSelector != "string" || typeof elementToShowOrHideSelector != "string" )
+        throw "All parameters should be selectors of tpye String.";
+    
+    var thisObject =this;
+    this.eventButton = $(linkSelector);
+    this.arrows = $(arrowsSelector);
+    this.elementToHideOrShow = $(elementToShowOrHideSelector);
+    
+    this.hideShowEvent = function(event)
+    {
+        event.preventDefault();
+        if(thisObject.elementToHideOrShow.is(":visible"))
+            thisObject.elementToHideOrShow.hide();
+        else
+            thisObject.elementToHideOrShow.show();      
+        
+        $.each(thisObject.arrows, function(index,element){
+            var jqueryElement = $(element);
+            if(jqueryElement.is(":visible"))
+                jqueryElement.hide();
+            else
+                jqueryElement.show();      
+        });
+        
+         
+        
+    }
+    
+    this.eventButton.unbind("click");
+    this.eventButton.click(thisObject.hideShowEvent);
+    
+    
+};
+
+intializeHideShowElements = function(){
+    var upperMenuHideOrShow = new HideShowElement("#upper-panel-hide-show", "#upper-panel-hide-show img", "#upper-panel ul");
+};
+
 $(document).ready
 {   
     extendJquery();
@@ -626,7 +726,8 @@ $(document).ready
     intializeForms();
     initializeOverlays();
     initializeMaps();
-    
+    initializeInterestsCalculators();
+    intializeHideShowElements();
 /*comentario*/    
 }
 
