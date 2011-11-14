@@ -246,6 +246,11 @@ public function __construct()
         $this->agregar_propiedades($messages);
     }
 
+<<<<<<< HEAD
+=======
+
+        
+>>>>>>> origin/darwin_edit_properties
     public function guardar_cambios_publicar() {
         $user = $this->get_logged_user_or_redirect_to_please_login();
 
@@ -279,16 +284,24 @@ public function __construct()
 
         $user->save();
         redirect("/usuario/panel/propiedades/publicadas");
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/darwin_edit_properties
     }
 
+
     public function editar_propiedades($property_id) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/darwin_edit_properties
         $property = new Property();
         $property->where('id', $property_id);
         $property->get();
 
         $repopulateForm = array();
-
-        
 
         $repopulateForm['property_type'] = $property->type;
         $repopulateForm['property_sector'] = $property->sector;
@@ -367,6 +380,10 @@ public function __construct()
 
         $blocks['topLeftSide'] = $this->load->view('forms/add_properties_form.php', $repopulateForm, true);
         $this->load->view('page', $blocks);
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/darwin_edit_properties
     }
 
     private function add_property_error() {
@@ -402,8 +419,6 @@ public function __construct()
         $repopulateForm['close_public_transport'] = $this->input->post('close-public-transport');
         $repopulateForm['close_hardware_stores'] = $this->input->post('close-hardware-stores');
         $repopulateForm['close_drug_stores'] = $this->input->post('close-drug-stores');
-
-
         $repopulateForm['elevator'] = $this->input->post('elevator');
         $repopulateForm['game_area'] = $this->input->post('game-area');
         $repopulateForm['wash_area'] = $this->input->post('wash-area');
@@ -445,16 +460,7 @@ public function __construct()
         $repopulateForm['granite_countertops'] = $this->input->post('granite-countertops');
         $repopulateForm['electric_gate'] = $this->input->post('electric-gate');
         $repopulateForm['walk_in_closet'] = $this->input->post('walk-in-closet');
-
-
-
-
-
-
-
         $repopulateForm['errors'] = validation_errors();
-
-
         $this->agregar_propiedades($repopulateForm);
     }
 
