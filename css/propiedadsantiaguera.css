@@ -3602,7 +3602,7 @@ button.ui-button:-moz-focus-inner { border: 0; padding: 0; } /* reset extra padd
 #property_types_holder table tr td a
 {
     margin: 0;
-    padding:78px 40px;
+    padding:90px 34px;
     background:url('/images/property_type_gray_bg.png') top center no-repeat;
 }
 #property_types_holder table tr td a:hover
@@ -3611,7 +3611,7 @@ button.ui-button:-moz-focus-inner { border: 0; padding: 0; } /* reset extra padd
 }
 #property_types_holder table tr td a img
 {
-    height:60px;
+    height:74px;
 }
 
 

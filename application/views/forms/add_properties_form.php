@@ -12,7 +12,7 @@
     </div>
 <?php endif; ?>
 
-<form id="property-form" method="post" action="<?php echo base_url(); ?>propiedades/validate" enctype="multipart/form-data">
+<form id="property-form" method="post" action="<?php echo base_url(); ?>propiedades/validate<?php echo isset($property_edit_id) ? '/' . $property_edit_id : ''; ?>" enctype="multipart/form-data">
     <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber1.png"/><span>Descripci&oacute;n de Propiedad</span></p>
     <div id="property-form-description">
         <div id="property-form-description-column-container">
@@ -303,7 +303,7 @@
 
 
                 <li>
-                    <input id="property-form-description-features-watch-man-stand" type="checkbox" name="watch-man-stand" <?php echo isset($watch_man_stand) && $watch_man_stand ? 'checked="on"' : ''; ?>/>
+                    <input id="property-form-description-features-watch-man-stand" type="checkbox" name="watchman-stand" <?php echo isset($watchman_stand) && $watchman_stand ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-watch-man-stand">Caseta de guardianes</label> 
                 </li>
 
@@ -434,7 +434,7 @@
 
 
                 <li>
-                    <input id="property-form-description-features-receiver" type="checkbox" name="features-receiver" <?php echo isset($features_receiver) && $features_receiver ? 'checked="on"' : ''; ?>/>
+                    <input id="property-form-description-features-receiver" type="checkbox" name="receiver" <?php echo isset($receiver) && $receiver ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-receiver">Recibidor</label> 
                 </li>
 
