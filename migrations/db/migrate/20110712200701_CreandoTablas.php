@@ -13,9 +13,9 @@ class CreandoTablas extends Ruckusing_BaseMigration {
         $users->column('website', 'string', array('limit' => 60));
         $users->column('description', 'text');
         $users->column('photo', 'string');
-        $users->column('tel', 'string', array('limit' => 10));
-        $users->column('cel', 'string', array('limit' => 10));
-        $users->column('fax', 'string', array('limit' => 10));
+        $users->column('tel', 'string', array('limit' => 15));
+        $users->column('cel', 'string', array('limit' => 15));
+        $users->column('fax', 'string', array('limit' => 15));
         $users->column('rnc', 'string', array('limit' => 20));
         $users->column('address', 'text', array('limit' => 100));
         $users->column('registration_date', 'datetime');

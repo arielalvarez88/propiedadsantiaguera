@@ -15,7 +15,7 @@ while($file = readdir($folder))
 ?>
 <div id="front-page-slide-show">
     <?php foreach($files as $file):?>
-    <img src="<?php echo $webPath.$file?>">
+    <img class="hidden" src="<?php echo $webPath.$file?>">
     <?php endforeach;?>
 </div>
 <div id="front-page-slide-show-pager">

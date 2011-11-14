@@ -10,19 +10,27 @@ $thisPage = str_replace('/', '-', uri_string());
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
+        
+        
+    
     </head>
     <body>
         <?php if ($loggedUser && $loggedUser->name): ?>
             <div id="upper-panel">
-                <ul class="hidden">
+                
+                <div>
+                    <ul >
                     <li><a class="no-decoration-anchor">RESUMEN</a>|</li>
                     <li><a class="no-decoration-anchor" href="/panel/propiedades">PROPIEDADES</a>|</li>
                     <li><a class="no-decoration-anchor" href="/panel/cuenta">CUENTA</a>|</li>
                     <li><a class="no-decoration-anchor ">SOLICITUDES</a></li>
                 </ul>
-                <div id="upper-panel-curve-part">
-                    <a class="no-decoration-anchor" href="#javascript" id="upper-panel-hide-show"><img class="hide-show-arrow"  src="/images/upperPanel/downArrow.png" alt="flecha-abajo" class="visible"/> <img  class="hidden"  src="/images/upperPanel/upArrow.png" alt="flecha-arriba"/></a><p>Bienvenido, <?php echo $loggedUser->name; ?> </p><a id="logout-button" href="/usuario/logout">SALIR</a>
+
+                        <p>Bienvenido, <?php echo $loggedUser->name; ?> <a id="logout-button" href="/usuario/logout">SALIR</a></p>
+                    
+                    
                 </div>
+                
 
             </div>
 
@@ -170,9 +178,7 @@ $thisPage = str_replace('/', '-', uri_string());
             </div>
         </div>
 
-
-
-        <script type="text/javascript" src="/js/jquery-1.6.4.min.js" type="text/javascript" ></script>
+     <script type="text/javascript" src="/js/jquery-1.6.4.min.js" type="text/javascript" ></script>
         <script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript" ></script>        
         <script type="text/javascript" src="/js/jquery.cycle.all.js" type="text/javascript" ></script>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>        
@@ -180,5 +186,7 @@ $thisPage = str_replace('/', '-', uri_string());
         <script type="text/javascript" src="/js/propiedadsantiaguera.js" type="text/javascript" ></script>
         <script type="text/javascript" src="http://use.typekit.com/awd1xwd.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+       
     </body>
 </html>
