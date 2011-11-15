@@ -1,5 +1,5 @@
 <div id="properties-of-the-week">
-    <h2 id="properties-of-the-week-header">Propiedades de la semana</h2>
+    <h2 id="properties-of-the-week-header">Propiedad de la semana</h2>
     
             <div id="properties-of-the-week-video-container">
                 <object id="properties-of-the-week-video">

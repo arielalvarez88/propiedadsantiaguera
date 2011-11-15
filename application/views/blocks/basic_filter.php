@@ -69,7 +69,7 @@
         
         
         
-        <a href="/ajax/view_loader/forms/advanced_filter" id="basic-filter-advanced-filter-link" >Busqueda Avanzada</a>
+        <a href="/ajax/view_loader/forms/advanced_filter" id="basic-filter-advanced-filter-link" >B&uacute;squeda Avanzada</a>
         <input id="basic-filter-search-button" type="image" src="/images/basic_filter/filter_search_button.png" />
         
 

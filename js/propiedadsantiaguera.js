@@ -99,12 +99,12 @@ intializeAgentesHeaderSection = function(){
 
     $('#agentes-header-inmobliarias').unbind('click');
     $('#agentes-header-inmobliarias').click(function(){
-        $('#agentes-pager-header').html('INMOBILARIAS');
+        $('#agentes-pager-header').html('Inmobiliarias');
     });
     
     $('#agentes-header-agentes').unbind('click');
     $('#agentes-header-agentes').click(function(){
-        $('#agentes-pager-header').html('AGENTES');
+        $('#agentes-pager-header').html('Agentes');
     });
 }
 
