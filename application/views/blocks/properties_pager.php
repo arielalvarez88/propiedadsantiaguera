@@ -1,6 +1,6 @@
 <?php $section  = isset($section )? $section.'-' : '';?>
 <?php $is_front_page = $section=="" || $section=="front-" ? true : false;?>
-<?php $title = $is_front_page? 'Propiedades más ' : 'Mis propiedades';?>
+<?php $title = $is_front_page? 'Propiedades más visitadas' : 'Mis propiedades';?>
 <div id="<?php echo $section;?>properties-pager-container">
 <div id="properties-pager">
     
@@ -8,7 +8,7 @@
     
         
     <div id="properties-pager-properties-container">
-            <div  class="properties-pager-property">
+            <div  class="properties-pager-property ">
                 <img class="properties-pager-property-screenshot" alt="property-photo" src="/images/common/propertyThumb.png"/>
                 <h2 class="properties-pager-property-title">Titulo de la casa</h2>
                 <p class="properties-pager-info">
@@ -23,7 +23,7 @@
             </div>
         
         
-        <div class="properties-pager-property" >
+        <div class="properties-pager-property last" >
             <img class="properties-pager-property-screenshot" alt="property-photo" src="/images/common/propertyThumb.png"/>
                 <h2 class="properties-pager-property-title">Titulo de la casa</h2>
                 <p class="properties-pager-info">

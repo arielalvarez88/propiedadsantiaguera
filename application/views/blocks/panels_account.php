@@ -1,18 +1,18 @@
 <div id="panels-account-wrapper">
 
     <div id="panels-account">
-        <p id="panels-account-available">Actualmente usted dispone de <?php echo $user->posts_left; ?> espacios disponibles para publicar sus propiedades</p>
-        <h2>Precio y Planes</h2>
+        <p id="panels-account-available">Actualmente usted dispone de <span><?php echo $user->posts_left; ?></span> espacios disponibles para publicar sus propiedades</p>
+        <h2>Precio</h2>
         <p id="panels-account-recomendation">Adquiere m&aacute;s espacios y disfruta de todos nuestros beneficios.</p>
 
         <div id="panels-account-plans-container">
         <table id="panels-account-plans">
             <thead>
                 <tr id="panels-account-plans-header-row">
-                    <th>Plan</th>
-                    <th>Propiedades</th>
-                    <th>Plan</th>
-                    <th></th>
+                    <th id="panels-account-plans-header-row-plan">Plan</th>
+                    <th id="panels-account-plans-header-row-poperties">Propiedades</th>
+                    <th id="panels-account-plans-header-row-price">Precio</th>
+                    <th id="panels-account-plans-header-row-empty"></th>
                 </tr>
             </thead>
 
@@ -110,9 +110,7 @@
 
     </div>
 
-    <div>
-        
-    </div>
+
     
     <h2 id="panels-account-user-info-header">Informaci&oacute;n Personal</h2>
     <div id="panels-account-user-info-summary">

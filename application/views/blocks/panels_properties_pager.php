@@ -18,11 +18,15 @@
                         <?php if($section == 'published'):?>
                             <p>Tiempo Restante: <?php echo $property->days_left;?></p>
                             
+                            
                             <div>
+                                <a href="/propiedades/editar_propiedades/<?php echo $property->id;?>" class="no-decoration-anchor">Detalles</a> 
                                 <input id="panels-properties-pager-property-info-buttons-reactivation" name="panels-properties-pager-property-info-buttons-ractivation-<?php echo $property->id;?>" type="checkbox"/>
-                                <label for="panels-properties-pager-property-info-buttons-reactivation">Auto reactivacion </label>
+                                
+                                <label for="panels-properties-pager-property-info-buttons-reactivation">Auto reactivaci&oacute;n </label>
                             </div>
-                            <a href="/propiedades/editar_propiedades/<?php echo $property->id;?>" class="no-decoration-anchor">Detalles</a> 
+                            <p>Reactivar propiedad lo antes posibles</p>
+                            
                             
                             <?php else:?>
                             <div>
@@ -30,7 +34,7 @@
                                 <input name="publish-property-<?php echo $property->id;?>" id="panels-properties-pager-property-info-buttons-publish" type="checkbox" <?php echo $property->display_property ? 'checked="checked" disabled="disabled"':"" ;?>/>
                             </div>
                             
-                             <a href="/propiedades/editar_propiedades/<?php echo $property->id;?>" class="no-decoration-anchor">Detalles</a> 
+                             <a href="/propiedades/editar_propiedades/<?php echo $property->id;?>" class="no-decoration-anchor">Editar</a> 
                              <a href="/propiedades/eliminar/<?php echo $property->id;?>" class="no-decoration-anchor">Eliminar</a> 
                                 
                         <?php endif;?>

@@ -254,8 +254,6 @@ a img
     background-image: url("/images/upperPanel/logoutButtonGradient.png");
     border-radius: 3px 3px 3px 3px;
     color: white;
-    display: block;
-    float: right;
     font-size: 0.7em;
     padding: 3px 10px;
     text-decoration: none;    
@@ -319,8 +317,14 @@ a img
 
 
 /****Panels-account****/
-#panels-account
+
+#panels-account-wrapper
 {
+    color: #4b4b4b;
+}
+
+#panels-account {
+    height: 377px;
     width: 960px;
 }
 #panels-account-plans {
@@ -332,9 +336,30 @@ a img
     vertical-align: middle;
     width: 602px;
     height: 228px;
+    color: #4b4b4b;
 }
 
-#panels-account-plans-header-row
+
+#panels-account-available span{
+        border: 3px solid #B4D341;
+    color: #666666;
+    padding: 0 5px;
+}
+
+#panels-account-plans-header-row-price {
+    background-position: -299px 0;
+}
+
+#panels-account-plans-header-row-empty {
+    background-position: -439px 0;
+}
+
+
+#panels-account-plans-header-row-poperties {
+    background-position: -146px 0;
+}
+
+#panels-account-plans-header-row th
 {
     background-image: url('/images/panelsAccount/plansTableHeaderBackground.png');
 }
@@ -355,18 +380,24 @@ a img
     float: right;
 }
 
-#panels-account-plans h2
+#panels-account h2
 {
     color: #76b939;
 }
 
 
 
-#panels-account-available
-{
+#panels-account-available {
+    color: #666666;
+    font-size: 1.5em;
     font-weight: bold;
-    margin: 10px 0;
+    margin: 10px 0 20px;
 }
+#panels-account-recomendation {
+    clear: both;
+    margin-bottom: 10px;
+}
+
 #panels-account-recomendation
 {
     margin-bottom: 10px;
@@ -445,13 +476,13 @@ a img
     margin-right: 20px;
 }
 
-#panels-account-user-info-header
-{
+#panels-account-user-info-header {
+    border-top: 4px solid #76BC3B;
     clear: both;
-    color: #76b939;    
+    color: #76B939;
     margin-bottom: 20px;
+    padding-top: 30px;
 }
-
 #panels-account-user-info-summary {
     background-color: #F5F5F5;
     border-radius: 10px 10px 10px 10px;
@@ -478,10 +509,20 @@ a img
     background-color: #76BC3B;
     border-radius: 5px 5px 5px 5px;
     color: white;
-    height: 24px;
-    padding: 7px 10px;
-    text-align: center;
+    font-size: 1.4em;
+    margin-top: 11px;
     overflow: hidden;
+    padding: 2px 10px;
+    text-align: center;
+}
+
+.panels-properties-pager-property-info .panels-properties-pager-property-info-buttons p {
+    font-weight: bold;
+    margin-bottom: 11px;
+}
+
+.panels-properties-pager-property-info-buttons div {
+    margin-bottom: 11px;
 }
 
 .panels-properties-pager-property-info-buttons {
@@ -493,23 +534,24 @@ a img
     clear: both;
     display: block;
 }
-
+.panels-properties-pager-property-info-buttons div input, .panels-properties-pager-property-info-buttons div lable {
+    margin-top: 6px;
+}
 #panels-properties-pager .panels-properties-pager-property-info-buttons a {
- background-color: #76BC3B;
+    background-color: #76BC3B;
     border-radius: 5px 5px 5px 5px;
     color: white;
     display: block;
     float: left;
     font-size: 1.2em;
     margin-right: 10px;
-    padding: 6px 20px;
+    padding: 3px 7px;
 }
 
-
-
-.panels-properties-pager-property-info h2, .panels-properties-pager-property-info p, .panels-properties-pager-property-info div {
-    margin-bottom: 15px;
+.panels-properties-pager-property-info h2 {
+    margin-bottom: 7px;
 }
+
 
 .panels-properties-pager-property img {
     display: block;
@@ -582,12 +624,13 @@ a img
 #panels-property-section-header-container
 {
     float: left;
+    margin-right: 385px;
 }
 
 #panels-property-section-menu-properties-counter
 {
     background-image: url("/images/common/greenPattern.jpg");
-    float: right;
+    float: left;
     height: 136px;
     padding-top: 28px;
     width: 247px;
@@ -773,6 +816,7 @@ img.no-decoration-anchor,a.no-decoration-anchor,a.no-decoration-anchor:visited,a
     height: 27px;
     list-style: none outside none;
     text-align: right;
+    font-size: 1.3em;
 }
 
 ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited 
@@ -793,7 +837,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 {
     position: absolute;
     right: 20px;
-    top:18px;
+    top:14px;
 }
 
 #footer
@@ -1218,6 +1262,8 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 {
     list-style: none outside none;
     margin: 3px 0;
+    color: #999999;                
+
 }
 
 #popular-neighborhoods ul li img
@@ -1522,7 +1568,7 @@ div.footer-section a{
     background-image: url("/images/common/stripesGradient_H433.jpg");
     background-position: 0 230px;
     border-radius: 0 0 10px 10px;
-    height: 180px;
+    height: 182px;
     padding: 0 23px;
     width: 582px;
 }
@@ -1676,7 +1722,7 @@ margin-bottom: 5px;
 #properties-pager
 {
 
-    height: 327px;
+    height: 325px;
     background-image: url("/images/common/stripesGradient_H433.jpg");
         
 }
@@ -1684,10 +1730,14 @@ margin-bottom: 5px;
 
 #properties-pager, #properties-pager-properties-container {
     color: black;
-    width: 532px;
+    width: 531px;
 }
 
-
+#properties-pager-container
+{
+     border: 1px solid #F4F4F4;
+    margin-top: 10px
+}
 
 #properties-pager-header {
 
@@ -1838,12 +1888,13 @@ margin-bottom: 5px;
 
 /*proerties-of-the-week*/
 #properties-of-the-week {
-  background-image: url("/images/common/stripesGradient_H433.jpg");
+    background-image: url("/images/common/stripesGradient_H433.jpg");
     border: 1px solid #F4F4F4;
     color: black;
     height: 325px;
     margin-right: 11px;
-    width: 415px;
+    margin-top: 10px;
+    width: 414px;
 }
 
 #properties-of-the-week-header {
@@ -2237,6 +2288,39 @@ margin-bottom: 5px;
 
 /*agentes-header*/
 
+#agentes-header-options-container {
+    background-image: url("/images/common/stripesGradient_H433.jpg");
+    background-position: 0 239px;
+    height: 230px;
+    padding: 21px 164px;
+    text-align: center;
+}
+#agentes-header-options-container a {
+    background-image: url("/images/membersHeader/optionsSprite.png");
+    display: block;
+    float: left;
+    height: 203px;
+    width: 256px;
+}
+
+#agentes-header-agentes {
+    background-position: 256px;
+}
+
+#agentes-header-options-container p {
+    color: #76bc3b;
+}
+
+#agentes-header-options-container img
+{
+    display: block;
+    float: left;
+    margin-top: 85px;
+}
+ 
+
+
+
 #agentes-header
 {
     float:left;
@@ -2258,34 +2342,38 @@ margin-bottom: 5px;
 }
 
 
-#agentes-header-inmobliarias
-{
-    margin: 0 15px 0 10px;
+#agentes-header-options-container img {
+    display: block;
+    float: left;
+    margin: 85px 30px 0;
 }
+
+
+
 /*agentes-header END*/
 
 /*agentes-pager*/
-#agentes-pager-header
-{
+#agentes-pager-header {
     background-color: #76BC3B;
-    border-radius: 8px;
-    font-size: 1.8em;
-    height: 29px;
-    padding: 1px 0;
+    border-radius: 8px 8px 8px 8px;
+    color: white;
+    font-size: 1.4em;
+    left: 17px;
+    padding: 4px 0;
     position: relative;
+    right: 0;
     text-align: center;
     top: -16px;
-    width: 288px;
+    width: 190px;
 }
 
 
 
-#agentes-pager
-{
+#agentes-pager {
     border: 5px solid #D8D8D8;
     border-radius: 20px 20px 20px 20px;
     height: 440px;
-    margin-top: 40px;
+    margin-top: 15px;
     padding: 0 10px;
     width: 923px;
 }
@@ -2303,6 +2391,7 @@ margin-bottom: 5px;
     height: 20px;
     padding-left: 5px;
     width: 191px;
+    color:white;
 
 }
 .agentes-pager-agente-numero-propiedades{
@@ -2326,6 +2415,8 @@ margin-bottom: 5px;
 /*agentes-pager END*/
 
 
+
+a
 /*user-info*/
 #user-info {
     margin-right: 8px;
@@ -2816,6 +2907,10 @@ span.required{
 #planes_holder #p_right
 {
     margin-left:460px;
+}
+
+.last{
+    border: none;
 }
 .info_importante_title
 {

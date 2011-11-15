@@ -11,12 +11,12 @@
             <select  class="house-field apartment-field lot-field penthouse-field mall-field building-field warehouse-field office-field land-field" id="advanced-filter-property-type" name="property-type">
                 <option value="house">Casa</option>
                 <option value="apartment">Apartamento</option>
-                <option value="lot">Solar</option>
                 <option value="penthouse">Penthouse</option>
                 <option value="mall"> Local Comercial</option>
                 <option value="building">Edificio</option>
                 <option value="warehouse">Nave Industrial</option>
                 <option value="office">Oficina</option>
+                <option value="lot">Solar</option>
                 <option value="lot">Finca</option>
             </select>
 

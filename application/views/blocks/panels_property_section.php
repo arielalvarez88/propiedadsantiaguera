@@ -8,7 +8,7 @@
     <div id="panels-property-section-menu">
         
         <div id="panels-property-section-header-container">
-            <h2 id="panels-property-section-menu-header">Propiedades</h2>
+            <h2 id="panels-property-section-menu-header">Mis Propiedades</h2>
         
             <a id="panels-property-section-menu-create-property" class="no-decoration-anchor"href="/propiedades/agregar_propiedades">CREAR PROPIEDAD</a>
         </div>
