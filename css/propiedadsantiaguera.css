@@ -2721,12 +2721,10 @@ a
 {
     color: red;
 }
-.section-header, h2.section-header
-{
-    background-image: url("/images/common/headerBackground.png");
+.section-header, h2.section-header {
+    color: #76BC3B;
     height: 33px;
     padding: 0 0 0 5px;
-    color: white;
 }
 
 .form-divisor
