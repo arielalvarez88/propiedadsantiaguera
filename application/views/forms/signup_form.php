@@ -3,7 +3,7 @@
 <div id="signup-form-step-two" class="optional-form">
 
 
-    <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber2.png"/><span>Informacion General</span></p>
+    <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber2.png"/><span>Informaci&oacute;n General</span></p>
 <?php if (isset($errors) && $errors): ?>
         <div class="error-messages"><?php echo $errors; ?></div>
     <?php endif; ?>
