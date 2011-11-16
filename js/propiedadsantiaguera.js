@@ -99,12 +99,12 @@ intializeAgentesHeaderSection = function(){
 
     $('#agentes-header-inmobliarias').unbind('click');
     $('#agentes-header-inmobliarias').click(function(){
-        $('#agentes-pager-header').html('INMOBILARIAS');
+        $('#agentes-pager-header').html('Inmobiliarias');
     });
     
     $('#agentes-header-agentes').unbind('click');
     $('#agentes-header-agentes').click(function(){
-        $('#agentes-pager-header').html('AGENTES');
+        $('#agentes-pager-header').html('Agentes');
     });
 }
 
@@ -112,7 +112,7 @@ MessageCallback = function (response,successMessage,failureMessage)
 {
     this.getMessage = function()
     {
-        console.log(response.success);
+        
         if(response.success == false)
         {
             alert(failureMessage);
@@ -125,6 +125,36 @@ MessageCallback = function (response,successMessage,failureMessage)
     
    
 
+};
+
+HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, elementsToShowOrHideSelector, emptyElementsValuesWhenHidding, event){
+    
+    if(typeof event == "undefined")
+        event = "click";
+    
+    if(typeof emptyElementsValuesWhenHidding == "undefined")
+        event = false;
+    
+    
+    
+    var thisObject = this;
+    this.element = $(elementSelector);
+    this.elementsToShowOrHide = $(elementsToShowOrHideSelector);
+    
+    console.log(this.element);
+    this.element.unbind(event);
+    this.element.bind(event,function(){
+        var elementValue = thisObject.element.val();
+        thisObject.elementsToShowOrHide.hide();
+        
+        if(emptyElementsValuesWhenHidding)
+            thisObject.elementsToShowOrHide.val("");
+        
+        $(valuesToSelectorsToShowMap[elementValue]).show();
+    });
+    
+   
+   
 };
 
 Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,messageCallbackFunction){
@@ -160,7 +190,7 @@ Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, a
             
             var inputs = thisObject.form.children('input');
             
-            console.log(inputs);
+            
             for(i = 0; i < inputs.length; i++)
             {
                  
@@ -496,6 +526,7 @@ Overlay = function (selector, optionalClosebuttonSelector)
             intializeForms(); 
             initializeViewLoaderElements();
             initializeOverlays();
+            initializeHiderAndShowerElement();
         }
         
     });
@@ -516,6 +547,7 @@ initializeInputsWithDefaultText = function(){
 
 initializeOverlays = function(){
     var login = new Overlay('#login-link','#login-close-button');
+    var advancedFilter = new Overlay('#basic-filter-advanced-filter-link','#advanced-filter-close-button');
     
 };
 
@@ -709,6 +741,11 @@ intializeHideShowElements = function(){
     var upperMenuHideOrShow = new HideShowElement("#upper-panel-hide-show", "#upper-panel-hide-show img", "#upper-panel ul");
 };
 
+
+initializeHiderAndShowerElement = function(){
+    var advancedFilter = new HiderAndShowerElement("#advanced-filter-property-type", {apartment:'.apartment-field', house : ".house-field", lot:".lot-field", penthouse:".penthouse-field",mall:".mall-field", building:".building-field", warehouse:".warehouse-field",office:".office-field",land:".land-field"}, "#advanced-filter .hiddable", true, "change");
+};
+
 $(document).ready
 {   
     extendJquery();
@@ -728,6 +765,7 @@ $(document).ready
     initializeMaps();
     initializeInterestsCalculators();
     intializeHideShowElements();
+    initializeHiderAndShowerElement();
 /*comentario*/    
 }
 
