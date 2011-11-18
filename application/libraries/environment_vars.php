@@ -2,6 +2,8 @@
 
 /*
  */
+
+
 class Environment_vars {
 
     public static $maps = array(
@@ -19,9 +21,17 @@ class Environment_vars {
             "warehouse" => 7,
             "office" => 8,
             "land" => 9
-        )
-    );
-    public static $environment_vars = array(
+        ),
+        "filter-fields-to-db-fields"=>array("sector" => "sector", "condition" => "condition"),
+        
+        "texts_to_id" => array(
+            
+        "property_neighborhoods" => array("Cerro Alto" => "1", "Villa Olga" => 2),
+         "property_types" => array("Casa" => 1, "Apartamento" => 2, "Solar" => 3, "Penthouse" => 4, "Local Comercial" => 5, "Edificio" => 6, "Nave industrial" => 7, "Oficina" => 8, "Finca" => 9)
+    ),
+        
+        
+        "html_to_id" => array(
         "property_types" => array(
             "house" => 1,
             "apartment" => 2,
@@ -90,11 +100,24 @@ class Environment_vars {
             "granite-countertops" => 40,
             "electric-gate" => 41,
             "walk-in-closet" => 42
-            
-            
         ),
         
-        'user_photos_dir_path' => '/images/userPhotos/',
+      
+        
+    )
+        
+    );
+    
+    
+     
+    
+    
+    
+    
+    
+    
+    public static $environment_vars = array(
+    'user_photos_dir_path' => '/images/userPhotos/',
         'user_photos_thumbs_dir_path' => '/images/userPhotosThumbs/',
         'properties_photos_dir_path' => '/images/propertiesPhotos/',
         'properties_photos_thumbs_dir_path' => '/images/propertiesPhotosThumbs/'

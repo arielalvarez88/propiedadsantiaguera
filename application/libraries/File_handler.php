@@ -41,10 +41,10 @@ class File_handler {
             }
         }
       
-        if ($photos_full_paths)
+        
             return $photos_full_paths;
 
-        return true;
+
     }
 
 }
