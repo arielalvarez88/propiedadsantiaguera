@@ -1,17 +1,19 @@
 <?php
 
 class Propiedades extends CI_Controller {
-
-    public function __construct() {
-        parent::__construct();
-
-        $this->load->library("image_helper");
-    }
-
+public function __construct()
+{
+    parent::__construct();
+    
+    $this->load->library("image_helper");
+    $this->load->library("filter_builder");
+}
     public function index() {
 
         $data['header'] = $this->load->view('blocks/header', '', true);
         $data['centerSection'] = $this->load->view('blocks/property_types', '', true);
+        
+        
         $this->load->view('page', $data);
     }
 
@@ -25,6 +27,9 @@ class Propiedades extends CI_Controller {
             $this->show_please_login();
         }
     }
+    
+    
+    
 
     public function ver($id=null) {
 
@@ -104,12 +109,13 @@ class Propiedades extends CI_Controller {
         $this->load->view('page', $data);
     }
 
-    public function validate() {
+    public function validate($property_id=0) {
 
-        $properties_photos_filenames = array($property_id=0);
+        $properties_photos_filenames = array();
         if ($this->form_validation->run('property') == false) {
 
             $this->add_property_error();
+            return;
         } else {
             try {
                 $photos_inputs_names = array();
@@ -173,7 +179,7 @@ class Propiedades extends CI_Controller {
         $newProperty->sell_price_dr = isset($newPropertyInfo['property-sell-price-dr']) ? $newPropertyInfo['property-sell-price-dr'] : null;
         $newProperty->rent_price_us = isset($newPropertyInfo['property-rent-price-us']) ? $newPropertyInfo['property-rent-price-us'] : null;
         $newProperty->rent_price_dr = isset($newPropertyInfo['property-rent-price-dr']) ? $newPropertyInfo['property-rent-price-dr'] : null;
-        $newProperty->type = Environment_vars::$environment_vars["property_types"][$newPropertyInfo['property-type']];
+        $newProperty->type = Environment_vars::$maps["property_types"][$newPropertyInfo['property-type']];
 
         if ($newPropertyInfo['property-status'] == "sell" || $newPropertyInfo['property-status'] == "sell-rent") {
             $newProperty->sell_price_dollars = $newPropertyInfo['property-sell-price-us'];
@@ -187,19 +193,19 @@ class Propiedades extends CI_Controller {
         $new_property_close_places = new Property_close_place();
         $new_property_features = new Property_feature();
 
-        $all_close_places = Environment_vars::$environment_vars["property_close_places"];
-        $all_property_features = Environment_vars::$environment_vars['property_features'];
+        $all_close_places = Environment_vars::$maps['html_to_id']["property_close_places"];
+        $all_property_features = Environment_vars::$maps['html_to_id']['property_features'];
 
 
         foreach ($all_close_places as $key => $value) {
             if (isset($newPropertyInfo[$key])) {
-                $new_property_close_places->or_where("id", Environment_vars::$environment_vars["property_close_places"][$key]);
+                $new_property_close_places->or_where("id", Environment_vars::$maps['html_to_id']["property_close_places"][$key]);
             }
         }
 
         foreach ($all_property_features as $key => $value) {
             if (isset($newPropertyInfo[$key])) {
-                $new_property_features->or_where("id", Environment_vars::$environment_vars["property_features"][$key]);
+                $new_property_features->or_where("id", Environment_vars::$maps['html_to_id']["property_features"][$key]);
             }
         }
 
@@ -231,10 +237,11 @@ class Propiedades extends CI_Controller {
         ;
 
         $newPropertyType = new Property_type();
-        $newPropertyType->get_by_id(Environment_vars::$environment_vars['property_types'][$newPropertyInfo['property-type']]);
+        $newPropertyType->get_by_id(Environment_vars::$maps['html_to_id']['property_types'][$newPropertyInfo['property-type']]);
 
 
-          $newProperty->save(array($newPropertyType, $new_property_close_places->all, $new_property_features->all, $user, $new_property_files)); 
+        $newProperty->save(array($newPropertyType, $new_property_close_places->all, $new_property_features->all, $user, $new_property_files));
+
 
 
         $messages['info_messages'] = 'Su propiedad fue agregada con éxito';

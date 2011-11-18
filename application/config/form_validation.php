@@ -89,7 +89,7 @@ $config = array(
         ),
         array(
             'field' => 'property-type',
-            'label' => 'sector',
+            'label' => 'tipo',
             'rules' => 'required'
         ),
         array(

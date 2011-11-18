@@ -141,7 +141,7 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
     this.element = $(elementSelector);
     this.elementsToShowOrHide = $(elementsToShowOrHideSelector);
     
-    console.log(this.element);
+    
     this.element.unbind(event);
     this.element.bind(event,function(){
         var elementValue = thisObject.element.val();
@@ -305,7 +305,7 @@ Slider = function(parentSelector,minValue,maxValue,minInitialPosition,maxInitial
     this.maxDisplay = $(maxDisplaySelector);
     this.step = step;
    
-    var biggerThan = this.maxInitialValue >= 20000000? 'Más de ': '';
+    var biggerThan = this.maxInitialValue >= maxValue? 'Más de ': '';
     this.minDisplay.html("$" + commify('' + this.minInitialValue));
     this.maxDisplay.html(biggerThan + "$" + commify('' + this.maxInitialValue));
     
@@ -320,7 +320,7 @@ Slider = function(parentSelector,minValue,maxValue,minInitialPosition,maxInitial
         step:sliderObject.step,
         values: [ sliderObject.minInitialValue , sliderObject.maxInitialValue ],
         slide: function( event, ui ) {
-            var bigger = ui.values[ 1 ] >= 20000000? 'Más de ' : '';
+            var bigger = ui.values[ 1 ] >= maxValue? 'Más de ' : '';
             sliderObject.minDisplay.html( "$" + commify('' + ui.values[ 0 ]));
             sliderObject.maxDisplay .html(bigger + "$" + commify('' + ui.values[ 1 ]));
         }
@@ -443,6 +443,21 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
 
 
 
+
+eventBinder = function (elementSelector, eventName, eventFunctionToCall) {
+    if( typeof elementSelector != "string" || typeof eventName != "string" || typeof eventFunctionToCall != "function")
+        {
+            throw "Arguments suplied to eventBinder are invalid.";
+        }
+        
+    
+    var element  = $(elementSelector);
+    element.unbind(eventName);
+    element.bind(eventName, eventFunctionToCall);
+    
+};
+
+
 initializeViewLoaderElements = function(){
     var signupChooser = new ViewLoaderElement('#new-user-type-value','change',[{
         value: 'client', 
@@ -555,6 +570,7 @@ initializeInputsWithDefaultText = function(){
     var loginEmail = new InputsWithDefaultText('#login-email', 'Email');
     var password = new InputsWithDefaultText('#login-password', 'Contraseña','#login-password-clear');
     var resetPasswordEmail = new InputsWithDefaultText('#password-reset-input', 'Email');
+    var basicFilterReferenceNumber = new InputsWithDefaultText("#basic-filter-reference-number", "N\xfamero de referencia");
 };
 
 initializeMaps = function() {
@@ -634,10 +650,73 @@ function commify(num) {
 };
 
 
+Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderContainerSelector, searchButtonSelector, valuesToSliderParameters, sliderMinValue,sliderMaxValue,sliderMinInitialValue,sliderMaxInitialValue,step,submitUrl){
+   
+   var thisObject = this;
+   this.sliderChangerElement = $(sliderChangerElementSelector);
+   this.searchButtonElement = $(searchButtonSelector);
+   this.sliderElement = new Slider(sliderContainerSelector, sliderMinValue, sliderMaxValue, sliderMinInitialValue, sliderMaxInitialValue, '#basic-filter-price-slider-min-display', '#basic-filter-price-slider-max-display', step);
+   this.filterElement = $(filterContainerSelector);
+   this.sliderChangerElementEvent = function(){
+     
+       for(value in valuesToSliderParameters)
+     {
+           if(thisObject.sliderChangerElement.val() == value)
+               {
+                  
+                   thisObject.sliderElement = new Slider(sliderContainerSelector, valuesToSliderParameters[value].minValue, valuesToSliderParameters[value].maxValue, valuesToSliderParameters[value].minInitialValue, valuesToSliderParameters[value].maxInitialValue, "#basic-filter-price-slider-min-display", "#basic-filter-price-slider-max-display", valuesToSliderParameters[value].step)
+               }
+       }
+   
+   };
+   
+   this.submitEvent = function(event)
+   {
+       event.preventDefault();
+       var infoContainersElementsInFilterSelector = filterContainerSelector + " input:not(#basic-filter-search-button), " + filterContainerSelector + " select";
+       var infoContainersElementsInFilter = $(infoContainersElementsInFilterSelector);
+       
+       var queryString = "?";
+       $.each(infoContainersElementsInFilter, function(index, element){
+           var jqueryElement = $(element);
+           queryString += jqueryElement.attr("name") + "=" + encodeURIComponent(jqueryElement.val())+ "&";           
+           
+       });
+       var minPrice= thisObject.sliderElement.getRange()[0];
+           
+           
+           var maxPrice = thisObject.sliderElement.getRange()[1];
+           queryString += "minprice=" + minPrice + "&" +"maxprice=" + maxPrice;                      
+           
+           window.location.href = submitUrl + queryString;
+       
+       
+   };
+   
+   
+   
+   
+   eventBinder(sliderChangerElementSelector, "change", thisObject.sliderChangerElementEvent);
+   eventBinder(searchButtonSelector, "click", thisObject.submitEvent);
+   
+   
+   
+   this.sliderChangerElement.change();
+   
+   
+};
+
+
+initializeFilters = function(){
+   
+   var basicFilter = new Filter("#basic-filter","#basic-filter-condition", "#basic-filter-price-slider","#basic-filter-search-button",{sell: {minValue: 1000000, maxValue: 50000000, maxInitialValue: 50000000, minInitialValue: 1000000, step: 500000}, rent: {minValue: 5000, maxValue: 300000, maxInitialValue: 300000, minInitialValue: 5000, step: 5000}, "sell-rent": {minValue: 1000000, maxValue: 50000000, maxInitialValue: 50000000, minInitialValue: 1000000, step: 500000}}, 1000000, 50000000, 1000000, 50000000,500000,"/propiedades/buscar");
+   
+};
+
     
 initializeSliders = function () {
   
-    var frontPageBasicFilterSlider = new Slider('#basic-filter-price-slider', 1000000, 100000000, 1000000, 100000000, '#basic-filter-price-slider-min-display', '#basic-filter-price-slider-max-display', 500000);
+    var frontPageBasicFilterSlider = new Slider('#basic-filter-price-slider', 1000000, 50000000, 1000000, 50000000, '#basic-filter-price-slider-min-display', '#basic-filter-price-slider-max-display', 1000000);
 };
 
 
@@ -766,6 +845,7 @@ $(document).ready
     initializeInterestsCalculators();
     intializeHideShowElements();
     initializeHiderAndShowerElement();
+    initializeFilters();
 /*comentario*/    
 }
 

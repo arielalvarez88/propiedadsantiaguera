@@ -9,6 +9,7 @@ class Environment_vars {
         "file_type_to_id" => array("photo" => 1, "video" =>2),
         "property_type_to_name" => array(1 => "casa", 2=> "apartamento", 3=> "solar", 4=>"penthhouse", 5=>"centro comercial", 6=> "edificio", 7=>"nave industrial", 8=> "oficina", 9 =>"finca"),
         "user_type_to_validation_rules" => array("client" => "signupClient", "company" => "signupCompany", "edit_client" => "edit_clent"),
+
         "property_feature_to_name" => array(
             1 => "elevator",
             2 => "game-area",
@@ -63,7 +64,19 @@ class Environment_vars {
             8 => "close_public_transport",
             9 => "close_hardware_stores",
             10 => "close_drug_stores"
-        )
+        ),
+            "property_types" => array(
+            "house" => 1,
+            "apartment" => 2,
+            "lot" => 3,
+            "penthouse" => 4,
+            "mall" => 5,
+            "building" => 6,
+            "warehouse" => 7,
+            "office" => 8,
+            "land" => 9
+        ),
+        "filter-fields-to-db-fields"=>array("sector" => "sector", "condition" => "condition"),
         
     );
     public static $environment_vars = array(
@@ -135,11 +148,15 @@ class Environment_vars {
             "granite-countertops" => 40,
             "electric-gate" => 41,
             "walk-in-closet" => 42
-            
-            
         ),
         
-        'user_photos_dir_path' => '/images/userPhotos/',
+      
+        
+    )
+        
+    ); 
+    public static $environment_vars = array(
+    'user_photos_dir_path' => '/images/userPhotos/',
         'user_photos_thumbs_dir_path' => '/images/userPhotosThumbs/',
         'properties_photos_dir_path' => '/images/propertiesPhotos/',
         'properties_photos_thumbs_dir_path' => '/images/propertiesPhotosThumbs/'
