@@ -106,7 +106,7 @@ class Propiedades extends CI_Controller {
 
     public function validate() {
 
-        $properties_photos_filenames = array();
+        $properties_photos_filenames = array($property_id=0);
         if ($this->form_validation->run('property') == false) {
 
             $this->add_property_error();
@@ -130,11 +130,11 @@ class Propiedades extends CI_Controller {
 
 
 
-            $this->save_property($properties_photos_filenames);
+            $this->save_property($properties_photos_filenames, $property_id);
         }
     }
 
-    private function save_property($properties_photos_filenames = array()) {
+    private function save_property($properties_photos_filenames = array(), $property_id=0) {
         $user = User_handler::getLoggedUser();
 
         if (!$user->can_create_property()) {
@@ -143,8 +143,19 @@ class Propiedades extends CI_Controller {
             $this->agregar_propiedades($repopulateForm);
             return;
         }
-
-        $newProperty = new Property();
+        if ($property_id) 
+        {
+           $newProperty = new Property();
+           $newProperty->where('id', $property_id);
+           $newProperty->get();
+           $flush_property_close_places = $newProperty->property_close_places->where('property_id', $property_id)->get();
+           $flush_property_close_places->delete_all();
+        }
+        else
+        {
+           $newProperty = new Property();
+        }
+        
         $newPropertyInfo = $this->input->post();
         $newProperty->title = $newPropertyInfo['property-title'];
         $newProperty->terrain = $newPropertyInfo['property-terrain'];
@@ -172,9 +183,6 @@ class Propiedades extends CI_Controller {
             $newProperty->rent_price_dollars = $newPropertyInfo['property-rent-price-us'];
             $newProperty->rent_price_pesos = $newPropertyInfo['property-rent-price-dr'];
         }
-
-
-
 
         $new_property_close_places = new Property_close_place();
         $new_property_features = new Property_feature();
@@ -226,8 +234,7 @@ class Propiedades extends CI_Controller {
         $newPropertyType->get_by_id(Environment_vars::$environment_vars['property_types'][$newPropertyInfo['property-type']]);
 
 
-        $newProperty->save(array($newPropertyType, $new_property_close_places->all, $new_property_features->all, $user, $new_property_files));
-
+          $newProperty->save(array($newPropertyType, $new_property_close_places->all, $new_property_features->all, $user, $new_property_files)); 
 
 
         $messages['info_messages'] = 'Su propiedad fue agregada con éxito';
@@ -274,6 +281,8 @@ class Propiedades extends CI_Controller {
         $property = new Property();
         $property->where('id', $property_id);
         $property->get();
+        $property_close_places = $property->where('id', $property_id)->property_close_places->get();
+        var_dump($property_close_places);
 
         $repopulateForm = array();
 
@@ -296,27 +305,7 @@ class Propiedades extends CI_Controller {
         $repopulateForm['property_livingrooms'] = $property->livingrooms;
         $repopulateForm['property_kitchens'] = $property->kitchens;
         $repopulateForm['property_parkings'] = $property->parkings;
-
-        $new_property_close_places = new Property_close_place();
-        $new_property_features = new Property_feature();
-
-        $all_close_places = Environment_vars::$environment_vars["property_close_places"];
-        $all_property_features = Environment_vars::$environment_vars['property_features'];
-
- /* 
-        foreach ($all_close_places as $key => $value) {
-           
-                $repopulateForm[Environment_vars::$environment_vars["property_close_places"][$key]];
-        }
-
-      foreach ($all_property_features as $key => $value) {
-            if (isset($newPropertyInfo[$key])) {
-                $new_property_features->or_where("id", Environment_vars::$environment_vars["property_features"][$key]);
-            }
-        } */
-
-
-           /*
+        
         $repopulateForm['close_malls'] = $property->close_malls;
         $repopulateForm['close_supermarkets'] = $property->close_supermarkets;
         $repopulateForm['close_grocery_stores'] = $property->close_grocery_stores;
@@ -326,7 +315,7 @@ class Propiedades extends CI_Controller {
         $repopulateForm['close_gyms'] = $property->close_gyms;
         $repopulateForm['close_public_transport'] = $property->close_public_transport;
         $repopulateForm['close_hardware_stores'] = $property->close_hardware_stores;
-        $repopulateForm['close_drug_stores'] = $property->close_drug_stores; */
+        $repopulateForm['close_drug_stores'] = $property->close_drug_stores;
 
 
         $repopulateForm['elevator'] = $property->elevator;
@@ -370,8 +359,7 @@ class Propiedades extends CI_Controller {
         $repopulateForm['granite_countertops'] = $property->granite_countertops;
         $repopulateForm['electric_gate'] = $property->electric_gate;
         $repopulateForm['walk_in_closet'] = $property->walk_in_closet;
-
-
+        $repopulateForm['property_id'] = $property_id;
 
         $blocks['topLeftSide'] = $this->load->view('forms/add_properties_form.php', $repopulateForm, true);
         $this->load->view('page', $blocks);
