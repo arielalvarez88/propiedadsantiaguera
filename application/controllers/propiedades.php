@@ -288,8 +288,8 @@ public function __construct()
         $property = new Property();
         $property->where('id', $property_id);
         $property->get();
-        $property_close_places = $property->where('id', $property_id)->property_close_places->get();
-        var_dump($property_close_places);
+        $property_close_places = $property->property_close_places->get();
+        //var_dump($property_close_places);
 
         $repopulateForm = array();
 
@@ -312,7 +312,7 @@ public function __construct()
         $repopulateForm['property_livingrooms'] = $property->livingrooms;
         $repopulateForm['property_kitchens'] = $property->kitchens;
         $repopulateForm['property_parkings'] = $property->parkings;
-        
+      /*  
         $repopulateForm['close_malls'] = $property->close_malls;
         $repopulateForm['close_supermarkets'] = $property->close_supermarkets;
         $repopulateForm['close_grocery_stores'] = $property->close_grocery_stores;
@@ -365,7 +365,7 @@ public function __construct()
         $repopulateForm['pre_installed_services'] = $property->pre_installed_services;
         $repopulateForm['granite_countertops'] = $property->granite_countertops;
         $repopulateForm['electric_gate'] = $property->electric_gate;
-        $repopulateForm['walk_in_closet'] = $property->walk_in_closet;
+        $repopulateForm['walk_in_closet'] = $property->walk_in_closet; */
         $repopulateForm['property_id'] = $property_id;
 
         $blocks['topLeftSide'] = $this->load->view('forms/add_properties_form.php', $repopulateForm, true);
