@@ -77,9 +77,7 @@ class Environment_vars {
             "land" => 9
         ),
         "filter-fields-to-db-fields"=>array("sector" => "sector", "condition" => "condition"),
-        
-    );
-    public static $environment_vars = array(
+       
         "property_types" => array(
             "house" => 1,
             "apartment" => 2,
@@ -148,11 +146,7 @@ class Environment_vars {
             "granite-countertops" => 40,
             "electric-gate" => 41,
             "walk-in-closet" => 42
-        ),
-        
-      
-        
-    )
+        )
         
     ); 
     public static $environment_vars = array(
