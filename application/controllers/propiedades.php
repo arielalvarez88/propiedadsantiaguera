@@ -241,6 +241,7 @@ class Propiedades extends CI_Controller {
         } else {
             $messages['info_messages'] = 'Su propiedad fue agregada con éxito';
         }
+        var_dump($newPropertyInfo['property-status']);
         $this->agregar_propiedades($messages);
     }
 
