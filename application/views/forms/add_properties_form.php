@@ -277,7 +277,7 @@ $property_type = isset ($property_type) ? $property_type : false;
 
 
                 <li>
-                    <input id="property-form-description-features-watch-man-stand" type="checkbox" name="watch-man-stand" <?php echo isset($watchman_stand) && $watchman_stand ? 'checked="on"' : ''; ?>/>
+                    <input id="property-form-description-features-watch-man-stand" type="checkbox" name="watchman-stand" <?php echo isset($watchman_stand) && $watchman_stand ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-watch-man-stand">Caseta de guardianes</label> 
                 </li>
 
@@ -408,7 +408,7 @@ $property_type = isset ($property_type) ? $property_type : false;
 
 
                 <li>
-                    <input id="property-form-description-features-receiver" type="checkbox" name="features-receiver" <?php echo isset($receiver) && $receiver ? 'checked="on"' : ''; ?>/>
+                    <input id="property-form-description-features-receiver" type="checkbox" name="receiver" <?php echo isset($receiver) && $receiver ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-receiver">Recibidor</label> 
                 </li>
 

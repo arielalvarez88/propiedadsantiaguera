@@ -113,7 +113,7 @@ class Environment_vars {
             "close-bakeries" => 6,
             "close-gyms" => 7,
             "close-public-transport" => 8,
-            "close-harware-stores" => 9,
+            "close-hardware-stores" => 9,
             "close-drug-stores" => 10, 
         ),
         "property_features" => array(
@@ -127,7 +127,7 @@ class Environment_vars {
             "watchman-stand" => 8,
             "cistern" => 9,
             "white-clothes-closet" => 10,
-            "kitchen" => 11,
+            "equiped-kitchen" => 11,
             "dinning-room" => 12,
             "antisismic-construction" => 13,
             "plaster-cornices" => 14,
