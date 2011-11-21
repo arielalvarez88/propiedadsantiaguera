@@ -93,7 +93,7 @@ $config = array(
             'rules' => 'required'
         ),
         array(
-            'field' => 'property-sector',
+            'field' => 'property-neighborhood',
             'label' => 'sector',
             'rules' => 'required'
         ),
