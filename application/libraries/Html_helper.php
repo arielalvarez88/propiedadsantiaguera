@@ -14,8 +14,8 @@ class Html_helper
          {
              $attributes_html .= $attribute.'="'.$value.'"';
          }
-        $initial_select_tag = '<select '.$attributes_html.'>';
-        $options = $default_text ?  '<option value="null">'.$default_text.'</option>' : '';
+        $initial_select_tag = '<select '.$attributes_html.' data-null-value ="null">';
+        $options = $default_text ?  '<option  value="null">'.$default_text.'</option>' : '';
         foreach($key_value_options as $text => $value)
         {
             

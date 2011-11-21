@@ -27,7 +27,8 @@ class Environment_vars {
         "texts_to_id" => array(
             
         "property_neighborhoods" => array("Cerro Alto" => "1", "Villa Olga" => 2),
-         "property_types" => array("Casa" => 1, "Apartamento" => 2, "Solar" => 3, "Penthouse" => 4, "Local Comercial" => 5, "Edificio" => 6, "Nave industrial" => 7, "Oficina" => 8, "Finca" => 9)
+         "property_types" => array("Casa" => 1, "Apartamento" => 2, "Solar" => 3, "Penthouse" => 4, "Local Comercial" => 5, "Edificio" => 6, "Nave industrial" => 7, "Oficina" => 8, "Finca" => 9),
+        "property_conditions" => array("sell" => "1", "rent" => 2, "sell/rent" =>3),
     ),
         
         
