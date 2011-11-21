@@ -146,14 +146,20 @@ public function __construct()
 
     public function buscar()
     {
+        
         $filtered_get = $this->input->get();
         $properties_filters_container = new Property();        
-        $search_by_reference = $filtered_get['ref-number'] != "Número de referencia" && $filtered_get['ref-number']? true : false;
-        
+        $search_by_reference = isset($filtered_get['ref-number']) && is_numeric($filtered_get['ref-number']) ? true : false;
+         
         if($search_by_reference)
-            Filter_builder::build_property_reference_filter ($filtered_get, $properties_filters);
+        {
+            
+            Filter_builder::build_property_reference_filter ($filtered_get, $properties_filters_container);
+        }
+            
         else
         {
+            
             Filter_builder::build_property_type_filter($filtered_get,$properties_filters_container);
             Filter_builder::build_property_max_price_filter($filtered_get,$properties_filters_container);
             Filter_builder::build_property_min_price_filter($filtered_get,$properties_filters_container);
@@ -161,10 +167,8 @@ public function __construct()
             Filter_builder::build_property_sector_filter($filtered_get,$properties_filters_container);
         }
         
-        $properties_filters_container->get()->_count();
-        
-        
-        
+        var_dump($properties_filters_container->get()->count());
+        die;
     }
     
     private function save_property($properties_photos_filenames = array()) {
@@ -184,7 +188,7 @@ public function __construct()
         $newProperty->title = $newPropertyInfo['property-title'];
         $newProperty->terrain = $newPropertyInfo['property-terrain'];
         $newProperty->bathrooms = $newPropertyInfo['property-bathrooms'];
-        $newProperty->sector = $newPropertyInfo['property-sector'];
+        $newProperty->neighborhood = $newPropertyInfo['property-sector'];
         $newProperty->construction = $newPropertyInfo['property-sector'];
         $newProperty->livingrooms = $newPropertyInfo['property-livingrooms'];
         $newProperty->address = $newPropertyInfo['property-address'];
@@ -326,7 +330,7 @@ public function __construct()
         $repopulateForm = array();
 
         $repopulateForm['property_type'] = $property->type;
-        $repopulateForm['property_sector'] = $property->sector;
+        $repopulateForm['property_sector'] = $property->neighborhood;
         $repopulateForm['property_address'] = $property->address;
         $repopulateForm['property_status'] = $property->status;
         $repopulateForm['property_sell_price_us'] = number_format($property->sell_price_us);
