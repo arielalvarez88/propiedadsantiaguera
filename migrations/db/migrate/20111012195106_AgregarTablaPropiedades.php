@@ -13,7 +13,7 @@ class AgregarTablaPropiedades extends Ruckusing_BaseMigration {
         $propiedades->column('rent_price_dr', 'integer');
         $propiedades->column('display_property', 'boolean',array('default' => 0));
         $propiedades->column('days_left', 'integer',array('default' => 0));
-        $propiedades->column('sector', 'integer', array('limit' => 4));
+        $propiedades->column('neighborhood', 'integer', array('limit' => 4));
         $propiedades->column('coordenates', 'string', array('limit' => 100));
         $propiedades->column('visits', 'integer',array('default' => 0));
         $propiedades->column('bedrooms', 'integer', array('limit' => 3));
