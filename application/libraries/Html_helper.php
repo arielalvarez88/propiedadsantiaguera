@@ -19,7 +19,7 @@ class Html_helper
         foreach($key_value_options as $text => $value)
         {
             
-                $options .= $value == $selected_value ? '<option value="'.$value.' selected="selected">'.ucwords($text).'</option>' : '<option value="'.$value.'">'.ucwords($text).'</option>';
+                $options .= $value == $selected_value ? '<option value="'.$value.'" selected="selected">'.ucwords($text).'</option>' : '<option value="'.$value.'">'.ucwords($text).'</option>';
         }
         $select_end_tag = '</select>';       
         return $initial_select_tag.$options.$select_end_tag;

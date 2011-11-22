@@ -31,26 +31,19 @@ class Propiedades extends CI_Controller {
 
     public function ver($id=null) {
 
-        $no_id_passed = !$id || !is_numeric($id);
+        $no_id_passed = !$id;
         if ($no_id_passed)
-            redirect("/pagina_no_valida");
-        
-     
-        $property = new Property();
-        $property->where("id", $id)->get();
+            redirect("/propiedades");
+
+        $user = $this->get_logged_user_or_redirect_to_please_login();
+        $property = $user->property->where("id", $id)->get();
 
         $propiedadObject['property'] = $property;
-        
-        $user = User_handler::getLoggedUser();
-        $property_belongs_to_logged_user = is_object($user) && $property->id  && $property->user->get()->id == $user->id  ? true : false;
-        
-        
-        $property_cant_be_shown = !$property_belongs_to_logged_user && (!isset($property->display_property) || !$property->display_property);
-        
-        
+        $property_cant_be_shown = !$property->display_property;
+
         if ($property_cant_be_shown)
-            redirect("/pagina_no_valida");
- 
+            redirect("/propiedades");
+
 
         $property_viewer_data['property'] = $property;
 
@@ -88,18 +81,17 @@ class Propiedades extends CI_Controller {
         }
         $property_viewer_data['property_photos_paths'] = $property_image_thumbs_paths;
 
+
+
+
+
+
         $property_photos_pagers_groups = $slideshow_helper->getPagerSubset($property_pager_slides_html, 6);
 
         $property_viewer_data['property_photos_pagers_groups'] = $property_photos_pagers_groups;
-        
-        
-                
-                
-                
-                        
-                
 
-        
+
+
         $data['topLeftSide'] = $this->load->view('blocks/property_viewer', $property_viewer_data, true);
         $data['topRightSide'] = $this->load->view('blocks/user_viewer', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/monedaPrecio', $propiedadObject, true);
@@ -111,10 +103,6 @@ class Propiedades extends CI_Controller {
         $data['bottomLeftSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propiedadObject, true);
         $data['bottomRightSide'] = $this->load->view('blocks/solicitudDeInformacion', $propiedadObject, true);
 
-        if($property_belongs_to_logged_user && !$property->display_property)
-                {
-                    $data['top'] = $this->load->view("blocks/not_published_message",'',true);
-                }
 
         $this->load->view('page', $data);
     }
@@ -147,19 +135,18 @@ class Propiedades extends CI_Controller {
         }
     }
 
-public function buscar()
+<<<<<<< HEAD
+    public function buscar()
     {
-      
+        
         $filtered_get = $this->input->get();
         $properties_filters_container = new Property();        
-          
         $search_by_reference = isset($filtered_get['ref-number']) && is_numeric($filtered_get['ref-number']) ? true : false;
          
         if($search_by_reference)
         {
             
-            redirect("propiedades/ver/".$filtered_get['ref-number']) ;
-            
+            Filter_builder::build_property_reference_filter ($filtered_get, $properties_filters_container);
         }
             
         else
@@ -169,40 +156,19 @@ public function buscar()
             Filter_builder::build_property_max_price_filter($filtered_get,$properties_filters_container);
             Filter_builder::build_property_min_price_filter($filtered_get,$properties_filters_container);
             Filter_builder::build_property_condition_filter($filtered_get,$properties_filters_container);
-            Filter_builder::build_property_neighborhood_filter($filtered_get,$properties_filters_container);
+            Filter_builder::build_property_sector_filter($filtered_get,$properties_filters_container);
         }
         
-        
-        $sql = $properties_filters_container->get_sql();
-        $filtered_properties = $properties_filters_container->get();
-        
-       
-        
-                                                         
-        $filter_initial_values['selected_property_neighborhood'] =  isset($filtered_get) && isset($filtered_get['neighborhood'])? $filtered_get['neighborhood'] : null;
-        
-        $filter_initial_values['selected_property_type'] = isset($filtered_get) && isset($filtered_get['type'])? $filtered_get['type'] : null;
-        
-        $filter_initial_values['selected_property_ref_number'] = isset($filtered_get) && isset($filtered_get['ref-number'])? $filtered_get['ref-number'] : null;
-        
-        $filter_initial_values['selected_property_condition'] = isset($filtered_get) && isset($filtered_get['condition'])? $filtered_get['condition'] : null;
-        
-        $views['topLeftSide'] = $this->load->view("blocks/basic_filter",$filter_initial_values, true);
-        
-        $search_results['filtered_properties'] = $filtered_properties;
-        $views['topLefSide'] = $this->load->view("blocks/properties_search_results_pager",$search_results);
-        
-        $views['topRightSide'] = $this->load->view("blocks/advertising",'',true);
-        
-        $this->load->view("page",$views);
-       
-        
-        
-        
+        var_dump($properties_filters_container->get()->count());
+        die;
     }
-
-
+    
+    private function save_property($properties_photos_filenames = array()) {
+        
+        
+=======
     private function save_property($properties_photos_filenames = array(), $property_id=0) {
+>>>>>>> origin/darwin_edit_properties
         $user = User_handler::getLoggedUser();
 
         if (!$user->can_create_property()) {
@@ -308,7 +274,7 @@ public function buscar()
         } else {
             $messages['info_messages'] = 'Su propiedad fue agregada con éxito';
         }
-        
+        var_dump($newPropertyInfo['property-status']);
         $this->agregar_propiedades($messages);
     }
 

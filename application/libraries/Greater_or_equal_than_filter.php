@@ -17,8 +17,7 @@ Class Greater_or_equal_than_filter implements IFilter{
     }
     
     public function add_filter($property_object) {
-        var_dump($this->field_name);
-        die;
+        
         $property_object->where($this->field_name." >= ", $this->value);
     }
    

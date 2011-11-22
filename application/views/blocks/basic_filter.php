@@ -1,31 +1,33 @@
 <?php
-$selected_property_neighborhood = isset($selected_neighborhood) ? $selected_neighborhood : null;
-$selected_property_type = isset($selected_property_type) ? $selected_property_type : null;
+
+    $selected_property_neighborhood =  isset($selected_property_neighborhood) ? $selected_property_neighborhood : null;
+        
+        $selected_property_type = isset($selected_property_type) ? $selected_property_type : null;
+        
+        $selected_property_ref_number = isset($selected_property_ref_number) ? $selected_property_ref_number : null;
+        
+        $selected_property_condition = isset($selected_property_condition) ? $selected_property_condition : null;
+
+
 ?>
 
 <form id="basic-filter">
     <h2>B&uacute;squeda de propiedades</h2>
     <div id="basic-filter-top">
         <div id="basic-filter-top-left-size">
-            <select id="basic-filter-condition"  name="condition" data-null-value="null">
-                <option  value="null">Condici&oacute;n</option>           
-                <option value="sell">Venta</option>
-                <option value="rent">Alquiler</option>
-                <option value="sell-rent">Venta/Alquiler</option>
+            
+            <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_conditions'], array("id" => "basic-filter-condition", "name" => "condition"), "Condición", $selected_property_condition); ?>
+ 
 
-            </select>
-
-
-            <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'], array("id" => "basic-filter-sector", "name" => "sector"), "Sector", $selected_property_neighborhood); ?>
+            <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'], array("id" => "basic-filter-sector", "name" => "neighborhood"), "Sector", $selected_property_neighborhood); ?>
 
         </div>
 
         <div id="basic-filter-top-right-size">
 
-            <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_types'], array("id" => "basic-filter-sector", "name" => "type"), "Tipo de vivienda", $selected_property_neighborhood); ?>
+            <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_types'], array("id" => "basic-filter-sector", "name" => "type"), "Tipo de vivienda", $selected_property_type); ?>
 
-            <input type="text" name="ref-number" data-null-value="Número de referencia" value="Número de referencia" id="basic-filter-reference-number"/>
-
+            <input type="text" name="ref-number" data-null-value="Número de referencia" value="<?php echo $selected_property_ref_number? $selected_property_ref_number : 'Número de referencia';?>" id="basic-filter-reference-number"/>
 
         </div>
     </div>

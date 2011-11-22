@@ -6,8 +6,10 @@
  */
 require_once dirname(__FILE__) . '/Greater_or_equal_than_filter.php';
 require_once dirname(__FILE__) . '/Less_or_equal_than_filter.php';
-require_once dirname(__FILE__) . '/Null_filter.php';
 require_once dirname(__FILE__) . '/Equal_to_filter.php';
+require_once dirname(__FILE__) . '/Where_in_filter.php';
+require_once dirname(__FILE__) . '/Null_filter.php';
+
 
 class Filter_builder {
 
@@ -27,7 +29,6 @@ class Filter_builder {
             $field_name = $post['condition'] == 'rent' ? 'rent_price_dr' : 'sell_price_dr';
 
         $filter = new Greater_or_equal_than_filter($field_name, $value);
-        
         $filter->add_filter($property_object);
     }
 
@@ -79,14 +80,27 @@ class Filter_builder {
         $value = $post['condition'];
         
         
-        $filter = new Equal_to_filter($field_name, $value);
-        
-        if($value == Environment_vars::$maps['texts_to_id']['property_conditions']['sell/rent'])
+        if($value == Environment_vars::$maps['property_conditions']['sell'])
         {
-            $property_object->or_where($field_name,Environment_vars::$maps['texts_to_id']['property_conditions']['rent']);
+            $filter = new Where_in_filter($field_name, array(Environment_vars::$maps['property_conditions']['sell/rent'], Environment_vars::$maps['property_conditions']['sell']));
+            $filter->add_filter($property_object);              
+            
         }
         
-        $filter->add_filter($property_object);
+        elseif($value == Environment_vars::$maps['property_conditions']['rent'])
+        {
+            $filter = new Where_in_filter($field_name, array(Environment_vars::$maps['property_conditions']['sell/rent'], Environment_vars::$maps['property_conditions']['rent']));
+            $filter->add_filter($property_object);              
+        }
+        
+        else
+       {
+            $filter = new Where_in_filter($field_name, array(Environment_vars::$maps['property_conditions']['sell/rent'], Environment_vars::$maps['property_conditions']['sell']));
+            $filter->add_filter($property_object);              
+            $property_object->or_where($field_name,Environment_vars::$maps['property_conditions']['rent']);
+       }
+        
+   
     }
 
     public static function build_property_neighborhood_filter($post, $property_object) {
