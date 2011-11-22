@@ -1,5 +1,6 @@
 
 
+
 initilizeFrontPageSlideShow = function()
 {
     $('#front-page-slide-show').cycle({
@@ -665,6 +666,7 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderCo
    this.filterElement = $(filterContainerSelector);
    this.sliderChangerElementEvent = function(){
      
+     console.log('change!');
        for(value in valuesToSliderParameters)
      {
            if(thisObject.sliderChangerElement.val() == value)
@@ -718,7 +720,7 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderCo
 
 initializeFilters = function(){
    
-   var basicFilter = new Filter("#basic-filter","#basic-filter-condition", "#basic-filter-price-slider","#basic-filter-search-button",{sell: {minValue: 0, maxValue: 50000000, maxInitialValue: 50000000, minInitialValue: 0, step: 500000}, rent: {minValue: 0, maxValue: 300000, maxInitialValue: 300000, minInitialValue: 0, step: 5000}, "sell-rent": {minValue: 0, maxValue: 50000000, maxInitialValue: 50000000, minInitialValue: 0, step: 500000}}, 0, 50000000, 0, 50000000,500000,"/propiedades/buscar");
+   var basicFilter = new Filter("#basic-filter","#basic-filter-condition", "#basic-filter-price-slider","#basic-filter-search-button",{1: {minValue: "1", maxValue: 50000000, maxInitialValue: 50000000, minInitialValue: 0, step: 500000}, "2": {minValue: 0, maxValue: 300000, maxInitialValue: 300000, minInitialValue: 0, step: 5000}, 2 : {minValue: 0, maxValue: 50000000, maxInitialValue: 50000000, minInitialValue: 0, step: 500000}}, 0, 50000000, 0, 50000000,500000,"/propiedades/buscar");
    
 };
 
