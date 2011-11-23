@@ -346,7 +346,7 @@ public function buscar()
         }
 
         $user->save();
-        redirect("/usuario/panel/propiedades/publicadas");
+        redirect("/panel/propiedades/publicadas");
     }
 
     public function editar_propiedades($property_id) {
