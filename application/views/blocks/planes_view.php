@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 ?>
+<h1 id="planes_main_title">Maneja tus propiedades con libertad</h1>
+<h4 id="planes_main_subtitle">Publica facilmente sin importar el dia, la hora o el lugar.</h4>
 <div id="planes_holder">
 <table id="planes_detail">
        

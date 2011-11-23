@@ -2940,6 +2940,17 @@ span.required{
 }
 
 /***** plans table ******/
+#planes_main_title
+{
+   text-align:center;
+   color:#76BA39;
+}
+#planes_main_subtitle
+{
+   text-align:center; 
+   color:#B2B2B2;
+   margin-bottom: 10px;
+}
 #planes_holder
 {
     background:url('/images/common/grayPattern.png') repeat transparent;
