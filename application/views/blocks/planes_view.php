@@ -6,64 +6,32 @@
 ?>
 <div id="planes_holder">
 <table id="planes_detail">
+       
         <tr>
-            <td>&nbsp;</td>
-        </tr>
+            <td valign="middle">NUMERO DE PROPIEDADES</td>
+  
         <tr>
-            <td>&nbsp;</td>
+            <td valign="middle">DURACION POR PROPIEDAD</td>
         </tr>
+   
         <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-        </tr>
-                <tr>
-            <td>&nbsp;</td>
-        </tr>
-        
-        <tr>
-            <td>NUMERO DE PROPIEDADES</td>
-        </tr>
-                <tr>
-            <td>&nbsp;</td>
+            <td valign="middle">FOTOS(15) y VIDEOS(1)</td>
         </tr>
         <tr>
-            <td>DURACION POR PROPIEDAD</td>
-        </tr>
-                <tr>
-            <td>&nbsp;</td>
+            <td valign="middle">PANEL ADMINISTRATIVO</td>
         </tr>
         <tr>
-            <td>FOTOS</td>
-        </tr>
-                <tr>
-            <td>&nbsp;</td>
+            <td valign="middle" style="padding:10px 0 0 0;" >CREACION DE SOLICITUD Y RECIBIR PROPUESTA DE SOLICITUDES</td>
         </tr>
         <tr>
-            <td>VIDEO</td>
-        </tr>
-
-        <tr>
-            <td>DESCUENTO EN BANNERS PUBLICITARIOS</td>
+            <td valign="middle">ENVIO DE PROPUESTAS A TERCEROS</td>
         </tr>
   
         <tr>
-            <td></br>CREACION DE SOLICITUD Y ENVIAR PROPUESTA DE SOLICITUDES</td>
-        </tr>
-  
-        <tr>
-            <td></br>INFORMACION EN INGLES Y ESPA&Ntilde;OL</td>
+            <td valign="middle">INFORMACION EN INGLES Y ESPA&Ntilde;OL</td>
         </tr>
         <tr>
-            <td></br>LOCALIZACION DE LA PROPIEDAD EN GOOGLE MAPS</td>
-        </tr>
-        
-        <tr>
-            <td></br>IMPRESION DE LA PROPIEDAD EN FORMATO PDF</td>
-        </tr>
-        <tr>
-            <td></br>VIDEOS COMPARTIDOS EN EL WEBSITE DEL USUARIO</td>
+            <td valign="middle">LOCALIZACION DE LA PROPIEDAD EN GOOGLE MAPS</td>
         </tr>
 </table>
     
@@ -81,13 +49,7 @@
            <td>30</td> <td class="white">30</td> <td>30</td> <td class="white">30</td>
         </tr>
         <tr>
-           <td>10</td> <td class="white">10</td> <td>15</td> <td class="white">15</td>
-        </tr>
-        <tr>
            <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
-        </tr>
-        <tr>
-            <td>5%</td> <td class="white">5%</td> <td>10%</td> <td class="white">10%</td>
         </tr>
         <tr>
             <td><img src="/images/check.png" alt="check"/></td  > <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>

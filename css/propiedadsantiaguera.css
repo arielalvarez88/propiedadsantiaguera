@@ -2955,11 +2955,11 @@ span.required{
     color:#333;
     font-size:9pt;
     text-align:right;
-    margin-top:0;
+    margin-top:138px;
 }
 #planes_detail td
 {
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 #planes_data
 {
@@ -2978,7 +2978,7 @@ span.required{
 }
 #planes_data tbody tr,#planes_data tbody td
 {
-    padding:15px 0;
+    padding:0;
     border-top: 1px solid #AFBBA1;
 }
 #planes_data tr
@@ -3003,7 +3003,7 @@ span.required{
 }
 #planes_data tbody
 {
-    height: 600px;
+    height: 509px;
 }
 #planes_data a img
 {
