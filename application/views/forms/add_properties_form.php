@@ -1,6 +1,6 @@
 <?php
 
-$property_sector = isset ($property_sector) ? $property_sector : false;
+$property_neighborhood = isset ($property_neighborhood) ? $property_neighborhood : false;
 $property_type = isset ($property_type) ? $property_type : false;
 
 ?>
@@ -17,7 +17,7 @@ $property_type = isset ($property_type) ? $property_type : false;
     </div>
 <?php endif; ?>
 
-<form id="property-form" method="post" action="<?php echo base_url(); ?>propiedades/validate<?php echo isset($property_edit_id) ? '/' . $property_edit_id : ''; ?>" enctype="multipart/form-data">
+<form id="property-form" method="post" action="<?php echo base_url(); ?>propiedades/validate<?php echo isset($property_id) ? '/' . $property_id : ''; ?>" enctype="multipart/form-data">
     <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber1.png"/><span>Descripci&oacute;n de Propiedad</span></p>
     <div id="property-form-description">
         <div id="property-form-description-column-container">
@@ -36,9 +36,9 @@ $property_type = isset ($property_type) ? $property_type : false;
                     <input type="text" id="property-form-description-title" name="property-title" <?php echo isset($property_title) ? 'value="' . $property_title . '"' : ''; ?>/>
                 </li>
                 <li>
-                    <label for="property-form-description-sector">Sector:</label> 
+                    <label for="property-form-description-neighborhood">Sector:</label> 
                     
-                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'], array("id"=> "property-form-description-sector", "name" => "property-sector", ), '', $property_sector);?>
+                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'], array("id"=> "property-form-description-neighborhood", "name" => "property-neighborhood", ), '', $property_neighborhood);?>
                     
 
                     
@@ -63,7 +63,7 @@ $property_type = isset ($property_type) ? $property_type : false;
 
                 <li id="property-form-description-address-container">
                     <label for="property-form-description-address">Direcci&oacute;n:<span class="required">*</span></label> 
-                    <textarea id="property-form-description-address" name="property-address"><?php echo isset($property_address) ? $property_address : ''; ?></textarea>
+                    <textarea id="property-form-description-address" name="property-address"><?php echo isset($property_address) ? $property_address : ''; ?> </textarea>
                 </li>
 
 
@@ -89,7 +89,7 @@ $property_type = isset ($property_type) ? $property_type : false;
                     <input type="text" id="property-form-description-stories" name="property-stories" <?php echo isset($property_stories) ? 'value="' . $property_stories . '"' : ''; ?>/>
                 </li>
                 <li>
-                    <label for="property-form-description-bedrooms">Habitaciones:<span class="required">*</span></label> 
+                    <label for="property-form-description-bedrooms">Habitaciones:<span class="required" >*</span></label> 
                     <input type="text" id="property-form-description-bedrooms" name="property-bedrooms" <?php echo isset($property_bedrooms) ? 'value="' . $property_bedrooms . '"' : ''; ?>/>
                 </li>
             </ul>
@@ -167,7 +167,7 @@ $property_type = isset ($property_type) ? $property_type : false;
             <div id="property-form-description-description">
 
                 <h3>Descripci&oacute;n de la propiedad:<span class="required">*</span></h3>
-                <textarea id="property-form-description-price" name="property-description"><?php echo isset($property_description) ? $property_description : ''; ?></textarea>
+                <textarea id="property-form-description-price" name="property-description"><?php echo isset($property_description) ? $property_description : ''; ?> </textarea>
             </div>
 
             <div id="property-form-close-places">
