@@ -887,6 +887,8 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 #footer-company-menu h2, #footer-resources-menu h2 {
     background-image: url("/images/footer/yellowTitleBackground.png");
     color: #6DAE34;
+    font-size: 1.2em;
+    height: 21px;
     padding-left: 10px;
     width: 107px;
 }
@@ -1291,7 +1293,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     color: black;
     float: left;
     height: 246px;
-    width: 302px;
+    width: 300px;
 
 }
 #popular-neighborhoods ul
@@ -1341,16 +1343,12 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 /***buy-blueprints-link***/
 #buy-blueprints-link
 {
-/*    background-color: #F9CA02;*/
-/*    color: black;*/
+
     display: block;
     float: left;
-/*    font-size: 2.7em;
-    font-weight: bold;
-    height: 168px;*/
-    margin: 0 7px;
-/*    padding: 40px 0;
-    text-align: center;*/
+
+    margin: 0 6px;
+
     width: 309px;
 }
 
@@ -1360,7 +1358,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #tools-center
 {
-    width: 330px;
+    width: 336px;
     height: 246px;
     float: left;
 }
@@ -1370,21 +1368,28 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     height: 152px;
 }
 
-#tools-center-pager a
-{
+#tools-center-pager a {
     background-image: url("/images/toolsCenter/toolsCenterIconsSprite.png");
-    
     border-right: 1px solid #EDEDED;
     display: block;
     float: left;
-    height: 41px;
-    padding: 10px 0;
+    height: 65px;
     text-align: center;
-    width: 81px;
-    
-    
-    
+    width: 83px;
 }
+
+#video-tool {
+    background-position: -85px 0;
+}
+
+#checklist-tool {
+    background-position: -170px 0;
+}
+
+#qa-tool {
+    background-position: -255px 0;
+}
+
 /***tools-center ENDS***/
 
 #center-section{
@@ -1424,7 +1429,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 #footer-bottom img
 {
     float: right;
-    
+    margin-left: 10px;
 }
 
 

@@ -303,6 +303,8 @@ public function buscar()
         $newProperty->save(array($newPropertyType, $new_property_close_places->all, $new_property_features->all, $user, $new_property_files));
 
 
+        
+        
         if ($property_id) {
             $messages['info_messages'] = 'Su propiedad fue actualizada con éxito';
         } else {
