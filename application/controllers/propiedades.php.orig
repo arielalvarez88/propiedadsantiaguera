@@ -146,6 +146,18 @@ class Propiedades extends CI_Controller {
         }
     }
 
+<<<<<<< HEAD
+    public function buscar()
+    {
+        $filtered_get = $this->input->get();
+        $properties_filters_container = new Property();        
+        $search_by_reference = $filtered_get['ref-number'] != "Número de referencia" && $filtered_get['ref-number']? true : false;
+        
+        if($search_by_reference)
+            Filter_builder::build_property_reference_filter ($filtered_get, $properties_filters);
+        else
+        {
+=======
 public function buscar()
     {
       
@@ -164,10 +176,25 @@ public function buscar()
         else
         {
             
+>>>>>>> origin/ariel_filters
             Filter_builder::build_property_type_filter($filtered_get,$properties_filters_container);
             Filter_builder::build_property_max_price_filter($filtered_get,$properties_filters_container);
             Filter_builder::build_property_min_price_filter($filtered_get,$properties_filters_container);
             Filter_builder::build_property_condition_filter($filtered_get,$properties_filters_container);
+<<<<<<< HEAD
+            Filter_builder::build_property_sector_filter($filtered_get,$properties_filters_container);
+        }
+        
+        $properties_filters_container->get()->_count();
+        
+        
+        
+    }
+    
+    private function save_property($properties_photos_filenames = array(),$property_id=0) {
+        
+        
+=======
             Filter_builder::build_property_neighborhood_filter($filtered_get,$properties_filters_container);
         }
         
@@ -202,6 +229,7 @@ public function buscar()
 
 
     private function save_property($properties_photos_filenames = array(), $property_id=0) {
+>>>>>>> origin/ariel_filters
         $user = User_handler::getLoggedUser();
 
         if (!$user->can_create_property()) {

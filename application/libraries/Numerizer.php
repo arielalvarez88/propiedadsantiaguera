@@ -5,6 +5,7 @@
  * and open the template in the editor.
  */
 
+
 Class Numerizer{
     
    public static function numerize($number)

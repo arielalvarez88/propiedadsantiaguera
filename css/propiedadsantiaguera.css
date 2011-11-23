@@ -6,16 +6,22 @@
 
 body{
 
+  background: none repeat scroll 0 0 #EFEFEF;
     color: black;
-    font-family: arial;
+    font-family: museo,helvetica,arial,sans-serif;
     font-size: small;
     font-weight: normal;
-    background:none;
-    font-family: museo, helvetica, arial, sans-serif;
 }
 
+#footer-foto
+{
+    display: block;
+}
 
-
+#top
+{
+    clear: both;
+}
 #bottom, #center-section 
 {
     clear: both;
@@ -34,12 +40,12 @@ a img
 }
 
 #wrapper{
-    background-color: white;
-    margin-left: auto;
-    margin-right: auto;    
-    width: 960px;
-    background:none;
+   background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #DADADA;
     clear: both;
+    margin-left: auto;
+    margin-right: auto;
+    width: 980px;
 }
 
 /************ header *************/
@@ -57,10 +63,15 @@ a img
 {
     padding:0 8px;
 }
+#content
+{
+    padding: 10px;
+}
+
 
 /********** header ENDS ***********/
 #header{
-    padding-top: 10px;     
+    padding: 10px 10px 0 10px;     
 }
 
 
@@ -834,6 +845,8 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     background:url("/images/flecha.png") no-repeat scroll center 23px #F9CA02;  
 }
 
+
+
 .primary-links 
 {
     position: absolute;
@@ -841,10 +854,59 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     top:14px;
 }
 
-#footer
-{
-    position: relative;
+
+#footer-logo-message, #footer-company-menu, #footer-resources-menu, #footer-contact {
+    float: left;
+    color: white;
+   
 }
+
+#footer-contact p a#twitter-icon {
+    background-position: -27px 0;
+}
+
+#footer-contact p a#google-plus-icon
+{
+        background-position: -54px 0;
+}
+
+#footer-bottom
+{
+    clear: both;
+}
+
+#footer-contact p a {
+    background: url("/images/common/socialSprite.png") repeat scroll 0 0 transparent;
+    display: block;
+    float: left;
+    height: 27px;
+    margin-right: 10px;
+    width: 27px;
+}
+
+#footer-company-menu h2, #footer-resources-menu h2 {
+    background-image: url("/images/footer/yellowTitleBackground.png");
+    color: #6DAE34;
+    font-size: 1.2em;
+    height: 21px;
+    padding-left: 10px;
+    width: 107px;
+}
+#footer-company-menu, #footer-resources-menu {
+    margin: 0 25px;
+}
+
+#footer-contact h4 {
+    margin: 20px 0 5px;
+}
+
+#footer-company-menu ul,
+#footer-resources-menu ul,
+#footer-contact ul
+{
+    list-style: none;
+}
+
 
 #footer-right-side
 {
@@ -1231,7 +1293,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     color: black;
     float: left;
     height: 246px;
-    width: 302px;
+    width: 300px;
 
 }
 #popular-neighborhoods ul
@@ -1281,16 +1343,12 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 /***buy-blueprints-link***/
 #buy-blueprints-link
 {
-/*    background-color: #F9CA02;*/
-/*    color: black;*/
+
     display: block;
     float: left;
-/*    font-size: 2.7em;
-    font-weight: bold;
-    height: 168px;*/
-    margin: 0 7px;
-/*    padding: 40px 0;
-    text-align: center;*/
+
+    margin: 0 6px;
+
     width: 309px;
 }
 
@@ -1300,7 +1358,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #tools-center
 {
-    width: 330px;
+    width: 336px;
     height: 246px;
     float: left;
 }
@@ -1310,18 +1368,28 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     height: 152px;
 }
 
-#tools-center-pager a
-{
-    background-image: url("/images/common/whiteToGrayGradient.png");
-    background-position: 0 169px;
+#tools-center-pager a {
+    background-image: url("/images/toolsCenter/toolsCenterIconsSprite.png");
     border-right: 1px solid #EDEDED;
     display: block;
     float: left;
-    height: 41px;
-    padding: 10px 0;
+    height: 65px;
     text-align: center;
-    width: 81px;
+    width: 83px;
 }
+
+#video-tool {
+    background-position: -85px 0;
+}
+
+#checklist-tool {
+    background-position: -170px 0;
+}
+
+#qa-tool {
+    background-position: -255px 0;
+}
+
 /***tools-center ENDS***/
 
 #center-section{
@@ -1336,36 +1404,65 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     background-image: url("/images/common/stripesGradient_H496.jpg");
     background-position: 0 13px;
     clear: both;
-    height: 14px;
-    margin: 0 0 20px;
+    height: 14px;    
     position: relative;
     top: 10px;
 }
+
+
+/**footer**/
+#footer {
+    background-image: url("/images/footer/background.png");
+    color: white;
+    height: 173px;
+    padding: 20px 20px 15px;
+    position: relative;
+    
+}
+
+
+#footer-top-side
+{
+    height: 158px;
+}
+
+#footer-bottom img
+{
+    float: right;
+    margin-left: 10px;
+}
+
+
+#footer-bottom
+{
+    clear: both;
+    height: 25px;
+}
+
+
+#footer-bottom-right {
+    float: right;
+}
+#footer-bottom-left {
+    float: left;
+}
+
 
 #footer-makers-logo
 {
     float:right;
     margin-top: 20px;
 }
-/**footer**/
-#footer{
-    color: #76BC3B;
-    height: 155px;
-    padding: 15px 10px;;
-
-}
-
 
 #footer-section p
 {
 
 }
 
-#footer-logo
-{
-    float: left;
+#footer-logo {
+    height: 41px;
     margin-right: 10px;
-
+    width: 111px;
 }
 #newsletter h3
 {
@@ -1411,14 +1508,11 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 }
 
 
-#footer-message
-{
-    border-left: 2px solid #CCCCCC;
-    float: left;
-    height: 51px;
-    padding: 10px 0 25px 20px;
+#footer-message {
+    color: white;
+    height: 42px;
+    padding: 10px 0 25px;
     width: 351px;
-    color: #666666;
 }
 
 /**footer ENDS**/
@@ -2751,6 +2845,11 @@ a
     color: #76BC3B;
     height: 33px;
     padding: 0 0 0 5px;
+}
+
+.bold
+{
+    font-weight: bold;
 }
 
 .form-divisor
