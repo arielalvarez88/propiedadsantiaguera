@@ -326,16 +326,12 @@ class Propiedades extends CI_Controller {
         $repopulateForm['property_title'] = $property->title;
         $repopulateForm['property_description'] = $property->description;
         $repopulateForm['property_status'] = $property->condition;
-        
-        
-        
+                
         $repopulateForm['property_sell_price_us'] = Numerizer::numerize($property->sell_price_us);
         $repopulateForm['property_rent_price_us'] = Numerizer::numerize($property->rent_price_us);
         $repopulateForm['property_sell_price_dr'] = Numerizer::numerize($property->sell_price_dr);
         $repopulateForm['property_rent_price_dr'] = Numerizer::numerize($property->rent_price_dr);
         
-        
-
         $repopulateForm['property_terrain'] = $property->terrain;
         $repopulateForm['property_construction'] = $property->construction;
         $repopulateForm['property_stories'] = $property->stories;
@@ -345,18 +341,6 @@ class Propiedades extends CI_Controller {
         $repopulateForm['property_kitchens'] = $property->kitchens;
         $repopulateForm['property_parkings'] = $property->parkings;
         $repopulateForm['property_id'] = $property_id;
-
-        $property_features = $property->property_features->get();
-
-        foreach ($property_features as $property_feature) {
-            $repopulateForm[$map_features[$property_feature->id]] = true;
-        }
-
-        $property_close_places = $property->property_close_places->get();
-
-        foreach ($property_close_places as $property_close_place) {
-            $repopulateForm[$map_close_places[$property_close_place->id]] = true;
-        }
 
         $blocks['topLeftSide'] = $this->load->view('forms/add_properties_form.php', $repopulateForm, true);
         $this->load->view('page', $blocks);
