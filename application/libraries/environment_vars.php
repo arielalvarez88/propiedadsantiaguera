@@ -132,11 +132,25 @@ class Environment_vars {
             "granite-countertops" => 40,
             "electric-gate" => 41,
             "walk-in-closet" => 42
-            
-            
         ),
         
-        'user_photos_dir_path' => '/images/userPhotos/',
+      
+        
+    )
+        
+    );
+    
+    
+     
+    
+    
+    
+    
+    
+    
+    public static $environment_vars = array(
+    'user_photos_dir_path' => '/images/userPhotos/',
+        'user_photos_thumbs_dir_path' => '/images/userPhotosThumbs/',
         'properties_photos_dir_path' => '/images/propertiesPhotos/',
         'properties_photos_thumbs_dir_path' => '/images/propertiesPhotosThumbs/'
         

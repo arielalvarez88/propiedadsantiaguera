@@ -5,13 +5,13 @@
  * and open the template in the editor.
  */
 
-class Agentes extends CI_Controller
+class Miembros extends CI_Controller
 {
     public function index()
     {
         
-        $data['topRightSide'] =  $this->load->view('blocks/agentes_header','',true);
-        $data['bottomLeftSide'] =  $this->load->view('blocks/agentesPager','',true);
+        $data['topRightSide'] =  $this->load->view('blocks/members_header','',true);
+        $data['bottomLeftSide'] =  $this->load->view('blocks/members_pager','',true);
         $this->load->view('page',$data);
     }
     

@@ -1,4 +1,9 @@
+<?php
 
+$property_sector = isset ($property_sector) ? $property_sector : false;
+$property_type = isset ($property_type) ? $property_type : false;
+
+?>
 
 <?php if (isset($errors) && $errors): ?>
     <div class="error-messages">
@@ -21,45 +26,10 @@
             <ul id="property-form-description-column1" class="property-form-description-column">
                 <li>
                     <label for="property-form-description-type">Tipo</label>
-                    <select id="property-form-description-type" name="property-type">
-                        <option value="house" <?php echo!isset($property_type) || $property_type == 'casa' ? 'selected="selected"' : ''; ?>>
-                            Casa
-                        </option>
+                    
+                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_types'], array("id"=> "property-form-description-type", "name" => "property-type"), '', $property_type);?>
+                    
 
-                        <option value="apartment" <?php echo isset($property_type) && $property_type == 'apartment' ? 'selected="selected"' : ''; ?>>
-                            Apartamento
-                        </option>
-
-                        <option value="lot" <?php echo isset($property_type) && $property_type == 'lot' ? 'selected="selected"' : ''; ?>>
-                            Solar
-                        </option>
-
-                        <option value="penthouse" <?php echo isset($property_type) && $property_type == 'penthouse' ? 'selected="selected"' : ''; ?>>
-                            Penthouse
-                        </option>
-
-                        <option value="mall" <?php echo isset($property_type) && $property_type == 'mall' ? 'selected="selected"' : ''; ?>>
-                            Local Comercial
-                        </option>
-
-                        <option value="building" <?php echo isset($property_type) && $property_type == 'building' ? 'selected="selected"' : ''; ?>>
-                            Edificio
-                        </option>
-
-
-                        <option value="warehouse" <?php echo isset($property_type) && $property_type == 'warehouse' ? 'selected="selected"' : ''; ?>>
-                            Nave Industrial
-                        </option>
-
-
-                        <option value="office" <?php echo isset($property_type) && $property_type == 'office' ? 'selected="selected"' : ''; ?>>
-                            Oficina
-                        </option>
-
-                        <option value="land" <?php echo isset($property_type) && $property_type == 'land' ? 'selected="selected"' : ''; ?>>
-                            Finca
-                        </option>
-                    </select>
                 </li>
                 <li>
                     <label for="property-form-description-title">T&iacute;tulo:<span class="required">*</span></label> 
@@ -67,7 +37,11 @@
                 </li>
                 <li>
                     <label for="property-form-description-sector">Sector:</label> 
-                    <input type="text" id="property-form-description-sector" name="property-sector" <?php echo isset($property_sector) ? 'value="' . $property_sector . '"' : ''; ?>/>
+                    
+                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'], array("id"=> "property-form-description-sector", "name" => "property-sector", ), '', $property_sector);?>
+                    
+
+                    
                 </li>
 
 

@@ -12,6 +12,11 @@ class File_handler {
         return isset($_FILES[$input_name]) && $_FILES[$input_name]['size'];
     }
 
+    public static function file_exists($file_path)
+    {
+        
+        return file_exists($file_path) || file_exists(realpath("./".$file_path))? true : false;
+    }
     public static function save_photos($inputs_names =array(), $upload_path, $max_size) {
 
         $CI_Helper = get_instance();
@@ -36,10 +41,10 @@ class File_handler {
             }
         }
       
-        if ($photos_full_paths)
+        
             return $photos_full_paths;
 
-        return true;
+
     }
 
 }
