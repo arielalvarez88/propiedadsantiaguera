@@ -10,20 +10,20 @@
 <table id="planes_detail">
        
         <tr>
-            <td valign="middle">NUMERO DE PROPIEDADES</td>
-  
-        <tr>
+            <td valign="top">NUMERO DE PROPIEDADES</td>
+        </tr>
+        <tr>      
             <td valign="middle">DURACION POR PROPIEDAD</td>
         </tr>
    
         <tr>
-            <td valign="middle">FOTOS(15) y VIDEOS(1)</td>
+            <td valign="middle" style="padding-top:7px;padding-bottom:17px;">FOTOS (15) y VIDEOS (1)</td>
         </tr>
         <tr>
-            <td valign="middle">PANEL ADMINISTRATIVO</td>
+            <td valign="middle" style="padding-top:18px;">PANEL ADMINISTRATIVO</td>
         </tr>
         <tr>
-            <td valign="middle" style="padding:10px 0 0 0;" >CREACION DE SOLICITUD Y RECIBIR PROPUESTA DE SOLICITUDES</td>
+            <td valign="middle" >CREAR SOLICITUDES Y<br> RECIBIR PROPUESTAS</td>
         </tr>
         <tr>
             <td valign="middle">ENVIO DE PROPUESTAS A TERCEROS</td>
