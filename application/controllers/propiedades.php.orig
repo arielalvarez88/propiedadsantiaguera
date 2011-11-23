@@ -31,19 +31,26 @@ class Propiedades extends CI_Controller {
 
     public function ver($id=null) {
 
-        $no_id_passed = !$id;
+        $no_id_passed = !$id || !is_numeric($id);
         if ($no_id_passed)
-            redirect("/propiedades");
-
-        $user = $this->get_logged_user_or_redirect_to_please_login();
-        $property = $user->property->where("id", $id)->get();
+            redirect("/pagina_no_valida");
+        
+     
+        $property = new Property();
+        $property->where("id", $id)->get();
 
         $propiedadObject['property'] = $property;
-        $property_cant_be_shown = !$property->display_property;
-
+        
+        $user = User_handler::getLoggedUser();
+        $property_belongs_to_logged_user = is_object($user) && $property->id  && $property->user->get()->id == $user->id  ? true : false;
+        
+        
+        $property_cant_be_shown = !$property_belongs_to_logged_user && (!isset($property->display_property) || !$property->display_property);
+        
+        
         if ($property_cant_be_shown)
-            redirect("/propiedades");
-
+            redirect("/pagina_no_valida");
+ 
 
         $property_viewer_data['property'] = $property;
 
@@ -81,17 +88,18 @@ class Propiedades extends CI_Controller {
         }
         $property_viewer_data['property_photos_paths'] = $property_image_thumbs_paths;
 
-
-
-
-
-
         $property_photos_pagers_groups = $slideshow_helper->getPagerSubset($property_pager_slides_html, 6);
 
         $property_viewer_data['property_photos_pagers_groups'] = $property_photos_pagers_groups;
+        
+        
+                
+                
+                
+                        
+                
 
-
-
+        
         $data['topLeftSide'] = $this->load->view('blocks/property_viewer', $property_viewer_data, true);
         $data['topRightSide'] = $this->load->view('blocks/user_viewer', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/monedaPrecio', $propiedadObject, true);
@@ -103,6 +111,10 @@ class Propiedades extends CI_Controller {
         $data['bottomLeftSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propiedadObject, true);
         $data['bottomRightSide'] = $this->load->view('blocks/solicitudDeInformacion', $propiedadObject, true);
 
+        if($property_belongs_to_logged_user && !$property->display_property)
+                {
+                    $data['top'] = $this->load->view("blocks/not_published_message",'',true);
+                }
 
         $this->load->view('page', $data);
     }
@@ -135,18 +147,19 @@ class Propiedades extends CI_Controller {
         }
     }
 
-<<<<<<< HEAD
-    public function buscar()
+public function buscar()
     {
-        
+      
         $filtered_get = $this->input->get();
         $properties_filters_container = new Property();        
+          
         $search_by_reference = isset($filtered_get['ref-number']) && is_numeric($filtered_get['ref-number']) ? true : false;
          
         if($search_by_reference)
         {
             
-            Filter_builder::build_property_reference_filter ($filtered_get, $properties_filters_container);
+            redirect("propiedades/ver/".$filtered_get['ref-number']) ;
+            
         }
             
         else
@@ -156,19 +169,40 @@ class Propiedades extends CI_Controller {
             Filter_builder::build_property_max_price_filter($filtered_get,$properties_filters_container);
             Filter_builder::build_property_min_price_filter($filtered_get,$properties_filters_container);
             Filter_builder::build_property_condition_filter($filtered_get,$properties_filters_container);
-            Filter_builder::build_property_sector_filter($filtered_get,$properties_filters_container);
+            Filter_builder::build_property_neighborhood_filter($filtered_get,$properties_filters_container);
         }
         
-        var_dump($properties_filters_container->get()->count());
-        die;
+        
+        $sql = $properties_filters_container->get_sql();
+        $filtered_properties = $properties_filters_container->get();
+        
+       
+        
+                                                         
+        $filter_initial_values['selected_property_neighborhood'] =  isset($filtered_get) && isset($filtered_get['neighborhood'])? $filtered_get['neighborhood'] : null;
+        
+        $filter_initial_values['selected_property_type'] = isset($filtered_get) && isset($filtered_get['type'])? $filtered_get['type'] : null;
+        
+        $filter_initial_values['selected_property_ref_number'] = isset($filtered_get) && isset($filtered_get['ref-number'])? $filtered_get['ref-number'] : null;
+        
+        $filter_initial_values['selected_property_condition'] = isset($filtered_get) && isset($filtered_get['condition'])? $filtered_get['condition'] : null;
+        
+        $views['topLeftSide'] = $this->load->view("blocks/basic_filter",$filter_initial_values, true);
+        
+        $search_results['filtered_properties'] = $filtered_properties;
+        $views['topLefSide'] = $this->load->view("blocks/properties_search_results_pager",$search_results);
+        
+        $views['topRightSide'] = $this->load->view("blocks/advertising",'',true);
+        
+        $this->load->view("page",$views);
+       
+        
+        
+        
     }
-    
-    private function save_property($properties_photos_filenames = array()) {
-        
-        
-=======
+
+
     private function save_property($properties_photos_filenames = array(), $property_id=0) {
->>>>>>> origin/darwin_edit_properties
         $user = User_handler::getLoggedUser();
 
         if (!$user->can_create_property()) {
@@ -195,19 +229,24 @@ class Propiedades extends CI_Controller {
         $newProperty->description = $newPropertyInfo['property-description'];
         $newProperty->terrain = $newPropertyInfo['property-terrain'];
         $newProperty->bathrooms = $newPropertyInfo['property-bathrooms'];
+<<<<<<< HEAD
         $newProperty->neighborhood = $newPropertyInfo['property-sector'];
         $newProperty->construction = $newPropertyInfo['property-sector'];
+=======
+        $newProperty->neighborhood = $newPropertyInfo['property-neighborhood'];
+        $newProperty->construction = $newPropertyInfo['property-construction'];
+>>>>>>> origin/darwin_edit_properties
         $newProperty->livingrooms = $newPropertyInfo['property-livingrooms'];
         $newProperty->address = $newPropertyInfo['property-address'];
         $newProperty->stories = $newPropertyInfo['property-stories'];
-        $newProperty->kitchens = $newPropertyInfo['property-kitchens'];
-        $newProperty->status = $newPropertyInfo['property-status'];
+        $newProperty->kitchens = $newPropertyInfo['property-kitchens'];        
+        $newProperty->condition = $newPropertyInfo['property-status'];
         $newProperty->bedrooms = $newPropertyInfo['property-bedrooms'];
         $newProperty->parkings = $newPropertyInfo['property-parkings'];
-        $newProperty->sell_price_us = isset($newPropertyInfo['property-sell-price-us']) ? $newPropertyInfo['property-sell-price-us'] : null;
-        $newProperty->sell_price_dr = isset($newPropertyInfo['property-sell-price-dr']) ? $newPropertyInfo['property-sell-price-dr'] : null;
-        $newProperty->rent_price_us = isset($newPropertyInfo['property-rent-price-us']) ? $newPropertyInfo['property-rent-price-us'] : null;
-        $newProperty->rent_price_dr = isset($newPropertyInfo['property-rent-price-dr']) ? $newPropertyInfo['property-rent-price-dr'] : null;
+        $newProperty->sell_price_us = isset($newPropertyInfo['property-sell-price-us']) ? Numerizer::numerize($newPropertyInfo['property-sell-price-us']) : null;
+        $newProperty->sell_price_dr = isset($newPropertyInfo['property-sell-price-dr']) ? Numerizer::numerize($newPropertyInfo['property-sell-price-dr']) : null;
+        $newProperty->rent_price_us = isset($newPropertyInfo['property-rent-price-us']) ? Numerizer::numerize($newPropertyInfo['property-rent-price-us']) : null;
+        $newProperty->rent_price_dr = isset($newPropertyInfo['property-rent-price-dr']) ? Numerizer::numerize($newPropertyInfo['property-rent-price-dr']) : null;
         $newProperty->type = $newPropertyInfo['property-type'];
 
         if ($newPropertyInfo['property-status'] == "sell" || $newPropertyInfo['property-status'] == "sell-rent") {
@@ -269,12 +308,17 @@ class Propiedades extends CI_Controller {
         $newProperty->save(array($newPropertyType, $new_property_close_places->all, $new_property_features->all, $user, $new_property_files));
 
 
+        
+        
         if ($property_id) {
             $messages['info_messages'] = 'Su propiedad fue actualizada con éxito';
         } else {
             $messages['info_messages'] = 'Su propiedad fue agregada con éxito';
         }
-        var_dump($newPropertyInfo['property-status']);
+<<<<<<< HEAD
+        
+=======
+>>>>>>> origin/darwin_edit_properties
         $this->agregar_propiedades($messages);
     }
 
@@ -331,15 +375,24 @@ class Propiedades extends CI_Controller {
         }
 
         $repopulateForm['property_type'] = $property->type;
+<<<<<<< HEAD
         $repopulateForm['property_sector'] = $property->neighborhood;
+=======
+        $repopulateForm['property_neighborhood'] = $property->neighborhood;
+>>>>>>> origin/darwin_edit_properties
         $repopulateForm['property_address'] = $property->address;
         $repopulateForm['property_title'] = $property->title;
         $repopulateForm['property_description'] = $property->description;
-        $repopulateForm['property_status'] = $property->status;
-        $repopulateForm['property_sell_price_us'] = number_format($property->sell_price_us);
-        $repopulateForm['property_rent_price_us'] = number_format($property->rent_price_us);
-        $repopulateForm['property_sell_price_dr'] = number_format($property->sell_price_dr);
-        $repopulateForm['property_rent_price_dr'] = number_format($property->rent_price_dr);
+        $repopulateForm['property_status'] = $property->condition;
+        
+        
+        
+        $repopulateForm['property_sell_price_us'] = Numerizer::numerize($property->sell_price_us);
+        $repopulateForm['property_rent_price_us'] = Numerizer::numerize($property->rent_price_us);
+        $repopulateForm['property_sell_price_dr'] = Numerizer::numerize($property->sell_price_dr);
+        $repopulateForm['property_rent_price_dr'] = Numerizer::numerize($property->rent_price_dr);
+        
+        
 
         $repopulateForm['property_terrain'] = $property->terrain;
         $repopulateForm['property_construction'] = $property->construction;
@@ -360,7 +413,7 @@ class Propiedades extends CI_Controller {
         $repopulateForm = array();
 
         $repopulateForm['property_type'] = $this->input->post('property-type');
-        $repopulateForm['property_sector'] = $this->input->post('property-sector');
+        $repopulateForm['property_neighborhood'] = $this->input->post('property-neighborhood');
         $repopulateForm['property_address'] = $this->input->post('property-address');
         $repopulateForm['property_status'] = $this->input->post('property-status');
         $repopulateForm['property_sell_price_us'] = $this->input->post('property-sell-price-us');

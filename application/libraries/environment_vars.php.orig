@@ -7,7 +7,7 @@ class Environment_vars {
 
     public static $maps = array(
         "file_type_to_id" => array("photo" => 1, "video" => 2),
-        "property_type_to_name" => array(1 => "casa", 2 => "apartamento", 3 => "solar", 4 => "penthhouse", 5 => "centro comercial", 6 => "edificio", 7 => "nave industrial", 8 => "oficina", 9 => "finca"),
+        "property_type_to_name" => array(1 => "Casa", 2 => "Apartamento", 3 => "Solar", 4 => "Penthhouse", 5 => "Centro Comercial", 6 => "Edificio", 7 => "Nave Industrial", 8 => "Oficina", 9 => "Finca"),
         "user_type_to_validation_rules" => array("client" => "signupClient", "company" => "signupCompany", "edit_client" => "edit_clent"),
         "property_feature_to_name" => array(
             1 => "elevator",
@@ -75,21 +75,8 @@ class Environment_vars {
             "office" => 8,
             "land" => 9
         ),
-<<<<<<< HEAD
-        "filter-fields-to-db-fields"=>array("sector" => "sector", "condition" => "condition"),
-        
-        "texts_to_id" => array(
-            
-        "property_neighborhoods" => array("Cerro Alto" => "1", "Villa Olga" => 2),
-         "property_types" => array("Casa" => 1, "Apartamento" => 2, "Solar" => 3, "Penthouse" => 4, "Local Comercial" => 5, "Edificio" => 6, "Nave industrial" => 7, "Oficina" => 8, "Finca" => 9),
         "property_conditions" => array("sell" => "1", "rent" => 2, "sell/rent" =>3),
-    ),
-        
-        
-        "html_to_id" => array(
-=======
         "filter-fields-to-db-fields" => array("sector" => "sector", "condition" => "condition"),
->>>>>>> origin/darwin_edit_properties
         "property_types" => array(
             "house" => 1,
             "apartment" => 2,
@@ -102,7 +89,12 @@ class Environment_vars {
             "land" => 9
         ),
         "texts_to_id" => array(
+<<<<<<< HEAD
             "property_neighborhoods" => array("Cerro Alto" => "1", "Villa Olga" => 2),
+            "property_conditions" => array("Venta" => 1, "Alquiler" => 2, "Venta/Alquiler" =>3),
+=======
+            "property_neighborhoods" => array("Cerro Alto" => "1", "Villa Olga" => 2, "Villa Olimpica" => 3),
+>>>>>>> origin/darwin_edit_properties
             "property_types" => array("Casa" => 1, "Apartamento" => 2, "Solar" => 3, "Penthouse" => 4, "Local Comercial" => 5, "Edificio" => 6, "Nave industrial" => 7, "Oficina" => 8, "Finca" => 9)
         ),
         "html_to_id" => array(

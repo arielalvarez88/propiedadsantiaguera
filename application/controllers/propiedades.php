@@ -229,19 +229,19 @@ public function buscar()
         $newProperty->description = $newPropertyInfo['property-description'];
         $newProperty->terrain = $newPropertyInfo['property-terrain'];
         $newProperty->bathrooms = $newPropertyInfo['property-bathrooms'];
-        $newProperty->neighborhood = $newPropertyInfo['property-sector'];
-        $newProperty->construction = $newPropertyInfo['property-sector'];
+        $newProperty->neighborhood = $newPropertyInfo['property-neighborhood'];
+        $newProperty->construction = $newPropertyInfo['property-construction'];
         $newProperty->livingrooms = $newPropertyInfo['property-livingrooms'];
         $newProperty->address = $newPropertyInfo['property-address'];
         $newProperty->stories = $newPropertyInfo['property-stories'];
-        $newProperty->kitchens = $newPropertyInfo['property-kitchens'];
-        $newProperty->status = $newPropertyInfo['property-status'];
+        $newProperty->kitchens = $newPropertyInfo['property-kitchens'];        
+        $newProperty->condition = $newPropertyInfo['property-status'];
         $newProperty->bedrooms = $newPropertyInfo['property-bedrooms'];
         $newProperty->parkings = $newPropertyInfo['property-parkings'];
-        $newProperty->sell_price_us = isset($newPropertyInfo['property-sell-price-us']) ? $newPropertyInfo['property-sell-price-us'] : null;
-        $newProperty->sell_price_dr = isset($newPropertyInfo['property-sell-price-dr']) ? $newPropertyInfo['property-sell-price-dr'] : null;
-        $newProperty->rent_price_us = isset($newPropertyInfo['property-rent-price-us']) ? $newPropertyInfo['property-rent-price-us'] : null;
-        $newProperty->rent_price_dr = isset($newPropertyInfo['property-rent-price-dr']) ? $newPropertyInfo['property-rent-price-dr'] : null;
+        $newProperty->sell_price_us = isset($newPropertyInfo['property-sell-price-us']) ? Numerizer::numerize($newPropertyInfo['property-sell-price-us']) : null;
+        $newProperty->sell_price_dr = isset($newPropertyInfo['property-sell-price-dr']) ? Numerizer::numerize($newPropertyInfo['property-sell-price-dr']) : null;
+        $newProperty->rent_price_us = isset($newPropertyInfo['property-rent-price-us']) ? Numerizer::numerize($newPropertyInfo['property-rent-price-us']) : null;
+        $newProperty->rent_price_dr = isset($newPropertyInfo['property-rent-price-dr']) ? Numerizer::numerize($newPropertyInfo['property-rent-price-dr']) : null;
         $newProperty->type = $newPropertyInfo['property-type'];
 
         if ($newPropertyInfo['property-status'] == "sell" || $newPropertyInfo['property-status'] == "sell-rent") {
@@ -367,15 +367,20 @@ public function buscar()
         }
 
         $repopulateForm['property_type'] = $property->type;
-        $repopulateForm['property_sector'] = $property->neighborhood;
+        $repopulateForm['property_neighborhood'] = $property->neighborhood;
         $repopulateForm['property_address'] = $property->address;
         $repopulateForm['property_title'] = $property->title;
         $repopulateForm['property_description'] = $property->description;
-        $repopulateForm['property_status'] = $property->status;
-        $repopulateForm['property_sell_price_us'] = number_format($property->sell_price_us);
-        $repopulateForm['property_rent_price_us'] = number_format($property->rent_price_us);
-        $repopulateForm['property_sell_price_dr'] = number_format($property->sell_price_dr);
-        $repopulateForm['property_rent_price_dr'] = number_format($property->rent_price_dr);
+        $repopulateForm['property_status'] = $property->condition;
+        
+        
+        
+        $repopulateForm['property_sell_price_us'] = Numerizer::numerize($property->sell_price_us);
+        $repopulateForm['property_rent_price_us'] = Numerizer::numerize($property->rent_price_us);
+        $repopulateForm['property_sell_price_dr'] = Numerizer::numerize($property->sell_price_dr);
+        $repopulateForm['property_rent_price_dr'] = Numerizer::numerize($property->rent_price_dr);
+        
+        
 
         $repopulateForm['property_terrain'] = $property->terrain;
         $repopulateForm['property_construction'] = $property->construction;
@@ -396,7 +401,7 @@ public function buscar()
         $repopulateForm = array();
 
         $repopulateForm['property_type'] = $this->input->post('property-type');
-        $repopulateForm['property_sector'] = $this->input->post('property-sector');
+        $repopulateForm['property_neighborhood'] = $this->input->post('property-neighborhood');
         $repopulateForm['property_address'] = $this->input->post('property-address');
         $repopulateForm['property_status'] = $this->input->post('property-status');
         $repopulateForm['property_sell_price_us'] = $this->input->post('property-sell-price-us');

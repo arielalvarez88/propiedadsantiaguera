@@ -1,6 +1,6 @@
 <?php
 
-$property_sector = isset ($property_sector) ? $property_sector : false;
+$property_neighborhood = isset ($property_neighborhood) ? $property_neighborhood : false;
 $property_type = isset ($property_type) ? $property_type : false;
 
 ?>
@@ -36,9 +36,9 @@ $property_type = isset ($property_type) ? $property_type : false;
                     <input type="text" id="property-form-description-title" name="property-title" <?php echo isset($property_title) ? 'value="' . $property_title . '"' : ''; ?>/>
                 </li>
                 <li>
-                    <label for="property-form-description-sector">Sector:</label> 
+                    <label for="property-form-description-neighborhood">Sector:</label> 
                     
-                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'], array("id"=> "property-form-description-sector", "name" => "property-sector", ), '', $property_sector);?>
+                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'], array("id"=> "property-form-description-neighborhood", "name" => "property-neighborhood", ), '', $property_neighborhood);?>
                     
 
                     
