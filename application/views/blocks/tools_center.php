@@ -4,10 +4,11 @@
         
     </div>
     <div id="tools-center-pager"> 
-        <a><img src="/images/toolsCenter/calcIcon.png"/></a>
-        <a><img src="/images/toolsCenter/houseIcon.png"/></a>
-        <a><img src="/images/toolsCenter/houseIcon.png"/></a>
-        <a><img src="/images/toolsCenter/houseIcon.png"/></a>
+        <a id="calculator-tool"></a>
+        <a id="video-tool"></a>
+        <a id="checklist-tool"></a>
+        <a id="qa-tool"></a>
+        
         
     </div>
     

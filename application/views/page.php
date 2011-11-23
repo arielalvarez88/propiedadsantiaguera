@@ -99,6 +99,15 @@ $thisPage = str_replace('/', '-', uri_string());
             <div id="content">
                 <?php if (isset($topLeftSide) || isset($topCenterSide) || isset($topRightSide)): ?>
                     <div id="top-section">
+                        
+                        
+                        <?php if (isset($top)): ?>
+                            <div id="top">
+                                <?php echo $top; ?>
+                            </div>
+                        <?php endif; ?>
+         
+                        
                         <?php if (isset($topLeftSide)): ?>
                             <div id="top-left-side">
                                 <?php echo $topLeftSide; ?>
@@ -154,26 +163,76 @@ $thisPage = str_replace('/', '-', uri_string());
             </div>
             <div id="contet-footer-divisor"></div>
 
+            
             <div id="footer">
-
-                <div id="footer-left-side">
-                    <img id="footer-logo" src="/images/logo.png"/>
-                    <p id="footer-message">Propiedad Santiaguera es una plataforma virtual que conecta al público en general con un amplio rango de suplidores de calidad a nivel nacional para la planificación, organización y realización de todo tuipo de eventos.</p>
-
+                
+                <div id="footer-top-side">
+                    
+                    <div id="footer-logo-message">
+                        <img id="footer-logo" src="/images/footer/footerLogo.png"/>
+                        <p id="footer-message"><span class="bold">Propiedad Santiaguera</span> es una plataforma virtual facilita de manera f&aacute;cil e interactiva, la oferta inmobiliaria del mercado.</p>
+                    </div>
+                    
+                     
+                    
+                    <div id="footer-company-menu">
+                        <h2>Empresa</h2>
+                        <ul>
+                        <li>
+                            Nosotros
+                        </li>
+                        <li>
+                            Herramientas
+                        </li>
+                        <li>
+                            Precios
+                        </li>
+                        <li>
+                            Solicitud
+                        </li>
+                    </ul>
+                    </div>
+                    
+                    <div id="footer-resources-menu">
+                        <h2>Recursos</h2>
+                        <ul>
+                        <li>
+                            Soporte
+                        </li>
+                        <li>
+                            Legal
+                        </li>
+                        <li>
+                            Seguridad
+                        </li>
+                        <li>
+                            Privacidad
+                        </li>
+                    </ul>
+                    </div>
+                    
+                    <div id="footer-contact">
+                        <h2>Contactanos</h2>
+                        <p>Calle M&eacute;xico Esq. Apeco, #32B <br/> Reparto del Este, Santiago, Rep. Dom. <br/> 809.582.2690</p>
+                        <h4>Siguenos</h4>
+                        <p>
+                            <a href="#not-yet"></a>
+                            <a id="twitter-icon" href="#not-yet"></a>
+                            <a id="google-plus-icon" href="#not-yet"></a>
+                        </p>
+                            
+                    </div>
+                    
+                    
+                    
                 </div>
 
-                <div id="footer-right-side">
-                    <div id="newsletter">
-                        <h3>Newsletter</h3>
-                        <p >Recibe ofertas e informaciones sobre nuestros servicios</p>
-                        <div class="round-corners" id="newsletter-email-container">
-                            <input type="text" id="newsletter-input" class="round-corners"> 
-                            <a href="#javascript" class="no-decoration-anchor round-corners" id="newsletter-subscribe-button">Suscríbete</a>
-                        </div>
-
-                    </div>
-                    <a href="http://www.5050mkt.com" id="footer-makers-logo"><img src="/images/common/5050mktLogo.png"/></a>
-
+                <div id="footer-bottom">
+                    <p id="footer-bottom-left">2011 Propiedad Santiaguera, All rights reserved</p>
+                    <img src="/images/common/5050mktLogo.png" alt="5050mkt-logo"/>
+                    <p id="footer-bottom-right">
+                        Propiedad Santiaguera es un producto de
+                    </p>
                 </div>
 
 

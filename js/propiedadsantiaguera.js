@@ -1,5 +1,6 @@
 
 
+
 initilizeFrontPageSlideShow = function()
 {
     $('#front-page-slide-show').cycle({
@@ -296,6 +297,7 @@ InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswor
 
 Slider = function(parentSelector,minValue,maxValue,minInitialPosition,maxInitialPosition,minDisplaySelector,maxDisplaySelector,step){
     
+    var thisObject = this;
     this.parent = $(parentSelector);
     this.minValue = minValue;
     this.maxValue = maxValue;
@@ -305,9 +307,14 @@ Slider = function(parentSelector,minValue,maxValue,minInitialPosition,maxInitial
     this.maxDisplay = $(maxDisplaySelector);
     this.step = step;
    
+   this.getMax = function(){
+      return thisObject.maxValue; 
+   };
+   
     var biggerThan = this.maxInitialValue >= maxValue? 'Más de ': '';
     this.minDisplay.html("$" + commify('' + this.minInitialValue));
     this.maxDisplay.html(biggerThan + "$" + commify('' + this.maxInitialValue));
+    
     
     var sliderObject = this;
     
@@ -659,12 +666,13 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderCo
    this.filterElement = $(filterContainerSelector);
    this.sliderChangerElementEvent = function(){
      
+     console.log('change!');
        for(value in valuesToSliderParameters)
      {
            if(thisObject.sliderChangerElement.val() == value)
                {
                   
-                   thisObject.sliderElement = new Slider(sliderContainerSelector, valuesToSliderParameters[value].minValue, valuesToSliderParameters[value].maxValue, valuesToSliderParameters[value].minInitialValue, valuesToSliderParameters[value].maxInitialValue, "#basic-filter-price-slider-min-display", "#basic-filter-price-slider-max-display", valuesToSliderParameters[value].step)
+                   thisObject.sliderElement = new Slider(sliderContainerSelector, valuesToSliderParameters[value].minValue, valuesToSliderParameters[value].maxValue, valuesToSliderParameters[value].minInitialValue, valuesToSliderParameters[value].maxInitialValue, "#basic-filter-price-slider-min-display", "#basic-filter-price-slider-max-display", valuesToSliderParameters[value].step);
                }
        }
    
@@ -679,14 +687,17 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderCo
        var queryString = "?";
        $.each(infoContainersElementsInFilter, function(index, element){
            var jqueryElement = $(element);
-           queryString += jqueryElement.attr("name") + "=" + encodeURIComponent(jqueryElement.val())+ "&";           
+           queryString += jqueryElement.val() != jqueryElement.attr("data-null-value")?  jqueryElement.attr("name") + "=" + jqueryElement.val()+ "&" : '';           
            
        });
        var minPrice= thisObject.sliderElement.getRange()[0];
            
            
            var maxPrice = thisObject.sliderElement.getRange()[1];
-           queryString += "minprice=" + minPrice + "&" +"maxprice=" + maxPrice;                      
+           queryString += "minprice=" + minPrice + "&" +"maxprice=" + maxPrice;
+           
+           var noLimitToMaxPrice = thisObject.sliderElement.getMax() <= maxPrice;
+           queryString +=  noLimitToMaxPrice? "&nopricelimit=true" : "";
            
            window.location.href = submitUrl + queryString;
        
@@ -709,7 +720,7 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderCo
 
 initializeFilters = function(){
    
-   var basicFilter = new Filter("#basic-filter","#basic-filter-condition", "#basic-filter-price-slider","#basic-filter-search-button",{sell: {minValue: 1000000, maxValue: 50000000, maxInitialValue: 50000000, minInitialValue: 1000000, step: 500000}, rent: {minValue: 5000, maxValue: 300000, maxInitialValue: 300000, minInitialValue: 5000, step: 5000}, "sell-rent": {minValue: 1000000, maxValue: 50000000, maxInitialValue: 50000000, minInitialValue: 1000000, step: 500000}}, 1000000, 50000000, 1000000, 50000000,500000,"/propiedades/buscar");
+   var basicFilter = new Filter("#basic-filter","#basic-filter-condition", "#basic-filter-price-slider","#basic-filter-search-button",{1: {minValue: "1", maxValue: 50000000, maxInitialValue: 50000000, minInitialValue: 0, step: 500000}, "2": {minValue: 0, maxValue: 300000, maxInitialValue: 300000, minInitialValue: 0, step: 5000}, 2 : {minValue: 0, maxValue: 50000000, maxInitialValue: 50000000, minInitialValue: 0, step: 500000}}, 0, 50000000, 0, 50000000,500000,"/propiedades/buscar");
    
 };
 

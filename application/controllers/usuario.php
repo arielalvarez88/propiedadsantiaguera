@@ -16,6 +16,7 @@ class Usuario extends CI_Controller {
 
         $this->load->library('User_info_getter_from_object');
         $this->load->library('User_info_getter_from_post');
+        
     }
 
     public function panel($section = 'propiedades', $subsection ='publicadas', $messages = array()) {

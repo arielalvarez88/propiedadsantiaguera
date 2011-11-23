@@ -1,0 +1,1 @@
+<p class="error-messages">Esta propiedad no está disponible para el público a menos que sea publicada.</p>

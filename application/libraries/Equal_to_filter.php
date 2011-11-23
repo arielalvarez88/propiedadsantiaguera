@@ -5,6 +5,8 @@
  * and open the template in the editor.
  */
 
+require_once dirname(__FILE__).'/IFilter.php';
+
 Class Equal_to_filter implements IFilter{
     
     public $field_name;

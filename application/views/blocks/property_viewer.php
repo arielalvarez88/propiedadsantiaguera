@@ -1,7 +1,4 @@
-<?php
 
-
-?>
 <div id="propiedad-viewer">
     <div id="propiedad-viewer-top">
         <div id="propiedad-viewer-header">
