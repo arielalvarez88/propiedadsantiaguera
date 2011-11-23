@@ -7,13 +7,14 @@ class AgregarTablaPropiedades extends Ruckusing_BaseMigration {
         $propiedades = $this->create_table('properties');
         $propiedades->column('title','string',array('limit' =>50));
         $propiedades->column('address', 'text');
+        $propiedades->column('description', 'text');
         $propiedades->column('sell_price_us', 'integer');
         $propiedades->column('sell_price_dr', 'integer');
         $propiedades->column('rent_price_us', 'integer');
         $propiedades->column('rent_price_dr', 'integer');
         $propiedades->column('display_property', 'boolean',array('default' => 0));
         $propiedades->column('days_left', 'integer',array('default' => 0));
-        $propiedades->column('sector', 'string', array('limit' => 40));
+        $propiedades->column('neighborhood', 'integer', array('limit' => 4));
         $propiedades->column('coordenates', 'string', array('limit' => 100));
         $propiedades->column('visits', 'integer',array('default' => 0));
         $propiedades->column('bedrooms', 'integer', array('limit' => 3));
@@ -28,6 +29,7 @@ class AgregarTablaPropiedades extends Ruckusing_BaseMigration {
         $propiedades->column('post_date', 'integer', array('limit' => 3));
         $propiedades->column('max_photos_number', 'integer', array('limit' => 2));
         $propiedades->column('photos_number', 'integer', array('limit' => 2));
+        $propiedades->column('condition', 'integer', array('limit' => 2));
         $propiedades->column('type', 'integer', array('limit' => 2));
         $propiedades->finish();
         

@@ -89,11 +89,11 @@ $config = array(
         ),
         array(
             'field' => 'property-type',
-            'label' => 'sector',
+            'label' => 'tipo',
             'rules' => 'required'
         ),
         array(
-            'field' => 'property-sector',
+            'field' => 'property-neighborhood',
             'label' => 'sector',
             'rules' => 'required'
         ),

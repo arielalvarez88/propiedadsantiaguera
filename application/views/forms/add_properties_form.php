@@ -1,4 +1,9 @@
+<?php
 
+$property_neighborhood = isset ($property_neighborhood) ? $property_neighborhood : false;
+$property_type = isset ($property_type) ? $property_type : false;
+
+?>
 
 <?php if (isset($errors) && $errors): ?>
     <div class="error-messages">
@@ -12,7 +17,7 @@
     </div>
 <?php endif; ?>
 
-<form id="property-form" method="post" action="<?php echo base_url(); ?>propiedades/validate" enctype="multipart/form-data">
+<form id="property-form" method="post" action="<?php echo base_url(); ?>propiedades/validate<?php echo isset($property_id) ? '/' . $property_id : ''; ?>" enctype="multipart/form-data">
     <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber1.png"/><span>Descripci&oacute;n de Propiedad</span></p>
     <div id="property-form-description">
         <div id="property-form-description-column-container">
@@ -21,53 +26,22 @@
             <ul id="property-form-description-column1" class="property-form-description-column">
                 <li>
                     <label for="property-form-description-type">Tipo</label>
-                    <select id="property-form-description-type" name="property-type">
-                        <option value="house" <?php echo!isset($property_type) || $property_type == 'casa' ? 'selected="selected"' : ''; ?>>
-                            Casa
-                        </option>
+                    
+                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_types'], array("id"=> "property-form-description-type", "name" => "property-type"), '', $property_type);?>
+                    
 
-                        <option value="apartment" <?php echo isset($property_type) && $property_type == 'apartment' ? 'selected="selected"' : ''; ?>>
-                            Apartamento
-                        </option>
-
-                        <option value="lot" <?php echo isset($property_type) && $property_type == 'lot' ? 'selected="selected"' : ''; ?>>
-                            Solar
-                        </option>
-
-                        <option value="penthouse" <?php echo isset($property_type) && $property_type == 'penthouse' ? 'selected="selected"' : ''; ?>>
-                            Penthouse
-                        </option>
-
-                        <option value="mall" <?php echo isset($property_type) && $property_type == 'mall' ? 'selected="selected"' : ''; ?>>
-                            Local Comercial
-                        </option>
-
-                        <option value="building" <?php echo isset($property_type) && $property_type == 'building' ? 'selected="selected"' : ''; ?>>
-                            Edificio
-                        </option>
-
-
-                        <option value="warehouse" <?php echo isset($property_type) && $property_type == 'warehouse' ? 'selected="selected"' : ''; ?>>
-                            Nave Industrial
-                        </option>
-
-
-                        <option value="office" <?php echo isset($property_type) && $property_type == 'office' ? 'selected="selected"' : ''; ?>>
-                            Oficina
-                        </option>
-
-                        <option value="land" <?php echo isset($property_type) && $property_type == 'land' ? 'selected="selected"' : ''; ?>>
-                            Finca
-                        </option>
-                    </select>
                 </li>
                 <li>
                     <label for="property-form-description-title">T&iacute;tulo:<span class="required">*</span></label> 
                     <input type="text" id="property-form-description-title" name="property-title" <?php echo isset($property_title) ? 'value="' . $property_title . '"' : ''; ?>/>
                 </li>
                 <li>
-                    <label for="property-form-description-sector">Sector:</label> 
-                    <input type="text" id="property-form-description-sector" name="property-sector" <?php echo isset($property_sector) ? 'value="' . $property_sector . '"' : ''; ?>/>
+                    <label for="property-form-description-neighborhood">Sector:</label> 
+                    
+                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'], array("id"=> "property-form-description-neighborhood", "name" => "property-neighborhood", ), '', $property_neighborhood);?>
+                    
+
+                    
                 </li>
 
 
@@ -89,7 +63,7 @@
 
                 <li id="property-form-description-address-container">
                     <label for="property-form-description-address">Direcci&oacute;n:<span class="required">*</span></label> 
-                    <textarea id="property-form-description-address" name="property-address"> </textarea>
+                    <textarea id="property-form-description-address" name="property-address"><?php echo isset($property_address) ? $property_address : ''; ?> </textarea>
                 </li>
 
 
@@ -115,8 +89,8 @@
                     <input type="text" id="property-form-description-stories" name="property-stories" <?php echo isset($property_stories) ? 'value="' . $property_stories . '"' : ''; ?>/>
                 </li>
                 <li>
-                    <label for="property-form-description-bedrooms">Habitaciones:<span class="required" <?php echo isset($property_bedrooms) ? 'value="' . $property_bedrooms . '"' : ''; ?>>*</span></label> 
-                    <input type="text" id="property-form-description-bedrooms" name="property-bedrooms"/>
+                    <label for="property-form-description-bedrooms">Habitaciones:<span class="required" >*</span></label> 
+                    <input type="text" id="property-form-description-bedrooms" name="property-bedrooms" <?php echo isset($property_bedrooms) ? 'value="' . $property_bedrooms . '"' : ''; ?>/>
                 </li>
             </ul>
 
@@ -193,7 +167,7 @@
             <div id="property-form-description-description">
 
                 <h3>Descripci&oacute;n de la propiedad:<span class="required">*</span></h3>
-                <textarea id="property-form-description-price" name="property-description"></textarea>
+                <textarea id="property-form-description-price" name="property-description"><?php echo isset($property_description) ? $property_description : ''; ?> </textarea>
             </div>
 
             <div id="property-form-close-places">
@@ -303,7 +277,7 @@
 
 
                 <li>
-                    <input id="property-form-description-features-watch-man-stand" type="checkbox" name="watch-man-stand" <?php echo isset($watch_man_stand) && $watch_man_stand ? 'checked="on"' : ''; ?>/>
+                    <input id="property-form-description-features-watch-man-stand" type="checkbox" name="watchman-stand" <?php echo isset($watchman_stand) && $watchman_stand ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-watch-man-stand">Caseta de guardianes</label> 
                 </li>
 
@@ -315,7 +289,7 @@
 
 
                 <li>
-                    <input id="property-form-description-features-white-clothes-closet" type="checkbox" name="white-clothes-closet" <?php echo isset($white_clothes_closer) && $white_clothes_closer ? 'checked="on"' : ''; ?>/>
+                    <input id="property-form-description-features-white-clothes-closet" type="checkbox" name="white-clothes-closet" <?php echo isset($white_clothes_closet) && $white_clothes_closet ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-white-clothes-closet">Closet de ropa Blanca</label> 
                 </li>
 
@@ -376,7 +350,7 @@
                 </li>
 
                 <li>
-                    <input id="property-form-description-features-family-room" type="checkbox" name="family-room" <?php echo isset($famaily_room) && $famaily_room ? 'checked="on"' : ''; ?>/>
+                    <input id="property-form-description-features-family-room" type="checkbox" name="family-room" <?php echo isset($family_room) && $family_room ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-family-room">Estar familiar</label> 
                 </li>
             </ul>
@@ -434,7 +408,7 @@
 
 
                 <li>
-                    <input id="property-form-description-features-receiver" type="checkbox" name="features-receiver" <?php echo isset($features_receiver) && $features_receiver ? 'checked="on"' : ''; ?>/>
+                    <input id="property-form-description-features-receiver" type="checkbox" name="receiver" <?php echo isset($receiver) && $receiver ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-receiver">Recibidor</label> 
                 </li>
 
