@@ -2,6 +2,7 @@
 
 $property_neighborhood = isset ($property_neighborhood) ? $property_neighborhood : false;
 $property_type = isset ($property_type) ? $property_type : false;
+$property_condition = isset ($property_condition) ? $property_condition : false;
 
 ?>
 
@@ -47,18 +48,8 @@ $property_type = isset ($property_type) ? $property_type : false;
 
 
                 <li>
-                    <label for="property-form-description-status">Vender/Alquilar:</label> 
-                    <select id="property-form-description-status" name="property-status">
-                        <option value="sell" <?php echo!isset($property_status) || $property_status == 'sell' ? 'selected="selected"' : ''; ?>>
-                            Vender
-                        </option>
-                        <option value="rent" <?php echo isset($property_status) && $property_status == 'rent' ? 'selected="selected"' : ''; ?>>
-                            Alquilar
-                        </option>
-                        <option value="sell-rent" <?php echo isset($property_status) && $property_status == 'sell-rent' ? 'selected="selected"' : ''; ?>>
-                            Vender/Alquilar
-                        </option>
-                    </select>
+                    <label for="property-form-description-condition">Vender/Alquilar:</label> 
+                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_conditions'], array("id" =>"property-form-description-status", "name" => "property-condition"), '', $property_condition)?>
                 </li>
 
                 <li id="property-form-description-address-container">
@@ -131,7 +122,7 @@ $property_type = isset ($property_type) ? $property_type : false;
                         </li>
 
                         <li>
-                            <label for="property-form-description-sell-price-dr">Precio de Venta $RD:</label> 
+                            <label for="property-form-description-sell-price-dr">Precio de Venta $RD:<span class="required">*</span></label> 
                             <input type="text" name="property-sell-price-dr" id="property-form-description-sell-price-dr" <?php echo isset($property_sell_price_dr) ? 'value="' . $property_sell_price_dr . '"' : '' ?>/>
                         </li>
 
@@ -482,6 +473,15 @@ $property_type = isset ($property_type) ? $property_type : false;
     <div id="property-form-photos">
 
 
+        <p>Fotos del slideshow:</p>
+        <div id="property-main-photo-container">
+            
+            <input id="property-main-photo" type="file" name="property-main-photo"/>
+        </div>
+        
+        <p>Fotos del slideshow:</p>
+            
+            
         <ul id="property-form-photos-first-column" class="property-form-photos-column">
             <?php for ($i = 1; $i <= 5; $i++): ?>
                 <li>

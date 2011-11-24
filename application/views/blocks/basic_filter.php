@@ -16,7 +16,7 @@
     <div id="basic-filter-top">
         <div id="basic-filter-top-left-size">
             
-            <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_conditions'], array("id" => "basic-filter-condition", "name" => "condition"), "Condición", $selected_property_condition); ?>
+            <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_conditions_for_filter'], array("id" => "basic-filter-condition", "name" => "condition"), "Condición", $selected_property_condition); ?>
  
 
             <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'], array("id" => "basic-filter-sector", "name" => "neighborhood"), "Sector", $selected_property_neighborhood); ?>

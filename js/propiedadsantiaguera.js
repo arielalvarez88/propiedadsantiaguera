@@ -1,7 +1,7 @@
 
 
 
-initilizeFrontPageSlideShow = function()
+initilizeSlideShows = function()
 {
     $('#front-page-slide-show').cycle({
         fx:     'fade', 
@@ -33,6 +33,23 @@ initilizeFrontPageSlideShow = function()
            
         }
     });
+    
+    
+    $('#tools-center-slideshow').cycle({ 
+        fx:     'fade', 
+        speed:  'fast', 
+        timeout: 4000, 
+        pager:  '#tools-center-pager',
+        cleartype: true,
+        cleartypeNoBg: true,
+        pagerEvent:    'click',
+        activePagerClass: 'active',
+        pagerAnchorBuilder: function (idx, slide){
+            return '#tools-center-pager a:nth('+idx+')';
+           
+        }
+    });
+    
 }
 
 initializePropiedadViewer = function (){
@@ -52,7 +69,7 @@ initializePropiedadViewer = function (){
         }
     });
     $('#propiedad-viewer-slidesshow-pager').cycle({ 
-        fx:     'scrollHorz', 
+        fx:     'fade', 
         prev:   '#propiedad-viewer-previous-pager', 
         next:   '#propiedad-viewer-next-pager', 
         after: hideNextorPrevious,
@@ -836,6 +853,9 @@ initializeHiderAndShowerElement = function(){
     var advancedFilter = new HiderAndShowerElement("#advanced-filter-property-type", {apartment:'.apartment-field', house : ".house-field", lot:".lot-field", penthouse:".penthouse-field",mall:".mall-field", building:".building-field", warehouse:".warehouse-field",office:".office-field",land:".land-field"}, "#advanced-filter .hiddable", true, "change");
 };
 
+
+
+
 $(document).ready
 {   
     extendJquery();
@@ -845,7 +865,7 @@ $(document).ready
         $('head').append(ieCssFixes);
     }
     
-    initilizeFrontPageSlideShow();
+    initilizeSlideShows();
     initializePropiedadViewer();    
     intializeAgentesHeaderSection();
     initializeViewLoaderElements();

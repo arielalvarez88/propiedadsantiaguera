@@ -34,23 +34,23 @@ class Propiedades extends CI_Controller {
         $no_id_passed = !$id || !is_numeric($id);
         if ($no_id_passed)
             redirect("/pagina_no_valida");
-        
-     
+
+
         $property = new Property();
         $property->where("id", $id)->get();
 
         $propiedadObject['property'] = $property;
-        
+
         $user = User_handler::getLoggedUser();
-        $property_belongs_to_logged_user = is_object($user) && $property->id  && $property->user->get()->id == $user->id  ? true : false;
-        
-        
+        $property_belongs_to_logged_user = is_object($user) && $property->id && $property->user->get()->id == $user->id ? true : false;
+
+
         $property_cant_be_shown = !$property_belongs_to_logged_user && (!isset($property->display_property) || !$property->display_property);
-        
-        
+
+
         if ($property_cant_be_shown)
             redirect("/pagina_no_valida");
- 
+
 
         $property_viewer_data['property'] = $property;
 
@@ -91,15 +91,15 @@ class Propiedades extends CI_Controller {
         $property_photos_pagers_groups = $slideshow_helper->getPagerSubset($property_pager_slides_html, 6);
 
         $property_viewer_data['property_photos_pagers_groups'] = $property_photos_pagers_groups;
-        
-        
-                
-                
-                
-                        
-                
 
-        
+
+
+
+
+
+
+
+
         $data['topLeftSide'] = $this->load->view('blocks/property_viewer', $property_viewer_data, true);
         $data['topRightSide'] = $this->load->view('blocks/user_viewer', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/monedaPrecio', $propiedadObject, true);
@@ -111,96 +111,92 @@ class Propiedades extends CI_Controller {
         $data['bottomLeftSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propiedadObject, true);
         $data['bottomRightSide'] = $this->load->view('blocks/solicitudDeInformacion', $propiedadObject, true);
 
-        if($property_belongs_to_logged_user && !$property->display_property)
-                {
-                    $data['top'] = $this->load->view("blocks/not_published_message",'',true);
-                }
+        if ($property_belongs_to_logged_user && !$property->display_property) {
+            $data['top'] = $this->load->view("blocks/not_published_message", '', true);
+        }
 
         $this->load->view('page', $data);
+    }
+
+    private function validate_and_upload_photos() {
+        $photos_inputs_names = array();
+        for ($i = 1; $i <= 10; $i++) {
+            $photos_inputs_names[] = "property-photo-" . $i;
+        }
+        $photos_inputs_names[] = "property-main-photo";
+        $upload_path = realpath("./" . Environment_vars::$environment_vars['properties_photos_dir_path']);
+        $properties_photos_filenames = File_handler::save_photos($photos_inputs_names, $upload_path, 5000);
+        return $properties_photos_filenames;
     }
 
     public function validate($property_id=0) {
 
         $properties_photos_filenames = array();
-        if ($this->form_validation->run('property') == false) {
+        $property_condition_for_validation_purposes = Environment_vars::$maps['property_conditions']['rent'] == $this->input->post('property-condition')? "rent" : "sell";
+        $validation_rules_for_property_type = 'property_'.  $property_condition_for_validation_purposes;
+        if ($this->form_validation->run('property') == false || $this->form_validation->run($validation_rules_for_property_type) == false ) {
 
             $this->add_property_error();
             return;
-        } else {
+        } 
+        else {
             try {
-                $photos_inputs_names = array();
-                for ($i = 1; $i <= 10; $i++) {
-                    $photos_inputs_names[] = "property-photo-" . $i;
-                }
-
-                $upload_path = realpath("./" . Environment_vars::$environment_vars['properties_photos_dir_path']);
-
-                $properties_photos_filenames = File_handler::save_photos($photos_inputs_names, $upload_path, 5000);
-            } catch (Exception $e) {
+                $properties_photos_filenames = $this->validate_and_upload_photos();
+            } 
+            catch (Exception $e) {
                 $messages['errors'] = $e->getMessage();
-
                 $this->agregar_propiedades($messages);
-
                 return;
             }
             $this->save_property($properties_photos_filenames, $property_id);
         }
     }
 
-public function buscar()
-    {
-      
-        $filtered_get = $this->input->get();
-        $properties_filters_container = new Property();        
-          
-        $search_by_reference = isset($filtered_get['ref-number']) && is_numeric($filtered_get['ref-number']) ? true : false;
-         
-        if($search_by_reference)
-        {
-            
-            redirect("propiedades/ver/".$filtered_get['ref-number']) ;
-            
-        }
-            
-        else
-        {
-            
-            Filter_builder::build_property_type_filter($filtered_get,$properties_filters_container);
-            Filter_builder::build_property_max_price_filter($filtered_get,$properties_filters_container);
-            Filter_builder::build_property_min_price_filter($filtered_get,$properties_filters_container);
-            Filter_builder::build_property_condition_filter($filtered_get,$properties_filters_container);
-            Filter_builder::build_property_neighborhood_filter($filtered_get,$properties_filters_container);
-        }
-        
-        
-        $sql = $properties_filters_container->get_sql();
-        $filtered_properties = $properties_filters_container->get();
-        
-       
-        
-                                                         
-        $filter_initial_values['selected_property_neighborhood'] =  isset($filtered_get) && isset($filtered_get['neighborhood'])? $filtered_get['neighborhood'] : null;
-        
-        $filter_initial_values['selected_property_type'] = isset($filtered_get) && isset($filtered_get['type'])? $filtered_get['type'] : null;
-        
-        $filter_initial_values['selected_property_ref_number'] = isset($filtered_get) && isset($filtered_get['ref-number'])? $filtered_get['ref-number'] : null;
-        
-        $filter_initial_values['selected_property_condition'] = isset($filtered_get) && isset($filtered_get['condition'])? $filtered_get['condition'] : null;
-        
-        $views['topLeftSide'] = $this->load->view("blocks/basic_filter",$filter_initial_values, true);
-        
-        $search_results['filtered_properties'] = $filtered_properties;
-        $views['topLefSide'] = $this->load->view("blocks/properties_search_results_pager",$search_results);
-        
-        $views['topRightSide'] = $this->load->view("blocks/advertising",'',true);
-        
-        $this->load->view("page",$views);
-       
-        
-        
-        
-    }
+    public function buscar() {
 
+        $filtered_get = $this->input->get();
+        $properties_filters_container = new Property();
+
+        $search_by_reference = isset($filtered_get['ref-number']) && is_numeric($filtered_get['ref-number']) ? true : false;
+
+        if ($search_by_reference) {
+
+            redirect("propiedades/ver/" . $filtered_get['ref-number']);
+        } else {
+
+            Filter_builder::build_property_type_filter($filtered_get, $properties_filters_container);
+            Filter_builder::build_property_max_price_filter($filtered_get, $properties_filters_container);
+            Filter_builder::build_property_min_price_filter($filtered_get, $properties_filters_container);
+            Filter_builder::build_property_condition_filter($filtered_get, $properties_filters_container);
+            Filter_builder::build_property_neighborhood_filter($filtered_get, $properties_filters_container);
+        }
+
+        
+
+        $filtered_properties = $properties_filters_container->get();
+
+
+
+
+        $filter_initial_values['selected_property_neighborhood'] = isset($filtered_get) && isset($filtered_get['neighborhood']) ? $filtered_get['neighborhood'] : null;
+
+        $filter_initial_values['selected_property_type'] = isset($filtered_get) && isset($filtered_get['type']) ? $filtered_get['type'] : null;
+
+        $filter_initial_values['selected_property_ref_number'] = isset($filtered_get) && isset($filtered_get['ref-number']) ? $filtered_get['ref-number'] : null;
+
+        $filter_initial_values['selected_property_condition'] = isset($filtered_get) && isset($filtered_get['condition']) ? $filtered_get['condition'] : null;
+
+        $views['topLeftSide'] = $this->load->view("blocks/basic_filter", $filter_initial_values, true);
+
+        $search_results['filtered_properties'] = $filtered_properties;
+        $search_results['condition'] = isset($filtered_get['condition']) && $filtered_get['condition'] == Environment_vars::$maps['property_conditions']['rent'] ? "rent": "sell";
+        
+        $views['bottomLeftSide'] = $this->load->view("blocks/properties_search_results_pager", $search_results, true);
+
+        $views['topRightSide'] = $this->load->view("blocks/advertising", '', true);
+
+        $this->load->view("page", $views);
+    }
 
     private function save_property($properties_photos_filenames = array(), $property_id=0) {
         $user = User_handler::getLoggedUser();
@@ -219,7 +215,6 @@ public function buscar()
             $flush_property_features = $newProperty->property_features->where('property_id', $property_id)->get();
             $newProperty->delete($flush_property_features->all);
             $newProperty->delete($flush_property_close_places->all);
-            
         } else {
             $newProperty = new Property();
         }
@@ -234,8 +229,8 @@ public function buscar()
         $newProperty->livingrooms = $newPropertyInfo['property-livingrooms'];
         $newProperty->address = $newPropertyInfo['property-address'];
         $newProperty->stories = $newPropertyInfo['property-stories'];
-        $newProperty->kitchens = $newPropertyInfo['property-kitchens'];        
-        $newProperty->condition = $newPropertyInfo['property-status'];
+        $newProperty->kitchens = $newPropertyInfo['property-kitchens'];
+        $newProperty->condition = $newPropertyInfo['property-condition'];
         $newProperty->bedrooms = $newPropertyInfo['property-bedrooms'];
         $newProperty->parkings = $newPropertyInfo['property-parkings'];
         $newProperty->sell_price_us = isset($newPropertyInfo['property-sell-price-us']) ? Numerizer::numerize($newPropertyInfo['property-sell-price-us']) : null;
@@ -244,11 +239,11 @@ public function buscar()
         $newProperty->rent_price_dr = isset($newPropertyInfo['property-rent-price-dr']) ? Numerizer::numerize($newPropertyInfo['property-rent-price-dr']) : null;
         $newProperty->type = $newPropertyInfo['property-type'];
 
-        if ($newPropertyInfo['property-status'] == "sell" || $newPropertyInfo['property-status'] == "sell-rent") {
+        if ($newPropertyInfo['property-condition'] == "sell" || $newPropertyInfo['property-condition'] == "sell-rent") {
             $newProperty->sell_price_dollars = $newPropertyInfo['property-sell-price-us'];
             $newProperty->sell_price_pesos = $newPropertyInfo['property-sell-price-dr'];
         }
-        if ($newPropertyInfo['property-status'] == "rent" || $newPropertyInfo['property-status'] == "sell-rent") {
+        if ($newPropertyInfo['property-condition'] == "rent" || $newPropertyInfo['property-condition'] == "sell-rent") {
             $newProperty->rent_price_dollars = $newPropertyInfo['property-rent-price-us'];
             $newProperty->rent_price_pesos = $newPropertyInfo['property-rent-price-dr'];
         }
@@ -279,17 +274,25 @@ public function buscar()
         $file_getter = new File();
 
         $transactioner->trans_start();
-        foreach ($properties_photos_filenames as $property_filename) {
+
+
+        $main_photo_input_name = "property-main-photo";
+
+        foreach ($properties_photos_filenames as $input_name => $property_filename) {
 
             if (!$property_filename)
                 continue;
 
-            $file = new File();
-            $file->path = Environment_vars::$environment_vars['properties_photos_dir_path'] . $property_filename;
-            $file->type = Environment_vars::$maps['file_type_to_id']['photo'];
-            $file->save();
+            if ($input_name == $main_photo_input_name) {
+                $newProperty->main_photo = Environment_vars::$environment_vars['properties_photos_dir_path'] . $property_filename;
+            } else {
+                $file = new File();
+                $file->path = Environment_vars::$environment_vars['properties_photos_dir_path'] . $property_filename;
+                $file->type = Environment_vars::$maps['file_type_to_id']['photo'];
+                $file->save();
 
-            $file_getter->or_where("id", $file->id);
+                $file_getter->or_where("id", $file->id);
+            }
         }
 
         $transactioner->trans_complete();
@@ -302,15 +305,13 @@ public function buscar()
 
         $newProperty->save(array($newPropertyType, $new_property_close_places->all, $new_property_features->all, $user, $new_property_files));
 
+        if (isset($property_filename) && isset($property_filename['proper']))
+            if ($property_id) {
+                $messages['info_messages'] = 'Su propiedad fue actualizada con éxito';
+            } else {
+                $messages['info_messages'] = 'Su propiedad fue agregada con éxito';
+            }
 
-        
-        
-        if ($property_id) {
-            $messages['info_messages'] = 'Su propiedad fue actualizada con éxito';
-        } else {
-            $messages['info_messages'] = 'Su propiedad fue agregada con éxito';
-        }
-        
         $this->agregar_propiedades($messages);
     }
 
@@ -371,16 +372,16 @@ public function buscar()
         $repopulateForm['property_address'] = $property->address;
         $repopulateForm['property_title'] = $property->title;
         $repopulateForm['property_description'] = $property->description;
-        $repopulateForm['property_status'] = $property->condition;
-        
-        
-        
+        $repopulateForm['property_condition'] = $property->condition;
+
+
+
         $repopulateForm['property_sell_price_us'] = Numerizer::numerize($property->sell_price_us);
         $repopulateForm['property_rent_price_us'] = Numerizer::numerize($property->rent_price_us);
         $repopulateForm['property_sell_price_dr'] = Numerizer::numerize($property->sell_price_dr);
         $repopulateForm['property_rent_price_dr'] = Numerizer::numerize($property->rent_price_dr);
-        
-        
+
+
 
         $repopulateForm['property_terrain'] = $property->terrain;
         $repopulateForm['property_construction'] = $property->construction;
@@ -403,7 +404,7 @@ public function buscar()
         $repopulateForm['property_type'] = $this->input->post('property-type');
         $repopulateForm['property_neighborhood'] = $this->input->post('property-neighborhood');
         $repopulateForm['property_address'] = $this->input->post('property-address');
-        $repopulateForm['property_status'] = $this->input->post('property-status');
+        $repopulateForm['property_condition'] = $this->input->post('property-condition');
         $repopulateForm['property_sell_price_us'] = $this->input->post('property-sell-price-us');
         $repopulateForm['property_rent_price_us'] = $this->input->post('property-rent-price-us');
         $repopulateForm['property_sell_price_dr'] = $this->input->post('property-sell-price-dr');

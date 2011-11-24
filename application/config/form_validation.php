@@ -129,6 +129,18 @@ $config = array(
             'field' => 'property-parkings',
             'label' => 'parqueos',
             'rules' => 'required|numeric')
+    ),
+    "property-sell" => array(
+           array(
+            'field' => 'property-sell-price-dr',
+            'label' => 'Precio de Venta $RD',
+            'rules' => 'required|numeric')
+    ),
+    "property-rent" => array(
+           array(
+            'field' => 'property-rent-price-dr',
+            'label' => 'Precio de Alquiler $RD',
+            'rules' => 'required|numeric')
     )
 );
 ?>
