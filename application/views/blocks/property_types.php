@@ -50,9 +50,9 @@
         
         <td>Proyectos en<br>Construci&oacute;n</td>
         
-        <td>Solares</td>
+        <td>Solares</br></td>
         
-        <td>Fincas</td>
+        <td>Fincas</br></td>
 </tr>
 </table>
 </div>

@@ -26,17 +26,9 @@ class Usuario extends CI_Controller {
         $user = $this->get_logged_user_or_redirect_to_please_login();
         $panel_view = array();
 
-        switch ($section) {
-            case 'propiedades':
-                $section_info['user'] = $user;
-                $section_info['subsession'] = $user;
-                $section_info['messages'] = $messages;
-                $section_info['pager'] = empty($subsection) || $subsection == 'publicadas' ? $this->get_user_published_properties_pager() : $this->get_user_created_properties_pager();
-                $panel_view['topLeftSide'] = $this->load->view('blocks/panels_property_section', $section_info, true);
-                break;
-        }
-
-
+        
+        
+        redirect("/panel/".$section.$subsection);
         $this->load->view('page', $panel_view);
     }
 

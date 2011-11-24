@@ -2940,6 +2940,17 @@ span.required{
 }
 
 /***** plans table ******/
+#planes_main_title
+{
+   text-align:center;
+   color:#76BA39;
+}
+#planes_main_subtitle
+{
+   text-align:center; 
+   color:#B2B2B2;
+   margin-bottom: 10px;
+}
 #planes_holder
 {
     background:url('/images/common/grayPattern.png') repeat transparent;
@@ -2955,11 +2966,11 @@ span.required{
     color:#333;
     font-size:9pt;
     text-align:right;
-    margin-top:0;
+    margin-top:131px;
 }
 #planes_detail td
 {
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 #planes_data
 {
@@ -2978,7 +2989,7 @@ span.required{
 }
 #planes_data tbody tr,#planes_data tbody td
 {
-    padding:15px 0;
+    padding:0;
     border-top: 1px solid #AFBBA1;
 }
 #planes_data tr
@@ -3003,7 +3014,7 @@ span.required{
 }
 #planes_data tbody
 {
-    height: 600px;
+    height: 509px;
 }
 #planes_data a img
 {
@@ -4040,7 +4051,7 @@ button.ui-button:-moz-focus-inner { border: 0; padding: 0; } /* reset extra padd
 #property_types_holder table tr td a
 {
     margin: 0;
-    padding:78px 40px;
+    padding:90px 34px;
     background:url('/images/property_type_gray_bg.png') top center no-repeat;
 }
 #property_types_holder table tr td a:hover
@@ -4049,7 +4060,7 @@ button.ui-button:-moz-focus-inner { border: 0; padding: 0; } /* reset extra padd
 }
 #property_types_holder table tr td a img
 {
-    height:60px;
+    height:74px;
 }
 
 

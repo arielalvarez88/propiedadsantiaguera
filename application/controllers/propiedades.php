@@ -124,7 +124,6 @@ class Propiedades extends CI_Controller {
 
         $properties_photos_filenames = array();
         if ($this->form_validation->run('property') == false) {
-
             $this->add_property_error();
             return;
         } else {
@@ -347,7 +346,7 @@ public function buscar()
         }
 
         $user->save();
-        redirect("/usuario/panel/propiedades/publicadas");
+        redirect("/panel/propiedades/publicadas");
     }
 
     public function editar_propiedades($property_id) {
@@ -373,16 +372,12 @@ public function buscar()
         $repopulateForm['property_title'] = $property->title;
         $repopulateForm['property_description'] = $property->description;
         $repopulateForm['property_status'] = $property->condition;
-        
-        
-        
+                
         $repopulateForm['property_sell_price_us'] = Numerizer::numerize($property->sell_price_us);
         $repopulateForm['property_rent_price_us'] = Numerizer::numerize($property->rent_price_us);
         $repopulateForm['property_sell_price_dr'] = Numerizer::numerize($property->sell_price_dr);
         $repopulateForm['property_rent_price_dr'] = Numerizer::numerize($property->rent_price_dr);
         
-        
-
         $repopulateForm['property_terrain'] = $property->terrain;
         $repopulateForm['property_construction'] = $property->construction;
         $repopulateForm['property_stories'] = $property->stories;
@@ -409,7 +404,6 @@ public function buscar()
         $repopulateForm['property_rent_price_us'] = $this->input->post('property-rent-price-us');
         $repopulateForm['property_sell_price_dr'] = $this->input->post('property-sell-price-dr');
         $repopulateForm['property_rent_price_dr'] = $this->input->post('property-rent-price-dr');
-
         $repopulateForm['property_terrain'] = $this->input->post('property-terrain');
         $repopulateForm['property_construction'] = $this->input->post('property-construction');
         $repopulateForm['property_histories'] = $this->input->post('property-histories');
@@ -418,8 +412,6 @@ public function buscar()
         $repopulateForm['property_livinrooms'] = $this->input->post('property-livinrooms');
         $repopulateForm['property_kitchens'] = $this->input->post('property-kitchens');
         $repopulateForm['property_parkings'] = $this->input->post('property-parkings');
-
-
         $repopulateForm['close_malls)'] = $this->input->post('close-malls)');
         $repopulateForm['close_supermarkets'] = $this->input->post('close-supermarkets');
         $repopulateForm['close_grocery_stores'] = $this->input->post('close-grocery-stores');
@@ -471,7 +463,10 @@ public function buscar()
         $repopulateForm['granite_countertops'] = $this->input->post('granite-countertops');
         $repopulateForm['electric_gate'] = $this->input->post('electric-gate');
         $repopulateForm['walk_in_closet'] = $this->input->post('walk-in-closet');
+
         $repopulateForm['errors'] = validation_errors();
+
+
         $this->agregar_propiedades($repopulateForm);
     }
 
