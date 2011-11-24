@@ -4,66 +4,36 @@
  * and open the template in the editor.
  */
 ?>
+<h1 id="planes_main_title">Maneja tus propiedades con libertad</h1>
+<h4 id="planes_main_subtitle">Publica facilmente sin importar el dia, la hora o el lugar.</h4>
 <div id="planes_holder">
 <table id="planes_detail">
+       
         <tr>
-            <td>&nbsp;</td>
+            <td valign="top">NUMERO DE PROPIEDADES</td>
         </tr>
+        <tr>      
+            <td valign="middle">DURACION POR PROPIEDAD</td>
+        </tr>
+   
         <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-        </tr>
-                <tr>
-            <td>&nbsp;</td>
-        </tr>
-        
-        <tr>
-            <td>NUMERO DE PROPIEDADES</td>
-        </tr>
-                <tr>
-            <td>&nbsp;</td>
+            <td valign="middle" style="padding-top:7px;padding-bottom:17px;">FOTOS (15) y VIDEOS (1)</td>
         </tr>
         <tr>
-            <td>DURACION POR PROPIEDAD</td>
-        </tr>
-                <tr>
-            <td>&nbsp;</td>
+            <td valign="middle" style="padding-top:18px;">PANEL ADMINISTRATIVO</td>
         </tr>
         <tr>
-            <td>FOTOS</td>
-        </tr>
-                <tr>
-            <td>&nbsp;</td>
+            <td valign="middle" >CREAR SOLICITUDES Y<br> RECIBIR PROPUESTAS</td>
         </tr>
         <tr>
-            <td>VIDEO</td>
-        </tr>
-
-        <tr>
-            <td>DESCUENTO EN BANNERS PUBLICITARIOS</td>
+            <td valign="middle">ENVIO DE PROPUESTAS A TERCEROS</td>
         </tr>
   
         <tr>
-            <td></br>CREACION DE SOLICITUD Y ENVIAR PROPUESTA DE SOLICITUDES</td>
-        </tr>
-  
-        <tr>
-            <td></br>INFORMACION EN INGLES Y ESPA&Ntilde;OL</td>
+            <td valign="middle">INFORMACION EN INGLES Y ESPA&Ntilde;OL</td>
         </tr>
         <tr>
-            <td></br>LOCALIZACION DE LA PROPIEDAD EN GOOGLE MAPS</td>
-        </tr>
-        
-        <tr>
-            <td></br>IMPRESION DE LA PROPIEDAD EN FORMATO PDF</td>
-        </tr>
-        <tr>
-            <td></br>VIDEOS COMPARTIDOS EN EL WEBSITE DEL USUARIO</td>
+            <td valign="middle">LOCALIZACION DE LA PROPIEDAD EN GOOGLE MAPS</td>
         </tr>
 </table>
     
@@ -81,13 +51,7 @@
            <td>30</td> <td class="white">30</td> <td>30</td> <td class="white">30</td>
         </tr>
         <tr>
-           <td>10</td> <td class="white">10</td> <td>15</td> <td class="white">15</td>
-        </tr>
-        <tr>
            <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
-        </tr>
-        <tr>
-            <td>5%</td> <td class="white">5%</td> <td>10%</td> <td class="white">10%</td>
         </tr>
         <tr>
             <td><img src="/images/check.png" alt="check"/></td  > <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>

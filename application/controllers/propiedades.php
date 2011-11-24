@@ -409,7 +409,6 @@ class Propiedades extends CI_Controller {
         $repopulateForm['property_rent_price_us'] = $this->input->post('property-rent-price-us');
         $repopulateForm['property_sell_price_dr'] = $this->input->post('property-sell-price-dr');
         $repopulateForm['property_rent_price_dr'] = $this->input->post('property-rent-price-dr');
-
         $repopulateForm['property_terrain'] = $this->input->post('property-terrain');
         $repopulateForm['property_construction'] = $this->input->post('property-construction');
         $repopulateForm['property_histories'] = $this->input->post('property-histories');
@@ -418,8 +417,6 @@ class Propiedades extends CI_Controller {
         $repopulateForm['property_livinrooms'] = $this->input->post('property-livinrooms');
         $repopulateForm['property_kitchens'] = $this->input->post('property-kitchens');
         $repopulateForm['property_parkings'] = $this->input->post('property-parkings');
-
-
         $repopulateForm['close_malls)'] = $this->input->post('close-malls)');
         $repopulateForm['close_supermarkets'] = $this->input->post('close-supermarkets');
         $repopulateForm['close_grocery_stores'] = $this->input->post('close-grocery-stores');
@@ -471,7 +468,10 @@ class Propiedades extends CI_Controller {
         $repopulateForm['granite_countertops'] = $this->input->post('granite-countertops');
         $repopulateForm['electric_gate'] = $this->input->post('electric-gate');
         $repopulateForm['walk_in_closet'] = $this->input->post('walk-in-closet');
+
         $repopulateForm['errors'] = validation_errors();
+
+
         $this->agregar_propiedades($repopulateForm);
     }
 

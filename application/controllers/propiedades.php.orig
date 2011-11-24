@@ -123,7 +123,6 @@ class Propiedades extends CI_Controller {
 
         $properties_photos_filenames = array();
         if ($this->form_validation->run('property') == false) {
-
             $this->add_property_error();
             return;
         } else {
@@ -147,6 +146,18 @@ class Propiedades extends CI_Controller {
         }
     }
 
+<<<<<<< HEAD
+    public function buscar()
+    {
+        $filtered_get = $this->input->get();
+        $properties_filters_container = new Property();        
+        $search_by_reference = $filtered_get['ref-number'] != "Número de referencia" && $filtered_get['ref-number']? true : false;
+        
+        if($search_by_reference)
+            Filter_builder::build_property_reference_filter ($filtered_get, $properties_filters);
+        else
+        {
+=======
 public function buscar()
     {
       
@@ -165,10 +176,25 @@ public function buscar()
         else
         {
             
+>>>>>>> origin/ariel_filters
             Filter_builder::build_property_type_filter($filtered_get,$properties_filters_container);
             Filter_builder::build_property_max_price_filter($filtered_get,$properties_filters_container);
             Filter_builder::build_property_min_price_filter($filtered_get,$properties_filters_container);
             Filter_builder::build_property_condition_filter($filtered_get,$properties_filters_container);
+<<<<<<< HEAD
+            Filter_builder::build_property_sector_filter($filtered_get,$properties_filters_container);
+        }
+        
+        $properties_filters_container->get()->_count();
+        
+        
+        
+    }
+    
+    private function save_property($properties_photos_filenames = array(),$property_id=0) {
+        
+        
+=======
             Filter_builder::build_property_neighborhood_filter($filtered_get,$properties_filters_container);
         }
         
@@ -203,6 +229,7 @@ public function buscar()
 
 
     private function save_property($properties_photos_filenames = array(), $property_id=0) {
+>>>>>>> origin/ariel_filters
         $user = User_handler::getLoggedUser();
 
         if (!$user->can_create_property()) {
@@ -229,13 +256,8 @@ public function buscar()
         $newProperty->description = $newPropertyInfo['property-description'];
         $newProperty->terrain = $newPropertyInfo['property-terrain'];
         $newProperty->bathrooms = $newPropertyInfo['property-bathrooms'];
-<<<<<<< HEAD
-        $newProperty->neighborhood = $newPropertyInfo['property-sector'];
-        $newProperty->construction = $newPropertyInfo['property-sector'];
-=======
         $newProperty->neighborhood = $newPropertyInfo['property-neighborhood'];
         $newProperty->construction = $newPropertyInfo['property-construction'];
->>>>>>> origin/darwin_edit_properties
         $newProperty->livingrooms = $newPropertyInfo['property-livingrooms'];
         $newProperty->address = $newPropertyInfo['property-address'];
         $newProperty->stories = $newPropertyInfo['property-stories'];
@@ -315,10 +337,7 @@ public function buscar()
         } else {
             $messages['info_messages'] = 'Su propiedad fue agregada con éxito';
         }
-<<<<<<< HEAD
         
-=======
->>>>>>> origin/darwin_edit_properties
         $this->agregar_propiedades($messages);
     }
 
@@ -354,7 +373,7 @@ public function buscar()
         }
 
         $user->save();
-        redirect("/usuario/panel/propiedades/publicadas");
+        redirect("/panel/propiedades/publicadas");
     }
 
     public function editar_propiedades($property_id) {
@@ -375,25 +394,17 @@ public function buscar()
         }
 
         $repopulateForm['property_type'] = $property->type;
-<<<<<<< HEAD
-        $repopulateForm['property_sector'] = $property->neighborhood;
-=======
         $repopulateForm['property_neighborhood'] = $property->neighborhood;
->>>>>>> origin/darwin_edit_properties
         $repopulateForm['property_address'] = $property->address;
         $repopulateForm['property_title'] = $property->title;
         $repopulateForm['property_description'] = $property->description;
         $repopulateForm['property_status'] = $property->condition;
-        
-        
-        
+                
         $repopulateForm['property_sell_price_us'] = Numerizer::numerize($property->sell_price_us);
         $repopulateForm['property_rent_price_us'] = Numerizer::numerize($property->rent_price_us);
         $repopulateForm['property_sell_price_dr'] = Numerizer::numerize($property->sell_price_dr);
         $repopulateForm['property_rent_price_dr'] = Numerizer::numerize($property->rent_price_dr);
         
-        
-
         $repopulateForm['property_terrain'] = $property->terrain;
         $repopulateForm['property_construction'] = $property->construction;
         $repopulateForm['property_stories'] = $property->stories;
@@ -420,7 +431,6 @@ public function buscar()
         $repopulateForm['property_rent_price_us'] = $this->input->post('property-rent-price-us');
         $repopulateForm['property_sell_price_dr'] = $this->input->post('property-sell-price-dr');
         $repopulateForm['property_rent_price_dr'] = $this->input->post('property-rent-price-dr');
-
         $repopulateForm['property_terrain'] = $this->input->post('property-terrain');
         $repopulateForm['property_construction'] = $this->input->post('property-construction');
         $repopulateForm['property_histories'] = $this->input->post('property-histories');
@@ -429,8 +439,6 @@ public function buscar()
         $repopulateForm['property_livinrooms'] = $this->input->post('property-livinrooms');
         $repopulateForm['property_kitchens'] = $this->input->post('property-kitchens');
         $repopulateForm['property_parkings'] = $this->input->post('property-parkings');
-
-
         $repopulateForm['close_malls)'] = $this->input->post('close-malls)');
         $repopulateForm['close_supermarkets'] = $this->input->post('close-supermarkets');
         $repopulateForm['close_grocery_stores'] = $this->input->post('close-grocery-stores');
@@ -482,7 +490,10 @@ public function buscar()
         $repopulateForm['granite_countertops'] = $this->input->post('granite-countertops');
         $repopulateForm['electric_gate'] = $this->input->post('electric-gate');
         $repopulateForm['walk_in_closet'] = $this->input->post('walk-in-closet');
+
         $repopulateForm['errors'] = validation_errors();
+
+
         $this->agregar_propiedades($repopulateForm);
     }
 

@@ -117,7 +117,7 @@ class Environment_vars {
             "close-gyms" => 7,
             "close-public-transport" => 8,
             "close-hardware-stores" => 9,
-            "close-drug-stores" => 10, 
+            "close-drug-stores" => 10
         ),
         "property_features" => array(
             "elevator" => 1,

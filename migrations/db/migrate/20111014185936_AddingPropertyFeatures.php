@@ -13,7 +13,6 @@ class AddingPropertyFeatures extends Ruckusing_BaseMigration {
 
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Ascensor','Ascensor')");
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Area de juegos','Area de Juegos')");
-        $this->execute("INSERT INTO property_features (name,description) VALUES  ('Ascensor','Ascensor')");
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Area de lavado','Area de lavado')");
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Balcon','Balcon')");        
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Baños en áreas recreativas','Baños en áreas recreativas')");
@@ -31,6 +30,7 @@ class AddingPropertyFeatures extends Ruckusing_BaseMigration {
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Desayunador','Desayunador')");
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Despensa','Despensa')");
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Dormitorio principal con baño','Dormitorio principal con baño')");
+        $this->execute("INSERT INTO property_features (name,description) VALUES  ('Ducto de basura','Ducto de basura')");
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Estar familiar','Estar familiar')");
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Gas común','Gas común')");
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Grifería importada','Grifería importada')");
@@ -46,11 +46,7 @@ class AddingPropertyFeatures extends Ruckusing_BaseMigration {
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Patio con jardín','Patio con jardín')");
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Piscina','Piscina')");
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Pisos en mármol','Pisos en mármol')");
-        $this->execute("INSERT INTO property_features (name,description) VALUES  ('Planta eléctrica','Planta eléctrica')");
-        $this->execute("INSERT INTO property_features (name,description) VALUES  ('Piscina','Piscina')");
-        $this->execute("INSERT INTO property_features (name,description) VALUES  ('Pisos en mármol','Pisos en mármol')");
-        $this->execute("INSERT INTO property_features (name,description) VALUES  ('Planta eléctrica','Planta eléctrica')");
-        
+        $this->execute("INSERT INTO property_features (name,description) VALUES  ('Planta eléctrica','Planta eléctrica')");        
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Terminación en caoba','Terminación en caoba')");
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Terraza','Terraza')");
         $this->execute("INSERT INTO property_features (name,description) VALUES  ('Todos los servicios pre-instalados','Todos los servicios pre-instalados')");
