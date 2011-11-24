@@ -55,6 +55,7 @@ class Propiedades extends CI_Controller {
         $property_viewer_data['property'] = $property;
 
 
+
         $lowercase_property_type = Environment_vars::$maps['property_type_to_name'][$property->type];
         $property_type = ucwords($lowercase_property_type);
 
