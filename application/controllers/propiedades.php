@@ -322,7 +322,8 @@ class Propiedades extends CI_Controller {
             $this->editar_propiedades($property_id, $messages);
         } else {
             $messages['info_messages'] = 'Su propiedad fue agregada con éxito';
-            $this->agregar_propiedades($messages);
+            $this->session->set_userdata($messages);
+            redirect("/panel/propiedades/agregar");
         }
         
     }
