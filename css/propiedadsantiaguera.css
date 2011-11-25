@@ -852,12 +852,12 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 }
 
 #footer-contact p a#twitter-icon {
-    background-position: -27px 0;
+    background-position: -26px 0;
 }
 
 #footer-contact p a#google-plus-icon
 {
-        background-position: -54px 0;
+        background-position: -53px 0;
 }
 
 #footer-bottom
@@ -1193,7 +1193,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #property-form-photos
 {
-    height: 128px;
+    height: 251px;
 }
 #property-form-description-column-container
 {
@@ -1306,10 +1306,11 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 }
 
-#popular-neighborhoods-header
-{
 
+#popular-neighborhoods-header {
+    width: auto;
 }
+
 
 #popular-neighborhoods ul li
 {
@@ -1358,26 +1359,60 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     height: 152px;
 }
 
+#tools-center-pager a.active
+{
+    background-image: url('/images/toolsCenter/toolsCenterSelectedIconsSprite.png');
+}
+
+
 #tools-center-pager a {
     background-image: url("/images/toolsCenter/toolsCenterIconsSprite.png");
-    border-right: 1px solid #EDEDED;
+    
     display: block;
     float: left;
     height: 65px;
     text-align: center;
-    width: 83px;
+    width: 81px;
+    margin: 0 1px;
+}
+
+#propiedad-viewer-pagers-pager img {
+    float: left;
+    display: block;
+    cursor: pointer;
+}
+
+#propiedad-viewer-pagers-pager img.hidden
+{
+    display: none;
+}
+
+#tools-center-pager a#calculator-tool
+{
+    margin-left: 0;
+}
+
+#qa-tool{
+    margin-right: 0;
+}
+
+#tools-center-pager
+{
+      position: relative;
+    top: -6px;
+    z-index: 1000;
 }
 
 #video-tool {
-    background-position: -85px 0;
+    background-position: -83px 0;
 }
 
 #checklist-tool {
-    background-position: -170px 0;
+    background-position: -166px 0;
 }
 
 #qa-tool {
-    background-position: -255px 0;
+    background-position: -250px 0;
 }
 
 /***tools-center ENDS***/
@@ -2065,9 +2100,33 @@ margin-bottom: 5px;
     color: black;
     font-weight: bold;
 }
+
+
+#property-main-photo-container
+{
+    margin-bottom: 40px;
+    padding-left: 23px;
+}
+
+.property-form-photos-column li span {
+    display: block;
+    width: 23px;
+    float: left;
+}
+
+#property-form-photos p {
+    margin-bottom: 15px;
+}
+
+#property-main-photo-container lable,
+#property-main-photo-container input{
+    display: block;
+}
+
 #propiedad-viewer-images-side {
     clear: both;
     height: 271px;
+    width: 660px;
 }
 .propiedad-viewer-slideshow-selector
 {
@@ -2129,9 +2188,10 @@ margin-bottom: 5px;
     border-radius: 0 20px 20px 20px;
 }
 
-#propiedad-viewer-slideshow
-{
+#propiedad-viewer-slideshow {
     float: left;
+    height: 254px;
+    width: 449px;
 }
 
 #propiedad-viewer-ref img
@@ -2179,6 +2239,13 @@ margin-bottom: 5px;
     height: 20px;
     margin-bottom: 5px;
 }
+
+
+.item-corner
+{
+    float:left;
+}
+
 .itemCorner{
     float:left;
 }
@@ -2325,6 +2392,89 @@ margin-bottom: 5px;
     float: left;
 }
 /*property-info ENDS*/
+
+
+/*properties-search-results-pager */
+
+.properties-search-results-pager-property {
+    clear: both;
+    float: left;
+    height: 175px;
+    width: 443px;
+}
+
+
+.properties-search-results-pager-divisor
+{
+    height: 12px;
+    background-image: url('/images/common/stripesGradient_H433.jpg');
+}
+
+.properties-search-results-pager-details {
+    clear: both;
+    display: block;
+    float: right;
+    margin-top: 16px;
+    width: 122px;
+}
+
+.properties-search-results-pager-property-photo{
+    border: 3px solid #76BC3B;
+    display: block;
+    float: left;
+    height: 146px;
+    margin-right: 10px;
+    width: 176px;
+}
+
+.properties-search-results-pager-property h2 {
+    background-color: #76BC3B;
+    color: white;
+    float: left;
+    font-size: 1.3em;
+    height: 22px;
+    padding-left: 5px;
+    padding-top: 0;
+}
+
+.properties-search-results-pager-property-title {
+    margin-bottom: 5px;
+}
+
+.properties-search-results-pager-property h2.price{
+    background-color: #e8e8e8;
+    color: black;
+    padding-right: 10px;
+}
+
+
+.properties-search-results-pager-property-divisor {
+    display: block;
+    float: left;
+    margin: 0 7px;
+}
+
+.properties-search-results-pager-property div ul
+{
+    list-style: none;
+    float: left;
+}
+.properties-search-results-pager-property div
+{
+    float: left;
+    
+}
+
+.properties-search-results-pager-property div div
+{
+  clear: both;  
+}
+
+
+
+
+
+/*properties-search-results-pager ENDS*/
 
 /*solicitud-de-info*/
 #solicitud-de-info
@@ -2526,7 +2676,7 @@ margin-bottom: 5px;
 
 
 
-a
+
 /*user-info*/
 #user-info {
     margin-right: 8px;
@@ -2895,13 +3045,22 @@ span.required{
 
 
 
-.front-page-module-header
-{
+.front-page-module-header {
     background-image: url("/images/common/whiteToGrayGradient_H327.png");
     background-position: 0 219px;
+    border-left: 1px solid #DFDFDF;
+    border-right: 1px solid #DFDFDF;
+    border-top: 1px solid #DFDFDF;
     color: #76B939;
     height: 21px;
     padding: 7px 0 7px 10px;
+    width: 318px;
+}
+
+#tools-center-slideshow a
+{
+    border-left: 1px solid #dfdfdf;
+    border-right: 1px solid #dfdfdf;
 }
 .error-messages, .info-messages
 {

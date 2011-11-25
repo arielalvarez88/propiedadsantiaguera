@@ -229,7 +229,7 @@ $thisPage = str_replace('/', '-', uri_string());
 
                 <div id="footer-bottom">
                     <p id="footer-bottom-left">2011 Propiedad Santiaguera, All rights reserved</p>
-                    <img src="/images/common/5050mktLogo.png" alt="5050mkt-logo"/>
+                    <a class="no-decoration-anchor" href="http://www.5050mkt.com"><img src="/images/common/5050mktLogo.png" alt="5050mkt-logo"/></a>
                     <p id="footer-bottom-right">
                         Propiedad Santiaguera es un producto de
                     </p>

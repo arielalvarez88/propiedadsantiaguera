@@ -97,7 +97,7 @@ class Filter_builder {
        {
             $filter = new Where_in_filter($field_name, array(Environment_vars::$maps['property_conditions']['sell/rent'], Environment_vars::$maps['property_conditions']['sell']));
             $filter->add_filter($property_object);              
-            $property_object->or_where($field_name,Environment_vars::$maps['property_conditions']['rent']);
+            
        }
         
    

@@ -45,7 +45,7 @@ class Usuario extends CI_Controller {
     }
 
     public function loginform() {
-//$this->load->view('page.php');
+
         $this->load->view('blocks/login');
     }
 
@@ -139,6 +139,8 @@ class Usuario extends CI_Controller {
 
         $repopulateForm['email'] = $user_info_getter->get_email();
         $repopulateForm['tel'] = $user_info_getter->get_tel();
+        $repopulateForm['address'] = $user_info_getter->get_address();
+        $repopulateForm['description'] = $user_info_getter->get_description();
         
         $repopulateForm['cel'] = $user_info_getter->get_cel();
         $repopulateForm['fax'] = $user_info_getter->get_fax();

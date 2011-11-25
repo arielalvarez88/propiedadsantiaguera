@@ -16,9 +16,10 @@
     <div id="propiedad-viewer-images-side">
         <div id="propiedad-viewer-slideshow">
            
-                        
+                        <?php $i=0;?>
                         <?php foreach ($property_photos_paths as $property_photo_path): ?>
-                            <img class="propiedad-viewer-slide" src="<?php echo $property_photo_path; ?>" alt="imagen-propiedad"/>                            
+                            <img  class="propiedad-viewer-slide <?php echo $i > 0? "hidden" : '';?>" src="<?php echo $property_photo_path; ?>" alt="imagen-propiedad"/>                            
+                            <?php $i++;?>
                         <?php endforeach; ?>
            
         </div>
@@ -52,7 +53,7 @@
 
 
         <div id="propiedad-viewer-pagers-pager">
-            <img id="propiedad-viewer-previous-pager" src="/images/propiedadesViewer/previousPager.png" class="propiedad-viewer-pager-selector"/>
+            <img class="hidden" id="propiedad-viewer-previous-pager" src="/images/propiedadesViewer/previousPager.png" class="propiedad-viewer-pager-selector"/>
             <div id="propiedad-viewer-slidesshow-pager">
 
 
@@ -66,7 +67,7 @@
                 <?php endforeach; ?>
 
             </div>
-            <img id="propiedad-viewer-next-pager" src="/images/propiedadesViewer/nextPager.png" class="propiedad-viewer-pager-selector"/>
+            <img class="hidden" id="propiedad-viewer-next-pager" src="/images/propiedadesViewer/nextPager.png" class="propiedad-viewer-pager-selector"/>
         </div>
     </div>
 

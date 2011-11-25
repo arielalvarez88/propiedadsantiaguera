@@ -1,7 +1,7 @@
 
 
 
-initilizeFrontPageSlideShow = function()
+initilizeSlideShows = function()
 {
     $('#front-page-slide-show').cycle({
         fx:     'fade', 
@@ -33,6 +33,23 @@ initilizeFrontPageSlideShow = function()
            
         }
     });
+    
+    
+    $('#tools-center-slideshow').cycle({ 
+        fx:     'fade', 
+        speed:  'fast', 
+        timeout: 4000, 
+        pager:  '#tools-center-pager',
+        cleartype: true,
+        cleartypeNoBg: true,
+        pagerEvent:    'click',
+        activePagerClass: 'active',
+        pagerAnchorBuilder: function (idx, slide){
+            return '#tools-center-pager a:nth('+idx+')';
+           
+        }
+    });
+    
 }
 
 initializePropiedadViewer = function (){
@@ -52,7 +69,7 @@ initializePropiedadViewer = function (){
         }
     });
     $('#propiedad-viewer-slidesshow-pager').cycle({ 
-        fx:     'scrollHorz', 
+        fx:     'fade', 
         prev:   '#propiedad-viewer-previous-pager', 
         next:   '#propiedad-viewer-next-pager', 
         after: hideNextorPrevious,
@@ -510,28 +527,28 @@ initializeViewLoaderElements = function(){
     
     
     
-    var propertyTypePassword = new ViewLoaderElement('#property-form-description-status','change',[{
-        value: 'sell', 
-        url:'/ajax/view_loader/sell_rent_inputs',
-        data: {
-            status: 'sell', 
-            repopulate : propertyTypeRepopulate
-        }
-    },{
-        value: 'rent', 
-        url:'/ajax/view_loader/sell_rent_inputs',
-        data: {
-            status: 'rent', 
-            repopulate : propertyTypeRepopulate
-        }
-    },{
-        value: 'sell-rent', 
-        url:'/ajax/view_loader/sell_rent_inputs',
-        data: {
-            status: 'sell-rent', 
-            repopulate : propertyTypeRepopulate
-        }
-    }],'#property-form-description-column-container');
+//    var propertyCondition = new ViewLoaderElement('#property-form-description-condition','change',[{
+//        value: 1, 
+//        url:'/ajax/view_loader/sell_rent_inputs',
+//        data: {
+//            status: 'sell', 
+//            repopulate : propertyTypeRepopulate
+//        }
+//    },{
+//        value: 2, 
+//        url:'/ajax/view_loader/sell_rent_inputs',
+//        data: {
+//            status: 'rent', 
+//            repopulate : propertyTypeRepopulate
+//        }
+//    },{
+//        value: 3, 
+//        url:'/ajax/view_loader/sell_rent_inputs',
+//        data: {
+//            status: 'sell-rent', 
+//            repopulate : propertyTypeRepopulate
+//        }
+//    }],'#property-form-description-column-container');
 
 };
 
@@ -666,7 +683,7 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderCo
    this.filterElement = $(filterContainerSelector);
    this.sliderChangerElementEvent = function(){
      
-     console.log('change!');
+
        for(value in valuesToSliderParameters)
      {
            if(thisObject.sliderChangerElement.val() == value)
@@ -695,6 +712,9 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderCo
            
            var maxPrice = thisObject.sliderElement.getRange()[1];
            queryString += "minprice=" + minPrice + "&" +"maxprice=" + maxPrice;
+           queryString += "&absoluteMin=" + thisObject.sliderElement.minValue + "&" +"absoluteMax=" + thisObject.sliderElement.maxValue + "&step=" + thisObject.sliderElement.step;
+           
+           
            
            var noLimitToMaxPrice = thisObject.sliderElement.getMax() <= maxPrice;
            queryString +=  noLimitToMaxPrice? "&nopricelimit=true" : "";
@@ -712,7 +732,7 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderCo
    
    
    
-   this.sliderChangerElement.change();
+   
    
    
 };
@@ -720,7 +740,12 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderCo
 
 initializeFilters = function(){
    
-   var basicFilter = new Filter("#basic-filter","#basic-filter-condition", "#basic-filter-price-slider","#basic-filter-search-button",{1: {minValue: "1", maxValue: 50000000, maxInitialValue: 50000000, minInitialValue: 0, step: 500000}, "2": {minValue: 0, maxValue: 300000, maxInitialValue: 300000, minInitialValue: 0, step: 5000}, 2 : {minValue: 0, maxValue: 50000000, maxInitialValue: 50000000, minInitialValue: 0, step: 500000}}, 0, 50000000, 0, 50000000,500000,"/propiedades/buscar");
+   var basicFilterMinPriceInitialValue = $.getUrlVar('minprice') ? Number($.getUrlVar('minprice')) : 0;
+   var basicFilterMaxPriceInitialValue = $.getUrlVar('maxprice')? Number( $.getUrlVar('maxprice')) : 50000000;
+   var basicFilterMinValue = $.getUrlVar('absoluteMin')? Number($.getUrlVar('absoluteMin')) : 0;
+   var basicFilterMaxValue = $.getUrlVar('absoluteMax')? Number($.getUrlVar('absoluteMax')) : 50000000;   
+   var basicFilterStep = $.getUrlVar('step')? Number($.getUrlVar('step')) : 500000;
+   var basicFilter = new Filter("#basic-filter","#basic-filter-condition", "#basic-filter-price-slider","#basic-filter-search-button",{1: {minValue: 0, maxValue: 50000000, maxInitialValue: 50000000, minInitialValue: 0, step: 500000}, 2: {minValue: 0, maxValue: 300000, maxInitialValue: 300000, minInitialValue: 0, step: 5000}}, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "/propiedades/buscar");
    
 };
 
@@ -834,7 +859,11 @@ intializeHideShowElements = function(){
 
 initializeHiderAndShowerElement = function(){
     var advancedFilter = new HiderAndShowerElement("#advanced-filter-property-type", {apartment:'.apartment-field', house : ".house-field", lot:".lot-field", penthouse:".penthouse-field",mall:".mall-field", building:".building-field", warehouse:".warehouse-field",office:".office-field",land:".land-field"}, "#advanced-filter .hiddable", true, "change");
+    var propertiesFormCondition = new HiderAndShowerElement("#property-form-description-condition", {1:'.sell-condition-field', 2 : ".rent-condition-field", 3 : ".rent-condition-field, .sell-condition-field" }, "ul #property-form-description-column4 li", false, "change");
 };
+
+
+
 
 $(document).ready
 {   
@@ -845,11 +874,10 @@ $(document).ready
         $('head').append(ieCssFixes);
     }
     
-    initilizeFrontPageSlideShow();
+    initilizeSlideShows();
     initializePropiedadViewer();    
     intializeAgentesHeaderSection();
     initializeViewLoaderElements();
-    initializeSliders();
     intializeForms();
     initializeOverlays();
     initializeMaps();

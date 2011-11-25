@@ -58,12 +58,12 @@
             <input name="signup-photo" type="file" id="signup-upload-photo-textbox"/>
 
             <label for="signup-address">Direcci&oacute;n:</label> 
-            <textarea id="signup-address" name="signup-address" id="signup-address"></textarea>
+            <textarea id="signup-address" name="signup-address" id="signup-address"><?php echo isset($address) ? $address  : ''; ?></textarea>
 
 
             <label for="signup-desription">Descripci&oacute;n del usuario:</label> 
             <div>
-                <textarea <?php echo isset($description) ? 'value="' . $description . '"' : ''; ?> id="signup-descripcion" name="signup-description"></textarea>
+                <textarea  id="signup-descripcion" name="signup-description"><?php echo isset($description) ? $description  : ''; ?></textarea>
 
                 <div id="signup-descripcion-ejemplo">
 
