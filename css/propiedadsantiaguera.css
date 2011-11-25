@@ -1316,10 +1316,11 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 }
 
-#popular-neighborhoods-header
-{
 
+#popular-neighborhoods-header {
+    width: auto;
 }
+
 
 #popular-neighborhoods ul li
 {
