@@ -37,7 +37,7 @@ class File_handler {
                 }
                 $user_photo_info = $CI_Helper->upload->data();
     
-                $photos_full_paths[] = $user_photo_info['file_name'];
+                $photos_full_paths[$input_name] = $user_photo_info['file_name'];
             }
         }
       

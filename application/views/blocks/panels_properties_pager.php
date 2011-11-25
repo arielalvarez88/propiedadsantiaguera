@@ -1,3 +1,6 @@
+
+
+
 <div id="panels-properties-pager-container" class="optional-view">
   
     
