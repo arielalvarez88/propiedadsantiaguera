@@ -20,7 +20,6 @@
                 <input type="text" name="property-rent-price-us" id="property-form-description-rent-price-us" <?php echo isset($repopulate['property_rent_price_us']) ? 'value="'.$repopulate['property_rent_price_us'].'"' : ''?>/>
             </li>
             
-            
 
             <li>
                 <label for="property-form-description-rent-price-dr">Precio de Alquiler $RD:<?php echo $status=="rent"? '<span class="required">*</span>'  : '';?></label> 

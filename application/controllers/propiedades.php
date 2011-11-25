@@ -96,11 +96,6 @@ class Propiedades extends CI_Controller {
 
 
 
-
-
-
-
-
         $data['topLeftSide'] = $this->load->view('blocks/property_viewer', $property_viewer_data, true);
         $data['topRightSide'] = $this->load->view('blocks/user_viewer', $propiedadObject, true);
         $data['topRightSide'] .=$this->load->view('blocks/monedaPrecio', $propiedadObject, true);
@@ -133,20 +128,36 @@ class Propiedades extends CI_Controller {
     public function validate($property_id=0) {
 
         $properties_photos_filenames = array();
-        $property_condition_for_validation_purposes = Environment_vars::$maps['property_conditions']['rent'] == $this->input->post('property-condition')? "rent" : "sell";
-        $validation_rules_for_property_type = 'property_'.  $property_condition_for_validation_purposes;
-        if ($this->form_validation->run('property') == false || $this->form_validation->run($validation_rules_for_property_type) == false ) {
-
-            $this->add_property_error();
+        $property_condition_for_validation_purposes = '';
+        
+        if(Environment_vars::$maps['property_conditions']['rent'] == $this->input->post('property-condition'))
+            $property_condition_for_validation_purposes = "rent";
+        elseif(Environment_vars::$maps['property_conditions']['sell'] == $this->input->post('property-condition'))
+            $property_condition_for_validation_purposes = "sell";
+        else
+            $property_condition_for_validation_purposes = "sell_rent";
+        
+        
+        $validation_rules_for_property_type = 'property_'. $property_condition_for_validation_purposes;                                 
+        $property_info_for_the_view = $property_id ? array("property_id" => $property_id) : array();
+        
+        if ($this->form_validation->run($validation_rules_for_property_type) == false ) {
+           
+            
+            $this->add_property_error($property_info_for_the_view);
             return;
         } 
+        
         else {
+            
             try {
                 $properties_photos_filenames = $this->validate_and_upload_photos();
             } 
             catch (Exception $e) {
-                $messages['errors'] = $e->getMessage();
-                $this->agregar_propiedades($messages);
+                
+                $extra_info = $property_info_for_the_view;                
+                $extra_info['errors'] = $e->getMessage();
+                $this->add_property_error($extra_info);
                 return;
             }
             $this->save_property($properties_photos_filenames, $property_id);
@@ -299,20 +310,23 @@ class Propiedades extends CI_Controller {
         $transactioner->trans_complete();
         $transactioner->trans_commit();
         $new_property_files = $file_getter->get()->all;
-        ;
 
         $newPropertyType = new Property_type();
         $newPropertyType->get_by_id($newPropertyInfo['property-type']);
 
         $newProperty->save(array($newPropertyType, $new_property_close_places->all, $new_property_features->all, $user, $new_property_files));
 
-        if (isset($property_filename) && isset($property_filename['proper']))
-            if ($property_id) {
-                $messages['info_messages'] = 'Su propiedad fue actualizada con éxito';
-            } else {
-                $messages['info_messages'] = 'Su propiedad fue agregada con éxito';
-            }
+            
+                    if ($property_id) {
+            $messages['info_messages'] = 'Su propiedad fue actualizada con éxito';
+        } else {
+            $messages['info_messages'] = 'Su propiedad fue agregada con éxito';
+        }
 
+        $this->agregar_propiedades($messages);
+
+            
+            
         $this->agregar_propiedades($messages);
     }
 
@@ -398,12 +412,14 @@ class Propiedades extends CI_Controller {
         $this->load->view('page', $blocks);
     }
 
-    private function add_property_error() {
+    private function add_property_error($extra_info = array()) {
 
         $repopulateForm = array();
 
+        $repopulateForm['property_title'] = $this->input->post('property-title');
         $repopulateForm['property_type'] = $this->input->post('property-type');
         $repopulateForm['property_neighborhood'] = $this->input->post('property-neighborhood');
+        $repopulateForm['property_livingrooms'] = $this->input->post('property-neighborhood');
         $repopulateForm['property_address'] = $this->input->post('property-address');
         $repopulateForm['property_condition'] = $this->input->post('property-condition');
         $repopulateForm['property_sell_price_us'] = $this->input->post('property-sell-price-us');
@@ -412,12 +428,13 @@ class Propiedades extends CI_Controller {
         $repopulateForm['property_rent_price_dr'] = $this->input->post('property-rent-price-dr');
         $repopulateForm['property_terrain'] = $this->input->post('property-terrain');
         $repopulateForm['property_construction'] = $this->input->post('property-construction');
-        $repopulateForm['property_histories'] = $this->input->post('property-histories');
+        $repopulateForm['property_stories'] = $this->input->post('property-stories');
         $repopulateForm['property_bedrooms'] = $this->input->post('property-bedrooms');
         $repopulateForm['property_bathrooms'] = $this->input->post('property-bathrooms');
         $repopulateForm['property_livinrooms'] = $this->input->post('property-livinrooms');
         $repopulateForm['property_kitchens'] = $this->input->post('property-kitchens');
-        $repopulateForm['property_parkings'] = $this->input->post('property-parkings');
+        $repopulateForm['property_parkings'] = $this->input->post('property-parkings');        
+        $repopulateForm['property_description'] = $this->input->post('property-description');
         $repopulateForm['close_malls)'] = $this->input->post('close-malls)');
         $repopulateForm['close_supermarkets'] = $this->input->post('close-supermarkets');
         $repopulateForm['close_grocery_stores'] = $this->input->post('close-grocery-stores');
@@ -468,12 +485,11 @@ class Propiedades extends CI_Controller {
         $repopulateForm['pre_installed_services'] = $this->input->post('pre-installed-services');
         $repopulateForm['granite_countertops'] = $this->input->post('granite-countertops');
         $repopulateForm['electric_gate'] = $this->input->post('electric-gate');
-        $repopulateForm['walk_in_closet'] = $this->input->post('walk-in-closet');
-
+        $repopulateForm['walk_in_closet'] = $this->input->post('walk-in-closet');                                        
         $repopulateForm['errors'] = validation_errors();
+        $repopulateFormAndExtraInfo = array_merge($extra_info,$repopulateForm);
 
-
-        $this->agregar_propiedades($repopulateForm);
+        $this->agregar_propiedades($repopulateFormAndExtraInfo);
     }
 
 }

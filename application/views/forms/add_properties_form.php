@@ -41,15 +41,13 @@ $property_condition = isset ($property_condition) ? $property_condition : false;
                     
                     <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'], array("id"=> "property-form-description-neighborhood", "name" => "property-neighborhood", ), '', $property_neighborhood);?>
                     
-
-                    
                 </li>
 
 
 
                 <li>
                     <label for="property-form-description-condition">Vender/Alquilar:</label> 
-                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_conditions'], array("id" =>"property-form-description-status", "name" => "property-condition"), '', $property_condition)?>
+                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_conditions'], array("id" =>"property-form-description-condition", "name" => "property-condition"), '', $property_condition)?>
                 </li>
 
                 <li id="property-form-description-address-container">
@@ -115,33 +113,37 @@ $property_condition = isset ($property_condition) ? $property_condition : false;
 
                 <ul class="property-form-description-column optional-view" id="property-form-description-column4">
 
-                    <?php if (!isset($property_status) || !(strpos($property_status, "sell") === false)): ?>
-                        <li>
+                    <?php $is_for_sale = $property_condition == Environment_vars::$maps['property_conditions']['sell'] || $property_condition == Environment_vars::$maps['property_conditions']['sell/rent'] || !$property_condition? true : false;?>
+                    <?php $is_for_rent = $property_condition == Environment_vars::$maps['property_conditions']['rent'] || $property_condition == Environment_vars::$maps['property_conditions']['sell/rent'] ? true : false;?>
+                    
+                    
+                   
+                        <li class=" sell-condition-field <?php echo $is_for_sale? '' : 'hidden';?>" >
                             <label for="property-form-description-sell-price-us">Precio de Venta $US:</label> 
                             <input type="text" name="property-sell-price-us" id="property-form-description-sell-price-us" <?php echo isset($property_sell_price_us) ? 'value="' . $property_sell_price_us . '"' : '' ?>/>
                         </li>
-
-                        <li>
+                        
+                        <li class=" sell-condition-field <?php echo $is_for_sale ? '' : 'hidden';?>">
                             <label for="property-form-description-sell-price-dr">Precio de Venta $RD:<span class="required">*</span></label> 
                             <input type="text" name="property-sell-price-dr" id="property-form-description-sell-price-dr" <?php echo isset($property_sell_price_dr) ? 'value="' . $property_sell_price_dr . '"' : '' ?>/>
                         </li>
 
-                    <?php endif; ?>            
-
-                    <?php if (isset($property_status) && !(strpos($property_status, "rent") === false)): ?>
-                        <li>
-                            <label for="property-form-description-rent-price-us">Precio de Alquiler $US:</label> 
+                   
+                        
+                   
+                        <li class="rent-condition-field <?php echo $is_for_rent? '' : 'hidden';?>" >
+                            <label for="property-form-description-rent-price-us">Precio de Alquiler $US:</label>
                             <input type="text" name="property-rent-price-us" id="property-form-description-rent-price-us" <?php echo isset($property_rent_price_us) ? 'value="' . $property_rent_price_us . '"' : '' ?>/>
                         </li>
 
 
 
-                        <li>
-                            <label for="property-form-description-rent-price-dr">Precio de Alquiler $RD:</label> 
+                        <li class="rent-condition-field <?php echo $is_for_rent? '' : 'hidden';?>" >
+                            <label for="property-form-description-rent-price-dr">Precio de Alquiler $RD: <span class="required">*</span></label> 
                             <input type="text" name="property-rent-price-dr" id="property-form-description-rent-price-dr" <?php echo isset($property_rent_price_dr) ? 'value="' . $property_rent_price_dr . '"' : '' ?>/>
                         </li>
 
-                    <?php endif; ?>
+                   
 
 
                 </ul>                    
