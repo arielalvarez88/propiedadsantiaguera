@@ -301,17 +301,14 @@ public function buscar()
         $newPropertyType->get_by_id($newPropertyInfo['property-type']);
 
         $newProperty->save(array($newPropertyType, $new_property_close_places->all, $new_property_features->all, $user, $new_property_files));
-
-
-        
         
         if ($property_id) {
             $messages['info_messages'] = 'Su propiedad fue actualizada con éxito';
+            $this->editar_propiedades($property_id, $messages);
         } else {
             $messages['info_messages'] = 'Su propiedad fue agregada con éxito';
+            $this->agregar_propiedades($messages);
         }
-        
-        $this->agregar_propiedades($messages);
     }
 
     public function guardar_cambios_publicar() {
@@ -349,7 +346,7 @@ public function buscar()
         redirect("/panel/propiedades/publicadas");
     }
 
-    public function editar_propiedades($property_id) {
+    public function editar_propiedades($property_id, $messages=null) {
 
         $property = new Property();
         $property->where('id', $property_id);
@@ -387,6 +384,10 @@ public function buscar()
         $repopulateForm['property_kitchens'] = $property->kitchens;
         $repopulateForm['property_parkings'] = $property->parkings;
         $repopulateForm['property_id'] = $property_id;
+        
+        if ($messages['info_messages']) {           
+            $repopulateForm['info_messages'] = $messages['info_messages'];            
+        }
 
         $blocks['topLeftSide'] = $this->load->view('forms/add_properties_form.php', $repopulateForm, true);
         $this->load->view('page', $blocks);
