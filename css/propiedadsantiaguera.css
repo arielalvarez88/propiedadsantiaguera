@@ -1070,6 +1070,13 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 {
     margin-top: 25px;
 }
+
+#contact-information h2 {
+    margin-bottom: 10px;
+}
+#contact-information p {
+    margin-bottom: 10px;
+}
 /*contact ENDS*/
 
 /* property-form */
