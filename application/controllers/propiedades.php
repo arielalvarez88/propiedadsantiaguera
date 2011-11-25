@@ -405,12 +405,10 @@ class Propiedades extends CI_Controller {
         $repopulateForm['property_parkings'] = $property->parkings;
         $repopulateForm['property_id'] = $property_id;
         
-        if ($messages['info_messages']) 
-        {
-          $repopulateForm['info_messages'] = $messages['info_messages'];  
+        if ($messages['info_messages']) {           
+            $repopulateForm['info_messages'] = $messages['info_messages'];            
         }
-        
-        
+
         $blocks['topLeftSide'] = $this->load->view('forms/add_properties_form.php', $repopulateForm, true);
         $this->load->view('page', $blocks);
     }
