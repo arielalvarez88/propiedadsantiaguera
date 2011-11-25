@@ -92,7 +92,7 @@ $thisPage = str_replace('/', '-', uri_string());
                         <li class="menu-270"><a title="" href="/miembros">MIEMBROS</a></li>
                         <li class="menu-271"><a title="" href="/planes">PRECIOS</a></li>
                         <li class="menu-271"><a title="" href="/planes">SOLICITUDES</a></li>
-                        <li class="menu-272 last"><a title="" href="http://www.google.com">CONTACTO</a></li>
+                        <li class="menu-272 last"><a title="" href="/contacto">CONTACTO</a></li>
                     </ul>                   
                 </div>
             </div>
