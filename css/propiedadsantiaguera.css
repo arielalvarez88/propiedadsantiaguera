@@ -3087,8 +3087,8 @@ span.required{
     background-color: #75BC3B;
     color: white;  
 }
-/******* Terminos ********/
-#terminos-holder
+/******* Terminos y Politicas ********/
+#terminos-holder, #politicas-holder
 {
     padding:0 15px;
 }
@@ -3100,14 +3100,16 @@ span.required{
 {
    color:#555;
 }
-#terminos-holder h2, #terminos-holder h3, #terminos-holder h4, #terminos-holder p{
+#terminos-holder h2, #terminos-holder h3, #terminos-holder h4, #terminos-holder p,
+#politicas-holder h2, #politicas-holder h3, #politicas-holder h4, #politicas-holder p
+{
     margin:12px auto;
 }
-#terminos-holder p
+#terminos-holder p, #politicas-holder p
 {
     color:#777;
 }
-#terminos-holder ul
+#terminos-holder ul, #politicas-holder ol
 {
     list-style: square;
     color:#777;
