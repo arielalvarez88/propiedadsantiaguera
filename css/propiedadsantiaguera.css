@@ -7,7 +7,7 @@
 input, select, textarea {
     border: 5px solid #eeeeee;
     color: #333333;
-    font-size: 1.4em;
+    
 }
 
 body{
@@ -17,7 +17,9 @@ body{
     font-family: museo,helvetica,arial,sans-serif;
     font-size: small;
     font-weight: normal;
+    height: 100%;
 }
+
 input[type="text"],input[type="password"], textarea, select
 {
     border:4px solid #E7E7E7;
@@ -56,6 +58,7 @@ a img
     margin-left: auto;
     margin-right: auto;
     width: 980px;
+    min-height: 100%;
 }
 
 /************ header *************/
@@ -82,6 +85,11 @@ a img
 /********** header ENDS ***********/
 #header{
     padding: 10px 10px 0 10px;     
+}
+
+#header, #content {
+    overflow: auto;
+    
 }
 
 
@@ -188,6 +196,55 @@ a img
 
 /************ Login block end *******************/
 
+/************ tools *******************/
+
+#tools div {
+    clear: both;
+    margin: 10px 0;
+
+}
+#tools div div {
+    width: 392px;
+}
+
+#tools div div, #tools div img {
+    display: block;
+    float: left;
+    margin: 21px;
+    clear: none;
+}
+
+#tools h1 {
+    color: #999999;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 960px;
+}
+
+#tools #multimedia
+{
+    height: 150px;
+}
+
+#tools div#tools-green-divisor {
+    background-image: url("/images/common/lightGreenPattern_H8.png");
+    height: 8px;
+}
+
+#realtime-publications div {
+    padding-top: 70px;
+}
+
+#tools div div h2 {
+    margin-bottom: 10px;
+}
+
+#tools #panel ul 
+{
+    margin-top: 15px;
+}
+
+/************ tools END*******************/
 
 /***advanced-filter***/
 #advanced-filter-container {
@@ -1061,7 +1118,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #contact-form input, #contact-form textarea, #contact-form select {
     display: block;
-    
+    font-size: 1.4em;
     height: 40px;
     width: 276px;
 }
@@ -1532,22 +1589,31 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     background-image: url("/images/common/stripesGradient_H496.jpg");
     background-position: 0 13px;
     clear: both;
-    height: 14px;    
-    position: relative;
-    top: 10px;
+    height: 13px;    
+    
 }
 
 
 /**footer**/
-#footer {
+#footer-body {
     background-image: url("/images/footer/background.png");
     color: white;
     height: 173px;
     padding: 20px 20px 15px;
     position: relative;
+    clear: both;
     
 }
 
+
+
+
+#footer
+{
+    
+    clear: both ;
+    height: 221px;
+}
 
 #footer-top-side
 {
@@ -1730,6 +1796,10 @@ div.footer-section a{
 
 }
 
+#bottom
+{
+    min-height: 434px;
+}
 
 /****** basic-filter*******/
 
@@ -3113,6 +3183,8 @@ margin-bottom: 5px;
     margin-left: 5px;
 }
 
+
+
 .form-section-number
 {
     margin-right: 5px;
@@ -3420,7 +3492,10 @@ span.required{
     float:right;
 }
 
-
+.form-send-button
+{
+  border: none;  
+}
 /*********/
 /*clases utiles ENDS*/
 
