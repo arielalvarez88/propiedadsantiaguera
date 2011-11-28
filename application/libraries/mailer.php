@@ -6,7 +6,7 @@
  */
 class mailer
 {
-    public function send_email($template, $client_name, $email, $token)
+    public function send_email($template, $client_name, $email, $token='')
     {
         $headers = 'MIME-Version: 1.0'."\r\n";
         $headers .= 'Content-type: text/html; charset=iso=8859-1'."\r\n" ;

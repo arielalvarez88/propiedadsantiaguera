@@ -159,7 +159,7 @@ $property_condition = isset ($property_condition) ? $property_condition : false;
 
             <div id="property-form-description-description">
 
-                <h3>Descripci&oacute;n de la propiedad:<span class="required">*</span></h3>
+                <h3>Detalles de la propiedad:<span class="required">*</span></h3>
                 <textarea id="property-form-description-price" name="property-description"><?php echo isset($property_description) ? $property_description : ''; ?> </textarea>
             </div>
 
