@@ -61,9 +61,7 @@
             <div>
                 <textarea  id="signup-descripcion" name="signup-description"><?php echo isset($description) ? $description  : ''; ?></textarea>
 
-                <div id="signup-descripcion-ejemplo">
-
-                </div>     
+                
 
             </div>
 
