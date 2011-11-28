@@ -188,7 +188,10 @@ $thisPage = str_replace('/', '-', uri_string());
                             Precios
                         </li>
                         <li>
-                            Solicitud
+                            Solicitudes
+                        </li>
+                        <li>
+                            Publicidad
                         </li>
                     </ul>
                     </div>
@@ -200,14 +203,15 @@ $thisPage = str_replace('/', '-', uri_string());
                             Soporte
                         </li>
                         <li>
-                            Legal
+                            <a href="/terminos">T&eacute;rminos de uso</a>
                         </li>
                         <li>
-                            Seguridad
+                            <a href="/politicas">Privacidad y</a>
                         </li>
                         <li>
-                            Privacidad
+                            <a href="/politicas">Seguridad</a>
                         </li>
+                        
                     </ul>
                     </div>
                     

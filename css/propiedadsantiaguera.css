@@ -848,7 +848,11 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     top:14px;
 }
 
-
+#footer ul li a
+{
+    text-decoration: none;
+    color:#fff;
+}
 #footer-logo-message, #footer-company-menu, #footer-resources-menu, #footer-contact {
     float: left;
     color: white;

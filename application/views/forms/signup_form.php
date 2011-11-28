@@ -59,9 +59,7 @@
 
             <label for="signup-desription">Descripci&oacute;n del usuario:</label> 
             <div>
-                <textarea  id="signup-descripcion" name="signup-description"><?php echo isset($description) ? $description  : ''; ?></textarea>
-
-                
+                <textarea  id="signup-descripcion" name="signup-description"><?php echo isset($description) ? $description  : ''; ?></textarea> 
 
             </div>
 
