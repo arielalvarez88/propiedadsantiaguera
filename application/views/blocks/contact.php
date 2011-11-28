@@ -17,12 +17,17 @@
             <option>
                 Elige el tipo de usuario
             </option>
-            <option>
-                Elige el tipo de usuario
+            
+            <option value="Particular">
+                Particular
             </option>
 
-            <option>
-                Elige el tipo de usuario
+            <option value="Agente">
+                Agente
+            </option>
+            
+            <option value="Inmobiliaria">
+                Inmobiliaria
             </option>
         </select>
 
@@ -31,25 +36,25 @@
             Nombre<span class="required">*</span> 
         </label>
 
-        <input type="text"/>
+        <input type="text" name="name"/>
 
         <label>
             E-mail<span class="required">*</span> 
         </label>
 
-        <input type="text"/>
+        <input type="text" name="email"/>
 
         <label>
             Empresa
         </label>
 
-        <input type="text"/>
+        <input type="text" name="company"/>
 
         <label>
             Mensaje<span class="required">*</span> 
         </label>
 
-        <textarea>
+        <textarea name="message">
 
         </textarea>
 
@@ -58,6 +63,8 @@
     
     <div id="contact-information">
         <h2>Informaci&oacute;n de Contacto</h2>
+        <div>
+            
         
         <h3>Email</h3>
         <p>
@@ -86,7 +93,7 @@
             Reparto del Este, Santiago
         </p>
         
-        
+        </div>
     </div>
 
     </div>
