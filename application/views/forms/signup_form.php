@@ -50,11 +50,7 @@
             <label for="signup-fax">Fax:</label> 
             <input <?php echo isset($fax) ? 'value="' . $fax . '"' : ''; ?> type="text" id="signup-fax" name="signup-fax"/>
 
-
-            <label for="signup-rnc">RNC/C&eacute;dula:<span class="required">*</span></label> 
-            <input <?php echo isset($rnc) ? 'value="' . $rnc . '"' : ''; ?> class="required" name="signup-rnc" type="text" id="signup-rnc"/>
-
-            <label for="signup-upload-photo-textbox">Archivo</label>
+            <label for="signup-upload-photo-textbox">Foto de perfil</label>
             <input name="signup-photo" type="file" id="signup-upload-photo-textbox"/>
 
             <label for="signup-address">Direcci&oacute;n:</label> 
@@ -63,11 +59,7 @@
 
             <label for="signup-desription">Descripci&oacute;n del usuario:</label> 
             <div>
-                <textarea  id="signup-descripcion" name="signup-description"><?php echo isset($description) ? $description  : ''; ?></textarea>
-
-                <div id="signup-descripcion-ejemplo">
-
-                </div>     
+                <textarea  id="signup-descripcion" name="signup-description"><?php echo isset($description) ? $description  : ''; ?></textarea> 
 
             </div>
 
