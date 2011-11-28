@@ -187,7 +187,7 @@ $thisPage = str_replace('/', '-', uri_string());
                         <h2>Empresa</h2>
                         <ul>
                         <li>
-                            Nosotros
+                             <a href="/nosotros">Nosotros</a>
                         </li>
                         <li>
                             Herramientas
