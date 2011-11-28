@@ -161,13 +161,15 @@ $thisPage = str_replace('/', '-', uri_string());
 
 
             </div>
-
+                
+              
 
             
    
         </div>
         
-                 <div id="footer">
+                                
+                              <div id="footer">
                             <div id="contet-footer-divisor"></div>
                             
                             
@@ -190,7 +192,7 @@ $thisPage = str_replace('/', '-', uri_string());
                              <a href="/nosotros">Nosotros</a>
                         </li>
                         <li>
-                            Herramientas
+                            <a class="no-decoration-anchor" href="/herramientas">Herramientas</a>
                         </li>
                         <li>
                             Precios
@@ -248,9 +250,7 @@ $thisPage = str_replace('/', '-', uri_string());
                 </div>
 
                        </div>
-                </div>
-                                
-                                
+                </div>     
                                 
                                 
             </div>

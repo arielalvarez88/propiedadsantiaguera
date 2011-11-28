@@ -1,4 +1,8 @@
-<div id="tools">
+<div id="tools-wrapper">
+    
+    <div id="tools">
+        
+    
     <h1>Conoce los beneficios de nuestras herramientas</h1>
     <div id="tools-green-divisor"></div>
     
@@ -25,7 +29,7 @@
             <h2 class="main-title">Panel administrativo</h2>
             <p>Ya sea que tengas 1 o 25 propiedades, el panel administrativo te permite manejar tus propiedades con total libertad y mucho más.</p>
             <ul>
-                <li>Crea, pulibca, modifica y elimina propiedades.</li>
+                <li>Crea, publica, modifica y elimina propiedades.</li>
                 <li>Compra publicaciones.</li>
                 <li>Resumen de las solicitudes hechas, propuestas recibidas y enviadas a terceros</li>
                 <li>Modifica tu informaci&oacute;n de contacto</li>
@@ -65,5 +69,5 @@
     </div>
     
 </div>
+    </div>
     
-</div>
