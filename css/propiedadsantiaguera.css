@@ -4,6 +4,10 @@
     font-family: museo;
 }
 
+input, select, textarea {
+    border: 5px solid #eeeeee;
+}
+
 body{
 
   background: none repeat scroll 0 0 #EFEFEF;
@@ -1041,15 +1045,32 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 /*contact*/
 
 #contact-form label, #contact-form input {
-    display: block;
-    float: left;
-    margin: 10px 0;
+        float: left;
+        margin: 10px 0;
 }
+
+#contact-form input, #contact-form textarea, #contact-form select {
+    display: block;
+    
+    height: 40px;
+    width: 276px;
+}
+
+#contact-form textarea {
+    display: block;
+    height: 142px;
+    width: 276px;
+}
+
+
 #contact-form label {
-    width: 64px;
+    width: 75px;
+      color: #798D92;
+    font-size: 1.1em;
+    font-weight: bold;
 }
 #contact-form {
-    width: 253px;
+    width: 354px;
 }
 #contact-form {
     margin-right: 185px;
@@ -1060,6 +1081,8 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 #contact-form select {
     clear: both;
     display: block;
+    margin-bottom: 10px;
+    margin-left: 75px;
 }
 
 #contact-form-submit-button
@@ -1072,11 +1095,38 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 }
 
 #contact-information h2 {
+    background-image: url("/images/common/lightGreenPattern.png");
+    padding-bottom: 6px;
+    padding-top: 6px;
+    border-radius: 5px 5px 0 0;
+    color: white;
     margin-bottom: 10px;
 }
 #contact-information p {
     margin-bottom: 10px;
 }
+
+#contact-form #contact-form-submit-button {
+    border: medium none;
+    display: inline;
+    float: right;
+    height: auto;
+    width: auto;
+    
+}
+
+#contact-information {
+    border: 1px solid #f2f2f2;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+}
+
+
+#contact-information div, #contact-information h2 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 /*contact ENDS*/
 
 /* property-form */
