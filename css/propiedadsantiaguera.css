@@ -6,6 +6,8 @@
 
 input, select, textarea {
     border: 5px solid #eeeeee;
+    color: #333333;
+    font-size: 1.4em;
 }
 
 body{
