@@ -97,13 +97,13 @@ $thisPage = str_replace('/', '-', uri_string());
                 </div>
             </div>
             <div id="content">
-                <?php if (isset($topLeftSide) || isset($topCenterSide) || isset($topRightSide)): ?>
+                <?php if (isset($topLeftSide) || isset($topCenterSide) || isset($topRightSide) || isset($top)): ?>
                     <div id="top-section">
                         
                         
                         <?php if (isset($top)): ?>
                             <div id="top">
-                                <?php echo $top; ?>
+                                <?php echo $top;?>
                             </div>
                         <?php endif; ?>
          
@@ -161,12 +161,20 @@ $thisPage = str_replace('/', '-', uri_string());
 
 
             </div>
-            <div id="contet-footer-divisor"></div>
+
 
             
-            <div id="footer">
-                
-                <div id="footer-top-side">
+   
+        </div>
+        
+                 <div id="footer">
+                            <div id="contet-footer-divisor"></div>
+                            
+                            
+                            
+                                
+                           
+                <div id="footer-body">
                     
                     <div id="footer-logo-message">
                         <img id="footer-logo" src="/images/footer/footerLogo.png"/>
@@ -229,7 +237,7 @@ $thisPage = str_replace('/', '-', uri_string());
                     
                     
                     
-                </div>
+             
 
                 <div id="footer-bottom">
                     <p id="footer-bottom-left">2011 Propiedad Santiaguera, All rights reserved</p>
@@ -239,9 +247,19 @@ $thisPage = str_replace('/', '-', uri_string());
                     </p>
                 </div>
 
-
+                       </div>
+                </div>
+                                
+                                
+                                
+                                
             </div>
-        </div>
+            
+            <!--[if !IE 7]>
+	
+		#wrapper {display:table;height:100%}
+
+<![endif]-->
 
      <script type="text/javascript" src="/js/jquery-1.6.4.min.js" type="text/javascript" ></script>
         <script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript" ></script>        
