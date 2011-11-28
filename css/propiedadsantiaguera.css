@@ -18,6 +18,7 @@ body{
     font-size: small;
     font-weight: normal;
     height: 100%;
+    
 }
 
 input[type="text"],input[type="password"], textarea, select
@@ -58,7 +59,8 @@ a img
     margin-left: auto;
     margin-right: auto;
     width: 980px;
-    min-height: 100%;
+
+    
 }
 
 /************ header *************/
@@ -79,6 +81,7 @@ a img
 #content
 {
     padding: 10px;
+    min-height: 100%;
 }
 
 
@@ -200,18 +203,65 @@ a img
 
 #tools div {
     clear: both;
-    margin: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
 }
 #tools div div {
     width: 392px;
 }
 
+
 #tools div div, #tools div img {
     display: block;
     float: left;
     margin: 21px;
     clear: none;
+}
+
+#buy-online-publications {
+    height: 190px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 926px;
+}
+
+
+#panel {
+    width: 749px;
+    height: 347px;
+}
+
+#realtime-publications {
+    height: 335px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 921px;
+}
+
+#requests
+{
+    width: 898px;
+    height: 179px;
+    
+}
+
+#send-offers
+{
+    width: 821px;
+    height: 225px;
+}
+
+#multimedia
+{
+    width: 784px;
+    height: 150px;
+}
+
+#buy-online-publications, #panel, #realtime-publications, #requests, #send-offers, #multimedia
+{
+    margin-left: auto;
+    margin-right: auto; 
 }
 
 #tools h1 {
@@ -1608,11 +1658,12 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 
 
-#footer
-{
-    
-    clear: both ;
+#footer {
+    clear: both;
     height: 221px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 980px;
 }
 
 #footer-top-side
