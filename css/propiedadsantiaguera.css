@@ -238,6 +238,12 @@ a img
 #tools div div h2 {
     margin-bottom: 10px;
 }
+
+#tools #panel ul 
+{
+    margin-top: 15px;
+}
+
 /************ tools END*******************/
 
 /***advanced-filter***/
