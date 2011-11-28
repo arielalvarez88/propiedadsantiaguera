@@ -1,5 +1,8 @@
 <div id="terminos-holder">
 <h2 class="main-title">Nosotros</h2>
+<div id="logo">
+                            <a href="/"><img alt="logo" src="/images/logo.png"><a/>
+                        </div>
 <p>Con su lanzamiento en el 2012, Propiedad Santiaguera es una plataforma virtual creada con el propósito de conectar a la comunidad de agentes inmobiliarios con el mercado nacional, de una manera fácil, interactiva y colaborativa. 
 El equipo que conceptualizó la idea, quería facilitarles tanto a los agentes inmobiliarios como al público demandante de propiedades a nivel nacional, una herramienta que fuese:</p>
 <ul>
@@ -8,6 +11,8 @@ El equipo que conceptualizó la idea, quería facilitarles tanto a los agentes i
 <li>Creada para incrementar la efectividad de la comunicación directa entre los usuarios</li>
 <li>Visualmente atractiva e intuitiva, para presentar las propiedades con el mejor material disponible</li>
 </ul>
+
+
 <div class="form-divisor"></div>
 <h2 class="main-title">Equipo</h2>
 <p>Creemos que toda empresa debe manejarse por personas apasionadas por lo que hacen y comprometidas con entregar lo que saben hacer mejor en su campo de trabajo, a beneficio de todos los participantes involucrados con la empresa, especialmente a nuestros clientes.</p>

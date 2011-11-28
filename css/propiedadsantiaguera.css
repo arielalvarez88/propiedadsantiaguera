@@ -3404,8 +3404,20 @@ span.required{
 #tabla-equipo td p
 {
     font-size:9pt;
-    text-align:justify;
+    text-align:left;
     width:245px;
+}
+#tabla-equipo td h4
+{
+    margin:1px;
+}
+#tabla-equipo td h5
+{
+    margin:2px;
+}
+#terminos-holder #logo
+{
+    float:right;
 }
 
 
