@@ -1036,6 +1036,49 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 /*please_login ENDs*/
 
+
+
+/*contact*/
+
+#contact-form label, #contact-form input {
+    display: block;
+    float: left;
+    margin: 10px 0;
+}
+#contact-form label {
+    width: 64px;
+}
+#contact-form {
+    width: 253px;
+}
+#contact-form {
+    margin-right: 185px;
+}
+#contact-information, #contact-form {
+    float: left;
+}
+#contact-form select {
+    clear: both;
+    display: block;
+}
+
+#contact-form-submit-button
+{
+    float: right;
+}
+#contact-info
+{
+    margin-top: 25px;
+}
+
+#contact-information h2 {
+    margin-bottom: 10px;
+}
+#contact-information p {
+    margin-bottom: 10px;
+}
+/*contact ENDS*/
+
 /* property-form */
 #property-form
 {
@@ -2400,7 +2443,7 @@ margin-bottom: 5px;
     clear: both;
     float: left;
     height: 175px;
-    width: 443px;
+    width: 512px;
 }
 
 
