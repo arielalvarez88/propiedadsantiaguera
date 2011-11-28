@@ -55,7 +55,7 @@ class Usuario extends CI_Controller {
     }
 
     public function signup($extra_parameters = array()) {
-        $signUpData['signUpForm'] = $this->load->view('blocks/newUserType', '', true);
+        $signUpData['signUpForm'] = $this->load->view('blocks/newUserType','', true);
         $clientType['clientType'] = 'client';
         $form_data = array_merge($extra_parameters, $clientType);
         $signUpData['signUpForm'] .= $this->load->view('forms/signup_form.php', $form_data, true);
@@ -147,7 +147,7 @@ class Usuario extends CI_Controller {
         $repopulateForm['website'] = $user_info_getter->get_website();
         $repopulateForm['description'] = $user_info_getter->get_description();
         $repopulateForm['clientType'] = $user_info_getter->get_type();
-        $repopulateForm['rnc'] = $user_info_getter->get_rnc();
+
 
         $repopulateForm = array_merge($repopulateForm, $extra_parameters);
         $this->signup($repopulateForm);
@@ -172,7 +172,6 @@ class Usuario extends CI_Controller {
         $newUser->cel = $userInfo['signup-cel'];
         $newUser->fax = $userInfo['signup-fax'];
         $newUser->website = $userInfo['signup-website'];
-        $newUser->rnc = $userInfo['signup-rnc'];
         $newUser->address = $userInfo['signup-address'];
         $newUser->description = $userInfo['signup-description'];
 
