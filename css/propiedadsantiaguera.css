@@ -52,7 +52,16 @@ a img
     border:0;
 }
 
-#wrapper{
+body, html
+{
+    height: 100%;
+}
+
+#page-wrapper{
+    min-height: 100%;
+}
+
+#content-header-wrapper{
    background: none repeat scroll 0 0 #FFFFFF;
     border: 1px solid #DADADA;
     clear: both;
@@ -2186,7 +2195,7 @@ margin-bottom: 5px;
 {
     color:#247f12;
 }
-.properties-pager-last-property
+.properties-pager.last
 {
     border: none;
 }
@@ -2478,6 +2487,13 @@ margin-bottom: 5px;
     height: 127px;
     width: 107px;
 }
+
+#user-viewer-photo
+{
+    width: 107px;
+    height: 121px;
+}
+
 
 #user-viewer-user-email-header {
     margin-top: 10px;
@@ -2905,7 +2921,7 @@ margin-bottom: 5px;
 #user-info {
     margin-right: 8px;
     padding: 10px;
-    width: 617px;
+    width: 600px;
 }
 
 #user-info-company
@@ -2915,18 +2931,19 @@ margin-bottom: 5px;
 
 #user-info-name-description
 {
-
     color: black;
     float: left;
     margin-right: 20px;
-    width: 448px;
+    
 
 }
 
-#user-info-card-photo
-{
+#user-info-card-photo {
     display: block;
     float: left;
+    height: 98px;
+    margin-right: 35px;
+    width: 105px;
 }
 
 
