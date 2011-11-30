@@ -10,11 +10,11 @@ $thisPage = str_replace('/', '-', uri_string());
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-        
-        
-    
     </head>
     <body>
+        <div id="page-wrapper">
+            
+        
         <?php if ($loggedUser && $loggedUser->name): ?>
             <div id="upper-panel">
                 
@@ -36,7 +36,7 @@ $thisPage = str_replace('/', '-', uri_string());
 
         <?php endif; ?>
         
-        <div id="wrapper">
+        <div id="content-header-wrapper">
             <div id="header">
                 <div id="banner-container">
                     <div id="banner">
@@ -161,13 +161,15 @@ $thisPage = str_replace('/', '-', uri_string());
 
 
             </div>
-
+                
+              
 
             
    
         </div>
         
-                 <div id="footer">
+                                
+                              <div id="footer">
                             <div id="contet-footer-divisor"></div>
                             
                             
@@ -190,7 +192,7 @@ $thisPage = str_replace('/', '-', uri_string());
                              <a href="/nosotros">Nosotros</a>
                         </li>
                         <li>
-                            Herramientas
+                            <a class="no-decoration-anchor" href="/herramientas">Herramientas</a>
                         </li>
                         <li>
                             Precios
@@ -248,14 +250,16 @@ $thisPage = str_replace('/', '-', uri_string());
                 </div>
 
                        </div>
-                </div>
-                                
-                                
+                </div>     
                                 
                                 
             </div>
             
-            <!--[if !IE 7]>
+ 
+
+       </div>
+       
+                  <!--[if !IE 7]>
 	
 		#wrapper {display:table;height:100%}
 
@@ -269,7 +273,5 @@ $thisPage = str_replace('/', '-', uri_string());
         <script type="text/javascript" src="/js/propiedadsantiaguera.js" type="text/javascript" ></script>
         <script type="text/javascript" src="http://use.typekit.com/awd1xwd.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-
-       
     </body>
 </html>

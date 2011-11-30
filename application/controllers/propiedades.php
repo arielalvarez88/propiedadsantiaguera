@@ -39,10 +39,15 @@ class Propiedades extends CI_Controller {
         $property = new Property();
         $property->where("id", $id)->get();
 
-        $propiedadObject['property'] = $property;
+        $propertyInfo['property'] = $property;
+        
 
+        $property_owner = $property->user->get();
+        $propertyInfo['owner'] = $property_owner;
+        
         $user = User_handler::getLoggedUser();
-        $property_belongs_to_logged_user = is_object($user) && $property->id && $property->user->get()->id == $user->id ? true : false;
+        
+        $property_belongs_to_logged_user = is_object($user) && $property->id && $property_owner->id == $user->id ? true : false;
 
 
         $property_cant_be_shown = !$property_belongs_to_logged_user && (!isset($property->display_property) || !$property->display_property);
@@ -94,18 +99,19 @@ class Propiedades extends CI_Controller {
         $property_viewer_data['property_photos_pagers_groups'] = $property_photos_pagers_groups;
 
 
+        
 
 
         $data['topLeftSide'] = $this->load->view('blocks/property_viewer', $property_viewer_data, true);
-        $data['topRightSide'] = $this->load->view('blocks/user_viewer', $propiedadObject, true);
-        $data['topRightSide'] .=$this->load->view('blocks/monedaPrecio', $propiedadObject, true);
-        $data['topRightSide'] .=$this->load->view('blocks/pdf_converter', $propiedadObject, true);
-        $data['topRightSide'] .=$this->load->view('blocks/sharePropertyWithAFriend', $propiedadObject, true);
+        $data['topRightSide'] = $this->load->view('blocks/user_viewer', $propertyInfo, true);
+        $data['topRightSide'] .=$this->load->view('blocks/monedaPrecio', $propertyInfo, true);
+        $data['topRightSide'] .=$this->load->view('blocks/pdf_converter', $propertyInfo, true);
+        $data['topRightSide'] .=$this->load->view('blocks/sharePropertyWithAFriend', $propertyInfo, true);
 
-        $data['bottomLeftSide'] = $this->load->view('blocks/property_info', $propiedadObject, true);
+        $data['bottomLeftSide'] = $this->load->view('blocks/property_info', $propertyInfo, true);
 
-        $data['bottomLeftSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propiedadObject, true);
-        $data['bottomRightSide'] = $this->load->view('blocks/solicitudDeInformacion', $propiedadObject, true);
+        $data['bottomLeftSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propertyInfo, true);
+        $data['bottomRightSide'] = $this->load->view('blocks/solicitudDeInformacion', $propertyInfo, true);
 
         if ($property_belongs_to_logged_user && !$property->display_property) {
             $data['top'] = $this->load->view("blocks/not_published_message", '', true);

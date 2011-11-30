@@ -18,6 +18,7 @@ body{
     font-size: small;
     font-weight: normal;
     height: 100%;
+    
 }
 
 input[type="text"],input[type="password"], textarea, select
@@ -51,14 +52,24 @@ a img
     border:0;
 }
 
-#wrapper{
-    background: none repeat scroll 0 0 #FFFFFF;
+body, html
+{
+    height: 100%;
+}
+
+#page-wrapper{
+    min-height: 100%;
+}
+
+#content-header-wrapper{
+   background: none repeat scroll 0 0 #FFFFFF;
     border: 1px solid #DADADA;
     clear: both;
     margin-left: auto;
     margin-right: auto;
     width: 980px;
-    min-height: 100%;
+
+    
 }
 
 /************ header *************/
@@ -79,6 +90,7 @@ a img
 #content
 {
     padding: 10px;
+    min-height: 100%;
 }
 
 
@@ -200,18 +212,65 @@ a img
 
 #tools div {
     clear: both;
-    margin: 10px 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
 }
 #tools div div {
     width: 392px;
 }
 
+
 #tools div div, #tools div img {
     display: block;
     float: left;
     margin: 21px;
     clear: none;
+}
+
+#buy-online-publications {
+    height: 190px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 926px;
+}
+
+
+#panel {
+    width: 749px;
+    height: 347px;
+}
+
+#realtime-publications {
+    height: 335px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 921px;
+}
+
+#requests
+{
+    width: 898px;
+    height: 179px;
+    
+}
+
+#send-offers
+{
+    width: 821px;
+    height: 225px;
+}
+
+#multimedia
+{
+    width: 784px;
+    height: 150px;
+}
+
+#buy-online-publications, #panel, #realtime-publications, #requests, #send-offers, #multimedia
+{
+    margin-left: auto;
+    margin-right: auto; 
 }
 
 #tools h1 {
@@ -1608,11 +1667,12 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 
 
-#footer
-{
-    
-    clear: both ;
+#footer {
+    clear: both;
     height: 221px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 980px;
 }
 
 #footer-top-side
@@ -2135,7 +2195,7 @@ div.footer-section a{
 {
     color:#247f12;
 }
-.properties-pager-last-property
+.properties-pager.last
 {
     border: none;
 }
@@ -2427,6 +2487,13 @@ div.footer-section a{
     height: 127px;
     width: 107px;
 }
+
+#user-viewer-photo
+{
+    width: 107px;
+    height: 121px;
+}
+
 
 #user-viewer-user-email-header {
     margin-top: 10px;
@@ -2854,7 +2921,7 @@ div.footer-section a{
 #user-info {
     margin-right: 8px;
     padding: 10px;
-    width: 617px;
+    width: 600px;
 }
 
 #user-info-company
@@ -2864,18 +2931,19 @@ div.footer-section a{
 
 #user-info-name-description
 {
-
     color: black;
     float: left;
     margin-right: 20px;
-    width: 448px;
+    
 
 }
 
-#user-info-card-photo
-{
+#user-info-card-photo {
     display: block;
     float: left;
+    height: 98px;
+    margin-right: 35px;
+    width: 105px;
 }
 
 

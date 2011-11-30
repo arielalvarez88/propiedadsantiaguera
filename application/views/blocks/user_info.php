@@ -1,11 +1,14 @@
 <div id="user-info">
 
     
-        <img id="user-info-card-photo" src="/images/common/defaultUserPhoto.png"/>               
+        <img id="user-info-card-photo" src="<?php echo $user_to_view->photo;?>"/>               
         <div id="user-info-name-description">
-            <h2 id="user-info-name">Juan de los Palotes</h2>
+            <?php $user_full_name = $user_to_view->name;?>
+            <?php $user_full_name .= $user_to_view->lastname ? ' '.$user_to_view->lastname : '';?>
+            
+            <h2 id="user-info-name"><?php echo $user_full_name;?></h2>
             <p id="user-info-role">Agente inmobiliario</p>
-            <p id="user-info-role">Este formidable Apartamento de 191 metros cuadrados de construcción ubicado en el sector de La Española cerca de la autopista Duarte una ubicación impresionante para vivir con tranquilidad y cerca de todo en esta ciudad de Santiago.Este formidable Apartamento de 191 metros cuadrados de construcción ubicado en el sector de La Española cerca de la autopista Duarte.</p>
+            <p id="user-info-description-text"><?php echo $user_to_view->description;?></p>
 
         </div>
 

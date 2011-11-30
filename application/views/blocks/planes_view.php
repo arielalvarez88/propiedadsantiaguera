@@ -83,7 +83,8 @@
          
 </table>
     <p id="p_left">COMO FUNCIONA</br>PROPIEDAD SANTIAGUERA</p>
-    <p id="p_right">TE GUSTARIA PUBLICAR TU</br> PROPIEDAD CON IMAGENES</br>PROFESIONALES</p>
+<!--    <p id="p_right">TE GUSTARIA PUBLICAR TU</br> PROPIEDAD CON IMAGENES</br>PROFESIONALES</p>-->
+    <img src="/images/planes/proPhotos.png" alt="fotos-profesionales"/>
 </div>
 <h1 class="info_importante_title">Informaci&oacute;n Importante</h1>
 <div id="info_importante_content">
