@@ -161,14 +161,25 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
     
     
     this.element.unbind(event);
-    this.element.bind(event,function(){
-        var elementValue = thisObject.element.val();
+    this.element.bind(event,function(defaultEvent){
+        defaultEvent.preventDefault();
+        var elementValue = thisObject.element.val() ? thisObject.element.val() : false;
+        
         thisObject.elementsToShowOrHide.hide();
+       
+       
         
         if(emptyElementsValuesWhenHidding)
             thisObject.elementsToShowOrHide.val("");
         
-        $(valuesToSelectorsToShowMap[elementValue]).show();
+        if(elementValue)
+            $(valuesToSelectorsToShowMap[elementValue]).show();
+        else 
+            {
+            $(valuesToSelectorsToShowMap['selector']).show();
+            
+            }
+            
     });
     
    
@@ -860,6 +871,8 @@ intializeHideShowElements = function(){
 initializeHiderAndShowerElement = function(){
     var advancedFilter = new HiderAndShowerElement("#advanced-filter-property-type", {apartment:'.apartment-field', house : ".house-field", lot:".lot-field", penthouse:".penthouse-field",mall:".mall-field", building:".building-field", warehouse:".warehouse-field",office:".office-field",land:".land-field"}, "#advanced-filter .hiddable", true, "change");
     var propertiesFormCondition = new HiderAndShowerElement("#property-form-description-condition", {1:'.sell-condition-field', 2 : ".rent-condition-field", 3 : ".rent-condition-field, .sell-condition-field" }, "ul #property-form-description-column4 li", false, "change");
+    var supportItems = new HiderAndShowerElement("#faq", {selector: ".faq-data"}, ".hidden", false, "click");
+
 };
 
 
@@ -872,8 +885,7 @@ $(document).ready
     if($.browser.msie)
     {
         $('head').append(ieCssFixes);
-    }
-    
+    }    
     initilizeSlideShows();
     initializePropiedadViewer();    
     intializeAgentesHeaderSection();
