@@ -12,7 +12,7 @@ input, select, textarea {
 
 body{
 
-  background: none repeat scroll 0 0 #EFEFEF;
+    background: none repeat scroll 0 0 #EFEFEF;
     color: black;
     font-family: museo,helvetica,arial,sans-serif;
     font-size: small;
@@ -311,7 +311,7 @@ body, html
     padding-top: 30px;
     width: 819px;
 }
-    
+
 #advanced-filter-close-button {
     cursor: pointer;
     display: block;
@@ -377,7 +377,7 @@ body, html
 
 #advanced-filter input#advanced-filter-search-button
 {
-      border: medium none;
+    border: medium none;
     clear: both;
     float: right;
     height: auto;
@@ -425,7 +425,7 @@ body, html
     z-index: 99999;
     color:white;
     font-size: 1.2em;
-            background-color: #76BC3B;
+    background-color: #76BC3B;
     color: white;
     height: 20px;
     list-style: none outside none;
@@ -469,7 +469,7 @@ body, html
 
 
 #panels-account-available span{
-        border: 3px solid #B4D341;
+    border: 3px solid #B4D341;
     color: #666666;
     padding: 0 5px;
 }
@@ -629,7 +629,7 @@ body, html
     margin-bottom: 20px;
 }
 
-  .panels-properties-pager-property-info h2 a.panels-properties-pager-property-info-title-link{
+.panels-properties-pager-property-info h2 a.panels-properties-pager-property-info-title-link{
     color: white;
 }
 
@@ -709,7 +709,7 @@ body, html
 }
 
 #panels-property-section-menu-tabs a {
-   background-color: #F5F5F5;
+    background-color: #F5F5F5;
     border-radius: 5px 5px 0 0;
     color: #8EC55C;
     display: block;
@@ -723,7 +723,7 @@ body, html
 {
     background-color: #76bc3b;
     color: white;
-    
+
 }
 
 #panels-property-section-menu {
@@ -978,7 +978,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 #footer-logo-message, #footer-company-menu, #footer-resources-menu, #footer-contact {
     float: left;
     color: white;
-   
+
 }
 
 #footer-contact p a#twitter-icon {
@@ -987,7 +987,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #footer-contact p a#google-plus-icon
 {
-        background-position: -53px 0;
+    background-position: -53px 0;
 }
 
 #footer-bottom
@@ -1171,8 +1171,8 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 /*contact*/
 
 #contact-form label, #contact-form input {
-        float: left;
-        margin: 10px 0;
+    float: left;
+    margin: 10px 0;
 }
 
 #contact-form input, #contact-form textarea, #contact-form select {
@@ -1191,7 +1191,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #contact-form label {
     width: 75px;
-      color: #798D92;
+    color: #798D92;
     font-size: 1.1em;
     font-weight: bold;
 }
@@ -1238,7 +1238,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     float: right;
     height: auto;
     width: auto;
-    
+
 }
 
 #contact-information {
@@ -1586,7 +1586,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #tools-center-pager a {
     background-image: url("/images/toolsCenter/toolsCenterIconsSprite.png");
-    
+
     display: block;
     float: left;
     height: 65px;
@@ -1617,7 +1617,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #tools-center-pager
 {
-      position: relative;
+    position: relative;
     top: -6px;
     z-index: 1000;
 }
@@ -1879,13 +1879,13 @@ div.footer-section a{
 
 #basic-filter input#basic-filter-search-button
 {
-     border: medium none;
+    border: medium none;
     display: block;
     float: left;
     height: 26px;
-    
+
     width: 105px;
-    
+
 }
 
 #basic-filter p {
@@ -1906,15 +1906,15 @@ div.footer-section a{
     padding: 22px 0 17px 40px;
 }
 
-    #basic-filter-bottom-left-size
-    {
-        width: 351px;
-    }
- 
+#basic-filter-bottom-left-size
+{
+    width: 351px;
+}
+
 
 #basic-filter p#basic-filter-price-slider-header
 {
-        color: #999999;
+    color: #999999;
     font-size: 1.2em;
     padding-left: 6px;
 }
@@ -1927,7 +1927,7 @@ div.footer-section a{
 
 #basic-filter input#basic-filter-reference-number
 {
-/*    margin-bottom: 30px;*/
+    /*    margin-bottom: 30px;*/
 }
 
 #basic-filter select, #basic-filter input {
@@ -2048,7 +2048,7 @@ div.footer-section a{
 
 #advertising
 {
-margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 
@@ -2102,7 +2102,7 @@ margin-bottom: 5px;
 
     height: 325px;
     background-image: url("/images/common/stripesGradient_H433.jpg");
-        
+
 }
 
 
@@ -2113,7 +2113,7 @@ margin-bottom: 5px;
 
 #properties-pager-container
 {
-     border: 1px solid #F4F4F4;
+    border: 1px solid #F4F4F4;
     margin-top: 10px
 }
 
@@ -2187,7 +2187,7 @@ margin-bottom: 5px;
     padding: 0 8px;
     margin: 10px 0;
     width: 249px;      
-    
+
     display:inline;
 }
 
@@ -2206,7 +2206,7 @@ margin-bottom: 5px;
 /***interests-calculator ***/
 
 #interests-calculator input {
-  border: 4px solid #E1E1E1;
+    border: 4px solid #E1E1E1;
     height: 36px;
     margin: 5px 0;
     width: 238px;
@@ -2216,7 +2216,7 @@ margin-bottom: 5px;
     margin: 3px 0;
 }
 #interests-calculator {
-         color: #76BB3A;
+    color: #76BB3A;
     padding: 0 10px;
     width: 351px;
 }
@@ -2226,10 +2226,10 @@ margin-bottom: 5px;
 {
     margin-right: 30px;
 }
-   
+
 #interests-calculator h2 {
-    
-       
+
+
     background-image: url("/images/common/darkStripesGradient.jpg");
     border-radius: 5px 5px 0 0;
     font-size: 2em;
@@ -2238,7 +2238,7 @@ margin-bottom: 5px;
 
 #interests-calculator div
 {
-        background: url("/images/common/stripesGradient_H433.jpg") repeat scroll 0 0 transparent;
+    background: url("/images/common/stripesGradient_H433.jpg") repeat scroll 0 0 transparent;
     border-radius: 0 0 5px 5px;
     padding: 0 10px;
 }
@@ -2390,7 +2390,7 @@ margin-bottom: 5px;
     cursor: pointer;
 }
 #propiedad-viewer-pagers{
-      clear: both;
+    clear: both;
     height: 65px;
     margin-top: 10px;
 }
@@ -2402,7 +2402,7 @@ margin-bottom: 5px;
 
 #propiedad-viewer-header h2
 {
-   font-size: 2.4em;
+    font-size: 2.4em;
     line-height: 1em;
     margin: 0;
 }
@@ -2540,7 +2540,7 @@ margin-bottom: 5px;
 
 #user-viewer-user-email
 {
-      clear: both;
+    clear: both;
     font-size: 1.6em;
     text-align: center;
 }
@@ -2549,7 +2549,7 @@ margin-bottom: 5px;
 
 /*moneda-precio*/
 #moneda-precio {
-  background-image: url("/images/common/whiteToGrayGradient.png");
+    background-image: url("/images/common/whiteToGrayGradient.png");
     background-position: 0 -90px;
     clear: both;
     color: black;
@@ -2702,12 +2702,12 @@ margin-bottom: 5px;
 .properties-search-results-pager-property div
 {
     float: left;
-    
+
 }
 
 .properties-search-results-pager-property div div
 {
-  clear: both;  
+    clear: both;  
 }
 
 
@@ -2817,7 +2817,7 @@ margin-bottom: 5px;
     float: left;
     margin-top: 85px;
 }
- 
+
 
 
 
@@ -3337,11 +3337,11 @@ span.required{
 }
 .main-title
 {
-   color:#76BA39;
+    color:#76BA39;
 }
 .sub-title
 {
-   color:#555;
+    color:#555;
 }
 #terminos-holder h2, #terminos-holder h3, #terminos-holder h4, #terminos-holder p,
 #politicas-holder h2, #politicas-holder h3, #politicas-holder h4, #politicas-holder p
@@ -3361,17 +3361,66 @@ span.required{
 }
 /**********************/
 
+/***************** soporte *****************/
+#soporte-left-side
+{
+    background-color:#76BC3B;
+    width:18%;
+    margin-top:20px;
+        margin-bottom:20px;
+}
+#soporte-left-side ul
+{
+    padding:10px;
+    list-style-type: none;
+}
+#soporte-left-side li
+{
+
+}
+#soporte-left-side li a
+{
+    color:#fff;
+    text-decoration: none;
+}
+#soporte-right-side p, #soporte-left-side p, #soporte-center-side p
+{
+    color:#777;
+}
+#soporte-right-side, #soporte-center-side
+{
+    width:35%;  
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+#soporte-right-side
+{
+    float:right;
+    margin-right:30px;
+}
+#soporte-left-side
+{
+    float:left;
+}
+#soporte-center-side
+{
+    float:left;
+    margin-left:25px;
+}
+/*******************************************/
+
 /***** plans table ******/
 #planes_main_title
 {
-   text-align:center;
-   color:#76BA39;
+    text-align:center;
+    color:#76BA39;
 }
 #planes_main_subtitle
 {
-   text-align:center; 
-   color:#B2B2B2;
-   margin-bottom: 10px;
+    text-align:center; 
+    color:#B2B2B2;
+    margin-bottom: 10px;
 }
 #planes_holder
 {
@@ -4469,7 +4518,7 @@ button.ui-button:-moz-focus-inner { border: 0; padding: 0; } /* reset extra padd
     padding:15px 0 10px 20px;
     color:#76BC3B;
     margin-bottom:0;
-        border-radius:9px 9px 0 0;
+    border-radius:9px 9px 0 0;
     -moz-border-radius:9px 9px 0 0; 
     -webkit-border-radius:9px 9px 0 0;
 }
