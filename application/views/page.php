@@ -210,7 +210,7 @@ $thisPage = str_replace('/', '-', uri_string());
                         <h2>Recursos</h2>
                         <ul>
                         <li>
-                            Soporte
+                            <a href="/soporte">Soporte</a>
                         </li>
                         <li>
                             <a href="/terminos">T&eacute;rminos de uso</a>
