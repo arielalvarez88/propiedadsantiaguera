@@ -3452,6 +3452,10 @@ span.required{
     height: 670px;
     border-collapse:collapse;
 }
+.chrome #planes_detail tr
+{
+   height:48px;
+}
 #planes_data th
 {
     color:#fa0;

@@ -273,5 +273,6 @@ $thisPage = str_replace('/', '-', uri_string());
         <script type="text/javascript" src="/js/propiedadsantiaguera.js" type="text/javascript" ></script>
         <script type="text/javascript" src="http://use.typekit.com/awd1xwd.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <script type="text/javascript" src="/js/css_browser_selector.js" type="text/javascript" ></script>
     </body>
 </html>
