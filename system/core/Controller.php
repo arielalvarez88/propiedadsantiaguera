@@ -53,6 +53,8 @@ class CI_Controller {
         $this->load->_ci_autoloader();
 
         log_message('debug', "Controller Class Initialized");
+        $this->session->set_flashdata('referrer', current_url());  
+        
     }
 
     public static function &get_instance() {

@@ -27,6 +27,7 @@ $config = array(
             'rules' => 'required|max_length[30]|valid_email'
         )
     ),
+    
     'signupClient' => array(
         array(
             'field' => 'signup-name',
@@ -54,7 +55,7 @@ $config = array(
             'rules' => 'required|max_length[30]|valid_email'
         )
     ),
-    'edit_client' => array(
+   'edit_client' => array(
         array(
             'field' => 'signup-name',
             'label' => 'nombre',
@@ -64,17 +65,19 @@ $config = array(
             'field' => 'signup-lastname',
             'label' => 'apellido',
             'rules' => 'required|max_length[20]'
-        ),
+        ),        
         array(
-            'field' => 'signup-password',
-            'label' => 'contraseña',
-            'rules' => ''
-        ),
+            'field' => 'signup-email',
+            'label' => 'email',
+            'rules' => 'required|max_length[30]|valid_email'
+        )
+    ),
+       'edit_company' => array(
         array(
-            'field' => 'signup-password-confirmation',
-            'label' => 'la confirmación de contraseña',
-            'rules' => 'matches[signup-password]'
-        ),
+            'field' => 'signup-company-name',
+            'label' => 'nombre de la compañía',
+            'rules' => 'required|max_length[20]'
+        ), 
         array(
             'field' => 'signup-email',
             'label' => 'email',

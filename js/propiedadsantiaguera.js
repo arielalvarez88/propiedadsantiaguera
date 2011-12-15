@@ -113,7 +113,7 @@ blockExists = function(idName){
     return false;
 };
 
-intializeAgentesHeaderSection = function(){
+initializeAgentesHeaderSection = function(){
 
     $('#agentes-header-inmobliarias').unbind('click');
     $('#agentes-header-inmobliarias').click(function(){
@@ -126,7 +126,7 @@ intializeAgentesHeaderSection = function(){
     });
 }
 
-MessageCallback = function (response,successMessage,failureMessage)
+alertMessageCallback = function (response,successMessage,failureMessage)
 {
     this.getMessage = function()
     {
@@ -145,7 +145,7 @@ MessageCallback = function (response,successMessage,failureMessage)
 
 };
 
-HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, elementsToShowOrHideSelector, emptyElementsValuesWhenHidding, event){
+HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, elementsToShowOrHideSelector, emptyElementsValuesWhenHidding, event, runEventOnLoad){
     
     if(typeof event == "undefined")
         event = "click";
@@ -170,7 +170,10 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
        
         
         if(emptyElementsValuesWhenHidding)
-            thisObject.elementsToShowOrHide.val("");
+        {
+            $(elementsToShowOrHideSelector + ":not(" +valuesToSelectorsToShowMap[elementValue] + ")").val("");
+        }
+            
         
         if(elementValue)
             $(valuesToSelectorsToShowMap[elementValue]).show();
@@ -182,11 +185,14 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
             
     });
     
-   
+    if(runEventOnLoad)
+    {
+        thisObject.element.trigger(event);
+    }
    
 };
 
-Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,messageCallbackFunction){
+Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,alertMessageCallbackFunction){
     
     var thisObject = this;
     this.form = $(formWrapperSelector);
@@ -217,18 +223,18 @@ Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, a
             event.preventDefault();
             var info = {};
             
-            var inputs = thisObject.form.children('input');
+            var inputs = thisObject.form.find('input, select, textarea');
             
             
             for(i = 0; i < inputs.length; i++)
             {
                  
-                info[$(inputs[i]).attr('id')] = $(inputs[i]).val();
+                info[$(inputs[i]).attr('name')] = $(inputs[i]).val();
             }
             
             
             $.post(recivingScriptUrl, info ,function(response){
-                messageCallbackFunction(response);
+                alertMessageCallbackFunction(response);
             },'json');
         });
 
@@ -335,9 +341,9 @@ Slider = function(parentSelector,minValue,maxValue,minInitialPosition,maxInitial
     this.maxDisplay = $(maxDisplaySelector);
     this.step = step;
    
-   this.getMax = function(){
-      return thisObject.maxValue; 
-   };
+    this.getMax = function(){
+        return thisObject.maxValue; 
+    };
    
     var biggerThan = this.maxInitialValue >= maxValue? 'Más de ': '';
     this.minDisplay.html("$" + commify('' + this.minInitialValue));
@@ -375,7 +381,33 @@ Slider = function(parentSelector,minValue,maxValue,minInitialPosition,maxInitial
 };
 
 
-intializeForms = function(){
+printCallbackMessageInContainer = function(response, successMessageContainer, errorMessageContainer){
+    
+    if(typeof response != 'object' || typeof response.success != 'boolean')
+        throw "The response must be an object with a bool property called response and a string property called message";
+    
+    
+    if(response.success)
+        {
+            if(response.message)
+                $(successMessageContainer).show().html(response.message);
+            else
+                {
+                    $(successMessageContainer+", "+ errorMessageContainer).hide();
+                }
+            
+        }
+        else
+        {
+            $(errorMessageContainer).html(response.message).show();
+            $(successMessageContainer).hide();
+        }
+            
+    
+    
+};
+
+initializeForms = function(){
     
     initializeInputsWithDefaultText();
 
@@ -383,11 +415,12 @@ intializeForms = function(){
     var  signupForm = new Form('#signup-informacion-general','#signup-form-send-button','#signup-form-clear-button');
     var forgotPassword = new Form('#password-reset-form', '#password-reset-submit', '', true, '/usuario/password_reset_request', function(response){
     
-        new MessageCallback(response, 'Email enviado', 'Error trate luego').getMessage();
+        new alertMessageCallback(response, 'Email enviado', 'Error trate luego').getMessage();
         
     });
     
     var loginForm = new Form('#login form', '#login-submit', '', true, '/usuario/login', function(response){
+        
         
         if(response.success)
         {
@@ -407,7 +440,12 @@ intializeForms = function(){
 
     var propertyForm = new Form('#property-form','#property-form-send-button','#property-form-clear-button');
     
-    
+    var givePosts = new Form('#give-posts-to-agents-overlay', '#give-posts-to-agents-overlay-save-button', '', true, '/miembros/give_posts',  function(response){
+        printCallbackMessageInContainer(response,"#give-posts-to-agents-overlay .info-messages","#give-posts-to-agents-overlay .error-messages");
+        if(response.success)
+            window.location.href= window.location.href;
+        
+    });
 
     
     
@@ -433,7 +471,7 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
         $.post(scriptUrl,postVariables,function(html){
             thisObject.newFormContainer.find('.optional-form, .optional-view').remove();                        
             thisObject.newFormContainer.append(html);
-            intializeForms();
+            initializeForms();
             initializeViewLoaderElements();
             initializeInputsWithDefaultText();
                 
@@ -481,9 +519,9 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
 
 eventBinder = function (elementSelector, eventName, eventFunctionToCall) {
     if( typeof elementSelector != "string" || typeof eventName != "string" || typeof eventFunctionToCall != "function")
-        {
-            throw "Arguments suplied to eventBinder are invalid.";
-        }
+    {
+        throw "Arguments suplied to eventBinder are invalid.";
+    }
         
     
     var element  = $(elementSelector);
@@ -494,19 +532,7 @@ eventBinder = function (elementSelector, eventName, eventFunctionToCall) {
 
 
 initializeViewLoaderElements = function(){
-    var signupChooser = new ViewLoaderElement('#new-user-type-value','change',[{
-        value: 'client', 
-        url:'/ajax/view_loader/forms/signup_form', 
-        data: {
-            clientType: 'client'
-        }
-    },{
-        value: 'company', 
-        url:'/ajax/view_loader/forms/signup_form', 
-        data: {
-            clientType: 'company'
-        }
-    }],'#signup-form');   
+  
 
     var forgotPassword = new ViewLoaderElement('#login-password-reset-button','click',[{
         value: '', 
@@ -573,7 +599,7 @@ Overlay = function (selector, optionalClosebuttonSelector)
         margin:0, 
         showCloseButton: false,
         onComplete: function (){
-            intializeForms(); 
+            initializeForms(); 
             initializeViewLoaderElements();
             initializeOverlays();
             initializeHiderAndShowerElement();
@@ -598,6 +624,7 @@ initializeInputsWithDefaultText = function(){
 initializeOverlays = function(){
     var login = new Overlay('#login-link','#login-close-button');
     var advancedFilter = new Overlay('#basic-filter-advanced-filter-link','#advanced-filter-close-button');
+    var givePostsToAgents = new Overlay('.give-agent-publication ','#give-posts-to-agents-overlay-close-button, #give-posts-to-agents-overlay-cancel-button');
     
 };
 
@@ -687,59 +714,59 @@ function commify(num) {
 
 Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderContainerSelector, searchButtonSelector, valuesToSliderParameters, sliderMinValue,sliderMaxValue,sliderMinInitialValue,sliderMaxInitialValue,step,submitUrl){
    
-   var thisObject = this;
-   this.sliderChangerElement = $(sliderChangerElementSelector);
-   this.searchButtonElement = $(searchButtonSelector);
-   this.sliderElement = new Slider(sliderContainerSelector, sliderMinValue, sliderMaxValue, sliderMinInitialValue, sliderMaxInitialValue, '#basic-filter-price-slider-min-display', '#basic-filter-price-slider-max-display', step);
-   this.filterElement = $(filterContainerSelector);
-   this.sliderChangerElementEvent = function(){
+    var thisObject = this;
+    this.sliderChangerElement = $(sliderChangerElementSelector);
+    this.searchButtonElement = $(searchButtonSelector);
+    this.sliderElement = new Slider(sliderContainerSelector, sliderMinValue, sliderMaxValue, sliderMinInitialValue, sliderMaxInitialValue, '#basic-filter-price-slider-min-display', '#basic-filter-price-slider-max-display', step);
+    this.filterElement = $(filterContainerSelector);
+    this.sliderChangerElementEvent = function(){
      
 
-       for(value in valuesToSliderParameters)
-     {
-           if(thisObject.sliderChangerElement.val() == value)
-               {
+        for(value in valuesToSliderParameters)
+        {
+            if(thisObject.sliderChangerElement.val() == value)
+            {
                   
-                   thisObject.sliderElement = new Slider(sliderContainerSelector, valuesToSliderParameters[value].minValue, valuesToSliderParameters[value].maxValue, valuesToSliderParameters[value].minInitialValue, valuesToSliderParameters[value].maxInitialValue, "#basic-filter-price-slider-min-display", "#basic-filter-price-slider-max-display", valuesToSliderParameters[value].step);
-               }
-       }
+                thisObject.sliderElement = new Slider(sliderContainerSelector, valuesToSliderParameters[value].minValue, valuesToSliderParameters[value].maxValue, valuesToSliderParameters[value].minInitialValue, valuesToSliderParameters[value].maxInitialValue, "#basic-filter-price-slider-min-display", "#basic-filter-price-slider-max-display", valuesToSliderParameters[value].step);
+            }
+        }
    
-   };
+    };
    
-   this.submitEvent = function(event)
-   {
-       event.preventDefault();
-       var infoContainersElementsInFilterSelector = filterContainerSelector + " input:not(#basic-filter-search-button), " + filterContainerSelector + " select";
-       var infoContainersElementsInFilter = $(infoContainersElementsInFilterSelector);
+    this.submitEvent = function(event)
+    {
+        event.preventDefault();
+        var infoContainersElementsInFilterSelector = filterContainerSelector + " input:not(#basic-filter-search-button), " + filterContainerSelector + " select";
+        var infoContainersElementsInFilter = $(infoContainersElementsInFilterSelector);
        
-       var queryString = "?";
-       $.each(infoContainersElementsInFilter, function(index, element){
-           var jqueryElement = $(element);
-           queryString += jqueryElement.val() != jqueryElement.attr("data-null-value")?  jqueryElement.attr("name") + "=" + jqueryElement.val()+ "&" : '';           
+        var queryString = "?";
+        $.each(infoContainersElementsInFilter, function(index, element){
+            var jqueryElement = $(element);
+            queryString += jqueryElement.val() != jqueryElement.attr("data-null-value")?  jqueryElement.attr("name") + "=" + jqueryElement.val()+ "&" : '';           
            
-       });
-       var minPrice= thisObject.sliderElement.getRange()[0];
-           
-           
-           var maxPrice = thisObject.sliderElement.getRange()[1];
-           queryString += "minprice=" + minPrice + "&" +"maxprice=" + maxPrice;
-           queryString += "&absoluteMin=" + thisObject.sliderElement.minValue + "&" +"absoluteMax=" + thisObject.sliderElement.maxValue + "&step=" + thisObject.sliderElement.step;
+        });
+        var minPrice= thisObject.sliderElement.getRange()[0];
            
            
+        var maxPrice = thisObject.sliderElement.getRange()[1];
+        queryString += "minprice=" + minPrice + "&" +"maxprice=" + maxPrice;
+        queryString += "&absoluteMin=" + thisObject.sliderElement.minValue + "&" +"absoluteMax=" + thisObject.sliderElement.maxValue + "&step=" + thisObject.sliderElement.step;
            
-           var noLimitToMaxPrice = thisObject.sliderElement.getMax() <= maxPrice;
-           queryString +=  noLimitToMaxPrice? "&nopricelimit=true" : "";
            
-           window.location.href = submitUrl + queryString;
+           
+        var noLimitToMaxPrice = thisObject.sliderElement.getMax() <= maxPrice;
+        queryString +=  noLimitToMaxPrice? "&nopricelimit=true" : "";
+           
+        window.location.href = submitUrl + queryString;
        
        
-   };
+    };
    
    
    
    
-   eventBinder(sliderChangerElementSelector, "change", thisObject.sliderChangerElementEvent);
-   eventBinder(searchButtonSelector, "click", thisObject.submitEvent);
+    eventBinder(sliderChangerElementSelector, "change", thisObject.sliderChangerElementEvent);
+    eventBinder(searchButtonSelector, "click", thisObject.submitEvent);
    
    
    
@@ -751,12 +778,27 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderCo
 
 initializeFilters = function(){
    
-   var basicFilterMinPriceInitialValue = $.getUrlVar('minprice') ? Number($.getUrlVar('minprice')) : 0;
-   var basicFilterMaxPriceInitialValue = $.getUrlVar('maxprice')? Number( $.getUrlVar('maxprice')) : 50000000;
-   var basicFilterMinValue = $.getUrlVar('absoluteMin')? Number($.getUrlVar('absoluteMin')) : 0;
-   var basicFilterMaxValue = $.getUrlVar('absoluteMax')? Number($.getUrlVar('absoluteMax')) : 50000000;   
-   var basicFilterStep = $.getUrlVar('step')? Number($.getUrlVar('step')) : 500000;
-   var basicFilter = new Filter("#basic-filter","#basic-filter-condition", "#basic-filter-price-slider","#basic-filter-search-button",{1: {minValue: 0, maxValue: 50000000, maxInitialValue: 50000000, minInitialValue: 0, step: 500000}, 2: {minValue: 0, maxValue: 300000, maxInitialValue: 300000, minInitialValue: 0, step: 5000}}, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "/propiedades/buscar");
+    var basicFilterMinPriceInitialValue = $.getUrlVar('minprice') ? Number($.getUrlVar('minprice')) : 0;
+    var basicFilterMaxPriceInitialValue = $.getUrlVar('maxprice')? Number( $.getUrlVar('maxprice')) : 50000000;
+    var basicFilterMinValue = $.getUrlVar('absoluteMin')? Number($.getUrlVar('absoluteMin')) : 0;
+    var basicFilterMaxValue = $.getUrlVar('absoluteMax')? Number($.getUrlVar('absoluteMax')) : 50000000;   
+    var basicFilterStep = $.getUrlVar('step')? Number($.getUrlVar('step')) : 500000;
+    var basicFilter = new Filter("#basic-filter","#basic-filter-condition", "#basic-filter-price-slider","#basic-filter-search-button",{
+        1: {
+            minValue: 0, 
+            maxValue: 50000000, 
+            maxInitialValue: 50000000, 
+            minInitialValue: 0, 
+            step: 500000
+        }, 
+        2: {
+            minValue: 0, 
+            maxValue: 300000, 
+            maxInitialValue: 300000, 
+            minInitialValue: 0, 
+            step: 5000
+        }
+    }, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "/propiedades/buscar");
    
 };
 
@@ -828,7 +870,7 @@ initializeInterestsCalculators = function()
 };
 
 
-HideShowElement = function(linkSelector, arrowsSelector, elementToShowOrHideSelector){
+HideShowWithArrowDirectionElement = function(linkSelector, arrowsSelector, elementToShowOrHideSelector){
     if( typeof linkSelector != "string" || typeof arrowsSelector != "string" || typeof elementToShowOrHideSelector != "string" )
         throw "All parameters should be selectors of tpye String.";
     
@@ -863,16 +905,37 @@ HideShowElement = function(linkSelector, arrowsSelector, elementToShowOrHideSele
     
 };
 
-intializeHideShowElements = function(){
-    var upperMenuHideOrShow = new HideShowElement("#upper-panel-hide-show", "#upper-panel-hide-show img", "#upper-panel ul");
+initializeHideShowWithArrowDirectionElement= function(){
+    var upperMenuHideOrShow = new HideShowWithArrowDirectionElement("#upper-panel-hide-show", "#upper-panel-hide-show img", "#upper-panel ul");
 };
 
 
 initializeHiderAndShowerElement = function(){
-    var advancedFilter = new HiderAndShowerElement("#advanced-filter-property-type", {apartment:'.apartment-field', house : ".house-field", lot:".lot-field", penthouse:".penthouse-field",mall:".mall-field", building:".building-field", warehouse:".warehouse-field",office:".office-field",land:".land-field"}, "#advanced-filter .hiddable", true, "change");
-    var propertiesFormCondition = new HiderAndShowerElement("#property-form-description-condition", {1:'.sell-condition-field', 2 : ".rent-condition-field", 3 : ".rent-condition-field, .sell-condition-field" }, "ul #property-form-description-column4 li", false, "change");
-    var supportItems = new HiderAndShowerElement("#faq", {selector: ".faq-data"}, ".hidden", false, "click");
-
+    var advancedFilter = new HiderAndShowerElement("#advanced-filter-property-type", {
+        apartment:'.apartment-field', 
+        house : ".house-field", 
+        lot:".lot-field", 
+        penthouse:".penthouse-field",
+        mall:".mall-field", 
+        building:".building-field", 
+        warehouse:".warehouse-field",
+        office:".office-field",
+        land:".land-field"
+    }, "#advanced-filter .hiddable", true, "change");
+    var propertiesFormCondition = new HiderAndShowerElement("#property-form-description-condition", {
+        1:'.sell-condition-field', 
+        2 : ".rent-condition-field", 
+        3 : ".rent-condition-field, .sell-condition-field"
+    }, "ul #property-form-description-column4 li", false, "change");
+    var signupChooser = new HiderAndShowerElement('#new-user-type-value',{
+        1: '.agent-particular-field', 
+        2:'.company-field', 
+        3: '.company-agent-field', 
+        4: '.agent-particular-field'
+    }, '.agent-particular-field, .company-field, .company-agent-field', false, 'change',true);   
+var supportItems = new HiderAndShowerElement("#faq", {selector: ".faq-data"}, ".hidden", false, "click");
+    
+    
 };
 
 
@@ -888,13 +951,13 @@ $(document).ready
     }    
     initilizeSlideShows();
     initializePropiedadViewer();    
-    intializeAgentesHeaderSection();
+    initializeAgentesHeaderSection();
     initializeViewLoaderElements();
-    intializeForms();
+    initializeForms();
     initializeOverlays();
     initializeMaps();
     initializeInterestsCalculators();
-    intializeHideShowElements();
+    initializeHideShowWithArrowDirectionElement();
     initializeHiderAndShowerElement();
     initializeFilters();
 /*comentario*/    

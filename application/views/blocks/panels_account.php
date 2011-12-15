@@ -1,3 +1,9 @@
+<?php
+$user = $user? $user : null;
+?>
+
+
+<?php if($user):?>
 <div id="panels-account-wrapper">
 
     <div id="panels-account">
@@ -102,7 +108,7 @@
 
         
             
-            <a href="#not-yet" class="green-button">
+            <a href="/miembros/eliminar/<?php echo $user->id;?>" class="green-button">
                 Cancelar Cuenta
             </a>
         </div>
@@ -142,3 +148,4 @@
     
     
 </div>
+<?php endif;?>
