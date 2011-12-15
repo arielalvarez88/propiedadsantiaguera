@@ -225,7 +225,7 @@ require_once realpath("./application/libraries/User_factory.php");
                     <h2>Recursos</h2>
                     <ul>
                         <li>
-                            Soporte
+                            <a href="/soporte">Soporte</a>
                         </li>
                         <li>
                             <a href="/terminos">T&eacute;rminos de uso</a>
@@ -282,5 +282,6 @@ require_once realpath("./application/libraries/User_factory.php");
         <script type="text/javascript" src="/js/propiedadsantiaguera.js" type="text/javascript" ></script>
         <script type="text/javascript" src="http://use.typekit.com/awd1xwd.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <script type="text/javascript" src="/js/css_browser_selector.js" type="text/javascript" ></script>
     </body>
 </html>

@@ -161,9 +161,13 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
     
     
     this.element.unbind(event);
-    this.element.bind(event,function(){
-        var elementValue = thisObject.element.val();
+    this.element.bind(event,function(defaultEvent){
+        defaultEvent.preventDefault();
+        var elementValue = thisObject.element.val() ? thisObject.element.val() : false;
+        
         thisObject.elementsToShowOrHide.hide();
+       
+       
         
         if(emptyElementsValuesWhenHidding)
         {
@@ -171,7 +175,14 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
         }
             
         
-        $(valuesToSelectorsToShowMap[elementValue]).show();
+        if(elementValue)
+            $(valuesToSelectorsToShowMap[elementValue]).show();
+        else 
+            {
+            $(valuesToSelectorsToShowMap['selector']).show();
+            
+            }
+            
     });
     
     if(runEventOnLoad)
@@ -922,6 +933,7 @@ initializeHiderAndShowerElement = function(){
         3: '.company-agent-field', 
         4: '.agent-particular-field'
     }, '.agent-particular-field, .company-field, .company-agent-field', false, 'change',true);   
+var supportItems = new HiderAndShowerElement("#faq", {selector: ".faq-data"}, ".hidden", false, "click");
     
     
 };
@@ -936,8 +948,7 @@ $(document).ready
     if($.browser.msie)
     {
         $('head').append(ieCssFixes);
-    }
-    
+    }    
     initilizeSlideShows();
     initializePropiedadViewer();    
     initializeAgentesHeaderSection();
