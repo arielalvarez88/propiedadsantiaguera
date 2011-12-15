@@ -39,16 +39,18 @@ class User extends DataMapper {
             'rules' => array('required', 'trim', 'unique', 'valid_email')
         )
     );
+    
 
     /**
      * Constructor
      *
      * Initialize DataMapper.
      */
-    function _construct() {
+    function _construct($id=null) {
         $this->db_params = array_merge(array('dbcollat' => 'utf8_general_ci'));
 
-        parent::DataMapper();
+        
+        parent::__construct($id);
         
     
     }
@@ -64,6 +66,41 @@ class User extends DataMapper {
     {
         return count($this->properties->where('display_property',1)->get()->all);
         
+    }
+    
+    public function get_agents()
+    {
+        $agents = new User();
+        $agents->where("company", $this->id)->get();
+        if($agents->count() >= 1)
+                return $agents;
+        
+        return false;
+            
+    }
+    
+     public function get_company_object()
+    {
+         if(!$this->company)
+                 return false;
+
+         
+        $company = new User();
+        $company->where("id", $this->company)->get();
+        if($company->count() >= 1)
+                return $company;
+        
+        return false;
+    }
+    
+    public function has_agent($agent_id=0)
+    {
+        $agents = $this->get_agents();        
+        if($agents->result_count() <= 0)
+            return false;
+        
+        
+        return $agents->where("id", $agent_id)->where("company",$this->id)->count() >= 1;
     }
     
     

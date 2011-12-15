@@ -1,4 +1,8 @@
 
+<?php
+$section = $section? $section : null;
+$properties = $properties? $properties: null;
+?> 
 
 
 <div id="panels-properties-pager-container" class="optional-view">
@@ -55,7 +59,7 @@
         
         
         <?php if($section == 'created'):?>
-            <input id="panels-properties-pager-submit-button" type="image" src="/images/panelsPropertiesPager/submitButton.png"/>
+            <input class="form-send-button" id="panels-properties-pager-submit-button" type="image" src="/images/panelsPropertiesPager/submitButton.png"/>
         <?php endif;?>
     </form>
 

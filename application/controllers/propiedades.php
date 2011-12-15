@@ -100,10 +100,11 @@ class Propiedades extends CI_Controller {
 
 
         
-
+        $propertyInfo['company']  = $property_owner->get_company_object();
 
         $data['topLeftSide'] = $this->load->view('blocks/property_viewer', $property_viewer_data, true);
         $data['topRightSide'] = $this->load->view('blocks/user_viewer', $propertyInfo, true);
+        $data['topRightSide'] .= $this->load->view('blocks/belongs_to_company', $propertyInfo, true);
         $data['topRightSide'] .=$this->load->view('blocks/monedaPrecio', $propertyInfo, true);
         $data['topRightSide'] .=$this->load->view('blocks/pdf_converter', $propertyInfo, true);
         $data['topRightSide'] .=$this->load->view('blocks/sharePropertyWithAFriend', $propertyInfo, true);
@@ -320,8 +321,8 @@ class Propiedades extends CI_Controller {
         $newPropertyType = new Property_type();
         $newPropertyType->get_by_id($newPropertyInfo['property-type']);
 
-        $newProperty->save(array($newPropertyType, $new_property_close_places->all, $new_property_features->all, $user, $new_property_files));
-
+        $newProperty->save(array($newPropertyType, $new_property_close_places->all, $new_property_features->all, $new_property_files));
+        $user->inscribe_property($newProperty);
             
                     if ($property_id) {
             $messages['info_messages'] = 'Su propiedad fue actualizada con éxito';

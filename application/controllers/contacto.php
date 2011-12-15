@@ -1,5 +1,5 @@
 <?php 
-
+require_once realpath("./application/libraries/User_factory.php");
 class contacto extends CI_Controller
 {
     public function index()

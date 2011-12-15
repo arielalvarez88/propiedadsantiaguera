@@ -16,17 +16,24 @@ class User_info_getter_from_post implements IUser_info_getter
         $this->post_array = $post_array ? $post_array : new stdClass();
     }
      public function get_name(){
-         return  $this->post_array['signup-name'];
+         
+         return $this->post_array['signup-client-type'] == Environment_vars::$maps['texts_to_id']['user_types']['Empresa']?  $this->post_array['signup-company-name'] : $this->post_array['signup-name'];         
+
      }
      
     public function get_lastname(){
-      return  $this->post_array['signup-lastname']; 
+      return $this->post_array['signup-client-type'] == Environment_vars::$maps['texts_to_id']['user_types']['Empresa']?  '' : $this->post_array['signup-lastname'];         
     }
     
     public function get_email(){
+        
         return  $this->post_array['signup-email']; 
     }
     
+    public function get_password()
+    {
+        return  $this->post_array['signup-password']; 
+    }
     
     public function get_website(){
         return  $this->post_array['signup-website']; 
@@ -36,7 +43,7 @@ class User_info_getter_from_post implements IUser_info_getter
     }
     
     public function get_photo(){
-        return $this->post_array['signup-photo'] ;
+        
     }
     
     public function get_tel(){
@@ -55,7 +62,12 @@ class User_info_getter_from_post implements IUser_info_getter
         return  $this->post_array['signup-address'];
     }
     public function get_type(){
-        return  "client";
+      
+        return  $this->post_array['signup-client-type'];
+    }
+
+    public function get_id() {        
+        return isset($this->post_array['edit-client-id']) ? $this->post_array['edit-client-id'] : false;
     }
 }
 ?>

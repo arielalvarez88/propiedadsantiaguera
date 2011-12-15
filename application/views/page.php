@@ -2,6 +2,11 @@
 $loggedUser = User_handler::getLoggedUser();
 
 $thisPage = str_replace('/', '-', uri_string());
+
+require_once realpath("./application/libraries/User_factory.php");
+require_once realpath("./application/libraries/User_factory.php");
+require_once realpath("./application/libraries/User_factory.php");
+require_once realpath("./application/libraries/User_factory.php");
 ?>
 <html>
 
@@ -12,190 +17,200 @@ $thisPage = str_replace('/', '-', uri_string());
 
     </head>
     <body>
-        <div id="page-wrapper">
-            
-        
-        <?php if ($loggedUser && $loggedUser->name): ?>
-            <div id="upper-panel">
-                
-                <div>
-                    <ul >
-                    <li><a class="no-decoration-anchor">RESUMEN</a>|</li>
-                    <li><a class="no-decoration-anchor" href="/panel/propiedades">PROPIEDADES</a>|</li>
-                    <li><a class="no-decoration-anchor" href="/panel/cuenta">CUENTA</a>|</li>
-                    <li><a class="no-decoration-anchor ">SOLICITUDES</a></li>
-                </ul>
+
+
+
+            <?php if ($loggedUser && $loggedUser->name): ?>
+            <?php $user_is_company = $loggedUser->type == Environment_vars::$maps['texts_to_id']['user_types']['Empresa'];?>
+                <div id="upper-panel">
+
+                    <div>
+                        <ul >
+                            <li><a class="no-decoration-anchor">RESUMEN</a>|</li>
+                            <li><a class="no-decoration-anchor" href="/panel/propiedades">PROPIEDADES</a>|</li>
+                            <li><a class="no-decoration-anchor" href="/panel/cuenta">CUENTA</a>|</li>
+                            <li><a class="no-decoration-anchor ">SOLICITUDES</a><?php echo $user_is_company? '|' : '';?></li>
+                            <?php if($user_is_company):?>
+                                <li><a class="no-decoration-anchor" href="/panel/agentes">AGENTES</a></li>
+                            
+                            <?php endif;?>
+                        </ul>
 
                         <p>Bienvenido, <?php echo $loggedUser->name; ?> <a id="logout-button" href="/usuario/logout">SALIR</a></p>
-                    
-                    
+
+
+                    </div>
+
+
                 </div>
-                
 
-            </div>
+            <?php endif; ?>
 
-        <?php endif; ?>
-        
-        <div id="content-header-wrapper">
-            <div id="header">
-                <div id="banner-container">
-                    <div id="banner">
-                        <div id="idiomas-container">
-                            <span>Idioma:</span>
-                            <ul id="idomas-list">
-                                <li class="idiomas-item" id="espanol">
-                                    <a class="no-decoration-anchor" href="#">
-                                        <img src="/images/spanishFlag.png" class="no-decoration-anchor"/>
-                                    </a>
-                                </li>
-                                <li class="idiomas-item" id="ingles">
-                                    <a class="no-decoration-anchor" href="#">
-                                        <img src="/images/englishFlag.png" class="no-decoration-anchor">
-                                    </a>
+            <div id="content-header-wrapper">
+                <div id="header">
+                    <div id="banner-container">
+                        <div id="banner">
+                            <div id="idiomas-container">
+                                <span>Idioma:</span>
+                                <ul id="idomas-list">
+                                    <li class="idiomas-item" id="espanol">
+                                        <a class="no-decoration-anchor" href="#">
+                                            <img src="/images/spanishFlag.png" class="no-decoration-anchor"/>
+                                        </a>
+                                    </li>
+                                    <li class="idiomas-item" id="ingles">
+                                        <a class="no-decoration-anchor" href="#">
+                                            <img src="/images/englishFlag.png" class="no-decoration-anchor">
+                                        </a>
 
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="login-links">
-                            <p>
-                                <?php if (!$loggedUser || !$loggedUser->name):?>
-                                    <a id="login-link" class="no-decoration-anchor" href="/usuario/loginform">LOG IN</a>
-                                    <span class="vertical-serparator"><img src="/images/dude_icon.png" alt="dude"/></span>
-                                <?php endif;?>
-                                    
-                                
-                                
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="login-links">
+                                <p>
+                                    <?php if (!$loggedUser || !$loggedUser->name): ?>
+                                        <a id="login-link" class="no-decoration-anchor" href="/ajax/view_loader/blocks/login">LOG IN</a>
+                                        <span class="vertical-serparator"><img src="/images/dude_icon.png" alt="dude"/></span>
+                                    <?php endif; ?>
+
+
+
                                     <a class="no-decoration-anchor" href="#">CONTACTENOS</a>
                                     <span class="vertical-serparator"><img src="/images/phone_icon.png" alt="dude"/></span>
-                                
 
 
-                                <a id="header-help" class="no-decoration-anchor" href="#login">AYUDA</a>
-                                <span class="vertical-serparator"><img src="/images/help_icon.png" alt="help"/></span>
-                            </p>  
-                            <div id="banner-image">
-                                <img src="/images/banner_top.png" alt="banner top"/>
+
+                                    <a id="header-help" class="no-decoration-anchor" href="#login">AYUDA</a>
+                                    <span class="vertical-serparator"><img src="/images/help_icon.png" alt="help"/></span>
+                                </p>  
+                                <div id="banner-image">
+                                    <img src="/images/banner_top.png" alt="banner top"/>
+                                </div>
+                            </div>
+
+
+                            <div id="logo">
+                                <a href="/"><img alt="logo" src="/images/logo.png"><a/>
                             </div>
                         </div>
+                    </div>
+
+                    <div id="top-menu-container">
+                        <ul class="primary-links">
+                            <li class="menu-111 first"><a title="" href="<?php echo base_url(); ?>">INICIO</a></li>
+                            <li class="menu-269"><a title="" href="/propiedades">PROPIEDADES</a></li>
+                            <li class="menu-270"><a title="" href="/miembros">MIEMBROS</a></li>
+                            <li class="menu-271"><a title="" href="/planes">PRECIOS</a></li>
+                            <li class="menu-271"><a title="" href="/planes">SOLICITUDES</a></li>
+                            <li class="menu-272 last"><a title="" href="/contacto">CONTACTO</a></li>
+                        </ul>                   
+                    </div>
+                </div>
+                <div id="content">
+                    <?php if (isset($topLeftSide) || isset($topCenterSide) || isset($topRightSide) || isset($top)): ?>
+                        <div id="top-section">
 
 
-                        <div id="logo">
-                            <a href="/"><img alt="logo" src="/images/logo.png"><a/>
+                            <?php if (isset($top)): ?>
+                                <div id="top">
+                                    <?php echo $top; ?>
+                                </div>
+                            <?php endif; ?>
+
+
+                            <?php if (isset($topLeftSide)): ?>
+                                <div id="top-left-side">
+                                    <?php echo $topLeftSide; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (isset($topCenterSide)): ?>
+                                <div id="top-center-side">
+                                    <?php echo $topCenterSide; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (isset($topRightSide)): ?>
+
+                                <div id="top-right-side">
+                                    <?php echo $topRightSide; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
-                    </div>
+                    <?php endif; ?>
+
+                    <?php if (isset($centerSection)): ?>
+
+                        <div id="center-section">
+                            <?php echo $centerSection; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (isset($bottomLeftSide) || isset($bottomRightSide)): ?>
+                        <div id="bottom-section">
+                            <?php if (isset($bottomLeftSide)): ?>
+                                <div id="bottom-left-side">
+                                    <?php echo $bottomLeftSide; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (isset($bottomRightSide)): ?>
+                                <div id="bottom-right-side">
+                                    <?php echo $bottomRightSide; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (isset($bottom)): ?>
+                                <div id="bottom">
+                                    <?php echo $bottom; ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+
+                    <?php endif; ?>
+
+
                 </div>
 
-                <div id="top-menu-container">
-                    <ul class="primary-links">
-                        <li class="menu-111 first"><a title="" href="<?php echo base_url(); ?>">INICIO</a></li>
-                        <li class="menu-269"><a title="" href="/propiedades">PROPIEDADES</a></li>
-                        <li class="menu-270"><a title="" href="/miembros">MIEMBROS</a></li>
-                        <li class="menu-271"><a title="" href="/planes">PRECIOS</a></li>
-                        <li class="menu-271"><a title="" href="/planes">SOLICITUDES</a></li>
-                        <li class="menu-272 last"><a title="" href="/contacto">CONTACTO</a></li>
-                    </ul>                   
-                </div>
-            </div>
-            <div id="content">
-                <?php if (isset($topLeftSide) || isset($topCenterSide) || isset($topRightSide) || isset($top)): ?>
-                    <div id="top-section">
-                        
-                        
-                        <?php if (isset($top)): ?>
-                            <div id="top">
-                                <?php echo $top;?>
-                            </div>
-                        <?php endif; ?>
-         
-                        
-                        <?php if (isset($topLeftSide)): ?>
-                            <div id="top-left-side">
-                                <?php echo $topLeftSide; ?>
-                            </div>
-                        <?php endif; ?>
 
-                        <?php if (isset($topCenterSide)): ?>
-                            <div id="top-center-side">
-                                <?php echo $topCenterSide; ?>
-                            </div>
-                        <?php endif; ?>
 
-                        <?php if (isset($topRightSide)): ?>
-
-                            <div id="top-right-side">
-                                <?php echo $topRightSide; ?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                <?php endif; ?>
-
-                <?php if (isset($centerSection)): ?>
-
-                    <div id="center-section">
-                        <?php echo $centerSection; ?>
-                    </div>
-                <?php endif; ?>
-
-                <?php if (isset($bottomLeftSide) || isset($bottomRightSide)): ?>
-                    <div id="bottom-section">
-                        <?php if (isset($bottomLeftSide)): ?>
-                            <div id="bottom-left-side">
-                                <?php echo $bottomLeftSide; ?>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if (isset($bottomRightSide)): ?>
-                            <div id="bottom-right-side">
-                                <?php echo $bottomRightSide; ?>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if (isset($bottom)): ?>
-                            <div id="bottom">
-                                <?php echo $bottom; ?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-
-                <?php endif; ?>
 
 
             </div>
-                
-              
 
-            
-   
-        </div>
-        
-                                
-                              <div id="footer">
-                            <div id="contet-footer-divisor"></div>
-                            
-                            
-                            
-                                
-                           
-                <div id="footer-body">
-                    
-                    <div id="footer-logo-message">
-                        <img id="footer-logo" src="/images/footer/footerLogo.png"/>
-                        <p id="footer-message"><span class="bold">Propiedad Santiaguera</span> es una plataforma virtual facilita de manera f&aacute;cil e interactiva, la oferta inmobiliaria del mercado.</p>
-                    </div>
-                    
-                     
-                    
-                    <div id="footer-company-menu">
-                        <h2>Empresa</h2>
-                        <ul>
+
+
+
+
+
+
+        <div id="footer">
+            <div id="contet-footer-divisor"></div>
+
+
+
+
+
+            <div id="footer-body">
+
+                <div id="footer-logo-message">
+                    <img id="footer-logo" src="/images/footer/footerLogo.png"/>
+                    <p id="footer-message"><span class="bold">Propiedad Santiaguera</span> es una plataforma virtual facilita de manera f&aacute;cil e interactiva, la oferta inmobiliaria del mercado.</p>
+                </div>
+
+
+
+                <div id="footer-company-menu">
+                    <h2>Empresa</h2>
+                    <ul>
                         <li>
-                             <a href="/nosotros">Nosotros</a>
+                            <a href="/nosotros">Nosotros</a>
                         </li>
                         <li>
                             <a class="no-decoration-anchor" href="/herramientas">Herramientas</a>
                         </li>
                         <li>
-                            Precios
+                            <a href="/planes">Precios</a>
                         </li>
                         <li>
                             Solicitudes
@@ -204,11 +219,11 @@ $thisPage = str_replace('/', '-', uri_string());
                             Publicidad
                         </li>
                     </ul>
-                    </div>
-                    
-                    <div id="footer-resources-menu">
-                        <h2>Recursos</h2>
-                        <ul>
+                </div>
+
+                <div id="footer-resources-menu">
+                    <h2>Recursos</h2>
+                    <ul>
                         <li>
                             Soporte
                         </li>
@@ -221,25 +236,25 @@ $thisPage = str_replace('/', '-', uri_string());
                         <li>
                             <a href="/politicas">Seguridad</a>
                         </li>
-                        
+
                     </ul>
-                    </div>
-                    
-                    <div id="footer-contact">
-                        <h2>Contactanos</h2>
-                        <p>Calle M&eacute;xico Esq. Apeco, #32B <br/> Reparto del Este, Santiago, Rep. Dom. <br/> 809.582.2690</p>
-                        <h4>Siguenos</h4>
-                        <p>
-                            <a href="#not-yet"></a>
-                            <a id="twitter-icon" href="#not-yet"></a>
-                            <a id="google-plus-icon" href="#not-yet"></a>
-                        </p>
-                            
-                    </div>
-                    
-                    
-                    
-             
+                </div>
+
+                <div id="footer-contact">
+                    <h2>Contactanos</h2>
+                    <p>Calle M&eacute;xico Esq. Apeco, #32B <br/> Reparto del Este, Santiago, Rep. Dom. <br/> 809.582.2690</p>
+                    <h4>Siguenos</h4>
+                    <p>
+                        <a href="#not-yet"></a>
+                        <a id="twitter-icon" href="#not-yet"></a>
+                        <a id="google-plus-icon" href="#not-yet"></a>
+                    </p>
+
+                </div>
+
+
+
+
 
                 <div id="footer-bottom">
                     <p id="footer-bottom-left">2011 Propiedad Santiaguera, All rights reserved</p>
@@ -249,23 +264,17 @@ $thisPage = str_replace('/', '-', uri_string());
                     </p>
                 </div>
 
-                       </div>
-                </div>     
-                                
-                                
             </div>
-            
- 
+        </div>    
 
-       </div>
-       
-                  <!--[if !IE 7]>
-	
+
+        <!--[if !IE 7]>
+
 		#wrapper {display:table;height:100%}
 
 <![endif]-->
 
-     <script type="text/javascript" src="/js/jquery-1.6.4.min.js" type="text/javascript" ></script>
+        <script type="text/javascript" src="/js/jquery-1.6.4.min.js" type="text/javascript" ></script>
         <script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript" ></script>        
         <script type="text/javascript" src="/js/jquery.cycle.all.js" type="text/javascript" ></script>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>        

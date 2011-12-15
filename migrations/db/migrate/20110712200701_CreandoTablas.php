@@ -22,6 +22,8 @@ class CreandoTablas extends Ruckusing_BaseMigration {
         $users->column('payment_status', 'boolean');
         $users->column('total_posts', 'integer');        
         $users->column('posts_left', 'integer', array('default'=>0));
+        $users->column('type', 'integer', array('default'=>0));
+        $users->column('company', 'integer', array('default'=>0));
         
        
         

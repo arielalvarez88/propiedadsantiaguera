@@ -1,6 +1,6 @@
 <div id="advanced-filter-container">
-    <img id="advanced-filter-close-button" src="/images/common/fancy_close.png"/>
-    <h2>B&uacute;squeda Avanzada</h2>
+    <img id="advanced-filter-close-button" class="overlay-close-button" src="/images/common/fancy_close.png"/>
+    <h2 class="overlay-header">B&uacute;squeda Avanzada</h2>
 
     <form id ="advanced-filter" method="get">
 
