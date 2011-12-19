@@ -931,7 +931,11 @@ initializeHiderAndShowerElement = function(){
         1: '.agent-particular-field', 
         2:'.company-field', 
         3: '.company-agent-field', 
-        4: '.agent-particular-field'
+        4: '.agent-particular-field',
+        5: '.agent-particular-field', 
+        6:'.company-field', 
+        7: '.company-agent-field', 
+        8: '.agent-particular-field'
     }, '.agent-particular-field, .company-field, .company-agent-field', false, 'change',true);   
 var supportItems = new HiderAndShowerElement("#faq", {selector: ".faq-data"}, ".hidden", false, "click");
     

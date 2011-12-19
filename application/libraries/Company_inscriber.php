@@ -31,6 +31,7 @@ class Company_inscriber implements IUser_inscriber{
     }
     
     public function save_name($user_object, $user_info_getter) {
+        var_dump($user_info_getter->get_name());
         $user_object->name = $user_info_getter->get_name();
     }
 

@@ -835,22 +835,6 @@ body, html
 /************ panels-propery-section-menu ENDS*******************/
 
 
-/************ tired-message *************/
-
-#tired-message
-{
-    background-color: #F9CA02;
-    color: black;
-    height: 156px;
-    padding: 20px;
-    width: 275px;
-    font-family: rockwell, monospace, sans-serif;
-    font-weight: bold;
-    font-size: 1.4em;
-    margin-top: 5px;
-}
-/************ tired-message ENDS*************/
-
 
 /*********** Password Reset Form  **********/
 #login #password-reset-form

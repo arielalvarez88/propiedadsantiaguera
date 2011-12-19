@@ -73,13 +73,21 @@ class Usuario extends CI_Controller {
         redirect(base_url());
     }
 
-    public function signup($client_type_string= null, $extra_parameters = array()) {
+    public function signup($client_type_string= null, $requester=null, $extra_parameters = array()) {
         
         $client_type_is_valid = $client_type_string == null ||  array_key_exists($client_type_string, Environment_vars::$maps['html_to_id']['user_types']);
         
         if(!$client_type_is_valid)
             redirect ("/pagina_no_valida");
         
+        $inscriber = User_handler::getLoggedUser();
+        if(!isset($extra_parameters['user_types']))
+        {
+            if($requester)
+                $extra_parameters['user_types'] =  Environment_vars::$maps['texts_to_id']['user_types_requesters'];
+            else
+                $extra_parameters['user_types'] = $inscriber && $inscriber->type== Environment_vars::$maps['texts_to_id']['Empresa']?  Environment_vars::$maps['texts_to_id']['user_types'] : Environment_vars::$maps['texts_to_id']['user_types_if_not_company'];
+        }
         
         if(!isset ($extra_parameters['client_type']))
             $extra_parameters['client_type'] = $client_type_string ? Environment_vars::$maps['html_to_id']['user_types'][$client_type_string]  : Environment_vars::$maps['texts_to_id']['user_types']['Particular'];
@@ -89,7 +97,7 @@ class Usuario extends CI_Controller {
         if($inscriber_is_logged)
             $extra_parameters['inscriber_type'] = $inscriber_is_logged->type;
             
-        $inscriber = User_handler::getLoggedUser();
+        
         if($inscriber && $inscriber->type == Environment_vars::$maps['texts_to_id']['user_types']['Agente de Empresa'] && isset($extra_parameters['edit']))
         {
             $extra_parameters['hide_all_fields_except_password'] =  'hidden';
@@ -147,7 +155,7 @@ class Usuario extends CI_Controller {
         }
         catch(Already_existing_user_exception $already_existing_exception)
         {
-            echo 'aqui';
+            
             $error_messages['errors'] .= $already_existing_exception->getMessage()  . "\n";
         }
         
@@ -191,7 +199,7 @@ class Usuario extends CI_Controller {
    
         $repopulateForm = array_merge($repopulateForm, $extra_parameters);
         
-        $this->signup('',$repopulateForm);
+        $this->signup('','',$repopulateForm);
     }
 
     private function save_user($user_handler, $editing_user=false) {
@@ -209,7 +217,7 @@ class Usuario extends CI_Controller {
         }
         
       
-        
+   
         $user_handler->save_name($user,$user_info_getter);
         $user_handler->save_lastname($user,$user_info_getter);
         $user_handler->save_company($user,$inscriber);
@@ -230,6 +238,7 @@ class Usuario extends CI_Controller {
        
                 
         $user->save();
+       
 
         $company_is_adding_or_editing_agent = $user_handler instanceof Company_agent_inscriber || $user_handler instanceof Company_agent_editor;
         
@@ -247,6 +256,7 @@ class Usuario extends CI_Controller {
             
         else
         {
+            
             User_handler::loginAndSaveInCookies($user->email, $user->password);
             redirect('/');
             
@@ -390,11 +400,13 @@ class Usuario extends CI_Controller {
         $this->load->view('page.php', $data);
     }
 
-    private function error($error_messages=array(), $editing_user=false) {
+    private function error($error_messages=array(), $editing_user=false, $requesters_only=false) {
 
            
             if ($editing_user)
                 $error_messages['edit'] = true;
+            if($requesters_only)
+                $error_messages['user_types'] = Environment_vars::$maps['texts_to_id']['user_types_requesters'];
             
             $this->reppopulate_signup_form($error_messages);
         

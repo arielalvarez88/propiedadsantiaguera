@@ -2,6 +2,8 @@
 $loggedUser = User_handler::getLoggedUser();
 
 $thisPage = str_replace('/', '-', uri_string());
+$can_create_properties = ! $loggedUser instanceof IUser_requests_only;
+$can_create_agents = $loggedUser instanceof Company_user;
 
 require_once realpath("./application/libraries/User_factory.php");
 require_once realpath("./application/libraries/User_factory.php");
@@ -27,7 +29,10 @@ require_once realpath("./application/libraries/User_factory.php");
                     <div>
                         <ul >
                             <li><a class="no-decoration-anchor">RESUMEN</a>|</li>
-                            <li><a class="no-decoration-anchor" href="/panel/propiedades">PROPIEDADES</a>|</li>
+                            <?php if($can_create_properties ):?>
+                                <li><a class="no-decoration-anchor" href="/panel/propiedades">PROPIEDADES</a>|</li>
+                            <?php endif;?>
+                                
                             <li><a class="no-decoration-anchor" href="/panel/cuenta">CUENTA</a>|</li>
                             <li><a class="no-decoration-anchor ">SOLICITUDES</a><?php echo $user_is_company? '|' : '';?></li>
                             <?php if($user_is_company):?>
