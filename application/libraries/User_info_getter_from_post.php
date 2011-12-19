@@ -17,12 +17,12 @@ class User_info_getter_from_post implements IUser_info_getter
     }
      public function get_name(){
          
-         return $this->post_array['signup-client-type'] == Environment_vars::$maps['texts_to_id']['user_types']['Empresa']?  $this->post_array['signup-company-name'] : $this->post_array['signup-name'];         
+         return $this->post_array['signup-client-type'] == Environment_vars::$maps['texts_to_id']['user_types']['Empresa'] || Environment_vars::$maps['texts_to_id']['user_types_requesters']['Empresa']?  $this->post_array['signup-company-name'] : $this->post_array['signup-name'];         
 
      }
      
     public function get_lastname(){
-      return $this->post_array['signup-client-type'] == Environment_vars::$maps['texts_to_id']['user_types']['Empresa']?  '' : $this->post_array['signup-lastname'];         
+      return $this->post_array['signup-client-type'] == Environment_vars::$maps['texts_to_id']['user_types']['Empresa'] || Environment_vars::$maps['texts_to_id']['user_types_requesters']['Empresa']?  '' : $this->post_array['signup-lastname'];         
     }
     
     public function get_email(){
@@ -64,6 +64,7 @@ class User_info_getter_from_post implements IUser_info_getter
     public function get_type(){
       
         return  $this->post_array['signup-client-type'];
+        
     }
 
     public function get_id() {        

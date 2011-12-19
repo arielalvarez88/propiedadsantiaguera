@@ -32,6 +32,16 @@ class User_inscriber_factory
                    return  new Company_agent_inscriber($base_behaviour,$form_validator);
                 break;
             
+            case Environment_vars::$maps['texts_to_id']['user_types_requesters']['Empresa']:
+                 
+                     return new Company_inscriber($base_behaviour,$form_validator);
+                break;
+            
+                case  Environment_vars::$maps['texts_to_id']['user_types_requesters']['Agente de Empresa']:
+                   
+                   return  new Company_agent_inscriber($base_behaviour,$form_validator);
+                break;
+            
                 default:
                    return  new Particular_inscriber($base_behaviour,$form_validator);
             }

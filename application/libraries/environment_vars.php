@@ -93,6 +93,7 @@ class Environment_vars {
         ),
         "texts_to_id" => array(
             "user_types" => array("Particular" => 1, "Empresa" => 2, "Agente de Empresa" => 3, "Agente Independiente" => 4),          
+            "user_types_requesters" => array("Particular" => 5, "Empresa" => 6,  "Agente Independiente" => 8),
             "user_types_if_not_company" => array("Particular" => 1, "Empresa" => 2, "Agente Independiente" => 4),
             "property_neighborhoods" => array("Cerro Alto" => "1", "Villa Olga" => 2),
             "property_conditions" => array("Venta" => 1, "Alquiler" => 2, "Venta/Alquiler" =>3),
@@ -100,7 +101,8 @@ class Environment_vars {
             "property_types" => array("Casa" => 1, "Apartamento" => 2, "Solar" => 3, "Penthouse" => 4, "Local Comercial" => 5, "Edificio" => 6, "Nave industrial" => 7, "Oficina" => 8, "Finca" => 9)
         ),
         "html_to_id" => array(
-            "user_types" => array("particular" => 1, "empresa" => 2, "agente_de_empresa" => 3, "agente_independiente" => 4),          
+            "user_types" => array("particular" => 1, "empresa" => 2, "agente_de_empresa" => 3, "agente_independiente" => 4),
+            "user_types_requesters" => array("particular" => 5, "empresa" => 6, "agente_independiente" => 8),
             "property_types" => array(
                 "house" => 1,
                 "apartment" => 2,

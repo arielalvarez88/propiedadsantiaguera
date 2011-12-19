@@ -108,7 +108,9 @@ class Base_user_inscriber implements IUser_inscriber {
     }
 
     public function save_type($user_object, $user_info_getter) {
+        
         $user_object->type = $user_info_getter->get_type();
+        
     }
 
     public function save_inscription_date($user_object, $user_info_getter) {

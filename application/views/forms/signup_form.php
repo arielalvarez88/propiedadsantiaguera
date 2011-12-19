@@ -3,17 +3,29 @@ $client_type = isset($client_type) ? $client_type : null;
 $inscriber_type = isset($inscriber_type) ? $inscriber_type : null;
 $edit_client_id = isset($edit_client_id) ? $edit_client_id : null;
 $hide_all_fields_except_password = isset($hide_all_fields_except_password) ? $hide_all_fields_except_password : '';
+$user_types = isset($user_types) ? $user_types : Environment_vars::$maps['texts_to_id']['user_types'];
 ?>
 
 <form enctype="multipart/form-data" id="signup-form" accept-charset="utf-8" method="post" action="<?php echo base_url(); ?>usuario/validate<?php echo isset($edit) && $edit ? '/edit' : ''; ?>">
-    <div id="new-user-type">    
+    <?php if($inscriber_type != Environment_vars::$maps['texts_to_id']['user_types']['Agente de Empresa']):?>
+        <div id="new-user-type">    
 
-        <p class="form-section-header"><img class="form-section-number " id="new-user-type-number" src="/images/common/greenNumber1.png"><span>Tipo de usuario</span></p>
 
-        <?php echo $inscriber_type && $inscriber_type == Environment_vars::$maps['texts_to_id']['user_types']['Empresa'] ? Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['user_types'], array("id" => "new-user-type-value", "name" => "signup-client-type"), '', $client_type) : Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['user_types_if_not_company'], array("id" => "new-user-type-value", "name" => "signup-client-type", 'class'=> $hide_all_fields_except_password), '', $client_type); ?> 
-    </div>
+            <p class="form-section-header"><img class="form-section-number " id="new-user-type-number" src="/images/common/greenNumber1.png"><span>Tipo de usuario</span></p>
 
-    <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber2.png"/><span>Informaci&oacute;n General</span></p>
+            <?php echo  Html_helper::get_select_from_key_value($user_types, array("id" => "new-user-type-value", "name" => "signup-client-type"), '', $client_type) ;?> 
+        </div>
+
+
+        <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber2.png"/><span>Informaci&oacute;n General</span></p>
+        
+        <?php else:?>
+            <p class="form-section-header"><span>Informaci&oacute;n General</span></p>
+            
+    <?php endif;?>
+    
+    
+    
     <?php if (isset($errors) && $errors): ?>
         <div class="error-messages"><?php echo $errors; ?></div>
     <?php endif; ?>

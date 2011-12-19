@@ -1,14 +1,4 @@
-<div>
-    <img src="/images/frontPageAdvertising/1.jpg"/>
+<div id="tired-message">
+    <a href="/usuario/signup/particular/solicitudes"><img src="/images/frontPageAdvertising/1.jpg"/></a>
 </div>
 
-<!--
-    <p id="tired-message">
-        CANSADO DE <br/>
-        BUSCAR UNA <br/>
-        PROPIEDAD ?<br/>
-        Recibe propuestas<br/>
-        personalizadas.<br/>
-        Publica tu solicitud
-        
-    </p>-->
