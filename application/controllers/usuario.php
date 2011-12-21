@@ -240,11 +240,20 @@ class Usuario extends CI_Controller {
          
           
             if(!$company_is_adding_or_editing_agent)
+            {
                 User_handler::loginAndSaveInCookies($user->email, $user->password);
+                redirect('/panel/cuenta');
+            }
+            else
+            {
+                
+                redirect('/panel/agentes');
+            }
+                
             
   
             
-            redirect('/');
+            
    
     }
 
