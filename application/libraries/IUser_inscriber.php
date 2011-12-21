@@ -19,7 +19,7 @@ interface IUser_inscriber
     public function save_password($user_object,$user_info_getter);
     public function save_lastname($user_object,$user_info_getter);
     public function save_tel($user_object,$user_info_getter);
-    public function save_cel($user_object,$user_info_getter);
+    public function save_cels($user_object,$user_info_getter);
     public function save_fax($user_object,$user_info_getter);
     public function save_address($user_object,$user_info_getter);
     public function save_description($user_object,$user_info_getter);

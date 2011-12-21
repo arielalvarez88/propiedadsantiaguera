@@ -23,7 +23,7 @@ require_once realpath("./application/libraries/User_factory.php");
 
 
             <?php if ($loggedUser && $loggedUser->name): ?>
-            <?php $user_is_company = $loggedUser->type == Environment_vars::$maps['texts_to_id']['user_types']['Empresa'];?>
+            
                 <div id="upper-panel">
 
                     <div>
@@ -34,8 +34,8 @@ require_once realpath("./application/libraries/User_factory.php");
                             <?php endif;?>
                                 
                             <li><a class="no-decoration-anchor" href="/panel/cuenta">CUENTA</a>|</li>
-                            <li><a class="no-decoration-anchor ">SOLICITUDES</a><?php echo $user_is_company? '|' : '';?></li>
-                            <?php if($user_is_company):?>
+                            <li><a class="no-decoration-anchor ">SOLICITUDES</a><?php echo $can_create_agents? '|' : '';?></li>
+                            <?php if($can_create_agents):?>
                                 <li><a class="no-decoration-anchor" href="/panel/agentes">AGENTES</a></li>
                             
                             <?php endif;?>
@@ -65,7 +65,7 @@ require_once realpath("./application/libraries/User_factory.php");
                                     </li>
                                     <li class="idiomas-item" id="ingles">
                                         <a class="no-decoration-anchor" href="#">
-                                            <img src="/images/englishFlag.png" class="no-decoration-anchor">
+                                            <img src="/images/englishFlag.png" class="no-decoration-anchor"/>
                                         </a>
 
                                     </li>
@@ -88,6 +88,7 @@ require_once realpath("./application/libraries/User_factory.php");
                                     <a id="header-help" class="no-decoration-anchor" href="#login">AYUDA</a>
                                     <span class="vertical-serparator"><img src="/images/help_icon.png" alt="help"/></span>
                                 </p>  
+                                
                                 <div id="banner-image">
                                     <img src="/images/banner_top.png" alt="banner top"/>
                                 </div>
@@ -95,7 +96,7 @@ require_once realpath("./application/libraries/User_factory.php");
 
 
                             <div id="logo">
-                                <a href="/"><img alt="logo" src="/images/logo.png"><a/>
+                                <a href="/"><img alt="logo" src="/images/logo.png"></a>
                             </div>
                         </div>
                     </div>
@@ -103,11 +104,11 @@ require_once realpath("./application/libraries/User_factory.php");
                     <div id="top-menu-container">
                         <ul class="primary-links">
                             <li class="menu-111 first"><a title="" href="<?php echo base_url(); ?>">INICIO</a></li>
-                            <li class="menu-269"><a title="" href="/propiedades">PROPIEDADES</a></li>
-                            <li class="menu-270"><a title="" href="/miembros">MIEMBROS</a></li>
-                            <li class="menu-271"><a title="" href="/planes">PRECIOS</a></li>
-                            <li class="menu-271"><a title="" href="/planes">SOLICITUDES</a></li>
-                            <li class="menu-272 last"><a title="" href="/contacto">CONTACTO</a></li>
+                            <li class="menu-269"><a  href="/propiedades">PROPIEDADES</a></li>
+                            <li class="menu-270"><a  href="/miembros">MIEMBROS</a></li>
+                            <li class="menu-271"><a  href="/planes">PRECIOS</a></li>
+                            <li class="menu-271"><a  href="/planes">SOLICITUDES</a></li>
+                            <li class="menu-272 last"><a  href="/contacto">CONTACTO</a></li>
                         </ul>                   
                     </div>
                 </div>
@@ -151,7 +152,7 @@ require_once realpath("./application/libraries/User_factory.php");
                         </div>
                     <?php endif; ?>
 
-                    <?php if (isset($bottomLeftSide) || isset($bottomRightSide)): ?>
+                    <?php if (isset($bottomLeftSide) || isset($bottomRightSide) || isset($bottom)): ?>
                         <div id="bottom-section">
                             <?php if (isset($bottomLeftSide)): ?>
                                 <div id="bottom-left-side">

@@ -55,6 +55,11 @@ class User extends DataMapper {
     
     }
     
+    public function inscribe_property($newProperty)
+    {
+        $this->save($newProperty);
+    }
+    
     public function get_number_of_properties()
     {
         return $this->properties->get_paged()->paged->total_rows;

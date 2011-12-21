@@ -70,14 +70,24 @@ $config = array(
             'field' => 'signup-email',
             'label' => 'email',
             'rules' => 'required|max_length[30]|valid_email'
+        ),
+        array(
+            'field' => 'signup-password-confirmation',
+            'label' => 'la confirmación de contraseña',
+            'rules' => 'matches[signup-password]'
         )
     ),
        'edit_company' => array(
-        array(
+       array(
             'field' => 'signup-company-name',
             'label' => 'nombre de la compañía',
             'rules' => 'required|max_length[20]'
-        ), 
+        ),
+        array(
+            'field' => 'signup-password-confirmation',
+            'label' => 'la confirmación de contraseña',
+            'rules' => 'matches[signup-password]'
+        ),
         array(
             'field' => 'signup-email',
             'label' => 'email',

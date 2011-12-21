@@ -22,8 +22,8 @@ class Company_agent_inscriber implements IUser_inscriber {
         $this->base_behaviour->save_address($user_object, $user_info_getter);
     }
 
-    public function save_cel($user_object, $user_info_getter) {
-        $this->base_behaviour->save_cel($user_object, $user_info_getter);
+    public function save_cels($user_object, $user_info_getter) {
+        $this->base_behaviour->save_cels($user_object, $user_info_getter);
     }
 
     public function save_company($new_user_object,$inscriber_user_object) {
@@ -74,13 +74,14 @@ class Company_agent_inscriber implements IUser_inscriber {
 
     public function validate_info($user_info_getter,$inscriber_user_type) {
        
+     
         if($this->validator->run($this->validation_type) == false)
         {            
                 throw new Validation_not_passed_exception (validation_errors());
                 
         }
             
-        
+     
         return $this->base_behaviour->validate_info($user_info_getter,$inscriber_user_type);
     }
 

@@ -33,7 +33,32 @@ class Panel extends CI_Controller {
          $user_photo_thumb =  $image_helper->get_user_photo_thumb_version($user->photo);
          
          $view_variables['user_photo_thumb'] = $user_photo_thumb;
-         $account_panel_view ['topLeftSide']= $this->load->view("blocks/panels_account",$view_variables,true);
+         
+         $user_is_company_agent = $user instanceof Company_agent_user;
+         
+         $account_panel_view ['top'] = $this->load->view("blocks/posts_left_message",$view_variables,true);
+         
+         if($user_is_company_agent)
+         {
+             $view_variables['section'] = "company-agent-panel-account-";
+             $account_panel_view ['topLeftSide'] = $this->load->view("blocks/user_presentation_card",$view_variables,true);
+             $account_panel_view ['topRightSide'] = $this->load->view("blocks/offers",$view_variables,true);
+         }
+         else
+         {
+             
+             $view_variables['section'] = "panel-account-";
+             $account_panel_view ['topLeftSide'] = $this->load->view("blocks/panels_account",$view_variables,true);
+             $account_panel_view ['topRightSide'] = $this->load->view("blocks/offers",$view_variables,true);
+             $account_panel_view ['bottom'] = $this->load->view("blocks/user_presentation_card",$view_variables,true);
+         }
+             
+         
+         
+         
+         
+         
+         
          $this->load->view("page",$account_panel_view);
     }
     
@@ -52,15 +77,10 @@ class Panel extends CI_Controller {
         $blocks['topLeftSide'] = $this->load->view('blocks/panels_agents_header',$agents,true);
         $blocks['topRightSide'] = $this->load->view('blocks/user_properties_counter',$user_property_counter_variables,true);
         $blocks['bottomLeftSide'] = $this->load->view('blocks/agents_pager',$user_property_counter_variables,true);
-        
-        
-        
-        
-        
-        
-        $this->load->view('page',$blocks);
-        
+                
+        $this->load->view('page',$blocks);        
     }
+    
     public function pass_posts_overlay()
     {
         $user = $this->get_logged_user_or_redirect_to_please_login();

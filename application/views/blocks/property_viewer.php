@@ -3,7 +3,7 @@
     <div id="propiedad-viewer-top">
         <div id="propiedad-viewer-header">
             <h2> <?php echo $property->title; ?> </h2>
-            <span id="propiedad-viewer-sector"><?php echo $property->sector; ?></span>
+            <span id="propiedad-viewer-sector"><?php echo array_search($property->neighborhood, Environment_vars::$maps['texts_to_id']['property_neighborhoods']); ?></span>
         </div>
 
 

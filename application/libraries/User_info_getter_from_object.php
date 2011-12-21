@@ -48,6 +48,11 @@ class User_info_getter_from_object implements IUser_info_getter
     public function get_cel(){
         return $this->user_object->cel;
     }
+    
+    public function get_cel2(){
+        return $this->user_object->cel2;
+    }
+    
     public function get_fax(){
         return $this->user_object->fax;
     }
