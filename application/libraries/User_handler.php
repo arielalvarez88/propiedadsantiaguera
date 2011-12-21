@@ -36,7 +36,7 @@ class User_handler {
         $userObject->where('password', $password);
         $userObject->get();
         
-        
+    
         if (isset($userObject) && $userObject->id != 0) {
             
             self::createCI();

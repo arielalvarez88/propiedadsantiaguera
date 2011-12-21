@@ -13,8 +13,8 @@ class Base_user_inscriber implements IUser_inscriber {
 
     private $validator;
     private $validation_type;
-    private $inscriber_base_behavior;
-    private $user_photo_path;
+    protected $inscriber_base_behavior;
+    public $user_photo_path;
     public function __construct($validator) {
         $this->validator = $validator;
     }
@@ -55,8 +55,9 @@ class Base_user_inscriber implements IUser_inscriber {
         $user_object->address = $user_info_getter->get_address();
     }
 
-    public function save_cel($user_object, $user_info_getter) {
+    public function save_cels($user_object, $user_info_getter) {
         $user_object->cel = $user_info_getter->get_cel();
+        $user_object->cel2 = $user_info_getter->get_cel2();
     }
 
    public function save_company($new_user_object,$inscriber_user_object) {

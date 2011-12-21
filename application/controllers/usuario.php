@@ -29,17 +29,12 @@ require_once realpath('./application/libraries/Invalid_photos_exception.php');
 require_once realpath('./application/libraries/User_info_getter_from_object.php');
 require_once realpath('./application/libraries/User_info_getter_from_post.php');
 
-
-
-
 class Usuario extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
         $this->load->library('password_reset_template.php');
         $this->load->library('password_reset_success_template.php');
-
-        
     }
 
     public function panel($section = 'propiedades', $subsection ='publicadas', $messages = array()) {
@@ -67,234 +62,219 @@ class Usuario extends CI_Controller {
         echo json_encode($response);
     }
 
-
     public function logout() {
         User_handler::loggout();
         redirect(base_url());
     }
 
     public function signup($client_type_string= null, $requester=null, $extra_parameters = array()) {
-        
-        $client_type_is_valid = $client_type_string == null ||  array_key_exists($client_type_string, Environment_vars::$maps['html_to_id']['user_types']);
-        
-        if(!$client_type_is_valid)
-            redirect ("/pagina_no_valida");
-        
+
+        $client_type_is_valid = $client_type_string == null || array_key_exists($client_type_string, Environment_vars::$maps['html_to_id']['user_types']);
+
+        if (!$client_type_is_valid)
+            redirect("/pagina_no_valida");
+
         $inscriber = User_handler::getLoggedUser();
-        if(!isset($extra_parameters['user_types']))
-        {
-            if($requester)
-                $extra_parameters['user_types'] =  Environment_vars::$maps['texts_to_id']['user_types_requesters'];
+        if (!isset($extra_parameters['user_types'])) {
+            if ($requester)
+                $extra_parameters['user_types'] = Environment_vars::$maps['texts_to_id']['user_types_requesters'];
             else
-                $extra_parameters['user_types'] = $inscriber && $inscriber->type== Environment_vars::$maps['texts_to_id']['Empresa']?  Environment_vars::$maps['texts_to_id']['user_types'] : Environment_vars::$maps['texts_to_id']['user_types_if_not_company'];
+                $extra_parameters['user_types'] = $inscriber && ($inscriber instanceof Company_user || ($inscriber instanceof Company_agent_user && isset($extra_parameters['edit'])))? Environment_vars::$maps['texts_to_id']['user_types'] : Environment_vars::$maps['texts_to_id']['user_types_if_not_company'];
         }
-        
-        if(!isset ($extra_parameters['client_type']))
-            $extra_parameters['client_type'] = $client_type_string ? Environment_vars::$maps['html_to_id']['user_types'][$client_type_string]  : Environment_vars::$maps['texts_to_id']['user_types']['Particular'];
-        
+
+        if (!isset($extra_parameters['client_type']))
+            $extra_parameters['client_type'] = $client_type_string ? Environment_vars::$maps['html_to_id']['user_types'][$client_type_string] : Environment_vars::$maps['texts_to_id']['user_types']['Particular'];
+
         $inscriber_is_logged = User_handler::getLoggedUser();
-        
-        if($inscriber_is_logged)
+
+        if ($inscriber_is_logged)
             $extra_parameters['inscriber_type'] = $inscriber_is_logged->type;
-            
+
         
-        if($inscriber && $inscriber->type == Environment_vars::$maps['texts_to_id']['user_types']['Agente de Empresa'] && isset($extra_parameters['edit']))
-        {
-            $extra_parameters['hide_all_fields_except_password'] =  'hidden';
+        if ($inscriber instanceof Company_agent_user && isset ($extra_parameters['edit'])) {
+          
+            $extra_parameters['hide_this_field_if_company_agent_is_editing_his_account'] = 'hidden';
+          
         }
-        
+
         $blocks['topLeftSide'] = $this->load->view('forms/signup_form', $extra_parameters, true);
         $this->load->view('page.php', $blocks);
     }
 
     public function validate($editing_existing_user =false) {
-        
-         $logged_user = User_handler::getLoggedUser();
-    
-         $logged_user_type = $logged_user? $logged_user->type  : Environment_vars::$maps['texts_to_id']['user_types']['Particular'];
-         
-         
+
+        $logged_user = User_handler::getLoggedUser();
+
+        $logged_user_type = $logged_user ? $logged_user->type : Environment_vars::$maps['texts_to_id']['user_types']['Particular'];
+
+
         $client_type = $this->input->post('signup-client-type');
-        
- 
+
+
         $validationType = '';
-        
+
         $user_handler = '';
         $user_handler_base_behaviour = new Base_user_inscriber($this->form_validation);
-        if($editing_existing_user)
-        {
+        
+       
+        if ($editing_existing_user) {
             $user_handler = User_editor_factory::get_instance($client_type, $user_handler_base_behaviour, $this->form_validation);
-        }
-        else 
-        {
-            
-           $user_handler = User_inscriber_factory::get_instance($client_type, $user_handler_base_behaviour, $this->form_validation);
+        } else {
+            $user_handler = User_inscriber_factory::get_instance($client_type, $user_handler_base_behaviour, $this->form_validation);
         }
 
 
         $error_messages['errors'] = '';
-        try{
-                 
-            $user_info_getter = new User_info_getter_from_post($this->input->post());
-            $user_handler->validate_info($user_info_getter,$logged_user_type);
+        try {
   
-            $user_handler->validate_photos();
+            $user_info_getter = new User_info_getter_from_post($this->input->post());
             
-       
-        }
-        
-        
-        catch(Validation_not_passed_exception $validation_exception)
-        {
-            $error_messages['errors'] .= $validation_exception->getMessage() . "\n";
-        }
-        catch(Invalid_photos_exception $photos_exception)
-        {
+            $user_handler->validate_info($user_info_getter, $logged_user_type);
          
-            $error_messages['errors'] .= $photos_exception->getMessage();
-        }
-        catch(Already_existing_user_exception $already_existing_exception)
-        {
-            
-            $error_messages['errors'] .= $already_existing_exception->getMessage()  . "\n";
-        }
-        
 
-        if(empty ($error_messages['errors']))
-            $this->save_user ($user_handler, $editing_existing_user);
+            $user_handler->validate_photos();
+        } catch (Validation_not_passed_exception $validation_exception) {
+            $error_messages['errors'] .= $validation_exception->getMessage() . "\n";
+        } catch (Invalid_photos_exception $photos_exception) {
+
+            $error_messages['errors'] .= $photos_exception->getMessage();
+        } catch (Already_existing_user_exception $already_existing_exception) {
+
+            $error_messages['errors'] .= $already_existing_exception->getMessage() . "\n";
+        }
+
+
+        if (empty($error_messages['errors']))
+            $this->save_user($user_handler, $editing_existing_user);
         else
-            $this->error ($error_messages, $editing_existing_user);
-        
+            $this->error($error_messages, $editing_existing_user);
     }
 
     private function reppopulate_signup_form($extra_parameters=array(), $repopulate_object = false) {
 
-        
+
         $repopulateForm = array();
         $user_info_getter = $repopulate_object ? new User_info_getter_from_object($repopulate_object) : new User_info_getter_from_post($this->input->post());
 
 
-        if ($user_info_getter->get_type() == Environment_vars::$maps['texts_to_id']['user_types']['Empresa']) {
-           $repopulateForm['companyName'] = $user_info_getter->get_name();
-        }
-        else
-        {
-            $repopulateForm['clientName'] = $user_info_getter->get_name();
-            $repopulateForm['clientLastname'] = $user_info_getter->get_lastname();
-        }
-            
-                        
+
+        $repopulateForm['companyName'] = $user_info_getter->get_name();
+
+
+        $repopulateForm['clientName'] = $user_info_getter->get_name();
+        $repopulateForm['clientLastname'] = $user_info_getter->get_lastname();
+
+
+
         $repopulateForm['email'] = $user_info_getter->get_email();
         $repopulateForm['tel'] = $user_info_getter->get_tel();
         $repopulateForm['address'] = $user_info_getter->get_address();
         $repopulateForm['description'] = $user_info_getter->get_description();
 
         $repopulateForm['cel'] = $user_info_getter->get_cel();
+        $repopulateForm['cel2'] = $user_info_getter->get_cel2();
         $repopulateForm['fax'] = $user_info_getter->get_fax();
         $repopulateForm['website'] = $user_info_getter->get_website();
         $repopulateForm['description'] = $user_info_getter->get_description();
-        
+
         $repopulateForm['client_type'] = $user_info_getter->get_type();
 
-   
         $repopulateForm = array_merge($repopulateForm, $extra_parameters);
-        
-        $this->signup('','',$repopulateForm);
+
+        $requester_only_user = in_array($user_info_getter->get_type(), Environment_vars::$maps['texts_to_id']['user_types_requesters']);
+
+        if ($requester_only_user)
+            $this->signup('', true, $repopulateForm);
+        else
+            $this->signup('', '', $repopulateForm);
     }
 
     private function save_user($user_handler, $editing_user=false) {
-   
+
+
         $user = new User();
-                                 
-        $inscriber = User_handler::getLoggedUser();                       
+        
+        $inscriber = User_handler::getLoggedUser();
         $user_info_getter = new User_info_getter_from_post($this->input->post());
-        
-         if($editing_user)
-        {
-            
-            $user = $user->where("id",$user_info_getter->get_id())->get();
-            
-        }
-        
-      
-   
-        $user_handler->save_name($user,$user_info_getter);
-        $user_handler->save_lastname($user,$user_info_getter);
-        $user_handler->save_company($user,$inscriber);
-        $user_handler->save_type($user,$user_info_getter);
-        $user_handler->save_email($user,$user_info_getter);
-        
-        $user_handler->save_password($user,$user_info_getter);
-        $user_handler->save_website($user,$user_info_getter);
-        $user_handler->save_tel($user,$user_info_getter);
-              
-        $user_handler->save_cel($user,$user_info_getter);
-        $user_handler->save_fax($user,$user_info_getter);
 
-        $user_handler->save_photo($user,$user_info_getter);
-        $user_handler->save_address($user,$user_info_getter);
-        $user_handler->save_description($user,$user_info_getter);                    
+        if ($editing_user) {
+            $user = $user->where("id", $user_info_getter->get_id())->get();
+        }
+  
+        $user_handler->save_name($user, $user_info_getter);
+
+        $user_handler->save_lastname($user, $user_info_getter);
+
+        $user_handler->save_company($user, $inscriber);
+        $user_handler->save_type($user, $user_info_getter);
+        $user_handler->save_email($user, $user_info_getter);
+
+        $user_handler->save_password($user, $user_info_getter);
+        $user_handler->save_website($user, $user_info_getter);
+        $user_handler->save_tel($user, $user_info_getter);
+
+        $user_handler->save_cels($user, $user_info_getter);
+        
+        $user_handler->save_fax($user, $user_info_getter);
+
+        $user_handler->save_photo($user, $user_info_getter);
+        $user_handler->save_address($user, $user_info_getter);
+        $user_handler->save_description($user, $user_info_getter);
         $user_handler->save_inscription_date($user, $user_info_getter);
-       
-                
-        $user->save();
-       
 
-        $company_is_adding_or_editing_agent = $user_handler instanceof Company_agent_inscriber || $user_handler instanceof Company_agent_editor;
+
         
-        if($company_is_adding_or_editing_agent)
-            redirect('/panel/agentes');                                    
         
-        if ($editing_user)
-        {
-            $user_is_editing_himself= $inscriber && $user_info_getter->get_id() == $inscriber->id;
-            if($user_is_editing_himself)
-                    User_handler::loginAndSaveInCookies($user->email, $user->password);                       
-                    
-            $this->editar($user_info_getter->get_id(),array("messages" => "Su información fue editada con éxito."));
-        }
+        
+
+        
+        $user->save();
+
+        $company_is_adding_or_editing_agent = ($user_handler instanceof Company_agent_inscriber || $user_handler instanceof Company_agent_editor) && ($inscriber && $inscriber instanceof Company_user);
+
+         
+        
+
+       
             
-        else
-        {
+         
+          
+            if(!$company_is_adding_or_editing_agent)
+                User_handler::loginAndSaveInCookies($user->email, $user->password);
             
-            User_handler::loginAndSaveInCookies($user->email, $user->password);
+  
+            
             redirect('/');
-            
-        }
-            
+   
     }
 
     public function editar($user_id=null, $extra_paramaters = array()) {
-        
+
         $logged_user = $this->get_logged_user_or_redirect_to_please_login();
-        
-        $user_to_edit = '';        
-        $is_himself ='';
-        $is_his_agent= '';
-        
-        if($user_id)
-        {            
+
+        $user_to_edit = '';
+        $is_himself = '';
+        $is_his_agent = '';
+
+        if ($user_id) {
             $is_his_agent = $logged_user->has_agent($user_id);
-            $is_himself = $user_id == $logged_user->id; 
-            
+            $is_himself = $user_id == $logged_user->id;
+        } else {
+            $is_himself = true;
         }
+
+        if ($is_his_agent)
+            $user_to_edit = User_factory::get_user_from_id ($user_id);
+        elseif ($is_himself)
+            $user_to_edit = $logged_user;
         else
-        {
-            $is_himself=true;
-        }
-        
-        if($is_his_agent)        
-            $user_to_edit = new User($user_id);
-        elseif($is_himself)
-            $user_to_edit = new User($logged_user->id);
-        else
-            redirect ("/pagina_no_valida");
-                                        
+            redirect("/pagina_no_valida");
+
         $extra_paramaters['edit'] = true;
-        
-        
-        
-        
+
+
+
+
         $extra_paramaters['edit_client_id'] = $user_to_edit->id;
         $this->reppopulate_signup_form($extra_paramaters, $user_to_edit, true);
     }
@@ -302,9 +282,9 @@ class Usuario extends CI_Controller {
     public function comprar_plan($plan_name) {
         $user = $this->get_logged_user_or_redirect_to_please_login();
 
-        if($user instanceof Company_agent_user)
+        if ($user instanceof Company_agent_user)
             redirect("/pagina_no_valida");
-        
+
         switch ($plan_name) {
             case "basico":
                 $user->posts_left += 1;
@@ -400,16 +380,14 @@ class Usuario extends CI_Controller {
         $this->load->view('page.php', $data);
     }
 
-    private function error($error_messages=array(), $editing_user=false, $requesters_only=false) {
+    private function error($error_messages=array(), $editing_user=false) {
 
-           
-            if ($editing_user)
-                $error_messages['edit'] = true;
-            if($requesters_only)
-                $error_messages['user_types'] = Environment_vars::$maps['texts_to_id']['user_types_requesters'];
-            
-            $this->reppopulate_signup_form($error_messages);
-        
+
+        if ($editing_user)
+            $error_messages['edit'] = true;
+
+
+        $this->reppopulate_signup_form($error_messages);
     }
 
 }

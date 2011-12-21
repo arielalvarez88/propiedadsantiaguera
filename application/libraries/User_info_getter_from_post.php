@@ -13,16 +13,15 @@ class User_info_getter_from_post implements IUser_info_getter
     private $post_array;
     public function __construct($post_array=null)
     {
-        $this->post_array = $post_array ? $post_array : new stdClass();
+        $this->post_array = $post_array ? $post_array : array();
     }
      public function get_name(){
-         
-         return $this->post_array['signup-client-type'] == Environment_vars::$maps['texts_to_id']['user_types']['Empresa'] || Environment_vars::$maps['texts_to_id']['user_types_requesters']['Empresa']?  $this->post_array['signup-company-name'] : $this->post_array['signup-name'];         
-
+ 
+         return $this->post_array['signup-client-type'] == Environment_vars::$maps['texts_to_id']['user_types']['Empresa'] || $this->post_array['signup-client-type'] == Environment_vars::$maps['texts_to_id']['user_types_requesters']['Empresa']?  $this->post_array['signup-company-name'] : $this->post_array['signup-name'];         
      }
      
     public function get_lastname(){
-      return $this->post_array['signup-client-type'] == Environment_vars::$maps['texts_to_id']['user_types']['Empresa'] || Environment_vars::$maps['texts_to_id']['user_types_requesters']['Empresa']?  '' : $this->post_array['signup-lastname'];         
+      return $this->post_array['signup-client-type'] == Environment_vars::$maps['texts_to_id']['user_types']['Empresa'] || $this->post_array['signup-client-type'] == Environment_vars::$maps['texts_to_id']['user_types_requesters']['Empresa']?  '' : $this->post_array['signup-lastname'];         
     }
     
     public function get_email(){
@@ -49,9 +48,15 @@ class User_info_getter_from_post implements IUser_info_getter
     public function get_tel(){
         return  $this->post_array['signup-tel']; 
     }
+    
     public function get_cel(){
         return  $this->post_array['signup-cel'];
     }
+    
+    public function get_cel2(){
+        return  $this->post_array['signup-cel2'];
+    }
+    
     public function get_fax(){
         return  $this->post_array['signup-fax']; ;
     }

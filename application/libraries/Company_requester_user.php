@@ -6,15 +6,15 @@
  */
 
 /**
- * Description of ParticularUser
+ * Description of Company_user
  *
  * @author ariel
  */
-require_once realpath("./application/libraries/IUser.php");
 require_once realpath("./application/libraries/User_base_class.php");
-
-class Particular_user extends User_base_class implements IUser{
-    public $user;
+require_once realpath("./application/libraries/IUser.php");
+require_once realpath("./application/libraries/IUser_requests_only.php");
+class Company_requester_user extends User_base_class implements IUser, IUser_requests_only{
+    
      
      public function __construct(User $user)
     {
@@ -22,9 +22,16 @@ class Particular_user extends User_base_class implements IUser{
             $this->user =$user;
     }
     
+  
 
-    public function delete(){
+    public function delete() {
+        $agents = $this->user->get_agents();
+        foreach ($agents as $agent)
+        {
+            $agent->delete();
+        }
         $this->user->delete();
+        
     }
 
     public function inscribe_property($property) {

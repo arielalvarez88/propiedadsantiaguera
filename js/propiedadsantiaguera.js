@@ -932,16 +932,20 @@ initializeHiderAndShowerElement = function(){
         2:'.company-field', 
         3: '.company-agent-field', 
         4: '.agent-particular-field',
-        5: '.agent-particular-field', 
-        6:'.company-field', 
+        5: '.agent-particular-requester-field', 
+        6:'.company-requester-field', 
         7: '.company-agent-field', 
-        8: '.agent-particular-field'
+        8: '.agent-particular-requester-field'
     }, '.agent-particular-field, .company-field, .company-agent-field', false, 'change',true);   
-var supportItems = new HiderAndShowerElement("#faq", {selector: ".faq-data"}, ".hidden", false, "click");
-    
-    
+    var supportItems = new HiderAndShowerElement("#faq", {selector: ".faq-data"}, ".hidden", false, "click");
+
+    var propertyTypeInPropertyForm = new HiderAndShowerElement("#properrty-form-description-type", {1 : ".house-field", 2 : ".apartment-field", 3: ".lot-field", 4:".enthouse-field",5:".mall-field", 6:".building-field", 7:".warehouse-field", 8:".office-field", 9:".land-field"}, ".property-form-optional-field", true, "change", true);
+    var currencyInPropertyInfo = new HiderAndShowerElement("#price-currency select", {dr: ".dr-price-field", us: ".us-price-field"}, "#price-currency h1", false, "change", true);
 };
 
+hideElementsWithHiddenClass = function(){
+   $('.hidden') .hide();
+};
 
 
 
@@ -953,6 +957,7 @@ $(document).ready
     {
         $('head').append(ieCssFixes);
     }    
+    
     initilizeSlideShows();
     initializePropiedadViewer();    
     initializeAgentesHeaderSection();
@@ -962,8 +967,9 @@ $(document).ready
     initializeMaps();
     initializeInterestsCalculators();
     initializeHideShowWithArrowDirectionElement();
-    initializeHiderAndShowerElement();
+    initializeHiderAndShowerElement();    
     initializeFilters();
+    hideElementsWithHiddenClass();
 /*comentario*/    
 }
 

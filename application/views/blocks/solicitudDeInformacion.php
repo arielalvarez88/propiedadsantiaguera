@@ -1,5 +1,5 @@
 <div id="solicitud-de-info">
-    <h2 id="solicitud-de-info-header">Solicitud de informaci&oacute;</h2>
+    <h2 id="solicitud-de-info-header">Solicitud de informaci&oacute;n</h2>
     <form id="solicitud-de-info-form">
 
         <label class="solicitud-de-info-label" for="solicitud-de-info-nombre">Nombre <span class="missing-required">*</span></label>
