@@ -3452,6 +3452,15 @@ span.required{
     height: 670px;
     border-collapse:collapse;
 }
+.chrome #planes_data
+{
+    background:url('/images/plans_table.png') no-repeat top center transparent;
+    color:#333;
+    width:687px;
+    text-align: center;
+    height: 650px;
+    border-collapse:collapse;
+}
 .chrome #planes_detail tr
 {
    height:48px;
@@ -3490,6 +3499,10 @@ span.required{
 #planes_data tbody
 {
     height: 509px;
+}
+.chrome #planes_data tbody
+{
+    height: 560px;
 }
 #planes_data a img
 {
