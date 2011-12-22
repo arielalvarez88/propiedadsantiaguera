@@ -15,6 +15,7 @@ class CreandoTablas extends Ruckusing_BaseMigration {
         $users->column('photo', 'string');
         $users->column('tel', 'string', array('limit' => 15));
         $users->column('cel', 'string', array('limit' => 15));
+        $users->column('cel2', 'string', array('limit' => 15));
         $users->column('fax', 'string', array('limit' => 15));
         $users->column('rnc', 'string', array('limit' => 20));
         $users->column('address', 'text', array('limit' => 100));
@@ -22,6 +23,8 @@ class CreandoTablas extends Ruckusing_BaseMigration {
         $users->column('payment_status', 'boolean');
         $users->column('total_posts', 'integer');        
         $users->column('posts_left', 'integer', array('default'=>0));
+        $users->column('type', 'integer', array('default'=>0));
+        $users->column('company', 'integer', array('default'=>0));
         
        
         

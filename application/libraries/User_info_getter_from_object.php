@@ -16,7 +16,9 @@ class User_info_getter_from_object implements IUser_info_getter
     {
         $this->user_object = $user_object? $user_object : new stdClass();
     }
-     public function get_name(){
+    
+    
+    public function get_name(){
          return $this->user_object->name;
      }
      
@@ -46,6 +48,11 @@ class User_info_getter_from_object implements IUser_info_getter
     public function get_cel(){
         return $this->user_object->cel;
     }
+    
+    public function get_cel2(){
+        return $this->user_object->cel2;
+    }
+    
     public function get_fax(){
         return $this->user_object->fax;
     }
@@ -57,7 +64,11 @@ class User_info_getter_from_object implements IUser_info_getter
     }
     
        public function get_type(){
-        return  "client";
+        return $this->user_object->type;
+    }
+
+    public function get_id() {
+          return $this->user_object->id;
     }
 }
 ?>

@@ -10,6 +10,7 @@
  *
  * @author ariel
  */
+require_once realpath("./application/libraries/User_factory.php");
 class Portada extends CI_Controller {
     public function index()
     {

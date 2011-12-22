@@ -4,7 +4,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
+require_once realpath("./application/libraries/User_factory.php");
 class User_handler {
 
     private static $CIObject;
@@ -36,11 +36,14 @@ class User_handler {
         $userObject->where('password', $password);
         $userObject->get();
         
-        
+    
         if (isset($userObject) && $userObject->id != 0) {
             
             self::createCI();
             $CI = self::$CIObject;
+            
+            $userObject = User_factory::get_user_from_object($userObject);
+            
             self::saveInSession($userObject);
             
   
@@ -57,13 +60,15 @@ class User_handler {
         self::createCI();
         self::$CIObject->session->set_userdata('user','');
         self::$CIObject->input->set_cookie('user');
+        redirect("/");
+        
     }
     
     public static function loginAndSaveInCookies($email, $password) {
-        
-        $user = self::login($email, $password);
     
-        if (!isset($user->id) || !$user->id)
+        $user = self::login($email, $password);
+   
+        if (!$user || !$user->id)
             return false;
         
     self::createCI();

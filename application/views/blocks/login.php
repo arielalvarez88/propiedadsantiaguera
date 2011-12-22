@@ -8,7 +8,7 @@
                     
                     <input id="login-password-clear" type="text" class="login-input" /><br/>
                     <input id="login-password" type="password" name="login-password" class="login-input" style="display:none;"/>
-                    <input id="login-submit" type="image" src="<?php echo base_url();?>images/login/loginButton.png" alt="login"/> 
+                    <input id="login-submit" class="form-send-button" type="image" src="<?php echo base_url();?>images/login/loginButton.png" alt="login"/> 
                     <a href="#" id="login-password-reset-button">&iquest;Olvido su contrase&ntilde;a?</a>
                 </form>
             </div>

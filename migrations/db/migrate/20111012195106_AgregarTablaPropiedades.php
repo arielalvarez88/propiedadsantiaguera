@@ -6,9 +6,9 @@ class AgregarTablaPropiedades extends Ruckusing_BaseMigration {
         $this->execute("SET NAMES 'utf8'");
         $propiedades = $this->create_table('properties');
         $propiedades->column('title','string',array('limit' =>50));
+        $propiedades->column('province','integer');
         $propiedades->column('description', 'text');
-        $propiedades->column('address', 'text');
-        $propiedades->column('description', 'text');
+        $propiedades->column('address', 'text');        
         $propiedades->column('sell_price_us', 'integer');
         $propiedades->column('sell_price_dr', 'integer');
         $propiedades->column('rent_price_us', 'integer');

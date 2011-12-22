@@ -1,13 +1,13 @@
 *{
     margin:0;
     padding:0;
-    font-family: museo;
+    font-family: museo, arial;
 }
 
 input, select, textarea {
     border: 5px solid #eeeeee;
     color: #333333;
-    
+
 }
 
 body{
@@ -18,12 +18,12 @@ body{
     font-size: small;
     font-weight: normal;
     height: 100%;
-    
+
 }
 
 input[type="text"],input[type="password"], textarea, select
 {
-    border:4px solid #E7E7E7;
+    border:5px solid #E7E7E7;
 }
 
 #footer-foto
@@ -57,19 +57,17 @@ body, html
     height: 100%;
 }
 
-#page-wrapper{
-    min-height: 100%;
-}
+
 
 #content-header-wrapper{
-   background: none repeat scroll 0 0 #FFFFFF;
+    background: none repeat scroll 0 0 #FFFFFF;
     border: 1px solid #DADADA;
     clear: both;
     margin-left: auto;
     margin-right: auto;
     width: 980px;
 
-    
+
 }
 
 /************ header *************/
@@ -87,10 +85,12 @@ body, html
 {
     padding:0 8px;
 }
+
 #content
 {
     padding: 10px;
-    min-height: 100%;
+    overflow: auto;
+
 }
 
 
@@ -101,7 +101,7 @@ body, html
 
 #header, #content {
     overflow: auto;
-    
+
 }
 
 
@@ -208,6 +208,15 @@ body, html
 
 /************ Login block end *******************/
 
+/************ are-you-sure *******************/
+#are-you-sure div a {
+    margin-right: 10px;
+}
+#are-you-sure h2, #are-you-sure div {
+    margin: 10px;
+}
+/************ are-you-sure end *******************/
+
 /************ tools *******************/
 
 #tools div {
@@ -252,7 +261,7 @@ body, html
 {
     width: 898px;
     height: 179px;
-    
+
 }
 
 #send-offers
@@ -305,21 +314,50 @@ body, html
 
 /************ tools END*******************/
 
+
+
+/********** Belongs-To-Company ************/
+#belongs-to-company a {
+    display: block;
+    font-size: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 210px;
+}
+
+#belongs-to-company img {
+    margin: 10px;
+    text-align: center;
+    width: 142px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+#belongs-to-company h2 {
+    font-size: 1em;
+    text-align: center;
+    background-image: url('/images/belongsToCompany/headerBackground.png');
+    padding: 3px 0;
+    color: white;
+}
+#belongs-to-company {
+    background-image: url("/images/common/whiteToGrayGradient.png");
+    padding-bottom: 10px;
+    text-align: center;
+    width: 275px;
+}
+
+/********** Belongs-To-Company ENDS ************/
+
 /***advanced-filter***/
 #advanced-filter-container {
-    padding-right: 30px;
-    padding-top: 30px;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    padding: 7px;
     width: 819px;
 }
 
-#advanced-filter-close-button {
-    cursor: pointer;
-    display: block;
-    position: absolute;
-    right: 23px;
-    top: 20px;
-    z-index: 100000;
-}
+
 #advanced-filter {
     background-image: url("/images/common/whiteToGrayGradient_H534.png");
     border-radius: 0 0 15px 15px;
@@ -327,12 +365,7 @@ body, html
     padding: 15px 29px;
 }
 
-#advanced-filter-container h2 {
-    background-image: url("/images/common/darkGreenPattern.png");
-    border-radius: 15px 15px 0 0;
-    color: white;
-    padding: 10px;
-}
+
 
 #advanced-filter input, #advanced-filter select {
     border: 4px solid #E1E1E1;
@@ -386,6 +419,8 @@ body, html
 }
 
 /***advanced-filter ENDS***/
+
+
 
 /***upper-panel ***/
 #logout-button {
@@ -453,7 +488,7 @@ body, html
 
 #panels-account {
     height: 377px;
-    width: 960px;
+
 }
 #panels-account-plans {
     background-image: url("/images/common/grayPattern.png");
@@ -468,11 +503,6 @@ body, html
 }
 
 
-#panels-account-available span{
-    border: 3px solid #B4D341;
-    color: #666666;
-    padding: 0 5px;
-}
 
 #panels-account-plans-header-row-price {
     background-position: -299px 0;
@@ -503,10 +533,7 @@ body, html
 }
 
 
-#panels-account-offers-container
-{
-    float: right;
-}
+
 
 #panels-account h2
 {
@@ -515,12 +542,8 @@ body, html
 
 
 
-#panels-account-available {
-    color: #666666;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin: 10px 0 20px;
-}
+
+
 #panels-account-recomendation {
     clear: both;
     margin-bottom: 10px;
@@ -543,44 +566,23 @@ body, html
     font-size: 1.2em;
 }
 
-#panels-account-offers {
-    background-image: url("/images/common/grayPattern.png");
-    border-radius: 15px 15px 15px 15px;
-    height: 228px;
-    text-align: center;
-    width: 265px;
-}
 
-#panels-account-offers-container a {
-    display: block;
-    font-size: 1.2em;
-    margin-left: auto;
-    margin-right: auto;
-    width: 139px;
-}
 
-#panels-account-offers, #panels-account-plans
+
+
+#panels-account-plans
 {
     margin-bottom: 15px;
 }
 
-#panels-account-offers h2 {
-    background-image: url("/images/common/greenPattern.png");
-    border-radius: 8px 8px 0 0;
-    padding: 10px;
-}
+
 
 #panels-account-itbis-cancel  p{
     float: left;
 }
 
 
-#panels-account-user-info-summary div p.panels-account-user-info-summary-title
-{
-    color: #7dc73e;
-    margin: 2px 0;
-    font-weight: bold;
-}
+
 
 #panels-account-plans-last-row td
 {
@@ -591,27 +593,65 @@ body, html
     padding-top: 15px;
 }
 
-#panels-account-user-info-summary div p {
-    margin: 2px 0 6px 0;
+
+/****Panels-account ENDS****/
+
+
+/***** posts-left-message ****/
+
+#posts-left-message {
+    color: #666666;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 10px 0 20px;
 }
-#panels-account-user-info-summary div {
-    float: left;
-}
-#panels-account-user-info-summary img {
-    border: 2px solid #77BD3D;
-    display: block;
-    float: left;
-    margin-right: 20px;
+#posts-left-message span{
+    border: 3px solid #B4D341;
+    color: #666666;
+    padding: 0 5px;
 }
 
-#panels-account-user-info-header {
+/***** posts-left-message ENDS****/
+
+/********* user-presentation-card*******/
+
+#user-presentation-card-summary div p.user-presentation-card-summary-title
+{
+    color: #7dc73e;
+    margin: 2px 0;
+    font-weight: bold;
+}
+
+#user-info-header {
+
+}
+
+#panel-account-user-info-header{
+
     border-top: 4px solid #76BC3B;
     clear: both;
     color: #76B939;
     margin-bottom: 20px;
     padding-top: 30px;
 }
-#panels-account-user-info-summary {
+
+#user-presentation-card-summary div p {
+    margin: 2px 0 6px 0;
+}
+#user-presentation-card-summary div {
+    float: left;
+}
+#user-presentation-card-summary img {
+    border: 2px solid #77BD3D;
+    display: block;
+    float: left;
+    margin-right: 20px;
+}
+
+
+
+
+#user-presentation-card-summary {
     background-color: #F5F5F5;
     border-radius: 10px 10px 10px 10px;
     height: 195px;
@@ -619,14 +659,75 @@ body, html
     padding: 20px;
     width: 470px;
 }
-/****Panels-account ENDS****/
+
+
+/********* user-presentation-card END*******/
+
+
+/**** offers ****/
+
+
+#panel-account-offers-container
+{
+    margin-left: 75px;
+    margin-top: 49px;
+
+}
+
+#company-agent-panel-account-offers-container
+{
+    margin-left: 154px;
+    margin-top: 29px;
+}
+#offers-container
+{
+    float: right;    
+}
+
+#offers
+{
+    margin-bottom: 15px; 
+}
+
+
+#offers {
+    background-image: url("/images/common/grayPattern.png");
+    border-radius: 15px 15px 15px 15px;
+    height: 228px;
+    text-align: center;
+    width: 265px;
+}
+
+
+#company-agent-panel-account-offers-container a,
+#panel-account-offers-container a
+{
+    display: block;
+    font-size: 1.2em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 139px;
+}
+
+
+#offers h2 {
+    background-image: url("/images/common/greenPattern.png");
+    border-radius: 8px 8px 0 0;
+    padding: 10px;
+}
+/**** offers ENDS***/
 
 /************ panels-propery-section-menu*******************/
+
+
 
 #panels-property-section-menu-tabs {
     border-bottom: 2px solid #76BC3B;
     height: 28px;
     margin-bottom: 20px;
+    width: 960px;
+    display: block;
+    clear: both;
 }
 
 .panels-properties-pager-property-info h2 a.panels-properties-pager-property-info-title-link{
@@ -728,27 +829,11 @@ body, html
 
 #panels-property-section-menu {
     height: 185px;
-    width: 960px;
-}
-#panels-property-section-menu-header
-{
-    color: #76B939;
-    font-size: 2em;
-    margin-bottom: 15px;
+
 }
 
-#panels-property-section-menu-create-property
-{
-    background-color: #80CC3F;
-    border-radius: 5px;
-    color: white;
-    display: block;
-    font-size: 1.2em;
-    height: 28px;
-    padding: 10px 0 0;
-    text-align: center;
-    width: 195px;
-}
+
+
 #panels-property-section-header-container
 {
     float: left;
@@ -762,7 +847,9 @@ body, html
     height: 136px;
     padding-top: 28px;
     width: 247px;
+    border-radius: 10px;
 }
+
 
 #panels-property-section-menu-properties-counter h2
 {
@@ -780,6 +867,11 @@ body, html
     float: left;
     text-align: center;
     width: 81px;
+}
+
+#panels-property-section-menu-properties-counter div.last
+{
+    border: none;
 }
 
 #panels-property-section-properties-counter-menu-left
@@ -805,22 +897,6 @@ body, html
 
 /************ panels-propery-section-menu ENDS*******************/
 
-
-/************ tired-message *************/
-
-#tired-message
-{
-    background-color: #F9CA02;
-    color: black;
-    height: 156px;
-    padding: 20px;
-    width: 275px;
-    font-family: rockwell, monospace, sans-serif;
-    font-weight: bold;
-    font-size: 1.4em;
-    margin-top: 5px;
-}
-/************ tired-message ENDS*************/
 
 
 /*********** Password Reset Form  **********/
@@ -927,7 +1003,7 @@ body, html
 img.no-decoration-anchor,a.no-decoration-anchor,a.no-decoration-anchor:visited,a.no-decoration-anchor:active , .portada-center-item-icon{
     text-decoration: none;
     border: none;
-    color: black;
+
 }
 
 .noStyleList
@@ -1146,6 +1222,13 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 }
 
 /* END of Drupal Menu*/
+
+/******* panels-agents-header********/
+#panels-agents-header {
+    margin-right: 500px;
+}
+
+/******* panels-agents-header ENDS********/
 
 /*please_login*/
 
@@ -1417,7 +1500,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 #property-form-description-column-container
 {
     margin-bottom: 25px;
-    min-height: 200px;
+    min-height: 230px;
 }
 
 #property-form-description-close-places
@@ -1557,7 +1640,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     display: block;
     float: left;
 
-    margin: 0 6px;
+    margin: 0 9px;
 
     width: 309px;
 }
@@ -1568,7 +1651,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #tools-center
 {
-    width: 336px;
+    width: 331px;
     height: 246px;
     float: left;
 }
@@ -1649,7 +1732,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     background-position: 0 13px;
     clear: both;
     height: 13px;    
-    
+
 }
 
 
@@ -1661,7 +1744,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     padding: 20px 20px 15px;
     position: relative;
     clear: both;
-    
+
 }
 
 
@@ -1673,7 +1756,9 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     margin-left: auto;
     margin-right: auto;
     width: 980px;
+
 }
+
 
 #footer-top-side
 {
@@ -2147,20 +2232,31 @@ div.footer-section a{
     display:block;
 }
 
-.green-button
+.green-button, 
+.info-messages
 {
     background-color: #84D341;
-    border-radius: 3px 3px 3px 3px;
+
     color: white;
-    font-size: 0.8em;
+
+}
+
+.info-messages,
+.error-messages
+{
+    padding: 5px;
+    margin:5px;
+}
+
+.green-button
+{
     padding: 4px 13px;
+    border-radius: 3px 3px 3px 3px;
+    font-size: 0.8em;
     text-align: center;
     text-decoration: none;
     font-size: 1.2em;
 }
-
-
-
 
 
 .properties-pager-property span.properties-pager-property-price{
@@ -2446,17 +2542,100 @@ div.footer-section a{
 }
 /*propiedad-viewer END*/
 
-/*user-viewer*/
+/********* agents-pager *******/
 
+#agents-pager
+{
+    width: 960px;
+}
+
+.agent-pager-agent-photo {
+    display: block;
+    float: left;
+    height: 121px;
+    width: 107px;
+    margin-right: 10px;
+}
+.agent-pager-agent-info
+{
+    float: left;
+}
+
+.agent-pager-agent-info p
+{
+    margin-bottom: 5px;
+}
+
+.agent-pager-green-buttons-container a.give-agent-publication,
+.agent-pager-green-buttons-container a.view-agent-properties {
+    color: white;
+    display: block;
+    float: left;
+    font-size: 1em;
+    height: 32px;
+    padding-bottom: 10px;
+    width: 114px;
+}
+.agent-pager-green-buttons-container {
+    height: 49px;
+    margin-bottom: 5px;
+}
+
+.view-agent-properties
+{
+    margin-right: 10px;
+}
+
+.agent-info.odd {
+    width: 480px;
+}
+
+.agent-pager-agent-info h3
+{
+    color: #76bb3a;
+    margin-bottom: 5px;
+}
+
+.delete-agent, .edit-agent
+{
+    background-image: url('/images/agentsPager/editDeleteSprite.png');
+    display: block;
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 5px;
+
+}
+
+
+
+.edit-agent
+{
+    background-position: 18px;
+}
+
+.edit-delete-agent-buttons a {
+    display: block;
+    float: left;
+    height: 30px;
+    width: 81px;
+}
+
+
+/********* agents-pager ENDS ******/
+
+
+/*user-viewer*/
 
 #user-viewer-container {
     background-image: url("/images/common/whiteToGrayGradient.png");
     color: black;
-    height: 221px;
+    padding-bottom: 10px;
     padding-top: 5px;
     position: relative;
     width: 275px;
 }
+
 
 
 #user-viewer
@@ -2467,6 +2646,7 @@ div.footer-section a{
 #user-viewer-company
 {
     background: none repeat scroll 0 0 #76BA3D;
+    color: white;
     float: left;
     font-size: 1.2em;
     height: 20px;
@@ -2511,63 +2691,184 @@ div.footer-section a{
     text-align: center;
 }
 
+#user-viewer-info h2 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
 #user-viewer-info {
     float: left;
     height: 127px;
     padding-left: 10px;
     width: 133px;
 }
+
+
 #user-viewer-user-propiedades {
-    background-image: url("/images/userViewer/userPropiedadesBackground.png");
-    bottom: 0;
     color: white;
     display: block;
-    height: 17px;
-    left: 0;
-    padding-top: 4px;
-    position: absolute;
+    font-size: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
     text-align: center;
-    width: 275px;
-}
-#user-viewer-data {
-    clear: both;
-    height: 150px;
-    width: 250px;
-}
-#user-viewer-info p {
-    font-size: 1.3em;
+    width: 182px;
 }
 
-#user-viewer-user-email
-{
+#user-viewer-data {
     clear: both;
-    font-size: 1.6em;
+
+    width: 250px;
+}
+
+.edit-delete-agent-buttons a span
+{
+    display: block;
+    float: left;
+}
+
+.edit-delete-agent-buttons a
+{
+    display: block;
+    width: 85px;
+    height: 30px;
+    color: black;
+
+}
+
+#user-viewer-info p {
+    font-size: 1.1em;
+}
+
+#user-viewer-user-email {
+    clear: both;
+    font-size: 1.1em;
     text-align: center;
 }
+
+#user-viewer-user-email span{
+    font-size: 1em;
+}
+
+
 /*user-viewer END*/
 
 
-/*moneda-precio*/
-#moneda-precio {
-    background-image: url("/images/common/whiteToGrayGradient.png");
-    background-position: 0 -90px;
+/*price-currency*/
+#price-currency {
+    background-image: url("/images/common/stripesGradient_H433.jpg");
+    background-position: 0 545px;
+    border: 1px solid #DEDEDE;
+    border-radius: 10px 10px 10px 10px;
     clear: both;
     color: black;
     font-size: 0.8em;
-    height: 68px;
-    margin-bottom: 10px;
-    padding-left: 10px;
-    padding-top: 13px;
-    width: 265px;
+    margin-top: 10px;
+    padding: 20px 16px;
+    position: relative;
+    top: 16px;
 }
+
+#price-currency select
+{
+    width: 238px;
+    height: 36px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5px;
+}
+
 /*moneda-precio ends*/
 
-/*Pdf converter*/
-#pdf-converter
-{
+/******property-calculator*****/
 
+#property-calculator-container {
+    background-color: #7AC43C;
+    color: white;
+    height: 43px;
+    padding: 7px;
+    width: 261px;
 }
-#pdf-converter-pdf-icon
+
+#property-calculator p, #property-calculator span
+{
+    float: left;
+    display: block;
+    
+}
+
+#property-calculator-container div {
+    height: 42px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 249px;
+}
+
+#property-calculator span
+{
+    background-image: url("/images/toolsCenter/calcIcon.png");
+}
+
+#property-calculator p {
+    font-size: 1.4em;
+    width: 200px;
+}
+
+#property-calculator span {
+    background-image: url("/images/toolsCenter/calcIcon.png");
+    height: 42px;
+    width: 41px;
+}
+/******property-calculator ENDS*****/
+
+
+
+
+/******pdf-and-share******/
+
+#pdf-and-share p
+{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+
+#pdf-and-share {
+    background-color: #EEEEEE;
+    border: 1px solid #CCCCCC;
+    padding: 25px;
+}
+
+#pdf-and-share-share
+{
+    height: 40px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 220px;
+    
+}
+
+#pdf-and-share h2
+{
+    color: #76b939;
+    float: left;
+    margin-right: 10px;
+}
+
+
+#pdf-and-share a
+{
+    background-image: url("/images/common/socialSprite.png");
+    display: block;
+    float: left;
+    height: 27px;
+    margin-right: 10px;
+    width: 27px;
+}
+
+
+#pdf-and-share-pdf-icon
 {
     margin-right:5px;
 }
@@ -2579,39 +2880,38 @@ div.footer-section a{
     height: 30px;
     margin-left: 10px;
 }
-/*Pdf converter END*/
+/******pdf-and-share******/
 
 /*property-ubication-gmap*/
 #property-ubication-gmap-title
 {
-    background-image: url("/images/common/darkToLightGreenGradient.png");
-    background-position: 0 31px;
+    background-image: url("/images/common/grayToWhiteGradient.png");
+    background-position: 0 2px;
     background-repeat: repeat;
     padding-left: 5px;
 }
+
 #property-ubication-gmap
 {
-    float: left;
+    
 }
 
 #property-ubication-gmap-map
 {
-    width: 250px;
+    
     height: 236px;
-    border: 2px solid #237c16;
+
 }
 /*property-ubication-gmap END*/
 
 /*property-info*/
-#property-info
-{
+#property-info {
     color: black;
+    float: left;
     height: 282px;
-    margin: 5px;
-    padding: 10px;
-    width: 659px;
-    float:left;
-
+    margin-right: 5px;
+    padding: 8px;
+    width: 664px;
 }
 #property-info ul
 {
@@ -2621,10 +2921,35 @@ div.footer-section a{
     margin-bottom: 10px;
     width: 329px;
 }
+
+#property-info-address-close-places-container, 
 #property-info-caracteristicas
 {
+    clear: both;
+}
+
+#property-info-close-places,
+#property-info-address
+{
     float: left;
-    width: 329px;
+}
+
+#property-info-close-places {
+    margin-right: 55px;
+}
+
+#property-info-address {
+    width: 245px;
+}
+
+
+
+#property-info-caracteristicas ul, 
+#property-info-close-places ul,
+#property-info-address ul
+{
+    float: left;
+    margin: 10px 20px 10px 0;
 }
 
 #property-info-terminaciones
@@ -2934,22 +3259,23 @@ div.footer-section a{
     color: black;
     float: left;
     margin-right: 20px;
-    
+
 
 }
 
 #user-info-card-photo {
     display: block;
     float: left;
-    height: 98px;
+
     margin-right: 35px;
-    width: 105px;
+    max-width: 100px;
 }
 
 
 #user-info-company img{
     margin-right: 20px;
     margin-top: 5px;
+    max-width: 160px;
 }
 
 #user-info-company p
@@ -3154,14 +3480,14 @@ div.footer-section a{
     color:black;
 }
 
-#signup-form #signup-informacion-general label, #signup-form #signup-informacion-general input
+#signup-form label, #signup-form input
 {
     display:block;
     float:left;
 
 }
 
-#signup-form #signup-informacion-general label
+#signup-form label
 {
     clear: left;
     margin-bottom: 10px;
@@ -3214,10 +3540,87 @@ div.footer-section a{
 }
 /*signup-form ENDS*/
 
+/******* give-posts-to-agents-overlay-agents *****/
+#give-posts-to-agents-overlay
+{
+    position: relative;
+}
+#give-posts-to-agents-overlay-agents div {
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+#give-posts-to-agents-overlay-posts-left h1
+{
+    text-align: center;
+}
+
+#give-posts-to-agents-overlay-agents label{
+
+    width: 170px;
+
+}
+#give-posts-to-agents-overlay-posts-left h2 {
+    padding: 10px;
+    width: 133px;
+}
+
+
+#give-posts-to-agents-overlay-agents {
+    margin-right: 230px;
+}
+
+
+#give-posts-to-agents-overlay {
+    background-color: #F3F3F3;
+    border-radius: 10px 10px 10px 10px;
+    padding: 7px;
+
+}
+
+#give-posts-to-agents-overlay-content {
+    min-height: 95px;
+    padding: 15px;
+    width: 577px;
+    position: relative;
+}
+
+#give-posts-to-agents-overlay-posts-left {
+    position: absolute;
+    right: 0;
+    top: 15px;
+}
+
+#give-posts-to-agents-overlay-save-button,
+#give-posts-to-agents-overlay-cancel-button
+{
+    cursor: pointer;
+}
+
+#give-posts-to-agents-overlay-agents label,
+#give-posts-to-agents-overlay-agents input{
+    display: block;
+    float: left;
+}
+
+
+
+
+/******* give-posts-to-agents-overlay-agents ENDS*****/
 
 /*Blocks End*/
 
 /*clases utiles*/
+
+
+.twitter-icon {
+background-position: -26px 0;
+}
+
+.google-plus-icon {
+background-position: -53px 0;
+}
+
 .missing-required
 {
     color: red;
@@ -3233,6 +3636,24 @@ div.footer-section a{
     font-weight: bold;
 }
 
+
+
+.overlay-close-button {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100000;
+}
+
+.overlay-header
+{
+    background-image: url("/images/common/darkGreenPattern.png");
+    border-radius: 15px 15px 0 0;
+    color: white;
+    padding: 10px;
+}
 .form-divisor
 {
     background: url("/images/common/formDivisor.png") no-repeat center center;
@@ -3251,7 +3672,12 @@ div.footer-section a{
     margin-left: 5px;
 }
 
-
+.panels-menu-header
+{
+    color: #76B939;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
 
 .form-section-number
 {
@@ -3266,7 +3692,18 @@ span.required{
 .required-missing{
     border: 1px solid red;
 }
-
+.panels-header-button
+{
+    background-color: #80CC3F;
+    border-radius: 5px;
+    color: white;
+    display: block;
+    font-size: 1.2em;
+    height: 28px;
+    padding: 10px 0 0;
+    text-align: center;
+    width: 195px;
+}
 
 
 #saludo-usuario
@@ -3286,7 +3723,10 @@ span.required{
     cursor: pointer;
 }
 
-
+.last
+{
+    border: none;
+}
 
 .front-page-module-header {
     background-image: url("/images/common/whiteToGrayGradient_H327.png");
@@ -3309,12 +3749,14 @@ span.required{
 {
     padding: 5px 5px;
     margin: 5px 0;
-    width: 935px;
+
     font-size: 1.2em;
     font-weight: bold;
 }
 
-.hidden
+.hidden,
+#signup-form label.hidden,
+#signup-form input.hidden
 {
     display: none;
 }
@@ -3367,7 +3809,7 @@ span.required{
     background-color:#76BC3B;
     width:18%;
     margin-top:20px;
-        margin-bottom:20px;
+    margin-bottom:20px;
 }
 #soporte-left-side ul
 {
@@ -3411,6 +3853,10 @@ span.required{
 /*******************************************/
 
 /***** plans table ******/
+
+#why-photos {
+    text-align: center;
+}
 #planes_main_title
 {
     text-align:center;
@@ -3463,7 +3909,7 @@ span.required{
 }
 .chrome #planes_detail tr
 {
-   height:48px;
+    height:48px;
 }
 #planes_data th
 {
@@ -3628,7 +4074,41 @@ span.required{
 
 .form-send-button
 {
-  border: none;  
+    border: none;  
+}
+
+.tabs-container
+{
+    border-bottom: 2px solid #76BC3B;
+    height: 28px;
+    margin-bottom: 20px;
+    width: 960px;
+    display: block;
+    clear: both;
+}
+
+.tab-item.selected
+{
+    background-color: #76bc3b;
+    color: white;
+}
+
+.tab-item
+{
+    background-color: #F5F5F5;
+    border-radius: 5px 5px 0 0;
+    color: #8EC55C;
+    display: block;
+    float: left;
+    font-weight: bold;
+    height: 16px;
+    padding: 6px 20px;
+}
+
+.users-photo
+{
+    width: 107px;
+    height: 121px;
 }
 /*********/
 /*clases utiles ENDS*/

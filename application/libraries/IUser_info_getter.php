@@ -8,7 +8,7 @@
 
 interface IUser_info_getter
 {
-  
+    public function get_id();
     public function get_name();
     public function get_lastname();
     public function get_email();
@@ -17,6 +17,7 @@ interface IUser_info_getter
     public function get_photo();
     public function get_tel();
     public function get_cel();
+    public function get_cel2();
     public function get_fax();
     public function get_rnc();
     public function get_address();

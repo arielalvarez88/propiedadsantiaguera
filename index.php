@@ -27,7 +27,7 @@
  * Different environments will require different levels of error reporting.
  * By default development will show errors but testing and live will hide them.
  */
-
+require_once realpath("./application/libraries/User_factory.php");
 if (defined('ENVIRONMENT'))
 {
 	switch (ENVIRONMENT)

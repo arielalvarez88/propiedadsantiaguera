@@ -10,6 +10,7 @@
  * @author  	Simon Stenhouse
  * @link    	http://stensi.com
  */
+require_once realpath("./application/libraries/User_factory.php");
 class Examples extends Controller {
 
 	/**
