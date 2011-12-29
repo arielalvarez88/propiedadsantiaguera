@@ -5062,3 +5062,56 @@ button.ui-button:-moz-focus-inner { border: 0; padding: 0; } /* reset extra padd
 
 
 /********************* End property types styles ******************/
+
+/********************* Purchase Form Style ***********************/
+ul#purchase-steps
+{
+   border-bottom:1px solid #76BC3B;
+   color: #76BC3B;
+   padding-bottom:5px;
+   font-weight: bold;
+   margin-bottom: 20px;
+}
+ul#purchase-steps li:first-child
+{
+    font-weight:bold;
+    margin-right: 10px;
+    background-color:transparent;
+}
+ul#purchase-steps li.purchase-active-step
+{
+    background-color: #76BC3B;
+    color:#fff;
+}
+ul#purchase-steps li
+{
+    display:inline;
+    background-color: #ccc;
+    padding:0 10px 5px 10px; 
+    -moz-border-radius: 7px 7px 0 0;
+    border-radius: 7px 7px 0 0; 
+    margin:0 2px;
+    text-align:center;
+}
+h3#purchase-step-1
+{
+    padding:5px 0px 5px 30px;
+    background:url('../images/1-with-circle.png') top left no-repeat;
+}
+#purchase-form-1
+{
+    text-align:right;
+    width:350px;
+}
+#purchase-form-1 input
+{
+    margin:5px 0;
+}
+#purchase-form-1 span
+{
+    color:#777;  
+    float: right;
+    margin-right: -65px;
+    padding-top: 9px;
+}
+/*****************************************************************/
