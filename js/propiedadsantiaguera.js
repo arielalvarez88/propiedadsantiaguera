@@ -35,6 +35,16 @@ initilizeSlideShows = function()
     });
     
     
+    $('#front-properties-pager-container #properties-pager-properties-container').cycle({ 
+        fx:     'fade', 
+        speed:  'fast', 
+        timeout: 5000,         
+        cleartype: true,
+        cleartypeNoBg: true
+        
+        
+    });
+    
     $('#tools-center-slideshow').cycle({ 
         fx:     'fade', 
         speed:  'fast', 
@@ -50,7 +60,12 @@ initilizeSlideShows = function()
         }
     });
     
-}
+    $(".property-slideshow").fancybox({
+        openEffect	: 'none',
+        closeEffect	: 'none'
+    });
+    
+};
 
 initializePropiedadViewer = function (){
     $('#propiedad-viewer-slideshow').cycle({
@@ -72,7 +87,7 @@ initializePropiedadViewer = function (){
         fx:     'fade', 
         prev:   '#propiedad-viewer-previous-pager', 
         next:   '#propiedad-viewer-next-pager', 
-        after: hideNextorPrevious,
+        after: function(curr,next,opts){hideNextorPrevious(curr,next,opts,'#propiedad-viewer-next-pager','#propiedad-viewer-previous-pager')},
         timeout: 0 
     });
 }
@@ -98,11 +113,12 @@ drawPropertyUbication = function(latitudeAndLongitude)
     
 }
 
-hideNextorPrevious = function (curr, next, opts){
+hideNextorPrevious = function (curr, next, opts, nextSelector, previousSelector){
 
+    
     var index = opts.currSlide;
-    $('#propiedad-viewer-previous-pager')[index == 0 ? 'hide' : 'show']();
-    $('#propiedad-viewer-next-pager')[index == opts.slideCount - 1 ? 'hide' : 'show']();   
+    $(previousSelector)[index == 0 ? 'hide' : 'show']();
+    $(nextSelector)[index == opts.slideCount - 1 ? 'hide' : 'show']();   
 }
 
 blockExists = function(idName){
@@ -112,19 +128,6 @@ blockExists = function(idName){
   
     return false;
 };
-
-initializeAgentesHeaderSection = function(){
-
-    $('#agentes-header-inmobliarias').unbind('click');
-    $('#agentes-header-inmobliarias').click(function(){
-        $('#agentes-pager-header').html('Inmobiliarias');
-    });
-    
-    $('#agentes-header-agentes').unbind('click');
-    $('#agentes-header-agentes').click(function(){
-        $('#agentes-pager-header').html('Agentes');
-    });
-}
 
 alertMessageCallback = function (response,successMessage,failureMessage)
 {
@@ -144,6 +147,133 @@ alertMessageCallback = function (response,successMessage,failureMessage)
    
 
 };
+
+
+JqueryCycleAjaxPager = function(containerSelector,nextButtonSelector,previousButtonSelector, actualPageNumberDisplaySelector, pageNumbersCotainerSelector, numberOfVisiblePagesInThePager, previousPagerGroupSelector, nextPagerGroupSelector)
+{
+    
+    var thisObject = this;
+    this.container;
+    this.numberOfPages;
+    this.nextButton;
+    this.previousButton;
+    this.actualPageNumberDisplay;
+    this.pageNumbersContainer;
+    this.actualPage;
+    this.numberOfPagerGroups;
+    this.nextPagerGroup;
+    this.previousPagerGroup;
+    thisObject.slidesPerPage;
+    
+    this.refreshActualPageDisplay = function (){
+        
+       thisObject.actualPageNumberDisplay.html("Página " + thisObject.actualPage + '-' + thisObject.numberOfPages );
+    };
+    
+    
+    (this.init = function(){
+        
+        thisObject.actualPageNumberDisplay= $(actualPageNumberDisplaySelector);
+        thisObject.container= $(containerSelector);
+        thisObject.numberOfPages = thisObject.container.children().length;
+        thisObject.actualPage = 1;
+        thisObject.nextButton = $(nextButtonSelector);
+        thisObject.previousButton = $(previousButtonSelector);
+        thisObject.pageNumbersContainer = $(pageNumbersCotainerSelector);
+        thisObject.numberOfPagerGroups = thisObject.pageNumbersContainer.children().length;
+        thisObject.nextPagerGroup = $(nextPagerGroupSelector);
+        thisObject.previousPagerGroup = $(previousPagerGroupSelector);
+        
+        
+        if(thisObject.numberOfPages > 0)
+            thisObject.refreshActualPageDisplay();
+        
+        
+        if(thisObject.numberOfPages > 1)
+            {
+                
+               thisObject.nextButton.show();
+               thisObject.previousButton.hide();
+            }
+            else
+                {
+                    thisObject.previousButton.hide();
+                    thisObject.nextButton.hide();
+                }
+        
+        thisObject.container.cycle({
+            fx:     'fade', 
+            prev:   previousButtonSelector, 
+            next:   nextButtonSelector,                        
+            onPrevNextEvent: function(isNext,zeroBasedSlideIndex,slideElement){
+                
+                thisObject.actualPage = zeroBasedSlideIndex + 1;                
+                thisObject.refreshActualPageDisplay();
+                
+                var info = {currSlide : zeroBasedSlideIndex, slideCount:  thisObject.numberOfPages};
+                hideNextorPrevious(isNext,zeroBasedSlideIndex, info ,nextButtonSelector,previousButtonSelector);
+                
+                if((thisObject.actualPage %  (numberOfVisiblePagesInThePager+1)==0) && isNext)
+                    thisObject.pageNumbersContainer.cycle('next');
+                
+                else if((thisObject.actualPage %  numberOfVisiblePagesInThePager == 0) && !isNext)
+                    thisObject.pageNumbersContainer.cycle('prev');
+                
+                
+            },
+            onPagerEvent: function(zeroBasedSlideIndex, slideElement){
+                thisObject.actualPage = zeroBasedSlideIndex + 1;                
+                thisObject.refreshActualPageDisplay();
+                              
+            },
+            
+            pager: thisObject.pageNumbersContainer,
+            pagerAnchorBuilder: function(index,DOMelement){
+                var pageNumber = index+1;
+                
+                return  '.ajax-pager-page-number:nth(' + index + ')';                
+                
+            },
+            activePagerClass: 'selected',
+            timeout: 0 
+            
+        });
+                
+                     thisObject.pageNumbersContainer.cycle({
+            fx:     'fade', 
+            timeout: 0            
+            
+            
+          
+            
+//            prev:   previousPagerGroupSelector, 
+//            next:   nextPagerGroupSelector, 
+            
+//            after: function(curr,next,opts){                          
+//                hideNextorPrevious(curr,next,opts,nextPagerGroupSelector,previousPagerGroupSelector);
+//            },                        
+//            activePagerClass: 'selected-pager-group',
+            
+        });
+//        
+//         if(thisObject.numberOfPagerGroups > 1)
+//            {
+//                
+//                thisObject.previousPagerGroup.hide();
+//            }
+//            else
+//                {
+//                    thisObject.nextPagerGroup.hide();
+//                    thisObject.previousPagerGroup.hide();
+//                }
+        
+    })();
+    
+     
+
+    
+}
+
 
 HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, elementsToShowOrHideSelector, emptyElementsValuesWhenHidding, event, runEventOnLoad){
     
@@ -178,10 +308,10 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
         if(elementValue)
             $(valuesToSelectorsToShowMap[elementValue]).show();
         else 
-            {
+        {
             $(valuesToSelectorsToShowMap['selector']).show();
             
-            }
+        }
             
     });
     
@@ -388,20 +518,20 @@ printCallbackMessageInContainer = function(response, successMessageContainer, er
     
     
     if(response.success)
-        {
-            if(response.message)
-                $(successMessageContainer).show().html(response.message);
-            else
-                {
-                    $(successMessageContainer+", "+ errorMessageContainer).hide();
-                }
-            
-        }
+    {
+        if(response.message)
+            $(successMessageContainer).show().html(response.message);
         else
         {
-            $(errorMessageContainer).html(response.message).show();
-            $(successMessageContainer).hide();
+            $(successMessageContainer+", "+ errorMessageContainer).hide();
         }
+            
+    }
+    else
+    {
+        $(errorMessageContainer).html(response.message).show();
+        $(successMessageContainer).hide();
+    }
             
     
     
@@ -911,17 +1041,36 @@ initializeHideShowWithArrowDirectionElement= function(){
 
 
 initializeHiderAndShowerElement = function(){
+    
+    
     var advancedFilter = new HiderAndShowerElement("#advanced-filter-property-type", {
-        apartment:'.apartment-field', 
-        house : ".house-field", 
-        lot:".lot-field", 
-        penthouse:".penthouse-field",
-        mall:".mall-field", 
-        building:".building-field", 
-        warehouse:".warehouse-field",
-        office:".office-field",
-        land:".land-field"
+        1: ".house-field", 
+        2:'.apartment-field', 
+        3:".penthouse-field",
+        4:".mall-field", 
+        5:".building-field", 
+        6:".warehouse-field",
+        7:".office-field",
+        8:".lot-field",         
+        9:".land-field",
+        10: ".construction-project"
     }, "#advanced-filter .hiddable", true, "change");
+    
+    
+    var propertiesFormPerTypeFieldHider = new HiderAndShowerElement("#property-form-description-type", {
+        1: ".house-field", 
+        2:'.apartment-field', 
+        3:".penthouse-field",
+        4:".mall-field", 
+        5:".building-field", 
+        6:".warehouse-field",
+        7:".office-field",
+        8:".lot-field",         
+        9:".land-field",
+        10: ".construction-project"
+    }, "#property-form-description-column-container .hiddable", true, "change", true);
+    
+    
     var propertiesFormCondition = new HiderAndShowerElement("#property-form-description-condition", {
         1:'.sell-condition-field', 
         2 : ".rent-condition-field", 
@@ -937,17 +1086,43 @@ initializeHiderAndShowerElement = function(){
         7: '.company-agent-field', 
         8: '.agent-particular-requester-field'
     }, '.agent-particular-field, .company-field, .company-agent-field', false, 'change',true);   
-    var supportItems = new HiderAndShowerElement("#faq", {selector: ".faq-data"}, ".hidden", false, "click");
+    var supportItems = new HiderAndShowerElement("#faq", {
+        selector: ".faq-data"
+    }, ".hidden", false, "click");
 
-    var propertyTypeInPropertyForm = new HiderAndShowerElement("#properrty-form-description-type", {1 : ".house-field", 2 : ".apartment-field", 3: ".lot-field", 4:".enthouse-field",5:".mall-field", 6:".building-field", 7:".warehouse-field", 8:".office-field", 9:".land-field"}, ".property-form-optional-field", true, "change", true);
-    var currencyInPropertyInfo = new HiderAndShowerElement("#price-currency select", {dr: ".dr-price-field", us: ".us-price-field"}, "#price-currency h1", false, "change", true);
+    var propertyTypeInPropertyForm = new HiderAndShowerElement("#properrty-form-description-type", {
+        1 : ".house-field", 
+        2 : ".apartment-field", 
+        3: ".lot-field", 
+        4:".enthouse-field",
+        5:".mall-field", 
+        6:".building-field", 
+        7:".warehouse-field", 
+        8:".office-field", 
+        9:".land-field"
+    }, ".property-form-optional-field", true, "change", true);
+    var currencyInPropertyInfo = new HiderAndShowerElement("#price-currency select", {
+        dr: ".dr-price-field", 
+        us: ".us-price-field"
+    }, "#price-currency h1", false, "change", true);
 };
 
 hideElementsWithHiddenClass = function(){
-   $('.hidden') .hide();
+    $('.hidden') .hide();
 };
 
 
+
+
+
+
+initializeJqueryCycleAjaxPager = function (){
+    var propertiesSearchResults = new JqueryCycleAjaxPager('#properties-search-results-pager-results-container', '#properties-search-results-pager-next, #properties-search-results-pager-next-group', '#properties-search-results-pager-previous, #properties-search-results-pager-previous-group', '#properties-search-results-pager-current-page-display', '#properties-search-results-pager-pages',5);
+    var memberProperties = new JqueryCycleAjaxPager('#members-properties-pager-container #properties-pager-properties-container', '#members-properties-pager-container #properties-pager-next-previous-next-button', '#members-properties-pager-container #properties-pager-next-previous-previous-button', '#members-properties-pager-container #properties-pager-next-previous-numbers');
+    
+    
+    
+};
 
 $(document).ready
 {   
@@ -959,8 +1134,7 @@ $(document).ready
     }    
     
     initilizeSlideShows();
-    initializePropiedadViewer();    
-    initializeAgentesHeaderSection();
+    initializePropiedadViewer();       
     initializeViewLoaderElements();
     initializeForms();
     initializeOverlays();
@@ -969,7 +1143,10 @@ $(document).ready
     initializeHideShowWithArrowDirectionElement();
     initializeHiderAndShowerElement();    
     initializeFilters();
+    
+    initializeJqueryCycleAjaxPager();
     hideElementsWithHiddenClass();
+    
 /*comentario*/    
 }
 

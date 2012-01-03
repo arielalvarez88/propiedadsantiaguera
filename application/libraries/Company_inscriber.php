@@ -7,7 +7,7 @@ class Company_inscriber implements IUser_inscriber{
 
     private $validator;
     private $validation_type;
-    private $base_behavior;
+    public $base_behavior;
     
     public function __construct($base_behavior, $validator) {
         $this->validator = $validator;
@@ -69,7 +69,9 @@ class Company_inscriber implements IUser_inscriber{
     }
 
     public function save_photo($user_object, $user_info_getter) {
+        
         $this->base_behavior->save_photo($user_object, $user_info_getter);
+     
     }
 
     public function save_rnc($user_object, $user_info_getter) {

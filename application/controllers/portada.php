@@ -23,15 +23,32 @@ class Portada extends CI_Controller {
         $data['topRightSide'] .= $this->load->view('blocks/tired_message','',true);
         $menuTiposDePropiedadData['sectionName'] = 'portada';
         $data['bottomLeftSide'] = $this->load->view('blocks/properties_of_the_week','',true);
-        $data['bottomRightSide'] = $this->load->view('blocks/properties_pager','',true);
+        
+        $propertieS_pager_view_variables = $this->get_random_porperties_for_properties_pager_View();
+        
+        
+        $data['bottomRightSide'] = $this->load->view('blocks/properties_pager',$propertieS_pager_view_variables,true);
         $data['bottom'] = $this->load->view('blocks/front_page_banner','',true);
         $data['bottom'] .= $this->load->view('blocks/popular_neighborhoods','',true);
         $data['bottom'] .= $this->load->view('blocks/buy_blueprints_link','',true);
         $data['bottom'] .= $this->load->view('blocks/tools_center','',true);
         
-
-
         $this->load->view('page',$data);
+    }
+    
+    private function get_random_porperties_for_properties_pager_View()
+    {
+        
+        $properties = new Property();
+        $properties =      $properties->where('display_property', 1)->order_by('RAND()')->get()->all;
+        $variables['properties'] = $properties;
+        $variables['section'] = 'front-';
+        $variables['properties_per_row'] = 2;
+         $variables['rows_per_page'] = 1;
+        
+        return $variables;
+        
+        
     }
     
     

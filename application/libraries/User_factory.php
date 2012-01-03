@@ -25,6 +25,10 @@ class User_factory {
 
     public static function get_user_from_object($user) {
  
+        
+        if(!is_object($user) && !isset($user->type))
+            return false;
+            
         switch ($user->type) {
             case Environment_vars::$maps['texts_to_id']['user_types']['Agente de Empresa']:                       
                 return new Company_agent_user($user);

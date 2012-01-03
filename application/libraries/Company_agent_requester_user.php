@@ -13,7 +13,7 @@
 require_once realpath("./application/libraries/IUser.php");
 require_once realpath("./application/libraries/User_base_class.php");
 
-class Company_agent_user extends User_base_class implements IUser{
+class Company_agent_user extends User_base_class implements IUser_requests_only{
     public $user;
     public $company;
     
@@ -56,6 +56,10 @@ class Company_agent_user extends User_base_class implements IUser{
         $this->user->save($property);
         $company =$this->get_company()->save($property);
         
+    }
+
+    public function get_properties() {
+        return array();
     }
 }
 

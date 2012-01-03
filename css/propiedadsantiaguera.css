@@ -93,15 +93,20 @@ body, html
 
 }
 
+#bottom-section
+{
+    overflow: hidden;
+    width: 960px;
+    
+}
 
 /********** header ENDS ***********/
 #header{
     padding: 10px 10px 0 10px;     
 }
 
-#header, #content {
-    overflow: auto;
-
+#panel-account-user-presentation-card-container {
+    padding: 0 10px;
 }
 
 
@@ -622,9 +627,14 @@ body, html
     font-weight: bold;
 }
 
+
+
+
 #user-info-header {
 
 }
+
+
 
 #panel-account-user-info-header{
 
@@ -734,11 +744,18 @@ body, html
     color: white;
 }
 
-.panels-properties-pager-property-info h2 {
+.panels-properties-pager-property-info-title-link
+{
+    color: white;
+}
+
+ .panels-properties-pager-property-title {
     background-color: #76BC3B;
     border-radius: 5px 5px 5px 5px;
+    clear: both;
     color: white;
     font-size: 1.4em;
+    margin-bottom: 10px;
     margin-top: 11px;
     overflow: hidden;
     padding: 2px 10px;
@@ -783,9 +800,11 @@ body, html
 
 
 .panels-properties-pager-property img {
-    display: block;
+  display: block;
     float: left;
+    height: 125px;
     margin-right: 20px;
+    width: 194px;
 }
 .panels-properties-pager-property-info {
     float: left;
@@ -794,10 +813,13 @@ body, html
 .panels-properties-pager-property {
     float: left;
     margin-bottom: 75px;
-    width: 480px;
+    width: 445px;
 }
 
-
+.panels-properties-pager-property.odd
+{
+    margin-right: 70px;
+}
 
 #panels-property-section-pager {
     clear: both;
@@ -836,8 +858,10 @@ body, html
 
 #panels-property-section-header-container
 {
+    color: white;
     float: left;
     margin-right: 385px;
+    
 }
 
 #panels-property-section-menu-properties-counter
@@ -1003,6 +1027,7 @@ body, html
 img.no-decoration-anchor,a.no-decoration-anchor,a.no-decoration-anchor:visited,a.no-decoration-anchor:active , .portada-center-item-icon{
     text-decoration: none;
     border: none;
+    color: inherit;
 
 }
 
@@ -1954,6 +1979,13 @@ div.footer-section a{
     margin: 10px 0;
 }
 
+#search-results-basic-filter-container h2
+{
+    font-size: 1.6em;
+    margin-bottom: 15px;
+        
+}
+
 #basic-filter-advanced-filter-link {
     display: block;
     float: left;
@@ -1968,9 +2000,21 @@ div.footer-section a{
     display: block;
     float: left;
     height: 26px;
-
     width: 105px;
+}
 
+#search-results-basic-filter-container #basic-filter input#basic-filter-search-button
+{
+    width: 144px;
+    height: 35px;
+    display: block;
+    
+}
+
+
+#search-results-basic-filter-container  #basic-filter-advanced-filter-link
+{
+    padding: 10px 0;
 }
 
 #basic-filter p {
@@ -1985,10 +2029,46 @@ div.footer-section a{
 
 }
 
+#search-results-basic-filter-container #basic-filter-top-left-size,
+#search-results-basic-filter-container #basic-filter-top-right-size
+{
+    float:  none;
+        
+}
+
+
+
+#search-results-basic-filter-container #basic-filter {
+    background-image: url("/images/common/grayStripesPattern_H406.png");
+    background-position: 0 0;
+    border-radius: 10px 10px 10px 10px;
+    height: 325px;
+    margin-bottom: 10px;
+    margin-right: 15px;
+    padding: 15px 8px;
+    width: 273px;
+}
+
+
+#search-results-basic-filter-container #basic-filter-price-slider
+{
+    width: 254px;
+}
+
+#search-results-basic-filter-container #basic-filter-bottom-left-size
+{
+    width: 267px;
+}
 
 #basic-filter-bottom-right-size
 {
     padding: 22px 0 17px 40px;
+}
+
+
+#search-results-basic-filter-container #basic-filter-bottom-right-size
+{
+    padding: 0;
 }
 
 #basic-filter-bottom-left-size
@@ -2004,6 +2084,10 @@ div.footer-section a{
     padding-left: 6px;
 }
 
+#search-results-basic-filter-container  #basic-filter-top-left-size
+{
+    margin-right: 0;
+}
 
 #basic-filter-top-left-size
 {
@@ -2026,6 +2110,13 @@ div.footer-section a{
     padding-left: 4px;
     width: 276px;
 }
+
+#search-results-basic-filter-container #basic-filter select, #search-results-basic-filter-container #basic-filter input {
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+}
+
 
 #basic-filter {
     background-image: url("/images/common/stripesGradient_H433.jpg");
@@ -2131,6 +2222,10 @@ div.footer-section a{
 
 /*front-page-advertising*/
 
+#search-results-advertising-container img 
+{
+    width: 288px;
+}
 #advertising
 {
     margin-bottom: 5px;
@@ -2165,41 +2260,101 @@ div.footer-section a{
 
 
 
-/*********agents-properties-pager*********/
 
-#agents-properties-pager-container
-{
 
-}
 
-#agents-properties-pager-container #properties-pager, #agents-properties-pager-container #properties-pager-properties-container {
 
-    width: 797px;
-    height: 636px;
-}
 
-/*********agents-properties-pager ENDS*********/
+
 
 
 /*properties-pager*/
-#properties-pager
+#front-properties-pager-container #properties-pager
 {
 
-    height: 325px;
+    overflow: hidden;
     background-image: url("/images/common/stripesGradient_H433.jpg");
+    
 
 }
 
+#members-properties-pager-container #properties-pager{
+overflow: hidden;
+    width: 797px;
+    height: 636px;
+       
+}
 
-#properties-pager, #properties-pager-properties-container {
-    color: black;
+#properties-pager
+{
+    
+    
+}
+
+#properties-pager-next-previous-numbers
+{
+    float: left;
+}
+
+#properties-pager-next-previous {
+    clear: both;
+    padding-left: 10px;
+}
+
+#properties-pager-next-previous-next-button,
+#properties-pager-next-previous-previous-button
+{
+    float: right;
+}
+
+.properties-pager-info {
+    clear: both;
+}
+
+.properties-pager-property-type {
+    float: left;
+    margin-bottom: 5px;
+}
+
+.properties-pager-property p {
+    clear: both;
+}
+
+#properties-pager {
+    color: black;    
+}
+
+
+#front-properties-pager-container
+{
     width: 531px;
 }
 
-#properties-pager-container
+
+.properties-pager-info span
+{
+    float:left;
+}
+
+.properties-pager-property-price
+{
+    background-color: #76BA3D;
+    color: white;
+    display: block;
+    float: left;
+    height: 20px;
+    
+}
+#front-properties-pager-container
 {
     border: 1px solid #F4F4F4;
     margin-top: 10px
+}
+
+#front-properties-pager-container #properties-pager-next-previous-next-button,
+#front-properties-pager-container #properties-pager-next-previous-previous-button
+{
+    display: none;
 }
 
 #properties-pager-header {
@@ -2212,14 +2367,18 @@ div.footer-section a{
 
 .properties-pager-property-title
 {
-    background-image: url("/images/propiedadesMasVisitadas/propiedadesMasVisitadasTitleBackground.png");
-    color: white;
+    
+    color: #76BC3B;
     font-size: 1.2em;
-    height: 20px;
+    
     margin: 5px 0;
-    padding-left: 5px;
-    padding-right: 5px;
-    width: 176px;
+    
+
+    
+}
+.properties-pager-row {
+    float: left;
+    clear: both;
 }
 
 .properties-pager-desc{
@@ -2287,10 +2446,6 @@ div.footer-section a{
     display:inline;
 }
 
-.properties-pager-property-price
-{
-    color:#247f12;
-}
 .properties-pager.last
 {
     border: none;
@@ -2457,6 +2612,11 @@ div.footer-section a{
     height: 271px;
     width: 660px;
 }
+
+.property-slideshow
+{
+    display: block;
+}
 .propiedad-viewer-slideshow-selector
 {
     width: 80px;
@@ -2498,7 +2658,7 @@ div.footer-section a{
 
 #propiedad-viewer-header h2
 {
-    font-size: 2.4em;
+    font-size: 1.8em;
     line-height: 1em;
     margin: 0;
 }
@@ -2521,6 +2681,11 @@ div.footer-section a{
     float: left;
     height: 254px;
     width: 449px;
+}
+
+.property-slideshow img {
+    width: 15px;
+    height: auto;
 }
 
 #propiedad-viewer-ref img
@@ -2627,7 +2792,7 @@ div.footer-section a{
 
 /*user-viewer*/
 
-#user-viewer-container {
+#particular-user-viewer-container {
     background-image: url("/images/common/whiteToGrayGradient.png");
     color: black;
     padding-bottom: 10px;
@@ -2637,6 +2802,30 @@ div.footer-section a{
 }
 
 
+#company-user-viewer-container {
+    background-image: url("/images/common/whiteToGrayGradient.png");
+    color: black;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    position: relative;
+    width: 275px;
+}
+
+#company-user-viewer-container #user-viewer-photo
+{
+    height: 107px;
+    width: 142px;
+}
+
+
+#company-user-viewer-container #user-viewer-photo-container
+
+{
+    float: none;
+    height: auto;
+    width: auto;
+    text-align: center;
+}
 
 #user-viewer
 {
@@ -2686,20 +2875,38 @@ div.footer-section a{
 #user-viewer-user-webpage
 {
     clear: both;
-    font-size: 1.2em;
-    font-weight: bold;
-    text-align: center;
+    font-size: 1.1em;
+
+}
+
+
+#company-user-viewer-container #user-viewer-info h2{
+      font-size: 1.1em;
+    margin: 10px;
 }
 
 #user-viewer-info h2 {
     font-size: 1.1em;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 #user-viewer-info {
     float: left;
     height: 127px;
     padding-left: 10px;
     width: 133px;
+}
+
+
+#company-user-viewer-container #user-viewer-info {
+    float: left;
+    height: 85px;
+    padding-left: 10px;
+    width: 230px;
+}
+
+#user-viewer-fax
+{
+    margin-left: 20px;
 }
 
 
@@ -2735,6 +2942,12 @@ div.footer-section a{
 
 }
 
+#company-user-viewer-container #user-viewer-info p{
+    float: left;
+    
+    
+}
+
 #user-viewer-info p {
     font-size: 1.1em;
 }
@@ -2742,7 +2955,7 @@ div.footer-section a{
 #user-viewer-user-email {
     clear: both;
     font-size: 1.1em;
-    text-align: center;
+    
 }
 
 #user-viewer-user-email span{
@@ -2776,6 +2989,10 @@ div.footer-section a{
     margin-right: auto;
     margin-left: auto;
     margin-top: 5px;
+}
+
+#price-currency h1 {
+    font-size: 1.8em;
 }
 
 /*moneda-precio ends*/
@@ -2908,7 +3125,7 @@ div.footer-section a{
 #property-info {
     color: black;
     float: left;
-    height: 282px;
+    
     margin-right: 5px;
     padding: 8px;
     width: 664px;
@@ -2919,7 +3136,7 @@ div.footer-section a{
 }
 #property-info-descripcion {
     margin-bottom: 10px;
-    width: 329px;
+    
 }
 
 #property-info-address-close-places-container, 
@@ -2962,10 +3179,83 @@ div.footer-section a{
 /*properties-search-results-pager */
 
 .properties-search-results-pager-property {
+    border-bottom: 1px solid #CCCCCC;
     clear: both;
     float: left;
-    height: 175px;
-    width: 512px;
+    height: 150px;
+    margin-bottom: 25px;
+    width: 655px;
+}
+#properties-search-results-pager-order-by {
+    background-image: url("/images/common/grayStripesPattern_H406.png");
+    margin-bottom: 5px;
+    padding: 7px;
+    width: 642px;
+}
+
+#properties-search-results-pager-next, #properties-search-results-pager-previous {
+    
+    cursor: pointer;
+    float: right;
+}
+
+.ajax-pager-page-number.selected
+{
+    font-weight: bold;
+    color: red;
+}
+
+#properties-search-results-pager-next {
+    
+    margin-left: 15px;
+}
+
+#properties-search-results-pager-current-page-display
+{
+    float: left;
+}
+
+#properties-search-results-pager-next-previous p span,
+#properties-search-results-pager-previous img,
+#properties-search-results-pager-next img
+{
+    display: block;
+    float: left;
+}
+
+#properties-search-results-pager-previous img
+{
+    padding: 2px 5px 0 0;
+    
+}
+
+
+#properties-search-results-pager-next img
+{
+    padding: 2px  0 0 5px  ;
+}
+
+.properties-search-results-pager-page {
+    width: 655px;
+}
+
+#properties-search-results-pager-next-previous {
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+#properties-search-results-pager-order-by-order-text {
+    text-decoration: underline;
+    padding: 5px;
+    margin-right: 5px;
+}
+#properties-search-results-pager-order-by-order-text, #properties-search-results-pager-order-by-options {
+    float: right;
+}
+#properties-search-results-pager-order-by-header {
+    color: #76bb3a;
+    font-size: 2em;
+    font-weight: bold;
 }
 
 
@@ -2978,25 +3268,28 @@ div.footer-section a{
 .properties-search-results-pager-details {
     clear: both;
     display: block;
-    float: right;
-    margin-top: 16px;
-    width: 122px;
+    float: left;
+    font-size: 1em;
+    margin-top: 7px;
+    width: 88px;
 }
 
+
+
 .properties-search-results-pager-property-photo{
-    border: 3px solid #76BC3B;
+    
     display: block;
     float: left;
-    height: 146px;
+    height: 125px;
     margin-right: 10px;
-    width: 176px;
+    width: 194px;
 }
 
 .properties-search-results-pager-property h2 {
     background-color: #76BC3B;
     color: white;
     float: left;
-    font-size: 1.3em;
+    font-size: 1em;
     height: 22px;
     padding-left: 5px;
     padding-top: 0;
@@ -3006,37 +3299,61 @@ div.footer-section a{
     margin-bottom: 5px;
 }
 
+#properties-search-results-pager-pages,
+#properties-search-results-pager-previous-group,
+#properties-search-results-pager-next-group
+
+{
+    float: left;
+    
+}
+#properties-search-results-pager-container-header
+{
+    float: left;
+    margin-right: 5px;
+}
+
+#properties-search-results-pager-pages{
+    
+    padding: 0 5px;
+}
+    
+
 .properties-search-results-pager-property h2.price{
     background-color: #e8e8e8;
     color: black;
     padding-right: 10px;
 }
 
-
 .properties-search-results-pager-property-divisor {
     display: block;
     float: left;
+    height: 61px;
     margin: 0 7px;
 }
 
-.properties-search-results-pager-property div ul
-{
-    list-style: none;
+.properties-search-results-pager-property div ul {
     float: left;
+    font-size: 0.9em;
+    list-style: none outside none;
 }
-.properties-search-results-pager-property div
+.properties-search-results-pager-property-info
 {
     float: left;
 
 }
 
-.properties-search-results-pager-property div div
+.properties-search-results-pager-property-title
 {
     clear: both;  
+    height: 20px;
 }
 
 
-
+.properties-search-results-pager-property-info-feautures
+{
+    height: 70px;
+}
 
 
 /*properties-search-results-pager ENDS*/
@@ -3177,8 +3494,8 @@ div.footer-section a{
 
 /*agentes-header END*/
 
-/*agentes-pager*/
-#agentes-pager-header {
+/*members-pager*/
+#members-pager-header {
     background-color: #76BC3B;
     border-radius: 8px 8px 8px 8px;
     color: white;
@@ -3192,17 +3509,20 @@ div.footer-section a{
     width: 190px;
 }
 
+.members-pager-agente-photo-container
+{
+    text-align: center;
+    display: block;
+}
 
-
-#agentes-pager {
+#members-pager {
     border: 5px solid #D8D8D8;
     border-radius: 20px 20px 20px 20px;
-    height: 440px;
+    float: left;
     margin-top: 15px;
     padding: 0 10px;
-    width: 923px;
 }
-.agentes-pager-agente{
+.members-pager-agente{
 
     float: left;
     margin: 10px 0 10px 17px;
@@ -3210,34 +3530,38 @@ div.footer-section a{
     width: 196px;
 
 }
-.agentes-pager-agente-name
+.members-pager-agente-name
 {
-    background-image: url("/images/common/lightGreenItemBackground.png");
-    height: 20px;
+     color: #76BC3B;
+    
     padding-left: 5px;
     width: 191px;
-    color:white;
+    
 
 }
-.agentes-pager-agente-numero-propiedades{
+.members-pager-agente-numero-propiedades{
     color: #418e30;
 }
-.agentes-pager-agente-photo{
-    display: block;
-    height: 127px;
+.members-pager-agente-photo{
+    
+    
     margin-bottom: 5px;
-    width: 185px;
+    
 }
-.agentes-pager-agente-propierties{
-    color: black;
+.members-pager-agente-propierties .members-pager-agente-properties-label{
+    background-image: url("/images/common/lightGreenItemBackground.png");
+    color: white;
+    display: block;
+    height: 20px;
+    float:left;
 }
-.agentes-pager-agente-last
+.members-pager-agente-last
 {
     border-right: none;
     padding: 0;
 }
 
-/*agentes-pager END*/
+/*members-pager END*/
 
 
 
@@ -3245,7 +3569,7 @@ div.footer-section a{
 /*user-info*/
 #user-info {
     margin-right: 8px;
-    padding: 10px;
+    padding: 0 10px;
     width: 600px;
 }
 
@@ -3261,6 +3585,41 @@ div.footer-section a{
     margin-right: 20px;
 
 
+}
+
+#user-info-company-agent-info p 
+{
+    margin:0;
+    padding:0;
+}
+
+#user-info-belongs-to
+{
+    margin-bottom: 20px;
+}
+
+
+#user-info-company-agent {
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+#user-info-particular-or-company {
+    clear: both;
+    overflow: hidden;
+}
+
+#user-info-particular-or-company-photo,
+#user-info-company-agent-photo
+{
+    margin-right : 10px;
+}
+
+#user-info-particular-or-company-photo,
+#user-info-company-agent-photo,
+#user-info-company-agent-info-container
+{
+    float: left;
 }
 
 #user-info-card-photo {
@@ -3318,7 +3677,7 @@ div.footer-section a{
 }
 
 #user-info p, #user-info img {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     display: block;
 }
 
@@ -3327,7 +3686,10 @@ div.footer-section a{
     font-weight: bold;
 }
 
-
+#user-info p#user-info-company-agent-type
+{
+    margin-bottom: 10px;
+}
 /*user-info END*/
 
 /*user-properties-viewer*/
@@ -3611,6 +3973,11 @@ div.footer-section a{
 /*Blocks End*/
 
 /*clases utiles*/
+
+.ajax-pager-page-number{
+    margin: 5px;
+}
+
 
 
 .twitter-icon {
@@ -5016,6 +5383,10 @@ button.ui-button:-moz-focus-inner { border: 0; padding: 0; } /* reset extra padd
     -webkit-border-radius:0 0 9px 9px;
     height:380px;
     padding:0;
+}
+
+#property_types_holder table .text-row td {
+    padding: 0 0 20px;
 }
 #property_types_holder table
 {

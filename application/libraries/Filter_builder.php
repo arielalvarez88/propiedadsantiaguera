@@ -20,7 +20,9 @@ class Filter_builder {
         $condition_paramater_is_set = isset($post['condition']);
 
         $field_name = "";
-        $value = $post['minprice'];
+        $value = isset($post['minprice']) ? $post['minprice'] : null;
+        if(!$value)
+            return;
 
         if (!$condition_paramater_is_set) {
             $field_name = 'sell_price_dr';
@@ -28,7 +30,18 @@ class Filter_builder {
         else
             $field_name = $post['condition'] == 'rent' ? 'rent_price_dr' : 'sell_price_dr';
 
+        
+        
         $filter = new Greater_or_equal_than_filter($field_name, $value);
+        $filter->add_filter($property_object);
+    }
+    
+    
+    public static function build_property_posted_filter($property_object)
+    {
+        $field_name = "display_property";
+        $value = 1;
+        $filter = new Equal_to_filter($field_name, $value);
         $filter->add_filter($property_object);
     }
 
@@ -39,7 +52,10 @@ class Filter_builder {
         if (!$price_limit)
             return;
 
-        $value = $post['maxprice'];
+        $value = isset($post['maxprice'])? $post['maxprice'] : null;
+          if(!$value)
+            return; 
+        
         $condition_paramater_is_set = isset($post['condition']);
         $field_name = '';
 
@@ -50,7 +66,7 @@ class Filter_builder {
         }
 
 
-        
+      
         $filter = new Less_or_equal_than_filter($field_name, $value);
         $filter->add_filter($property_object);
     }
@@ -62,7 +78,9 @@ class Filter_builder {
             return;
 
         $field_name = 'type';
-        $value = $post['type'];
+        $value = isset($post['type']) ? $post['type'] : null;
+        if(!$value)
+            return;
         $filter = new Equal_to_filter($field_name, $value);
         
         
@@ -77,8 +95,9 @@ class Filter_builder {
 
 
         $field_name = 'condition';
-        $value = $post['condition'];
-        
+        $value = isset($post['condition']) ? $post['condition'] : null;
+        if(!$value)
+            return;
         
         if($value == Environment_vars::$maps['property_conditions']['sell'])
         {
@@ -113,7 +132,10 @@ class Filter_builder {
         $field_name = 'neighborhood';
 
 
-        $value = $post['neighborhood'];
+        $value = isset($post['neighborhood']) ? $post['neighborhood'] : null;
+        if(!$value)
+            return;
+        
         $filter = new Equal_to_filter($field_name, $value);
         $filter->add_filter($property_object);
     }
@@ -125,7 +147,24 @@ class Filter_builder {
             return;
 
         $field_name = 'id';
-        $value = $post['ref-number'];
+        $value = isset($post['ref-number'])? $post['ref-number'] : null;
+        if(!$value)
+            return;
+        $filter = new Equal_to_filter($field_name, $value);
+        $filter->add_filter($property_object);
+    }
+    
+    
+    public static function build_property_province_filter($post, $property_object) {
+
+        $province_filter_activated = isset($post['province']);
+        if (!$province_filter_activated)
+            return;
+
+        $field_name = 'province';
+        $value = isset($post['province']) ? $post['province'] : null;
+        if(!$value)
+            return;
         $filter = new Equal_to_filter($field_name, $value);
         $filter->add_filter($property_object);
     }

@@ -13,7 +13,7 @@
 require_once  realpath("./application/libraries/IUser.php");
 require_once realpath("./application/libraries/User_base_class.php");
 
-class Agent_user extends User_base_class implements IUser{
+class Agent_user extends User_base_class {
     public $user;
     
     
@@ -25,12 +25,23 @@ class Agent_user extends User_base_class implements IUser{
     }
     
    
-    public function delete(){
-        $this->user->delete();
+
+     public function get_type_text(){
+        
+      return "Agente";
+      
+    }
+
+    public function delete() {
+         $this->user->delete();
+    }
+
+    public function get_properties() {
+        return $this->user->property->get()->all;
     }
 
     public function inscribe_property($property) {
-        $this->user->save($property);
+         $this->user->save($property);
     }
 }
 
