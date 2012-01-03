@@ -19,7 +19,7 @@ $property_province = isset($property_province)? $property_province : null;
 <?php endif; ?>
 
 <form id="property-form" method="post" action="<?php echo base_url(); ?>propiedades/validate<?php echo isset($property_id) ? '/' . $property_id : ''; ?>" enctype="multipart/form-data">
-    <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber1.png"/><span>Descripci&oacute;n de Propiedad</span></p>
+    <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber1.png"/><span>Detalles de Propiedad</span></p>
     <div id="property-form-description">
         <div id="property-form-description-column-container">
 
@@ -72,46 +72,46 @@ $property_province = isset($property_province)? $property_province : null;
 
             <ul id="property-form-description-column2" class="property-form-description-column">
                 <li>
-                    <label for="property-form-description-terrain" class="property-form-optional-field house-field apartment-field">Terreno:<span class="required">*</span></label> 
-                    <input type="text" id="property-form-description-terrain" name="property-terrain" class="property-form-optional-field house-field apartment-field" <?php echo isset($property_terrain) ? 'value="' . $property_terrain . '"' : ''; ?>/>
+                    <label for="property-form-description-terrain" class="property-form-optional-field house-field hiddable building-field warehouse-field office-field lot-field land-field construction-project">Terreno:<span class="required">*</span></label> 
+                    <input type="text" id="property-form-description-terrain" name="property-terrain" class="property-form-optional-field house-field hiddable lot-field building-field warehouse-field office-field land-field construction-project"  <?php echo isset($property_terrain) ? 'value="' . $property_terrain . '"' : ''; ?>/>
                 </li>
 
                 <li>
-                    <label for="property-form-description-construction" class="property-form-optional-field house-field apartment-field">Construcci&oacute;n:<span class="required">*</span></label> 
-                    <input type="text" id="property-form-description-construction apartment-field" name="property-construction" class="property-form-optional-field house-field" <?php echo isset($property_construction) ? 'value="' . $property_construction . '"' : ''; ?>/>
+                    <label for="property-form-description-construction" class="property-form-optional-field house-field apartment-field hiddable penthouse-field mall-field building-field warehouse-field office-field construction-project">Construcci&oacute;n:<span class="required">*</span></label> 
+                    <input type="text" id="property-form-description-construction apartment-field" name="property-construction" class="property-form-optional-field house-field mall-field penthouse-field apartment-field hiddable building-field warehouse-field office-field construction-project" <?php echo isset($property_construction) ? 'value="' . $property_construction . '"' : ''; ?>/>
                 </li>
 
                 <li>
 
-                    <label for="property-form-description-stories" class="property-form-optional-field house-field" >Niveles:<span class="required">*</span></label> 
-                    <input type="text" id="property-form-description-stories" class="property-form-optional-field house-field" name="property-stories" <?php echo isset($property_stories) ? 'value="' . $property_stories . '"' : ''; ?>/>
+                    <label for="property-form-description-stories" class="property-form-optional-field house-field apartment-field hiddable penthouse-field mall-field building-field warehouse-field office-field construction-project" >Niveles:<span class="required">*</span></label> 
+                    <input type="text" id="property-form-description-stories" class="property-form-optional-field apartment-field house-field penthouse-field mall-field building-field warehouse-field office-field construction-project hiddable"  name="property-stories" <?php echo isset($property_stories) ? 'value="' . $property_stories . '"' : ''; ?>/>
                 </li>
                 <li>
-                    <label for="property-form-description-bedrooms" class="property-form-optional-field house-field" >Habitaciones:<span class="required" >*</span></label> 
-                    <input type="text" id="property-form-description-bedrooms" class="property-form-optional-field house-field" name="property-bedrooms" <?php echo isset($property_bedrooms) ? 'value="' . $property_bedrooms . '"' : ''; ?>/>
+                    <label for="property-form-description-bedrooms" class="property-form-optional-field house-field apartment-field hiddable penthouse-field building-field construction-project" >Habitaciones:<span class="required" >*</span></label> 
+                    <input type="text" id="property-form-description-bedrooms" class="property-form-optional-field apartment-field house-field hiddable penthouse-field building-field construction-project" name="property-bedrooms" <?php echo isset($property_bedrooms) ? 'value="' . $property_bedrooms . '"' : ''; ?>/>
                 </li>
             </ul>
 
 
             <ul id="property-form-description-column3" class="property-form-description-column">
                 <li>
-                    <label for="property-form-description-bathrooms" class="property-form-optional-field house-field">Ba&ntilde;os:<span class="required">*</span></label> 
-                    <input type="text" id="property-form-description-bathromms" class="property-form-optional-field house-field" name="property-bathrooms" <?php echo isset($property_bathrooms) ? 'value="' . $property_bathrooms . '"' : ''; ?>/>
+                    <label for="property-form-description-bathrooms" class="property-form-optional-field house-field apartment-field hiddable penthouse-field mall-field building-field warehouse-field office-field construction-project">Ba&ntilde;os:<span class="required">*</span></label> 
+                    <input type="text" id="property-form-description-bathromms" class="property-form-optional-field house-field apartment-field hiddable penthouse-field mall-field building-field warehouse-field office-field construction-project" name="property-bathrooms" <?php echo isset($property_bathrooms) ? 'value="' . $property_bathrooms . '"' : ''; ?>/>
                 </li>
 
                 <li>
-                    <label for="property-form-description-livingrooms" class="property-form-optional-field house-field">Salas:<span class="required">*</span></label> 
-                    <input type="text" id="property-form-description-livingrooms" class="property-form-optional-field house-field" name="property-livingrooms" <?php echo isset($property_livingrooms) ? 'value="' . $property_livingrooms . '"' : ''; ?>/>
+                    <label for="property-form-description-livingrooms" class="property-form-optional-field house-field hiddable apartment-field penthouse-field building-field warehouse-field office-field construction-project">Salas:<span class="required">*</span></label> 
+                    <input type="text" id="property-form-description-livingrooms" class="property-form-optional-field house-field hiddable apartment-field penthouse-field building-field warehouse-field office-field construction-project" name="property-livingrooms" <?php echo isset($property_livingrooms) ? 'value="' . $property_livingrooms . '"' : ''; ?>/>
                 </li>
 
                 <li>
-                    <label for="property-form-description-kitchens" class="property-form-optional-field house-field">Cocinas:<span class="required">*</span></label> 
-                    <input type="text" id="property-form-description-kitchens" class="property-form-optional-field house-field" name="property-kitchens" <?php echo isset($property_kitchens) ? 'value="' . $property_kitchens . '"' : ''; ?>/>
+                    <label for="property-form-description-kitchens" class="property-form-optional-field house-field hiddable apartment-field penthouse-field building-field warehouse-field office-field construction-project">Cocinas:<span class="required">*</span></label> 
+                    <input type="text" id="property-form-description-kitchens" class="property-form-optional-field house-field hiddable apartment-field penthouse-field building-field warehouse-field office-field construction-project" name="property-kitchens" <?php echo isset($property_kitchens) ? 'value="' . $property_kitchens . '"' : ''; ?>/>
                 </li>
 
                 <li>
-                    <label for="property-form-description-parkings" class="property-form-optional-field house-field">Parqueos:<span class="required">*</span></label> 
-                    <input type="text" id="property-form-description-parkings" name="property-parkings" class="property-form-optional-field house-field" <?php echo isset($property_parkings) ? 'value="' . $property_parkings . '"' : ''; ?>/>
+                    <label for="property-form-description-parkings" class="property-form-optional-field house-field hiddable apartment-field penthouse-field building-field warehouse-field office-field construction-project">Parqueos:<span class="required">*</span></label> 
+                    <input type="text" id="property-form-description-parkings" name="property-parkings" class="property-form-optional-field house-field hiddable apartment-field penthouse-field building-field warehouse-field office-field construction-project" <?php echo isset($property_parkings) ? 'value="' . $property_parkings . '"' : ''; ?>/>
                 </li>
 
 
@@ -168,7 +168,7 @@ $property_province = isset($property_province)? $property_province : null;
 
             <div id="property-form-description-description">
 
-                <h3>Detalles de la propiedad:<span class="required">*</span></h3>
+                <h3>Descripci&oacute;n de la propiedad:<span class="required">*</span></h3>
                 <textarea id="property-form-description-price" name="property-description"><?php echo isset($property_description) ? $property_description : ''; ?> </textarea>
             </div>
 

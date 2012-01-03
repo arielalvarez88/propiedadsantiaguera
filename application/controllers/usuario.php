@@ -218,6 +218,8 @@ class Usuario extends CI_Controller {
         $user_handler->save_fax($user, $user_info_getter);
 
         $user_handler->save_photo($user, $user_info_getter);
+        
+        
         $user_handler->save_address($user, $user_info_getter);
         $user_handler->save_description($user, $user_info_getter);
         $user_handler->save_inscription_date($user, $user_info_getter);

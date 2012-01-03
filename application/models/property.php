@@ -7,8 +7,8 @@
 class Property extends DataMapper
 {
 
-    var $has_one = array('property_type');
-    var $has_many = array('property_close_place', 'property_feature',"file",'user');
+    var $has_one = array('property_type', 'user');
+    var $has_many = array('property_close_place', 'property_feature',"file");
     
     
 }

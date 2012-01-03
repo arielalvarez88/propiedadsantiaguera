@@ -7,13 +7,13 @@ class Company_editor extends Company_inscriber{
 
     public $validator;
     private $validation_type;
-    private $inscriber_base_behavior;
+    public $base_behavior;
     
-    public function __construct($inscriber_base_behavior, $validator) {
-        parent::__construct($inscriber_base_behavior, $validator);
+    public function __construct($base_behavior, $validator) {
+        parent::__construct($base_behavior, $validator);
         $this->validator = $validator;
         $this->validation_type = "edit_company";
-        $this->inscriber_base_behavior = $inscriber_base_behavior;
+        $this->base_behavior = $base_behavior;
         
     }
     
@@ -28,8 +28,14 @@ class Company_editor extends Company_inscriber{
     
    //Overrided
   public function save_photo($user_object, $user_info_getter) {
-            if($this->base_behaviour->user_photo_path)
+      
+            
+            if($this->base_behavior->user_photo_path)
+            {
                 parent::save_photo ($user_object, $user_info_getter);
+                
+            }
+                
     }
 }
 

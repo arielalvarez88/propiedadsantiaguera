@@ -283,7 +283,18 @@ class CI_Form_validation {
 	 */
 	function run($group = '')
 	{
-                
+                                //Clear previous errors 
+                                 if($group != '')
+                                 {
+                                    $this->_field_data = array();      
+                                    $this->_error_array = array();
+                                    $this->_error_messages = array();
+                                    $this->error_string = '';
+                                 }
+                                
+                                
+                                
+                                
 		// Do we even have any data to process?  Mm?
 		if (count($_POST) == 0)
 		{
@@ -292,19 +303,22 @@ class CI_Form_validation {
 		}
 
 		// Does the _field_data array containing the validation rules exist?
-		// If not, we look to see if they were assigned via a config file
+		// If not, we look to see if they were assigned via a config file                             
 		if (count($this->_field_data) == 0)
 		{
+                                                
 			// No validation rules?  We're done...
 			if (count($this->_config_rules) == 0)
 			{
+                         
 				return FALSE;
 			}
                         
                         
 			// Is there a validation rule for the particular URI being accessed?
+                        
 			$uri = ($group == '') ? trim($this->CI->uri->ruri_string(), '/') : $group;
-
+                                                
 			if ($uri != '' AND isset($this->_config_rules[$uri]))
 			{
                            
@@ -318,7 +332,6 @@ class CI_Form_validation {
 			// We're we able to set the rules correctly?
 			if (count($this->_field_data) == 0)
 			{
-                            
 				log_message('debug', "Unable to find validation rules");
 				return FALSE;
 			}
@@ -329,6 +342,7 @@ class CI_Form_validation {
 
 		// Cycle through the rules for each field, match the
 		// corresponding $_POST item and test for errors
+                
 		foreach ($this->_field_data as $field => $row)
 		{
 			// Fetch the data from the corresponding $_POST array and cache it in the _field_data array.
@@ -352,10 +366,12 @@ class CI_Form_validation {
 
 		// Did we end up with any errors?
 		$total_errors = count($this->_error_array);
+                
+            
 
 		if ($total_errors > 0)
 		{
-                        
+                                                
 			$this->_safe_form_data = TRUE;
 		}
 

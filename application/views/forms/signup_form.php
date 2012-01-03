@@ -6,12 +6,13 @@ $hide_this_field_if_company_agent_is_editing_his_account = isset($hide_this_fiel
 $user_types = isset($user_types) ? $user_types : Environment_vars::$maps['texts_to_id']['user_types'];
 $errors = isset ($errors) ? $errors : null;
 $info_messages = isset ($info_messages) ? $info_messages : null;
-
+$edit =  isset($edit) ? $edit : false;
 ?>
 
-<form enctype="multipart/form-data" id="signup-form" accept-charset="utf-8" method="post" action="<?php echo base_url(); ?>usuario/validate<?php echo isset($edit) && $edit ? '/edit' : ''; ?>">
+<form enctype="multipart/form-data" id="signup-form" accept-charset="utf-8" method="post" action="<?php echo base_url(); ?>usuario/validate<?php echo  $edit ? '/edit' : ''; ?>">
     
-        <div id="new-user-type">    
+    
+        <div id="new-user-type" <?php echo $edit? 'class="hidden"' : '';?>>     
 
 
             <p class="form-section-header <?php echo $hide_this_field_if_company_agent_is_editing_his_account;?>"><img class="form-section-number " id="new-user-type-number" src="/images/common/greenNumber1.png"><span>Tipo de usuario</span></p>
@@ -20,7 +21,7 @@ $info_messages = isset ($info_messages) ? $info_messages : null;
         </div>
 
 
-        <p class="form-section-header"><img class="form-section-number <?php echo $hide_this_field_if_company_agent_is_editing_his_account;?>" src="/images/common/greenNumber2.png"/><span>Informaci&oacute;n General</span></p>
+        <p class="form-section-header"><img class="form-section-number <?php echo $edit || $hide_this_field_if_company_agent_is_editing_his_account? 'hidden' : '';?>" src="/images/common/greenNumber2.png"/><span>Informaci&oacute;n General</span></p>
         
   
      <?php if ($info_messages): ?>

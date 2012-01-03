@@ -29,6 +29,8 @@ class Image_helper
         $this->config['new_image'] =realpath("./".$new_image_path);
         $this->config['width'] = $width;
         $this->config['height'] = $height;
+        $filename_in_pieces = explode("/", $source_image_path);
+        $filename = $filename_in_pieces[count($filename_in_pieces)-1];
         
         $this->config['maintain_ratio'] = $maintain_ratio;
         
@@ -38,8 +40,10 @@ class Image_helper
         $this->CI_Helper->image_lib->initialize($this->config);                
         
             
+        if($this->CI_Helper->image_lib->resize())
+            return $new_image_path.$filename;
         
-        return $this->CI_Helper->image_lib->resize();
+        return false;
         
     }
     

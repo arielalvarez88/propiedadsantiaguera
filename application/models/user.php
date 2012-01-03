@@ -55,6 +55,39 @@ class User extends DataMapper {
     
     }
     
+    
+    public function get_user_published_properties()
+    {
+        
+        
+        $user_properties = $this->get_properties();
+        $published_user_properties = array();
+        
+        foreach ($user_properties as $user_property)
+        {
+            if($user_property->display_property)
+                    $published_user_properties []= $user_property;
+        }
+        
+        return $published_user_properties;
+    }
+    
+       public function get_published_properties()
+    {
+        
+        
+        $user_properties = $this->get_properties();
+        $published_user_properties = array();
+        
+        foreach ($user_properties as $user_property)
+        {
+            if($user_property->display_property)
+                    $published_user_properties []= $user_property;
+        }
+        
+        return $published_user_properties;
+    }
+    
     public function inscribe_property($newProperty)
     {
         $this->save($newProperty);
@@ -62,14 +95,15 @@ class User extends DataMapper {
     
     public function get_number_of_properties()
     {
-        return $this->properties->get_paged()->paged->total_rows;
+        return $this->property->get_paged()->paged->total_rows;
     }
     
     
     
     public function get_number_of_posted_properties()
     {
-        return count($this->properties->where('display_property',1)->get()->all);
+        
+        return count($this->property->where('display_property',1)->get()->all);
         
     }
     
@@ -108,11 +142,16 @@ class User extends DataMapper {
         return $agents->where("id", $agent_id)->where("company",$this->id)->count() >= 1;
     }
     
+    public function get_properties() {
+        return $this->property->get()->all;
+    }
     
     public function can_create_property()
     {
         return $this->get_number_of_properties() <= $this->posts_left * 3;
     }
+    
+    
     
     public static function email_exists($email='')
     {
