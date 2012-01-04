@@ -26,9 +26,10 @@ class cron_jobs extends CI_Controller{
             $property_in_timestamp = strtotime($property->post_date);
             
             $thirty_days_in_seconds = 1 * 60 * 60 * 24 * 30;
+            $five_hours_inseconds = 1 * 60 * 60 * 5;
             $seconds_since_property_post = $now_in_timestamp - $property_in_timestamp;
             
-            if($seconds_since_property_post >= $thirty_days_in_seconds)
+            if($seconds_since_property_post >= $five_hours_inseconds)
             {
                 $property->display_property = 0;
                 $property->save();
