@@ -75,9 +75,7 @@ public function __call($name, $arguments) {
     
      public function get_company_object()
     {
-         if(!$this->user->company)
-                 return false;
-
+       
          
         $company = new User();
         $company->where("id", $this->user->company)->get();

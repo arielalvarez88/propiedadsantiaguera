@@ -31,8 +31,7 @@ class Company_agent_user extends User_base_class {
     public function get_company()
     {
         
-        if($this->company)
-                return $this->company;
+      
         
         $this->company = $this->user->get_company_object();
         
@@ -50,12 +49,14 @@ class Company_agent_user extends User_base_class {
     public function delete(){
         
       $company = $this->get_company();
-  
-      $company->post_left += $this->user->post_left;
+      
+      
+      $company->posts_left += $this->user->posts_left;
+      
       $user_properties  = $this->get_properties();
       
       
-      $company->save($user_properties);
+      $company->save($user_properties);      
       $this->user->delete();
       
     }

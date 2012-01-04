@@ -118,7 +118,7 @@ class Miembros extends CI_Controller {
             redirect("/");
         } else {
             $user_to_delete->delete();
-
+            User_handler::refresh_logged_user();
             redirect("/panel/agentes");
         }
     }
