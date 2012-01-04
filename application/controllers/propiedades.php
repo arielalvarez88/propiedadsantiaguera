@@ -8,13 +8,37 @@ class Propiedades extends CI_Controller {
         $this->load->library("image_helper");
         $this->load->library("filter_builder");
     }
+    
+    
+    private function get_count_of_each_type_of_property()
+    {
+        
+        $type_to_count_map = array();
+        $propery_counter = new Property();
+        
+        $type_to_count_map['number_of_houses'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Casa'])->count();
+        $type_to_count_map['number_of_apartments']= $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Apartamento'])->count();
+        $type_to_count_map['number_of_buildings'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Edificio'])->count();
+        $type_to_count_map['number_of_penthouses'] =$propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Penthouse'])->count();
+        $type_to_count_map['number_of_offices'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Oficina'])->count();
+        $type_to_count_map['number_of_malls'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Local Comercial'])->count();
+        $type_to_count_map['house_warehouses'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Nave Industrial'])->count();
+        $type_to_count_map['number_of_in_construction_propjects'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Proyecto en Construcción'])->count();
+        $type_to_count_map['number_of_lots'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Solar'])->count();
+        $type_to_count_map['number_of_lands'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Finca'])->count();
+        
+        return $type_to_count_map;
+        
+    }
 
     public function index() {
 
         $data['header'] = $this->load->view('blocks/header', '', true);
-        $data['centerSection'] = $this->load->view('blocks/property_types', '', true);
-
-
+        
+        $property_types_view_variables = $this->get_count_of_each_type_of_property();
+        $data['centerSection'] = $this->load->view('blocks/property_types', $property_types_view_variables, true);                                
+        
+        
         $this->load->view('page', $data);
     }
 
@@ -32,9 +56,9 @@ class Propiedades extends CI_Controller {
     public function ver($id=null) {
 
         $no_id_passed = !$id || !is_numeric($id);
+        
         if ($no_id_passed)
             redirect("/pagina_no_valida");
-
 
         $property = new Property();
         $property->where("id", $id)->get();
@@ -47,7 +71,7 @@ class Propiedades extends CI_Controller {
 
         $user = User_handler::getLoggedUser();
 
-        $property_belongs_to_logged_user = is_object($user) && $property->id && $property_owner->id == $user->id ? true : false;
+        $property_belongs_to_logged_user = true;
 
 
         $property_cant_be_shown = !$property_belongs_to_logged_user && (!isset($property->display_property) || !$property->display_property);
@@ -59,16 +83,26 @@ class Propiedades extends CI_Controller {
 
         $property_viewer_data['property'] = $property;
 
+        
+        if (!$user || (is_object($user) && ($property_owner->id != $user->id))) {
+
+            $property->visits += 1;
+            $property->save();
+        }
 
 
-        $lowercase_property_type = Environment_vars::$maps['property_type_to_name'][$property->type];
-        $property_type = ucwords($lowercase_property_type);
+        
+        $property_type = Environment_vars::$maps['id_to_html']['property_types'][$property->type];
 
 
         $property_viewer_data['property_type'] = $property_type;
 
         $slideshow_helper = new Slideshows_utilities();
-        $property_photos = $property->file->where("type", Environment_vars::$maps['file_type_to_id']['photo'])->get_iterated();
+        $property_photos = $property->file->where("type", Environment_vars::$maps['file_type_to_id']['photo'])->get()->all;
+
+        $main_photo->path = $property->main_photo;
+        $property_photos [] = $main_photo;
+
         $property_image_thumbs_paths = array();
         $image_helper = new Image_helper();
 
@@ -77,18 +111,12 @@ class Propiedades extends CI_Controller {
 
         foreach ($property_photos as $property_photo) {
 
-            $photo_path_pieaces = explode("/", $property_photo->path);
 
-            $photo_filename = $photo_path_pieaces[count($photo_path_pieaces) - 1];
+            if ($photo_path = $image_helper->resize($property_photo->path, "449", "254")) {
 
+                $property_image_thumbs_paths [] = array("thumb" => $photo_path, "image" => $property_photo->path);
 
-
-            $photo_thumb_full_path = Environment_vars::$environment_vars['properties_photos_thumbs_dir_path'] . $photo_filename;
-            if ($image_helper->resize($property_photo->path, "449", "254")) {
-
-                $property_image_thumbs_paths [] = $photo_thumb_full_path;
-
-                $property_pager_slides_html [] = '<img  src="' . $photo_thumb_full_path . '"  class="propiedad-viewer-slideshow-selector propiedad-viewer-slideshow-selector-' . $i . '"/>';
+                $property_pager_slides_html [] = '<img  src="' . $photo_path . '"  class="propiedad-viewer-slideshow-selector propiedad-viewer-slideshow-selector-' . $i . '"/>';
                 $i++;
             }
         }
@@ -105,10 +133,18 @@ class Propiedades extends CI_Controller {
         $data['topLeftSide'] = $this->load->view('blocks/property_viewer', $property_viewer_data, true);
 
         $user_viewer_view_data['user_name'] = $property_owner->name;
+        
+        $user_viewer_view_data['user_name'] .= $property_owner->lastname ? ' '.$property_owner->lastname : '';
+        
+
+
+        $user_viewer_view_data['company_or_particular_view'] = $property_owner instanceof Company_user ? 'company-' : 'particular-';
         $user_viewer_view_data['user_type'] = array_search($property_owner->type, Environment_vars::$maps['texts_to_id']['user_types']);
 
-        if (!$property_owner instanceof Company_agent_user)
+        if (!$property_owner instanceof Company_agent_user) {
             $user_viewer_view_data['user_tel'] = $property_owner->tel;
+        }
+
 
 
         if (!$property_owner instanceof Company_user) {
@@ -124,6 +160,11 @@ class Propiedades extends CI_Controller {
             $user_viewer_view_data['user_website'] = $property_owner->website;
 
 
+        if ($property_owner instanceof Company_user) {
+            $user_viewer_view_data['user_fax'] = $property_owner->fax;
+        }
+
+
 
 
         $moneda_precio_view_variables = $this->get_moneda_precio_view_variables($property);
@@ -132,16 +173,16 @@ class Propiedades extends CI_Controller {
         $data['topRightSide'] = $this->load->view('blocks/user_viewer', $user_viewer_view_data, true);
         $data['topRightSide'] .= $this->load->view('blocks/belongs_to_company', $propertyInfo, true);
         $data['topRightSide'] .=$this->load->view('blocks/price_currency', $moneda_precio_view_variables, true);
-        
-        
+
+
         $data['topRightSide'] .=$this->load->view('blocks/pdf_and_share', $propertyInfo, true);
         $data['topRightSide'] .=$this->load->view('blocks/property_calculator', $propertyInfo, true);
-        
+
         $data['topRightSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propertyInfo, true);
-        
+
         $data['topLeftSide'] .= $this->load->view('blocks/property_info', $property_info_view_variables, true);
 
-        $data['bottomRightSide'] = $this->load->view('blocks/solicitudDeInformacion', $propertyInfo, true);
+        $data['bottom'] = $this->load->view('blocks/solicitudDeInformacion', $propertyInfo, true);
 
         if ($property_belongs_to_logged_user && !$property->display_property) {
             $data['top'] = $this->load->view("blocks/not_published_message", '', true);
@@ -151,25 +192,21 @@ class Propiedades extends CI_Controller {
         $this->load->view('page', $data);
     }
 
-    
-    private function get_property_info_view_variables($property)
-    {
+    private function get_property_info_view_variables($property) {
         $variables['property_close_places'] = $property->property_close_place->get()->all;
-        
+
         $variables['property_address'] = $property->address;
         $variables['property_description'] = $property->description;
         $variables['property_features'] = $property->property_feature->get()->all;
         return $variables;
-        
     }
-    
+
     private function get_moneda_precio_view_variables($property) {
-        $variables['dr_sell_price'] = $property->sell_price_dr;
-        $variables['us_sell_price'] = $property->sell_price_us;
-        $variables['us_rent_price'] = $property->rent_price_us;
-        $variables['dr_rent_price'] = $property->rent_price_dr;
+        $variables['dr_sell_price'] = Numerizer::numerize($property->sell_price_dr);
+        $variables['us_sell_price'] = Numerizer::numerize($property->sell_price_us);
+        $variables['us_rent_price'] = Numerizer::numerize($property->rent_price_us);
+        $variables['dr_rent_price'] = Numerizer::numerize($property->rent_price_dr);
         return $variables;
-    
     }
 
     private function validate_and_upload_photos() {
@@ -183,26 +220,32 @@ class Propiedades extends CI_Controller {
         return $properties_photos_filenames;
     }
 
+    
+    private function reset_validation_rules()
+    {
+           $this->form_validation->_field_data = array();      
+            $this->form_validation->_error_array = array();
+            $this->form_validation->_error_messages = array();
+            $this->form_validation->error_string = '';
+      
+    }
+    
     public function validate($property_id=0) {
 
         $properties_photos_filenames = array();
         $property_condition_for_validation_purposes = '';
 
-        if (Environment_vars::$maps['property_conditions']['rent'] == $this->input->post('property-condition'))
-            $property_condition_for_validation_purposes = "rent";
-        elseif (Environment_vars::$maps['property_conditions']['sell'] == $this->input->post('property-condition'))
-            $property_condition_for_validation_purposes = "sell";
-        else
-            $property_condition_for_validation_purposes = "sell_rent";
+        $filtered_post = $this->input->post();
+        
+        $type_validation = "property_".  Environment_vars::$maps['ids_to_text']['property_types_validation'][$filtered_post['property-type']];
+        
+        $sell_rent_validation = "property_". Environment_vars::$maps['ids_to_text']['sell_rent_validation'][$filtered_post['property-condition']];
+        
 
-
-        $validation_rules_for_property_type = 'property_' . $property_condition_for_validation_purposes;
-        $property_info_for_the_view = $property_id ? array("property_id" => $property_id) : array();
-
-        if ($this->form_validation->run($validation_rules_for_property_type) == false) {
-
-
-            $this->add_property_error($property_info_for_the_view);
+        
+        if ($this->form_validation->run("property_common") == false || $this->form_validation->run($type_validation) == false || $this->form_validation->run( $sell_rent_validation ) == false) {
+            
+            $this->add_property_error();
             return;
         } else {
 
@@ -219,8 +262,10 @@ class Propiedades extends CI_Controller {
         }
     }
 
-    public function buscar() {
+    public function buscar($order_by = null) {
 
+        
+        
         $filtered_get = $this->input->get();
         $properties_filters_container = new Property();
 
@@ -231,38 +276,47 @@ class Propiedades extends CI_Controller {
             redirect("propiedades/ver/" . $filtered_get['ref-number']);
         } else {
 
+            Filter_builder::build_property_posted_filter($properties_filters_container);
             Filter_builder::build_property_type_filter($filtered_get, $properties_filters_container);
             Filter_builder::build_property_max_price_filter($filtered_get, $properties_filters_container);
             Filter_builder::build_property_min_price_filter($filtered_get, $properties_filters_container);
             Filter_builder::build_property_condition_filter($filtered_get, $properties_filters_container);
             Filter_builder::build_property_neighborhood_filter($filtered_get, $properties_filters_container);
+            Filter_builder::build_property_province_filter($filtered_get, $properties_filters_container);
         }
 
 
 
-        $filtered_properties = $properties_filters_container->get();
+        $filtered_properties = $properties_filters_container->get()->all;
 
 
 
 
-        $filter_initial_values['selected_property_neighborhood'] = isset($filtered_get) && isset($filtered_get['neighborhood']) ? $filtered_get['neighborhood'] : null;
+        $filter_view_variables = $this->get_filter_view_variables($filtered_get);
 
-        $filter_initial_values['selected_property_type'] = isset($filtered_get) && isset($filtered_get['type']) ? $filtered_get['type'] : null;
-
-        $filter_initial_values['selected_property_ref_number'] = isset($filtered_get) && isset($filtered_get['ref-number']) ? $filtered_get['ref-number'] : null;
-
-        $filter_initial_values['selected_property_condition'] = isset($filtered_get) && isset($filtered_get['condition']) ? $filtered_get['condition'] : null;
-
-        $views['topLeftSide'] = $this->load->view("blocks/basic_filter", $filter_initial_values, true);
+        $views['topLeftSide'] = $this->load->view("blocks/basic_filter", $filter_view_variables, true);
 
         $search_results['filtered_properties'] = $filtered_properties;
         $search_results['condition'] = isset($filtered_get['condition']) && $filtered_get['condition'] == Environment_vars::$maps['property_conditions']['rent'] ? "rent" : "sell";
 
-        $views['bottomLeftSide'] = $this->load->view("blocks/properties_search_results_pager", $search_results, true);
+        $views['topRightSide'] = $this->load->view("blocks/properties_search_results_pager", $search_results, true);
 
-        $views['topRightSide'] = $this->load->view("blocks/advertising", '', true);
+        $advertising_view_variables['section'] = 'search-results-';
+        $views['topLeftSide'] .= $this->load->view("blocks/advertising", $advertising_view_variables, true);
 
         $this->load->view("page", $views);
+    }
+
+    private function get_filter_view_variables($filtered_get) {
+        $variables['section'] = "search-results-";
+        $variables['selected_property_neighborhood'] = isset($filtered_get) && isset($filtered_get['neighborhood']) ? $filtered_get['neighborhood'] : null;
+
+        $variables['selected_property_type'] = isset($filtered_get) && isset($filtered_get['type']) ? $filtered_get['type'] : null;
+
+        $variables['selected_property_ref_number'] = isset($filtered_get) && isset($filtered_get['ref-number']) ? $filtered_get['ref-number'] : null;
+
+        $variables['selected_property_condition'] = isset($filtered_get) && isset($filtered_get['condition']) ? $filtered_get['condition'] : null;
+        return $variables;
     }
 
     private function save_property($properties_photos_filenames = array(), $property_id=0) {
@@ -301,10 +355,10 @@ class Propiedades extends CI_Controller {
         $newProperty->condition = $newPropertyInfo['property-condition'];
         $newProperty->bedrooms = $newPropertyInfo['property-bedrooms'];
         $newProperty->parkings = $newPropertyInfo['property-parkings'];
-        $newProperty->sell_price_us = isset($newPropertyInfo['property-sell-price-us']) ? Numerizer::numerize($newPropertyInfo['property-sell-price-us']) : null;
-        $newProperty->sell_price_dr = isset($newPropertyInfo['property-sell-price-dr']) ? Numerizer::numerize($newPropertyInfo['property-sell-price-dr']) : null;
-        $newProperty->rent_price_us = isset($newPropertyInfo['property-rent-price-us']) ? Numerizer::numerize($newPropertyInfo['property-rent-price-us']) : null;
-        $newProperty->rent_price_dr = isset($newPropertyInfo['property-rent-price-dr']) ? Numerizer::numerize($newPropertyInfo['property-rent-price-dr']) : null;
+        $newProperty->sell_price_us = isset($newPropertyInfo['property-sell-price-us']) ? $newPropertyInfo['property-sell-price-us'] : null;
+        $newProperty->sell_price_dr = isset($newPropertyInfo['property-sell-price-dr']) ? $newPropertyInfo['property-sell-price-dr'] : null;
+        $newProperty->rent_price_us = isset($newPropertyInfo['property-rent-price-us']) ? $newPropertyInfo['property-rent-price-us'] : null;
+        $newProperty->rent_price_dr = isset($newPropertyInfo['property-rent-price-dr']) ? $newPropertyInfo['property-rent-price-dr'] : null;
         $newProperty->type = $newPropertyInfo['property-type'];
 
         if ($newPropertyInfo['property-condition'] == "sell" || $newPropertyInfo['property-condition'] == "sell-rent") {
@@ -346,6 +400,8 @@ class Propiedades extends CI_Controller {
 
         $main_photo_input_name = "property-main-photo";
 
+
+
         foreach ($properties_photos_filenames as $input_name => $property_filename) {
 
             if (!$property_filename)
@@ -367,12 +423,14 @@ class Propiedades extends CI_Controller {
         $transactioner->trans_commit();
         $new_property_files = $file_getter->get()->all;
 
+
+
         $newPropertyType = new Property_type();
         $newPropertyType->get_by_id($newPropertyInfo['property-type']);
 
-        $newProperty->save(array($newPropertyType, $new_property_close_places->all, $new_property_features->all, $new_property_files));
-       
-        $user->inscribe_property($newProperty);
+        $newProperty->save(array($newPropertyType, $new_property_close_places->all, $new_property_features->all, $new_property_files, $user));
+
+
 
         if ($property_id) {
             $messages['info_messages'] = 'Su propiedad fue actualizada con éxito';

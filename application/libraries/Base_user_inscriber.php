@@ -43,7 +43,11 @@ class Base_user_inscriber implements IUser_inscriber {
             throw new Invalid_photos_exception($error->getMessage());
         }
         
+
+        
         $this->user_photo_path = isset($user_photo_path_in_array['signup-photo']) ? $user_photo_path_in_array['signup-photo'] : '';
+        
+        
     }
 
     public function save_name($user_object,$user_info_getter) {
@@ -92,7 +96,9 @@ class Base_user_inscriber implements IUser_inscriber {
 
     public function save_photo($user_object, $user_info_getter) {
         
+        
         $user_object->photo = Environment_vars::$environment_vars['user_photos_dir_path'].$this->user_photo_path;
+        
     }
 
     public function save_rnc($user_object, $user_info_getter) {

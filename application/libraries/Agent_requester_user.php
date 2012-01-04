@@ -37,6 +37,10 @@ class Agent_requester_user extends User_base_class implements IUser, IUser_reque
     public function inscribe_property($property) {
         $this->user->save($property);
     }
+
+    public function get_properties() {
+        return array();
+    }
 }
 
 ?>

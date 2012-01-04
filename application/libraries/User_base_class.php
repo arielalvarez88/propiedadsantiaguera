@@ -10,7 +10,9 @@
  *
  * @author ariel
  */
-abstract class User_base_class {
+require_once realpath('./application/libraries/IUser.php');
+
+abstract class User_base_class implements IUser{
     protected $user;
     public function __construct($user) {
         $this->user = $user;
@@ -36,6 +38,22 @@ public function __call($name, $arguments) {
         return $this->user->properties->get_paged()->paged->total_rows;
     }
     
+    
+    public function get_user_published_properties()
+    {
+        
+        
+        $user_properties = $this->get_properties();
+        $published_user_properties = array();
+        
+        foreach ($user_properties as $user_property)
+        {
+            if($user_property->display_property)
+                    $published_user_properties []= $user_property;
+        }
+        
+        return $published_user_properties;
+    }
     
     
     public function get_number_of_posted_properties()
@@ -97,6 +115,35 @@ public function __call($name, $arguments) {
         return (bool) $if_user_exists;
         
     }
+
+    public function delete() {
+        
+    }
+
+    public function get_properties() {
+        
+        return $this->user->property->get()->all;
+    }
+
+    public function inscribe_property($property) {
+        $this->user->save($property);
+    }
+
+    public function get_published_properties() {
+        
+        $properties = $this->get_properties();
+     
+        $published_properties = array();
+        foreach ($properties as $property)
+        {
+            if($property->display_property)
+                    $published_properties[]= $property;
+        }
+        return $published_properties;
+        
+    }
+
+
     
 }
 

@@ -13,7 +13,7 @@
 require_once realpath("./application/libraries/User_base_class.php");
 require_once realpath("./application/libraries/IUser.php");
 require_once realpath("./application/libraries/IUser_requests_only.php");
-class Particular_requester_user extends User_base_class implements IUser, IUser_requests_only{
+class Particular_requester_user extends User_base_class implements IUser_requests_only{
     
      
      public function __construct(User $user)
@@ -36,6 +36,10 @@ class Particular_requester_user extends User_base_class implements IUser, IUser_
 
     public function inscribe_property($property) {
         $this->user->save($property);
+    }
+
+    public function get_properties() {
+        return array();
     }
 }
 

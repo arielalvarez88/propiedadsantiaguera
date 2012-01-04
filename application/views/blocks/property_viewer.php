@@ -3,7 +3,7 @@
     <div id="propiedad-viewer-top">
         <div id="propiedad-viewer-header">
             <h2> <?php echo $property->title; ?> </h2>
-            <span id="propiedad-viewer-sector"><?php echo array_search($property->neighborhood, Environment_vars::$maps['texts_to_id']['property_neighborhoods']); ?></span>
+            <span id="propiedad-viewer-sector"><?php echo array_search($property->province, Environment_vars::$maps['texts_to_id']['provinces']); ?>, <?php echo array_search($property->neighborhood, Environment_vars::$maps['texts_to_id']['property_neighborhoods']); ?></span>
         </div>
 
 
@@ -15,13 +15,19 @@
 
     <div id="propiedad-viewer-images-side">
         <div id="propiedad-viewer-slideshow">
-           
-                        <?php $i=0;?>
-                        <?php foreach ($property_photos_paths as $property_photo_path): ?>
-                            <img  class="propiedad-viewer-slide <?php echo $i > 0? "hidden" : '';?>" src="<?php echo $property_photo_path; ?>" alt="imagen-propiedad"/>                            
-                            <?php $i++;?>
-                        <?php endforeach; ?>
-           
+
+            <?php $i = 0; ?>
+            <?php foreach ($property_photos_paths as $property_photo_path): ?>
+                <div <?php echo $i > 0 ? 'class="hidden"' : ''; ?>>
+                    <img  class="propiedad-viewer-slide" src="<?php echo $property_photo_path['thumb']; ?>" alt="imagen-propiedad"/>                            
+                    <a href="<?php echo $property_photo_path['image']; ?>" rel="property-gallery" class="property-slideshow no-decoration-anchor">
+                        <img src="/images/common/searchIcon.png" alt="buscar-lupa"/>
+                        <span>Ampliar im&aacute;gen</span>
+                    </a>
+                </div>
+                <?php $i++; ?>
+            <?php endforeach; ?>
+
         </div>
 
         <div id="propiedad-viewer-detalles-side">
@@ -60,8 +66,8 @@
                 <?php foreach ($property_photos_pagers_groups as $property_photos_pagers_group): ?>
                     <ul>
                         <?php foreach ($property_photos_pagers_group as $property_pager_photo): ?>
-                            <li><a><?php echo $property_pager_photo;?></a></li>
-                    
+                            <li><a><?php echo $property_pager_photo; ?></a></li>
+
                         <?php endforeach; ?>
                     </ul>
                 <?php endforeach; ?>

@@ -11,7 +11,9 @@ $user = $user? $user : nuill;
             
             <div id="panels-property-section-properties-counter-menu-created">
                 <p>Creadas</p>
+                
                 <span><?php echo $user->get_number_of_properties();?></span>
+                
             </div>
             
             <div id="panels-property-section-properties-counter-menu-posted">

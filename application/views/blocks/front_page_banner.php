@@ -1,3 +1,6 @@
 <div id="front-page-banner">
-    <img src="/images/frontPageBanner/disccountBanner.jpg"/>
+    <a class="no-decoration-anchor" href="/planes">
+        <img src="/images/frontPageBanner/disccountBanner.jpg"/>
+    </a>
+    
 </div>

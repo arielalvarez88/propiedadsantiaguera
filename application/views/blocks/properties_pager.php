@@ -1,79 +1,91 @@
-<?php $section = isset($section) ? $section . '-' : ''; ?>
+<?php $section = isset($section) ? $section : ''; ?>
 <?php $is_front_page = $section == "" || $section == "front-" ? true : false; ?>
 <?php $title = $is_front_page ? 'Propiedades más visitadas' : 'Mis propiedades'; ?>
-<?php $properties = isset($properties) ? $properties : null; ?>
+<?php $properties_per_row = isset($properties_per_row) ? $properties_per_row : 4; ?>
+<?php $rows_per_page = isset($rows_per_page) ? $rows_per_page : 4; ?>
+
+<?php $properties = isset($properties) ? $properties : array(); ?>
+<?php $number_of_properties = count($properties); ?>
+
 
 
 <div id="<?php echo $section; ?>properties-pager-container">
     <div id="properties-pager">
 
+        <?php if($title):?>
         <h2 id="properties-pager-header"><?php echo $title; ?></h2>
-
+        <?php endif;?>
 
 
 
 
         <div id="properties-pager-properties-container">
 
-
-            <?php if ($is_front_page): ?>
-
-                <div  class="properties-pager-property ">
-                    <img class="properties-pager-property-screenshot" alt="property-photo" src="/images/common/propertyThumb.png"/>
-                    <h2 class="properties-pager-property-title">Titulo de la casa</h2>
-                    <p class="properties-pager-info">
-                        <span class="properties-pager-property-sector">Cerros de gurabo</span>
-                        Precio:<span class="properties-pager-property-price">RD$ 10,000,000</span>
-                    </p>
-                    <p class="properties-pager-desc">
-                        Excelente Complejo Residencial Cerrado<br/>
-                        en la Urb. El Despertar.
-                    </p>
-                </div>
-
-
-                <div class="properties-pager-property last">
-                    <img class="properties-pager-property-screenshot" alt="property-photo" src="/images/common/propertyThumb.png"/>
-                    <h2 class="properties-pager-property-title">Titulo de la casa</h2>
-                    <p class="properties-pager-info">
-                        <span class="properties-pager-proerty-sector">Cerros de gurabo</span>
-                        Precio:<span class="properties-pager-property-price">RD$ 10,000,000</span>
-                    </p>
-                    <p class="properties-pager-desc">
-                        Excelente Complejo Residencial Cerrado<br/>
-                        en la Urb. El Despertar.
-                    </p>
-                </div>
-
-
-            <?php else: ?>
-
-                <?php $i=1;?>            
-                <?php foreach ($properties as $property): ?>
             
-            <div  class="properties-pager-property <?php echo ($i%3==0) || ($i == count($properties))?  'last' : '';?>">
-                <a class="no-decoration-anchor" href="/propiedades/ver/<?php echo $property->id;?>"><img class="properties-pager-property-screenshot" alt="property-photo" src="<?php echo $property->main_photo; ?>"/></a>
-                        <a class="no-decoration-anchor" href="/propiedades/ver/<?php echo $property->id;?>"><h2 class="properties-pager-property-title"><?php echo $property->title; ?></h2></a>
-                        <p class="properties-pager-info">
-                            <span class="properties-pager-proerty-sector"><?php echo $property->neighbothood; ?></span>
-                            <br/>
-                            Precio:<span class="properties-pager-property-price"><?php echo $property->sell_price_dr; ?></span>
-                        </p>
-                        <p class="properties-pager-desc">
-                            Excelente Complejo Residencial Cerrado<br/>
-                            en la Urb. El Despertar.
-                        </p>
-                    </div>
-                    <?php $i++;?>
-                <?php endforeach; ?>
 
-            <?php endif; ?>
+
+            <?php $i = 0; ?>           
+            <?php $number_of_printed_rows = 0;?>
+            <?php foreach ($properties as $property): ?>
 
 
 
+                <?php if ($is_new_page = $number_of_printed_rows % $rows_per_page == 0  &&  ($i % $properties_per_row == 0 || $i == $number_of_properties) ): ?>
+            
+            
+                   <div class="properties-pager-page">
+                <?php endif; ?>
 
 
+                    <?php if ($is_new_of_row = $i % $properties_per_row == 0): ?>
+                        <div class="properties-pager-row">
+                        <?php endif; ?>
+
+                        <?php $i++; ?>
+                        <?php $number_of_printed_rows = (int) ($i/$properties_per_row);?>
+                            
+                        <div  class="properties-pager-property <?php echo $i % $properties_per_row == 0 || $number_of_properties == 1 || $i == $number_of_properties ? 'last' : ''; ?>">
+                            <a class="no-decoration-anchor" href="/propiedades/ver/<?php echo $property->id; ?>"><img class="properties-pager-property-screenshot" alt="property-photo" src="<?php echo $property->main_photo; ?>"/></a>
+                            <a class="no-decoration-anchor" href="/propiedades/ver/<?php echo $property->id; ?>"><h2 class="properties-pager-property-title"><?php echo $property->title; ?></h2></a>
+                            <p class="properties-pager-property-type">
+                                <span class="bold"><?php echo capitalize(Environment_vars::$maps['ids_to_text']['property_types'][$property->type]); ?></span>
+
+                            </p>
+                            <p class="properties-pager-property-price">
+
+                                <span class="bold">Precio de venta:</span> <span class="">RD$ <?php echo Numerizer::numerize($property->sell_price_dr); ?></span>
+
+                            </p>
+                            <img src="/images/common/lightGreenItemCorner.png" class="itemCorner" alt="esquina-verde"/>  
+                            <p>
+                                <?php echo Environment_vars::$maps['ids_to_text']['property_neighborhoods'][$property->neighborhood]; ?>, <?php echo Environment_vars::$maps['ids_to_text']['provinces'][$property->province]; ?>
+                            </p>
+                        </div>
+
+
+                    <?php if ($is_end_of_row = $i % $properties_per_row == 0 || $i == $number_of_properties): ?>
+                        </div>
+                    <?php endif;?>
+
+                    <?php if ($is_last_of_page = ( $number_of_printed_rows % $rows_per_page  == 0 && $i%$properties_per_row == 0 )|| $i == $number_of_properties): ?>
+                        </div>
+                    <?php endif;?>
+
+                    <?php endforeach; ?>
+
+
+
+
+
+                </div>
+
+        <div id="properties-pager-next-previous" >
+            <p id="properties-pager-next-previous-numbers" ></p>
+
+            
+            <a id="properties-pager-next-previous-next-button" >Siguiente <span>></span> </a>
+            
+                        <a id="properties-pager-next-previous-previous-button"><span><</span> Anterior</a>
         </div>
-
-    </div>
-</div>
+            </div>
+        </div>
