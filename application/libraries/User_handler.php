@@ -28,6 +28,15 @@ class User_handler {
                 self::$CIObject = & get_instance();
     }
 
+    
+    public static function refresh_logged_user()
+    {
+        $user = User_handler::getLoggedUser();
+        $refreshed_user = User_factory::get_user_from_object(new User($user->id));
+        User_handler::loginAndSaveInCookies($refreshed_user->email, $refreshed_user->password);
+        
+    }
+    
     public static function login($email, $password) {
 
 
