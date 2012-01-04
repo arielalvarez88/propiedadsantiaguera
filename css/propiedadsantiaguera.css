@@ -652,7 +652,7 @@ body, html
     float: left;
 }
 #user-presentation-card-summary img {
-    border: 2px solid #77BD3D;
+    
     display: block;
     float: left;
     margin-right: 20px;
@@ -2272,16 +2272,16 @@ div.footer-section a{
 #front-properties-pager-container #properties-pager
 {
 
-    overflow: hidden;
+        
     background-image: url("/images/common/stripesGradient_H433.jpg");
     
 
 }
 
 #members-properties-pager-container #properties-pager{
-overflow: hidden;
+    float:left;
     width: 797px;
-    height: 636px;
+    
        
 }
 
@@ -2305,6 +2305,7 @@ overflow: hidden;
 #properties-pager-next-previous-previous-button
 {
     float: right;
+    cursor: pointer;
 }
 
 .properties-pager-info {
@@ -2315,6 +2316,14 @@ overflow: hidden;
     float: left;
     margin-bottom: 5px;
 }
+
+
+#front-properties-pager-container .properties-pager-page
+{
+    width: 532px;
+    height: 288px;
+}
+
 
 .properties-pager-property p {
     clear: both;
@@ -2384,6 +2393,21 @@ overflow: hidden;
 .properties-pager-desc{
     color: #666666;
     margin-top: 10px;
+}
+
+
+
+.properties-pager-page,
+#properties-pager-properties-container,
+properties-pager
+{
+    
+}
+
+#members-properties-pager-container .properties-pager-page
+{
+    width: 825px;
+    height: 584px;
 }
 
 .properties-pager-property-sector
@@ -3511,7 +3535,7 @@ overflow: hidden;
 
 .members-pager-agente-photo-container
 {
-    text-align: center;
+    
     display: block;
 }
 
@@ -3532,9 +3556,8 @@ overflow: hidden;
 }
 .members-pager-agente-name
 {
-     color: #76BC3B;
-    
-    padding-left: 5px;
+     color: #333333;
+
     width: 191px;
     
 
@@ -4472,11 +4495,7 @@ span.required{
     padding: 6px 20px;
 }
 
-.users-photo
-{
-    width: 107px;
-    height: 121px;
-}
+
 /*********/
 /*clases utiles ENDS*/
 

@@ -204,7 +204,9 @@ JqueryCycleAjaxPager = function(containerSelector,nextButtonSelector,previousBut
         thisObject.container.cycle({
             fx:     'fade', 
             prev:   previousButtonSelector, 
-            next:   nextButtonSelector,                        
+            next:   nextButtonSelector,     
+            
+            
             onPrevNextEvent: function(isNext,zeroBasedSlideIndex,slideElement){
                 
                 thisObject.actualPage = zeroBasedSlideIndex + 1;                
@@ -236,6 +238,8 @@ JqueryCycleAjaxPager = function(containerSelector,nextButtonSelector,previousBut
             },
             activePagerClass: 'selected',
             timeout: 0 
+            
+            
             
         });
                 

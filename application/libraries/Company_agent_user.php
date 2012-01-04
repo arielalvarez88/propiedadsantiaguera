@@ -52,7 +52,10 @@ class Company_agent_user extends User_base_class {
       $company = $this->get_company();
   
       $company->post_left += $this->user->post_left;
-      $company->save();
+      $user_properties  = $this->get_properties();
+      
+      
+      $company->save($user_properties);
       $this->user->delete();
       
     }
