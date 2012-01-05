@@ -664,10 +664,15 @@ body, html
 #user-presentation-card-summary {
     background-color: #F5F5F5;
     border-radius: 10px 10px 10px 10px;
-    height: 195px;
+    float: left;
     margin-bottom: 20px;
     padding: 20px;
-    width: 470px;
+    
+}
+
+#user-presentation-card-edit
+{
+    clear: both;
 }
 
 
