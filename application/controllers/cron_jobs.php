@@ -13,7 +13,8 @@
 class cron_jobs extends CI_Controller{
     public function expire_properties($user,$password)
     {
-        file_put_contents(realpath("./debug/runned_by_cron"), 'se corrio por cron');
+        
+        file_put_contents(realpath('./debug').'/runned_by_cron3', 'se corrio por cron');
         
         if($user != 'admin' || $password != 'sle9her')
             return;

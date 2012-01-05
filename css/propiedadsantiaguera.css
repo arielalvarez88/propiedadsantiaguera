@@ -2928,7 +2928,7 @@ properties-pager
 
 #company-user-viewer-container #user-viewer-info {
     float: left;
-    height: 85px;
+    height: 80px;
     padding-left: 10px;
     width: 230px;
 }
@@ -2945,7 +2945,7 @@ properties-pager
     font-size: 1em;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
+    margin-top: 5px;
     text-align: center;
     width: 182px;
 }
