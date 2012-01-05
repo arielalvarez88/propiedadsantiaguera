@@ -48,7 +48,7 @@ $section = isset($section) && $section ? $section : '';
 
 
     </div>
-    <p>
+    <p id="user-presentation-card-edit">
         <a id="user-presentation-card-edit-button" class="green-button" href="/usuario/editar"> Editar Informaci&oacute;n</a>
     </p>
     </div>
