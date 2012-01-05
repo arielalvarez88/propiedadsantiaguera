@@ -42,6 +42,11 @@ $company_view_object = $user_to_view instanceof Company_user || $user_to_view in
                 <?php endif;?>
                 
                 
+                <?php if($company_agent_view_object->address):?>
+                    <p> <span class="bold">Dirección:</span> <?php echo $company_agent_view_object->address;?> </p>
+                <?php endif;?>
+                
+                
             </div>
         </div>
     </div>
@@ -63,6 +68,18 @@ $company_view_object = $user_to_view instanceof Company_user || $user_to_view in
                   <p><span class="bold">Tel&eacute;fono:</span> <?php echo $company_view_object->tel ;?>  </p>
 
                 <?php endif;?>
+                  
+                   <?php if($company_view_object->cel && !$company_view_object instanceof Company_user):?>
+                <p>
+                        <span class="bold">Celular 1:</span> <?php echo $company_view_object->cel;?>
+                </p>
+                <?php endif;?>
+                
+                <?php if($company_view_object->cel2 && !$company_view_object instanceof Company_user):?>
+                <p>
+                        <span class="bold">Celular 2:</span> <?php echo $company_view_object->cel2;?>
+                </p>
+                <?php endif;?>
                         
           <?php if($company_view_object->fax):?>
                 <p> <span class="bold">Fax:</span> <?php echo $company_view_object->fax;?> </p>
@@ -73,10 +90,13 @@ $company_view_object = $user_to_view instanceof Company_user || $user_to_view in
             <?php if($company_view_object->website):?>
                 <p> <span class="bold">Website:</span> <?php echo $company_view_object->website;?> </p>
             <?php endif;?>
+                            
                 
                 <?php if($company_view_object->address):?>
-                <p> <span class="bold">Direccón:</span> <?php echo $company_view_object->address;?> </p>
+                <p> <span class="bold">Dirección:</span> <?php echo $company_view_object->address;?> </p>
                 <?php endif;?>
+                
+                
                 
                 
             

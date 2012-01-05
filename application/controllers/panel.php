@@ -30,10 +30,7 @@ class Panel extends CI_Controller {
     public function cuenta() {
         $user = $this->get_logged_user_or_redirect_to_please_login();
         $view_variables['user'] = $user;
-        $image_helper = new Image_helper();
-        $user_photo_thumb = $image_helper->get_user_photo_thumb_version($user->photo);
-
-        $view_variables['user_photo_thumb'] = $user_photo_thumb;
+        
 
         $user_is_company_agent = $user instanceof Company_agent_user;
 

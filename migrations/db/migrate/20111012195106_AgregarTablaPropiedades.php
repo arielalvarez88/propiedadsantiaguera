@@ -25,9 +25,8 @@ class AgregarTablaPropiedades extends Ruckusing_BaseMigration {
         $propiedades->column('parkings', 'integer', array('limit' => 3));
         $propiedades->column('terrain', 'integer',array('limit' => 4));
         $propiedades->column('construction', 'integer',array('limit' => 4));
-        $propiedades->column('stories', 'integer', array('limit' => 3));
-        $propiedades->column('last_payment', 'integer', array('limit' => 3));
-        $propiedades->column('post_date', 'integer', array('limit' => 3));
+        $propiedades->column('stories', 'integer', array('limit' => 3));        
+        $propiedades->column('post_date', 'datetime');
         $propiedades->column('max_photos_number', 'integer', array('limit' => 2));
         $propiedades->column('photos_number', 'integer', array('limit' => 2));
         $propiedades->column('condition', 'integer', array('limit' => 2));       

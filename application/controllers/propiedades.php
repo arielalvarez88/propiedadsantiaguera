@@ -468,6 +468,7 @@ class Propiedades extends CI_Controller {
             if ($property_selected_to_publish) {
 
                 $property->display_property = 1;
+                $property->post_date = NOW();
                 $property->save();
                 $user->posts_left--;
             }

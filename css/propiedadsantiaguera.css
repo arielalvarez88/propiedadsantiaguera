@@ -652,7 +652,7 @@ body, html
     float: left;
 }
 #user-presentation-card-summary img {
-    border: 2px solid #77BD3D;
+    
     display: block;
     float: left;
     margin-right: 20px;
@@ -664,10 +664,15 @@ body, html
 #user-presentation-card-summary {
     background-color: #F5F5F5;
     border-radius: 10px 10px 10px 10px;
-    height: 195px;
+    float: left;
     margin-bottom: 20px;
     padding: 20px;
-    width: 470px;
+    
+}
+
+#user-presentation-card-edit
+{
+    clear: both;
 }
 
 
@@ -2272,17 +2277,24 @@ div.footer-section a{
 #front-properties-pager-container #properties-pager
 {
 
-    overflow: hidden;
+        
     background-image: url("/images/common/stripesGradient_H433.jpg");
 
 
 }
 
 #members-properties-pager-container #properties-pager{
+<<<<<<< HEAD
     overflow: hidden;
     width: 797px;
     height: 636px;
 
+=======
+    float:left;
+    width: 797px;
+    
+       
+>>>>>>> origin/master
 }
 
 #properties-pager
@@ -2305,6 +2317,7 @@ div.footer-section a{
 #properties-pager-next-previous-previous-button
 {
     float: right;
+    cursor: pointer;
 }
 
 .properties-pager-info {
@@ -2315,6 +2328,14 @@ div.footer-section a{
     float: left;
     margin-bottom: 5px;
 }
+
+
+#front-properties-pager-container .properties-pager-page
+{
+    width: 532px;
+    height: 288px;
+}
+
 
 .properties-pager-property p {
     clear: both;
@@ -2384,6 +2405,21 @@ div.footer-section a{
 .properties-pager-desc{
     color: #666666;
     margin-top: 10px;
+}
+
+
+
+.properties-pager-page,
+#properties-pager-properties-container,
+properties-pager
+{
+    
+}
+
+#members-properties-pager-container .properties-pager-page
+{
+    width: 825px;
+    height: 584px;
 }
 
 .properties-pager-property-sector
@@ -2899,7 +2935,7 @@ div.footer-section a{
 
 #company-user-viewer-container #user-viewer-info {
     float: left;
-    height: 85px;
+    height: 80px;
     padding-left: 10px;
     width: 230px;
 }
@@ -2916,7 +2952,7 @@ div.footer-section a{
     font-size: 1em;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
+    margin-top: 5px;
     text-align: center;
     width: 182px;
 }
@@ -3511,7 +3547,7 @@ div.footer-section a{
 
 .members-pager-agente-photo-container
 {
-    text-align: center;
+    
     display: block;
 }
 
@@ -3532,9 +3568,14 @@ div.footer-section a{
 }
 .members-pager-agente-name
 {
+<<<<<<< HEAD
     color: #76BC3B;
 
     padding-left: 5px;
+=======
+     color: #333333;
+
+>>>>>>> origin/master
     width: 191px;
 
 
@@ -4472,11 +4513,7 @@ span.required{
     padding: 6px 20px;
 }
 
-.users-photo
-{
-    width: 107px;
-    height: 121px;
-}
+
 /*********/
 /*clases utiles ENDS*/
 
