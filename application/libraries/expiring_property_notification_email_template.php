@@ -45,6 +45,7 @@ EOD;
 
         ¿Necesita algún tipo de ayuda? Puede contactarnos en soporte@propiedom.com, o al teléfono 809-582-2690.
 EOD;
+        
         return $text;
     }
     
