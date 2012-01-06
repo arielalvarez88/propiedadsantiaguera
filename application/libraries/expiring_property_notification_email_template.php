@@ -29,8 +29,9 @@ class Expiring_property_notification_email_template implements Iemail_template
         Las siguientes publicaciones vencen en los próximos 5 días:
 EOD;
         
-        foreach ($properties as $property)
+        foreach ($this->properties as $property)
         {
+            echo $property->name;
             $text .= <<<EOD
             Título: "{$property->title}" \n
             No. de Referencia: {$property->id} \n\n
