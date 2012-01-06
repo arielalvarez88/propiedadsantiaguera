@@ -97,7 +97,7 @@ body, html
 {
     overflow: hidden;
     width: 960px;
-    
+
 }
 
 /********** header ENDS ***********/
@@ -754,7 +754,7 @@ body, html
     color: white;
 }
 
- .panels-properties-pager-property-title {
+.panels-properties-pager-property-title {
     background-color: #76BC3B;
     border-radius: 5px 5px 5px 5px;
     clear: both;
@@ -805,7 +805,7 @@ body, html
 
 
 .panels-properties-pager-property img {
-  display: block;
+    display: block;
     float: left;
     height: 125px;
     margin-right: 20px;
@@ -818,7 +818,7 @@ body, html
 .panels-properties-pager-property {
     float: left;
     margin-bottom: 75px;
-    width: 445px;
+    width: 465px;
 }
 
 .panels-properties-pager-property.odd
@@ -866,7 +866,7 @@ body, html
     color: white;
     float: left;
     margin-right: 385px;
-    
+
 }
 
 #panels-property-section-menu-properties-counter
@@ -1988,7 +1988,7 @@ div.footer-section a{
 {
     font-size: 1.6em;
     margin-bottom: 15px;
-        
+
 }
 
 #basic-filter-advanced-filter-link {
@@ -2013,7 +2013,7 @@ div.footer-section a{
     width: 144px;
     height: 35px;
     display: block;
-    
+
 }
 
 
@@ -2038,7 +2038,7 @@ div.footer-section a{
 #search-results-basic-filter-container #basic-filter-top-right-size
 {
     float:  none;
-        
+
 }
 
 
@@ -2279,21 +2279,28 @@ div.footer-section a{
 
         
     background-image: url("/images/common/stripesGradient_H433.jpg");
-    
+
 
 }
 
 #members-properties-pager-container #properties-pager{
+<<<<<<< HEAD
+    overflow: hidden;
+    width: 797px;
+    height: 636px;
+
+=======
     float:left;
     width: 797px;
     
        
+>>>>>>> origin/master
 }
 
 #properties-pager
 {
-    
-    
+
+
 }
 
 #properties-pager-next-previous-numbers
@@ -2357,7 +2364,7 @@ div.footer-section a{
     display: block;
     float: left;
     height: 20px;
-    
+
 }
 #front-properties-pager-container
 {
@@ -2381,14 +2388,14 @@ div.footer-section a{
 
 .properties-pager-property-title
 {
-    
+
     color: #76BC3B;
     font-size: 1.2em;
-    
-    margin: 5px 0;
-    
 
-    
+    margin: 5px 0;
+
+
+
 }
 .properties-pager-row {
     float: left;
@@ -2910,7 +2917,7 @@ properties-pager
 
 
 #company-user-viewer-container #user-viewer-info h2{
-      font-size: 1.1em;
+    font-size: 1.1em;
     margin: 10px;
 }
 
@@ -2973,8 +2980,8 @@ properties-pager
 
 #company-user-viewer-container #user-viewer-info p{
     float: left;
-    
-    
+
+
 }
 
 #user-viewer-info p {
@@ -2984,7 +2991,7 @@ properties-pager
 #user-viewer-user-email {
     clear: both;
     font-size: 1.1em;
-    
+
 }
 
 #user-viewer-user-email span{
@@ -3040,7 +3047,7 @@ properties-pager
 {
     float: left;
     display: block;
-    
+
 }
 
 #property-calculator-container div {
@@ -3092,7 +3099,7 @@ properties-pager
     margin-right: auto;
     margin-left: auto;
     width: 220px;
-    
+
 }
 
 #pdf-and-share h2
@@ -3139,12 +3146,12 @@ properties-pager
 
 #property-ubication-gmap
 {
-    
+
 }
 
 #property-ubication-gmap-map
 {
-    
+
     height: 236px;
 
 }
@@ -3154,7 +3161,7 @@ properties-pager
 #property-info {
     color: black;
     float: left;
-    
+
     margin-right: 5px;
     padding: 8px;
     width: 664px;
@@ -3165,7 +3172,7 @@ properties-pager
 }
 #property-info-descripcion {
     margin-bottom: 10px;
-    
+
 }
 
 #property-info-address-close-places-container, 
@@ -3223,7 +3230,7 @@ properties-pager
 }
 
 #properties-search-results-pager-next, #properties-search-results-pager-previous {
-    
+
     cursor: pointer;
     float: right;
 }
@@ -3235,7 +3242,7 @@ properties-pager
 }
 
 #properties-search-results-pager-next {
-    
+
     margin-left: 15px;
 }
 
@@ -3255,7 +3262,7 @@ properties-pager
 #properties-search-results-pager-previous img
 {
     padding: 2px 5px 0 0;
-    
+
 }
 
 
@@ -3306,7 +3313,7 @@ properties-pager
 
 
 .properties-search-results-pager-property-photo{
-    
+
     display: block;
     float: left;
     height: 125px;
@@ -3334,7 +3341,7 @@ properties-pager
 
 {
     float: left;
-    
+
 }
 #properties-search-results-pager-container-header
 {
@@ -3343,10 +3350,10 @@ properties-pager
 }
 
 #properties-search-results-pager-pages{
-    
+
     padding: 0 5px;
 }
-    
+
 
 .properties-search-results-pager-property h2.price{
     background-color: #e8e8e8;
@@ -3561,20 +3568,26 @@ properties-pager
 }
 .members-pager-agente-name
 {
+<<<<<<< HEAD
+    color: #76BC3B;
+
+    padding-left: 5px;
+=======
      color: #333333;
 
+>>>>>>> origin/master
     width: 191px;
-    
+
 
 }
 .members-pager-agente-numero-propiedades{
     color: #418e30;
 }
 .members-pager-agente-photo{
-    
-    
+
+
     margin-bottom: 5px;
-    
+
 }
 .members-pager-agente-propierties .members-pager-agente-properties-label{
     background-image: url("/images/common/lightGreenItemBackground.png");
@@ -4009,11 +4022,11 @@ properties-pager
 
 
 .twitter-icon {
-background-position: -26px 0;
+    background-position: -26px 0;
 }
 
 .google-plus-icon {
-background-position: -53px 0;
+    background-position: -53px 0;
 }
 
 .missing-required
@@ -4500,7 +4513,9 @@ span.required{
     padding: 6px 20px;
 }
 
-
+.red-text{
+    color: red;
+}
 /*********/
 /*clases utiles ENDS*/
 
@@ -5461,11 +5476,11 @@ button.ui-button:-moz-focus-inner { border: 0; padding: 0; } /* reset extra padd
 /********************* Purchase Form Style ***********************/
 ul#purchase-steps
 {
-   border-bottom:1px solid #76BC3B;
-   color: #76BC3B;
-   padding-bottom:5px;
-   font-weight: bold;
-   margin-bottom: 20px;
+    border-bottom:1px solid #76BC3B;
+    color: #76BC3B;
+    padding-bottom:5px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 ul#purchase-steps li:first-child
 {
@@ -5493,24 +5508,31 @@ h3#purchase-step-1
     padding:5px 0px 5px 30px;
     background:url('../images/1-with-circle.png') top left no-repeat;
 }
-#purchase-form-1
+.purchase-form
 {
     text-align:right;
     width:350px;
     float:left;
 }
-#purchase-form-1 input
+.purchase-form input
 {
     margin:5px 0;
 }
-#purchase-form-1 span
+.purchase-form span
 {
     color:#777;  
     float:right;
-    margin-right: -65px;
     padding-top: 9px;
 }
-#purchase-form-1 #purchase-form-button
+#purchase-form-1 span
+{
+    margin-right: -65px;    
+}
+#purchase-form-2 span
+{
+    margin-right: -190px;    
+}
+.purchase-form #purchase-form-button
 {
     float:left;
     margin-left:781px;
@@ -5537,5 +5559,48 @@ h3#purchase-step-1
 {
     margin-bottom: 10px;
     padding: 1px 5px;
+}
+#purchase-plan-details
+{
+    width:930px;
+    margin:0 auto;  
+    height:50px;
+}
+#purchase-plan-details p
+{
+    background-color:#eee;
+    padding:10px 20px;  
+    font-weight:bold;
+    width:400px; 
+    float:left;
+    border-radius:9px;
+    -moz-border-radius:9px; 
+    -webkit-border-radius:9px;
+}
+#purchase-plan-details p span
+{
+    color:#76BC3B;
+}
+#purchase-plan-details #buttons
+{
+    float:right;
+}
+#purchase-steps-total
+{
+    background:url('../images/common/grayStripesPattern.png') #eee;
+    padding:10px 20px;  
+    font-weight:bold;
+    border-radius:9px;
+    -moz-border-radius:9px; 
+    -webkit-border-radius:9px;
+    margin-top:140px;
+    margin-bottom:30px;
+    text-align:center;
+    color:#76BC3B;
+    font-weight:bold;
+}
+#purchase-steps-total span
+{
+    font-size:1.5em;
 }
 /*****************************************************************/

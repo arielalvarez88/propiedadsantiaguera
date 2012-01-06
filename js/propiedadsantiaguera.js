@@ -1,6 +1,56 @@
 
 
 
+
+
+
+bindEvent = function(elementOrSelector,eventName,handler)
+{
+    
+    
+    if( typeof elementOrSelector != 'string' &&  typeof elementOrSelector != 'object')
+        throw "The first argumnet of eventBinder must be a selector or an element.";
+    
+    var element;
+    element = $(elementOrSelector); 
+    
+    
+    if(!elementHasHandler(element,eventName,handler))
+    {
+            
+        element.bind(eventName,handler);
+        return true;
+    }
+        
+    
+    return false;
+};
+
+    
+elementHasHandler = function (element,eventName,handler)
+{
+    element = $(element);
+    
+    
+    if(element.data('events') == undefined)
+        return false;
+    
+    
+        
+    jQuery.each(element.data('events'), function(i, event){
+
+        jQuery.each(event, function(i, activeHandler){
+            if(activeHandler.type == eventName && activeHandler.handler == handler)
+                return true;
+
+        });
+    });
+    
+    return false;
+
+    
+};
+
 initilizeSlideShows = function()
 {
     $('#front-page-slide-show').cycle({
@@ -87,7 +137,9 @@ initializePropiedadViewer = function (){
         fx:     'fade', 
         prev:   '#propiedad-viewer-previous-pager', 
         next:   '#propiedad-viewer-next-pager', 
-        after: function(curr,next,opts){hideNextorPrevious(curr,next,opts,'#propiedad-viewer-next-pager','#propiedad-viewer-previous-pager')},
+        after: function(curr,next,opts){
+            hideNextorPrevious(curr,next,opts,'#propiedad-viewer-next-pager','#propiedad-viewer-previous-pager')
+        },
         timeout: 0 
     });
 }
@@ -167,7 +219,7 @@ JqueryCycleAjaxPager = function(containerSelector,nextButtonSelector,previousBut
     
     this.refreshActualPageDisplay = function (){
         
-       thisObject.actualPageNumberDisplay.html("Página " + thisObject.actualPage + '-' + thisObject.numberOfPages );
+        thisObject.actualPageNumberDisplay.html("Página " + thisObject.actualPage + '-' + thisObject.numberOfPages );
     };
     
     
@@ -190,16 +242,16 @@ JqueryCycleAjaxPager = function(containerSelector,nextButtonSelector,previousBut
         
         
         if(thisObject.numberOfPages > 1)
-            {
+        {
                 
-               thisObject.nextButton.show();
-               thisObject.previousButton.hide();
-            }
-            else
-                {
-                    thisObject.previousButton.hide();
-                    thisObject.nextButton.hide();
-                }
+            thisObject.nextButton.show();
+            thisObject.previousButton.hide();
+        }
+        else
+        {
+            thisObject.previousButton.hide();
+            thisObject.nextButton.hide();
+        }
         
         thisObject.container.cycle({
             fx:     'fade', 
@@ -212,7 +264,10 @@ JqueryCycleAjaxPager = function(containerSelector,nextButtonSelector,previousBut
                 thisObject.actualPage = zeroBasedSlideIndex + 1;                
                 thisObject.refreshActualPageDisplay();
                 
-                var info = {currSlide : zeroBasedSlideIndex, slideCount:  thisObject.numberOfPages};
+                var info = {
+                    currSlide : zeroBasedSlideIndex, 
+                    slideCount:  thisObject.numberOfPages
+                };
                 hideNextorPrevious(isNext,zeroBasedSlideIndex, info ,nextButtonSelector,previousButtonSelector);
                 
                 if((thisObject.actualPage %  (numberOfVisiblePagesInThePager+1)==0) && isNext)
@@ -243,33 +298,33 @@ JqueryCycleAjaxPager = function(containerSelector,nextButtonSelector,previousBut
             
         });
                 
-                     thisObject.pageNumbersContainer.cycle({
+        thisObject.pageNumbersContainer.cycle({
             fx:     'fade', 
             timeout: 0            
             
             
           
             
-//            prev:   previousPagerGroupSelector, 
-//            next:   nextPagerGroupSelector, 
+        //            prev:   previousPagerGroupSelector, 
+        //            next:   nextPagerGroupSelector, 
             
-//            after: function(curr,next,opts){                          
-//                hideNextorPrevious(curr,next,opts,nextPagerGroupSelector,previousPagerGroupSelector);
-//            },                        
-//            activePagerClass: 'selected-pager-group',
+        //            after: function(curr,next,opts){                          
+        //                hideNextorPrevious(curr,next,opts,nextPagerGroupSelector,previousPagerGroupSelector);
+        //            },                        
+        //            activePagerClass: 'selected-pager-group',
             
         });
-//        
-//         if(thisObject.numberOfPagerGroups > 1)
-//            {
-//                
-//                thisObject.previousPagerGroup.hide();
-//            }
-//            else
-//                {
-//                    thisObject.nextPagerGroup.hide();
-//                    thisObject.previousPagerGroup.hide();
-//                }
+    //        
+    //         if(thisObject.numberOfPagerGroups > 1)
+    //            {
+    //                
+    //                thisObject.previousPagerGroup.hide();
+    //            }
+    //            else
+    //                {
+    //                    thisObject.nextPagerGroup.hide();
+    //                    thisObject.previousPagerGroup.hide();
+    //                }
         
     })();
     
@@ -295,9 +350,10 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
     
     
     this.element.unbind(event);
+    
     this.element.bind(event,function(defaultEvent){
         defaultEvent.preventDefault();
-        var elementValue = thisObject.element.val() ? thisObject.element.val() : false;
+        var elementValue = thisObject.element.val() || thisObject.element.is(":checked")? thisObject.element.val() : false;
         
         thisObject.elementsToShowOrHide.hide();
        
@@ -461,6 +517,9 @@ InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswor
 
     
 };
+
+
+
 
 
 Slider = function(parentSelector,minValue,maxValue,minInitialPosition,maxInitialPosition,minDisplaySelector,maxDisplaySelector,step){
@@ -1109,6 +1168,9 @@ initializeHiderAndShowerElement = function(){
         dr: ".dr-price-field", 
         us: ".us-price-field"
     }, "#price-currency h1", false, "change", true);
+    
+        
+    
 };
 
 hideElementsWithHiddenClass = function(){
@@ -1121,12 +1183,94 @@ hideElementsWithHiddenClass = function(){
 
 
 initializeJqueryCycleAjaxPager = function (){
+    
     var propertiesSearchResults = new JqueryCycleAjaxPager('#properties-search-results-pager-results-container', '#properties-search-results-pager-next, #properties-search-results-pager-next-group', '#properties-search-results-pager-previous, #properties-search-results-pager-previous-group', '#properties-search-results-pager-current-page-display', '#properties-search-results-pager-pages',5);
     var memberProperties = new JqueryCycleAjaxPager('#members-properties-pager-container #properties-pager-properties-container', '#members-properties-pager-container #properties-pager-next-previous-next-button', '#members-properties-pager-container #properties-pager-next-previous-previous-button', '#members-properties-pager-container #properties-pager-next-previous-numbers');
     
     
     
 };
+
+AjaxAttributeValueSender = function (elementSelector, attributesToSendValue, triggerEvent, recivingScript,callback){
+     
+     
+    var thisObject = this;
+    this.element;
+    this.recivingScript;
+    callback = typeof callback == 'undefined' ? function(html){}: '';
+     
+     
+    this.getAttribtesAndDoAjaxRequest = function (){
+       
+        var i =0;
+       
+        var postVariables = {};
+        for(i=0; i < attributesToSendValue.length; i++)
+        {
+            
+            postVariables[attributesToSendValue[i]] = thisObject.element.attr(attributesToSendValue[i]);
+            
+            
+        }
+        
+        $.post(recivingScript,postVariables,callback);
+        
+        
+        
+    };
+   
+    (this.init = function(){
+        thisObject.element = $(elementSelector);
+        thisObject.element.unbind(triggerEvent);
+        thisObject.recivingScript = recivingScript;
+        
+        bindEvent(thisObject.element, triggerEvent, thisObject.getAttribtesAndDoAjaxRequest);
+        
+    })();
+   
+};
+
+
+AutoReactivationButton = function(elementSelector){
+    
+    var thisObject = this;
+    this.element = $(elementSelector);
+    this.messageToHide = $(thisObject.element.attr('data-message-selector'));
+    
+    
+    this.HideOrShowReactivationMessage = function(){
+        if(thisObject.element.is(":checked"))
+           thisObject.messageToHide.hide();
+        else
+            thisObject.messageToHide.show();
+    }
+    
+    bindEvent(thisObject.element, "change",this.HideOrShowReactivationMessage);
+    
+    
+};
+
+AutoReactivationButton.prototype = new AjaxAttributeValueSender();
+AutoReactivationButton.prototype.constructor = AutoReactivationButton;
+AutoReactivationButton.prototype.ubber = AjaxAttributeValueSender;
+
+
+
+
+initializeAjaxAttributeValueSenders = function(){
+ 
+    var  autoReactivationSelect = new AjaxAttributeValueSender('.panels-properties-pager-property-info-buttons-reactivation', ['data-property-id','checked'], 'change', '/ajax/property_auto_reactivation');
+        
+ 
+   
+};
+
+initializeAutoreactivateButtons = function(){
+
+var autreactivationButtons = new AutoReactivationButton(".panels-properties-pager-property-info-buttons-reactivation");
+
+};
+
 
 $(document).ready
 {   
@@ -1146,10 +1290,11 @@ $(document).ready
     initializeInterestsCalculators();
     initializeHideShowWithArrowDirectionElement();
     initializeHiderAndShowerElement();    
-    initializeFilters();
-    
-    initializeJqueryCycleAjaxPager();
-    hideElementsWithHiddenClass();
+    initializeFilters();    
+    initializeJqueryCycleAjaxPager();       
+    hideElementsWithHiddenClass();    
+    initializeAjaxAttributeValueSenders();
+    initializeAutoreactivateButtons();
     
 /*comentario*/    
 }
