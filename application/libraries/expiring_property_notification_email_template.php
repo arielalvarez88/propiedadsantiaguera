@@ -31,7 +31,7 @@ EOD;
         
         foreach ($this->properties as $property)
         {
-            echo $property->name;
+            
             $text .= <<<EOD
             Título: "{$property->title}" \n
             No. de Referencia: {$property->id} \n\n

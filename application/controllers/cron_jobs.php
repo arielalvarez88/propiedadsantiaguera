@@ -63,7 +63,7 @@ class cron_jobs extends CI_Controller {
                 $property->save();
             }
 
-
+  
 
             $properties->where('auto_reactivation', 1)->get_iterated();
 
@@ -85,7 +85,7 @@ class cron_jobs extends CI_Controller {
 
 
 
-
+            
             $this->send_expiring_property_notification_email($user, $user_expiring_property_objects_to_send_email);
         }
     }
