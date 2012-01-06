@@ -4,7 +4,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-class mailer
+class Mailer
 {
     public function send_email($template, $client_name, $email, $token='')
     {

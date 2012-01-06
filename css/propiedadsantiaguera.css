@@ -818,7 +818,7 @@ body, html
 .panels-properties-pager-property {
     float: left;
     margin-bottom: 75px;
-    width: 445px;
+    width: 465px;
 }
 
 .panels-properties-pager-property.odd
@@ -4500,7 +4500,9 @@ span.required{
     padding: 6px 20px;
 }
 
-
+.red-text{
+    color: red;
+}
 /*********/
 /*clases utiles ENDS*/
 
