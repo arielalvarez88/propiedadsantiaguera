@@ -5,7 +5,7 @@
     <li class="">3 - Compra  </li>
 </ul>
 <h3 class="main-title" id="purchase-step-1">Informaci&oacute;n Personal</h3>
-<form id="purchase-form-1" action="" method="">
+<form class="purchase-form" id="purchase-form-1" action="" method="">
     <label>Nombre: </label><input type="text" name="" id=""/><br>
     <label>Apellidos: </label><input type="text" name="" id=""/><br>
     <label>Email: </label><input type="text" name="" id=""/><br>
@@ -26,5 +26,17 @@
     </dl>
 </div>
 <div class="form-divisor"></div>
-<div id="purchase-plan-detail">Tipo de plan: <span>PLUS 5 Publicaciones</span></div>
-<div id="purchase-plan-right-buttons"> <a hre="" id=""></a> <a hre="" id=""></a>  </div>
+<div id="purchase-plan-details"><p>Tipo de plan : <span>PLUS  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 Publicaciones</span></p><span  id="buttons"><a hre="" id=""><img src="/images/como-func-btn.png" alt=""/></a> <a hre="" id=""><img src="/images/como-func-btn.png" alt=""/></a></span></div>
+<form class="purchase-form" id="purchase-form-2" action="" method="">
+    <label>Cantidad: </label>
+    <select name="">
+        <option value="">Sector...</option>
+    </select><br>
+    <label>Total de publicaciones: </label>20 publicaciones<br>
+    <label>Fotos y video profesional: </label>
+    <select name="">
+        <option value="">Sector...</option>
+    </select><br>
+    <label>Codigo de descuento: </label><input type="text" name="" id=""/><span> Escribir codigo de descuento.</span>
+</form>
+<div id="purchase-steps-total">Total a pagar :<span> RD$ 0</span></div>
