@@ -469,7 +469,7 @@ class Propiedades extends CI_Controller {
 
                 $property->display_property = 1;
                 $property->post_date = NOW();
-                $property->expiration_email_sent = NOW();
+                $property->expiration_email_sent = 0;
                 
                 $property->save();
                 $user->posts_left--;

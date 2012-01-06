@@ -54,6 +54,7 @@ class cron_jobs extends CI_Controller {
                 }
                 
             }
+            $properties->expiration_email_sent =1;
             $properties->save();
             
             $this->send_expiring_property_notification_email($user, $user_expiring_property_objects_to_send_email);
