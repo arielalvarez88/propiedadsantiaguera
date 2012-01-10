@@ -5508,6 +5508,11 @@ h3#purchase-step-1
     padding:5px 0px 5px 30px;
     background:url('../images/1-with-circle.png') top left no-repeat;
 }
+h3#purchase-step-2
+{
+    padding:5px 0px 5px 30px;
+    background:url('../images/2-with-circle.png') top left no-repeat;
+}
 .purchase-form
 {
     text-align:right;
@@ -5531,6 +5536,32 @@ h3#purchase-step-1
 #purchase-form-2 span
 {
     margin-right: -190px;    
+}
+#purchase-form-3 span#cards
+{
+    margin-right: -137px;    
+}
+#purchase-form-3 span#expiration-date
+{
+    margin-right: -145px;    
+}
+#purchase-form-3 span#cvv-question
+{
+    margin-right: -210px;    
+}
+#purchase-steps-contact-us
+{
+    float:right;
+    text-align:center;  
+    margin-right: 100px;
+}
+#purchase-steps-contact-us img
+{
+    margin-top:10px;
+}
+#purchase-form-3 select
+{
+    width:88px;
 }
 .purchase-form #purchase-form-button
 {

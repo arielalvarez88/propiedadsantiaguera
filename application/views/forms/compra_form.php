@@ -12,7 +12,7 @@
     <label>Empresa: </label><input type="text" name="" id=""/><span>(Opcional)</span><br>
     <label>Contrase&ntilde;a: </label><input type="password" name="" id=""/><br>
     <label>Confirmar Contrase&ntilde;a: </label><input type="password" name="" id=""/>
-            <input id="purchase-form-button" class="form-send-button" type="image" src="/images/continuar.png"/>
+    <input id="purchase-form-button" class="form-send-button" type="image" src="/images/continuar.png"/>
 </form>
 <div id="purchase-steps-message">
     <h3>Gracias por registrate con nosotros!</h3>
@@ -40,3 +40,21 @@
     <label>Codigo de descuento: </label><input type="text" name="" id=""/><span> Escribir codigo de descuento.</span>
 </form>
 <div id="purchase-steps-total">Total a pagar :<span> RD$ 0</span></div>
+<h3 class="main-title" id="purchase-step-2">Informaci&oacute;n de pago</h3>
+<form class="purchase-form" id="purchase-form-3" action="" method="">
+    <label>Nombre: </label><input type="text" name="" id=""/><br>
+    <label>Apellido: </label><input type="text" name="" id=""/><br>
+    <label>Numero de Tarjeta: </label><input type="text" name="" id=""/><span id="cards"><img src="/images/cards.png" /></span><br>
+    <label>Fecha de Expiracion: </label>
+    <select name="">
+        <option value="">Sector...</option>
+    </select>  
+    <select name="">
+        <option value="">Sector...</option>
+    </select> <span id="expiration-date">(dhdhhhdhsjdjhshjdh)</span><br>
+    <label>Codigo (CVV2): </label><input type="password" name="" id=""/><span id="cvv-question">(Que es el codigo de seguridad?)</span><br>
+</form>
+    <div id="purchase-steps-contact-us">
+       <p>Necesitas ayuda? <a href="/contacto">Cont&aacute;ctanos.</a></p>
+        <img src="/images/phone.png" />
+    </div>
