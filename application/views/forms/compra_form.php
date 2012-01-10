@@ -54,7 +54,10 @@
     </select> <span id="expiration-date">(dhdhhhdhsjdjhshjdh)</span><br>
     <label>Codigo (CVV2): </label><input type="password" name="" id=""/><span id="cvv-question">(Que es el codigo de seguridad?)</span><br>
 </form>
-    <div id="purchase-steps-contact-us">
-       <p>Necesitas ayuda? <a href="/contacto">Cont&aacute;ctanos.</a></p>
-        <img src="/images/phone.png" />
-    </div>
+<div id="purchase-steps-contact-us">
+    <p>Necesitas ayuda? <a href="/contacto">Cont&aacute;ctanos.</a></p>
+    <img src="/images/phone.png" />
+</div>
+<h3 class="main-title">Politicas de uso.</h3>
+<p>Desde el momento en que se editen las fotos y el video, su propiedad estará disponible para ser vista por todos los usuarios que visiten el portal. Cuando nuestro equipo termine de actualizar su propiedad, se le enviará una notificación de que su propiedad está lista, y , a partir de ese momento comienzan a correr los días.</p>
+    
