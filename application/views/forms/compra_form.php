@@ -12,7 +12,7 @@
     <label>Empresa: </label><input type="text" name="" id=""/><span>(Opcional)</span><br>
     <label>Contrase&ntilde;a: </label><input type="password" name="" id=""/><br>
     <label>Confirmar Contrase&ntilde;a: </label><input type="password" name="" id=""/>
-    <input id="purchase-form-button" class="form-send-button" type="image" src="/images/continuar.png"/>
+    <input class="form-send-button purchase-form-button" type="image" src="/images/continuar.png"/>
 </form>
 <div id="purchase-steps-message">
     <h3>Gracias por registrate con nosotros!</h3>
@@ -26,7 +26,7 @@
     </dl>
 </div>
 <div class="form-divisor"></div>
-<div id="purchase-plan-details"><p>Tipo de plan : <span>PLUS  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 Publicaciones</span></p><span  id="buttons"><a hre="" id=""><img src="/images/como-func-btn.png" alt=""/></a> <a hre="" id=""><img src="/images/como-func-btn.png" alt=""/></a></span></div>
+<div id="purchase-plan-details"><p>Tipo de plan : <span>PLUS  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 Publicaciones</span></p><span  id="buttons"><a hre="" id=""><img src="/images/ver-ejemplo-btn.png" alt=""/></a> <a hre="" id=""><img src="/images/como-func-btn.png" alt=""/></a></span></div>
 <form class="purchase-form" id="purchase-form-2" action="" method="">
     <label>Cantidad: </label>
     <select name="">
@@ -58,6 +58,12 @@
     <p>Necesitas ayuda? <a href="/contacto">Cont&aacute;ctanos.</a></p>
     <img src="/images/phone.png" />
 </div>
+<div id="purchase-steps-politicas">
 <h3 class="main-title">Politicas de uso.</h3>
 <p>Desde el momento en que se editen las fotos y el video, su propiedad estará disponible para ser vista por todos los usuarios que visiten el portal. Cuando nuestro equipo termine de actualizar su propiedad, se le enviará una notificación de que su propiedad está lista, y , a partir de ese momento comienzan a correr los días.</p>
-    
+</div>   
+<form class="purchase-form" id="purchase-form-4" action="" method="">
+    <input type="checkbox" name="" id=""/> <label>Acepto las condiciones de uso.</label><br><br><br>
+    <p>Aqu&iacute; les detallamos las politicas de <a href="/politicas">Privacidad y Seguridad, y politica de reembolso</a></p>
+    <input class="form-send-button purchase-form-button" type="image" src="/images/comprar-btn.png"/>
+</form>

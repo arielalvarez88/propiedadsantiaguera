@@ -5563,7 +5563,7 @@ h3#purchase-step-2
 {
     width:88px;
 }
-.purchase-form #purchase-form-button
+.purchase-form .purchase-form-button
 {
     float:left;
     margin-left:781px;
@@ -5633,5 +5633,21 @@ h3#purchase-step-2
 #purchase-steps-total span
 {
     font-size:1.5em;
+}
+#purchase-steps-politicas
+{
+    width:800px;
+    padding:30px 0;
+    clear:both;
+}
+#purchase-steps-politicas h3
+{
+    margin:20px 0 10px;
+}
+#purchase-form-4
+{
+    text-align:left;
+    font-weight:bold;
+    width:100%;
 }
 /*****************************************************************/
