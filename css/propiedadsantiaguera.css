@@ -5685,7 +5685,7 @@ h3#purchase-step-2
 #purchase-steps-receit table th, #purchase-steps-receit table td
 {
     border-right:1px solid #333;
-    border-collapse: collapse;
+    padding:5px;
 }
 #purchase-steps-receit table th:last-child, #purchase-steps-receit table td:last-child
 {
