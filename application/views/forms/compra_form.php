@@ -59,11 +59,37 @@
     <img src="/images/phone.png" />
 </div>
 <div id="purchase-steps-politicas">
-<h3 class="main-title">Politicas de uso.</h3>
-<p>Desde el momento en que se editen las fotos y el video, su propiedad estará disponible para ser vista por todos los usuarios que visiten el portal. Cuando nuestro equipo termine de actualizar su propiedad, se le enviará una notificación de que su propiedad está lista, y , a partir de ese momento comienzan a correr los días.</p>
+    <h3 class="main-title">Politicas de uso.</h3>
+    <p>Desde el momento en que se editen las fotos y el video, su propiedad estará disponible para ser vista por todos los usuarios que visiten el portal. Cuando nuestro equipo termine de actualizar su propiedad, se le enviará una notificación de que su propiedad está lista, y , a partir de ese momento comienzan a correr los días.</p>
 </div>   
 <form class="purchase-form" id="purchase-form-4" action="" method="">
     <input type="checkbox" name="" id=""/> <label>Acepto las condiciones de uso.</label><br><br><br>
     <p>Aqu&iacute; les detallamos las politicas de <a href="/politicas">Privacidad y Seguridad, y politica de reembolso</a></p>
     <input class="form-send-button purchase-form-button" type="image" src="/images/comprar-btn.png"/>
 </form>
+<div id="purchase-steps-receit">
+    <h3 class="main-title">Gracias por hacer su orden</h3>
+    <p>Agradecemos su reciente compra en Propiedom. Le enviaremos un email de confirmaci&oacute;n de la orden que acaba de realizar.</p>
+    <br>
+    <p><strong>Su numero de confirmacion de su orden es:</strong> 4838468</p>
+    <h3 class="purchase-detail-title">Orden realizada por:</h3>
+    <table>
+        <tr><td>Jos&eacute; Miguel Infante</td></tr>
+    </table>
+    <h3 class="purchase-detail-title">La descripci&oacute;n de su orden se detalla a continuacion:</h3>
+    <table>
+        <thead><tr><th>Detalle</th><th>Cantidad</th><th>Total de publicaciones</th></tr></thead>
+        <tr><td>Paquete plus</td><td>1</td><td>5</td></tr>
+    </table> 
+
+    <ul>
+        <li><strong>Subtotal:</strong>RD$ 4,131.00</li>
+        <li><strong>Impuesto:</strong>RD$ 687.00</li>
+        <li><strong>Subtotal:</strong>RD$ 5,000.00</li>
+    </ul>
+
+    <p>Si necesita asistencia o tiene alguna pregunta relacionada con su reciente compra, no dude en enviarnos un e-mail a servicios@propiedom.com
+        <br>o llamarnos al 809.582.2690. Por favor incluir su numero de orden en su comunicado.<br><br>
+        Servicio al cliente<br><br> Propiedom.com
+    </p>
+</div>

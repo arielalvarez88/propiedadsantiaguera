@@ -652,7 +652,7 @@ body, html
     float: left;
 }
 #user-presentation-card-summary img {
-    
+
     display: block;
     float: left;
     margin-right: 20px;
@@ -667,7 +667,7 @@ body, html
     float: left;
     margin-bottom: 20px;
     padding: 20px;
-    
+
 }
 
 #user-presentation-card-edit
@@ -2277,24 +2277,24 @@ div.footer-section a{
 #front-properties-pager-container #properties-pager
 {
 
-        
+
     background-image: url("/images/common/stripesGradient_H433.jpg");
 
 
 }
 
 #members-properties-pager-container #properties-pager{
-<<<<<<< HEAD
+    <<<<<<< HEAD
     overflow: hidden;
     width: 797px;
     height: 636px;
 
-=======
+    =======
     float:left;
     width: 797px;
-    
-       
->>>>>>> origin/master
+
+
+    >>>>>>> origin/master
 }
 
 #properties-pager
@@ -2413,7 +2413,7 @@ div.footer-section a{
 #properties-pager-properties-container,
 properties-pager
 {
-    
+
 }
 
 #members-properties-pager-container .properties-pager-page
@@ -3547,7 +3547,7 @@ properties-pager
 
 .members-pager-agente-photo-container
 {
-    
+
     display: block;
 }
 
@@ -3568,14 +3568,14 @@ properties-pager
 }
 .members-pager-agente-name
 {
-<<<<<<< HEAD
+    <<<<<<< HEAD
     color: #76BC3B;
 
     padding-left: 5px;
-=======
-     color: #333333;
+    =======
+    color: #333333;
 
->>>>>>> origin/master
+    >>>>>>> origin/master
     width: 191px;
 
 
@@ -5649,5 +5649,55 @@ h3#purchase-step-2
     text-align:left;
     font-weight:bold;
     width:100%;
+}
+#purchase-steps-receit
+{
+    padding:20px 0;
+}
+#purchase-steps-receit .purchase-detail-title
+{
+    width:550px;
+    font-weight:bold;
+    color:#fff;
+    background-color:#76BC3B;
+    padding:10px;
+    margin-top:20px;
+    border-radius:9px 9px 0 0;
+    -moz-border-radius:9px 9px 0 0; 
+    -webkit-border-radius:9px 9px 0 0;
+}
+
+#purchase-steps-receit table
+{
+    width:570px;
+    margin-top:0;
+    background:url('../images/common/grayStripesPattern.png') #eee;
+    padding:10px;
+    border-radius:0 0 9px 9px;
+    -moz-border-radius:0 0 9px 9px; 
+    -webkit-border-radius:0 0 9px 9px;
+
+}
+#purchase-steps-receit table tr th
+{
+    border-bottom:1px solid #333;
+}
+#purchase-steps-receit table th, #purchase-steps-receit table td
+{
+    border-right:1px solid #333;
+    border-collapse: collapse;
+}
+#purchase-steps-receit table th:last-child, #purchase-steps-receit table td:last-child
+{
+    border-right:0;
+}
+#purchase-steps-receit table tr td
+{
+    border-bottom:0;
+}
+#purchase-steps-receit ul
+{
+    color:#76BC3B;
+    padding:20px;
 }
 /*****************************************************************/
