@@ -58,7 +58,6 @@ body, html
 }
 
 
-
 #content-header-wrapper{
     background: none repeat scroll 0 0 #FFFFFF;
     border: 1px solid #DADADA;
@@ -376,13 +375,13 @@ body, html
     border: 4px solid #E1E1E1;
     width: 203px;
 }
-#advanced-filter input, #advanced-filter select, #advanced-filter lable {
+#advanced-filter input, #advanced-filter select, #advanced-filter label {
     display: block;
     float: left;
     height: 28px;
     margin-bottom: 6px;
 }
-#advanced-filter lable {
+#advanced-filter label {
     margin-right: 8px;
     text-align: right;
     width: 93px;
@@ -785,7 +784,7 @@ body, html
     clear: both;
     display: block;
 }
-.panels-properties-pager-property-info-buttons div input, .panels-properties-pager-property-info-buttons div lable {
+.panels-properties-pager-property-info-buttons div input, .panels-properties-pager-property-info-buttons div label {
     margin-top: 6px;
 }
 #panels-properties-pager .panels-properties-pager-property-info-buttons a {
@@ -797,6 +796,15 @@ body, html
     font-size: 1.2em;
     margin-right: 10px;
     padding: 3px 7px;
+    
+    
+}
+
+
+#panels-properties-pager-property-info-buttons-days-left {
+    clear: both;
+    float: left;
+    margin-top: 10px;
 }
 
 .panels-properties-pager-property-info h2 {
@@ -817,7 +825,7 @@ body, html
 
 .panels-properties-pager-property {
     float: left;
-    margin-bottom: 75px;
+    margin-bottom: 25px;
     width: 465px;
 }
 
@@ -990,7 +998,7 @@ body, html
     -moz-border-radius: 6px 6px 6px 6px;
     height: 44px;
     margin: 10px 0;
-
+    padding: 0 10px;
     position: relative;
 }
 
@@ -1071,9 +1079,16 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 .primary-links 
 {
-    position: absolute;
-    right: 20px;
-    top:14px;
+float: right;
+margin-top: 14px;
+}
+
+
+#login-link
+{
+    float: right;
+    margin-top: 8px;
+    margin-left: 10px;
 }
 
 #footer ul li a
@@ -1527,6 +1542,16 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 {
     height: 251px;
 }
+
+
+
+#property-form-gmap-picker
+{
+    width: 500px;
+    height: 300px;
+}
+
+
 #property-form-description-column-container
 {
     margin-bottom: 25px;
@@ -2383,7 +2408,7 @@ div.footer-section a{
     color: #76BB3A;
     font-size: 1.4em;
     margin: 0 0 5px;
-    padding: 10px 0 0 15px;
+    padding: 10px 0 0 8px;
 }
 
 .properties-pager-property-title
@@ -2509,7 +2534,7 @@ properties-pager
 }
 
 
-#interests-calculator p lable
+#interests-calculator p label
 {
     margin-right: 30px;
 }
@@ -2566,7 +2591,7 @@ properties-pager
     color: #76BB3A;
     font-size: 1.4em;
     margin: 0 0 5px;
-    padding: 10px 0 0 15px;
+    padding: 10px 0 0 5px;
 }
 
 .propiedad-viewer-detalle span
@@ -2638,7 +2663,7 @@ properties-pager
     margin-bottom: 15px;
 }
 
-#property-main-photo-container lable,
+#property-main-photo-container label,
 #property-main-photo-container input{
     display: block;
 }
@@ -2865,7 +2890,7 @@ properties-pager
 
 #user-viewer
 {
-    padding: 0 10px;
+    padding: 0 7px;
 }
 
 #user-viewer-company
@@ -2936,8 +2961,8 @@ properties-pager
 #company-user-viewer-container #user-viewer-info {
     float: left;
     height: 80px;
-    padding-left: 10px;
-    width: 230px;
+    padding-left: 0;
+    width: auto;
 }
 
 #user-viewer-fax
@@ -3000,6 +3025,29 @@ properties-pager
 
 
 /*user-viewer END*/
+
+
+
+/**** breadcrumb ****/
+#breadcrumb
+{
+    margin-bottom: 10px;
+    position: relative;
+}
+
+#breadcrumb-back-to-results
+{
+    position: absolute;
+    left: 545px;
+}
+
+
+#breadcrumb a 
+{
+    color: #333333;
+}
+
+/**** breadcrumb ENDS****/
 
 
 /*price-currency*/
@@ -3326,9 +3374,9 @@ properties-pager
     color: white;
     float: left;
     font-size: 1em;
-    height: 22px;
+    height: 18px;
     padding-left: 5px;
-    padding-top: 0;
+    padding-top: 4px;
 }
 
 .properties-search-results-pager-property-title {
@@ -3545,10 +3593,14 @@ properties-pager
     width: 190px;
 }
 
+
+
+
 .members-pager-agente-photo-container
 {
     
     display: block;
+    width: 150px;
 }
 
 #members-pager {
@@ -3557,6 +3609,7 @@ properties-pager
     float: left;
     margin-top: 15px;
     padding: 0 10px;
+    min-width: 235px;
 }
 .members-pager-agente{
 
@@ -3566,20 +3619,7 @@ properties-pager
     width: 196px;
 
 }
-.members-pager-agente-name
-{
-<<<<<<< HEAD
-    color: #76BC3B;
 
-    padding-left: 5px;
-=======
-     color: #333333;
-
->>>>>>> origin/master
-    width: 191px;
-
-
-}
 .members-pager-agente-numero-propiedades{
     color: #418e30;
 }
@@ -3589,22 +3629,23 @@ properties-pager
     margin-bottom: 5px;
 
 }
-.members-pager-agente-propierties .members-pager-agente-properties-label{
+.members-pager-agente-propierties .members-pager-agente-properties-label {
     background-image: url("/images/common/lightGreenItemBackground.png");
     color: white;
     display: block;
-    height: 20px;
-    float:left;
+    float: left;
+    height: 18px;
+    padding-top: 2px;
 }
 .members-pager-agente-last
 {
     border-right: none;
     padding: 0;
 }
-
+.members-pager-agente-name {
+    width: 150px;
+}
 /*members-pager END*/
-
-
 
 
 /*user-info*/

@@ -7,30 +7,15 @@
         <p>Seleccione los criterios que usted considere m&aacute;s importantes para que la b&uacute;squeda avanzada le presente los resultados m&aacute;s precisos.</p>
         <div id="advanced-filter-first-inputs">
 
-            <lable class=" house-field apartment-field lot-field penthouse-field mall-field building-field warehouse-field office-field land-field" for="advanced-filter-property-type">Tipo:</lable> 
-            <select  class="house-field apartment-field lot-field penthouse-field mall-field building-field warehouse-field office-field land-field" id="advanced-filter-property-type" name="property-type">
-                <option value="house">Casa</option>
-                <option value="apartment">Apartamento</option>
-                <option value="penthouse">Penthouse</option>
-                <option value="mall"> Local Comercial</option>
-                <option value="building">Edificio</option>
-                <option value="warehouse">Nave Industrial</option>
-                <option value="office">Oficina</option>
-                <option value="lot">Solar</option>
-                <option value="lot">Finca</option>
-            </select>
+            <label for="advanced-filter-property-type">Tipo:</label>
+            <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_types'],array("id"=>"advanced-filter-property-type","name"=>"type"));?>                      
 
 
-
-
-
-            <lable class="house-field apartment-field lot-field penthouse-field mall-field building-field warehouse-field office-field land-field" for="advanced-filter-sector">Sector:</lable> 
-
-            <select class="house-field apartment-field lot-field penthouse-field mall-field building-field warehouse-field office-field land-field" id="advanced-filter-sector" name="property-sector">
-                <option>Cerro Alto</option>                    
-            </select>
-
-
+            <label for="advanced-filter-sector">Sector:</label> 
+            <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'],array("id"=>"advanced-filter-sector","name"=>"neighborhood"));?>
+            
+            <label for="advanced-filter-province">Provinces:</label> 
+            <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['provinces'],array("id"=>"advanced-filter-province","name"=>"province"));?>
 
 
         </div>
@@ -38,54 +23,50 @@
         <div id="advanced-filter-left-inputs">
 
 
-            <lable  for="advanced-filter-property-min-price">Precio Min:</lable>
-            <input  type="text" id="advanced-filter-property-min-price" name="property-min-price"/>
+            <label  for="advanced-filter-property-min-price">Precio Min:</label>
+            <input  type="text" id="advanced-filter-property-min-price" data-null-value="" name="min-price"/>
+
+
+            <label  for="advanced-filter-property-max-price" >Precio Max:</label>
+            <input  type="text"  id="advanced-filter-property-min-price" data-null-value="" name="max-price"/>
 
 
 
-            <lable  for="advanced-filter-property-max-price" >Precio Max:</lable>
-            <input  type="text"  id="advanced-filter-property-min-price" name="property-max-price"/>
+
+            <label class="hiddable house-field apartment-field  penthouse-field  building-field construction-project-field" for="advanced-filter-property-bedrooms">Habitaciones:</label>
+            <input class="hiddable house-field apartment-field  penthouse-field building-field construction-project-field" type="text" data-null-value=""  id="advanced-filter-property-bedrooms" name="bedrooms"/>
 
 
 
-
-            <lable class="hiddable house-field apartment-field  penthouse-field  land-field" for="advanced-filter-property-bedrooms">Habitaciones:</lable>
-            <input class="hiddable house-field apartment-field  penthouse-field  land-field" type="text"  id="advanced-filter-property-bedrooms" name="property-bedrooms"/>
-
-
-
-            <lable class="hiddable house-field apartment-field  penthouse-field mall-field  warehouse-field office-field land-field" for="advanced-filter-property-bathrooms">Ba&ntilde;os:</lable>
-            <input class="hiddable house-field apartment-field  penthouse-field mall-field  warehouse-field office-field land-field" type="text" id="advanced-filter-property-bathrooms" name="property-bathrooms"/>
+            <label class="hiddable house-field apartment-field  penthouse-field mall-field  warehouse-field office-field building-field construction-project-field" for="advanced-filter-property-bathrooms">Ba&ntilde;os:</label>
+            <input class="hiddable house-field apartment-field  penthouse-field mall-field  warehouse-field office-field building-field construction-project-field"  data-null-value="" type="text" id="advanced-filter-property-bathrooms" name="bathrooms"/>
 
 
 
-            <lable class="hiddable house-field apartment-field penthouse-field building-field office-field land-field" for="advanced-filter-property-parkings">Parqueo:</lable>
-            <input class="hiddable house-field apartment-field penthouse-field building-field office-field land-field" type="text" id="advanced-filter-property-parkings" name="property-parkings"/>
+            <label class="hiddable house-field apartment-field penthouse-field building-field office-field warehouse-field construction-project-field" for="advanced-filter-property-parkings">Parqueo:</label>
+            <input class="hiddable house-field apartment-field penthouse-field building-field office-field warehouse-field construction-project-field" data-null-value="" type="text" id="advanced-filter-property-parkings" name="parkings"/>
 
 
         </div>
 
         <div id="advanced-filter-right-inputs">
 
-            <lable  class="hiddable house-field apartment-field  penthouse-field  warehouse-field office-field land-field" for="advanced-filter-property-kitchens">Cocinas:</lable>
-            <input  class="hiddable house-field apartment-field penthouse-field   warehouse-field office-field land-field" type="text" id="advanced-filter-property-kitchen" name="property-terrain"/>
+            <label  class="hiddable house-field apartment-field  penthouse-field  warehouse-field office-field building-field construction-project-field" for="advanced-filter-property-kitchens">Cocinas:</label>
+            <input  class="hiddable house-field apartment-field penthouse-field   warehouse-field office-field building-field construction-project-field" data-null-value="" type="text" id="advanced-filter-property-kitchen" name="kitchens"/>
 
-            <lable class="hiddable house-field apartment-field  penthouse-field  warehouse-field office-field land-field" for="advanced-filter-property-livingroom">Salas:</lable>
-            <input class="hiddable house-field apartment-field  penthouse-field  warehouse-field office-field land-field" type="text" id="advanced-filter-property-livingroom" name="property-livingroom"/>
+            <label class="hiddable house-field apartment-field  penthouse-field  warehouse-field office-field building-field construction-project-field" for="advanced-filter-property-livingroom">Salas:</label>
+            <input class="hiddable house-field apartment-field  penthouse-field  warehouse-field office-field building-field construction-project-field" data-null-value="" type="text" id="advanced-filter-property-livingroom" name="livingroom"/>
 
-            <lable  class="hiddable house-field apartment-field  penthouse-field  mall-field building-field warehouse-field office-field land-field" for="advanced-filter-property-stories">Niveles:</lable>
-            <input  class="hiddable house-field apartment-field penthouse-field  mall-field building-field warehouse-field office-field " type="text" id="advanced-filter-property-stories" name="property-stories"/>
-
-
-            <lable  class="hiddable house-field apartment-field  penthouse-field  lot-field building-field warehouse-field office-field land-field" for="advanced-filter-property-terrain">Terreno:</lable>
-            <input  class="hiddable house-field apartment-field  penthouse-field  lot-field  building-field warehouse-field office-field land-field" type="text" id="advanced-filter-property-terrain" name="property-terrain"/>
+            <label  class="hiddable house-field apartment-field  penthouse-field  mall-field building-field warehouse-field office-field construction-project-field" for="advanced-filter-property-stories">Niveles:</label>
+            <input  class="hiddable house-field apartment-field penthouse-field  mall-field building-field warehouse-field office-field construction-project-field" data-null-value="" type="text" id="advanced-filter-property-stories" name="stories"/>
 
 
+            <label  class="hiddable house-field  lot-field building-field warehouse-field office-field land-field construction-project-field" for="advanced-filter-property-terrain">Terreno:</label>
+            <input  class="hiddable house-field lot-field  building-field warehouse-field office-field land-field construction-project-field" data-null-value=""  type="text" id="advanced-filter-property-terrain" name="terrain"/>
 
 
-
-            <lable class="hiddable house-field apartment-field penthouse-field  mall-field building-field warehouse-field office-field land-field" for="advanced-filter-property-construction">Construcci&oacute;n:</lable>
-            <input class="hiddable house-field apartment-field  penthouse-field mall-field building-field warehouse-field office-field land-field"  type="text" id="advanced-filter-property-construction" name="property-construction"/>
+            <label class="hiddable house-field apartment-field penthouse-field  mall-field building-field warehouse-field office-field construction-project-field" for="advanced-filter-property-construction">Construcci&oacute;n:</label>
+            <input class="hiddable house-field apartment-field  penthouse-field mall-field building-field warehouse-field office-field construction-project-field"  data-null-value="" type="text" id="advanced-filter-property-construction" name="construction"/>
 
 
 

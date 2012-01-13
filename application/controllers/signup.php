@@ -51,8 +51,7 @@ class Signup extends CI_Controller {
 
 
         $newUser->name = isset($userInfo['signup-client-name'])? $userInfo['signup-cleint-name'] : $userInfo['signup-company-name'];        
-        if(isset($userInfo['signup-apellido']))
-            $newUser->lastname = $userInfo['signup-lastname'];       
+        
         $newUser->email = $userInfo['signup-email'];
         $newUser->password = $userInfo['signup-password'];
         $newUser->tel = $userInfo['signup-tel'];

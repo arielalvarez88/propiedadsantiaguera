@@ -15,7 +15,8 @@ class Miembros extends CI_Controller {
         
         $data['topRightSide'] = $this->load->view('blocks/members_header', '', true);
         $members_pager_view_variables = $this->get_members_info_for_memebers_pager_view($section);
-        $members_pager_view_variables['section'] =  $section;
+        $members_pager_view_variables['section'] =  $section.'-';
+        $members_pager_view_variables['title'] =  $section;
         $data['bottomLeftSide'] = $this->load->view('blocks/members_pager', $members_pager_view_variables, true);
         $this->load->view('page', $data);
     }
@@ -59,7 +60,7 @@ class Miembros extends CI_Controller {
         foreach($members as $member)
         {
             $member = User_factory::get_user_from_object($member);
-            $variables['members_array'][] = array("id" => $member->id, "name" => $member->name.' '.$member->lastname, "photo"=> $member->photo, "published_properties" => $member->get_number_of_posted_properties() );
+            $variables['members_array'][] = array("id" => $member->id, "name" => $member->name, "photo"=> $member->photo, "published_properties" => $member->get_number_of_posted_properties() );
         }
         
         return $variables;
@@ -195,9 +196,9 @@ class Miembros extends CI_Controller {
         $agent = new User($id);
 
 
-        $data['message'] = $is_himself ? "Está seguro que desea eliminar su cuenta?" : "Está seguro que desea eleminar al agente " . $agent->name . ' ' . $agent->lastname;
+        $data['message'] = $is_himself ? "Está seguro que desea eliminar su cuenta?" : "Está seguro que desea eleminar al agente " . $agent->name;
         $data['yes_href'] = "/miembros/confirmacion_eliminar/" . $id;
-        $data['no_href'] = $this->session->flashdata('referrer');
+        $data['no_href'] = "/panel/cuenta";
         $blocks['topLeftSide'] = $this->load->view("blocks/are_you_sure", $data, true);
         $this->load->view('page', $blocks);
     }

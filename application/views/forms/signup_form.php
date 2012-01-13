@@ -2,11 +2,18 @@
 $client_type = isset($client_type) ? $client_type : null;
 $inscriber_type = isset($inscriber_type) ? $inscriber_type : null;
 $edit_client_id = isset($edit_client_id) ? $edit_client_id : null;
-$hide_this_field_if_company_agent_is_editing_his_account = isset($hide_this_field_if_company_agent_is_editing_his_account) ? $hide_this_field_if_company_agent_is_editing_his_account : '';
+
+
+$hide_this_field_if_company_agent_is_editing_his_account =$inscriber_type == Environment_vars::$maps['texts_to_id']['user_types']['Agente de Empresa'] ? 'hidden' : '';
+
+
 $user_types = isset($user_types) ? $user_types : Environment_vars::$maps['texts_to_id']['user_types'];
 $errors = isset ($errors) ? $errors : null;
 $info_messages = isset ($info_messages) ? $info_messages : null;
 $edit =  isset($edit) ? $edit : false;
+
+$hide_user_type_field = $edit || $client_type == Environment_vars::$maps['texts_to_id']['user_types']['Agente de Empresa'];
+
 ?>
 
 <form enctype="multipart/form-data" id="signup-form" accept-charset="utf-8" method="post" action="<?php echo base_url(); ?>usuario/validate<?php echo  $edit ? '/edit' : ''; ?>">
@@ -15,13 +22,13 @@ $edit =  isset($edit) ? $edit : false;
         <div id="new-user-type" <?php echo $edit? 'class="hidden"' : '';?>>     
 
 
-            <p class="form-section-header <?php echo $hide_this_field_if_company_agent_is_editing_his_account;?>"><img class="form-section-number " id="new-user-type-number" src="/images/common/greenNumber1.png"><span>Tipo de usuario</span></p>
+            <p class="form-section-header <?php echo $hide_user_type_field? 'hidden' : '';?>"><img class="form-section-number " id="new-user-type-number" src="/images/common/greenNumber1.png"><span>Tipo de usuario</span></p>
 
-            <?php echo  Html_helper::get_select_from_key_value($user_types, array("id" => "new-user-type-value", "name" => "signup-client-type", "class" => $hide_this_field_if_company_agent_is_editing_his_account), '', $client_type) ;?> 
+            <?php echo  Html_helper::get_select_from_key_value($user_types, array("id" => "new-user-type-value", "name" => "signup-client-type", "class" => $hide_user_type_field ? 'hidden' : ''), '', $client_type) ;?> 
         </div>
 
 
-        <p class="form-section-header"><img class="form-section-number <?php echo $edit || $hide_this_field_if_company_agent_is_editing_his_account? 'hidden' : '';?>" src="/images/common/greenNumber2.png"/><span>Informaci&oacute;n General</span></p>
+        <p class="form-section-header"><img class="form-section-number <?php echo $hide_user_type_field? 'hidden' : '';?>" src="/images/common/greenNumber2.png"/><span>Informaci&oacute;n General</span></p>
         
   
      <?php if ($info_messages): ?>
@@ -45,10 +52,7 @@ $edit =  isset($edit) ? $edit : false;
 
         <label for="signup-client-name" class="agent-particular-field company-agent-field agent-particular-requester-field <?php echo $hidder_class_for_agent_or_particular; ?> <?php echo $hide_this_field_if_company_agent_is_editing_his_account;?>" >Nombre:<span class="required">*</span></label> 
         <input <?php echo isset($clientName) ? 'value="' . $clientName . '"' : ''; ?> name="signup-name" class=" agent-particular-field required  company-agent-field agent-particular-requester-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account;?> <?php echo $hidder_class_for_agent_or_particular; ?>" type="text" id="signup-client-name"/>
-
-        <label for="signup-client-lastname" class="agent-particular-field company-agent-field agent-particular-requester-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account;?> <?php echo $hidder_class_for_agent_or_particular; ?>">Apellido:<span class="required">*</span></label> 
-        <input <?php echo isset($clientLastname) ? 'value="' . $clientLastname . '"' : ''; ?> name="signup-lastname" class="agent-particular-field required company-agent-field agent-particular-requester-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account;?> <?php echo $hidder_class_for_agent_or_particular; ?>" type="text" id="signup-client-lastname"/>
-
+        
 
 
         <label for="signup-email" class="company-agent-field agent-particular-field company-field company-requester-field agent-particular-requester-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account;?>">Email:<span class="required">*</span></label>

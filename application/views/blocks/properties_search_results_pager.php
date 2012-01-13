@@ -14,7 +14,7 @@ $number_of_visible_numbers_in_pager = isset($number_of_visible_numbers_in_pager)
 <div id="properties-search-results-pager">
     
     <div id="properties-search-results-pager-order-by">
-        <span id="properties-search-results-pager-order-by-header">Resultados</span>
+        <span id="properties-search-results-pager-order-by-header">Resultados(<?php echo $number_of_properties;?>)</span>
         
                 <select id="properties-search-results-pager-order-by-options">
                 <option value="price_desc">Precio Mayor a menor</option>
@@ -34,10 +34,16 @@ $number_of_visible_numbers_in_pager = isset($number_of_visible_numbers_in_pager)
         <p id="properties-search-results-pager-previous"  class="previous-pager-button"><img alt="flecha-anterior" src="/images/common/previousPagerButtonArrow.png"/><span>Anterior</span></p>
         
     </div>
+    <?php if(!$filtered_properties):?>
+        
+                <p class="info-messages">No hubo resultados</p>
+    <?php endif;?>
     
     <div id="properties-search-results-pager-results-container">
         
     
+        
+        
     <?php foreach ($filtered_properties as $property):?>
         
         <?php if($i % $properties_in_a_page== 0):?>
@@ -54,18 +60,43 @@ $number_of_visible_numbers_in_pager = isset($number_of_visible_numbers_in_pager)
             <div class="properties-search-results-pager-property-info-feautures">
                 
                 <ul>
-                <li>Tipo: <?php echo Environment_vars::$maps['id_to_html']['property_types'][$property->type];?></li>
-                <li>Habitaciones: <?php echo $property->livingrooms;?></li>
-                <li>Ba&ntilde;os: <?php echo $property->bathrooms;?></li>
-                <li>Pisos: <?php echo $property->stories;?></li>
-                <li>Cocinas: <?php echo $property->kitchens;?></li>
+                    <li>Tipo: <?php echo Environment_vars::$maps['id_to_html']['property_types'][$property->type];?></li>
+                    
+                    <?php if($property->livingrooms):?>
+                        <li>Habitaciones: <?php echo $property->livingrooms;?></li>
+                    <?php endif;?>
+                        
+                        <?php if($property->bathrooms):?>
+                    <li>Ba&ntilde;os: <?php echo $property->bathrooms;?></li>
+                    <?php endif;?>
+                    
+                    <?php if($property->stories):?>
+                    <li>Pisos: <?php echo $property->stories;?></li>
+                    <?php endif;?>
+                    
+                    <?php if($property->kitchens):?>
+                    <li>Cocinas: <?php echo $property->kitchens;?></li>
+                    <?php endif;?>
             </ul>
             <img class="properties-search-results-pager-property-divisor" src="/images/common/diagonalDivisor.png" alt="divisor-diagonal"/>
             <ul>
-                <li>Salas: <?php echo $property->bathrooms;;?></li>
+                
+                <?php if($property->bathrooms):?>
+                <li>Salas: <?php echo $property->bathrooms;?></li>
+                <?php endif;?>
+                
+                <?php if($property->parkings):?>
                 <li>Parqueos: <?php echo $property->parkings;?></li>
+                <?php endif;?>
+                
+                <?php if($property->terrain):?>
                 <li>Terreno: <?php echo $property->terrain;?> Mt2</li>
+                <?php endif;?>
+                
+                
+                <?php if($property->construction):?>
                 <li>Construcci&oacute;n: <?php echo $property->construction;?> Mt2</li>
+                <?php endif;?>
             </ul>
             </div>
             
@@ -88,6 +119,15 @@ $number_of_visible_numbers_in_pager = isset($number_of_visible_numbers_in_pager)
         
         
     <?php endforeach;?>
+        
+        
+        
+
+        
+        
+        
+        
+        
     
     </div>
     

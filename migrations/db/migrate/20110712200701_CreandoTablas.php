@@ -6,8 +6,7 @@ class CreandoTablas extends Ruckusing_BaseMigration {
         
         $this->execute("SET NAMES 'utf8'");
         $users = $this->create_table('users');
-        $users->column('name', 'string', array('limit' => 20));
-        $users->column('lastname', 'string', array('limit' => 20));
+        $users->column('name', 'string', array('limit' => 39));       
         $users->column('email', 'string', array('limit' => 40));
         $users->column('password', 'string', array('limit' => 40));
         $users->column('website', 'string', array('limit' => 60));

@@ -91,11 +91,7 @@ class Usuario extends CI_Controller {
             $extra_parameters['inscriber_type'] = $inscriber_is_logged->type;
 
         
-        if ($inscriber instanceof Company_agent_user && isset ($extra_parameters['edit'])) {
-          
-            $extra_parameters['hide_this_field_if_company_agent_is_editing_his_account'] = 'hidden';
-          
-        }
+
 
         $blocks['topLeftSide'] = $this->load->view('forms/signup_form', $extra_parameters, true);
         $this->load->view('page.php', $blocks);
@@ -162,7 +158,7 @@ class Usuario extends CI_Controller {
 
 
         $repopulateForm['clientName'] = $user_info_getter->get_name();
-        $repopulateForm['clientLastname'] = $user_info_getter->get_lastname();
+        
 
 
 
@@ -203,7 +199,6 @@ class Usuario extends CI_Controller {
   
         $user_handler->save_name($user, $user_info_getter);
 
-        $user_handler->save_lastname($user, $user_info_getter);
 
         $user_handler->save_company($user, $inscriber);
         $user_handler->save_type($user, $user_info_getter);

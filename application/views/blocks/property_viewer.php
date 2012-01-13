@@ -35,14 +35,37 @@
             <h3 id="propiedad-viewer-detalles-tipo"></h3>
             <ul id="propiedad-viewer-detalles">
                 <li class="propiedad-viewer-detalle"><span>Tipo:</span> <?php echo $property_type; ?></li>
-                <li class="propiedad-viewer-detalle"><span>Habitaciones:</span> <?php echo $property->bedrooms; ?></li>            
-                <li class="propiedad-viewer-detalle"><span>Ba&ntilde;os:</span> <?php echo $property->bathrooms; ?></li>
-                <li class="propiedad-viewer-detalle"><span>Pisos:</span> <?php echo $property->stories; ?></li>
-                <li class="propiedad-viewer-detalle"><span>Cocinas:</span> <?php echo $property->kitchens; ?></li>
-                <li class="propiedad-viewer-detalle"><span>Salas:</span> <?php echo $property->livingrooms; ?></li>
+                <?php if($property->bedrooms):?>
+                    <li class="propiedad-viewer-detalle"><span>Habitaciones:</span> <?php echo $property->bedrooms; ?></li>            
+                <?php endif;?>
+                    
+                <?php if($property->bathrooms):?>
+                    <li class="propiedad-viewer-detalle"><span>Ba&ntilde;os:</span> <?php echo $property->bathrooms; ?></li>
+                <?php endif;?>
+                    
+                <?php if($property->stories):?>
+                    <li class="propiedad-viewer-detalle"><span>Pisos:</span> <?php echo $property->stories; ?></li>
+                <?php endif;?>
+                    
+                <?php if($property->kitchens):?>
+                    <li class="propiedad-viewer-detalle"><span>Cocinas:</span> <?php echo $property->kitchens;?></li>
+                <?php endif;?>
+                
+                <?php if($property->livingrooms):?>
+                <li class="propiedad-viewer-detalle"><span>Salas:</span> <?php echo $property->livingrooms;?></li>
+                <?php endif;?>
+                
+                <?php if($property->parkings):?>
                 <li class="propiedad-viewer-detalle"><span>Parqueos:</span> <?php echo $property->parkings; ?></li>
-                <li class="propiedad-viewer-detalle"><span>Terreno:</span> <?php echo $property->terrain; ?> Mt2.</li>
-                <li class="propiedad-viewer-detalle"><span>Construcci&oacute;n:</span> <?php echo $property->construction; ?> Mt2.</li>
+                <?php endif;?>
+                
+                                <?php if($property->terrain):?>
+                <li class="propiedad-viewer-detalle"><span>Terreno:</span> <?php echo $property->terrain;?> Mt2.</li>
+                <?php endif;?>
+                
+                                <?php if($property->construction):?>
+                <li class="propiedad-viewer-detalle"><span>Construcci&oacute;n:</span> <?php echo $property->construction;?> Mt2.</li>
+                <?php endif;?>
 
             </ul>
 

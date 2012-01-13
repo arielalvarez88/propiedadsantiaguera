@@ -7,9 +7,8 @@
 bindEvent = function(elementOrSelector,eventName,handler)
 {
     
-    
     if( typeof elementOrSelector != 'string' &&  typeof elementOrSelector != 'object')
-        throw "The first argumnet of eventBinder must be a selector or an element.";
+        throw "The first argumnet of bindEvent must be a selector or an element.";
     
     var element;
     element = $(elementOrSelector); 
@@ -126,7 +125,6 @@ initializePropiedadViewer = function (){
         cleartype: true,
         cleartypeNoBg: true,
         pagerEvent:    'click',
-        
         activePagerClass: 'propiedad-viewer-active-selector',
         pagerAnchorBuilder: function (idx, slide){
             
@@ -708,22 +706,6 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
 };
 
 
-
-
-eventBinder = function (elementSelector, eventName, eventFunctionToCall) {
-    if( typeof elementSelector != "string" || typeof eventName != "string" || typeof eventFunctionToCall != "function")
-    {
-        throw "Arguments suplied to eventBinder are invalid.";
-    }
-        
-    
-    var element  = $(elementSelector);
-    element.unbind(eventName);
-    element.bind(eventName, eventFunctionToCall);
-    
-};
-
-
 initializeViewLoaderElements = function(){
   
 
@@ -828,11 +810,6 @@ initializeInputsWithDefaultText = function(){
     var basicFilterReferenceNumber = new InputsWithDefaultText("#basic-filter-reference-number", "N\xfamero de referencia");
 };
 
-initializeMaps = function() {
-    var map = $('#property-ubication-gmap-map');
-    if(map.length>0)
-        drawPropertyUbication('16,16');
-};
 
 
 extendJquery = function (){
@@ -905,6 +882,16 @@ function commify(num) {
 };
 
 
+IFilter = function (){
+
+};
+IFilter.getMaxPrice= function(){};
+IFilter.getMinPrice= function(){};
+
+
+
+
+
 Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderContainerSelector, searchButtonSelector, valuesToSliderParameters, sliderMinValue,sliderMaxValue,sliderMinInitialValue,sliderMaxInitialValue,step,submitUrl){
    
     var thisObject = this;
@@ -933,33 +920,35 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderCo
         var infoContainersElementsInFilter = $(infoContainersElementsInFilterSelector);
        
         var queryString = "?";
+        
         $.each(infoContainersElementsInFilter, function(index, element){
             var jqueryElement = $(element);
             queryString += jqueryElement.val() != jqueryElement.attr("data-null-value")?  jqueryElement.attr("name") + "=" + jqueryElement.val()+ "&" : '';           
-           
         });
-        var minPrice= thisObject.sliderElement.getRange()[0];
-           
-           
-        var maxPrice = thisObject.sliderElement.getRange()[1];
-        queryString += "minprice=" + minPrice + "&" +"maxprice=" + maxPrice;
-        queryString += "&absoluteMin=" + thisObject.sliderElement.minValue + "&" +"absoluteMax=" + thisObject.sliderElement.maxValue + "&step=" + thisObject.sliderElement.step;
-           
-           
-           
-        var noLimitToMaxPrice = thisObject.sliderElement.getMax() <= maxPrice;
-        queryString +=  noLimitToMaxPrice? "&nopricelimit=true" : "";
-           
+        
+        if(sliderChangerElementSelector)
+        {
+            var minPrice= thisObject.sliderElement.getRange()[0];
+            var maxPrice = thisObject.sliderElement.getRange()[1];
+            queryString += "minprice=" + minPrice + "&" +"maxprice=" + maxPrice;
+            queryString += "&absoluteMin=" + thisObject.sliderElement.minValue + "&" +"absoluteMax=" + thisObject.sliderElement.maxValue + "&step=" + thisObject.sliderElement.step;
+            var noLimitToMaxPrice = thisObject.sliderElement.getMax() <= maxPrice;
+            queryString +=  noLimitToMaxPrice? "&nopricelimit=true" : "";
+        }
+        else
+            queryString += 'filter-type=advanced';
+        
+        
         window.location.href = submitUrl + queryString;
        
        
     };
+
    
    
    
-   
-    eventBinder(sliderChangerElementSelector, "change", thisObject.sliderChangerElementEvent);
-    eventBinder(searchButtonSelector, "click", thisObject.submitEvent);
+    bindEvent(sliderChangerElementSelector, "change", thisObject.sliderChangerElementEvent);
+    bindEvent(searchButtonSelector, "click", thisObject.submitEvent);
    
    
    
@@ -967,6 +956,73 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderCo
    
    
 };
+
+
+
+//Filter = function(f){
+//   
+//    var thisObject = this;
+//    this.sliderChangerElement = $(sliderChangerElementSelector);
+//    this.searchButtonElement = $(searchButtonSelector);
+//    this.sliderElement = new Slider(sliderContainerSelector, sliderMinValue, sliderMaxValue, sliderMinInitialValue, sliderMaxInitialValue, '#basic-filter-price-slider-min-display', '#basic-filter-price-slider-max-display', step);
+//    this.filterElement = $(filterContainerSelector);
+//    this.sliderChangerElementEvent = function(){
+//     
+//
+//        for(value in valuesToSliderParameters)
+//        {
+//            if(thisObject.sliderChangerElement.val() == value)
+//            {
+//                  
+//                thisObject.sliderElement = new Slider(sliderContainerSelector, valuesToSliderParameters[value].minValue, valuesToSliderParameters[value].maxValue, valuesToSliderParameters[value].minInitialValue, valuesToSliderParameters[value].maxInitialValue, "#basic-filter-price-slider-min-display", "#basic-filter-price-slider-max-display", valuesToSliderParameters[value].step);
+//            }
+//        }
+//   
+//    };
+//   
+//   
+//   
+//   
+//   
+//   
+//    bindEvent(sliderChangerElementSelector, "change", thisObject.sliderChangerElementEvent);
+//    bindEvent(searchButtonSelector, "click", thisObject.submitEvent);
+//     
+//   
+//};
+//
+//
+//Filter.prototype.submitEvent = function(event)
+//    {
+//        event.preventDefault();
+//        var infoContainersElementsInFilterSelector = filterContainerSelector + " input:not(#basic-filter-search-button), " + filterContainerSelector + " select";
+//        var infoContainersElementsInFilter = $(infoContainersElementsInFilterSelector);
+//       
+//        var queryString = "?";
+//        
+//        $.each(infoContainersElementsInFilter, function(index, element){
+//            var jqueryElement = $(element);
+//            queryString += jqueryElement.val() != jqueryElement.attr("data-null-value")?  jqueryElement.attr("name") + "=" + jqueryElement.val()+ "&" : '';           
+//        });
+//        
+//        if(sliderChangerElementSelector)
+//        {
+//            var minPrice= thisObject.sliderElement.getRange()[0];
+//            var maxPrice = thisObject.sliderElement.getRange()[1];
+//            queryString += "minprice=" + minPrice + "&" +"maxprice=" + maxPrice;
+//            queryString += "&absoluteMin=" + thisObject.sliderElement.minValue + "&" +"absoluteMax=" + thisObject.sliderElement.maxValue + "&step=" + thisObject.sliderElement.step;
+//            var noLimitToMaxPrice = thisObject.sliderElement.getMax() <= maxPrice;
+//            queryString +=  noLimitToMaxPrice? "&nopricelimit=true" : "";
+//        }
+//        else
+//            queryString += 'filter-type=advanced';
+//        
+//        
+//        window.location.href = submitUrl + queryString;
+//       
+//       
+//    };
+
 
 
 initializeFilters = function(){
@@ -992,6 +1048,27 @@ initializeFilters = function(){
             step: 5000
         }
     }, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "/propiedades/buscar");
+    
+    
+    var basicFilter = new Filter("#basic-filter","#basic-filter-condition", "#basic-filter-price-slider","#basic-filter-search-button",{
+        1: {
+            minValue: 0, 
+            maxValue: 50000000, 
+            maxInitialValue: 50000000, 
+            minInitialValue: 0, 
+            step: 500000
+        }, 
+        2: {
+            minValue: 0, 
+            maxValue: 300000, 
+            maxInitialValue: 300000, 
+            minInitialValue: 0, 
+            step: 5000
+        }
+    }, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "/propiedades/buscar");
+   
+   
+   
    
 };
 
@@ -1116,7 +1193,7 @@ initializeHiderAndShowerElement = function(){
         7:".office-field",
         8:".lot-field",         
         9:".land-field",
-        10: ".construction-project"
+        10: ".construction-project-field"
     }, "#advanced-filter .hiddable", true, "change");
     
     
@@ -1240,7 +1317,7 @@ AutoReactivationButton = function(elementSelector){
     
     this.HideOrShowReactivationMessage = function(){
         if(thisObject.element.is(":checked"))
-           thisObject.messageToHide.hide();
+            thisObject.messageToHide.hide();
         else
             thisObject.messageToHide.show();
     }
@@ -1265,11 +1342,142 @@ initializeAjaxAttributeValueSenders = function(){
    
 };
 
-initializeAutoreactivateButtons = function(){
+initializeAutoreactivateButtons = function(callbackFunctionName){
 
-var autreactivationButtons = new AutoReactivationButton(".panels-properties-pager-property-info-buttons-reactivation");
+    var autreactivationButtons = new AutoReactivationButton(".panels-properties-pager-property-info-buttons-reactivation");
 
 };
+
+
+
+loadGmapAsychronously = function (callbackFunctionName)
+{
+   var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyATiZqxuB91Vo9_8-ccgLWLHgBfASbIUjE&sensor=true&callback="+ callbackFunctionName;
+  document.body.appendChild(script);
+}
+
+
+
+    
+GmapShowCoordenate = function(mapElementSelector,coordenatesElementSelector, zoom){
+   var thisObject = this;
+    this.mapContainer;
+    this.coordenateElement;
+    this.zoom;
+    this.map;
+    this.marker;
+    
+    
+    (thisObject.init = function()
+    {
+        thisObject.initializeMap(mapElementSelector,coordenatesElementSelector, zoom);
+    })();
+    
+
+};
+
+GmapShowCoordenate.prototype.initializeMap = function (mapContainerSelectorElement,coordenatesElementSelector, zoom){
+   
+   var mapElementId = mapContainerSelectorElement.substring(1,mapContainerSelectorElement.length) ;
+   
+    this.mapContainer=  $(mapContainerSelectorElement);
+    
+    this.coordenateElement = $(coordenatesElementSelector);
+    
+    
+    this.zoom = zoom;
+    
+    var initalCoordanatesInString = this.coordenateElement.attr("value");
+    
+  
+    
+    var defaultLat = initalCoordanatesInString.split(",")[0];
+    var defaultLong = initalCoordanatesInString.split(",")[1];
+    
+    
+    var initialPosition  = new google.maps.LatLng(defaultLat,defaultLong);
+    
+      
+    var defaultOptions =  {center: initialPosition, zoom: this.zoom, mapTypeId: google.maps.MapTypeId.ROADMAP};
+    
+    
+    
+    this.map= new google.maps.Map(document.getElementById(mapElementId), defaultOptions); 
+    
+    
+   this.marker = new google.maps.Marker({position: initialPosition, map: this.map, title:"Ubicación de la propiedad."});
+   
+  
+};
+
+
+
+GmapPicker = function(mapElementSelector,coordenatesElementSelector, zoom)
+{
+    
+    var thisObject = this;
+    this.mapElement =  $(mapElementSelector);
+    this.coordenateElement = $(coordenatesElementSelector);
+    this.zoom;
+    this.map;
+    this.marker;
+    
+    this.setPickerFunctionality = function ()
+    {
+         var clickListener = function(event){
+       
+            thisObject.marker.setPosition(event.latLng);
+            
+            var latitudeLongitudValue = event.latLng.lat() + ',' + event.latLng.lng();
+            thisObject.coordenateElement.attr("value",latitudeLongitudValue);
+         };
+         
+         google.maps.event.addListener(thisObject.map, 'click', clickListener);
+    };
+    
+    (this.init = function(){
+
+        
+        thisObject.initializeMap(mapElementSelector,coordenatesElementSelector, zoom);
+        thisObject.setPickerFunctionality();
+      
+    })();
+    
+    
+    
+    
+   
+};
+
+GmapPicker.prototype =  GmapShowCoordenate.prototype;
+
+
+
+initializeGmapPickers = function()
+{
+    var propertyFormPicker = new GmapPicker("#property-form-gmap-picker","#property-form-coordenates", 7);
+}
+
+initializeGmapShowers = function()
+{
+   var propertySection = new GmapShowCoordenate("#property-ubication-gmap-map","#property-ubication-gmap-coordenate",7);
+}
+
+initializeGmaps = function()
+{
+     var propertyUbicationPicker = $("#property-form-gmap-picker");
+     var propertyUbicationShower = $("#property-ubication-gmap-map");
+     
+     
+    if(propertyUbicationPicker.length <= 0 && propertyUbicationShower.length <=0)
+        return;
+    
+    var initializeFunction = propertyUbicationPicker.length >0 ? "initializeGmapPickers" : "initializeGmapShowers";
+    loadGmapAsychronously(initializeFunction);
+};
+
 
 
 $(document).ready
@@ -1286,7 +1494,7 @@ $(document).ready
     initializeViewLoaderElements();
     initializeForms();
     initializeOverlays();
-    initializeMaps();
+
     initializeInterestsCalculators();
     initializeHideShowWithArrowDirectionElement();
     initializeHiderAndShowerElement();    
@@ -1295,7 +1503,7 @@ $(document).ready
     hideElementsWithHiddenClass();    
     initializeAjaxAttributeValueSenders();
     initializeAutoreactivateButtons();
-    
+    initializeGmaps();    
 /*comentario*/    
 }
 

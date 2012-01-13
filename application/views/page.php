@@ -28,13 +28,13 @@ require_once realpath("./application/libraries/User_factory.php");
 
                     <div>
                         <ul >
-                            <li><a class="no-decoration-anchor">RESUMEN</a>|</li>
+                            
                             <?php if($can_create_properties ):?>
                                 <li><a class="no-decoration-anchor" href="/panel/propiedades">PROPIEDADES</a>|</li>
                             <?php endif;?>
                                 
-                            <li><a class="no-decoration-anchor" href="/panel/cuenta">CUENTA</a>|</li>
-                            <li><a class="no-decoration-anchor ">SOLICITUDES</a><?php echo $can_create_agents? '|' : '';?></li>
+                            <li><a class="no-decoration-anchor" href="/panel/cuenta">CUENTA</a><?php echo $can_create_agents? '|' : '';?></li>
+<!--                            <li><a class="no-decoration-anchor ">SOLICITUDES</a><?php echo $can_create_agents? '|' : '';?></li>-->
                             <?php if($can_create_agents):?>
                                 <li><a class="no-decoration-anchor" href="/panel/agentes">AGENTES</a></li>
                             
@@ -73,19 +73,16 @@ require_once realpath("./application/libraries/User_factory.php");
                             </div>
                             <div id="login-links">
                                 <p>
-                                    <?php if (!$loggedUser || !$loggedUser->name): ?>
-                                        <a id="login-link" class="no-decoration-anchor" href="/ajax/view_loader/blocks/login">LOG IN</a>
-                                        <span class="vertical-serparator"><img src="/images/dude_icon.png" alt="dude"/></span>
-                                    <?php endif; ?>
+                                    
 
 
 
-                                    <a class="no-decoration-anchor" href="#">CONTACTENOS</a>
+                                    <a class="no-decoration-anchor" href="/contacto">CONTACTENOS</a>
                                     <span class="vertical-serparator"><img src="/images/phone_icon.png" alt="dude"/></span>
 
 
 
-                                    <a id="header-help" class="no-decoration-anchor" href="#login">AYUDA</a>
+                                    <a id="header-help" class="no-decoration-anchor" href="/soporte">SOPORTE</a>
                                     <span class="vertical-serparator"><img src="/images/help_icon.png" alt="help"/></span>
                                 </p>  
                                 
@@ -102,14 +99,23 @@ require_once realpath("./application/libraries/User_factory.php");
                     </div>
 
                     <div id="top-menu-container">
+                        
+                        <?php if (!$loggedUser || !$loggedUser->name): ?>
+                                        <a id="login-link" class="no-decoration-anchor" href="/ajax/view_loader/blocks/login"><img src="/images/primaryLinks/loginButton.png" alt="Login Button"/></a>
+                        <?php endif; ?>
+                                        
                         <ul class="primary-links">
                             <li class="menu-111 first"><a title="" href="<?php echo base_url(); ?>">INICIO</a></li>
                             <li class="menu-269"><a  href="/propiedades">PROPIEDADES</a></li>
                             <li class="menu-270"><a  href="/miembros">MIEMBROS</a></li>
                             <li class="menu-271"><a  href="/planes">PRECIOS</a></li>
-                            <li class="menu-271"><a  href="/planes">SOLICITUDES</a></li>
-                            <li class="menu-272 last"><a  href="/contacto">CONTACTO</a></li>
-                        </ul>                   
+                            
+                            
+                        </ul>                
+                        
+                        
+                                        
+                        
                     </div>
                 </div>
                 <div id="content">
@@ -218,9 +224,7 @@ require_once realpath("./application/libraries/User_factory.php");
                         <li>
                             <a href="/planes">Precios</a>
                         </li>
-                        <li>
-                            Solicitudes
-                        </li>
+                        
                         <li>
                             Publicidad
                         </li>
@@ -280,6 +284,7 @@ require_once realpath("./application/libraries/User_factory.php");
 
 <![endif]-->
         
+        <script type="text/javascript" src="/js/Interfaces.js" type="text/javascript" ></script>
         <script type="text/javascript" src="/js/jquery-1.7.1.js" type="text/javascript" ></script>
         <script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript" ></script>        
         <script type="text/javascript" src="/js/jquery.cycle.all.js" type="text/javascript" ></script>

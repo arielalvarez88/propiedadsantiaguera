@@ -96,7 +96,7 @@ class cron_jobs extends CI_Controller {
         $emailer = new Mailer();
 
         $user_name_and_lastname = $user->name;
-        $user_name_and_lastname .= $user->lastname ? $user->lastname : '';
+        
         $template = new Expiring_property_notification_email_template($user_name_and_lastname, $user_expiring_property_objects_to_send_email);
         $emailer->send_email($template, $user_name_and_lastname, $user->email);
     }

@@ -23,7 +23,7 @@ class User_info_getter_from_object implements IUser_info_getter
      }
      
     public function get_lastname(){
-      return $this->user_object->lastname;  
+      
     }
     
     public function get_email(){
