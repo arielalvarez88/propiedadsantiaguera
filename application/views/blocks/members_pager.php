@@ -1,15 +1,18 @@
 <?php
 
 $members_array = isset($members_array) ? $members_array : array();
-$section = isset($section) ? $section : null;
+$title = isset($title) ? $title : '';
+$section = isset($section) ? $section : '';
 $thumbs_width =  isset($thumbs_width) ? $thumbs_width : 142;
 $thumbs_height= isset($thumbs_height) ? $thumbs_height : 142; 
 $i=1;
 ?>
 
+<div id="<?php echo $section;?>members-pager-container">
+    
 
 <div id="members-pager">
-    <h2 id="members-pager-header"><?php echo ucwords($section);?></h2>
+    <h2 id="members-pager-header"><?php echo ucwords($title);?></h2>
 
     
     <?php foreach($members_array as $member_array):?>
@@ -31,3 +34,5 @@ $i=1;
 
 
 </div>
+    
+    </div>

@@ -56,7 +56,7 @@ $company_view_object = $user_to_view instanceof Company_user || $user_to_view in
     
     
     <div id="user-info-particular-or-company">
-        <h2><?php echo $company_view_object->name.' '.$company_view_object->lastname;?></h2>
+        <h2><?php echo $company_view_object->name;?></h2>
             <p><?php echo $company_view_object->get_type_text();?></p>
             
         <img id="user-info-particular-or-company-photo" src="<?php echo "/thumbnail_creator/resize_per_user_type/". urlencode(base64_encode($company_view_object->photo)).'/'.$company_view_object->type?>" alt="foto-agente-de-empresa"/>

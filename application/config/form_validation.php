@@ -10,7 +10,7 @@ $config = array(
         array(
             'field' => 'signup-company-name',
             'label' => 'nombre de la compañía',
-            'rules' => 'required|max_length[20]'
+            'rules' => 'required|max_length[39]'
         ), array(
             'field' => 'signup-password',
             'label' => 'contraseña',
@@ -32,12 +32,7 @@ $config = array(
         array(
             'field' => 'signup-name',
             'label' => 'nombre',
-            'rules' => 'required|max_length[20]'
-        ),
-        array(
-            'field' => 'signup-lastname',
-            'label' => 'apellido',
-            'rules' => 'required|max_length[20]'
+            'rules' => 'required|max_length[39]'
         ),
         array(
             'field' => 'signup-password',
@@ -59,12 +54,7 @@ $config = array(
         array(
             'field' => 'signup-name',
             'label' => 'nombre',
-            'rules' => 'required|max_length[20]'
-        ),
-        array(
-            'field' => 'signup-lastname',
-            'label' => 'apellido',
-            'rules' => 'required|max_length[20]'
+            'rules' => 'required|max_length[39]'
         ),        
         array(
             'field' => 'signup-email',
@@ -81,7 +71,7 @@ $config = array(
        array(
             'field' => 'signup-company-name',
             'label' => 'nombre de la compañía',
-            'rules' => 'required|max_length[20]'
+            'rules' => 'required|max_length[39]'
         ),
         array(
             'field' => 'signup-password-confirmation',

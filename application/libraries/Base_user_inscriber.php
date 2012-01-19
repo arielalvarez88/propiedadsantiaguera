@@ -84,7 +84,7 @@ class Base_user_inscriber implements IUser_inscriber {
 
     public function save_lastname($user_object, $user_info_getter) {
       
-        $user_object->lastname = $user_info_getter->get_lastname();
+        
         
     }
 

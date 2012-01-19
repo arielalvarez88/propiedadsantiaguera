@@ -8,37 +8,33 @@ class Propiedades extends CI_Controller {
         $this->load->library("image_helper");
         $this->load->library("filter_builder");
     }
-    
-    
-    private function get_count_of_each_type_of_property()
-    {
-        
+
+    private function get_count_of_each_type_of_property() {
+
         $type_to_count_map = array();
         $propery_counter = new Property();
-        
-        $type_to_count_map['number_of_houses'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Casa'])->count();
-        $type_to_count_map['number_of_apartments']= $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Apartamento'])->count();
-        $type_to_count_map['number_of_buildings'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Edificio'])->count();
-        $type_to_count_map['number_of_penthouses'] =$propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Penthouse'])->count();
-        $type_to_count_map['number_of_offices'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Oficina'])->count();
-        $type_to_count_map['number_of_malls'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Local Comercial'])->count();
-        $type_to_count_map['house_warehouses'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Nave Industrial'])->count();
-        $type_to_count_map['number_of_in_construction_propjects'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Proyecto en Construcción'])->count();
-        $type_to_count_map['number_of_lots'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Solar'])->count();
-        $type_to_count_map['number_of_lands'] = $propery_counter->where("display_property",1)->where("type",  Environment_vars::$maps['texts_to_id']['property_types']['Finca'])->count();
-        
+
+        $type_to_count_map['number_of_houses'] = $propery_counter->where("display_property", 1)->where("type", Environment_vars::$maps['texts_to_id']['property_types']['Casa'])->count();
+        $type_to_count_map['number_of_apartments'] = $propery_counter->where("display_property", 1)->where("type", Environment_vars::$maps['texts_to_id']['property_types']['Apartamento'])->count();
+        $type_to_count_map['number_of_buildings'] = $propery_counter->where("display_property", 1)->where("type", Environment_vars::$maps['texts_to_id']['property_types']['Edificio'])->count();
+        $type_to_count_map['number_of_penthouses'] = $propery_counter->where("display_property", 1)->where("type", Environment_vars::$maps['texts_to_id']['property_types']['Penthouse'])->count();
+        $type_to_count_map['number_of_offices'] = $propery_counter->where("display_property", 1)->where("type", Environment_vars::$maps['texts_to_id']['property_types']['Oficina'])->count();
+        $type_to_count_map['number_of_malls'] = $propery_counter->where("display_property", 1)->where("type", Environment_vars::$maps['texts_to_id']['property_types']['Local Comercial'])->count();
+        $type_to_count_map['house_warehouses'] = $propery_counter->where("display_property", 1)->where("type", Environment_vars::$maps['texts_to_id']['property_types']['Nave Industrial'])->count();
+        $type_to_count_map['number_of_in_construction_propjects'] = $propery_counter->where("display_property", 1)->where("type", Environment_vars::$maps['texts_to_id']['property_types']['Proyecto en Construcción'])->count();
+        $type_to_count_map['number_of_lots'] = $propery_counter->where("display_property", 1)->where("type", Environment_vars::$maps['texts_to_id']['property_types']['Solar'])->count();
+        $type_to_count_map['number_of_lands'] = $propery_counter->where("display_property", 1)->where("type", Environment_vars::$maps['texts_to_id']['property_types']['Finca'])->count();
         return $type_to_count_map;
-        
     }
 
     public function index() {
 
         $data['header'] = $this->load->view('blocks/header', '', true);
-        
+
         $property_types_view_variables = $this->get_count_of_each_type_of_property();
-        $data['centerSection'] = $this->load->view('blocks/property_types', $property_types_view_variables, true);                                
-        
-        
+
+        $data['centerSection'] = $this->load->view('blocks/property_types', $property_types_view_variables, true);
+
         $this->load->view('page', $data);
     }
 
@@ -56,7 +52,7 @@ class Propiedades extends CI_Controller {
     public function ver($id=null) {
 
         $no_id_passed = !$id || !is_numeric($id);
-        
+
         if ($no_id_passed)
             redirect("/pagina_no_valida");
 
@@ -83,7 +79,7 @@ class Propiedades extends CI_Controller {
 
         $property_viewer_data['property'] = $property;
 
-        
+
         if (!$user || (is_object($user) && ($property_owner->id != $user->id))) {
 
             $property->visits += 1;
@@ -91,7 +87,7 @@ class Propiedades extends CI_Controller {
         }
 
 
-        
+
         $property_type = Environment_vars::$maps['id_to_html']['property_types'][$property->type];
 
 
@@ -128,14 +124,15 @@ class Propiedades extends CI_Controller {
 
 
 
-        $propertyInfo['company'] = $property_owner->get_company_object();
+        if($user instanceof Company_agent_user)
+            $propertyInfo['company'] = $property_owner->get_company_object();
 
         $data['topLeftSide'] = $this->load->view('blocks/property_viewer', $property_viewer_data, true);
 
         $user_viewer_view_data['user_name'] = $property_owner->name;
-        
-        $user_viewer_view_data['user_name'] .= $property_owner->lastname ? ' '.$property_owner->lastname : '';
-        
+
+
+
 
 
         $user_viewer_view_data['company_or_particular_view'] = $property_owner instanceof Company_user ? 'company-' : 'particular-';
@@ -165,8 +162,6 @@ class Propiedades extends CI_Controller {
         }
 
 
-
-
         $moneda_precio_view_variables = $this->get_moneda_precio_view_variables($property);
         $property_info_view_variables = $this->get_property_info_view_variables($property);
 
@@ -180,6 +175,9 @@ class Propiedades extends CI_Controller {
 
         $data['topRightSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propertyInfo, true);
 
+
+
+
         $data['topLeftSide'] .= $this->load->view('blocks/property_info', $property_info_view_variables, true);
 
         $data['bottom'] = $this->load->view('blocks/solicitudDeInformacion', $propertyInfo, true);
@@ -189,6 +187,51 @@ class Propiedades extends CI_Controller {
         }
 
 
+        $breadcrumb = new BreadCrumb(base_url() . "propiedades/buscar");
+        $breadcrumb->construct_breadcrumb_for_property($property);
+
+        $breadcrumb_view_variables['breadcrumb'] = $breadcrumb->print_breadcrumb();
+
+
+        $request_signature = md5($_SERVER['REQUEST_URI'] . $_SERVER['QUERY_STRING'] . print_r($_POST, true));
+        $last_request_signature = $this->session->userdata("last_request_signature");
+        
+        $is_a_refresh = $request_signature == $last_request_signature;
+        
+        
+        if ($is_a_refresh ) {
+                
+            $last_search_url = $this->session->userdata("last_search_url");
+            
+                if($last_search_url)
+                        $breadcrumb_view_variables['back_to_results_link'] = $last_search_url;
+                        
+                        
+        } else{
+            
+            
+            $was_refered_from_search_page = ! (strpos($this->session->flashdata("referer"), "propiedades/buscar") == false);
+            
+            if($was_refered_from_search_page)
+            {
+                $this->session->set_userdata("last_search_url",$_SERVER['HTTP_REFERER']);
+                $breadcrumb_view_variables['back_to_results_link'] = $_SERVER['HTTP_REFERER'];
+                
+            }
+                
+        }
+        
+        $this->session->set_userdata("last_request_signature",$request_signature);
+                
+
+        
+
+        
+        
+
+
+
+        $data['top'] = $this->load->view('blocks/breadcrumb', $breadcrumb_view_variables, true);
         $this->load->view('page', $data);
     }
 
@@ -220,31 +263,61 @@ class Propiedades extends CI_Controller {
         return $properties_photos_filenames;
     }
 
-    
-    private function reset_validation_rules()
-    {
-           $this->form_validation->_field_data = array();      
-            $this->form_validation->_error_array = array();
-            $this->form_validation->_error_messages = array();
-            $this->form_validation->error_string = '';
-      
+    private function reset_validation_rules() {
+        $this->form_validation->_field_data = array();
+        $this->form_validation->_error_array = array();
+        $this->form_validation->_error_messages = array();
+        $this->form_validation->error_string = '';
     }
-    
+
+    public function eliminar($property_id=0) {
+
+        $property = $this->get_property_from_logged_user($property_id);
+        $data['message'] = 'Está seguro que desea eliminar la propiedad "' . $property->title . '" su cuenta?';
+        $data['yes_href'] = "/propiedades/confirmacion_eliminar/" . $property_id;
+        $data['no_href'] = "/panel/propiedades";
+        $blocks['topLeftSide'] = $this->load->view("blocks/are_you_sure", $data, true);
+
+        $this->load->view("page", $blocks);
+    }
+
+    private function get_property_from_logged_user($property_id=0) {
+        if (!$property_id)
+            redirect("/");
+
+        $user = $this->get_logged_user_or_redirect_to_please_login();
+
+        $property = $user->property->where("id", $property_id)->get();
+
+        if (!$property || !$property->id)
+            redirect("/");
+
+        return $property;
+    }
+
+    public function confirmacion_eliminar($property_id=0) {
+
+
+        $property = $this->get_property_from_logged_user($property_id);
+        $property->delete();
+        redirect("/panel/propiedades");
+    }
+
     public function validate($property_id=0) {
 
         $properties_photos_filenames = array();
         $property_condition_for_validation_purposes = '';
 
         $filtered_post = $this->input->post();
-        
-        $type_validation = "property_".  Environment_vars::$maps['ids_to_text']['property_types_validation'][$filtered_post['property-type']];
-        
-        $sell_rent_validation = "property_". Environment_vars::$maps['ids_to_text']['sell_rent_validation'][$filtered_post['property-condition']];
-        
 
-        
-        if ($this->form_validation->run("property_common") == false || $this->form_validation->run($type_validation) == false || $this->form_validation->run( $sell_rent_validation ) == false) {
-            
+        $type_validation = "property_" . Environment_vars::$maps['ids_to_text']['property_types_validation'][$filtered_post['property-type']];
+
+        $sell_rent_validation = "property_" . Environment_vars::$maps['ids_to_text']['sell_rent_validation'][$filtered_post['property-condition']];
+
+
+
+        if ($this->form_validation->run("property_common") == false || $this->form_validation->run($type_validation) == false || $this->form_validation->run($sell_rent_validation) == false) {
+
             $this->add_property_error();
             return;
         } else {
@@ -264,40 +337,52 @@ class Propiedades extends CI_Controller {
 
     public function buscar($order_by = null) {
 
-        
-        
         $filtered_get = $this->input->get();
         $properties_filters_container = new Property();
+        $breadcrumb = new BreadCrumb(base_url() . "propiedades/buscar");
+        $breadcrumb->add_link("Inicio", base_url(), "Inicio");
+
+
 
         $search_by_reference = isset($filtered_get['ref-number']) && is_numeric($filtered_get['ref-number']) ? true : false;
 
         if ($search_by_reference) {
-
             redirect("propiedades/ver/" . $filtered_get['ref-number']);
         } else {
 
-            Filter_builder::build_property_posted_filter($properties_filters_container);
-            Filter_builder::build_property_type_filter($filtered_get, $properties_filters_container);
-            Filter_builder::build_property_max_price_filter($filtered_get, $properties_filters_container);
-            Filter_builder::build_property_min_price_filter($filtered_get, $properties_filters_container);
-            Filter_builder::build_property_condition_filter($filtered_get, $properties_filters_container);
-            Filter_builder::build_property_neighborhood_filter($filtered_get, $properties_filters_container);
-            Filter_builder::build_property_province_filter($filtered_get, $properties_filters_container);
+            Filter_builder::build_property_type_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_province_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_neighborhood_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_posted_filter($properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_max_price_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_min_price_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_condition_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_bedrooms_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_bathrooms_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_parkings_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_kitchens_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_livingrooms_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_stories_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_terrain_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_construction_filter($filtered_get, $properties_filters_container, $breadcrumb);
         }
 
 
 
         $filtered_properties = $properties_filters_container->get()->all;
 
-
-
-
         $filter_view_variables = $this->get_filter_view_variables($filtered_get);
+
+        $this->session->set_userdata('breadcrumb', $breadcrumb);
+        $breadcrumb_view_variables['breadcrumb'] = $breadcrumb->print_breadcrumb();
+        $views['top'] = $this->load->view("blocks/breadcrumb", $breadcrumb_view_variables, true);
 
         $views['topLeftSide'] = $this->load->view("blocks/basic_filter", $filter_view_variables, true);
 
         $search_results['filtered_properties'] = $filtered_properties;
         $search_results['condition'] = isset($filtered_get['condition']) && $filtered_get['condition'] == Environment_vars::$maps['property_conditions']['rent'] ? "rent" : "sell";
+
+
 
         $views['topRightSide'] = $this->load->view("blocks/properties_search_results_pager", $search_results, true);
 
@@ -314,6 +399,7 @@ class Propiedades extends CI_Controller {
         $variables['selected_property_type'] = isset($filtered_get) && isset($filtered_get['type']) ? $filtered_get['type'] : null;
 
         $variables['selected_property_ref_number'] = isset($filtered_get) && isset($filtered_get['ref-number']) ? $filtered_get['ref-number'] : null;
+        $variables['selected_property_province'] = isset($filtered_get) && isset($filtered_get['province']) ? $filtered_get['province'] : null;
 
         $variables['selected_property_condition'] = isset($filtered_get) && isset($filtered_get['condition']) ? $filtered_get['condition'] : null;
         return $variables;
@@ -360,6 +446,9 @@ class Propiedades extends CI_Controller {
         $newProperty->rent_price_us = isset($newPropertyInfo['property-rent-price-us']) ? $newPropertyInfo['property-rent-price-us'] : null;
         $newProperty->rent_price_dr = isset($newPropertyInfo['property-rent-price-dr']) ? $newPropertyInfo['property-rent-price-dr'] : null;
         $newProperty->type = $newPropertyInfo['property-type'];
+        $newProperty->coordenates = $newPropertyInfo['property-coordenates'];
+        
+        
 
         if ($newPropertyInfo['property-condition'] == "sell" || $newPropertyInfo['property-condition'] == "sell-rent") {
             $newProperty->sell_price_dollars = $newPropertyInfo['property-sell-price-us'];
@@ -470,7 +559,7 @@ class Propiedades extends CI_Controller {
                 $property->display_property = 1;
                 $property->post_date = NOW();
                 $property->expiration_email_sent = 0;
-                
+
                 $property->save();
                 $user->posts_left--;
             }
@@ -504,6 +593,8 @@ class Propiedades extends CI_Controller {
         $repopulateForm['property_description'] = $property->description;
         $repopulateForm['property_condition'] = $property->condition;
         $repopulateForm['property_province'] = $property->province;
+        
+        $repopulateForm['property_coordenates'] = $property->coordenates;
 
 
 

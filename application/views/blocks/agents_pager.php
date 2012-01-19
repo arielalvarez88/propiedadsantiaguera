@@ -20,7 +20,7 @@
                 <td class="agent-info <?php echo $odd ? 'odd' : 'even';?>">
                     <img class="agent-pager-agent-photo" src="<?php echo $agent->photo; ?>" alt="agent-image"/>
                     <div  class="agent-pager-agent-info">
-                        <h3><?php echo $agent->name; ?><?php echo $agent->lastname ? ' ' . $agent->lastname : ''; ?></h3>
+                        <h3><?php echo $agent->name; ?></h3>
                         <p>Publicaciones Disponibles: <?php echo $agent->posts_left; ?></p>
                         
                         <div class="agent-pager-green-buttons-container">

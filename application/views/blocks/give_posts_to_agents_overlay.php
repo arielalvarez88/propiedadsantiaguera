@@ -20,7 +20,7 @@ $i = 1;
         
         <?php foreach ($agents as $agent): ?>
         <div>
-                        <label><?php echo $agent->name.' '.$agent->lastname;?></label>
+                        <label><?php echo $agent->name;?></label>
             <input type="text" id="give-posts-to-agents-overlay-agent-<?php echo $i; ?>" name="posts-to-agent-<?php echo $i;?>"/>
             <input type="hidden" name="agent-id-<?php echo $i;?>"  value="<?php echo $agent->id;?>"/>
         </div>

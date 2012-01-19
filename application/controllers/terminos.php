@@ -12,6 +12,13 @@ class Terminos extends CI_Controller {
         $this->load->view('page',$data);
         
     }
+    
+    public function ajax()
+    {
+        $section['section'] = 'ajax-';
+        $this->load->view('blocks/terminos_view',$section);
+        
+    }
        
 }
 ?>

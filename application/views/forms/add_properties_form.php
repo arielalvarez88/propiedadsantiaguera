@@ -4,6 +4,8 @@ $property_neighborhood = isset ($property_neighborhood) ? $property_neighborhood
 $property_type = isset ($property_type) ? $property_type : false;
 $property_condition = isset ($property_condition) ? $property_condition : false;
 $property_province = isset($property_province)? $property_province : null;
+$property_coordenates = isset($property_coordenates)? $property_coordenates : "19.487516,-70.718963";
+
 ?>
 
 <?php if (isset($errors) && $errors): ?>
@@ -513,6 +515,17 @@ $property_province = isset($property_province)? $property_province : null;
 
 
     </div>
+    
+  
+    <input type="hidden" id="property-form-coordenates" name="property-coordenates" value="<?php echo $property_coordenates;?>"/>
+
+      
+    
+    <div class="form-divisor"></div>
+
+    <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber3.png"/><span>Ubicaci&oacute;n</span></p>
+    
+    <div id="property-form-gmap-picker"></div>
 
     <div class="form-buttons">
         <input id="property-form-send-button" class="form-send-button" type="image" src="/images/common/formSubmitButton.png"/>

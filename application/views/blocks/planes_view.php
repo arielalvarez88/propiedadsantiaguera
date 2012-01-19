@@ -3,6 +3,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
+
 ?>
 <h1 id="planes_main_title">Maneja tus propiedades con libertad</h1>
 <h4 id="planes_main_subtitle">Publica facilmente sin importar el dia, la hora o el lugar.</h4>
@@ -10,30 +13,30 @@
     <table id="planes_detail">
 
         <tr>
-            <td valign="top">NUMERO DE PROPIEDADES</td>
+            <td >NUMERO DE PROPIEDADES</td>
         </tr>
         <tr>      
-            <td valign="middle">DURACION POR PROPIEDAD</td>
+            <td >DURACION POR PROPIEDAD</td>
         </tr>
 
         <tr>
-            <td valign="middle" style="padding-top:7px;padding-bottom:17px;">FOTOS (15) y VIDEOS (1)</td>
+            <td >FOTOS (15) y VIDEOS (1)</td>
         </tr>
         <tr>
-            <td valign="middle" style="padding-top:18px;">PANEL ADMINISTRATIVO</td>
+            <td  >PANEL ADMINISTRATIVO</td>
+        </tr>
+<!--        <tr>
+            <td  >CREAR SOLICITUDES Y<br> RECIBIR PROPUESTAS</td>
         </tr>
         <tr>
-            <td valign="middle" >CREAR SOLICITUDES Y<br> RECIBIR PROPUESTAS</td>
-        </tr>
-        <tr>
-            <td valign="middle">ENVIO DE PROPUESTAS A TERCEROS</td>
-        </tr>
+            <td >ENVIO DE PROPUESTAS A TERCEROS</td>
+        </tr>-->
 
         <tr>
-            <td valign="middle">INFORMACION EN INGLES Y ESPA&Ntilde;OL</td>
+            <td >INFORMACION EN INGLES Y ESPA&Ntilde;OL</td>
         </tr>
         <tr>
-            <td valign="middle">LOCALIZACION DE LA PROPIEDAD EN GOOGLE MAPS</td>
+            <td >LOCALIZACION DE LA PROPIEDAD EN GOOGLE MAPS</td>
         </tr>
     </table>
 
@@ -48,7 +51,7 @@
                 <td>1</td> <td class="white">5</td> <td>10</td> <td class="white">25</td>
             </tr>
             <tr>
-                <td>30</td> <td class="white">30</td> <td>30</td> <td class="white">30</td>
+                <td>30 d&iacute;as</td> <td class="white">30 d&iacute;as</td> <td>30 d&iacute;as</td> <td class="white">30 d&iacute;as</td>
             </tr>
             <tr>
                 <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
@@ -62,17 +65,13 @@
             <tr>
                 <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
             </tr>
-            <tr>
-                <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
-            </tr>
-            <tr>
-                <td><img src="/images/x.png" alt="x"/></td> <td><img src="/images/x.png" alt="x"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
-            </tr>
+            
+            
             <tr>
                 <td>RD$1,500<br><span>RD$1,500/Propiedad</span></td> <td>RD$6,000</br><span class="white">RD$1,200/Propiedad</span></td> <td>RD$10,000</br><span>RD$1,000/Propiedad</span></td> <td>RD$20,000</br><span class="white">RD$800/Propiedad</span></td> 
             </tr>
             <tr>
-                <td><a href="/usuario/comprar_plan/basico"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="/usuario/comprar_plan/plus"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="/usuario/comprar_plan/agente"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="/usuario/comprar_plan/inmobiliaria"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td>
+                <td><a href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Basico'];?>"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Plus'];?>"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Agente'];?>"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Inmobiliaria'];?>"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td>
             </tr>
         </tbody>
         <tfoot>
@@ -125,7 +124,7 @@
         propiedad, no dude en comunicarse con nosotros y 
         le contestaremos en la brevedad posible.</br></br>
 
-        <span><strong>Aqu&iacute; les detallamos las <a href="#">pol&iacute;ticas de seguridad</a> y <a href="#">términos de uso</a>.</strong></span></p>
+        <span><strong>Aqu&iacute; les detallamos las <a href="/politicas">pol&iacute;ticas de seguridad y privacidad</a> y <a href="/terminos">términos de uso</a>.</strong></span></p>
 </div>
 
 <div id="info_segura">

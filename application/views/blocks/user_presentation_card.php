@@ -14,7 +14,7 @@ $section = isset($section) && $section ? $section : '';
         <img src="<?php echo '/thumbnail_creator/resize_per_user_type/'.urlencode(base64_encode($user->photo)).'/'.$user->type; ?>" alt="foto-del-usuario" class="users-photo"/>
         <div>
             <p class="user-presentation-card-summary-title">Nombre</p>
-            <p><?php echo $user->name; ?> <?php echo $user->lastname ? $user->lastname : '';?></p> 
+            <p><?php echo $user->name; ?></p> 
 
             <p class="user-presentation-card-summary-title">Email</p>
             <p><?php echo $user->email; ?></p>

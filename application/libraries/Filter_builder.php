@@ -13,7 +13,7 @@ require_once dirname(__FILE__) . '/Null_filter.php';
 
 class Filter_builder {
 
-    public static function build_property_min_price_filter($post, $property_object) {
+    public static function build_property_min_price_filter($post, $property_object, $breadcrumb) {
 
 
 
@@ -45,7 +45,7 @@ class Filter_builder {
         $filter->add_filter($property_object);
     }
 
-    public static function build_property_max_price_filter($post, $property_object) {
+    public static function build_property_max_price_filter($post, $property_object,$breadcrumb) {
 
         $price_limit = isset($post['nopricelimit']) ? false : true;
 
@@ -71,7 +71,7 @@ class Filter_builder {
         $filter->add_filter($property_object);
     }
 
-    public static function build_property_type_filter($post, $property_object) {
+    public static function build_property_type_filter($post, $property_object,$breadcrumb) {
 
         $type_filter_activated = isset($post['type']);
         if (!$type_filter_activated)
@@ -81,13 +81,16 @@ class Filter_builder {
         $value = isset($post['type']) ? $post['type'] : null;
         if(!$value)
             return;
+        
+        
+        $breadcrumb->add_to_section(Environment_vars::$maps['ids_to_text']['property_types'][$value],'?type='.$value,"Buscar");
         $filter = new Equal_to_filter($field_name, $value);
         
         
         $filter->add_filter($property_object);
     }
 
-    public static function build_property_condition_filter($post, $property_object) {
+    public static function build_property_condition_filter($post, $property_object, $breadcrumb) {
 
         $condition_filter_activated = isset($post['condition']);
         if (!$condition_filter_activated)
@@ -122,7 +125,7 @@ class Filter_builder {
    
     }
 
-    public static function build_property_neighborhood_filter($post, $property_object) {
+    public static function build_property_neighborhood_filter($post, $property_object,$breadcrumb) {
 
         $neighborhood_filter_activated = isset($post['neighborhood']);
         if (!$neighborhood_filter_activated)
@@ -135,12 +138,12 @@ class Filter_builder {
         $value = isset($post['neighborhood']) ? $post['neighborhood'] : null;
         if(!$value)
             return;
-        
+        $breadcrumb->add_to_section(Environment_vars::$maps['ids_to_text']['property_neighborhoods'][$value],'&neighborhood='.$value,"Buscar");
         $filter = new Equal_to_filter($field_name, $value);
         $filter->add_filter($property_object);
     }
 
-    public static function build_property_reference_filter($post, $property_object) {
+    public static function build_property_reference_filter($post, $property_object,$breadcrumb) {
 
         $reference_filter_activated = isset($post['ref-number']);
         if (!$reference_filter_activated)
@@ -155,7 +158,7 @@ class Filter_builder {
     }
     
     
-    public static function build_property_province_filter($post, $property_object) {
+    public static function build_property_province_filter($post, $property_object,$breadcrumb) {
 
         $province_filter_activated = isset($post['province']);
         if (!$province_filter_activated)
@@ -165,9 +168,145 @@ class Filter_builder {
         $value = isset($post['province']) ? $post['province'] : null;
         if(!$value)
             return;
+        
+        $breadcrumb->add_to_section(Environment_vars::$maps['ids_to_text']['provinces'][$value],'&province='.$value,"Buscar");
         $filter = new Equal_to_filter($field_name, $value);
         $filter->add_filter($property_object);
     }
+    
+    
+    
+    public static function build_property_bathrooms_filter($post, $property_object,$breadcrumb) {
+
+        $bathrooms_filter_activated = isset($post['bathrooms']);
+        if (!$bathrooms_filter_activated)
+            return;
+
+        $field_name = 'bathrooms';
+        $value = $post['bathrooms'];
+        
+        if(!$value)
+            return;
+        
+        $filter = new Equal_to_filter($field_name, $value);
+        $filter->add_filter($property_object);
+    }
+    
+    
+    public static function build_property_bedrooms_filter($post, $property_object,$breadcrumb) {
+
+        $bedrooms_filter_activated = isset($post['bedrooms']);
+        if (!$bedrooms_filter_activated)
+            return;
+
+        $field_name = 'bedrooms';
+        $value = $post['bedrooms'];
+        
+        if(!$value)
+            return;
+        
+        $filter = new Equal_to_filter($field_name, $value);
+        $filter->add_filter($property_object);
+    }
+    
+     public static function build_property_parkings_filter($post, $property_object,$breadcrumb) {
+
+        $parkings_filter_activated = isset($post['parkings']);
+        if (!$parkings_filter_activated )
+            return;
+
+        $field_name = 'parkings';
+        $value = $post['parkings'];
+        
+        if(!$value)
+            return;
+        
+        $filter = new Equal_to_filter($field_name, $value);
+        $filter->add_filter($property_object);
+    }
+    
+    
+      public static function build_property_kitchens_filter($post, $property_object,$breadcrumb) {
+
+        $kitchens_filter_activated = isset($post['kitchens']);
+        if (!$kitchens_filter_activated)
+            return;
+
+        $field_name = 'kitchens';
+        $value = $post['kitchens'];
+        
+        if(!$value)
+            return;
+        
+        $filter = new Equal_to_filter($field_name, $value);
+        $filter->add_filter($property_object);
+    }
+    
+    public static function build_property_livingrooms_filter($post, $property_object,$breadcrumb) {
+
+        $livingrooms_filter_activated = isset($post['livingrooms']);
+        if (!$livingrooms_filter_activated)
+            return;
+
+        $field_name = 'livingrooms';
+        $value = $post['livingrooms'];
+        
+        if(!$value)
+            return;
+        
+        $filter = new Equal_to_filter($field_name, $value);
+        $filter->add_filter($property_object);
+    }
+    
+    public static function build_property_stories_filter($post, $property_object,$breadcrumb) {
+
+        $stories_filter_activated = isset($post['stories']);
+        if (!$stories_filter_activated)
+            return;
+
+        $field_name = 'stories';
+        $value = $post['stories'];
+        
+        if(!$value)
+            return;
+        
+        $filter = new Equal_to_filter($field_name, $value);
+        $filter->add_filter($property_object);
+    }
+    
+    
+    public static function build_property_terrain_filter($post, $property_object,$breadcrumb) {
+
+        $terrain_filter_activated = isset($post['terrain']);
+        if (!$terrain_filter_activated )
+            return;
+
+        $field_name = 'terrain';
+        $value = $post['terrain'];
+        
+        if(!$value)
+            return;
+        
+        $filter = new Equal_to_filter($field_name, $value);
+        $filter->add_filter($property_object);
+    }
+    
+    public static function build_property_construction_filter($post, $property_object,$breadcrumb) {
+
+        $construction_filter_activated = isset($post['construction']);
+        if (!$construction_filter_activated )
+            return;
+
+        $field_name = 'construction';
+        $value = $post['construction'];
+        
+        if(!$value)
+            return;
+        
+        $filter = new Equal_to_filter($field_name, $value);
+        $filter->add_filter($property_object);
+    }
+    
 
 }
 
