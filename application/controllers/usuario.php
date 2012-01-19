@@ -67,33 +67,39 @@ class Usuario extends CI_Controller {
         redirect(base_url());
     }
 
-    public function signup($client_type_string= null, $requester=null, $extra_parameters = array()) {
+    public function signup() {
 
-        $client_type_is_valid = $client_type_string == null || array_key_exists($client_type_string, Environment_vars::$maps['html_to_id']['user_types']);
-
-        if (!$client_type_is_valid)
-            redirect("/pagina_no_valida");
-
-        $inscriber = User_handler::getLoggedUser();
-        if (!isset($extra_parameters['user_types'])) {
-            if ($requester)
-                $extra_parameters['user_types'] = Environment_vars::$maps['texts_to_id']['user_types_requesters'];
-            else
-                $extra_parameters['user_types'] = $inscriber && ($inscriber instanceof Company_user || ($inscriber instanceof Company_agent_user && isset($extra_parameters['edit'])))? Environment_vars::$maps['texts_to_id']['user_types'] : Environment_vars::$maps['texts_to_id']['user_types_if_not_company'];
-        }
-
-        if (!isset($extra_parameters['client_type']))
-            $extra_parameters['client_type'] = $client_type_string ? Environment_vars::$maps['html_to_id']['user_types'][$client_type_string] : Environment_vars::$maps['texts_to_id']['user_types']['Particular'];
-
-        $inscriber_is_logged = User_handler::getLoggedUser();
-
-        if ($inscriber_is_logged)
-            $extra_parameters['inscriber_type'] = $inscriber_is_logged->type;
-
+        if(!$_SERVER['HTTPS'])
+            redirect(Environment_vars::$paths['https_base_site']."/usuario/signup");
         
+        $signup_form_parameters = $this->get_new_user_signup_form_variables();
 
+        $this->load_signup_form($signup_form_parameters);
+    }
+    
+    
+   private function get_new_user_signup_form_variables($extra_parameters=array())
+   {
+       $inscriber = User_handler::getLoggedUser();
+        
+        $user_can_only_post_requests = true;
 
-        $blocks['topLeftSide'] = $this->load->view('forms/signup_form', $extra_parameters, true);
+        $signup_form_parameters['user_types'] = Environment_vars::$maps['texts_to_id']['user_types_requesters'];
+        
+        $signup_form_parameters['client_type'] = Environment_vars::$maps['texts_to_id']['user_types_requesters']['Particular'];
+        
+        $signup_form_parameters = array_merge($signup_form_parameters,$extra_parameters);
+
+        return $signup_form_parameters;
+       
+   }
+    
+    private function load_signup_form($signup_form_parameters = array())
+    {  
+        
+        
+        $signup_form_parameters['form_content'] = $this->load->view('forms/signup_form_content', $signup_form_parameters, true);
+        $blocks['topLeftSide'] = $this->load->view('blocks/signup_form_container', $signup_form_parameters, true);
         $this->load->view('page.php', $blocks);
     }
 
@@ -174,15 +180,11 @@ class Usuario extends CI_Controller {
         $repopulateForm['description'] = $user_info_getter->get_description();
 
         $repopulateForm['client_type'] = $user_info_getter->get_type();
+        
+        $repopulateForm = array_merge($repopulateForm, $extra_parameters);        
+    
+        $this->load_signup_form ($repopulateForm);
 
-        $repopulateForm = array_merge($repopulateForm, $extra_parameters);
-
-        $requester_only_user = in_array($user_info_getter->get_type(), Environment_vars::$maps['texts_to_id']['user_types_requesters']);
-
-        if ($requester_only_user)
-            $this->signup('', true, $repopulateForm);
-        else
-            $this->signup('', '', $repopulateForm);
     }
 
     private function save_user($user_handler, $editing_user=false) {
@@ -246,19 +248,21 @@ class Usuario extends CI_Controller {
                 
                 redirect('/panel/agentes');
             }
-                
-            
-  
-            
-            
+      
    
     }
 
-    public function editar($user_id=null, $extra_paramaters = array()) {
+    
+    
+    public function editar($user_id=null) {
+        if(!$_SERVER['HTTPS'])
+            redirect(Environment_vars::$paths['https_base_site'].'/usuario/editar/'.$user_id);
 
         $logged_user = $this->get_logged_user_or_redirect_to_please_login();
-
-        $user_to_edit = '';
+        
+        
+        
+              $user_to_edit = '';
         $is_himself = '';
         $is_his_agent = '';
 
@@ -275,15 +279,61 @@ class Usuario extends CI_Controller {
             $user_to_edit = $logged_user;
         else
             redirect("/pagina_no_valida");
-
-        $extra_paramaters['edit'] = true;
-
-
-
-
-        $extra_paramaters['edit_client_id'] = $user_to_edit->id;
-        $this->reppopulate_signup_form($extra_paramaters, $user_to_edit, true);
+        
+        $edit_form_parameters = $this->get_edit_form_parameters($user_id);
+        
+        $this->reppopulate_signup_form($edit_form_parameters, $user_to_edit);
     }
+    
+    
+    private function get_edit_form_parameters($user_id = null, $extra_parameters =array())
+    {
+        $logged_user = $this->get_logged_user_or_redirect_to_please_login();
+
+        $user_to_edit = '';
+        $is_himself = '';
+        $is_his_agent = '';
+               
+        if ($user_id) {
+            $is_his_agent = $logged_user->has_agent($user_id);
+            $is_himself = $user_id == $logged_user->id;
+        } else {
+            $is_himself = true;
+        }
+
+        if ($is_his_agent)
+            $user_to_edit = User_factory::get_user_from_id ($user_id);
+        elseif ($is_himself)
+            $user_to_edit = $logged_user;
+        else
+            redirect("/pagina_no_valida");
+
+        $edit_form_parameters['edit'] = true;
+        $edit_form_parameters['edit_client_id'] = $user_to_edit->id;
+        
+        
+        if($user_to_edit instanceof IUser_requests_only)
+        {
+            
+            $edit_form_parameters['user_types'] = Environment_vars::$maps['texts_to_id']['user_types_requesters'];
+        }
+            
+        
+            
+        
+        else
+            $edit_form_parameters['user_types'] = Environment_vars::$maps['texts_to_id']['user_types'];
+        
+        $edit_form_parameters['client_type'] = $user_to_edit->type;
+        
+        
+        $edit_form_parameters['user_to_edit'] = $user_to_edit;
+        
+        $edit_form_parameters = array_merge($extra_parameters,$edit_form_parameters);
+        return $edit_form_parameters;
+        
+    }
+    
 
     public function comprar_plan($plan_name) {
         $user = $this->get_logged_user_or_redirect_to_please_login();
@@ -389,11 +439,26 @@ class Usuario extends CI_Controller {
     private function error($error_messages=array(), $editing_user=false) {
 
 
+        $parameters_to_repopulate = array();
+        $user_to_edit = null;
         if ($editing_user)
-            $error_messages['edit'] = true;
-
-
-        $this->reppopulate_signup_form($error_messages);
+        {
+            $user_to_edit = $this->input->post("edit-client-id");
+            $parameters_to_repopulate = $this->get_edit_form_parameters ($user_to_edit,$error_messages);
+            $user_to_edit = $parameters_to_repopulate['user_to_edit'];
+        }
+        else
+        {
+            $parameters_to_repopulate = $this->get_new_user_signup_form_variables($error_messages);
+        }
+        
+            
+        
+        
+        
+            $this->reppopulate_signup_form($parameters_to_repopulate,$user_to_edit);
+        
+            
     }
 
 }

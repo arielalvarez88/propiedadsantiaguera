@@ -35,10 +35,12 @@ class User_info_getter_from_post implements IUser_info_getter
     }
     
     public function get_website(){
-        return  $this->post_array['signup-website']; 
+        return  isset($this->post_array['signup-website']) ? $this->post_array['signup-website'] : ''; 
     }
     public function get_description(){
-        return  $this->post_array['signup-description']; 
+        
+        
+        return isset($this->post_array['signup-description']) ?  $this->post_array['signup-description'] : ''; 
     }
     
     public function get_photo(){
@@ -46,25 +48,25 @@ class User_info_getter_from_post implements IUser_info_getter
     }
     
     public function get_tel(){
-        return  $this->post_array['signup-tel']; 
+        return   isset($this->post_array['signup-tel']) ? $this->post_array['signup-tel'] : ''; 
     }
     
     public function get_cel(){
-        return  $this->post_array['signup-cel'];
+        return  isset($this->post_array['signup-cel']) ? $this->post_array['signup-cel'] : '';
     }
     
     public function get_cel2(){
-        return  $this->post_array['signup-cel2'];
+        return  isset($this->post_array['signup-cel2']) ? $this->post_array['signup-cel2'] : '';
     }
     
     public function get_fax(){
-        return  $this->post_array['signup-fax']; ;
+        return  isset($this->post_array['signup-fax']) ? $this->post_array['signup-fax'] : ''; 
     }
     public function get_rnc(){
-        return  $this->post_array['signup-rnc']; ;
+        return  isset($this->post_array['signup-rnc']) ? $this->post_array['signup-rnc'] : '';
     }
     public function get_address(){
-        return  $this->post_array['signup-address'];
+        return  isset($this->post_array['signup-address']) ?  $this->post_array['signup-address'] : '';
     }
     public function get_type(){
       

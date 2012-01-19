@@ -1,3 +1,11 @@
+<?php
+
+$section = isset($section) ? $section : '';
+?>
+
+<div id="<?php echo $section;?>terminos-continaer">
+    
+
 <div id="terminos-holder">
     <h1 class="main-title">Términos de uso y servicio de PROPIEDOM</h1>
 
@@ -71,3 +79,5 @@
     <h3 class="main-title">8- SEGURIDAD E INTEGRIDAD DEL CONTENIDO DEL USUARIO</h3>
     <p>Propiedom provee los mejores esfuerzos para asegurar la integridad y seguridad de la información de los usuarios, incluyendo el uso de un sistema de respaldos automatizado, servidores seguros y con acceso restringido. Sin embargo, esos procesos no garantizan la seguridad completa e integridad de la información. Por consiguiente, Propiedom.</p>
 </div>
+    
+    </div>

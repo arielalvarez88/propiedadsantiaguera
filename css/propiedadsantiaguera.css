@@ -651,7 +651,7 @@ body, html
     float: left;
 }
 #user-presentation-card-summary img {
-    
+
     display: block;
     float: left;
     margin-right: 20px;
@@ -666,7 +666,7 @@ body, html
     float: left;
     margin-bottom: 20px;
     padding: 20px;
-    
+
 }
 
 #user-presentation-card-edit
@@ -2302,24 +2302,20 @@ div.footer-section a{
 #front-properties-pager-container #properties-pager
 {
 
-        
+
     background-image: url("/images/common/stripesGradient_H433.jpg");
 
 
 }
 
 #members-properties-pager-container #properties-pager{
-<<<<<<< HEAD
+    
     overflow: hidden;
     width: 797px;
     height: 636px;
-
-=======
     float:left;
-    width: 797px;
+
     
-       
->>>>>>> origin/master
 }
 
 #properties-pager
@@ -2438,7 +2434,7 @@ div.footer-section a{
 #properties-pager-properties-container,
 properties-pager
 {
-    
+
 }
 
 #members-properties-pager-container .properties-pager-page
@@ -3598,7 +3594,7 @@ properties-pager
 
 .members-pager-agente-photo-container
 {
-    
+
     display: block;
     width: 150px;
 }
@@ -3931,11 +3927,15 @@ properties-pager
 
 }
 
+#signup-form input {
+    margin-bottom: 8px;
+}
+
 #signup-form label
 {
     clear: left;
     margin-bottom: 10px;
-    width: 200px;
+    width: 165px;
 }
 
 
@@ -3952,6 +3952,17 @@ properties-pager
 {
     cursor: pointer;
 
+}
+
+
+
+
+#buy-signup-form-container #signup-form-user-type-header
+{
+    float: left;
+    margin: 0 69px 25px 0; 
+    font-size: 1em;
+    font-weight: normal;
 }
 
 
@@ -3977,8 +3988,14 @@ properties-pager
     float:left;
 }
 
+#signup-address {
+    float: left;
+    height: 60px;
+    width: 300px;
+}
 
-#signup-address
+
+#buy-signup-form-container
 {
     float: left;
 }
@@ -4222,10 +4239,26 @@ span.required{
     color: white;  
 }
 /******* Terminos y Politicas ********/
+
+
+
 #terminos-holder, #politicas-holder
 {
     padding:0 15px;
 }
+
+   #ajax-politicas-container #politicas-holder
+   {
+       width: 540px;
+       font-size: 1em;
+       background-color: white;
+       height: 300px; 
+       overflow: scroll;
+   }
+   
+
+
+
 .main-title
 {
     color:#76BA39;
@@ -4234,6 +4267,17 @@ span.required{
 {
     color:#555;
 }
+
+#ajax-terminos-continaer #terminos-holder
+{
+    width: 640px;
+    height: 300px;
+    font-size: 1em;
+    overflow: auto;
+    background-color: white;
+}
+
+
 #terminos-holder h2, #terminos-holder h3, #terminos-holder h4, #terminos-holder p,
 #politicas-holder h2, #politicas-holder h3, #politicas-holder h4, #politicas-holder p
 {
@@ -4332,11 +4376,11 @@ span.required{
     color:#333;
     font-size:9pt;
     text-align:right;
-    margin-top:131px;
+    margin-top:122px;
 }
 #planes_detail td
 {
-    padding-bottom: 20px;
+    margin-bottom: 1px;
 }
 #planes_data
 {
@@ -4345,21 +4389,9 @@ span.required{
     width:687px;
     text-align: center;
     height: 670px;
-    border-collapse:collapse;
+    
 }
-.chrome #planes_data
-{
-    background:url('/images/plans_table.png') no-repeat top center transparent;
-    color:#333;
-    width:687px;
-    text-align: center;
-    height: 650px;
-    border-collapse:collapse;
-}
-.chrome #planes_detail tr
-{
-    height:48px;
-}
+
 #planes_data th
 {
     color:#fa0;
@@ -4371,10 +4403,17 @@ span.required{
     padding:0;
     border-top: 1px solid #AFBBA1;
 }
-#planes_data tr
+#planes_data tr, #planes_detail tr
 {
     margin:0;
+    height: 62px;
 }
+
+
+#planes_detail td, #planes_data td {
+    vertical-align: middle;
+}
+
 #planes_data tbody tr:first-child td, #planes_data tbody tr:first-child
 {
     border:0;
@@ -4395,10 +4434,7 @@ span.required{
 {
     height: 509px;
 }
-.chrome #planes_data tbody
-{
-    height: 560px;
-}
+
 #planes_data a img
 {
     border:0;
@@ -4521,9 +4557,35 @@ span.required{
     float:right;
 }
 
-.form-send-button
+.form-send-button {
+    border: medium none;
+    clear: both;
+    display: block;
+    float: right;
+    
+}
+.form-send-button {
+    border: medium none;
+    clear: both;
+    display: block;
+    float: right;
+    
+}
+#buy-form-step-one-submit-button
 {
-    border: none;  
+    margin: 10px 496px 0 0;
+    cursor: pointer;
+}
+
+#buy-form-policy-and-terms
+{
+    margin-bottom: 10px;
+}
+
+#buy-form-accept-terms-label
+{
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 .tabs-container
@@ -5529,31 +5591,42 @@ ul#purchase-steps li:first-child
     margin-right: 10px;
     background-color:transparent;
 }
-ul#purchase-steps li.purchase-active-step
+
+ul#purchase-steps li.selected
 {
     background-color: #76BC3B;
     color:#fff;
 }
+
+
 ul#purchase-steps li
 {
     display:inline;
     background-color: #ccc;
-    padding:0 10px 5px 10px; 
+    padding: 5px 10px; 
     -moz-border-radius: 7px 7px 0 0;
     border-radius: 7px 7px 0 0; 
     margin:0 2px;
     text-align:center;
 }
-h3#purchase-step-1
+h3#buy-form-step-one
 {
     padding:5px 0px 5px 30px;
     background:url('../images/1-with-circle.png') top left no-repeat;
+    margin-bottom: 15px;
+}
+h3#purchase-step-2
+{
+    padding:5px 0px 5px 30px;
+    background:url('../images/2-with-circle.png') top left no-repeat;
+    margin-bottom: 20px;
 }
 .purchase-form
 {
-    text-align:right;
+
     width:350px;
     float:left;
+    padding-left: 16px;
 }
 .purchase-form input
 {
@@ -5569,24 +5642,83 @@ h3#purchase-step-1
 {
     margin-right: -65px;    
 }
+
+
+
 #purchase-form-2 span
 {
     margin-right: -190px;    
 }
-.purchase-form #purchase-form-button
+
+
+#purchase-form-2 span#buy-form-post-number-display {
+    float: none;
+    margin: 0;
+}
+
+#purchase-form-3 span#cards
+{
+    margin-right: -137px;    
+}
+#purchase-form-3 span#expiration-date
+{
+    margin-right: -145px;    
+}
+#purchase-form-3 span#cvv-question
+{
+    margin-right: -210px;    
+}
+#purchase-steps-contact-us
+{
+    float:right;
+    text-align:center;  
+    margin-right: 100px;
+}
+#purchase-steps-contact-us img
+{
+    margin-top:10px;
+}
+#purchase-form-3 select
+{
+    width:88px;
+}
+.purchase-form .purchase-form-button
 {
     float:left;
     margin-left:781px;
     margin-top:50px;
 }
-#purchase-steps-message
-{
-    float:right;
-    margin-right: 40px;
-    clear:none;
-    width:360px;
+#purchase-steps-message {
+    background: url("../images/gray-diag-bg.png") no-repeat scroll center bottom transparent;
+    clear: none;
+    float: left;
     height: 220px;
-    background: url('../images/gray-diag-bg.png') no-repeat bottom center;
+    margin-right: 40px;
+    width: 360px;
+}
+
+#buy-form-buy-button
+{
+    cursor: pointer;
+    
+}
+
+#purchase-steps-total span#buy-form-included-itbis
+{
+    font-size: 0.6em;
+}
+#buy-form-post-number-container
+{
+    margin: 10px 0 ;
+    
+}
+#buy-form-post-number-display
+{
+    font-size: 1.2em;
+}
+
+#purchase-steps-message h3 {
+    margin-left: 15px;
 }
 #purchase-steps-message dl
 {
@@ -5643,5 +5775,84 @@ h3#purchase-step-1
 #purchase-steps-total span
 {
     font-size:1.5em;
+}
+#purchase-steps-politicas
+{
+    width:800px;
+    padding:30px 0;
+    clear:both;
+}
+#purchase-steps-politicas h3
+{
+    margin:20px 0 10px;
+}
+#purchase-form-4
+{
+    text-align:left;
+    font-weight:bold;
+    
+    width:100%;
+    
+    
+}
+
+#purchase-form-4
+{
+    margin-top: 30px;
+}
+
+
+#purchase-steps-receit
+{
+    clear: both;
+    padding:20px 0;
+    
+}
+#purchase-steps-receit .purchase-detail-title
+{
+    width:550px;
+    font-weight:bold;
+    color:#fff;
+    clear: both;
+    background-color:#76BC3B;
+    padding:10px;
+    margin-top:20px;
+    border-radius:9px 9px 0 0;
+    
+}
+
+#purchase-steps-receit table
+{
+    width:570px;
+    margin-top:0;
+    background:url('../images/common/grayStripesPattern.png') #eee;
+    padding:10px;
+    border-radius:0 0 9px 9px;
+    -moz-border-radius:0 0 9px 9px; 
+    -webkit-border-radius:0 0 9px 9px;
+
+}
+#purchase-steps-receit table tr th
+{
+    border-bottom:1px solid #333;
+}
+#purchase-steps-receit table th, #purchase-steps-receit table td
+{
+    border-right:1px solid #333;
+    padding:5px;
+}
+#purchase-steps-receit table th:last-child, #purchase-steps-receit table td:last-child
+{
+    border-right:0;
+}
+#purchase-steps-receit table tr td
+{
+    border-bottom:0;
+}
+#purchase-steps-receit ul
+{
+    color:#76BC3B;
+    padding:20px;
+    list-style-type:none;
 }
 /*****************************************************************/

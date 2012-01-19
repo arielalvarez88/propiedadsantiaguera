@@ -380,38 +380,14 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
    
 };
 
-Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,alertMessageCallbackFunction){
-    
-    var thisObject = this;
-    this.form = $(formWrapperSelector);
-    this.cleanButton = $(cleanButtonSelector);        
-    this.sendButton = $(sendButtonSelector);
-    this.recivingScriptUrl = recivingScriptUrl;
- 
-    
-    var i=0;
-    
-    (function(){
-        thisObject.cleanButton.unbind("click");
-        thisObject.cleanButton.click(function(){
-        
-            var dataInputs = thisObject.form.find('input, textarea');
-        
-            for(i=0; i<dataInputs.length; i++)
-            {
-                $(dataInputs[i]).val('');
-            }
-        });
-    })() 
-    
-    if (ajax)
-    {
-        $(sendButtonSelector).unbind('click');
-        $(sendButtonSelector).click(function(event){
+
+formRecolectorButtonBehaviour = function(event,formWrapper,recivingScriptUrl,postCallback){
             event.preventDefault();
             var info = {};
             
-            var inputs = thisObject.form.find('input, select, textarea');
+            var inputs = $(formWrapper).find('input, select, textarea');
+            
+            
             
             
             for(i = 0; i < inputs.length; i++)
@@ -421,15 +397,106 @@ Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, a
             }
             
             
-            $.post(recivingScriptUrl, info ,function(response){
-                alertMessageCallbackFunction(response);
+            $.post(recivingScriptUrl, info ,function(response){                                
+                
+                postCallback(response);
             },'json');
-        });
+        };
+
+
+
+Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,alertMessageCallbackFunction){
+    
+    var thisObject = this;
+    
+    
+//    var thisObject = this;
+//    this.form = $(formWrapperSelector);
+//    this.cleanButton = $(cleanButtonSelector);        
+//    this.sendButton = $(sendButtonSelector);
+//    this.recivingScriptUrl = recivingScriptUrl;
+// 
+//    
+//    var i=0;
+    
+     thisObject.init(formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,alertMessageCallbackFunction);
+    thisObject.setClearButtonBehaviour();
+    
+    if (ajax)
+    {
+        bindEvent(thisObject.sendButton, "click", function(event){
+            
+            
+            formRecolectorButtonBehaviour(event, thisObject.form, recivingScriptUrl, alertMessageCallbackFunction);
+        })
 
     }
     
 };
 
+Form.prototype.setClearButtonBehaviour = function(){
+    
+        var thisObject = this;
+        bindEvent(this.cleanButton, "click", function(){
+        
+            var dataInputs = thisObject.form.find('input, textarea');
+        
+            for(i=0; i<dataInputs.length; i++)
+            {
+                $(dataInputs[i]).val('');
+            }
+        });
+    };
+
+
+Form.prototype.form;
+Form.prototype.cleanButton;        
+Form.prototype.sendButton;
+Form.prototype.recivingScriptUrl;
+Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,alertMessageCallbackFunction){
+    this.form = $(formWrapperSelector);
+    this.cleanButton = $(cleanButtonSelector);        
+    this.sendButton = $(sendButtonSelector);
+    this.recivingScriptUrl = recivingScriptUrl;
+};
+
+        
+
+AjaxConditionalForm = function(formWrapperSelector, conditionalBoolReturningFunction, sendButtonSelector, cleanButtonSelector, alertMessageCallbackFunction){
+  
+       var thisObject = this;
+       
+       
+       var recivingScript = $(sendButtonSelector).attr("data-reciving-script");
+       thisObject.uber.init.call(this,formWrapperSelector, sendButtonSelector, cleanButtonSelector, true, recivingScript,alertMessageCallbackFunction);
+    
+      thisObject.setClearButtonBehaviour();
+      
+      
+      
+    
+        bindEvent(thisObject.sendButton, "click", function(event){
+            
+            if(conditionalBoolReturningFunction())
+                {
+                    
+                    
+                    formRecolectorButtonBehaviour(event, thisObject.form, recivingScript, alertMessageCallbackFunction);
+                }
+                
+                
+                
+            
+            
+        })
+
+    
+};
+AjaxConditionalFormTransitional = function(){};
+AjaxConditionalFormTransitional.prototype = Form.prototype;
+
+AjaxConditionalForm.prototype = new AjaxConditionalFormTransitional();
+AjaxConditionalForm.prototype.uber = Form.prototype;
 
 
 
@@ -603,7 +670,7 @@ initializeForms = function(){
     initializeInputsWithDefaultText();
 
    
-    var  signupForm = new Form('#signup-informacion-general','#signup-form-send-button','#signup-form-clear-button');
+    var  signupForm = new Form('#signup-form-container','#signup-form-container #signup-form-send-button','#signup-form-container #signup-form-clear-button');
     var forgotPassword = new Form('#password-reset-form', '#password-reset-submit', '', true, '/usuario/password_reset_request', function(response){
     
         new alertMessageCallback(response, 'Email enviado', 'Error trate luego').getMessage();
@@ -769,16 +836,17 @@ initializeViewLoaderElements = function(){
 Overlay = function (selector, optionalClosebuttonSelector)
 {
     $(selector).fancybox({
-        type:'ajax', 
         padding:0,
         margin:0, 
-        showCloseButton: false,
+        showCloseButton: false,        
+        scrolling: 'auto',
         onComplete: function (){
             initializeForms(); 
             initializeViewLoaderElements();
             initializeOverlays();
             initializeHiderAndShowerElement();
         }
+        
         
     });
     
@@ -796,11 +864,24 @@ initializeInputsWithDefaultText = function(){
 };
 
 
+Iframe = function(selector){
+    
+    this.anchor = $(selector);
+   bindEvent(this.anchor, "click", function(event){ 
+       event.preventDefault();
+        var href = $(selector).attr("href");
+        $('body').append('<iframe style="position:" src="'+href+ '"></iframe>');
+   });
+    
+   
+}
+
 initializeOverlays = function(){
     var login = new Overlay('#login-link','#login-close-button');
     var advancedFilter = new Overlay('#basic-filter-advanced-filter-link','#advanced-filter-close-button');
     var givePostsToAgents = new Overlay('.give-agent-publication ','#give-posts-to-agents-overlay-close-button, #give-posts-to-agents-overlay-cancel-button');
-    
+    var buyFormPolicy = new Overlay("#buy-form-policy");
+    var buyFormTerms = new Overlay('#buy-form-terms');
 };
 
 initializeInputsWithDefaultText = function(){
@@ -884,7 +965,7 @@ function commify(num) {
 
 IFilter = function (){
 
-};
+    };
 IFilter.getMaxPrice= function(){};
 IFilter.getMinPrice= function(){};
 
@@ -1352,17 +1433,17 @@ initializeAutoreactivateButtons = function(callbackFunctionName){
 
 loadGmapAsychronously = function (callbackFunctionName)
 {
-   var script = document.createElement("script");
-  script.type = "text/javascript";
-  script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyATiZqxuB91Vo9_8-ccgLWLHgBfASbIUjE&sensor=true&callback="+ callbackFunctionName;
-  document.body.appendChild(script);
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyATiZqxuB91Vo9_8-ccgLWLHgBfASbIUjE&sensor=true&callback="+ callbackFunctionName;
+    document.body.appendChild(script);
 }
 
 
 
     
 GmapShowCoordenate = function(mapElementSelector,coordenatesElementSelector, zoom){
-   var thisObject = this;
+    var thisObject = this;
     this.mapContainer;
     this.coordenateElement;
     this.zoom;
@@ -1380,7 +1461,7 @@ GmapShowCoordenate = function(mapElementSelector,coordenatesElementSelector, zoo
 
 GmapShowCoordenate.prototype.initializeMap = function (mapContainerSelectorElement,coordenatesElementSelector, zoom){
    
-   var mapElementId = mapContainerSelectorElement.substring(1,mapContainerSelectorElement.length) ;
+    var mapElementId = mapContainerSelectorElement.substring(1,mapContainerSelectorElement.length) ;
    
     this.mapContainer=  $(mapContainerSelectorElement);
     
@@ -1400,14 +1481,22 @@ GmapShowCoordenate.prototype.initializeMap = function (mapContainerSelectorEleme
     var initialPosition  = new google.maps.LatLng(defaultLat,defaultLong);
     
       
-    var defaultOptions =  {center: initialPosition, zoom: this.zoom, mapTypeId: google.maps.MapTypeId.ROADMAP};
+    var defaultOptions =  {
+        center: initialPosition, 
+        zoom: this.zoom, 
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
     
     
     
     this.map= new google.maps.Map(document.getElementById(mapElementId), defaultOptions); 
     
     
-   this.marker = new google.maps.Marker({position: initialPosition, map: this.map, title:"Ubicación de la propiedad."});
+    this.marker = new google.maps.Marker({
+        position: initialPosition, 
+        map: this.map, 
+        title:"Ubicación de la propiedad."
+    });
    
   
 };
@@ -1426,15 +1515,15 @@ GmapPicker = function(mapElementSelector,coordenatesElementSelector, zoom)
     
     this.setPickerFunctionality = function ()
     {
-         var clickListener = function(event){
+        var clickListener = function(event){
        
             thisObject.marker.setPosition(event.latLng);
             
             var latitudeLongitudValue = event.latLng.lat() + ',' + event.latLng.lng();
             thisObject.coordenateElement.attr("value",latitudeLongitudValue);
-         };
+        };
          
-         google.maps.event.addListener(thisObject.map, 'click', clickListener);
+        google.maps.event.addListener(thisObject.map, 'click', clickListener);
     };
     
     (this.init = function(){
@@ -1462,13 +1551,13 @@ initializeGmapPickers = function()
 
 initializeGmapShowers = function()
 {
-   var propertySection = new GmapShowCoordenate("#property-ubication-gmap-map","#property-ubication-gmap-coordenate",7);
+    var propertySection = new GmapShowCoordenate("#property-ubication-gmap-map","#property-ubication-gmap-coordenate",7);
 }
 
 initializeGmaps = function()
 {
-     var propertyUbicationPicker = $("#property-form-gmap-picker");
-     var propertyUbicationShower = $("#property-ubication-gmap-map");
+    var propertyUbicationPicker = $("#property-form-gmap-picker");
+    var propertyUbicationShower = $("#property-ubication-gmap-map");
      
      
     if(propertyUbicationPicker.length <= 0 && propertyUbicationShower.length <=0)
@@ -1479,9 +1568,176 @@ initializeGmaps = function()
 };
 
 
+StepOfStepByStepForm = function(formContainerSelector,stepIndicatorSelector,sendButtonSelector,cleanButtonSelector,errorMessagesContainer)
+{
+    var thisObject = this;
+    this.formContainerSelector = formContainerSelector;
+    this.sendButtonSelector = sendButtonSelector;
+    this.cleanButtonSelector = cleanButtonSelector;
+    
+    
+    this.errorMessagesContainer= errorMessagesContainer;
+    var recivingScript = $(this.sendButtonSelector).attr("data-reciving-script");
+    this.recivingScriptUrl = recivingScript;
+    this.stepIndicator = $(stepIndicatorSelector);
+    
+    this.select = function(){
+        thisObject.stepIndicator.addClass("selected");
+        $(thisObject.formContainerSelector).show();
+    };
+    
+    this.deselect = function(){
+        
+        thisObject.stepIndicator.removeClass("selected");
+        $(thisObject.formContainerSelector).hide();
+    };
+    
+    this.setAvailable = function(){
+        bindEvent(formContainerSelector, "click", thisObject.select);
+    };
+    
+}
 
-$(document).ready
-{   
+StepByStepForm = function(arrayOfStepObjects){
+    
+    var thisObject = this;
+    
+     
+    
+    var numberOfStepObjects = arrayOfStepObjects.length;
+    
+    $.each(arrayOfStepObjects, function(index,step){
+        
+            
+        new Form(step.formContainerSelector, step.sendButtonSelector, step.cleanButtonSelector, true, step.recivingScriptUrl,function(response){
+                
+            if(index==0)
+                step.select();
+               
+            printCallbackMessageInContainer(response,'',step.errorMessagesContainer);
+
+            if(response.success)
+            {
+                    
+                step.setAvailable();
+                step.deselect();
+                var nextStepExist = typeof arrayOfStepObjects[index+1] != "undefined"
+                
+                        
+                if(nextStepExist)
+                {
+                    var nextStep = arrayOfStepObjects[index+1];
+                    nextStep.select();
+                }
+            }
+                    
+                
+                    
+               
+        });
+    });
+    
+    
+    
+    
+   
+    
+};
+
+
+
+
+PrizeCalculator = function(prizeResultDisplay,postNumberDisplay,postNumber,planPrice,factorField){
+
+var thisObject = this;
+this.prizeResultDisplay = $(prizeResultDisplay);
+
+this.postNumberDisplay = $(postNumberDisplay);
+
+this.factorField = $(factorField);
+
+this.postsNumber = $(postNumber).val();
+
+this.planPrice = $(planPrice).val();
+
+this.calculate = function(){
+        
+        var factor = thisObject.factorField.val();
+        var postsNumber = thisObject.postsNumber * factor;
+        var prizeResult = thisObject.planPrice * factor;                                
+        
+        thisObject.prizeResultDisplay.html(commify(''+ prizeResult));
+        thisObject.postNumberDisplay.html( '' + postsNumber);
+    };
+    
+    bindEvent(this.factorField, "change", thisObject.calculate);
+
+    
+}
+
+initializePrizeCalculator = function(){
+
+    var numberOfPostToBuyCalculator = new PrizeCalculator ("#buy-form-buy-result", "#buy-form-post-number-display",  "#buy-form-post-number", "#buy-form-plan-price", "#buy-form-plan-factor");
+
+};
+
+
+initiazlizeStepByStepForms = function(){
+    
+    
+    var buyFormSteps = [new StepOfStepByStepForm("#buy-form-step-one","#buy-form-step-one-indicator","#buy-form-step-one-submit-button",'',"#buy-form-step-one-error-messages"),
+    new StepOfStepByStepForm("#buy-form-step-two", "#buy-form-step-two-indicator"),
+
+    ];
+    var buyForm = new StepByStepForm(buyFormSteps);
+};
+
+
+AcceptTermsButton = function(conditionalCheckbox,buttonSelector,eventName,eventHandler,message)
+{
+
+    var thisObject = this;
+    this.button = $(buttonSelector);
+    this.conditionalCheckbox = $(conditionalCheckbox);
+
+    if(typeof message == "undefined")
+        message = "Para poder terminar esta compra usted debe aceptar los terminos de uso y privacidad antes de continuar.";
+        
+     bindEvent(buttonSelector, eventName, function(event){
+         if(thisObject .conditionalCheckbox.is(":checked"))
+             eventHandler(event);
+         else
+             alert(message);
+     });
+ 
+ 
+        
+    
+};
+
+initializeBuyButton =  function (){
+    
+    var buyButton = new AcceptTermsButton("#buy-form-accept-terms","#buy-form-buy-button","click",function(){
+        
+    });
+};
+
+
+initializeAjaxConditionalForm = function(){
+   var buyForm = new AjaxConditionalForm("#buy-form-container", function(){return $("#buy-form-accept-terms").is(":checked");}, "#buy-form-buy-button", '',function(response){
+       
+     
+        if(response.success)
+            window.location.href=("/panel/propiedades");
+        else
+            alert(response.message);
+    });
+   
+};
+
+
+$(document).ready(function(){
+
     extendJquery();
     var ieCssFixes = '<link rel="stylesheet" type="text/css" href="http://'+ window.location.hostname +'/css/propiedadsantiaguera-ie-fixes.css"/>' ;
     if($.browser.msie)
@@ -1504,7 +1760,11 @@ $(document).ready
     initializeAjaxAttributeValueSenders();
     initializeAutoreactivateButtons();
     initializeGmaps();    
+    initiazlizeStepByStepForms();
+    initializePrizeCalculator();
+    initializeBuyButton();
+    initializeAjaxConditionalForm();
 /*comentario*/    
-}
+});
 
 

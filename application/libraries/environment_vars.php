@@ -6,7 +6,7 @@
 class Environment_vars {
 
     public static $maps = array(
-        "file_type_to_id" => array("photo" => 1, "video" => 2),
+        "file_type_to_id" => array("photo" => 1, "video" => 2),                
         "user_type_to_validation_rules" => array("client" => "signupClient", "company" => "signupCompany", "edit_client" => "edit_clent"),
         "property_feature_to_name" => array(
             1 => "elevator",
@@ -90,7 +90,9 @@ class Environment_vars {
             "construction_project" => 10
         ),
         "texts_to_id" => array(
+            "requesters_user_to_active_user" => array("Particular" => 1,  "Empresa" => 2 , "Agente Independiente"=>4),
             "user_types" => array("Particular" => 1, "Empresa" => 2, "Agente de Empresa" => 3, "Agente Independiente" => 4),
+            "plans"=>array("Basico"=>1, "Plus"=>2,"Agente"=>3,"Inmobiliaria"=>4),
             "user_types_requesters" => array("Particular" => 5, "Empresa" => 6, "Agente Independiente" => 8),
             "user_types_if_not_company" => array("Particular" => 1, "Empresa" => 2, "Agente Independiente" => 4),
             "property_neighborhoods" => array("Cerro Alto" => "1", "Villa Olga" => 2),
@@ -131,6 +133,7 @@ class Environment_vars {
             'search_order_by_options' => array( "Precio Mayor a Menor" => 1,  "Precio Menor a Mayor" => 2,  "Provincia" => 3)
         ),
         "ids_to_text" => array(
+            "user_types_requesters" => array(5 => "Particular", 6=> "Empresa", 8 => "Agente Independiente"),
             'search_order_by_options' => array( "price DESC" => 1,  "price ASC" => 2,  "province" => 3, "id" => 4),
             "property_types" => array(1 => "Casa", 2 => "Apartamento", 3 => "Penthhouse", 4 => "Centro Comercial", 5 => "Edificio", 6 => "Nave Industrial", 7 => "Oficina", 8 => "Solar", 9 => "Finca", 10 => "Proyecto en Construcción"),
             "property_types_validation" => array(
@@ -213,7 +216,7 @@ class Environment_vars {
             "close-public-transport" => 8,
             "close-hardware-stores" => 9,
             "close-drug-stores" => 10
-        ),
+        ),       
         "property_features" => array(
             "elevator" => 1,
             "game-area" => 2,
@@ -259,7 +262,13 @@ class Environment_vars {
             "walk-in-closet" => 42
         )
     );
+    
+    public static $paths = array(
+                'https_base_site' => 'https://local.propiedadsantiaguera.com'
+    );
+    
     public static $environment_vars = array(
+
         'user_photos_dir_path' => '/images/userPhotos/',
         'user_photos_thumbs_dir_path' => '/images/userPhotosThumbs/',
         'properties_photos_dir_path' => '/images/propertiesPhotos/',

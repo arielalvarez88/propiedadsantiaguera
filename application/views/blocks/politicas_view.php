@@ -1,3 +1,13 @@
+<?php 
+$section = isset($section) ? $section : '';
+
+?>
+
+
+
+<div id="<?php echo $section;?>politicas-container">
+    
+
 <div id="politicas-holder">
     <h2 class="main-title">Pol&iacute;ticas de privacidad</h2>
 
@@ -45,4 +55,5 @@
 
     <h3 class="main-title">CONTACTAR A LA PÁGINA WEB</h3>
     <p>Si usted tiene alguna pregunta sobre estas cláusulas de privacidad, las prácticas de la página web, siéntase en la libertad de comunicarse con nuestra empresa.</p>
+</div>
 </div>

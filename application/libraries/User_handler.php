@@ -119,7 +119,7 @@ class User_handler {
         $user->where('id =', $userId)->get();
         
         if($user->id)
-            return $user;
+            return User_factory::get_user_from_id($user->id);
         
         return false;
     }
