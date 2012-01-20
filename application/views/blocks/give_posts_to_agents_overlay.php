@@ -6,7 +6,7 @@ $i = 1;
 ?>
 <div id="give-posts-to-agents-overlay">
     <h2 class="overlay-header">Agregar Publicaci&oacute;n para agente</h2>
-    <img id="give-posts-to-agents-overlay-close-button" class="overlay-close-button"  src="/images/common/fancy_close.png"/>
+    <img id="give-posts-to-agents-overlay-close-button" class="overlay-close-button"  src="<?php base_url();?>/images/common/fancy_close.png"/>
  <div class="error-messages hidden">
         </div>
         <div class="info-messages hidden">

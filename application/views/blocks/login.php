@@ -2,8 +2,8 @@
 <div>
             <div id="login">
                 <a id="login-close-button" href="#js"></a>
-                <form action="/usuario/login" method="post" class="optional-form">
-                    <img src="/images/login/loginTitle.png" alt="Login" id="login-title"/>
+                <form action="<?php base_url();?>/usuario/login" method="post" class="optional-form">
+                    <img src="<?php base_url();?>/images/login/loginTitle.png" alt="Login" id="login-title"/>
                     <input id="login-email" type="text" name="login-email" class="login-input" /><br/>
                     
                     <input id="login-password-clear" type="text" class="login-input" /><br/>

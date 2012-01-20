@@ -57,8 +57,8 @@
         </div>
 
         <div id="basic-filter-bottom-right-size">
-            <input id="basic-filter-search-button" type="image" src="/images/basic_filter/filter_search_button.png" />
-            <a href="/ajax/view_loader/forms/advanced_filter" id="basic-filter-advanced-filter-link" >B&uacute;squeda <?php echo $section == 'search-results-'? '' : '<br/>' ?>Avanzada</a>
+            <input id="basic-filter-search-button" type="image" src="<?php base_url();?>/images/basic_filter/filter_search_button.png" />
+            <a href="<?php base_url();?>ajax/view_loader/forms/advanced_filter" id="basic-filter-advanced-filter-link" >B&uacute;squeda <?php echo $section == 'search-results-'? '' : '<br/>' ?>Avanzada</a>
         </div>
 
 

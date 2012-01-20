@@ -1,10 +1,10 @@
 <div id="tools-center">
-    <h2 class="front-page-module-header"> <img src="/images/common/smallGreenArrow.png"/>Centro de herramientas</h2>
+    <h2 class="front-page-module-header"> <img src="<?php base_url();?>/images/common/smallGreenArrow.png"/>Centro de herramientas</h2>
     <div id="tools-center-slideshow"> 
-        <a><img src="/images/toolsCenter/calcSlide.jpg"/></a>
-        <a class="hidden"><img src="/images/toolsCenter/videoSlide.jpg"/></a>
-        <a class="hidden"><img src="/images/toolsCenter/checklistSlide.jpg"/></a>
-        <a class="hidden"><img src="/images/toolsCenter/qaSlide.jpg"/></a>
+        <a><img src="<?php base_url();?>/images/toolsCenter/calcSlide.jpg"/></a>
+        <a class="hidden"><img src="<?php base_url();?>/images/toolsCenter/videoSlide.jpg"/></a>
+        <a class="hidden"><img src="<?php base_url();?>/images/toolsCenter/checklistSlide.jpg"/></a>
+        <a class="hidden"><img src="<?php base_url();?>/images/toolsCenter/qaSlide.jpg"/></a>
         
     </div>
     <div id="tools-center-pager"> 

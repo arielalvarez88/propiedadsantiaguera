@@ -30,6 +30,11 @@ input[type="text"],input[type="password"], textarea, select
 {
     display: block;
 }
+#footer-contact
+{
+    width: 220px;
+}
+
 
 #top
 {
@@ -70,10 +75,14 @@ body, html
 }
 
 /************ header *************/
+
+#top-links
+{
+    height: 20px;
+}
 #login-links
 {
-    height:11px;
-    text-align:right;
+    float: right;
 }
 
 
@@ -83,6 +92,19 @@ body, html
 #login-links .vertical-serparator
 {
     padding:0 8px;
+}
+
+#logo
+{
+    overflow: hidden;
+    clear: both;
+    
+}
+#logo a {
+    float: left;
+}
+#banner-image {
+    float: right;
 }
 
 #content
@@ -3508,32 +3530,38 @@ properties-pager
 }
 /*solicitud-de-info END*/
 
-/*agentes-header*/
+/*members-header*/
 
-#agentes-header-options-container {
+
+
+#members-header-options-container {
     background-image: url("/images/common/stripesGradient_H433.jpg");
     background-position: 0 239px;
     height: 230px;
     padding: 21px 164px;
     text-align: center;
 }
-#agentes-header-options-container a {
+#members-header-options-container a {
     background-image: url("/images/membersHeader/optionsSprite.png");
+    color: #6AA734;
     display: block;
     float: left;
-    height: 203px;
+    font-size: 1.4em;
+    font-weight: bold;
+    height: 30px;
+    padding-top: 172px;
     width: 256px;
 }
 
-#agentes-header-agentes {
+#members-header-agentes {
     background-position: 256px;
 }
 
-#agentes-header-options-container p {
+#members-header-options-container p {
     color: #76bc3b;
 }
 
-#agentes-header-options-container img
+#members-header-options-container img
 {
     display: block;
     float: left;
@@ -3543,11 +3571,11 @@ properties-pager
 
 
 
-#agentes-header
+#members-header
 {
     float:left;
 }
-#agentes-banner
+#members-banner
 {
 
     color: #76bc3b;
@@ -3555,7 +3583,7 @@ properties-pager
     padding: 0 0 0 5px;
     width: 728px;
 }
-.agentes-header-section
+.members-header-section
 {
     display: block;
     float: left;
@@ -3564,7 +3592,7 @@ properties-pager
 }
 
 
-#agentes-header-options-container img {
+#members-header-options-container img {
     display: block;
     float: left;
     margin: 85px 30px 0;
@@ -3572,7 +3600,7 @@ properties-pager
 
 
 
-/*agentes-header END*/
+/*members-header END*/
 
 /*members-pager*/
 #members-pager-header {

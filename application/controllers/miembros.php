@@ -8,50 +8,47 @@ require_once realpath('./application/libraries/User_factory.php');
 
 class Miembros extends CI_Controller {
 
-    public function index($section ='inmobiliarias') {
+    public function index($section ='companies') {
         
-        if($section != 'inmobiliarias' && $section != 'agentes')
+        if($section != 'members' && $section != 'companies')
             redirect("/pagina_no_valida");
         
-        $data['topRightSide'] = $this->load->view('blocks/members_header', '', true);
+        
         $members_pager_view_variables = $this->get_members_info_for_memebers_pager_view($section);
         $members_pager_view_variables['section'] =  $section.'-';
         $members_pager_view_variables['title'] =  $section;
+        $data['topRightSide'] = $this->load->view('blocks/members_header', $members_pager_view_variables,true);
         $data['bottomLeftSide'] = $this->load->view('blocks/members_pager', $members_pager_view_variables, true);
         $this->load->view('page', $data);
     }
     
-    
     public function agentes()
     {
-        $this->index('agentes');
+        $this->index('members');
     }
     
     
     public function inmobiliarias()
     {
-        $this->index('inmobiliarias');
+        $this->index('companies');
     }
     
     private function get_members_info_for_memebers_pager_view($section)
     {
         $user_types = null;
         $variables = array();
-        if($section == 'inmobiliarias')
+        if($section == 'companies')
         {
             $user_types = array(Environment_vars::$maps['texts_to_id']['user_types']['Empresa']);
             $variables['thumbs_width'] = 142;
             $variables['thumbs_height'] = 107;
         }
-            
         else
         {
             $user_types = array(Environment_vars::$maps['texts_to_id']['user_types']['Agente de Empresa'], Environment_vars::$maps['texts_to_id']['user_types']['Agente Independiente']);
             $variables['thumbs_width'] = 107;
             $variables['thumbs_height'] = 121;
         }
-            
-            
             
         $members = new User();
         $members->where_in("type", $user_types)->order_by('RAND()')->get_iterated();
@@ -102,7 +99,6 @@ class Miembros extends CI_Controller {
         
         $properties_pager_data['properties_per_row'] = 3;
         $properties_pager_data['rows_per_page'] = 2;
-        
         
         return $properties_pager_data;
     }

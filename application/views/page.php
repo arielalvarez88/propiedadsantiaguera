@@ -2,8 +2,12 @@
 $loggedUser = User_handler::getLoggedUser();
 
 $thisPage = str_replace('/', '-', uri_string());
-$can_create_properties = ! $loggedUser instanceof IUser_requests_only;
+$can_create_properties = !$loggedUser instanceof IUser_requests_only;
 $can_create_agents = $loggedUser instanceof Company_user;
+
+$language = Language_handler::get_user_prefered_language();
+$this->lang->load("footer", $language);
+$this->lang->load("header", $language);
 
 require_once realpath("./application/libraries/User_factory.php");
 require_once realpath("./application/libraries/User_factory.php");
@@ -13,7 +17,7 @@ require_once realpath("./application/libraries/User_factory.php");
 <html>
 
     <head>
-        <link rel="stylesheet" type="text/css" href="/css/propiedadsantiaguera.css"/>
+        <link rel="stylesheet" type="text/css" href="<?php base_url(); ?>/css/propiedadsantiaguera.css"/>
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
@@ -22,173 +26,181 @@ require_once realpath("./application/libraries/User_factory.php");
 
 
 
-            <?php if ($loggedUser && $loggedUser->name): ?>
-            
-                <div id="upper-panel">
+        <?php if ($loggedUser && $loggedUser->name): ?>
 
-                    <div>
-                        <ul >
-                            
-                            <?php if($can_create_properties ):?>
-                                <li><a class="no-decoration-anchor" href="/panel/propiedades">PROPIEDADES</a>|</li>
-                            <?php endif;?>
-                                
-                            <li><a class="no-decoration-anchor" href="/panel/cuenta">CUENTA</a><?php echo $can_create_agents? '|' : '';?></li>
-<!--                            <li><a class="no-decoration-anchor ">SOLICITUDES</a><?php echo $can_create_agents? '|' : '';?></li>-->
-                            <?php if($can_create_agents):?>
-                                <li><a class="no-decoration-anchor" href="/panel/agentes">AGENTES</a></li>
-                            
-                            <?php endif;?>
-                        </ul>
+            <div id="upper-panel">
 
-                        <p>Bienvenido, <?php echo $loggedUser->name; ?> <a id="logout-button" href="/usuario/logout">SALIR</a></p>
+                <div>
+                    <ul >
 
+                        <?php if ($can_create_properties): ?>
+                            <li><a class="no-decoration-anchor" href="<?php base_url(); ?>/panel/propiedades">PROPIEDADES</a>|</li>
+                        <?php endif; ?>
 
-                    </div>
+                        <li><a class="no-decoration-anchor" href="<?php base_url(); ?>/panel/cuenta">CUENTA</a><?php echo $can_create_agents ? '|' : ''; ?></li>
+    <!--                            <li><a class="no-decoration-anchor ">SOLICITUDES</a><?php echo $can_create_agents ? '|' : ''; ?></li>-->
+                        <?php if ($can_create_agents): ?>
+                            <li><a class="no-decoration-anchor" href="<?php base_url(); ?>/panel/agentes">AGENTES</a></li>
+
+                        <?php endif; ?>
+                    </ul>
+
+                    <p>Bienvenido, <?php echo $loggedUser->name; ?> <a id="logout-button" href="<?php base_url(); ?>/usuario/logout">SALIR</a></p>
 
 
                 </div>
 
-            <?php endif; ?>
 
-            <div id="content-header-wrapper">
-                <div id="header">
-                    <div id="banner-container">
-                        <div id="banner">
-                            <div id="idiomas-container">
+            </div>
+
+        <?php endif; ?>
+
+        <div id="content-header-wrapper">
+            <div id="header">
+                <div id="banner-container">
+                    <div id="banner">
+
+                        <div id="top-links">
+                           
+
+
+ <div id="idiomas-container">
                                 <span>Idioma:</span>
+                                
                                 <ul id="idomas-list">
                                     <li class="idiomas-item" id="espanol">
-                                        <a class="no-decoration-anchor" href="#">
-                                            <img src="/images/spanishFlag.png" class="no-decoration-anchor"/>
+                                        <a href="/change_language/set_language/spanish" class="no-decoration-anchor" href="#">
+                                            <img  src="<?php base_url(); ?>/images/spanishFlag.png" class="no-decoration-anchor"/>
                                         </a>
                                     </li>
                                     <li class="idiomas-item" id="ingles">
-                                        <a class="no-decoration-anchor" href="#">
-                                            <img src="/images/englishFlag.png" class="no-decoration-anchor"/>
+                                        <a href="/change_language/set_language/english" class="no-decoration-anchor" href="#">
+                                            <img  src="<?php base_url(); ?>/images/englishFlag.png" class="no-decoration-anchor"/>
                                         </a>
 
                                     </li>
                                 </ul>
-                            </div>
+                       
+                            </div>  
+
                             <div id="login-links">
-                                <p>
-                                    
-
-
-
-                                    <a class="no-decoration-anchor" href="/contacto">CONTACTENOS</a>
-                                    <span class="vertical-serparator"><img src="/images/phone_icon.png" alt="dude"/></span>
-
-
-
-                                    <a id="header-help" class="no-decoration-anchor" href="/soporte">SOPORTE</a>
-                                    <span class="vertical-serparator"><img src="/images/help_icon.png" alt="help"/></span>
-                                </p>  
                                 
-                                <div id="banner-image">
-                                    <img src="/images/banner_top.png" alt="banner top"/>
-                                </div>
-                            </div>
+                            
+                                <a class="no-decoration-anchor" href="<?php base_url(); ?>/contacto"><?php echo $this->lang->line('header_contact_link'); ?></a>
+                                <span class="vertical-serparator"><img src="<?php base_url(); ?>/images/phone_icon.png" alt="dude"/></span>
 
 
-                            <div id="logo">
-                                <a href="/"><img alt="logo" src="/images/logo.png"></a>
+
+                                <a id="header-help" class="no-decoration-anchor" href="<?php base_url(); ?>/soporte"><?php echo $this->lang->line('header_support_link'); ?></a>
+                                <span class="vertical-serparator"><img src="<?php base_url(); ?>/images/help_icon.png" alt="help"/></span>
+
+
+                           </div>
+
+                            
+                        </div>
+
+
+                        <div id="logo">
+                            <a href="/"><img alt="logo" src="<?php base_url(); ?>/images/logo.png"></a>
+                            <div id="banner-image">
+                                <img src="<?php base_url(); ?>/images/banner_top.png" alt="banner top"/>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div id="top-menu-container">
-                        
-                        <?php if (!$loggedUser || !$loggedUser->name): ?>
-                                        <a id="login-link" class="no-decoration-anchor" href="/ajax/view_loader/blocks/login"><img src="/images/primaryLinks/loginButton.png" alt="Login Button"/></a>
+                <div id="top-menu-container">
+
+                    <?php if (!$loggedUser || !$loggedUser->name): ?>
+                        <a id="login-link" class="no-decoration-anchor" href="<?php base_url(); ?>/ajax/view_loader/blocks/login"><img src="<?php base_url(); ?>/images/primaryLinks/loginButton.png" alt="Login Button"/></a>
+                    <?php endif; ?>
+
+                    <ul class="primary-links">
+                        <li class="menu-111 first"><a title="" href="<?php echo base_url(); ?>"><?php echo $this->lang->line('header_home_link'); ?></a></li>
+                        <li class="menu-269"><a  href="<?php base_url(); ?>/propiedades"><?php echo $this->lang->line('header_properties_link'); ?></a></li>
+                        <li class="menu-270"><a  href="<?php base_url(); ?>/miembros"><?php echo $this->lang->line('header_members_link'); ?></a></li>
+                        <li class="menu-271"><a  href="<?php base_url(); ?>/planes"><?php echo $this->lang->line('header_prizes_link'); ?></a></li>
+
+
+                    </ul>                
+
+
+
+
+                </div>
+            </div>
+            <div id="content">
+                <?php if (isset($topLeftSide) || isset($topCenterSide) || isset($topRightSide) || isset($top)): ?>
+                    <div id="top-section">
+
+
+                        <?php if (isset($top)): ?>
+                            <div id="top">
+                                <?php echo $top; ?>
+                            </div>
                         <?php endif; ?>
-                                        
-                        <ul class="primary-links">
-                            <li class="menu-111 first"><a title="" href="<?php echo base_url(); ?>">INICIO</a></li>
-                            <li class="menu-269"><a  href="/propiedades">PROPIEDADES</a></li>
-                            <li class="menu-270"><a  href="/miembros">MIEMBROS</a></li>
-                            <li class="menu-271"><a  href="/planes">PRECIOS</a></li>
-                            
-                            
-                        </ul>                
-                        
-                        
-                                        
-                        
+
+
+                        <?php if (isset($topLeftSide)): ?>
+                            <div id="top-left-side">
+                                <?php echo $topLeftSide; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (isset($topCenterSide)): ?>
+                            <div id="top-center-side">
+                                <?php echo $topCenterSide; ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (isset($topRightSide)): ?>
+
+                            <div id="top-right-side">
+                                <?php echo $topRightSide; ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
-                </div>
-                <div id="content">
-                    <?php if (isset($topLeftSide) || isset($topCenterSide) || isset($topRightSide) || isset($top)): ?>
-                        <div id="top-section">
+                <?php endif; ?>
 
+                <?php if (isset($centerSection)): ?>
 
-                            <?php if (isset($top)): ?>
-                                <div id="top">
-                                    <?php echo $top; ?>
-                                </div>
-                            <?php endif; ?>
+                    <div id="center-section">
+                        <?php echo $centerSection; ?>
+                    </div>
+                <?php endif; ?>
 
+                <?php if (isset($bottomLeftSide) || isset($bottomRightSide) || isset($bottom)): ?>
+                    <div id="bottom-section">
+                        <?php if (isset($bottomLeftSide)): ?>
+                            <div id="bottom-left-side">
+                                <?php echo $bottomLeftSide; ?>
+                            </div>
+                        <?php endif; ?>
 
-                            <?php if (isset($topLeftSide)): ?>
-                                <div id="top-left-side">
-                                    <?php echo $topLeftSide; ?>
-                                </div>
-                            <?php endif; ?>
+                        <?php if (isset($bottomRightSide)): ?>
+                            <div id="bottom-right-side">
+                                <?php echo $bottomRightSide; ?>
+                            </div>
+                        <?php endif; ?>
 
-                            <?php if (isset($topCenterSide)): ?>
-                                <div id="top-center-side">
-                                    <?php echo $topCenterSide; ?>
-                                </div>
-                            <?php endif; ?>
+                        <?php if (isset($bottom)): ?>
+                            <div id="bottom">
+                                <?php echo $bottom; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
 
-                            <?php if (isset($topRightSide)): ?>
-
-                                <div id="top-right-side">
-                                    <?php echo $topRightSide; ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if (isset($centerSection)): ?>
-
-                        <div id="center-section">
-                            <?php echo $centerSection; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if (isset($bottomLeftSide) || isset($bottomRightSide) || isset($bottom)): ?>
-                        <div id="bottom-section">
-                            <?php if (isset($bottomLeftSide)): ?>
-                                <div id="bottom-left-side">
-                                    <?php echo $bottomLeftSide; ?>
-                                </div>
-                            <?php endif; ?>
-
-                            <?php if (isset($bottomRightSide)): ?>
-                                <div id="bottom-right-side">
-                                    <?php echo $bottomRightSide; ?>
-                                </div>
-                            <?php endif; ?>
-
-                            <?php if (isset($bottom)): ?>
-                                <div id="bottom">
-                                    <?php echo $bottom; ?>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-
-                    <?php endif; ?>
-
-
-                </div>
-
-
-
+                <?php endif; ?>
 
 
             </div>
+
+
+
+
+
+        </div>
 
 
 
@@ -206,54 +218,64 @@ require_once realpath("./application/libraries/User_factory.php");
             <div id="footer-body">
 
                 <div id="footer-logo-message">
-                    <img id="footer-logo" src="/images/footer/footerLogo.png"/>
-                    <p id="footer-message"><span class="bold">Propiedad Santiaguera</span> es una plataforma virtual facilita de manera f&aacute;cil e interactiva, la oferta inmobiliaria del mercado.</p>
+                    <img id="footer-logo" src="<?php base_url(); ?>/images/footer/footerLogo.png"/>
+
+
+                    <p id="footer-message"><?php echo $this->lang->line("footer_page_description"); ?></p>
                 </div>
+
+
+
 
 
 
                 <div id="footer-company-menu">
-                    <h2>Empresa</h2>
+                    <h2><?php echo $this->lang->line("footer_company_menu_header"); ?></h2>
                     <ul>
                         <li>
-                            <a href="/nosotros">Nosotros</a>
+                            <a href="<?php base_url(); ?>/nosotros"><?php echo $this->lang->line("footer_company_menu_us"); ?></a>
                         </li>
                         <li>
-                            <a class="no-decoration-anchor" href="/herramientas">Herramientas</a>
+                            <a class="no-decoration-anchor" href="<?php base_url(); ?>/herramientas"><?php echo $this->lang->line("footer_company_menu_tools"); ?></a>
                         </li>
                         <li>
-                            <a href="/planes">Precios</a>
+                            <a href="<?php base_url(); ?>/planes"><?php echo $this->lang->line("footer_company_menu_terms"); ?></a>
                         </li>
-                        
+
                         <li>
-                            Publicidad
+                            <?php echo $this->lang->line("footer_company_menu_publicity"); ?>
                         </li>
                     </ul>
                 </div>
+
+
 
                 <div id="footer-resources-menu">
-                    <h2>Recursos</h2>
+                    <h2><?php echo $this->lang->line("footer_resources_menu_header"); ?></h2>
                     <ul>
                         <li>
-                            <a href="/soporte">Soporte</a>
+                            <a href="<?php base_url(); ?>/soporte"><?php echo $this->lang->line("footer_resources_menu_support"); ?></a>
                         </li>
                         <li>
-                            <a href="/terminos">T&eacute;rminos de uso</a>
+                            <a href="<?php base_url(); ?>/terminos"><?php echo $this->lang->line("footer_resources_menu_terms"); ?></a>
                         </li>
                         <li>
-                            <a href="/politicas">Privacidad y</a>
-                        </li>
-                        <li>
-                            <a href="/politicas">Seguridad</a>
+                            <a href="<?php base_url(); ?>/politicas"><?php echo $this->lang->line("footer_resources_menu_privacy"); ?></a>
                         </li>
 
                     </ul>
                 </div>
 
+
+
+
+
+
+
                 <div id="footer-contact">
-                    <h2>Contactanos</h2>
-                    <p>Calle M&eacute;xico Esq. Apeco, #32B <br/> Reparto del Este, Santiago, Rep. Dom. <br/> 809.582.2690</p>
-                    <h4>Siguenos</h4>
+                    <h2><?php echo $this->lang->line("footer_contact_us_header"); ?></h2>
+                    <p><?php echo $this->lang->line("footer_contact_us_text"); ?></p>
+                    <h4><?php echo $this->lang->line("footer_contact_follow_us"); ?></h4>
                     <p>
                         <a href="#not-yet"></a>
                         <a id="twitter-icon" href="#not-yet"></a>
@@ -267,10 +289,10 @@ require_once realpath("./application/libraries/User_factory.php");
 
 
                 <div id="footer-bottom">
-                    <p id="footer-bottom-left">2011 Propiedad Santiaguera, All rights reserved</p>
-                    <a class="no-decoration-anchor" href="http://www.5050mkt.com"><img src="/images/common/5050mktLogo.png" alt="5050mkt-logo"/></a>
+                    <p id="footer-bottom-left"><?php echo $this->lang->line("footer_rights"); ?></p>
+                    <a class="no-decoration-anchor" href="http://www.5050mkt.com"><img src="<?php base_url(); ?>/images/common/5050mktLogo.png" alt="5050mkt-logo"/></a>
                     <p id="footer-bottom-right">
-                        Propiedad Santiaguera es un producto de
+                        <?php echo $this->lang->line("footer_product"); ?>
                     </p>
                 </div>
 
@@ -283,16 +305,16 @@ require_once realpath("./application/libraries/User_factory.php");
 		#wrapper {display:table;height:100%}
 
 <![endif]-->
-        
-        <script type="text/javascript" src="/js/Interfaces.js" type="text/javascript" ></script>
-        <script type="text/javascript" src="/js/jquery-1.7.1.js" type="text/javascript" ></script>
-        <script type="text/javascript" src="/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript" ></script>        
-        <script type="text/javascript" src="/js/jquery.cycle.all.js" type="text/javascript" ></script>
+
+        <script type="text/javascript" src="<?php base_url(); ?>/js/Interfaces.js" type="text/javascript" ></script>
+        <script type="text/javascript" src="<?php base_url(); ?>/js/jquery-1.7.1.js" type="text/javascript" ></script>
+        <script type="text/javascript" src="<?php base_url(); ?>/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript" ></script>        
+        <script type="text/javascript" src="<?php base_url(); ?>/js/jquery.cycle.all.js" type="text/javascript" ></script>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>        
-        <script type="text/javascript" src="/js/jquery.fancybox-1.3.4.js" type="text/javascript" ></script>
-        <script type="text/javascript" src="/js/propiedadsantiaguera.js" type="text/javascript" ></script>
+        <script type="text/javascript" src="<?php base_url(); ?>/js/jquery.fancybox-1.3.4.js" type="text/javascript" ></script>
+        <script type="text/javascript" src="<?php base_url(); ?>/js/propiedadsantiaguera.js" type="text/javascript" ></script>
         <script type="text/javascript" src="http://use.typekit.com/awd1xwd.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-        <script type="text/javascript" src="/js/css_browser_selector.js" type="text/javascript" ></script>
+        <script type="text/javascript" src="<?php base_url(); ?>/js/css_browser_selector.js" type="text/javascript" ></script>
     </body>
 </html>

@@ -14,7 +14,7 @@
         </div>
 
         <div id="logo">
-            <img alt="logo" src="/images/logo.png">
+            <img alt="logo" src="<?php base_url();?>/images/logo.png">
         </div>
     </div>
 </div>
@@ -31,12 +31,12 @@
         <ul id="idomas-list">
             <li class="idiomas-item" id="espanol">
                 <a class="no-decoration-anchor" href="#">
-                    <img src="/images/spanishFlag.png" class="no-decoration-anchor"/>
+                    <img src="<?php base_url();?>/images/spanishFlag.png" class="no-decoration-anchor"/>
                 </a>
             </li>
             <li class="idiomas-item" id="ingles">
                 <a class="no-decoration-anchor" href="#">
-                    <img src="/images/englishFlag.png" class="no-decoration-anchor">
+                    <img src="<?php base_url();?>/images/englishFlag.png" class="no-decoration-anchor">
                 </a>
 
             </li>

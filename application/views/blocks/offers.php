@@ -12,7 +12,7 @@
 
         
             
-            <a href="/miembros/eliminar/<?php echo $user->id;?>" class="green-button">
+            <a href="<?php base_url();?>/miembros/eliminar/<?php echo $user->id;?>" class="green-button">
                 Cancelar Cuenta
             </a>
  </div>
