@@ -1,4 +1,7 @@
+<?php
 
+$property_photos_paths= isset($property_photos_paths) ? $property_photos_paths : null;
+?>
 <div id="propiedad-viewer">
     <div id="propiedad-viewer-top">
         <div id="propiedad-viewer-header">

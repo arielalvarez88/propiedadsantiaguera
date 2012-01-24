@@ -14,6 +14,8 @@ $lang["plans_plus_plan"] = "PLUS";
 $lang["plans_agent_plan"] = "AGENTE";
 $lang["plans_company_plan"] = "INMOBILIARIA";
 
+$lang["plans_most_popular_photo_src"] = "/images/plans/mostPopularSpanish.png";
+
 
 $lang["plans_number_of_posts"] = "CANTIDAD DE PUBLICACIONES";
 $lang["plans_duration_per_post"] = "DURACIÓN DE LA PUBLICACIÓN";
@@ -22,6 +24,7 @@ $lang["plans_administrative_panel"] = "PANEL ADMINISTRATIVO";
 $lang["plans_ingormation_in_english_and_spanish"] = "INFORMACIÓN EN INGLES Y ESPAÑOL";
 $lang["plans_google_maps"] = "LOCALIZACIÓN DE LA PROPIEDAD EN GOOGLE MAPS";
 
+$lang["plans_choose_plan"] = "Elegir plan";
 
 $lang["plans_importat_information"] = "Información Importante";
 
@@ -40,9 +43,10 @@ $lang["plans_question_4_answer"] = "Desde el momento en que usted compre una pub
 $lang["plans_question_5"] = "¿Puedo cancelar mi cuenta en cualquier momento?";
 $lang["plans_question_5_answer"] = "Sí. Dentro del panel administrativo, en la sección de “cuenta” tendrá disponible una opción para cancelar su cuenta, en caso de que ya no tenga la necesidad de utilizar nuestros servicios.";
 
-$lang["plans_question_6"] = "Have a question before signing up?";
-$lang["plans_question_6_answer"] = "If you have any question regarding the proccess of posting properties into our portal, feel free to contact us and we will get to you as soon as possible.
-Here are the privacy and security policy and terms of use.";
+$lang["plans_question_6"] = "¿Alguna pregunta antes de registrarte?";
+$lang["plans_question_6_answer"] = "Si tiene alguna pregunta con relación al proceso de la promoción de su propiedad, no dude en comunicarse con nostros y le contestaremos en la brevedad posible.";
+
+
 
 
 $lang["plans_important_text"] = "Información Importante";

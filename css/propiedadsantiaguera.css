@@ -4383,6 +4383,34 @@ span.required{
     text-align:center;
     color:#76BA39;
 }
+
+
+
+.plans-choose-plan-link
+{
+    background-image: url('/images/plans/plans.png');
+}
+
+.plans-choose-plan-link {
+    background-image: url("/images/plans/plans.png");
+    display: block;
+    height: 28px;
+    margin-left: 15px;
+    width: 146px;
+}
+
+.plans-choose-plan-link {
+    background-image: url("/images/plans/plans.png");
+    color: white;
+    display: block;
+    font-size: 0.7em;
+    height: 21px;
+    margin-right: auto;
+    padding-top: 7px;
+    text-decoration: none;
+    width: 146px;
+}
+
 #planes_main_subtitle
 {
     text-align:center; 
@@ -4395,6 +4423,7 @@ span.required{
     padding:10px 15px;
     width:95%;
     margin:0 auto;
+    position: relative;
 }
 #planes_detail
 {
@@ -4412,12 +4441,21 @@ span.required{
 }
 #planes_data
 {
-    background:url('/images/plans_table.png') no-repeat top center transparent;
+    background:url('/images/plans/tableBackground.png') no-repeat top center transparent;
     color:#333;
     width:687px;
     text-align: center;
     height: 670px;
     
+}
+
+
+
+#plans-most-popular
+{
+       left: 387px;
+    position: absolute;
+    top: 8px;
 }
 
 #planes_data th

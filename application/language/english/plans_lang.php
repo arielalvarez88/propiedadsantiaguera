@@ -14,6 +14,8 @@ $lang["plans_plus_plan"] = "PLUS";
 $lang["plans_agent_plan"] = "AGENT";
 $lang["plans_company_plan"] = "REAL ESTATE";
 
+$lang["plans_most_popular_photo_src"] = "/images/plans/mostPopularEnglish.png";
+
 $lang["plans_number_of_posts"] = "NUMBER OF POSTS";
 $lang["plans_duration_per_post"] = "DURATION PER POST";
 $lang["plans_number_of_photos_and_videos"] = "PHOTOS (15) AND VIDEOS (1)";
@@ -21,8 +23,9 @@ $lang["plans_administrative_panel"] = "ADMINISTRATIVE PANEL";
 $lang["plans_ingormation_in_english_and_spanish"] = "INFORMATION IN ENGLISH AND SPANISH";
 $lang["plans_google_maps"] = "PROPERTY LOCAZATION IN GOOGLE MAPS";
 
+$lang["plans_choose_plan"] = "Choose plan";
 
-$lang["plans_importat_information"] = "Información Importante";
+$lang["plans_importat_information"] = "Important Information";
 
 $lang["plans_question_1"] = "My post period has finished. How can I post a property again?";
 $lang["plans_question_1_answer"] = "Simple, just  by going to the account section on your panel, there you can choose from the different choises displayed on the price board.";
