@@ -9,6 +9,8 @@ $lang["plans_header"] = "Maneja tus propiedades con libertad";
 $lang["plans_sub_header"] = "Publica fácilmente sin importar el día, la hora o el lugar.";
 $lang["plans_number_days"] = "Días";
 
+
+
 $lang["plans_basic_plan"] = "BÁSICO";
 $lang["plans_plus_plan"] = "PLUS";
 $lang["plans_agent_plan"] = "AGENTE";

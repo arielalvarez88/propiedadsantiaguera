@@ -72,10 +72,10 @@ $this->lang->load("plans",$language);
                 <td>RD$1,500<br><span>RD$1,500/<?php echo $this->lang->line("common_property_word");?></span></td> <td>RD$6,000</br><span class="white">RD$1,200/<?php echo $this->lang->line("common_property_word");?></span></td> <td>RD$10,000</br><span>RD$1,000/<?php echo $this->lang->line("common_property_word");?></span></td> <td>RD$20,000</br><span class="white">RD$800/<?php echo $this->lang->line("common_property_word");?></span></td> 
             </tr>
             <tr>
-                <td><a class="plans-choose-plan-link" href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Basico'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td> 
-                <td> <a class="plans-choose-plan-link" href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Plus'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td> 
-                <td> <a class="plans-choose-plan-link" href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Agente'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td>
-                <td><a class="plans-choose-plan-link" href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Inmobiliaria'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td>
+                <td><a class="plans-choose-plan-link" href="/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Basico'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td> 
+                <td> <a class="plans-choose-plan-link" href="/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Plus'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td> 
+                <td> <a class="plans-choose-plan-link" href="/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Agente'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td>
+                <td><a class="plans-choose-plan-link" href="/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Inmobiliaria'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td>
             </tr>
         </tbody>
         <tfoot>
