@@ -69,7 +69,7 @@ class Usuario extends CI_Controller {
 
     public function signup() {
 
-        if(!$_SERVER['HTTPS'])
+        if(!$_SERVER['HTTPS'] && Environment_vars::$environment != "production")
             redirect(Environment_vars::$paths['https_base_site']."/usuario/signup");
         
         $signup_form_parameters = $this->get_new_user_signup_form_variables();
