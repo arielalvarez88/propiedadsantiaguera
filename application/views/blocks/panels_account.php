@@ -28,7 +28,7 @@
 
                     </td>
                     <td>
-                        <a class="green-button" href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Basico'];?>">Comprar</a>
+                        <a class="green-button" href="/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Basico'];?>">Comprar</a>
                     </td>
                 </tr>
 
@@ -44,7 +44,7 @@
                     </td>
 
                     <td>
-                        <a class="green-button" href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Plus'];?>">Comprar</a>
+                        <a class="green-button" href="/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Plus'];?>">Comprar</a>
                     </td>
                 </tr>
 
@@ -61,7 +61,7 @@
                     </td>
 
                     <td>
-                        <a class="green-button" href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Agente'];?>">Comprar</a>
+                        <a class="green-button" href="/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Agente'];?>">Comprar</a>
                     </td>
                 </tr>
 
@@ -77,7 +77,7 @@
                     </td>
 
                     <td>
-                        <a class="green-button" href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Inmobiliaria'];?>">Comprar</a>                        
+                        <a class="green-button" href="/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Inmobiliaria'];?>">Comprar</a>                        
                     </td>
                 </tr>
             </tbody>
