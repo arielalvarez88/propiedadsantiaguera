@@ -20,7 +20,7 @@ class Compra extends CI_Controller {
     }
     
     public function plan($plan_id=0){
-        if(!$_SERVER['HTTPS'] && Environment_vars::$environment != "production")
+        if(!isset($_SERVER['HTTPS']) && !$_SERVER['HTTPS'] &&  Environment_vars::$environment != "production")
             redirect(Environment_vars::$paths['https_base_site']."/compra/plan/".$plan_id);
         
         $user = User_handler::getLoggedUser();
