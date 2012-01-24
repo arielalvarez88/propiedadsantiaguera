@@ -1,5 +1,12 @@
+<?php
+$language = Language_handler::get_user_prefered_language();
+$this->lang->load("properties_of_the_week",$language);
+
+?>
+
+
 <div id="properties-of-the-week">
-    <h2 id="properties-of-the-week-header">Propiedad de la semana</h2>
+    <h2 id="properties-of-the-week-header"><?php echo $this->lang->line("properties_of_the_week_header");?></h2>
     
             <div id="properties-of-the-week-video-container">
                 <object id="properties-of-the-week-video">

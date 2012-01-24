@@ -1,7 +1,7 @@
 <div id="terminos-holder">
 <h2 class="main-title">Nosotros</h2>
 <div id="logo">
-                            <a href="/"><img alt="logo" src="/images/logo.png"><a/>
+                            <a href="/"><img alt="logo" src="<?php base_url();?>/images/logo.png"><a/>
                         </div>
 <p>Con su lanzamiento en el 2012, Propiedad Santiaguera es una plataforma virtual creada con el propósito de conectar a la comunidad de agentes inmobiliarios con el mercado nacional, de una manera fácil, interactiva y colaborativa. 
 El equipo que conceptualizó la idea, quería facilitarles tanto a los agentes inmobiliarios como al público demandante de propiedades a nivel nacional, una herramienta que fuese:</p>
@@ -20,7 +20,7 @@ El equipo que conceptualizó la idea, quería facilitarles tanto a los agentes i
 <table id="tabla-equipo">
     <tr>
         <td>
-            <img src="/images/businessman.png" alt="business man"/>
+            <img src="<?php base_url();?>/images/businessman.png" alt="business man"/>
             <h4 class="main-title">Larry Cruz Minier</h4>
             <h5 class="sub-title">Lic. en Publicidad</h5>
             <p>Con su lanzamiento en el 2012, Propiedad Santiaguera es una plataforma 
@@ -29,7 +29,7 @@ El equipo que conceptualizó la idea, quería facilitarles tanto a los agentes i
                 y colaborativa.</p>
         </td>
         <td>
-            <img src="/images/businessman.png" alt="business man"/>
+            <img src="<?php base_url();?>/images/businessman.png" alt="business man"/>
             <h4 class="main-title">Larry Cruz Minier</h4>
             <h5 class="sub-title">Lic. en Publicidad</h5>
             <p>Con su lanzamiento en el 2012, Propiedad Santiaguera es una plataforma 
@@ -38,7 +38,7 @@ El equipo que conceptualizó la idea, quería facilitarles tanto a los agentes i
                 y colaborativa.</p>
         </td>
         <td>
-            <img src="/images/businessman.png" alt="business man"/>
+            <img src="<?php base_url();?>/images/businessman.png" alt="business man"/>
             <h4 class="main-title">Larry Cruz Minier</h4>
             <h5 class="sub-title">Lic. en Publicidad</h5>
             <p>Con su lanzamiento en el 2012, Propiedad Santiaguera es una plataforma 
@@ -49,7 +49,7 @@ El equipo que conceptualizó la idea, quería facilitarles tanto a los agentes i
     </tr>
         <tr>
         <td>
-            <img src="/images/businessman.png" alt="business man"/>
+            <img src="<?php base_url();?>/images/businessman.png" alt="business man"/>
             <h4 class="main-title">Larry Cruz Minier</h4>
             <h5 class="sub-title">Lic. en Publicidad</h5>
             <p>Con su lanzamiento en el 2012, Propiedad Santiaguera es una plataforma 
@@ -58,7 +58,7 @@ El equipo que conceptualizó la idea, quería facilitarles tanto a los agentes i
                 y colaborativa.</p>
         </td>
         <td>
-            <img src="/images/businessman.png" alt="business man"/>
+            <img src="<?php base_url();?>/images/businessman.png" alt="business man"/>
             <h4 class="main-title">Larry Cruz Minier</h4>
             <h5 class="sub-title">Lic. en Publicidad</h5>
             <p>Con su lanzamiento en el 2012, Propiedad Santiaguera es una plataforma 
@@ -67,7 +67,7 @@ El equipo que conceptualizó la idea, quería facilitarles tanto a los agentes i
                 y colaborativa.</p>
         </td>
         <td>
-            <img src="/images/businessman.png" alt="business man"/>
+            <img src="<?php base_url();?>/images/businessman.png" alt="business man"/>
             <h4 class="main-title">Larry Cruz Minier</h4>
             <h5 class="sub-title">Lic. en Publicidad</h5>
             <p>Con su lanzamiento en el 2012, Propiedad Santiaguera es una plataforma 
@@ -78,7 +78,7 @@ El equipo que conceptualizó la idea, quería facilitarles tanto a los agentes i
     </tr>
         <tr>
         <td>
-            <img src="/images/businessman.png" alt="business man"/>
+            <img src="<?php base_url();?>/images/businessman.png" alt="business man"/>
             <h4 class="main-title">Larry Cruz Minier</h4>
             <h5 class="sub-title">Lic. en Publicidad</h5>
             <p>Con su lanzamiento en el 2012, Propiedad Santiaguera es una plataforma 
@@ -87,7 +87,7 @@ El equipo que conceptualizó la idea, quería facilitarles tanto a los agentes i
                 y colaborativa.</p>
         </td>
         <td>
-            <img src="/images/businessman.png" alt="business man"/>
+            <img src="<?php base_url();?>/images/businessman.png" alt="business man"/>
             <h4 class="main-title">Larry Cruz Minier</h4>
             <h5 class="sub-title">Lic. en Publicidad</h5>
             <p>Con su lanzamiento en el 2012, Propiedad Santiaguera es una plataforma 
@@ -96,7 +96,7 @@ El equipo que conceptualizó la idea, quería facilitarles tanto a los agentes i
                 y colaborativa.</p>
         </td>
         <td>
-            <img src="/images/businessman.png" alt="business man"/>
+            <img src="<?php base_url();?>/images/businessman.png" alt="business man"/>
             <h4 class="main-title">Larry Cruz Minier</h4>
             <h5 class="sub-title">Lic. en Publicidad</h5>
             <p>Con su lanzamiento en el 2012, Propiedad Santiaguera es una plataforma 

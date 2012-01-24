@@ -1,11 +1,19 @@
+<?php
+$language = Language_handler::get_user_prefered_language();
+
+$this->lang->load("front_properties_pager",$language);
+
+?>
 <?php $section = isset($section) ? $section : ''; ?>
 <?php $is_front_page = $section == "" || $section == "front-" ? true : false; ?>
-<?php $title = $is_front_page ? 'Propiedades más visitadas' : 'Mis propiedades'; ?>
+<?php $title = $is_front_page ? $this->lang->line("front_properties_pager_header") : 'Mis propiedades'; ?>
 <?php $properties_per_row = isset($properties_per_row) ? $properties_per_row : 4; ?>
 <?php $rows_per_page = isset($rows_per_page) ? $rows_per_page : 4; ?>
 
 <?php $properties = isset($properties) ? $properties : array(); ?>
 <?php $number_of_properties = count($properties); ?>
+
+
 
 
 
@@ -45,8 +53,8 @@
                         <?php $number_of_printed_rows = (int) ($i/$properties_per_row);?>
                             
                         <div  class="properties-pager-property <?php echo $i % $properties_per_row == 0 || $number_of_properties == 1 || $i == $number_of_properties ? 'last' : ''; ?>">
-                            <a class="no-decoration-anchor" href="/propiedades/ver/<?php echo $property->id; ?>"><img class="properties-pager-property-screenshot" alt="property-photo" src="<?php echo $property->main_photo; ?>"/></a>
-                            <a class="no-decoration-anchor" href="/propiedades/ver/<?php echo $property->id; ?>"><h2 class="properties-pager-property-title"><?php echo $property->title; ?></h2></a>
+                            <a class="no-decoration-anchor" href="<?php base_url();?>/propiedades/ver/<?php echo $property->id; ?>"><img class="properties-pager-property-screenshot" alt="property-photo" src="<?php echo $property->main_photo; ?>"/></a>
+                            <a class="no-decoration-anchor" href="<?php base_url();?>/propiedades/ver/<?php echo $property->id; ?>"><h2 class="properties-pager-property-title"><?php echo $property->title; ?></h2></a>
                             <p class="properties-pager-property-type">
                                 <span class="bold"><?php echo capitalize(Environment_vars::$maps['ids_to_text']['property_types'][$property->type]); ?></span>
 
@@ -56,7 +64,7 @@
                                 <span class="bold">Precio de venta:</span> <span class="">RD$ <?php echo Numerizer::numerize($property->sell_price_dr); ?></span>
 
                             </p>
-                            <img src="/images/common/lightGreenItemCorner.png" class="itemCorner" alt="esquina-verde"/>  
+                            <img src="<?php base_url();?>/images/common/lightGreenItemCorner.png" class="itemCorner" alt="esquina-verde"/>  
                             <p>
                                 <?php echo Environment_vars::$maps['ids_to_text']['property_neighborhoods'][$property->neighborhood]; ?>, <?php echo Environment_vars::$maps['ids_to_text']['provinces'][$property->province]; ?>
                             </p>

@@ -52,7 +52,7 @@ $autoload['packages'] = array(APPPATH.'third_party');
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database','datamapper','breadcrumb','session','user_handler','form_validation','mailer','environment_vars','file_handler','slideshows_utilities','image_helper','file_handler','html_helper','numerizer','user_factory');
+$autoload['libraries'] = array('database','datamapper','breadcrumb','session','user_handler','language_handler','form_validation','mailer','environment_vars','file_handler','slideshows_utilities','image_helper','file_handler','html_helper','numerizer','user_factory');
 
 
 /*
@@ -64,7 +64,7 @@ $autoload['libraries'] = array('database','datamapper','breadcrumb','session','u
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url','form','str_helper','date_helper');
+$autoload['helper'] = array('url','form','str_helper','date_helper','array_helper');
 
 
 /*

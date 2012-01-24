@@ -38,6 +38,8 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
 define('THIRTY_DAYS_IN_SECONDS', 60 * 60 * 24 * 30);
+define('THIRTY_ONE_DAYS_IN_SECONDS', 60 * 60 * 24 * 31);
+
 define('FIVE_HOURS_IN_SECONDS', 1 * 60 * 60 * 5);
 define('FIVE_DAYS_IN_SECONDS', 60 * 60 * 24 * 5);
 define('ONE_DAY_IN_SECONDS', 60 * 60 * 24);

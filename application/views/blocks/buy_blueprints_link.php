@@ -1,6 +1,6 @@
 <a id="buy-blueprints-link">
     
-    <img alt="publicidad" src="/images/buttonAdvertising/2.jpg"/>
+    <img alt="publicidad" src="<?php base_url();?>/images/buttonAdvertising/2.jpg"/>
     
 <!--    OPORTUNIDAD <br/>
     DE ADQUIRIR<br/>

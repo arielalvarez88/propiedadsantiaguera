@@ -4,26 +4,27 @@
  * and open the template in the editor.
  */
 
-
+$language = Language_handler::get_user_prefered_language();
+$this->lang->load("plans",$language);
 
 ?>
-<h1 id="planes_main_title">Maneja tus propiedades con libertad</h1>
-<h4 id="planes_main_subtitle">Publica facilmente sin importar el dia, la hora o el lugar.</h4>
+<h1 id="planes_main_title"><?php echo $this->lang->line("plans_header");?></h1>
+<h4 id="planes_main_subtitle"><?php echo $this->lang->line("plans_sub_header");?></h4>
 <div id="planes_holder">
     <table id="planes_detail">
 
         <tr>
-            <td >NUMERO DE PROPIEDADES</td>
+            <td ><?php echo $this->lang->line("plans_number_of_posts");?></td>
         </tr>
         <tr>      
-            <td >DURACION POR PROPIEDAD</td>
+            <td ><?php echo $this->lang->line("plans_duration_per_post");?></td>
         </tr>
 
         <tr>
-            <td >FOTOS (15) y VIDEOS (1)</td>
+            <td ><?php echo $this->lang->line("plans_number_of_photos_and_videos");?></td>
         </tr>
         <tr>
-            <td  >PANEL ADMINISTRATIVO</td>
+            <td  ><?php echo $this->lang->line("plans_administrative_panel");?></td>
         </tr>
 <!--        <tr>
             <td  >CREAR SOLICITUDES Y<br> RECIBIR PROPUESTAS</td>
@@ -33,17 +34,17 @@
         </tr>-->
 
         <tr>
-            <td >INFORMACION EN INGLES Y ESPA&Ntilde;OL</td>
+            <td ><?php echo $this->lang->line("plans_ingormation_in_english_and_spanish");?></td>
         </tr>
         <tr>
-            <td >LOCALIZACION DE LA PROPIEDAD EN GOOGLE MAPS</td>
+            <td ><?php echo $this->lang->line("plans_google_maps");?></td>
         </tr>
     </table>
 
     <table id="planes_data">
         <thead>
-            <tr>
-                <th>BASICO</th><th>PLUS</th><th>AGENTE</th><th>INMOBILIARIA</th>
+            <tr>                
+                <th><?php echo $this->lang->line("plans_basic_plan");?></th><th><img id="plans-most-popular" src="<?php echo base_url().$this->lang->line("plans_most_popular_photo_src");?>" alt="mas-popular"/><?php echo $this->lang->line("plans_plus_plan");?></th><th><?php echo $this->lang->line("plans_agent_plan");?></th><th><?php echo $this->lang->line("plans_company_plan");?></th>
             </tr>
         </thead>
         <tbody>
@@ -51,27 +52,30 @@
                 <td>1</td> <td class="white">5</td> <td>10</td> <td class="white">25</td>
             </tr>
             <tr>
-                <td>30 d&iacute;as</td> <td class="white">30 d&iacute;as</td> <td>30 d&iacute;as</td> <td class="white">30 d&iacute;as</td>
+                <td>30 <?php echo $this->lang->line("common_days_word");?></td> <td class="white">30 <?php echo $this->lang->line("common_days_word");?></td> <td>30 <?php echo $this->lang->line("common_days_word");?></td> <td class="white">30 <?php echo $this->lang->line("common_days_word");?></td>
             </tr>
             <tr>
-                <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
+                <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td>
             </tr>
             <tr>
-                <td><img src="/images/check.png" alt="check"/></td  > <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
+                <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td  > <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td>
             </tr>
             <tr>
-                <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
+                <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td>
             </tr>
             <tr>
-                <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td> <td><img src="/images/check.png" alt="check"/></td> <td><img src="/images/blanco.png" alt="check"/></td>
+                <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td>
             </tr>
             
             
             <tr>
-                <td>RD$1,500<br><span>RD$1,500/Propiedad</span></td> <td>RD$6,000</br><span class="white">RD$1,200/Propiedad</span></td> <td>RD$10,000</br><span>RD$1,000/Propiedad</span></td> <td>RD$20,000</br><span class="white">RD$800/Propiedad</span></td> 
+                <td>RD$1,500<br><span>RD$1,500/<?php echo $this->lang->line("common_property_word");?></span></td> <td>RD$6,000</br><span class="white">RD$1,200/<?php echo $this->lang->line("common_property_word");?></span></td> <td>RD$10,000</br><span>RD$1,000/<?php echo $this->lang->line("common_property_word");?></span></td> <td>RD$20,000</br><span class="white">RD$800/<?php echo $this->lang->line("common_property_word");?></span></td> 
             </tr>
             <tr>
-                <td><a href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Basico'];?>"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Plus'];?>"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Agente'];?>"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td> <td><a href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Inmobiliaria'];?>"><img src="/images/elegir_btn.png" alt="elegir plan" /></a></td>
+                <td><a class="plans-choose-plan-link" href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Basico'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td> 
+                <td> <a class="plans-choose-plan-link" href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Plus'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td> 
+                <td> <a class="plans-choose-plan-link" href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Agente'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td>
+                <td><a class="plans-choose-plan-link" href="<?php echo Environment_vars::$paths['https_base_site'];?>/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Inmobiliaria'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td>
             </tr>
         </tbody>
         <tfoot>
@@ -82,54 +86,43 @@
 
     </table>
     <div id="why-photos">
-        <img src="/images/planes/why.png" alt="fotos-profesionales"/>
-        <img src="/images/planes/proPhotos.png" alt="fotos-profesionales"/>
+        <img src="<?php base_url();?>/images/planes/why.png" alt="fotos-profesionales"/>
+        <img src="<?php base_url();?>/images/planes/proPhotos.png" alt="fotos-profesionales"/>
     </div>
 
 </div>
-<h1 class="info_importante_title">Informaci&oacute;n Importante</h1>
+
+<h1 class="info_importante_title"><?php echo $this->lang->line("plans_important_text");?></h1>
 <div id="info_importante_content">
     <dl id="dl_left">
-        <dt>» ¿Puedo cambiar de plan en cualquier momento?</dt>
-        <dd>S&iacute;. Simplemente dir&iacute;jase a su cuenta y ver&aacute; la opci&oacute;n “actualizar mi plan” donde podr&aacute; aumentar o reducir su plan.</dd>
+        <dt>» <?php echo $this->lang->line("plans_question_1");?></dt>
+        <dd><?php echo $this->lang->line("plans_question_1_answer");?></dd>
 
-        <dt>» ¿Cu&aacute;les métodos de pagos tienen disponibles?</dt>
-        <dd>Para lograr facilitarles el proceso, disponemos de varios métodos de pago; 
-            aceptamos pago en l&iacute;nea bajo la plataforma de PayPal, el cual acepta las tarjetas 
-            de crédito Visa, Mastercard y American Express, o, estamos disponibles para 
-            pagos presenciales dirigiéndose a nuestras oficinas.</dd>
+        <dt>» <?php echo $this->lang->line("plans_question_2");?></dt>
+        <dd><?php echo $this->lang->line("plans_question_2_answer");?></dd>
 
-        <dt>» ¿Est&aacute; el ITBIS incluido en el precio mensual?</dt>
-        <dd>S&iacute;. Los precios detallados en sus respectivos planes, incluyen el ITBIS.
+        <dt>» <?php echo $this->lang->line("plans_question_3");?></dt>
+        <dd><?php echo $this->lang->line("plans_question_3_answer");?></dd>
     </dl>
 
     <dl id="dl_right">
-        <dt>» ¿Cu&aacute;ndo comienzan a transcurrir los 30 d&iacute;as disponibles?</dt>
-        <dd>Desde el momento en que se editen las fotos y el video, su propiedad 
-            estar&aacute; disponible para ser vista por todos los usuarios que visiten el portal. 
-            Cuando nuestro equipo termine de actualizar su propiedad, se le enviar&aacute; una 
-            notificaci&oacute;n de que su propiedad est&aacute; lista, y , a partir de ese momento 
-            comienzan a correr los d&iacute;as.</dd>
+        <dt>» <?php echo $this->lang->line("plans_question_4");?></dt>
+        <dd><?php echo $this->lang->line("plans_question_4_answer");?></dd>
 
-        <dt>» ¿Cu&aacute;l es el proceso para las fotos y el video?</dt>
-        <dd>Nuestro equipo se comunicar&aacute; con usted dentro de las pr&oacute;ximas 
-            24 Ð 48 horas luego de haber hecho el pago del plan que haya elegido. 
-            Se pauta una visita a la propiedad en la que se toman las fotos y 
-            se graban varias tomas de la propiedad. Se procede a editar las fotos 
-            y el video, para finalmente integrarlas en la propiedad del usuario.</dd>
+        <dt>» <?php echo $this->lang->line("plans_question_5");?></dt>
+        <dd><?php echo $this->lang->line("plans_question_5_answer");?></dd>
     </dl>
 
-    <p><strong>¿Alguna pregunta antes de registrarte?</strong></br>
-        Si tiene alguna pregunta con relaci&oacute;n al proceso de la promoci&oacute;n de su 
-        propiedad, no dude en comunicarse con nosotros y 
-        le contestaremos en la brevedad posible.</br></br>
+    <p><strong><?php echo $this->lang->line("plans_question_6");?></strong></br>
+      <?php echo $this->lang->line("plans_question_6_answer");?></br></br>
 
-        <span><strong>Aqu&iacute; les detallamos las <a href="/politicas">pol&iacute;ticas de seguridad y privacidad</a> y <a href="/terminos">términos de uso</a>.</strong></span></p>
+
+        <span><strong><?php echo $this->lang->line("plans_rules_1");?> <a href="<?php base_url();?>/politicas"><?php echo $this->lang->line("common_policy");?></a> <?php echo $this->lang->line("plans_rules_2");?> <a href="<?php base_url();?>/terminos"><?php echo $this->lang->line("common_terms");?></a>.</strong></span></p>
 </div>
 
 <div id="info_segura">
-    <h2>» Su informaci&oacute;n est&aacute; segura.</h2>
-    <p>En Propiedad Santiaguera utilizamos servidores de &uacute;ltima tecnolog&iacute;a localizados en los Estados Unidos, 
-        los cuales est&aacute;n protegidos bajo vigilancia las 24 horas del d&iacute;a. Nuestra infraestructura 
-        es constantemente actualizada con los &uacute;ltimos lineamientos de seguridad.</p>
+    
+
+    <h2>» <?php echo $this->lang->line("plans_secure_info_header");?></h2>
+    <p><?php echo $this->lang->line("plans_secure_info_text");?></p>
 </div>

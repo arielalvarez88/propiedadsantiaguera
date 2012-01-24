@@ -41,7 +41,7 @@ class cron_jobs extends CI_Controller {
                 $seconds_since_property_post = $now_in_timestamp - $property_post_date_in_timestamp;
 
 
-                $property_seconds_left = THIRTY_DAYS_IN_SECONDS - $seconds_since_property_post;
+                $property_seconds_left = THIRTY_ONE_DAYS_IN_SECONDS - $seconds_since_property_post;
 
                 
                 

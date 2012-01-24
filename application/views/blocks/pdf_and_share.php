@@ -1,7 +1,7 @@
 <div id="pdf-and-share">
     
     <p>
-        <img id="pdf-and-share-pdf-icon" src="/images/pdfConverter/pdfIcon.png"><span>Imprimir / Guardar en PDF</span>
+        <img id="pdf-and-share-pdf-icon" src="<?php base_url();?>/images/pdfConverter/pdfIcon.png"><span>Imprimir / Guardar en PDF</span>
     </p>
     
     <div id="pdf-and-share-share">

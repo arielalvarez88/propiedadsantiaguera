@@ -52,10 +52,26 @@ class CI_Controller {
 
         $this->load->_ci_autoloader();
 
+        $this->load_language();
         log_message('debug', "Controller Class Initialized");
-        $this->session->set_flashdata('referer', current_url());  
+        //$this->session->set_flashdata('referer', current_url());  
         
     }
+    
+    public function load_language()
+    {
+        
+        
+        $language_prefered_by_user = Language_handler::get_user_prefered_language();
+        
+        
+        $this->lang->load("header",$language_prefered_by_user);
+        $this->lang->load("common", $language_prefered_by_user);
+            
+    }
+    
+    
+    
 
     public static function &get_instance() {
         return self::$instance;

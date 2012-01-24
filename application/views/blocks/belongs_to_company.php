@@ -8,6 +8,6 @@ $company = isset($company) ? $company : null;
         <?php if ($company): ?>
             <img src="<?php echo $company->photo; ?>" alt="company-image"/>
         <?php endif; ?>
-        <a class="green-button" href="/miembros/ver/<?php echo $company->id;?>">Ver propiedades de esta empresa</a>
+        <a class="green-button" href="<?php base_url();?>/miembros/ver/<?php echo $company->id;?>">Ver propiedades de esta empresa</a>
     </div>
 <?php endif; ?>

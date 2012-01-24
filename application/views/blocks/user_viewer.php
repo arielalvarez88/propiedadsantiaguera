@@ -17,7 +17,7 @@ $company_or_particular_view = isset($company_or_particular_view) ? $company_or_p
 <div id="<?php echo $company_or_particular_view;?>user-viewer-container">
 
     <div id="user-viewer">
-        <h2 id="user-viewer-company"><?php echo $user_type;?></h2><img class="itemCorner" src="/images/common/lightGreenItemCorner.png"/>
+        <h2 id="user-viewer-company"><?php echo $user_type;?></h2><img class="itemCorner" src="<?php base_url();?>/images/common/lightGreenItemCorner.png"/>
         <div id="user-viewer-data">
             <div id="user-viewer-photo-container">
                 <img id="user-viewer-photo" src="<?php echo $user_photo;?>" alt="Foto del Usuario"/>
@@ -57,5 +57,5 @@ $company_or_particular_view = isset($company_or_particular_view) ? $company_or_p
 
 
 
-    <a class="green-button" href="/miembros/ver/<?php echo $user_id;?>" id="user-viewer-user-propiedades">Ver todas mis propiedades</a>
+    <a class="green-button" href="<?php base_url();?>/miembros/ver/<?php echo $user_id;?>" id="user-viewer-user-propiedades">Ver todas mis propiedades</a>
 </div>

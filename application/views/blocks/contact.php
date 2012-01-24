@@ -58,7 +58,7 @@
 
         </textarea>
 
-        <input id="contact-form-submit-button"type="image" src="/images/common/formSubmitButton.png" alt="Enviar"/>
+        <input id="contact-form-submit-button"type="image" src="<?php base_url();?>/images/common/formSubmitButton.png" alt="Enviar"/>
     </div>
     
     <div id="contact-information">

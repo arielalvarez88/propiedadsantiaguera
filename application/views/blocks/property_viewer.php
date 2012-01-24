@@ -1,4 +1,7 @@
+<?php
 
+$property_photos_paths= isset($property_photos_paths) ? $property_photos_paths : null;
+?>
 <div id="propiedad-viewer">
     <div id="propiedad-viewer-top">
         <div id="propiedad-viewer-header">
@@ -7,7 +10,7 @@
         </div>
 
 
-        <p id="propiedad-viewer-ref"><img src="/images/footer/footerSectionIcon1.png"/> REF: <?php echo $property->id; ?></p>
+        <p id="propiedad-viewer-ref"><img src="<?php base_url();?>/images/footer/footerSectionIcon1.png"/> REF: <?php echo $property->id; ?></p>
 
 
     </div>
@@ -21,7 +24,7 @@
                 <div <?php echo $i > 0 ? 'class="hidden"' : ''; ?>>
                     <img  class="propiedad-viewer-slide" src="<?php echo $property_photo_path['thumb']; ?>" alt="imagen-propiedad"/>                            
                     <a href="<?php echo $property_photo_path['image']; ?>" rel="property-gallery" class="property-slideshow no-decoration-anchor">
-                        <img src="/images/common/searchIcon.png" alt="buscar-lupa"/>
+                        <img src="<?php base_url();?>/images/common/searchIcon.png" alt="buscar-lupa"/>
                         <span>Ampliar im&aacute;gen</span>
                     </a>
                 </div>
@@ -82,7 +85,7 @@
 
 
         <div id="propiedad-viewer-pagers-pager">
-            <img class="hidden" id="propiedad-viewer-previous-pager" src="/images/propiedadesViewer/previousPager.png" class="propiedad-viewer-pager-selector"/>
+            <img class="hidden" id="propiedad-viewer-previous-pager" src="<?php base_url();?>/images/propiedadesViewer/previousPager.png" class="propiedad-viewer-pager-selector"/>
             <div id="propiedad-viewer-slidesshow-pager">
 
 
@@ -96,7 +99,7 @@
                 <?php endforeach; ?>
 
             </div>
-            <img class="hidden" id="propiedad-viewer-next-pager" src="/images/propiedadesViewer/nextPager.png" class="propiedad-viewer-pager-selector"/>
+            <img class="hidden" id="propiedad-viewer-next-pager" src="<?php base_url();?>/images/propiedadesViewer/nextPager.png" class="propiedad-viewer-pager-selector"/>
         </div>
     </div>
 

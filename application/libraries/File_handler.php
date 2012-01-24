@@ -17,7 +17,9 @@ class File_handler {
         
         return file_exists($file_path) || file_exists(realpath("./".$file_path))? true : false;
     }
-    public static function save_photos($inputs_names =array(), $upload_path, $max_size) {
+    
+ 
+    public static function save_photos($inputs_names, $upload_path, $max_size) {
 
         $CI_Helper = get_instance();
         $photos_full_paths = array();
@@ -25,8 +27,9 @@ class File_handler {
 
       
             if (File_handler::file_to_upload_exits($input_name)) {
-
-                $photo_config['upload_path'] = $upload_path;
+                    
+                $photo_config['upload_path'] = realpath("./".$upload_path);
+                
                 $photo_config['file_name'] = time() ;
                 $photo_config['allowed_types'] = 'gif|jpg|png';
                 $photo_config['max_size'] = '1000';
@@ -37,7 +40,8 @@ class File_handler {
                 }
                 $user_photo_info = $CI_Helper->upload->data();
     
-                $photos_full_paths[$input_name] = $user_photo_info['file_name'];
+                $photos_full_paths[$input_name] = $upload_path.$user_photo_info['file_name'];
+                
             }
         }
       

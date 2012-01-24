@@ -30,8 +30,8 @@ $number_of_visible_numbers_in_pager = isset($number_of_visible_numbers_in_pager)
     <div id="properties-search-results-pager-next-previous">
         
         <p id="properties-search-results-pager-current-page-display" ></p>
-        <p id="properties-search-results-pager-next" class="next-pager-button"><span>Siguiente</span> <img alt="flecha-anterior" src="/images/common/nextPagerButtonArrow.png"/></p>
-        <p id="properties-search-results-pager-previous"  class="previous-pager-button"><img alt="flecha-anterior" src="/images/common/previousPagerButtonArrow.png"/><span>Anterior</span></p>
+        <p id="properties-search-results-pager-next" class="next-pager-button"><span>Siguiente</span> <img alt="flecha-anterior" src="<?php base_url();?>/images/common/nextPagerButtonArrow.png"/></p>
+        <p id="properties-search-results-pager-previous"  class="previous-pager-button"><img alt="flecha-anterior" src="<?php base_url();?>/images/common/previousPagerButtonArrow.png"/><span>Anterior</span></p>
         
     </div>
     <?php if(!$filtered_properties):?>
@@ -54,7 +54,7 @@ $number_of_visible_numbers_in_pager = isset($number_of_visible_numbers_in_pager)
         <img class="properties-search-results-pager-property-photo" src="<?php echo $property->main_photo?>" alt="foto-de-la-propiedad"/>
         <div class="properties-search-results-pager-property-info">
             <div class="properties-search-results-pager-property-title">
-                <h2><?php echo $property->title;?></h2><img class="item-corner" src="/images/propertiesSearchResults/headerUnion.png" alt="esquina-diagonal"/><h2 class="price">RD$ <?php echo $condition == "rent"? Numerizer::numerize($property->rent_price_dr):Numerizer::numerize($property->sell_price_dr);?></h2><img class="item-corner" src="/images/common/grayCorner.png" alt="esquina-diagonal"/>
+                <h2><?php echo $property->title;?></h2><img class="item-corner" src="<?php base_url();?>/images/propertiesSearchResults/headerUnion.png" alt="esquina-diagonal"/><h2 class="price">RD$ <?php echo $condition == "rent"? Numerizer::numerize($property->rent_price_dr):Numerizer::numerize($property->sell_price_dr);?></h2><img class="item-corner" src="<?php base_url();?>/images/common/grayCorner.png" alt="esquina-diagonal"/>
             </div>
             
             <div class="properties-search-results-pager-property-info-feautures">
@@ -78,7 +78,7 @@ $number_of_visible_numbers_in_pager = isset($number_of_visible_numbers_in_pager)
                     <li>Cocinas: <?php echo $property->kitchens;?></li>
                     <?php endif;?>
             </ul>
-            <img class="properties-search-results-pager-property-divisor" src="/images/common/diagonalDivisor.png" alt="divisor-diagonal"/>
+            <img class="properties-search-results-pager-property-divisor" src="<?php base_url();?>/images/common/diagonalDivisor.png" alt="divisor-diagonal"/>
             <ul>
                 
                 <?php if($property->bathrooms):?>
@@ -101,7 +101,7 @@ $number_of_visible_numbers_in_pager = isset($number_of_visible_numbers_in_pager)
             </div>
             
             
-                <a class="green-button properties-search-results-pager-details" href="/propiedades/ver/<?php echo $property->id;?>">Ver Detalles</a>
+                <a class="green-button properties-search-results-pager-details" href="<?php base_url();?>/propiedades/ver/<?php echo $property->id;?>">Ver Detalles</a>
             
                 
 

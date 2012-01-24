@@ -1,5 +1,6 @@
 <?php
 
+
 $property_neighborhood = isset ($property_neighborhood) ? $property_neighborhood : false;
 $property_type = isset ($property_type) ? $property_type : false;
 $property_condition = isset ($property_condition) ? $property_condition : false;
@@ -496,21 +497,15 @@ $property_coordenates = isset($property_coordenates)? $property_coordenates : "1
             
             
         <ul id="property-form-photos-first-column" class="property-form-photos-column">
-            <?php for ($i = 1; $i <= 5; $i++): ?>
+            <?php for ($i = 1; $i <= 15; $i++): ?>
                 <li>
-                    <span><?php echo $i; ?>.</span> <input value="Buscar" type="file" name="property-photo-<?php echo $i; ?>"/>
+                    <?php  ?><span><?php echo $i; ?>.</span> <input value="Buscar" type="file" name="property-photo-<?php echo $i; ?>"/>
                 </li>
             <?php endfor; ?>
 
         </ul>
 
-        <ul id="property-form-photos-first-column" class="property-form-photos-column">
-            <?php for ($i = 6; $i <= 10; $i++): ?>
-                <li>
-                    <span><?php echo $i; ?>.</span> <input value="Buscar" type="file" name="property-photo-<?php echo $i; ?>"/>
-                </li>
-            <?php endfor; ?>
-        </ul>
+        
 
 
 

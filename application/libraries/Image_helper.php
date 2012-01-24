@@ -24,8 +24,7 @@ class Image_helper
     {
         
         
-        $this->config['source_image'] = realpath("./".$source_image_path);
-        
+        $this->config['source_image'] = realpath("./".$source_image_path);                
         $this->config['new_image'] =realpath("./".$new_image_path);
         $this->config['width'] = $width;
         $this->config['height'] = $height;
