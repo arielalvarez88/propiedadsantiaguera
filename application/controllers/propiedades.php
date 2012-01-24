@@ -84,7 +84,12 @@ class Propiedades extends CI_Controller {
 
         if ($property_cant_be_shown)
             redirect("/pagina_no_valida");
-
+        
+        $errors_view_variables= array();
+        
+        if(!$property->display_property)
+            $errors_view_variables['errors'] = "Debe publicar su porpiedad para que este dipsonible para todo el público.";
+        
 
         $property_viewer_data['property'] = $property;
 
@@ -240,9 +245,9 @@ class Propiedades extends CI_Controller {
 
 
 
+    $data['top'] = $this->load->view('blocks/errors', $errors_view_variables, true);
 
-
-        $data['top'] = $this->load->view('blocks/breadcrumb', $breadcrumb_view_variables, true);
+        $data['top'] .= $this->load->view('blocks/breadcrumb', $breadcrumb_view_variables, true);
         $this->load->view('page', $data);
     }
 
