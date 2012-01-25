@@ -14,7 +14,6 @@ class Company_editor extends Company_inscriber{
         $this->validator = $validator;
         $this->validation_type = "edit_company";
         $this->base_behavior = $base_behavior;
-        
     }
     
     //Overrided
@@ -32,7 +31,11 @@ class Company_editor extends Company_inscriber{
             
             if($this->base_behavior->user_photo_path)
             {
+                if( is_file($user_object->photo) )
+                    unlink ($user_object->photo);
+                
                 parent::save_photo ($user_object, $user_info_getter);
+                
                 
             }
                 

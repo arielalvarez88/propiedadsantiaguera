@@ -36,7 +36,8 @@ class Base_user_inscriber implements IUser_inscriber {
 
         try {
 
-            $upload_path = realpath("./" . Environment_vars::$environment_vars['user_photos_dir_path']);
+            $upload_path =  Environment_vars::$environment_vars['user_photos_dir_path'];
+            
             $user_photo_path_in_array = File_handler::save_photos(array("signup-photo"), $upload_path, 2048);
         } catch (Exception $error) {
        
@@ -97,7 +98,8 @@ class Base_user_inscriber implements IUser_inscriber {
     public function save_photo($user_object, $user_info_getter) {
         
         
-        $user_object->photo = Environment_vars::$environment_vars['user_photos_dir_path'].$this->user_photo_path;
+        
+        $user_object->photo = $this->user_photo_path;        
         
     }
 

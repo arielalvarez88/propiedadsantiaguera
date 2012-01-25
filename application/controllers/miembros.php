@@ -95,7 +95,14 @@ class Miembros extends CI_Controller {
     {
          
         $properties_pager_data['section'] = $section;
-        $properties_pager_data['properties'] = $user->property->where("display_property",1)->get()->all;
+        
+        
+        
+            
+        
+        
+        $properties_pager_data['properties'] =  $user->get_published_properties();
+        
         
         $properties_pager_data['properties_per_row'] = 3;
         $properties_pager_data['rows_per_page'] = 2;

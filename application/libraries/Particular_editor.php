@@ -29,7 +29,12 @@ class Particular_editor extends Particular_inscriber{
       //Overrided
   public function save_photo($user_object, $user_info_getter) {
       if($this->base_behaviour->user_photo_path)
+      {
+          if( is_file($user_object->photo) )
+                    unlink ($user_object->photo);
           parent::save_photo ($user_object, $user_info_getter);
+      }
+          
     }
 }
 

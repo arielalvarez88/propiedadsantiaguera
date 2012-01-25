@@ -109,10 +109,7 @@ class Propiedades extends CI_Controller {
 
         $slideshow_helper = new Slideshows_utilities();
         $property_photos = $property->file->where("type", Environment_vars::$maps['file_type_to_id']['photo'])->get()->all;
-
-        $main_photo->path = $property->main_photo;
-        $property_photos [] = $main_photo;
-
+        
         $property_image_thumbs_paths = array();
         $image_helper = new Image_helper();
 
@@ -440,7 +437,18 @@ class Propiedades extends CI_Controller {
         $post = $this->input->post();
         $property_info_getter = new Property_info_getter_from_post($post);
         $new_property = new Property();
-        $property_inscriber->save_id($new_property, $property_info_getter);
+        
+        if($property_inscriber instanceof Property_editor)
+        {
+            $new_property->where("id", $property_info_getter->get_id())->get();
+            
+            $property_close_places = $new_property->property_close_place->get()->all;
+            $property_features = $new_property->property_feature->get()->all;
+            
+            $new_property->delete($property_close_places);
+            $new_property->delete($property_features);
+        }
+        
         $property_inscriber->save_type($new_property, $property_info_getter);
         $property_inscriber->save_title($new_property, $property_info_getter);
         $property_inscriber->save_province($new_property, $property_info_getter);
@@ -470,15 +478,14 @@ class Propiedades extends CI_Controller {
         
         $properties_photos  = $property_inscriber->save_photos($new_property,$property_photos_filenames);
         
-        
+              
         $new_property_close_places = $property_info_getter->get_close_places_object_array();
-        
+                               
         $new_property_features = $property_info_getter->get_features_object_array();
         
         
-       
         
-
+        
         $new_property->save(array($new_property_type, $new_property_close_places, $new_property_features, $properties_photos, $user));
 
          redirect("/propiedades/ver/".$new_property->id);
@@ -522,6 +529,34 @@ class Propiedades extends CI_Controller {
         $user->save();
         redirect("/panel/propiedades/publicadas");
     }
+    
+    public function delete_property_photo($property_id,$photo_id)
+    {
+        $user = $this->get_logged_user_or_redirect_to_please_login();
+        $property = new Property($property_id);
+        
+        if(!$property->id)
+                redirect("/pagina_no_valida");
+        
+        $property_owner = $property->user->get();
+        
+        $user_doesnt_own_the_property_with_the_photo= $user->id != $property_owner->id;
+        
+        if($user_doesnt_own_the_property_with_the_photo)
+            redirect("/pagina_no_valida");
+        
+        
+        
+        $file = new File($photo_id);
+        
+        if(!$file->id)
+                redirect("/pagina_no_valida");
+        
+        $file->delete();
+        
+        redirect("/propiedades/editar_propiedades/".$property_id);
+        
+    }
 
     private function get_reppopulate_form_variables($property_info_getter,$extra_parameters =array()) {
         
@@ -544,10 +579,10 @@ class Propiedades extends CI_Controller {
 
 
 
-        $repopulateForm['property_sell_price_us'] = Numerizer::numerize($property_info_getter->get_sell_price_us());
-        $repopulateForm['property_rent_price_us'] = Numerizer::numerize($property_info_getter->get_rent_price_us());
-        $repopulateForm['property_sell_price_dr'] = Numerizer::numerize($property_info_getter->get_sell_price_dr());
-        $repopulateForm['property_rent_price_dr'] = Numerizer::numerize($property_info_getter->get_rent_price_dr());
+        $repopulateForm['property_sell_price_us'] = $property_info_getter->get_sell_price_us();
+        $repopulateForm['property_rent_price_us'] = $property_info_getter->get_rent_price_us();
+        $repopulateForm['property_sell_price_dr'] = $property_info_getter->get_sell_price_dr();
+        $repopulateForm['property_rent_price_dr'] = $property_info_getter->get_rent_price_dr();
 
 
 
@@ -560,10 +595,16 @@ class Propiedades extends CI_Controller {
         $repopulateForm['property_kitchens'] = $property_info_getter->get_kitchens();
         $repopulateForm['property_parkings'] = $property_info_getter->get_parkings();
         $repopulateForm['property_id'] = $property_info_getter->get_id();      
+        
+        $editing_exisiting_property = $property_info_getter instanceof Property_info_getter_from_object;
+        if($editing_exisiting_property )
+            $repopulateForm['property_photos'] = $property_info_getter->get_photos();      
+        
+        
         $repopulateForm = array_merge($repopulateForm,$extra_parameters );
 
         
-        $this->load_properties_form($repopulateForm);
+        return $repopulateForm;
     }
 
     public function editar_propiedades($property_id=0, $messages=array()) {
@@ -579,8 +620,10 @@ class Propiedades extends CI_Controller {
         
         $view_variables = $this->get_reppopulate_form_variables($property_info_getter);
         $view_variables['edit'] = true;
+        $view_variables['property_id'] = $property_info_getter->get_id();
         
-        $view_variables = array_merge($view_variables,$messages);
+        
+        
         
         
         $this->load_properties_form($view_variables);        

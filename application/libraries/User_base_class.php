@@ -129,15 +129,7 @@ public function __call($name, $arguments) {
 
     public function get_published_properties() {
         
-        $properties = $this->get_properties();
-     
-        $published_properties = array();
-        foreach ($properties as $property)
-        {
-            if($property->display_property)
-                    $published_properties[]= $property;
-        }
-        return $published_properties;
+        return $this->user->property->where("display_property",1)->get()->all;
         
     }
 

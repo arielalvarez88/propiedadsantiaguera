@@ -1442,6 +1442,12 @@ margin-top: 14px;
     clear: both;
 }
 
+
+.property-form-photos {
+    height: 49px;
+    width: 80px;
+}
+
 #property-form-description-address-container textarea
 {
 
@@ -1452,6 +1458,9 @@ margin-top: 14px;
 {
     height: auto;
 }
+
+
+
 #property-form-description select, #property-form-description input
 {
     display: block;
@@ -1464,6 +1473,23 @@ margin-top: 14px;
 
 }
 
+.property-form-photos-column li div a {
+    display: block;
+    font-size: 1.1em;
+}
+
+.property-form-photos-column li div, .property-form-photos-column img {
+    display: block;
+    float: left;
+}
+.property-form-photos-column li {
+    display: block;
+    height: 60px;
+}
+.property-form-photos-column li div {
+    margin-left: 7px;
+    
+}
 
 #property-form-description-description textarea, 
 #property-form-description-address-container textarea
@@ -2672,9 +2698,8 @@ properties-pager
 }
 
 .property-form-photos-column li span {
-    display: block;
-    width: 23px;
-    float: left;
+float: left;
+margin-right: 6px;
 }
 
 #property-form-photos p {
@@ -2842,7 +2867,7 @@ properties-pager
 
 .delete-agent, .edit-agent
 {
-    background-image: url('/images/agentsPager/editDeleteSprite.png');
+    background-image: url('/images/common/editDeleteSprite.png');
     display: block;
     width: 18px;
     height: 18px;
@@ -4124,7 +4149,14 @@ properties-pager
     height: 33px;
     padding: 0 0 0 5px;
 }
-
+.delete-icon
+{
+    background-image: url('/images/common/editDeleteSprite.png');
+    display: block;
+    width: 18px;
+    height: 18px;
+    
+}
 .bold
 {
     font-weight: bold;

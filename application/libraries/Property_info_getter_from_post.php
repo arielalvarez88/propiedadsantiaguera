@@ -41,8 +41,10 @@ class Property_info_getter_from_post implements IProperty_info_getter {
          $all_close_places = Environment_vars::$maps['ids_to_text']["property_close_places_to_name"];
         $property_close_places = array();
          foreach ($all_close_places as $id => $name) {
+       
             if (isset($this->post[$name])) {
-                $property_close_places[$name] = "checked";
+                $reppopulate_variable_name = str_replace("-", "_", $name);
+                $property_close_places[$reppopulate_variable_name]= "checked";
             }
         }
         return $property_close_places;
@@ -52,15 +54,27 @@ class Property_info_getter_from_post implements IProperty_info_getter {
     public function get_close_places_object_array(){
         
         $all_close_places = Environment_vars::$maps['ids_to_text']["property_close_places_to_name"];
+       
         $new_property_close_places = new Property_close_place();
-         foreach ($all_close_places as $key => $value) {
-            if (isset($this->post[$key])) {
-                $new_property_close_places->or_where("id", Environment_vars::$maps["property_close_places"][$key]);
+        
+        
+        $close_places_on = 0;
+         foreach ($all_close_places as $id => $input_name) {
+             
+                
+             
+            if (isset($this->post[$input_name])) {
+                
+                
+                $new_property_close_places->or_where("id", $id);
+                $close_places_on ++;
             }
         }
         
+        if($close_places_on > 0)
+            return $new_property_close_places->get()->all;
         
-        return $new_property_close_places->get()->all;
+        return array();
     }
 
     public function get_condition() {
@@ -85,7 +99,8 @@ class Property_info_getter_from_post implements IProperty_info_getter {
         {
             if(isset($this->post[$name]))
             {
-                $property_features[$name] = "checked";
+                $reppopulate_variable_name = str_replace("-", "_", $name);
+                $property_features[$reppopulate_variable_name] = "checked";
             }
         }
         
@@ -97,15 +112,23 @@ class Property_info_getter_from_post implements IProperty_info_getter {
     public function get_features_object_array() {
 
         $features = new Property_feature();
+        
+        $features_on = 0;
         foreach (Environment_vars::$maps['ids_to_text']["property_feature_to_name"] as $id => $name)
         {
             if(isset($this->post[$name]))
             {
                 $features->or_where("id", $id);
+                $features_on++;
             }
         }
         
-        return $features->get()->all;
+        
+        if($features_on > 0)
+            return $features->get()->all;
+        
+        else
+            return array();
     }
 
     public function get_kitchens() {
@@ -136,10 +159,12 @@ class Property_info_getter_from_post implements IProperty_info_getter {
     }
 
     public function get_rent_price_dr() {
-        return $this->post["property-sell-price-us"];
+         
+        return $this->post["property-rent-price-dr"];
     }
 
     public function get_rent_price_us() {
+     
         return $this->post["property-rent-price-us"];
     }
 
@@ -149,6 +174,7 @@ class Property_info_getter_from_post implements IProperty_info_getter {
     }
 
     public function get_sell_price_dr() {
+          
         return $this->post["property-sell-price-dr"];
     }
 
@@ -182,7 +208,11 @@ class Property_info_getter_from_post implements IProperty_info_getter {
     }
     
       public function get_id() {
-        
+          
+          if(isset($this->post['property-id']))
+            return $this->post['property-id'];
+          
+          return false;
         
     }
 

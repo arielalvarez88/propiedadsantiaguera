@@ -66,7 +66,27 @@ class Usuario extends CI_Controller {
         User_handler::loggout();
         redirect(base_url());
     }
+    
+    
+    public function agregar_agente() {
 
+        if(isset($_SERVER['HTTPS']) && !$_SERVER['HTTPS'] &&  Environment_vars::$environment != "production")
+            redirect(Environment_vars::$paths['https_base_site']."/usuario/agregar_agente");
+        
+        $signup_form_parameters = $this->get_add_agent_form_variables();
+
+        $this->load_signup_form($signup_form_parameters);
+    }
+
+    
+    private function get_add_agent_form_variables()
+    {
+        $form_variables['client_type'] = Environment_vars::$maps["texts_to_id"]['user_types']['Agente de Empresa'];
+        $form_variables['user_types'] = Environment_vars::$maps["texts_to_id"]['user_types'];
+        $form_variables['inscriber_type'] = Environment_vars::$maps["texts_to_id"]['user_types']['Empresa'];
+        return $form_variables;
+    }
+    
     public function signup() {
 
         if(isset($_SERVER['HTTPS']) && !$_SERVER['HTTPS'] &&  Environment_vars::$environment != "production")
@@ -106,15 +126,9 @@ class Usuario extends CI_Controller {
     public function validate($editing_existing_user =false) {
 
         $logged_user = User_handler::getLoggedUser();
-
         $logged_user_type = $logged_user ? $logged_user->type : Environment_vars::$maps['texts_to_id']['user_types']['Particular'];
-
-
         $client_type = $this->input->post('signup-client-type');
-
-
         $validationType = '';
-
         $user_handler = '';
         $user_handler_base_behaviour = new Base_user_inscriber($this->form_validation);
         
@@ -132,9 +146,9 @@ class Usuario extends CI_Controller {
             $user_info_getter = new User_info_getter_from_post($this->input->post());
             
             $user_handler->validate_info($user_info_getter, $logged_user_type);
-         
 
             $user_handler->validate_photos();
+            
         } catch (Validation_not_passed_exception $validation_exception) {
             $error_messages['errors'] .= $validation_exception->getMessage() . "\n";
         } catch (Invalid_photos_exception $photos_exception) {
@@ -149,7 +163,11 @@ class Usuario extends CI_Controller {
         if (empty($error_messages['errors']))
             $this->save_user($user_handler, $editing_existing_user);
         else
+        {
+            
             $this->error($error_messages, $editing_existing_user);
+        }
+            
     }
 
     private function reppopulate_signup_form($extra_parameters=array(), $repopulate_object = false) {
@@ -441,24 +459,25 @@ class Usuario extends CI_Controller {
 
         $parameters_to_repopulate = array();
         $user_to_edit = null;
+        $client_type = $this->input->post("signup-client-type");
+        
         if ($editing_user)
         {
             $user_to_edit = $this->input->post("edit-client-id");
-            $parameters_to_repopulate = $this->get_edit_form_parameters ($user_to_edit,$error_messages);
+            $parameters_to_repopulate = $this->get_edit_form_parameters ($user_to_edit);
             $user_to_edit = $parameters_to_repopulate['user_to_edit'];
+        }
+        else if($client_type == Environment_vars::$maps['texts_to_id']['user_types']['Agente de Empresa'])
+        {
+            $parameters_to_repopulate = $this->get_add_agent_form_variables();
         }
         else
         {
-            $parameters_to_repopulate = $this->get_new_user_signup_form_variables($error_messages);
+            $parameters_to_repopulate = $this->get_new_user_signup_form_variables();
         }
         
-            
-        
-        
-        
-            $this->reppopulate_signup_form($parameters_to_repopulate,$user_to_edit);
-        
-            
+       $parameters_to_repopulate = array_merge($parameters_to_repopulate,$error_messages);
+       $this->reppopulate_signup_form($parameters_to_repopulate,$user_to_edit);
     }
 
 }

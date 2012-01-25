@@ -49,7 +49,7 @@ $section = isset($section) ? $section : '';
 
         <div id="signup-info-text">
 
-            <?php $hidder_class_for_company = $client_type != Environment_vars::$maps['texts_to_id']['user_types']['Empresa'] ? 'hidden' : ''; ?>
+            <?php $hidder_class_for_company = $client_type != Environment_vars::$maps['texts_to_id']['user_types']['Empresa'] && $client_type != Environment_vars::$maps['texts_to_id']['user_types_requesters']['Empresa'] ? 'hidden' : ''; ?>
 
             <label for="signup-company-name" class="company-field company-requester-field <?php echo $hidder_class_for_company; ?> <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>" >Empresa:<span class="required">*</span></label> 
             <input <?php echo isset($companyName) ? 'value="' . $companyName . '"' : ''; ?> class="required company-field company-requester-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?> <?php echo $hidder_class_for_company; ?>" name="signup-company-name" type="text" id="signup-company-name"/>
@@ -57,7 +57,7 @@ $section = isset($section) ? $section : '';
 
             <?php $hidder_class_for_agent_or_particular = $client_type == Environment_vars::$maps['texts_to_id']['user_types']['Empresa'] ? 'hidden' : ''; ?>
 
-            <label for="signup-client-name" class="agent-particular-field company-agent-field agent-particular-requester-field <?php echo $hidder_class_for_agent_or_particular; ?> <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>" >Nombre:<span class="required">*</span></label> 
+            <label for="signup-client-name" class="agent-particular-field company-agent-field  agent-particular-requester-field <?php echo $hidder_class_for_agent_or_particular; ?> <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>" >Nombre:<span class="required">*</span></label> 
             <input <?php echo isset($clientName) ? 'value="' . $clientName . '"' : ''; ?> name="signup-name" class=" agent-particular-field required  company-agent-field agent-particular-requester-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?> <?php echo $hidder_class_for_agent_or_particular; ?>" type="text" id="signup-client-name"/>
 
 

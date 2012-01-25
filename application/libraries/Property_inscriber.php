@@ -5,6 +5,9 @@
  * and open the template in the editor.
  */
 
+//require_once "Video.php";
+//
+//Zend_Gdata_YouTube_VideoEntry
 require_once realpath("./application/libraries/IProperty_inscriber.php");
 
 class Property_inscriber implements IProperty_inscriber {
@@ -46,15 +49,9 @@ class Property_inscriber implements IProperty_inscriber {
     }
 
     public function save_description($property_object, $property_info_getter) {
-        $coordenates = $property_info_getter->get_coordenates();
-        if ($coordenates)
-            $property_object->coordenates = $coordenates;
-    }
-
-    public function save_id($property_object, $property_info_getter) {
-        $id = $property_info_getter->get_id();
-        if ($id)
-            $property_object->id = $id;
+        $description = $property_info_getter->get_description();
+        if ($description)
+            $property_object->description = $description;
     }
 
     public function save_kitchens($property_object, $property_info_getter) {
@@ -83,7 +80,7 @@ class Property_inscriber implements IProperty_inscriber {
 
     public function validate_photos($photos_inputs_names) {
 
-        $upload_path =  Environment_vars::$environment_vars['properties_photos_dir_path'];
+        $upload_path = Environment_vars::$environment_vars['properties_photos_dir_path'];
         $properties_photos_filenames = File_handler::save_photos($photos_inputs_names, $upload_path, 5000);
 
         return $properties_photos_filenames;
@@ -98,21 +95,26 @@ class Property_inscriber implements IProperty_inscriber {
     public function save_photos_and_return_objects($property_object, $properties_photos_filenames) {
 
         $photos = array();
+        $i = 0;
+
         foreach ($properties_photos_filenames as $input_name => $photo_filename) {
 
-            if ($input_name == "property-main-photo")
+            $is_main_photo = $i == 0;
+            if ($is_main_photo) {
                 $property_object->main_photo = $photo_filename;
-            else {
-                $photo = new File();
-
-                $photo->path = $photo_filename;
-                $photo->type = Environment_vars::$maps['file_type_to_id']['photo'];
-                $photo->save();
-
-
-
-                $photos[] = $photo;
+                $i++;
             }
+
+
+            $photo = new File();
+
+            $photo->path = $photo_filename;
+            $photo->type = Environment_vars::$maps['file_type_to_id']['photo'];
+            $photo->save();
+
+
+
+            $photos[] = $photo;
         }
 
         return $photos;
@@ -140,6 +142,10 @@ class Property_inscriber implements IProperty_inscriber {
         $sell_price_dr = $property_info_getter->get_sell_price_dr();
         if ($sell_price_dr)
             $property_object->sell_price_dr = $sell_price_dr;
+    }
+
+    public function validate_video($video_input_names) {
+  
     }
 
     public function save_sell_price_us($property_object, $property_info_getter) {

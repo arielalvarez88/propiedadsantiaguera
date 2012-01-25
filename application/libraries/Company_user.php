@@ -67,6 +67,7 @@ class Company_user extends User_base_class {
     //Override
     public function get_published_properties() {
         $own_published_properties = parent::get_published_properties();
+        
         $agents = $this->get_agents();
         $agents_published_properties = array();
         
