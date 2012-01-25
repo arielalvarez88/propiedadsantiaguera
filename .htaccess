@@ -1,6 +1,4 @@
 RewriteEngine on
-RewriteCond $1 !^(index\.php|images|robots\.txt|js|css)
+RewriteCond $1 !^(index\.php|images|robots\.txt|js|css|checker\.php)
 RewriteRule ^(.*)$ /index.php?/$1 [L]
-
-
-
+php_value include_path ".:/var/www/propiedadsantiaguera/ZendGdata-1.11.11/library"

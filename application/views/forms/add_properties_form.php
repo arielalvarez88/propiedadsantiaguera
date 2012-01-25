@@ -1,12 +1,11 @@
 <?php
-
-
-$property_neighborhood = isset ($property_neighborhood) ? $property_neighborhood : false;
-$property_type = isset ($property_type) ? $property_type : false;
-$property_condition = isset ($property_condition) ? $property_condition : false;
-$property_province = isset($property_province)? $property_province : null;
-$property_coordenates = isset($property_coordenates)? $property_coordenates : "19.487516,-70.718963";
-
+$property_id = isset($property_id) ? $property_id : null;
+$property_neighborhood = isset($property_neighborhood) ? $property_neighborhood : false;
+$property_type = isset($property_type) ? $property_type : false;
+$property_condition = isset($property_condition) ? $property_condition : false;
+$property_province = isset($property_province) ? $property_province : null;
+$property_photos = isset($property_photos) ? $property_photos : null;
+$property_coordenates = isset($property_coordenates) ? $property_coordenates : "19.487516,-70.718963";
 ?>
 
 <?php if (isset($errors) && $errors): ?>
@@ -30,36 +29,36 @@ $property_coordenates = isset($property_coordenates)? $property_coordenates : "1
             <ul id="property-form-description-column1" class="property-form-description-column">
                 <li>
                     <label for="property-form-description-type">Tipo</label>
-                    
-                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_types'], array("id"=> "property-form-description-type", "name" => "property-type"), '', $property_type);?>
-                    
+
+                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_types'], array("id" => "property-form-description-type", "name" => "property-type"), '', $property_type); ?>
+
 
                 </li>
                 <li>
                     <label for="property-form-description-title">T&iacute;tulo:<span class="required">*</span></label> 
                     <input type="text" id="property-form-description-title" name="property-title" <?php echo isset($property_title) ? 'value="' . $property_title . '"' : ''; ?>/>
                 </li>
-                
+
                 <li>
                     <label for="property-form-description-neighborhood">Provincia:</label> 
-                    
-                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['provinces'], array("id"=> "property-form-description-province", "name" => "property-province", ), '', $property_province);?>
-                    
+
+                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['provinces'], array("id" => "property-form-description-province", "name" => "property-province",), '', $property_province); ?>
+
                 </li>
-                
-                
+
+
                 <li>
                     <label for="property-form-description-neighborhood">Sector:</label> 
-                    
-                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'], array("id"=> "property-form-description-neighborhood", "name" => "property-neighborhood", ), '', $property_neighborhood);?>
-                    
+
+                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'], array("id" => "property-form-description-neighborhood", "name" => "property-neighborhood",), '', $property_neighborhood); ?>
+
                 </li>
 
 
 
                 <li>
                     <label for="property-form-description-condition">Vender/Alquilar:</label> 
-                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_conditions'], array("id" =>"property-form-description-condition", "name" => "property-condition"), '', $property_condition)?>
+                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_conditions'], array("id" => "property-form-description-condition", "name" => "property-condition"), '', $property_condition) ?>
                 </li>
 
                 <li id="property-form-description-address-container">
@@ -125,37 +124,37 @@ $property_coordenates = isset($property_coordenates)? $property_coordenates : "1
 
                 <ul class="property-form-description-column optional-view" id="property-form-description-column4">
 
-                    <?php $is_for_sale = $property_condition == Environment_vars::$maps['property_conditions']['sell'] || $property_condition == Environment_vars::$maps['property_conditions']['sell/rent'] || !$property_condition? true : false;?>
-                    <?php $is_for_rent = $property_condition == Environment_vars::$maps['property_conditions']['rent'] || $property_condition == Environment_vars::$maps['property_conditions']['sell/rent'] ? true : false;?>
-                    
-                    
-                   
-                        <li class=" sell-condition-field <?php echo $is_for_sale? '' : 'hidden';?>" >
-                            <label for="property-form-description-sell-price-us">Precio de Venta $US:</label> 
-                            <input type="text" name="property-sell-price-us" id="property-form-description-sell-price-us" <?php echo isset($property_sell_price_us) ? 'value="' . $property_sell_price_us . '"' : '' ?>/>
-                        </li>
-                        
-                        <li class=" sell-condition-field <?php echo $is_for_sale ? '' : 'hidden';?>">
-                            <label for="property-form-description-sell-price-dr">Precio de Venta $RD:<span class="required">*</span></label> 
-                            <input type="text" name="property-sell-price-dr" id="property-form-description-sell-price-dr" <?php echo isset($property_sell_price_dr) ? 'value="' . $property_sell_price_dr . '"' : '' ?>/>
-                        </li>
-
-                   
-                        
-                   
-                        <li class="rent-condition-field <?php echo $is_for_rent? '' : 'hidden';?>" >
-                            <label for="property-form-description-rent-price-us">Precio de Alquiler $US:</label>
-                            <input type="text" name="property-rent-price-us" id="property-form-description-rent-price-us" <?php echo isset($property_rent_price_us) ? 'value="' . $property_rent_price_us . '"' : '' ?>/>
-                        </li>
+                    <?php $is_for_sale = $property_condition == Environment_vars::$maps['property_conditions']['sell'] || $property_condition == Environment_vars::$maps['property_conditions']['sell/rent'] || !$property_condition ? true : false; ?>
+                    <?php $is_for_rent = $property_condition == Environment_vars::$maps['property_conditions']['rent'] || $property_condition == Environment_vars::$maps['property_conditions']['sell/rent'] ? true : false; ?>
 
 
 
-                        <li class="rent-condition-field <?php echo $is_for_rent? '' : 'hidden';?>" >
-                            <label for="property-form-description-rent-price-dr">Precio de Alquiler $RD: <span class="required">*</span></label> 
-                            <input type="text" name="property-rent-price-dr" id="property-form-description-rent-price-dr" <?php echo isset($property_rent_price_dr) ? 'value="' . $property_rent_price_dr . '"' : '' ?>/>
-                        </li>
+                    <li class=" sell-condition-field <?php echo $is_for_sale ? '' : 'hidden'; ?>" >
+                        <label for="property-form-description-sell-price-us">Precio de Venta $US:</label> 
+                        <input type="text" name="property-sell-price-us" id="property-form-description-sell-price-us" <?php echo isset($property_sell_price_us) ? 'value="' . $property_sell_price_us . '"' : '' ?>/>
+                    </li>
 
-                   
+                    <li class=" sell-condition-field <?php echo $is_for_sale ? '' : 'hidden'; ?>">
+                        <label for="property-form-description-sell-price-dr">Precio de Venta $RD:<span class="required">*</span></label> 
+                        <input type="text" name="property-sell-price-dr" id="property-form-description-sell-price-dr" <?php echo isset($property_sell_price_dr) ? 'value="' . $property_sell_price_dr . '"' : '' ?>/>
+                    </li>
+
+
+
+
+                    <li class="rent-condition-field <?php echo $is_for_rent ? '' : 'hidden'; ?>" >
+                        <label for="property-form-description-rent-price-us">Precio de Alquiler $US:</label>
+                        <input type="text" name="property-rent-price-us" id="property-form-description-rent-price-us" <?php echo isset($property_rent_price_us) ? 'value="' . $property_rent_price_us . '"' : '' ?>/>
+                    </li>
+
+
+
+                    <li class="rent-condition-field <?php echo $is_for_rent ? '' : 'hidden'; ?>" >
+                        <label for="property-form-description-rent-price-dr">Precio de Alquiler $RD: <span class="required">*</span></label> 
+                        <input type="text" name="property-rent-price-dr" id="property-form-description-rent-price-dr" <?php echo isset($property_rent_price_dr) ? 'value="' . $property_rent_price_dr . '"' : '' ?>/>
+                    </li>
+
+
 
 
                 </ul>                    
@@ -486,41 +485,78 @@ $property_coordenates = isset($property_coordenates)? $property_coordenates : "1
     <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber2.png"/><span>Fotos</span></p>
     <div id="property-form-photos">
 
+        <p>Fotos del slideshow:</p>
 
-        <p>Fotos del slideshow:</p>
-        <div id="property-main-photo-container">
-            
-            <input id="property-main-photo" type="file" name="property-main-photo"/>
-        </div>
-        
-        <p>Fotos del slideshow:</p>
-            
-            
+
         <ul id="property-form-photos-first-column" class="property-form-photos-column">
-            <?php for ($i = 1; $i <= 15; $i++): ?>
+            <?php $image_helper = new Image_helper(); ?>
+            <?php $i = 1; ?>
+            <?php for ($i; $i < (PHOTOS_PER_PROPERTY / 2) +1; $i++): ?>
                 <li>
-                    <?php  ?><span><?php echo $i; ?>.</span> <input value="Buscar" type="file" name="property-photo-<?php echo $i; ?>"/>
+                    <?php $zero_based_index = $i - 1; ?>
+                    <span><?php echo $i; ?>.</span>
+                    <?php if (isset($property_photos[$zero_based_index])): ?>
+                        <img class="property-form-photos" src="<?php echo $image_helper->resize($property_photos[$zero_based_index]->path, 80, 49); ?>" alt="foto-de-la-propiedad"/>
+                    <?php endif; ?>
+
+                    <div>
+                        <input value="Buscar" type="file" name="property-photo-<?php echo $i; ?>"/>
+
+                        <?php if ($property_id && isset($property_photos[$zero_based_index])): ?>
+                            <a class="no-decoration-anchor" href="/propiedades/delete_property_photo/<?php echo $property_id; ?>/<?php echo $property_photos[$zero_based_index]->id; ?>"><span class="delete-icon"></span>Eliminar Foto</a>
+                        <?php endif; ?>
+                    </div>
+
                 </li>
             <?php endfor; ?>
 
         </ul>
 
-        
+        <ul id="property-form-photos-first-column" class="property-form-photos-column">
+            <?php for ($i; $i <= PHOTOS_PER_PROPERTY; $i++): ?>
+                <li>
+                    <?php $zero_based_index = $i - 1; ?>
+
+                    <span><?php echo $i; ?>.</span>
+                    <?php if (isset($property_photos[$zero_based_index])): ?>
+                        <img class="property-form-photos" src="<?php echo $image_helper->resize($property_photos[$zero_based_index]->path, 80, 49); ?>" alt="foto-de-la-propiedad"/>
+                    <?php endif; ?>
+
+                    <div>
+                        <input value="Buscar" type="file" name="property-photo-<?php echo $i; ?>"/>
+
+                        <?php if ($property_id && isset($property_photos[$zero_based_index])): ?>
+                        <a class="no-decoration-anchor" href="/propiedades/delete_property_photo/<?php echo $property_id; ?>/<?php echo $property_photos[$zero_based_index]->id; ?>"><span class="delete-icon"></span>Eliminar Foto</a>
+                        <?php endif; ?>
+                    </div>
+
+
+                </li>
+            <?php endfor; ?>
+
+        </ul>
 
 
 
     </div>
-    
-  
-    <input type="hidden" id="property-form-coordenates" name="property-coordenates" value="<?php echo $property_coordenates;?>"/>
 
-      
-    
+
+    <input type="hidden" id="property-form-coordenates" name="property-coordenates" value="<?php echo $property_coordenates; ?>"/>
+    <?php if ($property_id) : ?>
+        <input type="hidden" id="property-id" name="property-id" value="<?php echo $property_id; ?>"/>
+    <?php endif; ?>
+
+
     <div class="form-divisor"></div>
 
     <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber3.png"/><span>Ubicaci&oacute;n</span></p>
-    
+
     <div id="property-form-gmap-picker"></div>
+    
+    
+    
+    <h2>Video</h2>
+    <input name="property-video" type="file"/>
 
     <div class="form-buttons">
         <input id="property-form-send-button" class="form-send-button" type="image" src="/images/common/formSubmitButton.png"/>

@@ -48,7 +48,9 @@ class Property_info_getter_from_object implements IProperty_info_getter {
         $all_features_id_to_name = Environment_vars::$maps['ids_to_text']["property_feature_to_name"];
         foreach ($property_features as $property_feature)
         {
-            $form_variables[$all_features_id_to_name[$property_feature->id]] = "checked";
+            $reppopulate_variable_name = str_replace("-" , "_" , $all_features_id_to_name[$property_feature->id]);
+            
+            $form_variables[$reppopulate_variable_name] = "checked";
         }
         
         return $form_variables;
@@ -68,7 +70,7 @@ class Property_info_getter_from_object implements IProperty_info_getter {
     }
 
     public function get_construction() {
-        return $this->property->consturction;
+        return $this->property->construction;
     }
 
     public function get_description() {
@@ -90,7 +92,12 @@ class Property_info_getter_from_object implements IProperty_info_getter {
 
     public function get_photos() {
         
+        
+        
         return $this->property->file->where("type", Environment_vars::$maps['file_type_to_id']['photo'])->get()->all;
+        
+        
+        
     }
 
     public function get_province() {
@@ -110,7 +117,7 @@ class Property_info_getter_from_object implements IProperty_info_getter {
     }
 
     public function get_sell_price_dr() {
-        return $this->property->sell_proce_dr;
+        return $this->property->sell_price_dr;
     }
 
     public function get_sell_price_us() {
@@ -135,13 +142,14 @@ class Property_info_getter_from_object implements IProperty_info_getter {
 
     public function get_close_places_for_reppopulate_form() {
         
-        $property_features = $this->property->property_features;
+        $property_close_places = $this->property->property_close_place->get();
         
         $form_variables =array();
         $all_features_id_to_name = Environment_vars::$maps['ids_to_text']["property_close_places_to_name"];
-        foreach ($property_features as $property_feature)
+        foreach ($property_close_places as $property_close_place)
         {
-            $form_variables[$all_features_id_to_name[$property_feature->id]] = "checked";
+            $reppopulate_variable_name = str_replace("-" , "_" , $all_features_id_to_name[$property_close_place->id]);
+            $form_variables[$reppopulate_variable_name] = "checked";
         }
         
         return $form_variables;

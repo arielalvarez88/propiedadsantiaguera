@@ -7,7 +7,7 @@
 
 interface IProperty_inscriber
 {
-     public function save_id($property_object, $property_info_getter);
+     
     public function save_type($property_object, $property_info_getter);
     public function save_title($property_object, $property_info_getter);
     public function save_province($property_object, $property_info_getter);

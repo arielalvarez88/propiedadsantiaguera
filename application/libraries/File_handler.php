@@ -23,13 +23,15 @@ class File_handler {
 
         $CI_Helper = get_instance();
         $photos_full_paths = array();
+    
+        
         foreach ($inputs_names as $input_name) {
 
-      
             if (File_handler::file_to_upload_exits($input_name)) {
                     
                 $photo_config['upload_path'] = realpath("./".$upload_path);
                 
+          
                 $photo_config['file_name'] = time() ;
                 $photo_config['allowed_types'] = 'gif|jpg|png';
                 $photo_config['max_size'] = '1000';
