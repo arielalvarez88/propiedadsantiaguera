@@ -26,14 +26,14 @@ class AgregarTablaPropiedades extends Ruckusing_BaseMigration {
         $propiedades->column('terrain', 'integer',array('limit' => 4));
         $propiedades->column('construction', 'integer',array('limit' => 4));
         $propiedades->column('stories', 'integer', array('limit' => 3));        
-        $propiedades->column('post_date', 'datetime');
-        $propiedades->column('max_photos_number', 'integer', array('limit' => 2));
+        $propiedades->column('post_date', 'datetime');        
         $propiedades->column('photos_number', 'integer', array('limit' => 2));
         $propiedades->column('condition', 'integer', array('limit' => 2));       
         $propiedades->column('main_photo', 'text');
         $propiedades->column('type', 'integer', array('limit' => 2));
         $propiedades->column('auto_reactivation', 'boolean', array('default'=> 0));
         $propiedades->column('expiration_email_sent', 'boolean', array('default'=> 0));
+        $propiedades->column('video', 'text');
         $propiedades->finish();
         
             $propiedadesUsersJoin = $this->create_table('properties_users');
