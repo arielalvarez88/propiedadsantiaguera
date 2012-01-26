@@ -112,7 +112,7 @@ class upload_video extends CI_Controller {
 
         $view_variables['video_url'] = $video_entry->getFlashPlayerUrl();
 
-        $this->load->view("blocks/upload_video".$view_variables);
+        $this->load->view("blocks/upload_video",$view_variables);
         
         
         }
