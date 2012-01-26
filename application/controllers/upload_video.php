@@ -20,6 +20,8 @@ class upload_video extends CI_Controller {
     public $developer_key;
     public $application_id;
     public $yt;
+    public $client_id;
+    
     public function __construct() {
         parent::__construct();
         Zend_Loader::loadClass('Zend_Gdata_YouTube');
@@ -29,7 +31,7 @@ class upload_video extends CI_Controller {
         $this->httpClient =
                 Zend_Gdata_ClientLogin::getHttpClient(
                         $username = 'arielalvarez88@gmail.com', $password = 'D3s1gnp@tt3rns', $service = 'youtube', $client = null, $source = 'MySource', // a short string identifying your application
-                        $loginToken   = null, $loginCaptcha = null, $authenticationURL);
+                        $loginToken   = null, $loginCaptcha = null, $this->authenticationURL);
 
 
 
@@ -41,7 +43,7 @@ class upload_video extends CI_Controller {
         // Note that this example creates an unversioned service object.
 // You do not need to specify a version number to upload content
 // since the upload behavior is the same for all API versions.
-        $this->yt = new Zend_Gdata_YouTube($httpClient, $application_id, $client_id, $developer_key);
+        $this->yt = new Zend_Gdata_YouTube($this->httpClient, $this->application_id, $this->client_id, $this->developer_key);
         $this->yt->setMajorProtocolVersion(2);
     }
 
@@ -106,7 +108,7 @@ class upload_video extends CI_Controller {
         $status = $_GET['status'];
         $video_id = $_GET['id'];
 
-        $video_entry = $yt->getVideoEntry($video_id);
+        $video_entry = $this->yt->getVideoEntry($video_id);
 
         $view_variables['video_url'] = $video_entry->getFlashPlayerUrl();
 
