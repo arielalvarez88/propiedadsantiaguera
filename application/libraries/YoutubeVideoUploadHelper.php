@@ -140,19 +140,7 @@ class YoutubeVideoUploadHelper {
         } catch (Zend_Gdata_App_Exception $e) {
             throw  new Exception($e->getMessage());
         }
-        
-        if ($control instanceof Zend_Gdata_App_Extension_Control) {
-            throw  new Exception("Error en la petición");
-        }
-        
-        
-        
-        if ($control instanceof Zend_Gdata_App_Extension_Control) {
-                              
-            if ($control->getDraft() ) {
-              throw new  InDraftState();
-            }                 
-        }
+                                          
         
         $this->flash_url = $videoEntry->getFlashPlayerUrl();
         
