@@ -81,14 +81,7 @@ class upload_video extends CI_Controller {
         $this->load->view("blocks/upload_video", $upload_video_view_variables);
     }
 
-    public function handle_status($get_array)
-    {
-        $status = $this->input->get("status");
-        $youtube_video_id = $this->input->get("id");
-        $this->handle_status($status, $youtube_video_id);
-        
-        
-    }
+
     
     public function handle_status($status,$youtube_video_id) {
         
