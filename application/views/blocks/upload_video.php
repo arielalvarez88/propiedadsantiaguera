@@ -16,5 +16,5 @@ $token = isset($token) ? $token : null;
 
 
 <?php if ($video_url): ?>
-    <iframe width="960" height="720" src="http://www.youtube.com/embed/7T-_Qz5qOhk" frameborder="0" allowfullscreen></iframe>
+    <iframe width="960" height="720" src="<?php echo $video_url;?>" frameborder="0" allowfullscreen></iframe>
 <?php endif; ?>
