@@ -122,7 +122,7 @@ class upload_video extends CI_Controller {
 
         $video_entry = $this->yt->getVideoEntry($video_id);
         
-var_dump();
+
         $view_variables['video_url'] = $video_entry->getFlashPlayerUrl();
         
         
