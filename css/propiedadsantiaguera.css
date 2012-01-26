@@ -3485,6 +3485,17 @@ margin-right: 6px;
 
 /*properties-search-results-pager ENDS*/
 
+
+/***** upload-vide ****/
+
+#upload-video h1
+{
+    margin-bottom: 30px;
+}
+
+/***** upload-vide ENDS ****/
+
+
 /*solicitud-de-info*/
 #solicitud-de-info
 {
@@ -5898,6 +5909,7 @@ h3#purchase-step-2
 {
     margin-top: 30px;
 }
+
 
 
 #purchase-steps-receit

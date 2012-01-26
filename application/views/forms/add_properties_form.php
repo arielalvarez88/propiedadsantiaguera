@@ -552,12 +552,7 @@ $property_coordenates = isset($property_coordenates) ? $property_coordenates : "
     <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber3.png"/><span>Ubicaci&oacute;n</span></p>
 
     <div id="property-form-gmap-picker"></div>
-    
-    
-    
-    <h2>Video</h2>
-    <input name="property-video" type="file"/>
-
+        
     <div class="form-buttons">
         <input id="property-form-send-button" class="form-send-button" type="image" src="/images/common/formSubmitButton.png"/>
         <img id="property-form-clear-button" class="form-clear-button" src="/images/common/formCleanButton.png"/>
