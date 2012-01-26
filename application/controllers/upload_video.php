@@ -87,13 +87,16 @@ class upload_video extends CI_Controller {
     
     public function handle_status($status,$youtube_video_id) {
         $videoEntry = $this->yt->getVideoEntry($youtube_video_id);
-        var_dump($videoEntry);
+     
         try {
             $control = $videoEntry->getControl();
         } catch (Zend_Gdata_App_Exception $e) {
             echo $e->getMessage();
         }
         if ($control instanceof Zend_Gdata_App_Extension_Control) {
+               var_dump($control->getDraft());
+                              var_dump("text");
+               var_dump($control->getDraft()->getText() );
             if ($control->getDraft() != null && $control->getDraft()->getText() == 'yes') {
                 $state = $videoEntry->getVideoState();
                 if ($state instanceof Zend_Gdata_YouTube_Extension_State) {
