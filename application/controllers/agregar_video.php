@@ -63,7 +63,7 @@ class Agregar_video extends CI_Controller {
         try {
             $youtube_helper->handle_upload_response($response_status, $video_id);
         } catch (Exception $e_uploading) {
-            $blocks["top"] = $this->load->view("blocks/error",array("errors" => "Lo sentimos, se produjo un error al subir el video de su propidad."),true);
+            $blocks["top"] = $this->load->view("blocks/errors",array("errors" => "Lo sentimos, se produjo un error al subir el video de su propidad."),true);
             $this->load->view("page",$blocks);
             return;;
         }
@@ -78,10 +78,7 @@ class Agregar_video extends CI_Controller {
         $property->video = $flash_video_url;
         $property->save();
         redirect("/propiedades/ver/".$property_id);
-        
-                
-        
-        
+
         
         
     }
