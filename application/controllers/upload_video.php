@@ -88,6 +88,12 @@ class upload_video extends CI_Controller {
     public function handle_status($status,$youtube_video_id) {
         $videoEntry = $this->yt->getVideoEntry($youtube_video_id);
      
+        if($videoEntry->isVideoPrivate())
+        {
+            throw new Exception("Video Privado");
+        }
+        
+        
         try {
             $control = $videoEntry->getControl();
         } catch (Zend_Gdata_App_Exception $e) {
@@ -112,17 +118,16 @@ class upload_video extends CI_Controller {
         $status = $_GET['status'];
         $video_id = $_GET['id'];
 
-$this->handle_status($status, $video_id);
 
-//        $video_entry = $this->yt->getVideoEntry($video_id);
-//        
-//
-//        $view_variables['video_url'] = $video_entry->getFlashPlayerUrl();
-//        
-//        
-//        var_dump($view_variables);
-//        $this->load->view("blocks/upload_video",$view_variables);
-//        
+
+        $video_entry = $this->yt->getVideoEntry($video_id);
+        
+
+        $view_variables['video_url'] = $video_entry->getFlashPlayerUrl();
+        
+        
+        var_dump($view_variables);
+        $this->load->view("blocks/upload_video",$view_variables);
         
         }
 
