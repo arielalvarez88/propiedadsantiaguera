@@ -247,7 +247,7 @@ class Propiedades extends CI_Controller {
     
     $video_variables['video_url'] = $property->video;
     
-        $data['bottom']  .= $this->load->load("blocks/property_video",$video_variables,true);
+        $data['bottom']  .= $this->load->view("blocks/property_video",$video_variables,true);
     
     
         $data['top'] .= $this->load->view('blocks/breadcrumb', $breadcrumb_view_variables, true);
