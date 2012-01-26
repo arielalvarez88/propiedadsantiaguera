@@ -10,10 +10,10 @@
  *
  * @author ariel
  */
-ini_set("include_path", "./ZendGdata-1.11.11/library");
-require_once 'Zend/Loader.php';
+ini_set("include_path", "/var/www/propiedadsantiaguera/ZendGdata-1.11.11/library");
 
-      
+
+   require_once 'Zend/Loader.php';
 
 
 
