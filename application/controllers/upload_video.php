@@ -10,7 +10,7 @@
  *
  * @author ariel
  */
-
+ini_set("include_path", "./ZendGdata-1.11.11/library");
 require_once 'Zend/Loader.php';
 
       
