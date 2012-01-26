@@ -244,6 +244,12 @@ class Propiedades extends CI_Controller {
 
     $data['top'] = $this->load->view('blocks/errors', $errors_view_variables, true);
 
+    
+    $video_variables['video_url'] = $property->video;
+    
+        $data['bottom']  .= $this->view->load("blocks/property_video",$video_variables,true);
+    
+    
         $data['top'] .= $this->load->view('blocks/breadcrumb', $breadcrumb_view_variables, true);
         $this->load->view('page', $data);
     }

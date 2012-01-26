@@ -49,15 +49,16 @@ class YoutubeVideoUploadHelper {
     
     
     
-    public function get_form_variables ($redirect_url='') {
+    public function get_form_variables ($video_title,$video_description,$redirect_url='') {
        
         
-        
+        $video_title = empty ($video_title) ? 'test' : $video_title;
+        $video_description = empty ($video_title) ? 'test' : $video_description;
         // create a new VideoEntry object
         $myVideoEntry = new Zend_Gdata_YouTube_VideoEntry();
 
-        $myVideoEntry->setVideoTitle('My Test Movie');
-        $myVideoEntry->setVideoDescription('My Test Movie');
+        $myVideoEntry->setVideoTitle($video_title);
+        $myVideoEntry->setVideoDescription($video_description);
 // The category must be a valid YouTube category!
         $myVideoEntry->setVideoCategory('Autos');
 
@@ -131,6 +132,7 @@ class YoutubeVideoUploadHelper {
         {
             throw new PrivateVideo();
         }
+        
         
         
         $control = '';
