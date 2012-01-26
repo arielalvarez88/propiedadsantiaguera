@@ -488,7 +488,7 @@ class Propiedades extends CI_Controller {
         
         $new_property->save(array($new_property_type, $new_property_close_places, $new_property_features, $properties_photos, $user));
 
-         redirect("/propiedades/ver/".$new_property->id);
+         redirect("/agregar_video/desea/".$new_property->id);
 
     }
 
