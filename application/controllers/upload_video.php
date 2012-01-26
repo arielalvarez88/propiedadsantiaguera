@@ -72,7 +72,7 @@ class upload_video extends CI_Controller {
         $video_variables["next_url"] = base_url() . "/panel/propiedades";
 
 
-        $upload_video_view_variables['next_url'] = base_url() . "upload_video/response";
+        $upload_video_view_variables['next_url'] = base_url() . "upload_video/response/5";
         $upload_video_view_variables['token'] = $tokenArray['token'];
         $upload_video_view_variables['post_url'] = $tokenArray['url'];
         ;
@@ -114,14 +114,11 @@ class upload_video extends CI_Controller {
         }
     }
 
-    public function response() {
+    public function response($property_id) {
         $status = $_GET['status'];
         $video_id = $_GET['id'];
 
-
-
         $video_entry = $this->yt->getVideoEntry($video_id);
-        
 
         $view_variables['video_url'] = $video_entry->getFlashPlayerUrl();
         
