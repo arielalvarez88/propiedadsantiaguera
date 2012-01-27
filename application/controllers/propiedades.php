@@ -123,16 +123,17 @@ class Propiedades extends CI_Controller {
             
         
             
-            $property_image_thumbs_paths[] = array("thumb" => $video_thumb_image, "image" => '');
-            
-
-                
-            
-            $property_pager_slides_html[] = <<<EOD
+            $property_image_thumbs_paths[] = <<<EOD
             <div id="property-viewer-video">
                     <iframe width="449" height="254" src="{$property->video}" frameborder="0" allowfullscreen  class="propiedad-viewer-slideshow-selector propiedad-viewer-slideshow-selector-0"></iframe>
             </div>
 EOD;
+                    
+            
+
+                
+            
+            $property_pager_slides_html[] = array("thumb" => $video_thumb_image, "image" => '');
                     
             $i =1;
             
