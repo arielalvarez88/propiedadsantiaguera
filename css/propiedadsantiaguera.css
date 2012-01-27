@@ -98,7 +98,7 @@ body, html
 {
     overflow: hidden;
     clear: both;
-    
+
 }
 #logo a {
     float: left;
@@ -818,8 +818,8 @@ body, html
     font-size: 1.2em;
     margin-right: 10px;
     padding: 3px 7px;
-    
-    
+
+
 }
 
 
@@ -1101,8 +1101,8 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 .primary-links 
 {
-float: right;
-margin-top: 14px;
+    float: right;
+    margin-top: 14px;
 }
 
 
@@ -1488,7 +1488,7 @@ margin-top: 14px;
 }
 .property-form-photos-column li div {
     margin-left: 7px;
-    
+
 }
 
 #property-form-description-description textarea, 
@@ -2357,13 +2357,13 @@ div.footer-section a{
 }
 
 #members-properties-pager-container #properties-pager{
-    
+
     overflow: hidden;
     width: 797px;
     height: 636px;
     float:left;
 
-    
+
 }
 
 #properties-pager
@@ -2661,7 +2661,28 @@ properties-pager
 {
     list-style: none;
 }
+#property-viewer-photos-headers {
+    float: left;
+    height: 18px;
+    padding: 5px 0;
+    text-align: center;
+    width: 146px;
+}
 
+#propiedad-viewer-video-icon
+{
+    clear: both;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+
+#property-viewer-photo-item
+{
+    background-image: url('/images/propiedadesViewer/multimediaSprite.png');    
+}
 
 #propiedad-viewer {
     background-color: #76BC3B;
@@ -2671,6 +2692,34 @@ properties-pager
     padding: 10px;
     width: 660px;
 }
+
+#property-viewer-photo-item
+{
+    background-position: 50px 0;
+}
+
+
+
+#property-viewer-photo-item, #property-viewer-video-item {
+    background-image: url("/images/propiedadesViewer/multimediaSprite.png");
+    float: left;
+    height: 37px;
+    left: 3px;
+    position: relative;
+    width: 48px;
+    
+}
+
+#property-viewer-video-item
+{
+    position: absolute;
+}
+
+#property-viewer-video-item
+{
+    position: absolute;
+}
+
 .propiedad-viewer-detalle{
     background-image: url("/images/propiedadesViewer/detallesItemBackground.png");
     height: 20px;
@@ -2698,8 +2747,8 @@ properties-pager
 }
 
 .property-form-photos-column li span {
-float: left;
-margin-right: 6px;
+    float: left;
+    margin-right: 6px;
 }
 
 #property-form-photos p {
@@ -2713,7 +2762,7 @@ margin-right: 6px;
 
 #propiedad-viewer-images-side {
     clear: both;
-    height: 271px;
+    height: 273px;
     width: 660px;
 }
 
@@ -2730,7 +2779,7 @@ margin-right: 6px;
 #propiedad-viewer-slidesshow-pager {
     float: left;
     height: 55px;
-    width: 570px;
+    width: 470px;
 }
 #propiedad-viewer-slidesshow-pager ul
 {
@@ -2741,7 +2790,7 @@ margin-right: 6px;
 
 #propiedad-viewer-top
 {
-    height: 50px;
+    height: 40px;
 }
 .propiedad-viewer-pager-selector
 {
@@ -2781,9 +2830,34 @@ margin-right: 6px;
     border-radius: 0 20px 20px 20px;
 }
 
+
+#propiedad-viewer-video-pager
+{
+    float: left;
+    margin-right: 10px;
+    position: relative;
+    
+}
+#property-viewer-photo-item
+{
+
+}
+#property-viewer-video-headers
+{
+   float: left;
+    height: 18px;
+    padding: 5px 0;
+    text-align: center;
+    width: 146px;
+}
+
+
+
+
+
 #propiedad-viewer-slideshow {
     float: left;
-    height: 254px;
+    height: 273px;
     width: 449px;
 }
 
@@ -4137,6 +4211,12 @@ margin-right: 6px;
 
 /*clases utiles*/
 
+
+.black-item
+{
+    display: block;
+    background-image: url('/images/common/choicheBlackBackground.png');
+}
 .ajax-pager-page-number{
     margin: 5px;
 }
@@ -4166,7 +4246,7 @@ margin-right: 6px;
     display: block;
     width: 18px;
     height: 18px;
-    
+
 }
 .bold
 {
@@ -4318,15 +4398,15 @@ span.required{
     padding:0 15px;
 }
 
-   #ajax-politicas-container #politicas-holder
-   {
-       width: 540px;
-       font-size: 1em;
-       background-color: white;
-       height: 300px; 
-       overflow: scroll;
-   }
-   
+#ajax-politicas-container #politicas-holder
+{
+    width: 540px;
+    font-size: 1em;
+    background-color: white;
+    height: 300px; 
+    overflow: scroll;
+}
+
 
 
 
@@ -4443,7 +4523,7 @@ span.required{
 }
 
 .plans-choose-plan-link {
-    background-image: url("/images/plans/plans.png");
+    background-image: url("/images/common/choicheBlackBackground.png");
     color: white;
     display: block;
     font-size: 0.7em;
@@ -4489,14 +4569,14 @@ span.required{
     width:687px;
     text-align: center;
     height: 670px;
-    
+
 }
 
 
 
 #plans-most-popular
 {
-       left: 387px;
+    left: 387px;
     position: absolute;
     top: 8px;
 }
@@ -4671,14 +4751,14 @@ span.required{
     clear: both;
     display: block;
     float: right;
-    
+
 }
 .form-send-button {
     border: medium none;
     clear: both;
     display: block;
     float: right;
-    
+
 }
 #buy-form-step-one-submit-button
 {
@@ -5809,7 +5889,7 @@ h3#purchase-step-2
 #buy-form-buy-button
 {
     cursor: pointer;
-    
+
 }
 
 #purchase-steps-total span#buy-form-included-itbis
@@ -5819,7 +5899,7 @@ h3#purchase-step-2
 #buy-form-post-number-container
 {
     margin: 10px 0 ;
-    
+
 }
 #buy-form-post-number-display
 {
@@ -5899,10 +5979,10 @@ h3#purchase-step-2
 {
     text-align:left;
     font-weight:bold;
-    
+
     width:100%;
-    
-    
+
+
 }
 
 #purchase-form-4
@@ -5916,7 +5996,7 @@ h3#purchase-step-2
 {
     clear: both;
     padding:20px 0;
-    
+
 }
 #purchase-steps-receit .purchase-detail-title
 {
@@ -5928,7 +6008,7 @@ h3#purchase-step-2
     padding:10px;
     margin-top:20px;
     border-radius:9px 9px 0 0;
-    
+
 }
 
 #purchase-steps-receit table

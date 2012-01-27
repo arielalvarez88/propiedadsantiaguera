@@ -135,7 +135,7 @@ class Propiedades extends CI_Controller {
         
         $property_viewer_data['property_photos_paths'] = $property_image_thumbs_paths;
 
-        $property_photos_pagers_groups = $slideshow_helper->getPagerSubset($property_pager_slides_html, 6);
+        $property_photos_pagers_groups = $slideshow_helper->getPagerSubset($property_pager_slides_html, 5);
 
         $property_viewer_data['property_photos_pagers_groups'] = $property_photos_pagers_groups;
 
@@ -324,12 +324,16 @@ class Propiedades extends CI_Controller {
 
     public function validate($edit= false, $property_id_to_edit=0) {
 
+         $filtered_post= $this->input->post();
+        
         $property_inscriber_handler= $edit ?  new Property_editor() : new Property_inscriber();
-        $property_info_getter = new Property_info_getter_from_post($this->input->post());
+        $property_info_getter = new Property_info_getter_from_post($filtered_post);
         $properties_photos_filenames = array();
         $property_condition_for_validation_purposes = '';
 
-        $filtered_post = $this->input->post();
+        
+        
+        
 
         $type_validation = "property_" . Environment_vars::$maps['ids_to_text']['property_types_validation'][$filtered_post['property-type']];
 

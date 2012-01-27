@@ -117,7 +117,13 @@ initilizeSlideShows = function()
 };
 
 initializePropiedadViewer = function (){
-    $('#propiedad-viewer-slideshow').cycle({
+    
+    var slideShowContainer = $('#propiedad-viewer-slideshow');
+    var numberOfSlides = slideShowContainer.children().length;
+    var videoSlideIndex = numberOfSlides;
+        $('#propiedad-viewer-video-icon').addClass('propiedad-viewer-slideshow-selector-' + videoSlideIndex);
+        
+    slideShowContainer.cycle({
         fx:     'fade', 
         speed:  'fast', 
         timeout: 3000, 
@@ -131,15 +137,42 @@ initializePropiedadViewer = function (){
             return '.propiedad-viewer-slideshow-selector-'+idx; 
         }
     });
-    $('#propiedad-viewer-slidesshow-pager').cycle({ 
+    
+    
+    var pagerContainer = $('#propiedad-viewer-slidesshow-pager');
+    
+    
+    var numberOfPagerPages = pagerContainer.children().length;
+    
+    
+
+    
+    
+    
+    
+    if(numberOfPagerPages > 0)
+        {
+            var nextButton = $("#propiedad-viewer-next-pager");
+            
+            
+            nextButton.show();
+        }
+        
+    
+    pagerContainer.cycle({ 
         fx:     'fade', 
         prev:   '#propiedad-viewer-previous-pager', 
         next:   '#propiedad-viewer-next-pager', 
-        after: function(curr,next,opts){
+        onPrevNextEvent: function(curr,next,opts){
             hideNextorPrevious(curr,next,opts,'#propiedad-viewer-next-pager','#propiedad-viewer-previous-pager')
         },
         timeout: 0 
     });
+    
+    
+    
+    
+    
 }
 
 drawPropertyUbication = function(latitudeAndLongitude)
