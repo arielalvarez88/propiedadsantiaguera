@@ -1,6 +1,7 @@
 <?php
 
 $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths : null;
+
 ?>
 <div id="propiedad-viewer">
     <div id="propiedad-viewer-top">
@@ -17,8 +18,12 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
 
 
     <div id="propiedad-viewer-images-side">
+        
+        
         <div id="propiedad-viewer-slideshow">
 
+             
+            
             <?php $i = 0; ?>
             <?php foreach ($property_photos_paths as $property_photo_path): ?>
                 <div <?php echo $i > 0 ? 'class="hidden"' : ''; ?>>
@@ -30,7 +35,14 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
                 </div>
                 <?php $i++; ?>
             <?php endforeach; ?>
+            
+            <?php if($property->video):?>
+                <div id="property-viewer-video">
+                    <iframe width="960" height="720" src="<?php echo $property->video;?>" frameborder="0" allowfullscreen></iframe>
+                </div>
+            <?php endif;?>
 
+            
         </div>
 
         <div id="propiedad-viewer-detalles-side">
@@ -72,7 +84,6 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
 
             </ul>
 
-
         </div>
     </div>
 
@@ -82,10 +93,20 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
 
 
     <div id="propiedad-viewer-pagers">
-
-
+        
+        
+        <?php if($property->video):?>
+        
+            <div id="propiedad-viewer-video-pager">
+                <img id="propiedad-viewer-video-icon" src="<?php echo base_url();?>images/propiedadesViewer/videoThumb.png" alt="video"/>
+                
+            </div>
+        
+                  <?php endif;?>
+            
+        
         <div id="propiedad-viewer-pagers-pager">
-            <img class="hidden" id="propiedad-viewer-previous-pager" src="<?php base_url();?>/images/propiedadesViewer/previousPager.png" class="propiedad-viewer-pager-selector"/>
+            <img  id="propiedad-viewer-previous-pager" src="<?php base_url();?>/images/propiedadesViewer/previousPager.png" class="propiedad-viewer-pager-selector"/>
             <div id="propiedad-viewer-slidesshow-pager">
 
 
@@ -99,7 +120,12 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
                 <?php endforeach; ?>
 
             </div>
-            <img class="hidden" id="propiedad-viewer-next-pager" src="<?php base_url();?>/images/propiedadesViewer/nextPager.png" class="propiedad-viewer-pager-selector"/>
+            
+                
+            <img  id="propiedad-viewer-next-pager" src="<?php base_url();?>/images/propiedadesViewer/nextPager.png" class="propiedad-viewer-pager-selector"/>
+  
+            
+            
         </div>
     </div>
 
