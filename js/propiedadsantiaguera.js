@@ -126,7 +126,7 @@ initializePropiedadViewer = function (){
     slideShowContainer.cycle({
         fx:     'fade', 
         speed:  'fast', 
-        timeout: 3000, 
+        timeout: 0, 
         pager:  '#propiedad-viewer-slidesshow-pager',
         cleartype: true,
         cleartypeNoBg: true,
