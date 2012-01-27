@@ -119,7 +119,7 @@ class Propiedades extends CI_Controller {
        $property_image_thumbs_paths = array();
         if($property->video)
         {
-            $video_thumb_image = realpath("./images/propiedadesViewer/videoThumb.png");
+            $video_thumb_image = base_url()."/images/propiedadesViewer/videoThumb.png";
             
         
             
