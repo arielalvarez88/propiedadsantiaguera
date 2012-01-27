@@ -22,8 +22,12 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
         
         <div id="propiedad-viewer-slideshow">
 
-             
-      
+    
+      <?php if($property->video):?>
+              <div id="property-viewer-video">
+                    <iframe width="449" height="254" src="<?php echo $property->video;?>" frameborder="0" allowfullscreen ></iframe>
+            </div>
+            <?php endif;?>
             
             <?php $i = 0; ?>
             <?php foreach ($property_photos_paths as $property_photo_path): ?>

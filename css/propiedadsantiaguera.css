@@ -3198,6 +3198,37 @@ properties-pager
 
 /*moneda-precio ends*/
 
+
+/*** overlay-property-calculator ***/
+
+#overlay-property-calculator-container
+{
+    width: 520px;
+    heihgt: 277px;
+}
+
+#overlay-property-calculator 
+{
+    background-color: #fbfbfb;
+    padding: 20px;
+}
+#overlay-property-calculator-container h1 {
+    background-image: url("/images/common/darkGreenPattern.png");
+    color: white;
+    font-size: 1.6em;
+    text-align: center;
+}
+
+#overlay-property-calculator-montly-pay-title
+{
+    color: #82cf40;
+    
+    
+}
+
+/*** overlay-property-calculator ENDS***/
+
+
 /******property-calculator*****/
 
 #property-calculator-container {
@@ -3206,6 +3237,7 @@ properties-pager
     height: 43px;
     padding: 7px;
     width: 261px;
+    display: block;
 }
 
 #property-calculator p, #property-calculator span
@@ -3275,7 +3307,7 @@ properties-pager
 }
 
 
-#pdf-and-share a
+#pdf-and-share-share a
 {
     background-image: url("/images/common/socialSprite.png");
     display: block;
@@ -4211,6 +4243,17 @@ properties-pager
 
 /*clases utiles*/
 
+.overlay-container {
+    background-color: #F3F3F3;
+    border-radius: 10px 10px 10px 10px;
+    padding: 5px;
+}
+
+.overlay-body{
+    background-color: #FBFBFB;
+    border-radius: 10px 10px 10px 10px;
+  
+}
 
 .black-item
 {

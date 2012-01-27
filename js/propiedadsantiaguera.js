@@ -915,6 +915,8 @@ initializeOverlays = function(){
     var givePostsToAgents = new Overlay('.give-agent-publication ','#give-posts-to-agents-overlay-close-button, #give-posts-to-agents-overlay-cancel-button');
     var buyFormPolicy = new Overlay("#buy-form-policy");
     var buyFormTerms = new Overlay('#buy-form-terms');
+    
+    var propertyCalculator = new Overlay("#property-calculator-container");
 };
 
 initializeInputsWithDefaultText = function(){
@@ -1768,6 +1770,16 @@ initializeAjaxConditionalForm = function(){
    
 };
 
+initializePrintButtons = function(){
+  var printButtons = $('.print-button');
+  var printEvent = function(event){
+      event.preventDefault();
+      print();
+  };
+  
+  bindEvent(printButtons, "click", printEvent);
+  
+};
 
 $(document).ready(function(){
 
@@ -1797,6 +1809,7 @@ $(document).ready(function(){
     initializePrizeCalculator();
     initializeBuyButton();
     initializeAjaxConditionalForm();
+    initializePrintButtons();
 /*comentario*/    
 });
 
