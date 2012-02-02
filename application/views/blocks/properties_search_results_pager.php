@@ -100,9 +100,11 @@ $number_of_visible_numbers_in_pager = isset($number_of_visible_numbers_in_pager)
             </ul>
             </div>
             
-            
+            <p class="properties-search-results-pager-bottom">
                 <a class="green-button properties-search-results-pager-details" href="<?php base_url();?>/propiedades/ver/<?php echo $property->id;?>">Ver Detalles</a>
-            
+                <label class="properties-search-results-pager-property-ref-number"> <span class="green-text">No. de referencia:</span> <?php echo $property->id;?></label>
+            </p>
+                
                 
 
         </div>

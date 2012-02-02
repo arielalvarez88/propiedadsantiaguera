@@ -19,6 +19,7 @@ require_once realpath("./application/libraries/Agent_user.php");
 require_once realpath("./application/libraries/Company_requester_user.php");
 require_once realpath("./application/libraries/Particular_requester_user.php");
 require_once realpath("./application/libraries/Agent_requester_user.php");
+require_once realpath("./application/libraries/Admin_user.php");
 
 
 class User_factory {
@@ -52,6 +53,9 @@ class User_factory {
                 break;
             case Environment_vars::$maps['texts_to_id']['user_types_requesters']['Empresa']:
                 return new Company_requester_user($user);
+                break;
+            case Environment_vars::$maps['texts_to_id']['Admin_user_type']:
+                return new Admin_user($user);
                 break;
         
         }

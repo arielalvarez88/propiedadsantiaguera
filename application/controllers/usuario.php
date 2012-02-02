@@ -138,7 +138,8 @@ class Usuario extends CI_Controller {
         } else {
             $user_handler = User_inscriber_factory::get_instance($client_type, $user_handler_base_behaviour, $this->form_validation);
         }
-
+        
+        
 
         $error_messages['errors'] = '';
         try {

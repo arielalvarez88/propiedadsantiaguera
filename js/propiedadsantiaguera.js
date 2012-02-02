@@ -4,6 +4,10 @@
 
 
 
+
+
+
+
 bindEvent = function(elementOrSelector,eventName,handler)
 {
     
@@ -121,7 +125,7 @@ initializePropiedadViewer = function (){
     var slideShowContainer = $('#propiedad-viewer-slideshow');
     var numberOfSlides = slideShowContainer.children().length;
     var videoSlideIndex = numberOfSlides;
-        $('#propiedad-viewer-video-icon').addClass('propiedad-viewer-slideshow-selector-' + videoSlideIndex);
+    $('#propiedad-viewer-video-icon').addClass('propiedad-viewer-slideshow-selector-' + videoSlideIndex);
         
     slideShowContainer.cycle({
         fx:     'fade', 
@@ -151,12 +155,12 @@ initializePropiedadViewer = function (){
     
     
     if(numberOfPagerPages > 0)
-        {
-            var nextButton = $("#propiedad-viewer-next-pager");
+    {
+        var nextButton = $("#propiedad-viewer-next-pager");
             
             
-            nextButton.show();
-        }
+        nextButton.show();
+    }
         
     
     pagerContainer.cycle({ 
@@ -414,27 +418,58 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
 };
 
 
-formRecolectorButtonBehaviour = function(event,formWrapper,recivingScriptUrl,postCallback){
-            event.preventDefault();
-            var info = {};
-            
-            var inputs = $(formWrapper).find('input, select, textarea');
+formRecolectorButtonBehaviour = function(event,formWrapper,recivingScriptUrl,postCallback,ajax){
+    event.preventDefault();
             
             
-            
-            
-            for(i = 0; i < inputs.length; i++)
-            {
-                 
-                info[$(inputs[i]).attr('name')] = $(inputs[i]).val();
-            }
-            
-            
-            $.post(recivingScriptUrl, info ,function(response){                                
                 
-                postCallback(response);
-            },'json');
-        };
+    var info = {};
+    var queryString = '?';   
+    var inputs = $(formWrapper).find('input, select, textarea');
+            
+            console.log(formWrapper);
+    
+    $(formWrapper).validate({
+        errorContainer: "#error-messages",
+        errorLabelContainer: "#error-messages",
+        wrapper: "li", 
+        debug:true
+   
+    });
+    var validationPassed =  $(formWrapper).valid();
+        
+    if(!validationPassed)
+        return false;
+
+
+
+    if(!validationPassed)
+        return false;
+    
+            
+    for(i = 0; i < inputs.length; i++)
+    {
+                 
+        info[$(inputs[i]).attr('name')] = $(inputs[i]).val();
+        queryString += $(inputs[i]).attr('name') + "=" + $(inputs[i]).val() + "&";
+        
+    }
+            
+    if(ajax)
+    {
+        $.post(recivingScriptUrl, info ,function(response){                                
+                
+            postCallback(response);
+        },'json');
+                    
+    }
+    else
+    {
+            
+        window.location.href = recivingScriptUrl + queryString;
+    }
+   
+};
 
 
 
@@ -443,43 +478,42 @@ Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, a
     var thisObject = this;
     
     
-//    var thisObject = this;
-//    this.form = $(formWrapperSelector);
-//    this.cleanButton = $(cleanButtonSelector);        
-//    this.sendButton = $(sendButtonSelector);
-//    this.recivingScriptUrl = recivingScriptUrl;
-// 
-//    
-//    var i=0;
+    //    var thisObject = this;
+    //    this.form = $(formWrapperSelector);
+    //    this.cleanButton = $(cleanButtonSelector);        
+    //    this.sendButton = $(sendButtonSelector);
+    //    this.recivingScriptUrl = recivingScriptUrl;
+    // 
+    //    
+    //    var i=0;
     
-     thisObject.init(formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,alertMessageCallbackFunction);
+    thisObject.init(formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,alertMessageCallbackFunction);
     thisObject.setClearButtonBehaviour();
     
-    if (ajax)
-    {
-        bindEvent(thisObject.sendButton, "click", function(event){
+    
+    bindEvent(thisObject.sendButton, "click", function(event){
             
             
-            formRecolectorButtonBehaviour(event, thisObject.form, recivingScriptUrl, alertMessageCallbackFunction);
-        })
+        formRecolectorButtonBehaviour(event, thisObject.form, recivingScriptUrl, alertMessageCallbackFunction,ajax);
+    })
 
-    }
+    
     
 };
 
 Form.prototype.setClearButtonBehaviour = function(){
     
-        var thisObject = this;
-        bindEvent(this.cleanButton, "click", function(){
+    var thisObject = this;
+    bindEvent(this.cleanButton, "click", function(){
         
-            var dataInputs = thisObject.form.find('input, textarea');
+        var dataInputs = thisObject.form.find('input, textarea');
         
-            for(i=0; i<dataInputs.length; i++)
-            {
-                $(dataInputs[i]).val('');
-            }
-        });
-    };
+        for(i=0; i<dataInputs.length; i++)
+        {
+            $(dataInputs[i]).val('');
+        }
+    });
+};
 
 
 Form.prototype.form;
@@ -488,6 +522,8 @@ Form.prototype.sendButton;
 Form.prototype.recivingScriptUrl;
 Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,alertMessageCallbackFunction){
     this.form = $(formWrapperSelector);
+    
+    
     this.cleanButton = $(cleanButtonSelector);        
     this.sendButton = $(sendButtonSelector);
     this.recivingScriptUrl = recivingScriptUrl;
@@ -497,31 +533,31 @@ Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanBut
 
 AjaxConditionalForm = function(formWrapperSelector, conditionalBoolReturningFunction, sendButtonSelector, cleanButtonSelector, alertMessageCallbackFunction){
   
-       var thisObject = this;
+    var thisObject = this;
        
        
-       var recivingScript = $(sendButtonSelector).attr("data-reciving-script");
-       thisObject.uber.init.call(this,formWrapperSelector, sendButtonSelector, cleanButtonSelector, true, recivingScript,alertMessageCallbackFunction);
+    var recivingScript = $(sendButtonSelector).attr("data-reciving-script");
+    thisObject.uber.init.call(this,formWrapperSelector, sendButtonSelector, cleanButtonSelector, true, recivingScript,alertMessageCallbackFunction);
     
-      thisObject.setClearButtonBehaviour();
+    thisObject.setClearButtonBehaviour();
       
       
       
     
-        bindEvent(thisObject.sendButton, "click", function(event){
+    bindEvent(thisObject.sendButton, "click", function(event){
             
-            if(conditionalBoolReturningFunction())
-                {
+        if(conditionalBoolReturningFunction())
+        {
                     
                     
-                    formRecolectorButtonBehaviour(event, thisObject.form, recivingScript, alertMessageCallbackFunction);
-                }
+            formRecolectorButtonBehaviour(event, thisObject.form, recivingScript, alertMessageCallbackFunction);
+        }
                 
                 
                 
             
             
-        })
+    })
 
     
 };
@@ -703,7 +739,7 @@ initializeForms = function(){
     initializeInputsWithDefaultText();
 
    
-    var  signupForm = new Form('#signup-form-container','#signup-form-container #signup-form-send-button','#signup-form-container #signup-form-clear-button');
+    var  signupForm = new Form('#signup-form-container','','#signup-form-container #signup-form-clear-button');
     var forgotPassword = new Form('#password-reset-form', '#password-reset-submit', '', true, '/usuario/password_reset_request', function(response){
     
         new alertMessageCallback(response, 'Email enviado', 'Error trate luego').getMessage();
@@ -739,6 +775,7 @@ initializeForms = function(){
     });
 
     
+    var searchPropertyByRefNumber  = new Form("#overlay-search-by-ref-number", "#overlay-search-by-ref-number-button", "", false, "/propiedades/buscar");
     
 }
 
@@ -868,16 +905,18 @@ initializeViewLoaderElements = function(){
 
 Overlay = function (selector, optionalClosebuttonSelector)
 {
+    
     $(selector).fancybox({
         padding:0,
         margin:0, 
         showCloseButton: false,        
         scrolling: 'auto',
         onComplete: function (){
-            initializeForms(); 
-            initializeViewLoaderElements();
-            initializeOverlays();
-            initializeHiderAndShowerElement();
+            initializeEvents();
+            $(".video").hide();
+        },
+        onClosed: function(){
+            $(".video").show();
         }
         
         
@@ -900,11 +939,11 @@ initializeInputsWithDefaultText = function(){
 Iframe = function(selector){
     
     this.anchor = $(selector);
-   bindEvent(this.anchor, "click", function(event){ 
-       event.preventDefault();
+    bindEvent(this.anchor, "click", function(event){ 
+        event.preventDefault();
         var href = $(selector).attr("href");
         $('body').append('<iframe style="position:" src="'+href+ '"></iframe>');
-   });
+    });
     
    
 }
@@ -917,6 +956,9 @@ initializeOverlays = function(){
     var buyFormTerms = new Overlay('#buy-form-terms');
     
     var propertyCalculator = new Overlay("#property-calculator-container");
+    var searchByRefNumber = new Overlay("#basic-filter-search-by-ref-number");
+    
+    
 };
 
 initializeInputsWithDefaultText = function(){
@@ -946,6 +988,31 @@ extendJquery = function (){
             return $.getUrlVars()[name];
         }
     });
+    
+    
+    jQuery.extend(jQuery.validator.messages, {
+        required: "Este campo es requerido.",
+        remote: "Please fix this field.",
+        email: "Please enter a valid email address.",
+        url: "Please enter a valid URL.",
+        date: "Please enter a valid date.",
+        dateISO: "Please enter a valid date (ISO).",
+        number: "Este campo solo debe contener valores numericos",
+        digits: "Please enter only digits.",
+        creditcard: "Please enter a valid credit card number.",
+        equalTo: "Please enter the same value again.",
+        accept: "Please enter a value with a valid extension.",
+        maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
+        minlength: jQuery.validator.format("Please enter at least {0} characters."),
+        rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
+        range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+        max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
+        min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
+    });
+
+    
+
+    
 };
     
 function commify(num) {
@@ -1008,13 +1075,41 @@ IFilter.getMinPrice= function(){};
 
 
 
-Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderContainerSelector, searchButtonSelector, valuesToSliderParameters, sliderMinValue,sliderMaxValue,sliderMinInitialValue,sliderMaxInitialValue,step,submitUrl){
+Filter = function(filterContainerSelector,sliderChangerElementSelector, provinceChooser, neighborhoodChoosersClass,sliderContainerSelector, searchButtonSelector, valuesToSliderParameters, sliderMinValue,sliderMaxValue,sliderMinInitialValue,sliderMaxInitialValue,step,submitUrl){
    
     var thisObject = this;
     this.sliderChangerElement = $(sliderChangerElementSelector);
     this.searchButtonElement = $(searchButtonSelector);
     this.sliderElement = new Slider(sliderContainerSelector, sliderMinValue, sliderMaxValue, sliderMinInitialValue, sliderMaxInitialValue, '#basic-filter-price-slider-min-display', '#basic-filter-price-slider-max-display', step);
     this.filterElement = $(filterContainerSelector);
+    
+    this.provinceChooser = $(provinceChooser);
+    this.neighborhoodChoosers = $(neighborhoodChoosersClass);
+    
+    
+    
+    this.changeNeighborhoodSelect = function(){
+        
+        var selectedProvinceId = thisObject.provinceChooser.val();
+        
+
+        if(selectedProvinceId != "null")
+            {
+                thisObject.neighborhoodChoosers.hide();
+        thisObject.neighborhoodChoosers.attr("name", "");
+        $("#basic-filter-neighborhood-for-province-"+selectedProvinceId).show();
+        $("#basic-filter-neighborhood-for-province-"+selectedProvinceId).attr("name", "neighborhood");
+            }
+        
+        
+        
+        
+        
+    }
+    
+   bindEvent(this.provinceChooser, "change", this.changeNeighborhoodSelect);
+    
+    
     this.sliderChangerElementEvent = function(){
      
 
@@ -1022,7 +1117,6 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderCo
         {
             if(thisObject.sliderChangerElement.val() == value)
             {
-                  
                 thisObject.sliderElement = new Slider(sliderContainerSelector, valuesToSliderParameters[value].minValue, valuesToSliderParameters[value].maxValue, valuesToSliderParameters[value].minInitialValue, valuesToSliderParameters[value].maxInitialValue, "#basic-filter-price-slider-min-display", "#basic-filter-price-slider-max-display", valuesToSliderParameters[value].step);
             }
         }
@@ -1032,13 +1126,28 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, sliderCo
     this.submitEvent = function(event)
     {
         event.preventDefault();
-        var infoContainersElementsInFilterSelector = filterContainerSelector + " input:not(#basic-filter-search-button), " + filterContainerSelector + " select";
+        
+        
+        $(thisObject.filterElement).validate({
+            errorContainer: "#error-messages",
+            errorLabelContainer: "#error-messages",
+            wrapper: "li", 
+            debug:true
+   
+        });
+        var validationPassed =  $(thisObject.filterElement).valid();
+        
+        if(!validationPassed)
+            return false;
+        
+        var infoContainersElementsInFilterSelector = filterContainerSelector + " input:not('.input-button'), " + filterContainerSelector + " select";
         var infoContainersElementsInFilter = $(infoContainersElementsInFilterSelector);
        
         var queryString = "?";
         
         $.each(infoContainersElementsInFilter, function(index, element){
             var jqueryElement = $(element);
+                        
             queryString += jqueryElement.val() != jqueryElement.attr("data-null-value")?  jqueryElement.attr("name") + "=" + jqueryElement.val()+ "&" : '';           
         });
         
@@ -1148,7 +1257,7 @@ initializeFilters = function(){
     var basicFilterMinValue = $.getUrlVar('absoluteMin')? Number($.getUrlVar('absoluteMin')) : 0;
     var basicFilterMaxValue = $.getUrlVar('absoluteMax')? Number($.getUrlVar('absoluteMax')) : 50000000;   
     var basicFilterStep = $.getUrlVar('step')? Number($.getUrlVar('step')) : 500000;
-    var basicFilter = new Filter("#basic-filter","#basic-filter-condition", "#basic-filter-price-slider","#basic-filter-search-button",{
+    var basicFilter = new Filter("#basic-filter","#basic-filter-condition","#basic-filter-province", ".filter-neigborhoods", "#basic-filter-price-slider","#basic-filter-search-button",{
         1: {
             minValue: 0, 
             maxValue: 50000000, 
@@ -1166,7 +1275,7 @@ initializeFilters = function(){
     }, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "/propiedades/buscar");
     
     
-    var basicFilter = new Filter("#basic-filter","#basic-filter-condition", "#basic-filter-price-slider","#basic-filter-search-button",{
+    var basicFilter = new Filter("#basic-filter","#basic-filter-condition","#basic-filter-province", ".filter-neigborhoods", "#basic-filter-price-slider","#basic-filter-search-button",{
         1: {
             minValue: 0, 
             maxValue: 50000000, 
@@ -1184,6 +1293,10 @@ initializeFilters = function(){
     }, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "/propiedades/buscar");
    
    
+    var advancedFilter = new Filter("#advanced-filter","","#basic-filter-province", ".filter-neigborhoods","","#advanced-filter-search-button","","","","","","","/propiedades/buscar");
+   
+   
+    var searchByRefNumber = new Filter('#overlay-search-by-ref-number-container',"","#basic-filter-province", ".filter-neigborhoods","","",'#overlay-search-by-ref-number-button',"","","","","", '/propiedades/buscar');
    
    
 };
@@ -1198,14 +1311,15 @@ initializeSliders = function () {
 
 
 
-InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInputSelector, calculateButtonSelector, responseInputSelector)
+InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInputSelector, calculateButtonSelector, responseDisplaySelector)
 {
     var thisObject = this;
     this.mountInput = $(mountInputSelector);
     this.rateInput = $(rateInputSelector);
     this.yearsInput = $(yearsInputSelector);
+    
     this.calculateButton = $(calculateButtonSelector);
-    this.responseInput = $(responseInputSelector);
+    this.responseDisplay= $(responseDisplaySelector);
     
     
     
@@ -1239,20 +1353,28 @@ InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInpu
           
         if(valiidateForInterest(mount,rate,years))
         {
-            thisObject.responseInput.val(mount + rate) ;
+            
+            if(thisObject.responseDisplay.is(":input"))
+                thisObject.responseDisplay.val(mount * rate *  years *  12);
+            else
+                thisObject.responseDisplay.html(mount * rate *  years *  12);
         }
         
         
     };
         
     
-    thisObject.calculateButton.click(thisObject.calculateEvent);
+    bindEvent(thisObject.calculateButton, "click", thisObject.calculateEvent);
+    
     
 };
 
 initializeInterestsCalculators = function()
 {
     var interestCalculator = new InterestsCalculator("#interests-calculator-mount", "#interests-calculator-rate", "#interests-calculator-years", "#interests-calculator-calculate-button", "#interests-calculator-result");
+    var overlayPropertyDrCalculator = new InterestsCalculator("#overlay-property-calculator-dr", "#overlay-property-calculator-interest", "#overlay-property-calculator-interest", "#overlay-property-calculator-calculate-button", "#overlay-property-calculator-rd-display");
+    
+    var overlayPropertyUsCalculator = new InterestsCalculator("#overlay-property-calculator-us", "#overlay-property-calculator-interest", "#overlay-property-calculator-interest", "#overlay-property-calculator-calculate-button", "#overlay-property-calculator-us-display");
 };
 
 
@@ -1520,7 +1642,7 @@ GmapShowCoordenate.prototype.initializeMap = function (mapContainerSelectorEleme
         center: initialPosition, 
         zoom: this.zoom, 
         mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+    };
     
     
     
@@ -1603,13 +1725,13 @@ initializeGmaps = function()
 };
 
 
-StepOfStepByStepForm = function(formContainerSelector,stepIndicatorSelector,sendButtonSelector,cleanButtonSelector,errorMessagesContainer)
+StepOfStepByStepForm = function(formContainerSelector,containerToBeHidden,stepIndicatorSelector,sendButtonSelector,cleanButtonSelector,errorMessagesContainer)
 {
     var thisObject = this;
     this.formContainerSelector = formContainerSelector;
     this.sendButtonSelector = sendButtonSelector;
     this.cleanButtonSelector = cleanButtonSelector;
-    
+    this.containerToBeHidden = containerToBeHidden;
     
     this.errorMessagesContainer= errorMessagesContainer;
     var recivingScript = $(this.sendButtonSelector).attr("data-reciving-script");
@@ -1618,17 +1740,17 @@ StepOfStepByStepForm = function(formContainerSelector,stepIndicatorSelector,send
     
     this.select = function(){
         thisObject.stepIndicator.addClass("selected");
-        $(thisObject.formContainerSelector).show();
+        $(thisObject.containerToBeHidden).show();
     };
     
     this.deselect = function(){
         
         thisObject.stepIndicator.removeClass("selected");
-        $(thisObject.formContainerSelector).hide();
+        $(thisObject.containerToBeHidden).hide();
     };
     
     this.setAvailable = function(){
-        bindEvent(formContainerSelector, "click", thisObject.select);
+        bindEvent(sendButtonSelector, "click", thisObject.select);
     };
     
 }
@@ -1684,18 +1806,18 @@ StepByStepForm = function(arrayOfStepObjects){
 
 PrizeCalculator = function(prizeResultDisplay,postNumberDisplay,postNumber,planPrice,factorField){
 
-var thisObject = this;
-this.prizeResultDisplay = $(prizeResultDisplay);
+    var thisObject = this;
+    this.prizeResultDisplay = $(prizeResultDisplay);
 
-this.postNumberDisplay = $(postNumberDisplay);
+    this.postNumberDisplay = $(postNumberDisplay);
 
-this.factorField = $(factorField);
+    this.factorField = $(factorField);
 
-this.postsNumber = $(postNumber).val();
+    this.postsNumber = $(postNumber).val();
 
-this.planPrice = $(planPrice).val();
+    this.planPrice = $(planPrice).val();
 
-this.calculate = function(){
+    this.calculate = function(){
         
         var factor = thisObject.factorField.val();
         var postsNumber = thisObject.postsNumber * factor;
@@ -1720,8 +1842,8 @@ initializePrizeCalculator = function(){
 initiazlizeStepByStepForms = function(){
     
     
-    var buyFormSteps = [new StepOfStepByStepForm("#buy-form-step-one","#buy-form-step-one-indicator","#buy-form-step-one-submit-button",'',"#buy-form-step-one-error-messages"),
-    new StepOfStepByStepForm("#buy-form-step-two", "#buy-form-step-two-indicator"),
+    var buyFormSteps = [new StepOfStepByStepForm("#buy-form-step-one #signup-form", "#buy-form-step-one", "#buy-form-step-one-indicator","#buy-form-step-one-submit-button",'',"#buy-form-step-one-error-messages"),
+    new StepOfStepByStepForm("#buy-form-step-two", "#buy-form-step-two", "#buy-form-step-two-indicator"),
 
     ];
     var buyForm = new StepByStepForm(buyFormSteps);
@@ -1738,12 +1860,12 @@ AcceptTermsButton = function(conditionalCheckbox,buttonSelector,eventName,eventH
     if(typeof message == "undefined")
         message = "Para poder terminar esta compra usted debe aceptar los terminos de uso y privacidad antes de continuar.";
         
-     bindEvent(buttonSelector, eventName, function(event){
-         if(thisObject .conditionalCheckbox.is(":checked"))
-             eventHandler(event);
-         else
-             alert(message);
-     });
+    bindEvent(buttonSelector, eventName, function(event){
+        if(thisObject .conditionalCheckbox.is(":checked"))
+            eventHandler(event);
+        else
+            alert(message);
+    });
  
  
         
@@ -1754,12 +1876,14 @@ initializeBuyButton =  function (){
     
     var buyButton = new AcceptTermsButton("#buy-form-accept-terms","#buy-form-buy-button","click",function(){
         
-    });
+        });
 };
 
 
 initializeAjaxConditionalForm = function(){
-   var buyForm = new AjaxConditionalForm("#buy-form-container", function(){return $("#buy-form-accept-terms").is(":checked");}, "#buy-form-buy-button", '',function(response){
+    var buyForm = new AjaxConditionalForm("#buy-form-container", function(){
+        return $("#buy-form-accept-terms").is(":checked");
+    }, "#buy-form-buy-button", '',function(response){
        
      
         if(response.success)
@@ -1771,25 +1895,39 @@ initializeAjaxConditionalForm = function(){
 };
 
 initializePrintButtons = function(){
-  var printButtons = $('.print-button');
-  var printEvent = function(event){
-      event.preventDefault();
-      print();
-  };
+    var printButtons = $('.print-button');
+    var printEvent = function(event){
+        event.preventDefault();
+        print();
+    };
   
-  bindEvent(printButtons, "click", printEvent);
+    bindEvent(printButtons, "click", printEvent);
   
 };
 
-$(document).ready(function(){
+initializeWysiwyg = function(){
+    tinyMCE.init({
+        mode : "specific_textareas",
+        editor_selector: 'wysiwyg',
+                
+                
+        theme : "advanced",
+        plugins : "emotions,spellchecker,advhr,insertdatetime,preview", 
+                
+        // Theme options - button# indicated the row# only
+        theme_advanced_buttons1 : "newdocument,|,bold,italic,underline,|,justifyleft,justifycenter,justifyright,fontselect,fontsizeselect,formatselect",
+        theme_advanced_buttons2 : "cut,copy,paste,|,bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,anchor,image,|,code,preview,|,forecolor,backcolor",
+        theme_advanced_buttons3 : "insertdate,inserttime,|,spellchecker,advhr,,removeformat,|,sub,sup,|,charmap,emotions",      
+        theme_advanced_toolbar_location : "top",
+        theme_advanced_toolbar_align : "left",
+        theme_advanced_statusbar_location : "bottom",
+        theme_advanced_resizing : true
 
-    extendJquery();
-    var ieCssFixes = '<link rel="stylesheet" type="text/css" href="http://'+ window.location.hostname +'/css/propiedadsantiaguera-ie-fixes.css"/>' ;
-    if($.browser.msie)
-    {
-        $('head').append(ieCssFixes);
-    }    
-    
+    });
+}
+  
+
+initializeEvents= function(){
     initilizeSlideShows();
     initializePropiedadViewer();       
     initializeViewLoaderElements();
@@ -1810,6 +1948,21 @@ $(document).ready(function(){
     initializeBuyButton();
     initializeAjaxConditionalForm();
     initializePrintButtons();
+    initializeWysiwyg()
+};
+
+
+$(document).ready(function(){
+
+    extendJquery();
+    var ieCssFixes = '<link rel="stylesheet" type="text/css" href="http://'+ window.location.hostname +'/css/propiedadsantiaguera-ie-fixes.css"/>' ;
+    if($.browser.msie)
+    {
+        $('head').append(ieCssFixes);
+    }    
+    
+    
+    initializeEvents();
 /*comentario*/    
 });
 

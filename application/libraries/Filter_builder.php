@@ -21,6 +21,8 @@ class Filter_builder {
 
         $field_name = "";
         $value = isset($post['minprice']) ? $post['minprice'] : null;
+        
+     
         if(!$value)
             return;
 
@@ -31,7 +33,7 @@ class Filter_builder {
             $field_name = $post['condition'] == 'rent' ? 'rent_price_dr' : 'sell_price_dr';
 
         
-        
+       
         $filter = new Greater_or_equal_than_filter($field_name, $value);
         $filter->add_filter($property_object);
     }

@@ -25,7 +25,7 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
     
       <?php if($property->video):?>
               <div id="property-viewer-video">
-                    <iframe width="449" height="254" src="<?php echo $property->video;?>" frameborder="0" allowfullscreen ></iframe>
+                    <iframe class="video" width="449" height="254" src="<?php echo $property->video;?>&wmode=opaque" frameborder="0" allowfullscreen ></iframe>
             </div>
             <?php endif;?>
             
