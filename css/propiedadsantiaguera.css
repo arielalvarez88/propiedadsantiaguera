@@ -273,6 +273,8 @@ body, html
 
 #articles-thumbs-pager ul li img {
     margin: 0 10px;
+    width: 7px;
+    height: 9px;
 }
 
 #articles-thumbs-pager h2.front-page-module-header

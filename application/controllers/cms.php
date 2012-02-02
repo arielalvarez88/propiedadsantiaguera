@@ -61,7 +61,7 @@ class Cms extends CI_Controller{
         
         
         $article->photo = $image_path["photo"];        
-        $article->title = $this->input->post("body");
+        $article->body = $this->input->post("body");
         
         $article->preview = $this->input->post("preview");
         
