@@ -19,3 +19,6 @@ $lang['integer']                        = "The %s field must contain an integer.
 $lang['matches']                        = "El campo %s debe ser conincidir con el campo %s.";
 $lang['is_natural']                     = "The %s field must contain only positive numbers.";
 $lang['is_natural_no_zero']     = "The %s field must contain a number greater than zero.";
+
+$lang['greater_than']     = "El campo %s debe contere un valor mayor a %s.";
+$lang['less_than']     = "El campo %s debe contere un valor menor a %s.";

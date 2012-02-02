@@ -19,6 +19,7 @@ class Miembros extends CI_Controller {
         $members_pager_view_variables['title'] =  $section;
         $data['topRightSide'] = $this->load->view('blocks/members_header', $members_pager_view_variables,true);
         $data['bottomLeftSide'] = $this->load->view('blocks/members_pager', $members_pager_view_variables, true);
+        $data['bottom'] = $this->load->view('blocks/bottom_banner','',true);
         $this->load->view('page', $data);
     }
     
@@ -88,6 +89,8 @@ class Miembros extends CI_Controller {
         
         $properties_pager_view_data = $this->get_properties_pager_view_variables($user_to_view, 'members-');
         $data['bottom'] = $this->load->view('blocks/properties_pager', $properties_pager_view_data, true);
+        $data['bottom'] .= $this->load->view('blocks/bottom_banner', '', true);
+        
         $this->load->view('page', $data);
     }
     

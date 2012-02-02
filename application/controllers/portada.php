@@ -30,7 +30,15 @@ class Portada extends CI_Controller {
         $data['bottomRightSide'] = $this->load->view('blocks/properties_pager',$propertieS_pager_view_variables,true);
         $data['bottom'] = $this->load->view('blocks/front_page_banner','',true);
         $data['bottom'] .= $this->load->view('blocks/popular_neighborhoods','',true);
-        $data['bottom'] .= $this->load->view('blocks/buy_blueprints_link','',true);
+        
+        
+        $articles = new Article();
+        
+        $articles->where("display_in_front_page",1)->limit(3)->get()->all;
+        
+        $articles_thumbs_pager['articles']  = $articles;
+        
+        $data['bottom'] .= $this->load->view('blocks/articles_thumbs_pager',$articles_thumbs_pager,true);
         $data['bottom'] .= $this->load->view('blocks/tools_center','',true);
         
         $this->load->view('page',$data);

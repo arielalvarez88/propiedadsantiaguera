@@ -24,11 +24,11 @@
 
 
             <label  for="advanced-filter-property-min-price">Precio Min:</label>
-            <input  type="text" id="advanced-filter-property-min-price" data-null-value="" name="min-price"/>
+            <input  type="text" id="advanced-filter-property-min-price" data-null-value="" name="minprice"/>
 
 
             <label  for="advanced-filter-property-max-price" >Precio Max:</label>
-            <input  type="text"  id="advanced-filter-property-min-price" data-null-value="" name="max-price"/>
+            <input  type="text"  id="advanced-filter-property-min-price" data-null-value="" name="maxprice"/>
 
 
 
@@ -55,7 +55,7 @@
             <input  class="hiddable house-field apartment-field penthouse-field   warehouse-field office-field building-field construction-project-field" data-null-value="" type="text" id="advanced-filter-property-kitchen" name="kitchens"/>
 
             <label class="hiddable house-field apartment-field  penthouse-field  warehouse-field office-field building-field construction-project-field" for="advanced-filter-property-livingroom">Salas:</label>
-            <input class="hiddable house-field apartment-field  penthouse-field  warehouse-field office-field building-field construction-project-field" data-null-value="" type="text" id="advanced-filter-property-livingroom" name="livingroom"/>
+            <input class="hiddable house-field apartment-field  penthouse-field  warehouse-field office-field building-field construction-project-field" data-null-value="" type="text" id="advanced-filter-property-livingroom" name="livingrooms"/>
 
             <label  class="hiddable house-field apartment-field  penthouse-field  mall-field building-field warehouse-field office-field construction-project-field" for="advanced-filter-property-stories">Niveles:</label>
             <input  class="hiddable house-field apartment-field penthouse-field  mall-field building-field warehouse-field office-field construction-project-field" data-null-value="" type="text" id="advanced-filter-property-stories" name="stories"/>
@@ -73,7 +73,7 @@
 
         </div>
 
-        <input id="advanced-filter-search-button" type="image" src="/images/advancedFilter/searchButton.png"/>
+        <input id="advanced-filter-search-button" type="image" src="/images/advancedFilter/searchButton.png" class="input-button" alt="Buscar"/>
 
 
 

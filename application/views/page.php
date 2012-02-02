@@ -24,7 +24,14 @@ require_once realpath("./application/libraries/User_factory.php");
     </head>
     <body>
 
-
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=317263621644405";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 
         <?php if ($loggedUser && $loggedUser->name): ?>
 
@@ -61,12 +68,12 @@ require_once realpath("./application/libraries/User_factory.php");
                     <div id="banner">
 
                         <div id="top-links">
-                           
 
 
- <div id="idiomas-container">
+
+                            <div id="idiomas-container">
                                 <span>Idioma:</span>
-                                
+
                                 <ul id="idomas-list">
                                     <li class="idiomas-item" id="espanol">
                                         <a href="/change_language/set_language/spanish" class="no-decoration-anchor" href="#">
@@ -80,12 +87,12 @@ require_once realpath("./application/libraries/User_factory.php");
 
                                     </li>
                                 </ul>
-                       
+
                             </div>  
 
                             <div id="login-links">
-                                
-                            
+
+
                                 <a class="no-decoration-anchor" href="<?php base_url(); ?>/contacto"><?php echo $this->lang->line('header_contact_link'); ?></a>
                                 <span class="vertical-serparator"><img src="<?php base_url(); ?>/images/phone_icon.png" alt="dude"/></span>
 
@@ -95,16 +102,16 @@ require_once realpath("./application/libraries/User_factory.php");
                                 <span class="vertical-serparator"><img src="<?php base_url(); ?>/images/help_icon.png" alt="help"/></span>
 
 
-                           </div>
+                            </div>
 
-                            
+
                         </div>
 
 
                         <div id="logo">
-                            <a href="/"><img alt="logo" src="<?php base_url(); ?>/images/logo.png"></a>
+                            <a href="/"><img alt="logo" src="<?php base_url(); ?>/images/common/logo.png"></a>
                             <div id="banner-image">
-                                <img src="<?php base_url(); ?>/images/banner_top.png" alt="banner top"/>
+                                <img src="<?php base_url(); ?>/images/headerBanner/banner.png" alt="banner top"/>
                             </div>
                         </div>
                     </div>
@@ -312,9 +319,16 @@ require_once realpath("./application/libraries/User_factory.php");
         <script type="text/javascript" src="<?php base_url(); ?>/js/jquery.cycle.all.js" type="text/javascript" ></script>
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>        
         <script type="text/javascript" src="<?php base_url(); ?>/js/jquery.fancybox-1.3.4.js" type="text/javascript" ></script>
+        <script type="text/javascript" src="<?php base_url(); ?>/js/jquery.validate.min.js" type="text/javascript" ></script>
+        <script type="text/javascript" src="<?php base_url(); ?>/js/tiny_mce/tiny_mce.js" type="text/javascript" ></script>
+
+
+
         <script type="text/javascript" src="<?php base_url(); ?>/js/propiedadsantiaguera.js" type="text/javascript" ></script>
         <script type="text/javascript" src="http://use.typekit.com/awd1xwd.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
         <script type="text/javascript" src="<?php base_url(); ?>/js/css_browser_selector.js" type="text/javascript" ></script>
+
+
     </body>
 </html>

@@ -12,11 +12,15 @@ require_once dirname(__FILE__) . "/Already_existing_user_exception.php";
 class Base_user_inscriber implements IUser_inscriber {
 
     private $validator;
-    private $validation_type;
+    public $validation_type;
     protected $inscriber_base_behavior;
     public $user_photo_path;
+    
+    
+    
     public function __construct($validator) {
         $this->validator = $validator;
+        $this->validation_type = "user_signup_common";
     }
 
     public function validate_info($user_info_getter,$inscriber_user_type) {
@@ -24,6 +28,15 @@ class Base_user_inscriber implements IUser_inscriber {
         $email_already_exist = User::email_exists($user_info_getter->get_email());
         if($email_already_exist)
             throw new Already_existing_user_exception();
+        
+        
+        
+        if($this->validator->run($this->validation_type) == false)
+        {            
+                throw new Validation_not_passed_exception (validation_errors());
+                
+        }
+        
         return true;
         
     }

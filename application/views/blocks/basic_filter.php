@@ -18,14 +18,28 @@
     
 
 <form id="basic-filter">
-    <h2>B&uacute;squeda de propiedades</h2>
+    <h2>B&uacute;squeda de propiedades <a id="basic-filter-search-by-ref-number" href="/ajax/view_loader/blocks/overlay_search_ref_number">Buscar por # de referencia</a></h2>
     <div id="basic-filter-top">
         <div id="basic-filter-top-left-size">
             
-            <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['provinces'], array("id" => "basic-filter-province", "name" => "province"), "Provincia", $selected_property_province); ?>
- 
+            
 
-            <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'], array("id" => "basic-filter-sector", "name" => "neighborhood"), "Sector", $selected_property_neighborhood); ?>
+            <?php $i=0;?>
+            <?php $provinces = array();?>
+            <?php $neigborhoods_selects = array();?>
+            <?php foreach(Environment_vars::$maps['texts_to_id']['property_neighborhoods'] as $province => $neighborhoods):?>
+                
+                <?php $class = $i==0? 'filter-neigborhoods' : 'filterneigborhoods hidden';?>
+                <?php $provinces[$province] =  Environment_vars::$maps['texts_to_id']['provinces'][$province]; ?>
+            
+                <?php $neigborhoods_selects[] = Html_helper::get_select_from_key_value($neighborhoods, array("id" => "basic-filter-neighborhood-for-province-".Environment_vars::$maps['texts_to_id']['provinces'][$province], "name" => "neighborhood", "class" => $class, "data-province"=> Environment_vars::$maps['texts_to_id']['provinces'][$province]), "Sector", $selected_property_neighborhood);?>
+            
+                <?php $i++;?>
+            <?php endforeach;?>
+            
+            
+            <?php echo Html_helper::get_select_from_key_value($provinces, array("id" => "basic-filter-province", "name" => "province"), "Provincia", $selected_property_province);?>
+            <?php echo implode("",$neigborhoods_selects)?>
 
         </div>
 
@@ -57,8 +71,11 @@
         </div>
 
         <div id="basic-filter-bottom-right-size">
-            <input id="basic-filter-search-button" type="image" src="<?php base_url();?>/images/basic_filter/filter_search_button.png" />
-            <a href="<?php base_url();?>ajax/view_loader/forms/advanced_filter" id="basic-filter-advanced-filter-link" >B&uacute;squeda <?php echo $section == 'search-results-'? '' : '<br/>' ?>Avanzada</a>
+            
+               
+            <input id="basic-filter-search-button" type="image" src="<?php base_url();?>/images/basic_filter/filter_search_button.png" class="input-button"/>
+
+                        <a href="<?php base_url();?>/ajax/view_loader/forms/advanced_filter" id="basic-filter-advanced-filter-link" >B&uacute;squeda Avanzada</a>
         </div>
 
 

@@ -109,7 +109,7 @@ body, html
 
 #content
 {
-    padding: 10px;
+    padding: 0 10px 10px;
     overflow: auto;
 
 }
@@ -133,8 +133,8 @@ body, html
 
 #banner-container
 { 
-    height: 82px;
-    padding: 1px 20px 10px;
+    height: 95px;
+    
     color:#76bc3b;
 }
 #banner-container a
@@ -233,6 +233,65 @@ body, html
 }
 
 /************ Login block end *******************/
+
+
+
+
+
+/*** articles-thumbs-pager ***/
+
+#articles-thumbs-pager {
+
+}
+
+
+#articles-thumbs-pager-container
+{
+        float: left;
+        margin: 0 11px;
+        width: 304px;
+
+}
+#articles-thumbs-pager #articles-thumbs-pager
+{
+    width: auto;
+}
+#articles-thumbs-pager ul li {
+    border: 2px solid #E8E8E8;
+    height: 63px;
+    overflow: hidden;
+    padding: 2px 0;
+}
+
+#articles-thumbs-pager ul li img, #articles-thumbs-pager ul li div {
+    float: left;
+}
+
+#articles-thumbs-pager ul li img {
+    margin: 0 10px;
+}
+
+#articles-thumbs-pager ul li img {
+    margin: 0 10px;
+}
+
+#articles-thumbs-pager h2.front-page-module-header
+{
+    width: auto;
+}
+
+
+
+/*** articles-thumbs-pager ENDS***/
+
+/*** articles-template ***/
+#articles-template-show-container
+{
+    margin: 10px 0;
+}
+
+/*** articles-template ENDS***/
+
 
 /************ are-you-sure *******************/
 #are-you-sure div a {
@@ -2046,7 +2105,7 @@ div.footer-section a{
 
 #bottom
 {
-    min-height: 434px;
+    
 }
 
 /****** basic-filter*******/
@@ -2065,12 +2124,28 @@ div.footer-section a{
 }
 
 #basic-filter-advanced-filter-link {
-    display: block;
-    float: left;
-    font-size: 0.9em;
-    margin: 0 0 0 10px;
+  font-size: 0.9em;
+    margin-left: 5px;
+    position: relative;
+    text-decoration: underline;
+    top: 7px;
+}
+
+
+
+#basic-filter #basic-filter-search-by-ref-number {
+   color: #666666;
+    float: right;
+    font-size: 0.6em;
+    font-weight: normal;
+    margin-top: 8px;
     text-decoration: underline;
 }
+#search-results-basic-filter-container #basic-filter #basic-filter-search-by-ref-number
+{
+    float:none;
+}
+
 
 #basic-filter input#basic-filter-search-button
 {
@@ -2079,6 +2154,7 @@ div.footer-section a{
     float: left;
     height: 26px;
     width: 105px;
+    margin-bottom: 3px;
 }
 
 #search-results-basic-filter-container #basic-filter input#basic-filter-search-button
@@ -2092,7 +2168,7 @@ div.footer-section a{
 
 #search-results-basic-filter-container  #basic-filter-advanced-filter-link
 {
-    padding: 10px 0;
+    margin-left: 10px;
 }
 
 #basic-filter p {
@@ -2140,7 +2216,7 @@ div.footer-section a{
 
 #basic-filter-bottom-right-size
 {
-    padding: 22px 0 17px 40px;
+    padding: 22px 0 17px 3px;
 }
 
 
@@ -2710,6 +2786,11 @@ properties-pager
     
 }
 
+#property-viewer-video iframe
+{
+    z-index: -1;
+}
+
 #property-viewer-video-item
 {
     position: absolute;
@@ -2722,9 +2803,10 @@ properties-pager
 
 .propiedad-viewer-detalle{
     background-image: url("/images/propiedadesViewer/detallesItemBackground.png");
-    height: 20px;
+    height: 16px;
     margin-bottom: 5px;
-    width: 196px;
+    padding: 2px 6px;
+    width: 184px;
 }
 
 #propiedad-viewer-header
@@ -2779,8 +2861,12 @@ properties-pager
 #propiedad-viewer-slidesshow-pager {
     float: left;
     height: 55px;
-    width: 470px;
+    width: 564px;
+    
 }
+
+
+
 #propiedad-viewer-slidesshow-pager ul
 {
     list-style: none;
@@ -2859,6 +2945,7 @@ properties-pager
     float: left;
     height: 273px;
     width: 449px;
+    overflow: hidden;
 }
 
 .property-slideshow img {
@@ -2884,6 +2971,26 @@ properties-pager
     height: 254px;
 }
 /*propiedad-viewer END*/
+
+
+
+/******* Bottom-banner *******/
+
+#bottom-banner{
+    text-align: center;
+    margin-top: 10px;
+}
+/******* Bottom-banner ENDS*******/
+
+
+
+/******* Bottom-banner *******/
+
+#search-advertisement{
+    text-align: center;
+    
+}
+/******* Bottom-banner ENDS*******/
 
 /********* agents-pager *******/
 
@@ -2981,8 +3088,9 @@ properties-pager
 
 
 #company-user-viewer-container {
-    background-image: url("/images/common/whiteToGrayGradient.png");
+ background-image: url("/images/common/whiteToGrayGradient.png");
     color: black;
+    margin-bottom: -18px;
     padding-bottom: 10px;
     padding-top: 5px;
     position: relative;
@@ -3166,20 +3274,47 @@ properties-pager
 
 /**** breadcrumb ENDS****/
 
+/*** overlay-search-by-ref-number ***/
+#overlay-search-by-ref-number-container {
+    background-color: #F3F3F3;
+    border-radius: 5px 5px 5px 5px;
+    padding: 3px;
+}
+
+#overlay-search-by-ref-number
+{
+    
+      background-image: url("/images/common/whiteToGrayGradient_H145.png");
+      border-radius: 5px;
+    height: 49px;
+    padding: 25px;
+    text-align: center;
+    width: 300px;
+    
+}
+
+#overlay-search-by-ref-number p
+{
+    margin-bottom: 5px;
+}
+
+/*** overlay-search-by-ref-number ENDS***/
+
 
 /*price-currency*/
 #price-currency {
-    background-image: url("/images/common/stripesGradient_H433.jpg");
+   background-image: url("/images/common/stripesGradient_H433.jpg");
     background-position: 0 545px;
     border: 1px solid #DEDEDE;
     border-radius: 10px 10px 10px 10px;
     clear: both;
     color: black;
     font-size: 0.8em;
-    margin-top: 10px;
-    padding: 20px 16px;
+    margin-top: 5px;
+    padding: 10px 10px 20px;
     position: relative;
-    top: 16px;
+    top: 20px;
+    z-index: 1000;
 }
 
 #price-currency select
@@ -3211,6 +3346,7 @@ properties-pager
 {
     background-color: #fbfbfb;
     padding: 20px;
+    position: relative;
 }
 #overlay-property-calculator-container h1 {
     background-image: url("/images/common/darkGreenPattern.png");
@@ -3224,6 +3360,64 @@ properties-pager
     color: #82cf40;
     
     
+}
+
+
+#overlay-property-calculator a.green-button {
+    margin: 10px;
+}
+#overlay-property-calculator input, #overlay-property-calculator select {
+    color: #76b939;
+}
+#overlay-property-calculator table tr th {
+    color: #999999;
+    font-size: 0.8em;
+}
+#overlay-property-calculator table tr td {
+    padding: 0 10px;
+}
+
+#overlay-property-calculator table, #overlay-property-calculator {
+    color: #666666;
+}
+#overlay-property-calculator-moths {
+    font-size: 0.7em;
+}
+
+#overlay-property-calculator-interest, #overlay-property-calculator-years {
+    width: 35px;
+}
+
+#overlay-property-calculator table, #overlay-property-calculator {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#overlay-property-calculator-years-container
+{
+       position: absolute;
+    right: 29px;
+    top: 68px;
+    width: 200px;
+}
+#overlay-property-calculator-calculate-button-container {
+    margin: 20px 0;
+}
+
+#overlay-property-calculator-years-container p
+{
+    margin-right: 10px;
+}
+
+#overlay-property-calculator-results-cotainer span
+{
+    margin: 0 5px;
+}
+
+#overlay-property-calculator-years-container p,
+#overlay-property-calculator-years
+{
+    float: left;
 }
 
 /*** overlay-property-calculator ENDS***/
@@ -3287,7 +3481,7 @@ properties-pager
 #pdf-and-share {
     background-color: #EEEEEE;
     border: 1px solid #CCCCCC;
-    padding: 25px;
+    padding: 25px 25px 0;
 }
 
 #pdf-and-share-share
@@ -3425,6 +3619,18 @@ properties-pager
     padding: 7px;
     width: 642px;
 }
+
+.properties-search-results-pager-property-ref-number {
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+}
+
+.properties-search-results-pager-bottom {
+    margin-top: 7px;
+}
+
+green-button properties-search-results-pager-bottom
 
 #properties-search-results-pager-next, #properties-search-results-pager-previous {
 
@@ -3776,6 +3982,7 @@ properties-pager
     margin-top: 15px;
     padding: 0 10px;
     min-width: 235px;
+    margin-bottom: 20px;
 }
 .members-pager-agente{
 
@@ -4253,6 +4460,11 @@ properties-pager
     background-color: #FBFBFB;
     border-radius: 10px 10px 10px 10px;
   
+}
+
+.error
+{
+    color :red;
 }
 
 .black-item
@@ -4851,6 +5063,12 @@ span.required{
 .red-text{
     color: red;
 }
+
+
+.green-text {
+    color: #76BC3B;
+}
+
 /*********/
 /*clases utiles ENDS*/
 
