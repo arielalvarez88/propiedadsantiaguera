@@ -271,7 +271,7 @@ body, html
     margin: 0 10px;
 }
 
-#articles-thumbs-pager ul li img {
+#articles-thumbs-pager .articles-thumbs-pager-info h2 img {
     margin: 0 10px;
     width: 7px;
     height: 9px;
