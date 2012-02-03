@@ -1247,6 +1247,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 #footer-logo-message, #footer-company-menu, #footer-resources-menu, #footer-contact {
     float: left;
     color: white;
+    margin-bottom: 10px;
 
 }
 

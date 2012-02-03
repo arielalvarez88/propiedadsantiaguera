@@ -296,7 +296,7 @@ require_once realpath("./application/libraries/User_factory.php");
                     <p><?php echo $this->lang->line("footer_contact_us_text"); ?></p>
                     <h4><?php echo $this->lang->line("footer_contact_follow_us"); ?></h4>
                     <p>
-                        <a href="#not-yet"></a>
+                        <a href="http://www.facebook.com/pages/Propiedom/250512698354520" target="_blank" id="facebook-icon"></a>
                         <a id="twitter-icon" href="#not-yet"></a>
                         <a id="google-plus-icon" href="#not-yet"></a>
                     </p>

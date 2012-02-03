@@ -85,10 +85,7 @@ $this->lang->load("plans",$language);
         </tfoot>
 
     </table>
-    <div id="why-photos">
-        <img src="<?php base_url();?>/images/planes/why.png" alt="fotos-profesionales"/>
-        <img src="<?php base_url();?>/images/planes/proPhotos.png" alt="fotos-profesionales"/>
-    </div>
+    
 
 </div>
 
