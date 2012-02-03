@@ -42,6 +42,11 @@ class Cms extends CI_Controller{
     public function validate_article(){
         
         
+        if($this->form_validation->run("articles") == false)
+        {
+            $this->crear_articulos(array("error_messages" => validation_errors()));
+            return;
+        }
         
           try{
             $image_path =  File_handler::save_photos(array("photo"), "/images/articlesPhotos/", 99999);
@@ -63,7 +68,10 @@ class Cms extends CI_Controller{
         $article->photo = $image_path["photo"];        
         $article->body = $this->input->post("body");
         
+        $article->preview_title = $this->input->post("preview-title");
         $article->preview = $this->input->post("preview");
+        
+        
         
      
         

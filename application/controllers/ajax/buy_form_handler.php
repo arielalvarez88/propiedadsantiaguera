@@ -35,9 +35,21 @@ class Buy_form_handler extends CI_Controller {
     }
 
 
+    public function validate_user_info_ajax($upgrading_user=false)
+    {
+       
+        $this->validate_user_info(true, $upgrading_user);
+    }
+    
+    
+    public function validate_and_save_user($upgrading_user=false){
+         
+        $this->validate_user_info(false,$upgrading_user,true);
+        
+    }
     
     public function validate_user_info($ajax = false, $upgrading_user =false, $save= false) {
-        
+      
         $logged_user = User_handler::getLoggedUser();
 
         $logged_user_type = $logged_user ? $logged_user->type : Environment_vars::$maps['texts_to_id']['user_types']['Particular'];
@@ -88,6 +100,9 @@ class Buy_form_handler extends CI_Controller {
         
         if($ajax)
             echo json_encode ($response);
+                        
+        
+
             
        if($save)
            $this->save_user($user_handler, $upgrading_user);
@@ -132,7 +147,7 @@ class Buy_form_handler extends CI_Controller {
             User_handler::refresh_logged_user();
             
            $response->success= true;
-           echo json_encode($response);
+           redirect("/panel/propiedades");
                     
             
     }
@@ -173,11 +188,10 @@ class Buy_form_handler extends CI_Controller {
         $user_handler->save_inscription_date($user, $user_info_getter);
 
         $user->save();
-
-        $company_is_adding_or_editing_agent = ($user_handler instanceof Company_agent_inscriber || $user_handler instanceof Company_agent_editor) && ($inscriber && $inscriber instanceof Company_user);
-                User_handler::loginAndSaveInCookies($user->email, $user->password);
+        
+        User_handler::loginAndSaveInCookies($user->email, $user->password);
                 
-          $this->process_buy();
+        $this->process_buy();
 
     }
     
@@ -186,9 +200,7 @@ class Buy_form_handler extends CI_Controller {
     
     public function register_user($edit=null){
         
-        
             $this->validate_user_info (false, $edit, true);
-        
         
                 
     }

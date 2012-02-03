@@ -11,6 +11,10 @@ $upgrade = isset($upgrade) ? $upgrade : null;
 
 <div id="buy-form-container">
 
+    <form id="buy-form" action="<?php echo base_url();?>ajax/buy_form_handler/validate_and_save_user<?php echo $upgrade? "/upgrade": '';?>" method="post" enctype="multipart/form-data">
+        
+    
+    
 
     <ul id="purchase-steps">
         <li >Proceso de Compra :</li>
@@ -27,23 +31,16 @@ $upgrade = isset($upgrade) ? $upgrade : null;
         <div id="buy-form-step-one-error-messages" class="error-messages hidden"></div>
         <h3 class="main-title" id="buy-form-step-one">Informaci&oacute;n Personal</h3>
 
-
+        <div id="buy-form-step-one-form">
+            
         <?php if ($step_one_form): ?>
 
 
             <?php echo $step_one_form; ?>
-            <!--<form class="purchase-form" id="purchase-form-1" action="" method="">
-                <label>Nombre: </label><input type="text" name="" id=""/><br>
-                <label>Apellidos: </label><input type="text" name="" id=""/><br>
-                <label>Email: </label><input type="text" name="" id=""/><br>
-                <label>Empresa: </label><input type="text" name="" id=""/><span>(Opcional)</span><br>
-                <label>Contrase&ntilde;a: </label><input type="password" name="" id=""/><br>
-                <label>Confirmar Contrase&ntilde;a: </label><input type="password" name="" id=""/>
-                <input class="form-send-button purchase-form-button" type="image" src="/images/continuar.png"/>
-            </form>-->
+  
 
         <?php endif; ?>
-
+        </div>
 
 
         <div id="purchase-steps-message">
@@ -59,7 +56,7 @@ $upgrade = isset($upgrade) ? $upgrade : null;
         </div>
 
 
-        <img id="buy-form-step-one-submit-button" class="form-send-button purchase-form-button" data-reciving-script="/ajax/buy_form_handler/validate_user_info/ajax<?php echo $upgrade? '/upgrade' : '';?>" src="/images/continuar.png"/>
+        <img id="buy-form-step-one-submit-button" class="form-send-button purchase-form-button" data-reciving-script="/ajax/buy_form_handler/validate_user_info_ajax<?php echo $upgrade? '/upgrade' : '';?>" src="/images/continuar.png"/>
 
     </div>
 
@@ -70,8 +67,8 @@ $upgrade = isset($upgrade) ? $upgrade : null;
 
         <div id="purchase-plan-details"><p>Tipo de plan : <span><?php echo $plan->name; ?>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $plan->number_of_posts; ?> Publicacion(es)</span></p><span  id="buttons"><!--<a hre="" id=""><img src="/images/ver-ejemplo-btn.png" alt=""/></a> <a hre="" id=""><img src="/images/como-func-btn.png" alt=""/></a>--></span></div>
 
-        <input type="hidden" id="buy-form-post-number" value="<?php echo $plan->number_of_posts; ?>"/>
-        <input type="hidden" id="buy-form-plan-price" value="<?php echo $plan->price; ?>"/>
+        <input type="hidden" id="buy-form-post-number" name="number-of-posts" value="<?php echo $plan->number_of_posts; ?>"/>
+        <input type="hidden" id="buy-form-plan-price" name="plan-price" value="<?php echo $plan->price; ?>"/>
         <input type="hidden" id="buy-form-post-plan-id" name="plan-id" value="<?php echo $plan->id; ?>"/>
 
 
@@ -87,7 +84,7 @@ $upgrade = isset($upgrade) ? $upgrade : null;
 
 
             <p id="buy-form-post-number-container"><label>Total de publicaciones: </label> <span id="buy-form-post-number-display"><?php echo $plan->number_of_posts; ?></span> </p>
-            <label>C&oacute;digo de descuento: </label><input type="text" name="" id=""/>
+            <label>C&oacute;digo de descuento: </label><input type="text" name="disccount-code" id=""/>
 
             <!--        <label>Fotos y video profesional: </label>
                     <select name="">
@@ -139,14 +136,13 @@ $upgrade = isset($upgrade) ? $upgrade : null;
         </form>-->
 
 <p id="buy-form-policy-and-terms">Aqu&iacute; les detallamos los <a id="buy-form-terms" href="/terminos/ajax">T&eacute;rminos de uso</a> y las pol&iacute;ticas de <a href="/politicas/ajax" id="buy-form-policy">Privacidad, seguridad y reembolso</a>.</p>
-            <input type="checkbox" name="" id="buy-form-accept-terms"/> <label id="buy-form-accept-terms-label" for="buy-form-accept-terms">Acepto las condiciones de uso.</label><br><br><br>
+            <input type="checkbox" name="accept-terms" id="buy-form-accept-terms"/> <label id="buy-form-accept-terms-label" for="buy-form-accept-terms">Acepto las condiciones de uso.</label><br><br><br>
             
-            <?php $register_or_edit_user_url = "/ajax/buy_form_handler/register_user";?>
-            <?php $register_or_edit_user_url .= $upgrade? '/upgrade' : '';?>
+ 
             
             
-            <?php $submit_info_to_script = $skip_step_one ? "/ajax/buy_form_handler/process_buy" : $register_or_edit_user_url;?>
-            <img id="buy-form-buy-button" data-reciving-script="<?php echo $submit_info_to_script;?>" class="form-send-button purchase-form-button" src="/images/comprar-btn.png"/>
+            
+            <input type="image" id="buy-form-buy-button" class="form-send-button purchase-form-button" src="/images/comprar-btn.png"/>
     </div>
 
 
@@ -181,4 +177,5 @@ $upgrade = isset($upgrade) ? $upgrade : null;
 
     </div>-->
 
+    </form>
 </div>

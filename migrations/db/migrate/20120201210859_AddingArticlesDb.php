@@ -12,6 +12,7 @@ class AddingArticlesDb extends Ruckusing_BaseMigration {
         $articles->column('display_in_front_page', 'boolean', array('default' => 0));
         
         $articles->column('preview', 'text');
+        $articles->column('preview_title', 'string', array('limit' => 30));
         $articles->finish();                
     }
 

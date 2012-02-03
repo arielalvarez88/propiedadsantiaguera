@@ -29,7 +29,7 @@ $section = isset($section) ? $section : '';
         <div id="new-user-type" <?php echo $edit ? 'class="hidden"' : ''; ?>>     
 
 
-            <p id="signup-form-user-type-header" class="form-section-header <?php echo $hide_user_type_field ? 'hidden' : ''; ?>"> <img class="form-section-number <?php echo $buy_format ? 'hidden' : ''; ?> " id="new-user-type-number" src="/images/common/greenNumber1.png" > <span>Tipo de usuario</span></p>
+            <p id="signup-form-content-user-type-header" class="form-section-header <?php echo $hide_user_type_field ? 'hidden' : ''; ?>"> <img class="form-section-number <?php echo $buy_format ? 'hidden' : ''; ?> " id="new-user-type-number" src="/images/common/greenNumber1.png" > <span>Tipo de usuario</span></p>
 
             <?php echo Html_helper::get_select_from_key_value($user_types, array("id" => "new-user-type-value", "name" => "signup-client-type", "class" => $hide_user_type_field ? 'hidden' : ''), '', $client_type); ?> 
         </div>
@@ -104,8 +104,8 @@ $section = isset($section) ? $section : '';
                 <?php else:?>
                     <div class="form-buttons" >
 
-                        <input id="signup-form-send-button" class="form-send-button" type="image" src="/images/common/formSubmitButton.png"/>
-                        <img id="signup-form-clear-button" src="/images/common/formCleanButton.png"/>
+                        <input id="signup-form-content-send-button" class="form-send-button" type="image" src="/images/common/formSubmitButton.png"/>
+                        <img id="signup-form-content-clear-button" src="/images/common/formCleanButton.png"/>
                     </div>
                 <?php endif;?>
 

@@ -57,8 +57,8 @@ class Compra extends CI_Controller {
         
         
         
-        $step_one_form_variables['form_content'] = $this->load->view("forms/signup_form_content",$step_one_form_variables,true);
-        $buy_form_data['step_one_form'] = $this->load->view("blocks/signup_form_container",$step_one_form_variables,true);
+        
+        $buy_form_data['step_one_form'] = $this->load->view("forms/signup_form_content",$step_one_form_variables,true);
         
         $data['topLeftSide'] = $this->load->view('forms/compra_form',$buy_form_data, true);
         
