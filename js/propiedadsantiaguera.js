@@ -419,33 +419,30 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
 
 
 formRecolectorButtonBehaviour = function(event,formWrapper,recivingScriptUrl,postCallback,ajax){
-    event.preventDefault();
+    
             
-            
+            event.preventDefault();
                 
     var info = {};
     var queryString = '?';   
     var inputs = $(formWrapper).find('input, select, textarea');
             
-            console.log(formWrapper);
-    
+            
+
     $(formWrapper).validate({
         errorContainer: "#error-messages",
         errorLabelContainer: "#error-messages",
-        wrapper: "li", 
-        debug:true
-   
+        wrapper: "li"
     });
-    var validationPassed =  $(formWrapper).valid();
-        
-    if(!validationPassed)
-        return false;
-
-
-
-    if(!validationPassed)
-        return false;
     
+    
+    
+    var validationPassed =  $(formWrapper).valid();
+    
+    
+          
+    if(!validationPassed)
+        return false;
             
     for(i = 0; i < inputs.length; i++)
     {
@@ -466,8 +463,11 @@ formRecolectorButtonBehaviour = function(event,formWrapper,recivingScriptUrl,pos
     else
     {
             
-        window.location.href = recivingScriptUrl + queryString;
+        
+        $(formWrapper).submit();
     }
+    
+    
    
 };
 
@@ -494,7 +494,7 @@ Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, a
     bindEvent(thisObject.sendButton, "click", function(event){
             
             
-        formRecolectorButtonBehaviour(event, thisObject.form, recivingScriptUrl, alertMessageCallbackFunction,ajax);
+        formRecolectorButtonBehaviour(event, formWrapperSelector, recivingScriptUrl, alertMessageCallbackFunction,ajax);
     })
 
     
@@ -531,13 +531,13 @@ Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanBut
 
         
 
-AjaxConditionalForm = function(formWrapperSelector, conditionalBoolReturningFunction, sendButtonSelector, cleanButtonSelector, alertMessageCallbackFunction){
+ConditionalForm = function(formWrapperSelector, conditionalBoolReturningFunction, sendButtonSelector, cleanButtonSelector, ajax,alertMessageCallbackFunction){
   
     var thisObject = this;
        
        
     var recivingScript = $(sendButtonSelector).attr("data-reciving-script");
-    thisObject.uber.init.call(this,formWrapperSelector, sendButtonSelector, cleanButtonSelector, true, recivingScript,alertMessageCallbackFunction);
+    thisObject.uber.init.call(this,formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScript,alertMessageCallbackFunction);
     
     thisObject.setClearButtonBehaviour();
       
@@ -550,7 +550,7 @@ AjaxConditionalForm = function(formWrapperSelector, conditionalBoolReturningFunc
         {
                     
                     
-            formRecolectorButtonBehaviour(event, thisObject.form, recivingScript, alertMessageCallbackFunction);
+            formRecolectorButtonBehaviour(event, formWrapperSelector, recivingScript, alertMessageCallbackFunction,ajax);
         }
                 
                 
@@ -561,11 +561,11 @@ AjaxConditionalForm = function(formWrapperSelector, conditionalBoolReturningFunc
 
     
 };
-AjaxConditionalFormTransitional = function(){};
-AjaxConditionalFormTransitional.prototype = Form.prototype;
+ConditionalFormTransitional = function(){};
+ConditionalFormTransitional.prototype = Form.prototype;
 
-AjaxConditionalForm.prototype = new AjaxConditionalFormTransitional();
-AjaxConditionalForm.prototype.uber = Form.prototype;
+ConditionalForm.prototype = new ConditionalFormTransitional();
+ConditionalForm.prototype.uber = Form.prototype;
 
 
 
@@ -658,6 +658,7 @@ InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswor
 
 Slider = function(parentSelector,minValue,maxValue,minInitialPosition,maxInitialPosition,minDisplaySelector,maxDisplaySelector,step){
     
+   
     var thisObject = this;
     this.parent = $(parentSelector);
     this.minValue = minValue;
@@ -673,8 +674,9 @@ Slider = function(parentSelector,minValue,maxValue,minInitialPosition,maxInitial
     };
    
     var biggerThan = this.maxInitialValue >= maxValue? 'Más de ': '';
-    this.minDisplay.html("$" + commify('' + this.minInitialValue));
-    this.maxDisplay.html(biggerThan + "$" + commify('' + this.maxInitialValue));
+    
+    this.minDisplay.html("$" + commify('' + thisObject.minInitialValue));
+    this.maxDisplay.html(biggerThan + "$" + commify('' + thisObject.maxInitialValue));
     
     
     var sliderObject = this;
@@ -694,6 +696,7 @@ Slider = function(parentSelector,minValue,maxValue,minInitialPosition,maxInitial
         }
         
     });
+    
     
     $(this.parent).slider("option","values",[sliderObject.minInitialValue, sliderObject.maxInitialValue]);
     this.getRange = function()
@@ -739,7 +742,7 @@ initializeForms = function(){
     initializeInputsWithDefaultText();
 
    
-    var  signupForm = new Form('#signup-form-container','','#signup-form-container #signup-form-clear-button');
+    var  signupForm = new Form('#signup-form-container #signup-form','','#signup-form-container #signup-form-clear-button');
     var forgotPassword = new Form('#password-reset-form', '#password-reset-submit', '', true, '/usuario/password_reset_request', function(response){
     
         new alertMessageCallback(response, 'Email enviado', 'Error trate luego').getMessage();
@@ -758,8 +761,7 @@ initializeForms = function(){
         else
         {
             alert('Email/Password incorrectos');
-            $('#login-email').val('');
-            $('#login-password').val('');   
+            
         }
 
         
@@ -1075,12 +1077,12 @@ IFilter.getMinPrice= function(){};
 
 
 
-Filter = function(filterContainerSelector,sliderChangerElementSelector, provinceChooser, neighborhoodChoosersClass,sliderContainerSelector, searchButtonSelector, valuesToSliderParameters, sliderMinValue,sliderMaxValue,sliderMinInitialValue,sliderMaxInitialValue,step,submitUrl){
+Filter = function(filterContainerSelector,sliderChangerElementSelector, provinceChooser, neighborhoodChoosersClass,sliderContainerSelector, searchButtonSelector, valuesToSliderParameters, sliderMinValue,sliderMaxValue,sliderMinInitialValue,sliderMaxInitialValue,step,minValueDisplay,maxValueDisplay,submitUrl){
    
     var thisObject = this;
     this.sliderChangerElement = $(sliderChangerElementSelector);
     this.searchButtonElement = $(searchButtonSelector);
-    this.sliderElement = new Slider(sliderContainerSelector, sliderMinValue, sliderMaxValue, sliderMinInitialValue, sliderMaxInitialValue, '#basic-filter-price-slider-min-display', '#basic-filter-price-slider-max-display', step);
+    this.sliderElement = new Slider(sliderContainerSelector, sliderMinValue, sliderMaxValue, sliderMinInitialValue, sliderMaxInitialValue, minValueDisplay, maxValueDisplay, step);
     this.filterElement = $(filterContainerSelector);
     
     this.provinceChooser = $(provinceChooser);
@@ -1097,6 +1099,9 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, province
             {
                 thisObject.neighborhoodChoosers.hide();
         thisObject.neighborhoodChoosers.attr("name", "");
+        
+        
+        
         $("#basic-filter-neighborhood-for-province-"+selectedProvinceId).show();
         $("#basic-filter-neighborhood-for-province-"+selectedProvinceId).attr("name", "neighborhood");
             }
@@ -1257,22 +1262,7 @@ initializeFilters = function(){
     var basicFilterMinValue = $.getUrlVar('absoluteMin')? Number($.getUrlVar('absoluteMin')) : 0;
     var basicFilterMaxValue = $.getUrlVar('absoluteMax')? Number($.getUrlVar('absoluteMax')) : 50000000;   
     var basicFilterStep = $.getUrlVar('step')? Number($.getUrlVar('step')) : 500000;
-    var basicFilter = new Filter("#basic-filter","#basic-filter-condition","#basic-filter-province", ".filter-neigborhoods", "#basic-filter-price-slider","#basic-filter-search-button",{
-        1: {
-            minValue: 0, 
-            maxValue: 50000000, 
-            maxInitialValue: 50000000, 
-            minInitialValue: 0, 
-            step: 500000
-        }, 
-        2: {
-            minValue: 0, 
-            maxValue: 300000, 
-            maxInitialValue: 300000, 
-            minInitialValue: 0, 
-            step: 5000
-        }
-    }, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "/propiedades/buscar");
+    
     
     
     var basicFilter = new Filter("#basic-filter","#basic-filter-condition","#basic-filter-province", ".filter-neigborhoods", "#basic-filter-price-slider","#basic-filter-search-button",{
@@ -1290,13 +1280,15 @@ initializeFilters = function(){
             minInitialValue: 0, 
             step: 5000
         }
-    }, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "/propiedades/buscar");
+    }, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "#basic-filter-price-slider-min-display", "#basic-filter-price-slider-max-display", "/propiedades/buscar");
+    
+ 
    
    
-    var advancedFilter = new Filter("#advanced-filter","","#basic-filter-province", ".filter-neigborhoods","","#advanced-filter-search-button","","","","","","","/propiedades/buscar");
+    var advancedFilter = new Filter("#advanced-filter","","#advanced-filter-province", ".advanced-filter-neigborhoods","","#advanced-filter-search-button","","","","","","","","","/propiedades/buscar");
    
    
-    var searchByRefNumber = new Filter('#overlay-search-by-ref-number-container',"","#basic-filter-province", ".filter-neigborhoods","","",'#overlay-search-by-ref-number-button',"","","","","", '/propiedades/buscar');
+    var searchByRefNumber = new Filter('#overlay-search-by-ref-number-container',"","#basic-filter-province", ".filter-neigborhoods","","",'#overlay-search-by-ref-number-button',"","","","","","","", '/propiedades/buscar');
    
    
 };
@@ -1842,8 +1834,8 @@ initializePrizeCalculator = function(){
 initiazlizeStepByStepForms = function(){
     
     
-    var buyFormSteps = [new StepOfStepByStepForm("#buy-form-step-one #signup-form", "#buy-form-step-one", "#buy-form-step-one-indicator","#buy-form-step-one-submit-button",'',"#buy-form-step-one-error-messages"),
-    new StepOfStepByStepForm("#buy-form-step-two", "#buy-form-step-two", "#buy-form-step-two-indicator"),
+    var buyFormSteps = [new StepOfStepByStepForm("#buy-form", "#buy-form-step-one", "#buy-form-step-one-indicator","#buy-form-step-one-submit-button",'',"#buy-form-step-one-error-messages"),
+    new StepOfStepByStepForm("#buy-form", "#buy-form-step-two", "#buy-form-step-two-indicator"),
 
     ];
     var buyForm = new StepByStepForm(buyFormSteps);
@@ -1872,25 +1864,20 @@ AcceptTermsButton = function(conditionalCheckbox,buttonSelector,eventName,eventH
     
 };
 
-initializeBuyButton =  function (){
+
+
+
+initializeConditionalForm = function(){
     
-    var buyButton = new AcceptTermsButton("#buy-form-accept-terms","#buy-form-buy-button","click",function(){
-        
-        });
-};
-
-
-initializeAjaxConditionalForm = function(){
-    var buyForm = new AjaxConditionalForm("#buy-form-container", function(){
-        return $("#buy-form-accept-terms").is(":checked");
-    }, "#buy-form-buy-button", '',function(response){
-       
-     
-        if(response.success)
-            window.location.href=("/panel/propiedades");
-        else
-            alert(response.message);
-    });
+//    var buyForm = new ConditionalForm("#buy-form", function(){
+//        return $("#buy-form-accept-terms").is(":checked");
+//    }, "#buy-form-buy-button", '', false,function(response){
+//            
+//        if(response.success)
+//            window.location.href=("/panel/propiedades");
+//        else
+//            alert(response.message);
+//    });
    
 };
 
@@ -1933,7 +1920,6 @@ initializeEvents= function(){
     initializeViewLoaderElements();
     initializeForms();
     initializeOverlays();
-
     initializeInterestsCalculators();
     initializeHideShowWithArrowDirectionElement();
     initializeHiderAndShowerElement();    
@@ -1944,9 +1930,8 @@ initializeEvents= function(){
     initializeAutoreactivateButtons();
     initializeGmaps();    
     initiazlizeStepByStepForms();
-    initializePrizeCalculator();
-    initializeBuyButton();
-    initializeAjaxConditionalForm();
+    initializePrizeCalculator();    
+    initializeConditionalForm();
     initializePrintButtons();
     initializeWysiwyg()
 };

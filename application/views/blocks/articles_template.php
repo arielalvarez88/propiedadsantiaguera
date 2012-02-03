@@ -39,8 +39,12 @@ $error_messages  = isset ($error_messages) ? $error_messages : null;
         
         <p>Cuerpo:</p>
         <textarea name="body" class="wysiwyg">
-
         </textarea>
+
+        
+          <p>Titulo de Preview en la portada:</p>
+        <input name="preview-title" type="text"/>
+        
         
          <p>Texto de Preview en la portada:</p>
         <textarea name="preview" >

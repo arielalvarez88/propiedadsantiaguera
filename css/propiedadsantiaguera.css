@@ -244,7 +244,12 @@ body, html
 
 }
 
-
+.articles-thumbs-pager-info h2 {
+    font-size: 0.9em;
+}
+.articles-thumbs-pager-info {
+    width: 205px;
+}
 #articles-thumbs-pager-container
 {
         float: left;
@@ -252,6 +257,17 @@ body, html
         width: 304px;
 
 }
+
+.articles-thumbs-pager-info h2 {
+    font-size: 1em;
+}
+
+
+.article-thumb
+{
+    margin: 0 10px;
+}
+
 #articles-thumbs-pager #articles-thumbs-pager
 {
     width: auto;
@@ -265,14 +281,16 @@ body, html
 
 #articles-thumbs-pager ul li img, #articles-thumbs-pager ul li div {
     float: left;
+    
 }
 
-#articles-thumbs-pager ul li img {
-    margin: 0 10px;
+#articles-thumbs-pager ul li div div{
+    font-size: 0.9em;
 }
+
 
 #articles-thumbs-pager .articles-thumbs-pager-info h2 img {
-    margin: 0 10px;
+    margin: 0 5px 0 0;
     width: 7px;
     height: 9px;
 }
@@ -755,10 +773,57 @@ body, html
 #user-presentation-card-edit
 {
     clear: both;
+    margin-bottom: 20px;
 }
 
 
 /********* user-presentation-card END*******/
+
+/*** companies-finder ***/
+
+#companies-finder-container {
+    float: left;
+    height: 246px;
+    width: 302px;
+}
+
+#companies-finder-container h2{
+    width: auto;
+}
+
+
+#companies-finder input, #companies-finder select {
+    border-color: #6FAD3D;
+    color: #cccccc;
+    display: block;
+    font-weight: bold;
+    height: 35px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#companies-finder-content {
+    background-color: #76BC3B;
+    overflow: hidden;
+    padding: 20px 48px;
+}
+#companies-finder-content a {
+    background-color: white;
+    border-radius: 10px 10px 10px 10px;
+    color: #76BC3B;
+    display: block;
+    float: right;
+    font-weight: bold;
+    padding: 5px 22px;
+}
+
+#companies-finder-content p {
+    color: white;
+    margin-bottom: 15px;
+}
+
+
+/*** companies-finder ENDS***/
 
 
 /**** offers ****/
@@ -4293,24 +4358,24 @@ green-button properties-search-results-pager-bottom
 
 /*Propiedades END*/
 
-/*signup-form*/
-#signup-form
+/*signup-form-content*/
+#signup-form-content
 {
     color:black;
 }
 
-#signup-form label, #signup-form input
+#signup-form-content label, #signup-form-content input
 {
     display:block;
     float:left;
 
 }
 
-#signup-form input {
+#signup-form-content input {
     margin-bottom: 8px;
 }
 
-#signup-form label
+#signup-form-content label
 {
     clear: left;
     margin-bottom: 10px;
@@ -4327,16 +4392,23 @@ green-button properties-search-results-pager-bottom
     width: 390px;
 }
 
-#signup-form-clear-button
+#signup-form-content-clear-button
 {
     cursor: pointer;
 
 }
 
+#buy-form-step-one  #new-user-type-value
+{
+    margin-bottom: 20px;
+}
 
+#buy-form-step-one-form
+{
+    float: left;
+}
 
-
-#buy-signup-form-container #signup-form-user-type-header
+#buy-signup-form-content-container #signup-form-content-user-type-header
 {
     float: left;
     margin: 0 69px 25px 0; 
@@ -4374,11 +4446,11 @@ green-button properties-search-results-pager-bottom
 }
 
 
-#buy-signup-form-container
+#buy-signup-form-content-container
 {
     float: left;
 }
-/*signup-form ENDS*/
+/*signup-form-content ENDS*/
 
 /******* give-posts-to-agents-overlay-agents *****/
 #give-posts-to-agents-overlay
@@ -4629,8 +4701,8 @@ span.required{
 }
 
 .hidden,
-#signup-form label.hidden,
-#signup-form input.hidden
+#signup-form-content label.hidden,
+#signup-form-content input.hidden
 {
     display: none;
 }

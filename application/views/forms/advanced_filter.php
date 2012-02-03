@@ -11,11 +11,29 @@
             <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_types'],array("id"=>"advanced-filter-property-type","name"=>"type"));?>                      
 
 
+            
+              <?php $i=0;?>
+            <?php $provinces = array();?>
+            <?php $neigborhoods_selects = array();?>
+            <?php foreach(Environment_vars::$maps['texts_to_id']['property_neighborhoods'] as $province => $neighborhoods):?>
+                
+                <?php $class = $i==0? 'advanced-filter-neigborhoods' : 'advanced-filterneigborhoods hidden';?>
+                <?php $provinces[$province] =  Environment_vars::$maps['texts_to_id']['provinces'][$province]; ?>
+            
+                <?php $neigborhoods_selects[] = Html_helper::get_select_from_key_value($neighborhoods, array("id" => "advanced-filter-neighborhood-for-province-".Environment_vars::$maps['texts_to_id']['provinces'][$province], "name" => "neighborhood", "class" => $class, "data-province"=> Environment_vars::$maps['texts_to_id']['provinces'][$province]));?>
+            
+                <?php $i++;?>
+            <?php endforeach;?>
+            
             <label for="advanced-filter-sector">Sector:</label> 
-            <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'],array("id"=>"advanced-filter-sector","name"=>"neighborhood"));?>
+            <?php echo implode("",$neigborhoods_selects)?>
             
             <label for="advanced-filter-province">Provinces:</label> 
-            <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['provinces'],array("id"=>"advanced-filter-province","name"=>"province"));?>
+            <?php echo Html_helper::get_select_from_key_value($provinces, array("id" => "advanced-filter-province", "name" => "province"));?>
+            
+
+            
+            
 
 
         </div>

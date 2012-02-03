@@ -21,4 +21,4 @@ $lang['is_natural']                     = "The %s field must contain only positi
 $lang['is_natural_no_zero']     = "The %s field must contain a number greater than zero.";
 
 $lang['greater_than']     = "El campo %s debe contere un valor mayor a %s.";
-$lang['less_than']     = "El campo %s debe contere un valor menor a %s.";
+$lang['less_than']     = "El campo %s debe contener un valor menor a %s.";

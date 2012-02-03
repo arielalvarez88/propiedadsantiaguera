@@ -6,7 +6,28 @@
  */
 
 $config = array(
-    
+    "articles" => array(
+        array(
+            'field' => 'preview',
+            'label' => 'texto de preview en la portada',
+            'rules' => 'required|max_length[91]'
+        ),
+        array(
+            'field' => 'preview-title',
+            'label' => 'titulo de preview en la portada',
+            'rules' => 'required|max_length[30]'
+        ),       
+        array(
+            'field' => 'title',
+            'label' => 'titulo',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'body',
+            'label' => 'cuerpo',
+            'rules' => 'required'
+        )
+    ),
     'user_signup_common' => array(
         array(
             'field' => 'signup-client-type',
