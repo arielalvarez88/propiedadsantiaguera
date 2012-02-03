@@ -40,6 +40,8 @@ $property_coordenates = isset($property_coordenates) ? $property_coordenates : "
                 </li>
 
                 <li>
+                    
+                    
                     <label for="property-form-description-neighborhood">Provincia:</label> 
 
                     <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['provinces'], array("id" => "property-form-description-province", "name" => "property-province",), '', $property_province); ?>
@@ -50,7 +52,7 @@ $property_coordenates = isset($property_coordenates) ? $property_coordenates : "
                 <li>
                     <label for="property-form-description-neighborhood">Sector:</label> 
 
-                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods'], array("id" => "property-form-description-neighborhood", "name" => "property-neighborhood",), '', $property_neighborhood); ?>
+                    <?php echo Html_helper::get_select_from_key_value(Environment_vars::$maps['texts_to_id']['property_neighborhoods']['Santiago'], array("id" => "property-form-description-neighborhood", "name" => "property-neighborhood",), '', $property_neighborhood); ?>
 
                 </li>
 
