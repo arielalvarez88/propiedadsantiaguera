@@ -32,7 +32,7 @@ input[type="text"],input[type="password"], textarea, select
 }
 #footer-contact
 {
-    width: 220px;
+    width: 225px;
 }
 
 
@@ -805,7 +805,7 @@ body, html
 #companies-finder-content {
     background-color: #76BC3B;
     overflow: hidden;
-    padding: 20px 48px;
+    padding: 20px 43px;
 }
 #companies-finder-content a {
     background-color: white;
@@ -819,7 +819,9 @@ body, html
 
 #companies-finder-content p {
     color: white;
+    font-size: 1.2em;
     margin-bottom: 15px;
+    
 }
 
 

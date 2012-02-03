@@ -5,7 +5,7 @@
     </p>
     
     <div id="pdf-and-share-share">
-        <h2>Compartir </h2> <a ></a> <a class="twitter-icon"></a> <a class="google-plus-icon"></a></h2> 
+        <h2>Compartir </h2> <a href="http://www.facebook.com/pages/Propiedom/250512698354520" target="_blank"></a> <a class="twitter-icon"></a> <a class="google-plus-icon"></a></h2> 
         
     </div>
 </div>
