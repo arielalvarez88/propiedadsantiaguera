@@ -18,7 +18,7 @@ $lang["footer_resources_menu_privacy"] = "Privacidad y secguridad";
 $lang["footer_contact_us_header"] = "Contactanos";
 $lang["footer_contact_us_text"] = "Calle México Esq. Apeco, #32B <br/> Reparto del Este, Santiago, Rep. Dom. <br/> 809.582.2690";
 $lang["footer_contact_follow_us"] = "Síguenos";
-$lang["footer_product"] = "Propiedad Santiaguera es un producto de ";
+$lang["footer_product"] = "Propiedom es un producto de ";
 
 
 ?>
