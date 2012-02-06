@@ -1899,8 +1899,15 @@ initializePrintButtons = function(){
 };
 
 
-GetParameterAdder = function(element,event,optionaParameterName,optionalValue){
+GetParameterAdder = function(element,event,htmlAttributeWithName,optionalValue){
     
+    var thisObject = this;
+    this.element = $(element);
+    
+    this.eventHandler = function(){
+        var parameterName = thisObject.element.attr(htmlAttributeWithName);
+        var paramaterValue = typeof optionalValue != "undefined" ? optionalValue : thisObject.element.val();
+    };
 }
 
 initializeWysiwyg = function(){
