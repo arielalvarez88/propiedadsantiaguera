@@ -59,7 +59,7 @@ $property_coordenates = isset($property_coordenates) ? $property_coordenates : "
                     
                     <label for="property-form-description-neighborhood">Provincia:</label> 
 
-                    <?php echo Html_helper::get_select_from_key_value($provinces, array("id" => "property-form-description-province", "name" => "property-province"), "Provincia", $property_province);?>
+                    <?php echo Html_helper::get_select_from_key_value($provinces, array("id" => "property-form-description-province", "name" => "property-province"), "", $property_province);?>
 
                 </li>
 
