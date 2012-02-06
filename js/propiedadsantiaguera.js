@@ -421,7 +421,7 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
 formRecolectorButtonBehaviour = function(event,formWrapper,recivingScriptUrl,postCallback,ajax){
     
             
-            event.preventDefault();
+    event.preventDefault();
                 
     var info = {};
     var queryString = '?';   
@@ -1074,7 +1074,32 @@ IFilter.getMaxPrice= function(){};
 IFilter.getMinPrice= function(){};
 
 
+ProvinceChooser = function(provinceChooserSelector,neighborhoodsSelectsClass,neighborhoodsSelectName,neighborhoodsAttributeWithProvinceId){
+        
+        var thisObject = this;
+        this.provinceChosser = $(provinceChooserSelector);
+        this.neighborhoodsChoosers = $(neighborhoodsSelectsClass);
+            
+            
+        bindEvent(provinceChooserSelector, "change", function(){
+            var selectedProvinceId = thisObject.provinceChosser.val();
+        
 
+            if(selectedProvinceId != "null")
+            {
+                thisObject.neighborhoodsChoosers.hide();
+                thisObject.neighborhoodsChoosers.attr("name", "");                        
+        
+        var searchString = neighborhoodsSelectsClass + '['+ neighborhoodsAttributeWithProvinceId+'="' + selectedProvinceId + '"]';
+                var selectedNeighborhoodChooser = $(searchString);
+                selectedNeighborhoodChooser.show();
+                selectedNeighborhoodChooser.attr("name", neighborhoodsSelectName);                        
+            }
+        });
+            
+         
+        
+    };
 
 
 Filter = function(filterContainerSelector,sliderChangerElementSelector, provinceChooser, neighborhoodChoosersClass,sliderContainerSelector, searchButtonSelector, valuesToSliderParameters, sliderMinValue,sliderMaxValue,sliderMinInitialValue,sliderMaxInitialValue,step,minValueDisplay,maxValueDisplay,submitUrl){
@@ -1090,29 +1115,12 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, province
     
     
     
-    this.changeNeighborhoodSelect = function(){
-        
-        var selectedProvinceId = thisObject.provinceChooser.val();
-        
-
-        if(selectedProvinceId != "null")
-            {
-                thisObject.neighborhoodChoosers.hide();
-        thisObject.neighborhoodChoosers.attr("name", "");
-        
-        
-        
-        $("#basic-filter-neighborhood-for-province-"+selectedProvinceId).show();
-        $("#basic-filter-neighborhood-for-province-"+selectedProvinceId).attr("name", "neighborhood");
-            }
-        
-        
-        
-        
-        
-    }
     
-   bindEvent(this.provinceChooser, "change", this.changeNeighborhoodSelect);
+    
+    
+    new ProvinceChooser(provinceChooser, neighborhoodChoosersClass, "neighborhood", "data-province");
+    
+    
     
     
     this.sliderChangerElementEvent = function(){
@@ -1136,9 +1144,7 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, province
         $(thisObject.filterElement).validate({
             errorContainer: "#error-messages",
             errorLabelContainer: "#error-messages",
-            wrapper: "li", 
-            debug:true
-   
+            wrapper: "li"               
         });
         var validationPassed =  $(thisObject.filterElement).valid();
         
@@ -1869,17 +1875,17 @@ AcceptTermsButton = function(conditionalCheckbox,buttonSelector,eventName,eventH
 
 initializeConditionalForm = function(){
     
-//    var buyForm = new ConditionalForm("#buy-form", function(){
-//        return $("#buy-form-accept-terms").is(":checked");
-//    }, "#buy-form-buy-button", '', false,function(response){
-//            
-//        if(response.success)
-//            window.location.href=("/panel/propiedades");
-//        else
-//            alert(response.message);
-//    });
+    //    var buyForm = new ConditionalForm("#buy-form", function(){
+    //        return $("#buy-form-accept-terms").is(":checked");
+    //    }, "#buy-form-buy-button", '', false,function(response){
+    //            
+    //        if(response.success)
+    //            window.location.href=("/panel/propiedades");
+    //        else
+    //            alert(response.message);
+    //    });
    
-};
+    };
 
 initializePrintButtons = function(){
     var printButtons = $('.print-button');
@@ -1891,6 +1897,11 @@ initializePrintButtons = function(){
     bindEvent(printButtons, "click", printEvent);
   
 };
+
+
+GetParameterAdder = function(element,event,optionaParameterName,optionalValue){
+    
+}
 
 initializeWysiwyg = function(){
     tinyMCE.init({
@@ -1912,7 +1923,9 @@ initializeWysiwyg = function(){
 
     });
 }
-  
+  initializeProvinceChoosers = function(){
+      var propertyFormProvinceChooser = new ProvinceChooser("#property-form-description-province", ".property-form-neigborhoods", "property-neighborhood", "data-province");
+  }
 
 initializeEvents= function(){
     initilizeSlideShows();
@@ -1933,7 +1946,8 @@ initializeEvents= function(){
     initializePrizeCalculator();    
     initializeConditionalForm();
     initializePrintButtons();
-    initializeWysiwyg()
+    initializeWysiwyg();
+    initializeProvinceChoosers();
 };
 
 

@@ -18,8 +18,8 @@ $number_of_visible_numbers_in_pager = isset($number_of_visible_numbers_in_pager)
         
                 <select id="properties-search-results-pager-order-by-options">
                 <option value="price_desc">Precio Mayor a menor</option>
-                <option>Precio Menor a mMayor</option>
-                <option>Provincia</option>
+                <option value="price_asc">Precio Menor a mMayor</option>
+                <option value="province">Provincia</option>
                 
             </select>
             <span id="properties-search-results-pager-order-by-order-text">Ordenar por:</span>

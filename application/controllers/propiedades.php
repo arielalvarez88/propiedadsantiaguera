@@ -242,12 +242,13 @@ class Propiedades extends CI_Controller {
 
         $data['topRightSide'] .=$this->load->view('blocks/pdf_and_share', $propertyInfo, true);
         $data['topRightSide'] .=$this->load->view('blocks/property_calculator', $propertyInfo, true);
-
-        $data['topRightSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propertyInfo, true);
+$data['topRightSide'] .= $this->load->view('blocks/property_advertise', $propertyInfo, true);
+        $data['topRightSide'] .= $this->load->view('blocks/solicitudDeInformacion', $propertyInfo, true);
 
         $data['topLeftSide'] .= $this->load->view('blocks/property_info', $property_info_view_variables, true);
+        $data['topLeftSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propertyInfo, true);
 
-        $data['bottom'] = $this->load->view('blocks/solicitudDeInformacion', $propertyInfo, true);
+
 
         
         $breadcrumb_view_variables = $this->get_breadcrumb_view_viarables($property);
@@ -256,7 +257,7 @@ class Propiedades extends CI_Controller {
 
         $video_variables['video_url'] = $property->video;
 
-        $data['bottom'] .= $this->load->view("blocks/property_video", $video_variables, true);
+        
 
 
         $data['top'] .= $this->load->view('blocks/breadcrumb', $breadcrumb_view_variables, true);

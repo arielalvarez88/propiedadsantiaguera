@@ -24,7 +24,7 @@
                         1
                     </td>
                     <td>
-                        <span>RD$ 1,500 </span>
+                        <span>RD$ 1,250 </span>
 
                     </td>
                     <td>
@@ -40,7 +40,7 @@
                         5
                     </td>
                     <td>
-                        <span>RD$ 6,000</span>  
+                        <span>RD$ 5,000</span>  
                     </td>
 
                     <td>
@@ -56,7 +56,7 @@
                         10
                     </td>
                     <td>
-                        <span>RD$ 10,000</span> 
+                        <span>RD$ 8,000</span> 
 
                     </td>
 
@@ -73,7 +73,7 @@
                         25
                     </td>
                     <td>
-                        <span> RD$ 20,000 </span>
+                        <span> RD$ 12,500 </span>
                     </td>
 
                     <td>
