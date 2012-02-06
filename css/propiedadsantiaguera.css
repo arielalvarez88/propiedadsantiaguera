@@ -3150,6 +3150,7 @@ properties-pager
 #particular-user-viewer-container {
     background-image: url("/images/common/whiteToGrayGradient.png");
     color: black;
+    margin-bottom: -20px;
     padding-bottom: 10px;
     padding-top: 5px;
     position: relative;
@@ -3403,12 +3404,21 @@ properties-pager
 
 /*moneda-precio ends*/
 
+/*** property-advertise***/
+
+#property-advertise
+{
+    text-align: center;
+    margin-top: 5px;
+}
+
+/*** property-advertise ENDS***/
 
 /*** overlay-property-calculator ***/
 
 #overlay-property-calculator-container
 {
-    width: 520px;
+    width: 530px;
     heihgt: 277px;
 }
 
@@ -3607,13 +3617,15 @@ properties-pager
 
 #property-ubication-gmap
 {
-
+    clear: both;
+    height: 330px;
+    width:679px;
 }
 
 #property-ubication-gmap-map
 {
 
-    height: 236px;
+    height: 300px;
 
 }
 /*property-ubication-gmap END*/
@@ -3881,8 +3893,9 @@ green-button properties-search-results-pager-bottom
 /*solicitud-de-info*/
 #solicitud-de-info
 {
-    width: 660px;
-    height: 440px;
+  border: 1px solid #cccccc;
+  width: 273px;
+  margin-top: 5px;
 
 }
 #solicitud-de-info-ciudad
@@ -3890,8 +3903,8 @@ green-button properties-search-results-pager-bottom
 #solicitud-de-info-comentario
 {
     display: block;
-    height: 178px;
-    width: 625px;
+    height: 90px;
+    width: 207px;
 
 }
 #solicitud-de-info-email{}
@@ -3901,7 +3914,7 @@ green-button properties-search-results-pager-bottom
 }
 
 #solicitud-de-info-conociste{
-    float:right;
+    
     margin-top: 10px;
 }
 #solicitud-de-info-header{
@@ -3910,9 +3923,10 @@ green-button properties-search-results-pager-bottom
 #solicitud-de-info-nombre{}
 #solicitud-de-info-comentario-label
 {
-    margin-top: 90px;
+    clear: both;
+    
     display: block;
-    margin-bottom: 10px;
+
 
 }
 #solicitud-de-info-submit
@@ -3925,7 +3939,7 @@ green-button properties-search-results-pager-bottom
     width: 56px;
 }
 #solicitud-de-info-submit-container{
-    float:left;
+    
     margin-top: 10px;
 }
 
