@@ -47,6 +47,58 @@ class Filter_builder {
         $filter->add_filter($property_object);
     }
 
+    public static function order_by($filtered_get,$property_object)
+    {
+        $value = isset($filtered_get['orderBy'])? $filtered_get['orderBy'] : '';
+        $condition = isset($filtered_get["condition"]) ? $filtered_get["condition"] : Environment_vars::$maps["property_conditions"]["sell"];
+        switch($value)
+        {
+            case "price_asc":
+                if($condition == Environment_vars::$maps["property_conditions"]["rent"])
+                {
+                    $property_object->order_by("rent_price_dr ASC");
+                    $property_object->order_by("sell_price_dr ASC");
+                    
+                }
+                else
+                {
+                    $property_object->order_by("sell_price_dr ASC");
+                    $property_object->order_by("rent_price_dr ASC");
+                    
+                }
+                
+            
+                    
+            break;
+        
+        case "price_desc":
+               if($condition == Environment_vars::$maps["property_conditions"]["rent"])
+                {
+                    $property_object->order_by("rent_price_dr DESC");
+                    $property_object->order_by("sell_price_dr DESC");
+                    
+                }
+                else
+                {
+                    $property_object->order_by("sell_price_dr DESC");
+                    $property_object->order_by("rent_price_dr DESC");
+                    
+                }
+            break;
+        
+        case "province_asc":
+                $property_object->order_by("province ASC");                
+         break;
+     case "province_desc":
+                $property_object->order_by("province DESC");                
+         break;
+        }
+        
+        
+        
+        
+    }
+    
     public static function build_property_max_price_filter($post, $property_object,$breadcrumb) {
 
         $price_limit = isset($post['nopricelimit']) ? false : true;

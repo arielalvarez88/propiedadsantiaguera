@@ -6,7 +6,8 @@ class AddingArticlesDb extends Ruckusing_BaseMigration {
 
     public function up() {
         $articles = $this->create_table('articles');
-        $articles->column('title', 'string', array('limit' => 50));
+        $articles->column('title', 'string', array('limit' => 80));
+        $articles->column('subtitle', 'string', array('limit' => 100));
         $articles->column('photo', 'string', array('limit' => 100));
         $articles->column('body', 'text');
         $articles->column('display_in_front_page', 'boolean', array('default' => 0));

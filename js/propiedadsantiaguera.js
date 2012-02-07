@@ -1899,15 +1899,59 @@ initializePrintButtons = function(){
 };
 
 
-GetParameterAdder = function(element,event,htmlAttributeWithName,optionalValue){
+GetParameterAdder = function(element,event,htmlAttributeWithName,optionalStaticValue){
     
     var thisObject = this;
     this.element = $(element);
     
     this.eventHandler = function(){
-        var parameterName = thisObject.element.attr(htmlAttributeWithName);
-        var paramaterValue = typeof optionalValue != "undefined" ? optionalValue : thisObject.element.val();
+        var parameterName = thisObject.element.attr(htmlAttributeWithName) + "=";
+        var parameterValue ='';
+        if(typeof optionalStaticValue == "undefined")
+            {
+                 parameterValue =  thisObject.element.attr("type") == "radio" ||  thisObject.element.attr("type") == "checkbox"? thisObject.element.is(":checked") : thisObject.element.val();
+            }
+            else
+                {
+                    parameterValue = optionalStaticValue;
+                }
+        var actualLocation = window.location.href ;
+        
+        
+        
+        var parameterAlreadyInGet = actualLocation.indexOf(parameterName) > -1;
+        
+        
+        
+        
+        if(parameterAlreadyInGet)
+        {
+            
+                var regularExpString  = parameterName + "([a-z A-Z 0-9 _]*)";
+                
+                var regularExp = new RegExp(regularExpString);
+                
+                
+                
+                window.location.href = window.location.href.replace(regularExp, parameterName + parameterValue);
+                
+        }
+            
+       else
+           {
+               var actualLocationHasGetParameters = actualLocation.indexOf("?") != -1;
+        
+
+        
+                window.location.href += actualLocationHasGetParameters ?  "&" + parameterName + parameterValue : "?" + parameterName + parameterValue;
+           }
+        
+        
+            
+        
     };
+    
+    bindEvent(thisObject.element,"change", thisObject.eventHandler);
 }
 
 initializeWysiwyg = function(){
@@ -1933,6 +1977,10 @@ initializeWysiwyg = function(){
   initializeProvinceChoosers = function(){
       var propertyFormProvinceChooser = new ProvinceChooser("#property-form-description-province", ".property-form-neigborhoods", "property-neighborhood", "data-province");
   }
+  
+  initializeGetParamatersAdder =function (){
+      var orderByPrice = new GetParameterAdder("#properties-search-results-pager-order-by-options", "change", "data-name");
+  }
 
 initializeEvents= function(){
     initilizeSlideShows();
@@ -1955,6 +2003,7 @@ initializeEvents= function(){
     initializePrintButtons();
     initializeWysiwyg();
     initializeProvinceChoosers();
+    initializeGetParamatersAdder();
 };
 
 

@@ -409,6 +409,10 @@ $data['topRightSide'] .= $this->load->view('blocks/property_advertise', $propert
             Filter_builder::build_property_stories_filter($filtered_get, $properties_filters_container, $breadcrumb);
             Filter_builder::build_property_terrain_filter($filtered_get, $properties_filters_container, $breadcrumb);
             Filter_builder::build_property_construction_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            
+            Filter_builder::order_by($filtered_get, $properties_filters_container);
+            
+            
         }
 
 
@@ -424,7 +428,10 @@ $data['topRightSide'] .= $this->load->view('blocks/property_advertise', $propert
         $views['topLeftSide'] = $this->load->view("blocks/basic_filter", $filter_view_variables, true);
 
         $search_results['filtered_properties'] = $filtered_properties;
+        
+        $search_results['order_by_default_value'] = $this->input->get("orderBy");
         $search_results['condition'] = isset($filtered_get['condition']) && $filtered_get['condition'] == Environment_vars::$maps['property_conditions']['rent'] ? "rent" : "sell";
+        
 
 
 
