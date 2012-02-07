@@ -66,7 +66,13 @@ $this->lang->load("front_properties_pager",$language);
                             </p>
                             <img src="<?php base_url();?>/images/common/lightGreenItemCorner.png" class="itemCorner" alt="esquina-verde"/>  
                             <p>
-                                <?php echo Environment_vars::$maps['ids_to_text']['property_neighborhoods'][$property->neighborhood]; ?>, <?php echo Environment_vars::$maps['ids_to_text']['provinces'][$property->province]; ?>
+                                <?php
+                                
+                                $province_name =  Environment_vars::$maps['ids_to_text']['provinces'][$property->province];
+                                        $provinces_neighborhoods = Environment_vars::$maps['ids_to_text']['property_neighborhoods'][$province_name];
+                                        $neighborhood_name = array_search($property->neighborhood, $provinces_neighborhoods);
+                                ?>
+                                <?php echo $province_name; ?> <?php echo $neighborhood_name ? ','.$neighborhood_name : '' ;?>
                             </p>
                         </div>
 
