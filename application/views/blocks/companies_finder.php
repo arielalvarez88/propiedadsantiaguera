@@ -1,4 +1,4 @@
-<div id="companies-finder-container">
+<div id="companies-finder-container" accept-charset="UTF-8">
     
     
     <form id="companies-finder" method="post" action="/">

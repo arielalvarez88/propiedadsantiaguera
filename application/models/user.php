@@ -21,7 +21,7 @@ class User extends DataMapper {
         array(
             'field' => 'name',
             'label' => 'nombre',
-            'rules' => array('required', 'trim', 'utf8')
+            'rules' => array('required', 'trim')
         ),
         array(
             'field' => 'lastname',

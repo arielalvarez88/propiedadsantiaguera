@@ -3,6 +3,7 @@
 class UserTypesTable extends Ruckusing_BaseMigration {
 
     public function up() {
+        $this->execute("SET NAMES 'utf8'");
         $userType = $this->create_table('user_types');
         $userType->column('name', 'string', array('limit' => 50));
         $userType->column('description', 'text');

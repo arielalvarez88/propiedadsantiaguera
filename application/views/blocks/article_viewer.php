@@ -12,8 +12,12 @@ $article = isset($article)? $article : null;
 <div id="article-viewer-container">
     <h1 class="green-text"><?php echo $article->title;?></h1>
     <?php if($article->subtitle):?>
-    <h3 class="green-text"><?php echo $article->subtitle;?></h3>
+    <h3 ><?php echo $article->subtitle;?></h3>
     
+    <?php endif;?>
+    
+    <?php if($article->author):?>
+        <p > Autor: <?php echo $article->author;?></p>
     <?php endif;?>
     <div id="article-viewer">
         <img id="article-viewer-article-photo" src="<?php echo $article->photo;?>" alt="Foto del Articulo"/>

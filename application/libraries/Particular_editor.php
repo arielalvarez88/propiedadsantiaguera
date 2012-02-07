@@ -36,6 +36,11 @@ class Particular_editor extends Particular_inscriber{
       }
           
     }
+
+    public function validate_photos($user_info_getter) {
+        
+        parent::validate_photos($user_info_getter);
+    }
 }
 
 

@@ -81,7 +81,7 @@ class Property_inscriber implements IProperty_inscriber {
     public function validate_photos($photos_inputs_names) {
 
         $upload_path = Environment_vars::$environment_vars['properties_photos_dir_path'];
-        $properties_photos_filenames = File_handler::save_photos($photos_inputs_names, $upload_path, 5000);
+        $properties_photos_filenames = File_handler::save_photos($photos_inputs_names, $upload_path);
 
         return $properties_photos_filenames;
     }

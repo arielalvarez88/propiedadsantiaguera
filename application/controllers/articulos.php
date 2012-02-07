@@ -24,6 +24,19 @@ class Articulos extends CI_Controller{
           $article_viewer_view_variables["article"] = $article;
           
         $blocks["topLeftSide"] = $this->load->view("blocks/article_viewer",$article_viewer_view_variables,true);
+        
+        $random_articles = new Article();        
+        $random_articles->where("id !=", $id)->get()->all;
+        
+        $related_articles_view_parameters['articles'] = $random_articles;
+        
+        $blocks["topRightSide"] = $this->load->view("blocks/google_adsense_W336_H280",'',true);
+        $blocks["topRightSide"] .= $this->load->view("blocks/related_articles",$related_articles_view_parameters,true);
+        $blocks["topRightSide"] .= $this->load->view("blocks/google_adsense_W336_H280",'',true);
+        
+        
+        
+        
         $this->load->view("page",$blocks);
         
                         

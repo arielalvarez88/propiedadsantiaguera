@@ -241,6 +241,15 @@ body, html
     width: 565px;
     padding: 15px;
 }
+
+#article-viewer-article-photo {
+    margin: 10px 0;
+    max-width : 565px;
+}
+
+#article-viewer-article-body {
+    margin-bottom: 10px;
+}
 /**** article-viewer ENDS****/
 
 /*** articles-thumbs-pager ***/
@@ -1451,6 +1460,49 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 /*please_login ENDs*/
 
 
+/**** related-articles****/
+
+#related-articles {
+    background: none repeat scroll 0 0 #F1F1F1;
+    border-radius: 5px 5px 5px 5px;
+    margin: 10px 0;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.related-articles-content-container div {
+    float: left;
+}
+.related-articles-content-photo {
+    float: left;
+    margin-right: 10px;
+}
+#related-articles {
+    background: #f1f1f1;
+    overflow: hidden;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+#related-articles h2 {
+    margin-bottom: 10px;
+}
+
+.relate-articles-content-container {
+    width: 311px;
+    height: 86px;
+}
+/**** related-articles ENDS****/
+
+
+/**** google-adsense-w336-h280 ****/
+
+.google-adsense-w336-h280
+{
+    text-align: center;
+}
+/**** google-adsense-w336-h280 ENDS****/
+
 
 /*contact*/
 
@@ -2039,6 +2091,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     height: 41px;
     margin-right: 10px;
     width: 111px;
+    display:none;
 }
 #newsletter h3
 {

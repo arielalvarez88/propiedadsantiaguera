@@ -49,7 +49,7 @@ class Cms extends CI_Controller{
         }
         
           try{
-            $image_path =  File_handler::save_photos(array("photo"), "/images/articlesPhotos/", 99999);
+            $image_path =  File_handler::save_photos(array("photo"), "/images/articlesPhotos/");
         }  catch (Exception $exception)
         {
             
@@ -66,7 +66,7 @@ class Cms extends CI_Controller{
                $article->display_in_front_page = 1;
        
         
-        
+        $article->author = $this->input->post("author");
         $article->photo = $image_path["photo"];        
         $article->body = $this->input->post("body");
         

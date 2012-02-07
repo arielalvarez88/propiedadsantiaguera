@@ -212,7 +212,7 @@ class Propiedades extends CI_Controller {
         $errors_view_variables = array();
 
         if (!$property->display_property)
-            $errors_view_variables['errors'] = "Debe publicar su porpiedad para que este dipsonible para todo el público.";
+            $errors_view_variables['errors'] = "Debe publicar su propiedad para que este dipsonible para todo el público.";
 
 
         if (!$user || ($property_owner->id != $user->id)) {
@@ -288,7 +288,7 @@ $data['topRightSide'] .= $this->load->view('blocks/property_advertise', $propert
         }
         $photos_inputs_names[] = "property-main-photo";
         $upload_path = realpath("./" . Environment_vars::$environment_vars['properties_photos_dir_path']);
-        $properties_photos_filenames = File_handler::save_photos($photos_inputs_names, $upload_path, 5000);
+        $properties_photos_filenames = File_handler::save_photos($photos_inputs_names, $upload_path);
         return $properties_photos_filenames;
     }
 

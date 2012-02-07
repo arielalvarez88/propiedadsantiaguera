@@ -3,7 +3,7 @@
 class CreatingFilesTablesAndRelatedJoinTables extends Ruckusing_BaseMigration {
 
     public function up() {
-
+$this->execute("SET NAMES 'utf8'");
         $files = $this->create_table("files");
         $files->column("path" , "string");
         $files->column("type" , "integer");

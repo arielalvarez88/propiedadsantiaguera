@@ -11,7 +11,7 @@ $upgrade = isset($upgrade) ? $upgrade : null;
 
 <div id="buy-form-container">
 
-    <form id="buy-form" action="<?php echo base_url();?>ajax/buy_form_handler/validate_and_save_user<?php echo $upgrade? "/upgrade": '';?>" method="post" enctype="multipart/form-data">
+    <form id="buy-form" action="<?php echo base_url();?>ajax/buy_form_handler/validate_and_save_user<?php echo $upgrade? "/upgrade": '';?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
         
     
     

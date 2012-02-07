@@ -1623,12 +1623,15 @@ class DataMapper implements IteratorAggregate {
 	 */
 	public function save($object = '', $related_field = '')
 	{
+       
 		// Temporarily store the success/failure
 		$result = array();
-
+         
 		// Validate this objects properties
 		$this->validate($object, $related_field);
 
+                
+          
 		// If validation passed
 		if ($this->valid)
 		{
@@ -1661,6 +1664,7 @@ class DataMapper implements IteratorAggregate {
 			// Convert this object to array
 			$data = $this->_to_array();
 
+                        
 			if ( ! empty($data))
 			{
 				if ( ! $this->_force_save_as_new && ! empty($data['id']))
@@ -2384,8 +2388,10 @@ class DataMapper implements IteratorAggregate {
 		}
 
 		// Set whether validation passed
+                
 		$this->valid = empty($this->error->all);
-
+                
+                                
 		// For method chaining
 		return $this;
 	}

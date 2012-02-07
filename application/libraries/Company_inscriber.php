@@ -26,8 +26,8 @@ class Company_inscriber implements IUser_inscriber{
          return $this->base_behavior->validate_info($user_info_getter,$inscriber_user_type);
     }
     
-    public function validate_photos() {
-        $this->base_behavior->validate_photos();
+    public function validate_photos($user_info_getter) {
+        $this->base_behavior->validate_photos($user_info_getter);
     }
     
     public function save_name($user_object, $user_info_getter) {
