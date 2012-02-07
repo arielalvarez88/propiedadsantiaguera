@@ -24,7 +24,16 @@ class BreadCrumb
         $this->add_link("Inicio", base_url(), "Inicio");
         $this->add_to_section(Environment_vars::$maps['ids_to_text']['property_types'][$property->type], "?type=".$property->type, "Buscar");
         $this->add_to_section(Environment_vars::$maps['ids_to_text']['provinces'][$property->province], "&province=".$property->province, "Buscar");
-        $this->add_to_section(Environment_vars::$maps['ids_to_text']['property_neighborhoods'][$property->neighborhood], "&neighborhood=".$property->neighborhood, "Buscar");
+        
+        $province_name = Environment_vars::$maps['ids_to_text']['provinces'][$property->province];
+        
+        $provinces_neighborhoods = Environment_vars::$maps['texts_to_id']['property_neighborhoods'][$province_name];
+        
+        $neighborhood_name = array_search($property->neighborhood, $provinces_neighborhoods);
+        
+        if($neighborhood_name)
+            $this->add_to_section($neighborhood_name, "&neighborhood=".$property->neighborhood, "Buscar");
+        
         $this->add_link("#".$property->id, base_url()."propiedades/ver/".$property->id, "Propiedad");
         
         

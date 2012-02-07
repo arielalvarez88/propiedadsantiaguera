@@ -8,7 +8,8 @@ $i=0;
 $number_of_properties = count($filtered_properties);
 $number_of_pages = ceil($number_of_properties/$properties_in_a_page);
 $number_of_visible_numbers_in_pager = isset($number_of_visible_numbers_in_pager) ? $number_of_visible_numbers_in_pager : 5;
-
+$order_by_default_value = isset($order_by_default_value) ? $order_by_default_value : "price_desc";
+        
 ?>
 
 <div id="properties-search-results-pager">
@@ -16,10 +17,12 @@ $number_of_visible_numbers_in_pager = isset($number_of_visible_numbers_in_pager)
     <div id="properties-search-results-pager-order-by">
         <span id="properties-search-results-pager-order-by-header">Resultados(<?php echo $number_of_properties;?>)</span>
         
-                <select id="properties-search-results-pager-order-by-options">
-                <option value="price_desc">Precio Mayor a menor</option>
-                <option value="price_asc">Precio Menor a mMayor</option>
-                <option value="province">Provincia</option>
+                <select id="properties-search-results-pager-order-by-options" data-name="orderBy">
+                <option value="" >Por fecha</option>
+                <option value="price_desc" <?php echo $order_by_default_value == "price_desc" ? 'selected="selected"' : '';?>>Precio Mayor a menor</option>
+                <option value="price_asc" <?php echo $order_by_default_value == "price_asc" ? 'selected="selected"' : '';?>>Precio Menor a Mayor</option>
+                <option value="province_asc" <?php echo $order_by_default_value == "province_asc" ? 'selected="selected"' : '';?>>Provincia de la A a la Z</option>
+                <option value="province_desc" <?php echo $order_by_default_value == "province_desc" ? 'selected="selected"' : '';?>>Provincia de la Z a la A</option>
                 
             </select>
             <span id="properties-search-results-pager-order-by-order-text">Ordenar por:</span>

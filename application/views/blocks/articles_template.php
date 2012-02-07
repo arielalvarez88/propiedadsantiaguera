@@ -26,6 +26,9 @@ $error_messages  = isset ($error_messages) ? $error_messages : null;
         <p>Titulo:</p>
         <input name="title" type="text"/>
         
+          <p>Sub-titulo:</p>
+        <input name="subtitle" type="text"/>
+        
                 <div id="articles-template-show-container">
              
                 <label for="articles-template-show">Mostrar en portada:</label>

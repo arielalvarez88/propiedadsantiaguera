@@ -59,6 +59,8 @@ class Cms extends CI_Controller{
         
         $article = new Article();
         $article->title = $this->input->post("title");
+        $article->subtitle = $this->input->post("subtitle");
+        
         
        if($this->input->post("display_in_front_page")) 
                $article->display_in_front_page = 1;

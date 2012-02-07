@@ -236,7 +236,12 @@ body, html
 
 
 
-
+/***** article-viewer ****/
+#article-viewer-container {
+    width: 565px;
+    padding: 15px;
+}
+/**** article-viewer ENDS****/
 
 /*** articles-thumbs-pager ***/
 
