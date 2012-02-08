@@ -17,9 +17,14 @@ require_once realpath("./application/libraries/User_factory.php");
 <html>
 
     <head>
-        <link rel="stylesheet" type="text/css" href="<?php base_url(); ?>/css/propiedadsantiaguera.css"/>
-
+        
+        <title>Propiedom - Red de Propiedades Dominicanas</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="<?php base_url(); ?>/css/propiedadsantiaguera.css"/>
+        <link rel="icon" href="<?php echo base_url();?>images/common/favicon.ico" type="image/x-icon"/>
+        
+        <link rel="shortcut icon" href="<?php echo base_url();?>images/common/favicon.ico" type="image/x-icon"/> 
+        
     <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -64,7 +69,7 @@ require_once realpath("./application/libraries/User_factory.php");
                         <?php endif; ?>
                     </ul>
 
-                    <p>Bienvenido, <?php echo $loggedUser->name; ?> <a id="logout-button" href="<?php base_url(); ?>/usuario/logout">SALIR</a></p>
+                    <p>Bienvenid@, <?php echo $loggedUser->name; ?> <a id="logout-button" href="<?php base_url(); ?>/usuario/logout">SALIR</a></p>
 
 
                 </div>

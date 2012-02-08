@@ -1,6 +1,6 @@
 <?php
 $section = isset($section) && $section ? $section : '';
-
+$image_helper = new Image_helper();
 ?>
 
 
@@ -11,7 +11,7 @@ $section = isset($section) && $section ? $section : '';
     <h2 id="<?php echo $section; ?>user-info-header">Informaci&oacute;n Personal</h2>
     <div id="user-presentation-card-summary">
 
-        <img src="<?php echo '/thumbnail_creator/resize_per_user_type/'.urlencode(base64_encode($user->photo)).'/'.$user->type; ?>" alt="foto-del-usuario" class="users-photo"/>
+        <img src="<?php echo $image_helper->resize_by_user_type($user->photo,$user->type); ?>" alt="foto-del-usuario" class="users-photo"/>
         <div>
             <p class="user-presentation-card-summary-title">Nombre</p>
             <p><?php echo $user->name; ?></p> 

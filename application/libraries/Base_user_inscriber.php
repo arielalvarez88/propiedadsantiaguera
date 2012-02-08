@@ -41,17 +41,22 @@ class Base_user_inscriber implements IUser_inscriber {
         
     }
 
-    public function validate_photos() {
+    
+    
+    public function validate_photos($user_info_getter) {
 
         
         if (!File_handler::file_to_upload_exits("signup-photo"))
-            return true;
+        {
+                return true;
+        }
+           
 
         try {
 
             $upload_path =  Environment_vars::$environment_vars['user_photos_dir_path'];
             
-            $user_photo_path_in_array = File_handler::save_photos(array("signup-photo"), $upload_path, 2048);
+            $user_photo_path_in_array = File_handler::save_photos(array("signup-photo"), $upload_path);
         } catch (Exception $error) {
        
             throw new Invalid_photos_exception($error->getMessage());
@@ -65,8 +70,12 @@ class Base_user_inscriber implements IUser_inscriber {
     }
 
     public function save_name($user_object,$user_info_getter) {
+        
+      
              
         $user_object->name = $user_info_getter->get_name();
+        
+        
     }
     
     public function save_address($user_object, $user_info_getter) {
@@ -109,11 +118,16 @@ class Base_user_inscriber implements IUser_inscriber {
     }
 
     public function save_photo($user_object, $user_info_getter) {
+         
+       
+        if(!$this->user_photo_path)
+        {
+            $user_type = $user_info_getter->get_type();
+            $user_type_is_company = $user_type == Environment_vars::$maps['texts_to_id']["user_types"]["Empresa"] || $user_type == Environment_vars::$maps['texts_to_id']["user_types_requesters"]["Empresa"];
+            $this->user_photo_path =  $user_type_is_company? Environment_vars::$paths['default_company_photo'] : Environment_vars::$paths['default_agent_photo'];             
+        }
         
-        
-        
-        $user_object->photo = $this->user_photo_path;        
-        
+        $user_object->photo = $this->user_photo_path;
     }
 
     public function save_rnc($user_object, $user_info_getter) {

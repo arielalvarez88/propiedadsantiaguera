@@ -17,7 +17,7 @@
 <div id="<?php echo $section;?>basic-filter-container">
     
 
-<form id="basic-filter">
+<form id="basic-filter" accept-charset="UTF-8">
     <h2>B&uacute;squeda de propiedades <a id="basic-filter-search-by-ref-number" href="/ajax/view_loader/blocks/overlay_search_ref_number">Buscar por # de referencia</a></h2>
     <div id="basic-filter-top">
         <div id="basic-filter-top-left-size">

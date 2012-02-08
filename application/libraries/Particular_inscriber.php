@@ -80,9 +80,9 @@ class Particular_inscriber implements IUser_inscriber {
         return $this->base_behaviour->validate_info($user_info_getter,$inscriber_user_type);
     }
 
-    public function validate_photos() {
+    public function validate_photos($user_info_getter) {
  
-        return $this->base_behaviour->validate_photos();
+        return $this->base_behaviour->validate_photos($user_info_getter);
     }
 
     public function save_type($user_object, $user_info_getter) {

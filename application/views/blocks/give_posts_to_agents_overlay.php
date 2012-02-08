@@ -4,7 +4,7 @@ $agents = $agents ? $agents : null;
 $posts_left = $posts_left === false ? null : $posts_left;
 $i = 1;
 ?>
-<div id="give-posts-to-agents-overlay">
+<form id="give-posts-to-agents-overlay" method="post" action="<?php echo base_url;?>/miembros/give_posts">
     <h2 class="overlay-header">Agregar Publicaci&oacute;n para agente</h2>
     <img id="give-posts-to-agents-overlay-close-button" class="overlay-close-button"  src="<?php base_url();?>/images/common/fancy_close.png"/>
  <div class="error-messages hidden">
@@ -39,4 +39,4 @@ $i = 1;
     </div>
     </div>
 
-</div>
+</form>

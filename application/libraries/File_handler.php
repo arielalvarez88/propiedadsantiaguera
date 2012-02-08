@@ -19,7 +19,7 @@ class File_handler {
     }
     
  
-    public static function save_photos($inputs_names, $upload_path, $max_size) {
+    public static function save_photos($inputs_names, $upload_path) {
 
         $CI_Helper = get_instance();
         $photos_full_paths = array();
@@ -34,7 +34,7 @@ class File_handler {
           
                 $photo_config['file_name'] = time() ;
                 $photo_config['allowed_types'] = 'gif|jpg|png';
-                $photo_config['max_size'] = '1000';
+                $photo_config['max_size'] = 4096;
                 $CI_Helper->load->library('upload', $photo_config);
 
                 if (!$CI_Helper->upload->do_upload($input_name)) {                                        

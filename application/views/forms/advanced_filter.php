@@ -2,7 +2,7 @@
     <img id="advanced-filter-close-button" class="overlay-close-button" src="/images/common/fancy_close.png"/>
     <h2 class="overlay-header">B&uacute;squeda Avanzada</h2>
 
-    <form id ="advanced-filter" method="get">
+    <form id ="advanced-filter" method="get" accept-charset="UTF-8">
 
         <p>Seleccione los criterios que usted considere m&aacute;s importantes para que la b&uacute;squeda avanzada le presente los resultados m&aacute;s precisos.</p>
         <div id="advanced-filter-first-inputs">

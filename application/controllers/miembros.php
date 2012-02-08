@@ -38,18 +38,9 @@ class Miembros extends CI_Controller {
     {
         $user_types = null;
         $variables = array();
-        if($section == 'companies')
-        {
-            $user_types = array(Environment_vars::$maps['texts_to_id']['user_types']['Empresa']);
-            $variables['thumbs_width'] = 142;
-            $variables['thumbs_height'] = 107;
-        }
-        else
-        {
-            $user_types = array(Environment_vars::$maps['texts_to_id']['user_types']['Agente de Empresa'], Environment_vars::$maps['texts_to_id']['user_types']['Agente Independiente']);
-            $variables['thumbs_width'] = 107;
-            $variables['thumbs_height'] = 121;
-        }
+        
+        $user_types = $section == "companies" ? array(Environment_vars::$maps['texts_to_id']['user_types']['Empresa']) : array(Environment_vars::$maps['texts_to_id']['user_types']['Agente de Empresa'], Environment_vars::$maps['texts_to_id']['user_types']['Agente Independiente']);
+        
             
         $members = new User();
         $members->where_in("type", $user_types)->order_by('RAND()')->get_iterated();
@@ -58,7 +49,7 @@ class Miembros extends CI_Controller {
         foreach($members as $member)
         {
             $member = User_factory::get_user_from_object($member);
-            $variables['members_array'][] = array("id" => $member->id, "name" => $member->name, "photo"=> $member->photo, "published_properties" => $member->get_number_of_posted_properties() );
+            $variables['members_array'][]=$member;
         }
         
         return $variables;

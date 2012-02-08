@@ -78,7 +78,7 @@ class Buy_form_handler extends CI_Controller {
 
             $user_handler->validate_info($user_info_getter, $logged_user_type);
 
-            $user_handler->validate_photos();
+            $user_handler->validate_photos($user_info_getter);
             
             $response['success'] = true;
             

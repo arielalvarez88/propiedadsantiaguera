@@ -20,7 +20,7 @@ $property_coordenates = isset($property_coordenates) ? $property_coordenates : "
     </div>
 <?php endif; ?>
 
-<form id="property-form" method="post" action="<?php echo base_url(); ?>propiedades/validate<?php echo isset($property_id) ? '/' . $property_id : ''; ?>" enctype="multipart/form-data">
+<form id="property-form" method="post" action="<?php echo base_url(); ?>propiedades/validate<?php echo isset($property_id) ? '/' . $property_id : ''; ?>" enctype="multipart/form-data" accept-charset="UTF-8">
     <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber1.png"/><span>Detalles de Propiedad</span></p>
     <div id="property-form-description">
         <div id="property-form-description-column-container">

@@ -117,7 +117,6 @@ class Usuario extends CI_Controller {
     private function load_signup_form($signup_form_parameters = array())
     {  
         
-        
         $signup_form_parameters['form_content'] = $this->load->view('forms/signup_form_content', $signup_form_parameters, true);
         $blocks['topLeftSide'] = $this->load->view('blocks/signup_form_container', $signup_form_parameters, true);
         $this->load->view('page.php', $blocks);
@@ -148,7 +147,7 @@ class Usuario extends CI_Controller {
             
             $user_handler->validate_info($user_info_getter, $logged_user_type);
 
-            $user_handler->validate_photos();
+            $user_handler->validate_photos($user_info_getter);
             
         } catch (Validation_not_passed_exception $validation_exception) {
             $error_messages['errors'] .= $validation_exception->getMessage() . "\n";
@@ -215,13 +214,27 @@ class Usuario extends CI_Controller {
         $user_info_getter = new User_info_getter_from_post($this->input->post());
 
         if ($editing_user) {
-            $user = $user->where("id", $user_info_getter->get_id())->get();
+            $user = User_factory::get_user_from_id($user_info_getter->get_id());
+            
+            
         }
+        
+        
   
         $user_handler->save_name($user, $user_info_getter);
 
-
+        
+        $agent_is_editing_himself = $inscriber instanceof Company_agent_user && $user_handler instanceof Company_agent_editor;
+        
+        if($agent_is_editing_himself)
+            $user_handler->save_company($user, $user->get_company());
+        
+        else
+            $user_handler->save_company($user, $inscriber);
+            
+        
         $user_handler->save_company($user, $inscriber);
+        
         $user_handler->save_type($user, $user_info_getter);
         $user_handler->save_email($user, $user_info_getter);
 
@@ -241,8 +254,7 @@ class Usuario extends CI_Controller {
         $user_handler->save_inscription_date($user, $user_info_getter);
 
 
-        
-        
+ 
         
 
         
@@ -329,6 +341,7 @@ class Usuario extends CI_Controller {
 
         $edit_form_parameters['edit'] = true;
         $edit_form_parameters['edit_client_id'] = $user_to_edit->id;
+        $edit_form_parameters['inscriber_type'] = $logged_user->type;
         
         
         if($user_to_edit instanceof IUser_requests_only)
