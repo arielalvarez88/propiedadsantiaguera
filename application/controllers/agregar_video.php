@@ -22,7 +22,6 @@ class Agregar_video extends CI_Controller {
         if (!$property_belongs_to_user)
             redirect("/pagina_no_valida");
 
-
         $are_you_sure_view_variables['message'] = '¿Desea agregar un video para la propiedad : "' . $property->title . '" ?';
         $are_you_sure_view_variables['yes_href'] = "/agregar_video/propiedad/" . $property_id;
         $are_you_sure_view_variables ['no_href'] = "/propiedades/ver/" . $property_id;
@@ -54,15 +53,11 @@ class Agregar_video extends CI_Controller {
 
         $user = $this->get_logged_user_or_redirect_to_please_login();
 
-        $filtered_get = $this->input->get();
-        $response_status = $filtered_get["status"];
-        $video_id = $filtered_get["id"];
+        $filtered_get = $this->input->get();        
         $youtube_helper = new YoutubeVideoUploadHelper(Environment_vars::$youtube['username'], Environment_vars::$youtube['password'], Environment_vars::$google_api['developer_id'], "Propiedom", $user->name);
         
-        
-
         try {
-            $youtube_helper->handle_upload_response($response_status, $video_id);
+            $youtube_helper->handle_upload_response($filtered_get);
         } catch (Exception $e_uploading) {
             
             

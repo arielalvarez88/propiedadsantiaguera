@@ -192,7 +192,15 @@ class Filter_builder {
         $value = isset($post['neighborhood']) ? $post['neighborhood'] : null;
         if(!$value)
             return;
-        $breadcrumb->add_to_section(Environment_vars::$maps['ids_to_text']['property_neighborhoods'][$value],'&neighborhood='.$value,"Buscar");
+        
+        $province_id = isset($post['province']) ? $post['province'] : null;
+        $province_text = $province_id ? Environment_vars::$maps['ids_to_text']['provinces'][$province_id] : 'Santiago';
+        $neighborhood_text = array_search($value, Environment_vars::$maps['texts_to_id']['property_neighborhoods'][$province_text]);
+        
+        if($neighborhood_text)
+            $breadcrumb->add_to_section($neighborhood_text,'&neighborhood='.$value,"Buscar");
+        
+        
         $filter = new Equal_to_filter($field_name, $value);
         $filter->add_filter($property_object);
     }

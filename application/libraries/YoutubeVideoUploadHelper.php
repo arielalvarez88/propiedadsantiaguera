@@ -22,6 +22,7 @@ class YoutubeVideoUploadHelper {
     public $yt;
     public $client_id;
     public $flash_url;
+    public $video_thumbnail;
     
     public function __construct($youtube_username,$youtube_password,$developer_key,$application_id='My_Application',$client_id='User') {
         
@@ -118,9 +119,15 @@ class YoutubeVideoUploadHelper {
 
 
     
-    public function handle_upload_response($status,$youtube_video_id) {
+    public function handle_upload_response($fitered_get) {
         
      
+        
+        $status = $fitered_get['status'];
+        $youtube_video_id = $fitered_get['id'];
+        $duplicated = isset ($fitered_get['code']) && $fitered_get['code'] == "DUPLICATE"  ?  true : false;
+        
+        
         if($status != 200 && $status != 201)
         {
             throw new ErrorUploading();
@@ -145,6 +152,13 @@ class YoutubeVideoUploadHelper {
                                           
         
         $this->flash_url = $videoEntry->getFlashPlayerUrl();
+        
+        $video_thumbnails = $videoEntry->getVideoThumbnails();
+        $this->video_thumbnail =   $video_thumbnails[0]['url'];
+
+        
+        
+        
         
         
     }

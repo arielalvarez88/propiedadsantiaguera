@@ -503,7 +503,7 @@ $property_coordenates = isset($property_coordenates) ? $property_coordenates : "
     <div id="property-form-photos">
 
         <p>Fotos del slideshow:</p>
-
+        <img class="property-form-photo-notes" src="<?php echo base_url();?>images/common/imagesNote.png" alt="notas" />
 
         <ul id="property-form-photos-first-column" class="property-form-photos-column">
             <?php $image_helper = new Image_helper(); ?>
@@ -569,6 +569,7 @@ $property_coordenates = isset($property_coordenates) ? $property_coordenates : "
     <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber3.png"/><span>Ubicaci&oacute;n</span></p>
 
     <div id="property-form-gmap-picker"></div>
+    <img id="property-form-videos-note" src="<?php echo base_url();?>images/common/videosNote.png" alt="instrucciones-del-video"/>
         
     <div class="form-buttons">
         <input id="property-form-send-button" class="form-send-button" type="image" src="/images/common/formSubmitButton.png"/>

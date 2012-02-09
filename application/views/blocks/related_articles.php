@@ -17,7 +17,7 @@ $image_helper = new Image_helper();
             
             <img class="related-articles-content-photo" src="<?php echo $image_helper->resize($article->photo,100,76,'/images/articlesPhotosThumbs/');?>" alt="foto-del-articulo"/>
             <div>
-                <h3 class="green-text"><?php echo $article->preview_title;?></h3>
+                <h3 class="green-text"><a class="no-decoration-anchor" href="<?php echo base_url();?>articulos/ver/<?php echo $article->id;?>"><?php echo $article->preview_title;?></a></h3>
                 <p><?php echo $article->preview;?></p>
             </div>
         </div>
