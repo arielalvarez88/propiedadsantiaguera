@@ -23,6 +23,7 @@ class YoutubeVideoUploadHelper {
     public $client_id;
     public $flash_url;
     public $video_thumbnail;
+    public $youtube_video_id;
     
     public function __construct($youtube_username,$youtube_password,$developer_key,$application_id='My_Application',$client_id='User') {
         
@@ -155,17 +156,23 @@ class YoutubeVideoUploadHelper {
         
         $video_thumbnails = $videoEntry->getVideoThumbnails();
         $this->video_thumbnail =   $video_thumbnails[0]['url'];
-
-        
-        
-        
-        
-        
+        $this->youtube_video_id = $youtube_video_id;
+                       
     }
 
     public function get_video_flash_url()
     {
         return $this->flash_url;
+    }
+    
+    public function get_video_thumbnail()
+    {
+        return $this->video_thumbnail;
+    }
+    
+    public function get_video_youtube_id()
+    {
+        return $this->youtube_video_id;
     }
     
 }

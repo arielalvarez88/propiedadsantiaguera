@@ -170,7 +170,8 @@ class Cms extends CI_Controller{
                     
                     
                     $cms_video->url = $youtube_helper->get_video_flash_url();
-                    $cms_video->thumbnail = $youtube_helper->video_thumbnail;
+                    $cms_video->thumbnail = $youtube_helper->get_video_thumbnail();
+                    $cms_video->youtube_id = $youtube_helper->get_video_youtube_id();
                     
                     $cms_video->save();
                     $this->crear_videos(array("info_messages"=>"Su video fue subido satisfactoriamente."));
@@ -184,6 +185,7 @@ class Cms extends CI_Controller{
         $articles->get()->all;
         
         $articles_pager_view_variables['articles'] = $articles;
+        $articles_pager_view_variables['delete_permission'] = true;
         $articles_pager_view_variables['edit_link'] = true;
         $articles_pager_view_variables['section'] = 'edit-article-';
         

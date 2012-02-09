@@ -4,8 +4,10 @@ $articles = isset($articles) ? $articles : null;
 $image_helper = new Image_helper();
 
 $edit_link = isset($edit)? $edit_link : null;
-$section = isset($section)? $section : null
-
+$section = isset($section)? $section : null;
+$delete_permission = isset($delete_permission)? $delete_permission : null;
+    
+    
 ?>
 
 
@@ -23,7 +25,9 @@ $section = isset($section)? $section : null
                     <div class="articles-thumbs-pager-info">
                         <h2><img src="/images/common/smallGreenArrow.png" alt=""/><?php echo $article->preview_title; ?></h2>
                         <div><?php echo $article->preview; ?> ...<a class="green-text" href="/articulos/ver/<?php echo $article->id; ?>">Leer m&aacute;s</a></div>
-
+                        <?php if($delete_permission):?>
+                        <a class="articles-thumb-delete-button" href="<?php echo base_url();?>articulos/eliminar/<?php echo $article->id;?>">Eliminar</a>
+                        <?php endif;?>
                     </div>
 
                 </li>

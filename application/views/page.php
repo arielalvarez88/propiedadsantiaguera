@@ -17,27 +17,27 @@ require_once realpath("./application/libraries/User_factory.php");
 <html>
 
     <head>
-        
+
         <title>Propiedom - Red de Propiedades Dominicanas</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" type="text/css" href="<?php base_url(); ?>/css/propiedadsantiaguera.css"/>
-        <link rel="icon" href="<?php echo base_url();?>images/common/favicon.ico" type="image/x-icon"/>
-        
-        <link rel="shortcut icon" href="<?php echo base_url();?>images/common/favicon.ico" type="image/x-icon"/> 
-        
-    <script type="text/javascript">
+        <link rel="icon" href="<?php echo base_url(); ?>images/common/favicon.ico" type="image/x-icon"/>
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-28926825-1']);
-  _gaq.push(['_trackPageview']);
+        <link rel="shortcut icon" href="<?php echo base_url(); ?>images/common/favicon.ico" type="image/x-icon"/> 
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+        <script type="text/javascript">
 
-</script>
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-28926825-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
     </head>
     <body>
 
@@ -56,7 +56,10 @@ require_once realpath("./application/libraries/User_factory.php");
 
                 <div>
                     <ul >
+                        <?php if ($loggedUser instanceof Admin_user): ?>
+                            <li><a class="no-decoration-anchor" href="<?php base_url(); ?>cms">CMS</a>|</li>
 
+                        <?php endif; ?>
                         <?php if ($can_create_properties): ?>
                             <li><a class="no-decoration-anchor" href="<?php base_url(); ?>/panel/propiedades">PROPIEDADES</a>|</li>
                         <?php endif; ?>
@@ -67,6 +70,9 @@ require_once realpath("./application/libraries/User_factory.php");
                             <li><a class="no-decoration-anchor" href="<?php base_url(); ?>/panel/agentes">AGENTES</a></li>
 
                         <?php endif; ?>
+
+
+
                     </ul>
 
                     <p>Bienvenid@, <?php echo $loggedUser->name; ?> <a id="logout-button" href="<?php base_url(); ?>/usuario/logout">SALIR</a></p>
