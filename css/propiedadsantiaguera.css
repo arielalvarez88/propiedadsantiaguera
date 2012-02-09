@@ -272,6 +272,12 @@ body, html
 
 }
 
+.articles-thumb-delete-button
+{
+    display: block;
+    clear: both;
+}
+
 .articles-thumbs-pager-info h2 {
     font-size: 1em;
 }

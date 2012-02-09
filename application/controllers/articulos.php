@@ -61,6 +61,16 @@ class Articulos extends CI_Controller{
         $this->load->view('page',$blocks);
     }
     
+     public function eliminar($id=0){
+        
+         $user = $this->get_logged_user_or_redirect_to_please_login();
+         if(!$user instanceof Admin_user)
+             redirect("/pagina_no_valida");
+         
+         $articles = new Article($id);
+         $articles->delete();
+         redirect("/cms/editar_articulos");
+    }
     
 }
 ?>
