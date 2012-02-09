@@ -569,7 +569,7 @@ $property_coordenates = isset($property_coordenates) ? $property_coordenates : "
     <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber3.png"/><span>Ubicaci&oacute;n</span></p>
 
     <div id="property-form-gmap-picker"></div>
-    <img id="property-form-videos-note" src="<?php echo base_url();?>images/common/videosNote.png" alt="instrucciones-del-video"/>
+    <img id="property-form-maps-note" src="<?php echo base_url();?>images/common/mapsNote.png" alt="instrucciones-del-mapa"/>
         
     <div class="form-buttons">
         <input id="property-form-send-button" class="form-send-button" type="image" src="/images/common/formSubmitButton.png"/>

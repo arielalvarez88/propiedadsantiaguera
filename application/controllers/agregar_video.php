@@ -24,7 +24,7 @@ class Agregar_video extends CI_Controller {
 
         $are_you_sure_view_variables['message'] = '¿Desea agregar un video para la propiedad : "' . $property->title . '" ?';
         $are_you_sure_view_variables['yes_href'] = "/agregar_video/propiedad/" . $property_id;
-        $are_you_sure_view_variables ['no_href'] = "/propiedades/ver/" . $property_id;
+        $are_you_sure_view_variables ['no_href'] = "/panel/propiedades/creadas";
         $upload_video_form_variables['yes_target'] = '_blank';
 
         $blocks["top"] = $this->load->view("blocks/are_you_sure", $are_you_sure_view_variables,true);
@@ -75,7 +75,7 @@ class Agregar_video extends CI_Controller {
         
         $property->video = $flash_video_url;
         $property->save();
-        redirect("/propiedades/ver/".$property_id);
+        redirect("/panel/propiedades/creadas");
 
         
         
