@@ -16,7 +16,7 @@
 
             <a href="#javascript" class="no-decoration-anchor" id="interests-calculator-calculate-button" >CALCULAR</a>
             <p> 
-            <lable >A&Ntilde;OS A FINANCIAR</lable>
+            <lable >Pagos mensuales</lable>
             <input type="text" id="interests-calculator-result" name="interest-calculator-result"/>
             </p>
         </div>

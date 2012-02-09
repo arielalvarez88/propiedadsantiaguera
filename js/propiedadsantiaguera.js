@@ -957,6 +957,9 @@ initializeOverlays = function(){
     var buyFormPolicy = new Overlay("#buy-form-policy");
     var buyFormTerms = new Overlay('#buy-form-terms');
     
+    
+    var tutorialsFromToolsCenter= new Overlay('.tutorial-video-pager-video-title, .tutorial-video-pager-video-thumb-container');
+    
     var propertyCalculator = new Overlay("#property-calculator-container");
     var searchByRefNumber = new Overlay("#basic-filter-search-by-ref-number");
     
@@ -1833,6 +1836,7 @@ PrizeCalculator = function(prizeResultDisplay,postNumberDisplay,postNumber,planP
 initializePrizeCalculator = function(){
 
     var numberOfPostToBuyCalculator = new PrizeCalculator ("#buy-form-buy-result", "#buy-form-post-number-display",  "#buy-form-post-number", "#buy-form-plan-price", "#buy-form-plan-factor");
+    
 
 };
 

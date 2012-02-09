@@ -73,9 +73,7 @@ class BreadCrumb
             $this->visited_sections[$section] = array();
             
         }
-        
         $this->visited_sections[$section][] = array('title' => $title, 'url' => $url);
-                
     }
     
     public function print_breadcrumb($separator = ' > ', $atrributes = array())

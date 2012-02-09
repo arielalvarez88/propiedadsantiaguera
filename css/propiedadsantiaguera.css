@@ -1613,7 +1613,10 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     width: 105px;
 }
 
-
+.property-form-photo-notes
+{
+    float: right;
+}
 
 #property-form-description #property-form-description-column3 label
 {
@@ -1628,6 +1631,15 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     clear: both;
 }
 
+.property-form-photos-column input {
+    width: 222px;
+    
+}
+
+#property-form-videos-note
+{
+    float: right;
+}
 
 .property-form-photos {
     height: 49px;
@@ -1783,9 +1795,19 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 {
     width: 500px;
     height: 300px;
+    float:left;
 }
 
+.property-form-gmap-picker
+{
+    float: left;
+}
 
+#property-form-videos-note {
+    float: left;
+    margin-left: 10px;
+    width: 435px;
+}
 #property-form-description-column-container
 {
     margin-bottom: 25px;
@@ -2764,6 +2786,14 @@ properties-pager
 
 
 /***interests-calculator ***/
+#tools_center_video
+{
+    margin-right: 14px;
+}
+/***interests-calculator ENDS***/
+
+
+/***interests-calculator ***/
 
 #interests-calculator input {
     border: 4px solid #E1E1E1;
@@ -2777,7 +2807,7 @@ properties-pager
 }
 #interests-calculator {
     color: #76BB3A;
-    padding: 0 10px;
+    
     width: 351px;
 }
 
@@ -2798,7 +2828,7 @@ properties-pager
 
 #interests-calculator div
 {
-    background: url("/images/common/stripesGradient_H433.jpg") repeat scroll 0 0 transparent;
+    background: url("/images/common/stripesGradient_H433.jpg") repeat scroll 0 -126px transparent;
     border-radius: 0 0 5px 5px;
     padding: 0 10px;
 }
@@ -2823,6 +2853,38 @@ properties-pager
 
 /***interests-calculator END***/
 
+
+/**** tutorial-video-pager ****/
+
+.tutorial-video-pager-video-thumb {
+    
+    height: 90px;
+    
+    width: 120px;
+}
+
+.tutorial-video-pager-video-container {
+    border-bottom: 2px solid #C1C5C6;
+    clear: both;
+    overflow: hidden;
+    padding: 20px 5px;
+}
+
+
+.tutorial-video-pager-video-container div {
+    float: left;
+}
+
+.tutorial-video-pager-video-thumb-container
+{
+    float: left;
+    margin-right: 5px;
+    display: block;
+}
+.tutorial-video-pager-video-title
+{
+    display: block;
+}
 
 /*proerties-of-the-week*/
 #properties-of-the-week {
@@ -4598,6 +4660,10 @@ green-button properties-search-results-pager-bottom
 /*Blocks End*/
 
 /*clases utiles*/
+.block
+{
+    display: block;
+}
 
 .overlay-container {
     background-color: #F3F3F3;

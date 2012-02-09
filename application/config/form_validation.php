@@ -6,6 +6,19 @@
  */
 
 $config = array(
+    
+    "cms_video_validation" => array(
+        array(
+            'field' => 'video-title',
+            'label' => 'título del video',
+            'rules' => 'required|max_length[70]'
+        ),
+        array(
+            'field' => 'video-description',
+            'label' => 'descripción del video',
+            'rules' => 'required|max_length[100]'
+        ),       
+    ),
     "articles" => array(
         array(
             'field' => 'preview',
@@ -27,6 +40,8 @@ $config = array(
             'label' => 'cuerpo',
             'rules' => 'required'
         )
+        
+        
     ),
     'user_signup_common' => array(
         array(
