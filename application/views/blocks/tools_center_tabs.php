@@ -12,9 +12,9 @@ $cms_documents_pager_view = isset($cms_documents_pager_view) ? $cms_documents_pa
 <div id="tools-center-tabs">
     
     <div id="tools-center-tabs-item-container">
-        <a class="selected tab-item tool-center-tab-item">Articulo</a>
+        <a class="selected tab-item tool-center-tab-item">Art&iacute;culo</a>
         <a class="tab-item tool-center-tab-item">Tutoriales</a>
-        <a class="tab-item tool-center-tab-item" data-show-selector="#tools-center-documents-pager-container">Documentos de interes</a>
+        <a class="tab-item tool-center-tab-item" data-show-selector="#tools-center-documents-pager-container">Documentos de inter&eacute;s</a>
     </div>
     
     

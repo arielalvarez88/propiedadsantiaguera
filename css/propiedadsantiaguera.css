@@ -332,8 +332,9 @@ body, html
 #tools-center-tabs
 {
         height: 739px;
-    
+    margin-right: 37px;
     width: 569px;
+    
     
 }
 
@@ -342,16 +343,20 @@ body, html
 overflow: hidden;
 }
 
-
+#tools-center-documents-pager-container {
+    overflow: auto;
+    height: 390px;
+}
 
 /**** tools-center-tabs ENDS****/
 
 /**** cms-documents-pager ****/
 
-    .cms-documents-pager-document {
-    border-bottom: 1px solid #cccccc;
+.cms-documents-pager-document {
+    border-bottom: 1px solid #CCCCCC;
+    height: 75px;
+    
     padding: 10px;
-    overflow: auto;
 }
 
 
