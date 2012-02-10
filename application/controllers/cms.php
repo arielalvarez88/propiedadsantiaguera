@@ -275,6 +275,12 @@ class Cms extends CI_Controller{
     
     public function validate_document()
     {
+        
+        if(!File_handler::file_to_upload_exits("document"))
+        {
+            $this->crear_documentos(array("error_messages" => "Debe seleccionar una archivo en el campo documento"));
+            return;
+        }
        
         if($this->form_validation->run("cms_document") == false)
         {            
@@ -291,7 +297,6 @@ class Cms extends CI_Controller{
             $document_input_name = array("document");
             $document_path = File_handler::save_file($document_input_name, "/cms_uploaded_documents/");
             
-           
         }
         catch(Exception $e){
             $this->crear_documentos(array("error_messages" => $e->getMessage()));
@@ -300,14 +305,15 @@ class Cms extends CI_Controller{
         
            
         
-        $cms_document = new Cms_document();
-        
+        $cms_document = new Cms_document();        
         $cms_document->title = $this->input->post("title");
         $cms_document->description = $this->input->post("description");        
         $cms_document->path = $document_path["document"];
+        
         $cms_document->save();
         
-        $this->crear_documentos(array("info-messages" => "Su documento fue subido con éxito."));
+        
+        $this->crear_documentos(array("info_messages" => "Su documento fue subido con éxito."));
         
         
     }
