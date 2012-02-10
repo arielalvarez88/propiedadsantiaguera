@@ -230,7 +230,8 @@ class Cms extends CI_Controller{
         
         $cms_documents_pager_view_variables['cms_documents'] = $cms_documents;
         $cms_documents_pager_view_variables['delete_permission'] = true;
-        $blocks['top'] = $this->load->view("blocks/cms_documents_pager",$cms_documents_pager_view_variables,true);               
+        $blocks['top'] = $this->load->view("blocks/edit_documents_header",'',true);               
+        $blocks['top'] .= $this->load->view("blocks/cms_documents_pager",$cms_documents_pager_view_variables,true);               
         $this->load->view("page",$blocks);
         
         
