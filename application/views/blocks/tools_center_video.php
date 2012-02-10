@@ -9,4 +9,6 @@ $cms_video = isset($cms_video) ? $cms_video : null;
 
 
 ?>
+<?php if($cms_video && $cms_video->url):?>
 <iframe id="tools_center_video" width="565" height="359" src="<?php echo $cms_video->url;?>&wmode=opaque" frameborder="0" allowfullscreen ></iframe>
+<?php endif;?>

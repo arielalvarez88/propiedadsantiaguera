@@ -6,7 +6,7 @@
  */
 
 $cms_videos = isset($cms_videos) ? $cms_videos : null;
-
+$delete_permission = isset($delete_permission) ? $delete_permission : false;
 ?>
 
 
@@ -20,7 +20,12 @@ $cms_videos = isset($cms_videos) ? $cms_videos : null;
             <div>
                 <a class="no-decoration-anchor tutorial-video-pager-video-title iframe" href="<?php echo $cms_video->url;?>"><h3 class="green-text"><?php echo $cms_video->title;?></h3></a>
                 <p><?php echo $cms_video->description;?></p>
+                <?php if($delete_permission):?>
+                <a  href="<?php echo base_url();?>cms/confirmacion_borrar_video_tutorial/<?php echo $cms_video->id;?>">Eliminar</a>
+                <?php endif;?>
             </div>
+            
+            
         </div>
         
         <?php endforeach;?>

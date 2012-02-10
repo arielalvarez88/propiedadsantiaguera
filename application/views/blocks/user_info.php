@@ -3,9 +3,14 @@ $user_to_view = isset($user_to_view) ? $user_to_view : null;
 $user_company = isset($user_company) ? $user_company : null;
 
 
-$company_agent_view_object = $user_to_view instanceof Company_agent_user ? $user_to_view : null;
-$company_view_object = $user_to_view instanceof Company_user || $user_to_view instanceof Agent_user || $user_to_view instanceof Particular_user ? $user_to_view : $user_company;
+$company_agent_view_object = $user_to_view instanceof Company_user ?  null : $user_to_view;
 
+$company_view_object  = false;
+if($user_to_view instanceof Company_user)
+    $company_view_object= $user_to_view;
+
+elseif($user_company)
+    $company_view_object = $user_company;
 
 
 ?>
@@ -54,7 +59,7 @@ $company_view_object = $user_to_view instanceof Company_user || $user_to_view in
     <?php endif;?>
     
     
-    
+    <?php if($company_view_object):?>
     <div id="user-info-particular-or-company">
         <h2><?php echo $company_view_object->name;?></h2>
             <p><?php echo $company_view_object->get_type_text();?></p>
@@ -103,7 +108,7 @@ $company_view_object = $user_to_view instanceof Company_user || $user_to_view in
             
         </div>
     </div>
-
+<?php endif;?>
 
 
 </div>

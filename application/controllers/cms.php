@@ -50,6 +50,9 @@ class Cms extends CI_Controller{
             return;
         }
         
+        
+        
+    
           try{
             $image_path =  File_handler::save_photos(array("photo"), "/images/articlesPhotos/");
         }  catch (Exception $exception)
@@ -74,10 +77,6 @@ class Cms extends CI_Controller{
         
         $article->preview_title = $this->input->post("preview-title");
         $article->preview = $this->input->post("preview");
-        
-        
-        
-     
         
         $article->save();
         
@@ -171,13 +170,91 @@ class Cms extends CI_Controller{
                     
                     $cms_video->url = $youtube_helper->get_video_flash_url();
                     $cms_video->thumbnail = $youtube_helper->get_video_thumbnail();
-                    $cms_video->youtube_id = $youtube_helper->get_video_youtube_id();
-                    
+                    $cms_video->youtube_id = $youtube_helper->get_video_youtube_id();                    
                     $cms_video->save();
                     $this->crear_videos(array("info_messages"=>"Su video fue subido satisfactoriamente."));
                     
 
           }
+    public function editar_videos()
+    {
+        $cms_videos = new Cms_video();
+        $cms_videos->get_iterated();
+        $tutorial_video_pager_variables['cms_videos'] = $cms_videos;
+        $tutorial_video_pager_variables['delete_permission'] = true;
+        $blocks['top'] = $this->load->view("blocks/tutorial_video_pager",$tutorial_video_pager_variables,true);
+        $this->load->view("page",$blocks);
+        
+        
+    }
+    
+    public function confirmacion_borrar_video_tutorial($video_id)
+    {
+         $are_you_sure_view_variables['yes_href'] = base_url().'cms/eliminar_video/'.$video_id;
+        $are_you_sure_view_variables['no_href'] = base_url().'cms/editar_videos';
+        $are_you_sure_view_variables['message'] = "Esta seguro que desea borrar este video";
+        $blocks['top']= $this->load->view("blocks/are_you_sure",$are_you_sure_view_variables,true);
+        $this->load->view("page",$blocks);
+    }
+    
+    public function crear_documentos($messages=array())    
+    {
+        
+        $upload_document_messages = is_array($messages) ? $messages : array();
+        $blocks['top'] = $this->load->view("blocks/upload_document",$upload_document_messages,true);
+        $this->load->view("page",$blocks);
+    }
+    
+    
+    
+    public function eliminar_video($video_id =0 )
+    {
+        
+        
+        $cms_video = new Cms_video($video_id);
+        $youtube_video_id  = $cms_video->youtube_id;
+        
+        $youtube_helper = new YoutubeVideoUploadHelper(Environment_vars::$youtube['username'], Environment_vars::$youtube['password'], Environment_vars::$google_api['developer_id'], Environment_vars::$google_api['application_id'], "Ariel");
+
+        $youtube_helper->delete_video($youtube_video_id);
+        $cms_video->delete();
+        redirect("/cms/editar_videos");
+        
+    }
+    
+    public function editar_documentos(){
+        
+        $cms_documents = new Cms_document();
+        
+        $cms_documents->get_iterated();
+        
+        $cms_documents_pager_view_variables['cms_documents'] = $cms_documents;
+        $cms_documents_pager_view_variables['delete_permission'] = true;
+        $blocks['top'] = $this->load->view("blocks/cms_documents_pager",$cms_documents_pager_view_variables,true);               
+        $this->load->view("page",$blocks);
+        
+        
+    }
+    
+    
+    public function confirmacion_borrar_documento($document_id=0)
+    {
+                         
+        $are_you_sure_view_variables['yes_href'] = base_url().'cms/eliminar_documento/'.$document_id;
+        $are_you_sure_view_variables['no_href'] = base_url().'cms/editar_documentos';
+        $are_you_sure_view_variables['message'] = "Esta seguro que desea borrar este documento";
+        $blocks['top']= $this->load->view("blocks/are_you_sure",$are_you_sure_view_variables,true);
+        $this->load->view("page",$blocks);
+    }
+    
+    public function eliminar_documento($document_id=0)
+    {
+        $cms_document_to_be_deleted = new Cms_document($document_id);
+        $cms_document_to_be_deleted->delete();
+        redirect("/cms/editar_documentos");
+    }
+    
+    
     
     public function editar_articulos(){
         
@@ -194,6 +271,60 @@ class Cms extends CI_Controller{
         $this->load->view('page',$blocks);
     }
     
+    
+    public function validate_document()
+    {
+       
+        if($this->form_validation->run("cms_document") == false)
+        {            
+           
+            $this->crear_documentos(array("error_messages" => validation_errors()));
+            return;
+        }
+        
+    
+        $photos_paths = '';
+        $document_path = '';
+        try {                          
+             
+            $document_input_name = array("document");
+            $document_path = File_handler::save_file($document_input_name, "/cms_uploaded_documents/");
+            
+           
+        }
+        catch(Exception $e){
+            $this->crear_documentos(array("error_messages" => $e->getMessage()));
+            return;
+        }
+        
+           
+        
+        $cms_document = new Cms_document();
+        
+        $cms_document->title = $this->input->post("title");
+        $cms_document->description = $this->input->post("description");
+        $cms_document->photo = $photos_paths['photo'];
+        $cms_document->path = $document_path["document"];
+        $cms_document->save();
+        
+        $this->crear_documentos(array("info-messages" => "Su documento fue subido con éxito."));
+        
+        
+    }
+    
+    
+    
+    public function confirmacion_borrar_articulos($articulo_id=0)
+    {
+        
+        $are_you_sure_view_variables['yes_href'] = base_url().'articulos/eliminar/'.$articulo_id;
+        $are_you_sure_view_variables['no_href'] = base_url().'cms/editar_articulos';
+        $are_you_sure_view_variables['message'] = "Esta seguro que desea borrar este articulo";
+        $blocks['top']= $this->load->view("blocks/are_you_sure",$are_you_sure_view_variables,true);
+        $this->load->view("page",$blocks);
+                
+        
+    }
         
     
     

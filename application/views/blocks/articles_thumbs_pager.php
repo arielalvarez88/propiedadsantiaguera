@@ -26,7 +26,7 @@ $delete_permission = isset($delete_permission)? $delete_permission : null;
                         <h2><img src="/images/common/smallGreenArrow.png" alt=""/><?php echo $article->preview_title; ?></h2>
                         <div><?php echo $article->preview; ?> ...<a class="green-text" href="/articulos/ver/<?php echo $article->id; ?>">Leer m&aacute;s</a></div>
                         <?php if($delete_permission):?>
-                        <a class="articles-thumb-delete-button" href="<?php echo base_url();?>articulos/eliminar/<?php echo $article->id;?>">Eliminar</a>
+                        <a class="articles-thumb-delete-button" href="<?php echo base_url();?>cms/confirmacion_borrar_articulos/<?php echo $article->id;?>">Eliminar</a>
                         <?php endif;?>
                     </div>
 

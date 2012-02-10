@@ -12,8 +12,12 @@ $i = 1;
 
 
 <div id="panels-properties-pager-container" class="optional-view">
-
+<?php if($properties):?>
     <h1>Resultados de la b&uacute;squeda</h1>
+    <?php else:?>
+        <h1>No existen propiedades en esta categor&iacute;a.</h1>
+    <?php endif;?>
+    
     <form id="panels-properties-pager" action="<?php base_url();?>/propiedades/guardar_cambios_publicar/" method="post">
         <input type="hidden" name="properties-matched-count" value="<?php echo count($properties); ?>" />
         <?php foreach ($properties as $property): ?>

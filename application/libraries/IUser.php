@@ -17,7 +17,7 @@ interface  IUser {
     public function get_published_properties();
     public function get_number_of_properties();
     public function    get_number_of_posted_properties();
-    
+    public function get_type_text();      
 }
 
 ?>

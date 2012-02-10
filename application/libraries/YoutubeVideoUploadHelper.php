@@ -24,8 +24,9 @@ class YoutubeVideoUploadHelper {
     public $flash_url;
     public $video_thumbnail;
     public $youtube_video_id;
+    public$youtube_username;
     
-    public function __construct($youtube_username,$youtube_password,$developer_key,$application_id='My_Application',$client_id='User') {
+    public function __construct($youtube_username,$youtube_password,$developer_key,$application_id='Propiedom',$client_id='User') {
         
         Zend_Loader::loadClass('Zend_Gdata_YouTube');
         Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
@@ -38,7 +39,7 @@ class YoutubeVideoUploadHelper {
 
 
 
-        
+        $this->youtube_username = $youtube_username;
         $this->developer_key = $developer_key;
         $this->application_id = $application_id;
         $this->client_id = $client_id;
@@ -118,6 +119,13 @@ class YoutubeVideoUploadHelper {
         $this->load->view("blocks/upload_video", $upload_video_view_variables);
     }
 
+    public function delete_video($youtube_video_id)
+    {
+                $video_entry_to_delete = $this->get_video_entry($youtube_video_id);
+                
+                
+                $this->yt->delete('https://gdata.youtube.com/feeds/api/users/'.$this->youtube_username.'/uploads/'.$youtube_video_id);
+    }
 
     
     public function handle_upload_response($fitered_get) {
@@ -159,6 +167,9 @@ class YoutubeVideoUploadHelper {
         $this->youtube_video_id = $youtube_video_id;
                        
     }
+    
+    
+    
 
     public function get_video_flash_url()
     {
@@ -175,6 +186,19 @@ class YoutubeVideoUploadHelper {
         return $this->youtube_video_id;
     }
     
+    
+    public function __set($name, $value) {
+        $this->yt->$name = $value;
+    }
+    
+    public function __get($name) {
+        return $this->yt->$name;
+    }
+    
+    public function get_video_entry($youtube_video_id) {
+        
+        return $this->yt->getVideoEntry($youtube_video_id);
+    }
 }
 
 class ErrorUploading extends Exception

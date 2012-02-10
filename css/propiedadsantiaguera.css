@@ -272,6 +272,8 @@ body, html
 
 }
 
+
+
 .articles-thumb-delete-button
 {
     display: block;
@@ -323,6 +325,39 @@ body, html
 
 
 /*** articles-thumbs-pager ENDS***/
+
+
+/**** tools-center-tabs ****/
+
+#tools-center-tabs
+{
+        height: 739px;
+    
+    width: 569px;
+    
+}
+
+#tools-center-tabs-item-container {
+    border-bottom: 2px solid #76BC3B;
+overflow: hidden;
+}
+
+
+
+/**** tools-center-tabs ENDS****/
+
+/**** cms-documents-pager ****/
+
+    .cms-documents-pager-document {
+    border-bottom: 1px solid #cccccc;
+    padding: 10px;
+    overflow: auto;
+}
+
+
+
+/**** cms-documents-pager ENDS****/
+
 
 /*** articles-template ***/
 #articles-template-show-container
