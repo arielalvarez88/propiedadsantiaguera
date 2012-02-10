@@ -8,8 +8,6 @@
     <p>Descripción del documento:</p>
     <textarea name="description"></textarea>
     
-    <p>Foto del documento:</p>
-    <input type="file" name="photo"/>
     
     
     <p>Seleccione un documento:</p>
