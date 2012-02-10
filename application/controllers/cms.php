@@ -302,8 +302,7 @@ class Cms extends CI_Controller{
         $cms_document = new Cms_document();
         
         $cms_document->title = $this->input->post("title");
-        $cms_document->description = $this->input->post("description");
-        $cms_document->photo = $photos_paths['photo'];
+        $cms_document->description = $this->input->post("description");        
         $cms_document->path = $document_path["document"];
         $cms_document->save();
         
