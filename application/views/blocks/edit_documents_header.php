@@ -1,1 +1,1 @@
-<h2>Editar Documentos</h2>
+<h2 class="green-text">Editar Documentos</h2>
