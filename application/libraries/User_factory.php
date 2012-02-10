@@ -27,7 +27,7 @@ class User_factory {
     public static function get_user_from_object($user) {
  
         
-        if(!is_object($user) && !isset($user->type))
+        if(!is_object($user) || !isset($user->type))
             return false;
             
         switch ($user->type) {

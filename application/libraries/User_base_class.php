@@ -38,6 +38,9 @@ public function __call($name, $arguments) {
         return $this->user->properties->get_paged()->paged->total_rows;
     }
     
+    public function get_type_text(){
+        
+    }
     
     public function get_user_published_properties()
     {
@@ -54,6 +57,8 @@ public function __call($name, $arguments) {
         
         return $published_user_properties;
     }
+    
+
     
     
     public function get_number_of_posted_properties()

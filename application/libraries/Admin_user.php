@@ -17,6 +17,11 @@ class Admin_user extends User_base_class{
         parent::__construct($user);
     }
     
+    //Override
+    public function get_type_text(){
+        return "Administrador";
+    }
+    
 }
 
 ?>

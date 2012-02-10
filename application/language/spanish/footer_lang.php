@@ -13,7 +13,7 @@ $lang["footer_company_menu_publicity"] = "Publicidad";
 $lang["footer_resources_menu_header"] = "Recursos";
 $lang["footer_resources_menu_support"] = "Soporte";
 $lang["footer_resources_menu_terms"] = "Término de uso";
-$lang["footer_resources_menu_privacy"] = "Privacidad y secguridad";
+$lang["footer_resources_menu_privacy"] = "Privacidad y seguridad";
 
 $lang["footer_contact_us_header"] = "Contactanos";
 $lang["footer_contact_us_text"] = "Calle México Esq. Apeco, #32B <br/> Reparto del Este, Santiago, Rep. Dom. <br/> 809.582.2690";

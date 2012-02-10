@@ -57,7 +57,7 @@ require_once realpath("./application/libraries/User_factory.php");
                 <div>
                     <ul >
                         <?php if ($loggedUser instanceof Admin_user): ?>
-                            <li><a class="no-decoration-anchor" href="<?php base_url(); ?>cms">CMS</a>|</li>
+                            <li><a class="no-decoration-anchor" href="<?php echo base_url();?>cms">CMS</a>|</li>
 
                         <?php endif; ?>
                         <?php if ($can_create_properties): ?>

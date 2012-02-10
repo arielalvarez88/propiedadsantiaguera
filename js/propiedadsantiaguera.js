@@ -876,33 +876,36 @@ initializeViewLoaderElements = function(){
 
     
     
+}  
+    
+Tab = function(tabsCategoriesSelector, tabsBodiesSelector,tabsCategoriesAtrributeWithSelectorToShow,event)
+{
+    
+    var thisObject = this;
+    this.tabsCategories = $(tabsCategoriesSelector);
+    this.tabsBodiesSelector = $(tabsBodiesSelector);
+    
+    this.tabsCategoriesClickHandler = function(){
+        
+        var tabCategoryItem = $(this);
+        
+        
+        thisObject.tabsBodiesSelector.hide();
+        thisObject.tabsCategories.removeClass("selected");
+        var tabBodyToShow = tabCategoryItem.attr(tabsCategoriesAtrributeWithSelectorToShow);
+        
+        tabCategoryItem.addClass("selected");
+        
+        $(tabBodyToShow). show();
+        
+    };
     
     
-//    var propertyCondition = new ViewLoaderElement('#property-form-description-condition','change',[{
-//        value: 1, 
-//        url:'/ajax/view_loader/sell_rent_inputs',
-//        data: {
-//            status: 'sell', 
-//            repopulate : propertyTypeRepopulate
-//        }
-//    },{
-//        value: 2, 
-//        url:'/ajax/view_loader/sell_rent_inputs',
-//        data: {
-//            status: 'rent', 
-//            repopulate : propertyTypeRepopulate
-//        }
-//    },{
-//        value: 3, 
-//        url:'/ajax/view_loader/sell_rent_inputs',
-//        data: {
-//            status: 'sell-rent', 
-//            repopulate : propertyTypeRepopulate
-//        }
-//    }],'#property-form-description-column-container');
-
-};
-
+    event = event? event : "click";
+    
+    bindEvent(tabsCategoriesSelector, event, thisObject.tabsCategoriesClickHandler);        
+    
+}
 
 
 Overlay = function (selector, optionalClosebuttonSelector)
@@ -1487,6 +1490,7 @@ initializeHiderAndShowerElement = function(){
     
         
     
+    
 };
 
 hideElementsWithHiddenClass = function(){
@@ -1986,6 +1990,11 @@ initializeWysiwyg = function(){
       var orderByPrice = new GetParameterAdder("#properties-search-results-pager-order-by-options", "change", "data-name");
   }
 
+initializeTabs = function()
+{
+    var toolsCenterTab = new Tab(".tool-center-tab-item", ".tool-center-tab-body", "data-show-selector");
+}
+
 initializeEvents= function(){
     initilizeSlideShows();
     initializePropiedadViewer();       
@@ -2008,6 +2017,7 @@ initializeEvents= function(){
     initializeWysiwyg();
     initializeProvinceChoosers();
     initializeGetParamatersAdder();
+    initializeTabs();
 };
 
 

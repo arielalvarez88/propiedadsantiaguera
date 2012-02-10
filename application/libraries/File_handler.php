@@ -18,9 +18,8 @@ class File_handler {
         return file_exists($file_path) || file_exists(realpath("./".$file_path))? true : false;
     }
     
- 
-    public static function save_photos($inputs_names, $upload_path) {
-
+    public static function save_file($inputs_names, $upload_path, $mime_types = '', $max_file = 4096){
+        
         $CI_Helper = get_instance();
         $photos_full_paths = array();
     
@@ -29,15 +28,24 @@ class File_handler {
 
             if (File_handler::file_to_upload_exits($input_name)) {
                     
-                $photo_config['upload_path'] = realpath("./".$upload_path);
+                $config['upload_path'] = realpath("./".$upload_path);                          
+                $config['file_name'] = time() ;
                 
-          
-                $photo_config['file_name'] = time() ;
-                $photo_config['allowed_types'] = 'gif|jpg|png';
-                $photo_config['max_size'] = 4096;
-                $CI_Helper->load->library('upload', $photo_config);
+                 
+                    
+                if($mime_types)                
+                    $config['allowed_types'] = $mime_types;
+              else
+                $config['allowed_types'] = "*";
+              
+              
+                $config['max_size'] = $max_file;
+                $CI_Helper->load->library('upload');
+                
+                $CI_Helper->upload->initialize($config);
 
-                if (!$CI_Helper->upload->do_upload($input_name)) {                                        
+                if (!$CI_Helper->upload->do_upload($input_name)) {
+                   
                     throw new Exception("Se produjo un error al subir sus fotos, asegúrese que sus archivos sean fotos e intentelo denuevo.");
                 }
                 $user_photo_info = $CI_Helper->upload->data();
@@ -48,8 +56,14 @@ class File_handler {
         }
       
         
+        
             return $photos_full_paths;
+    }
+ 
+    public static function save_photos($inputs_names, $upload_path) {
 
+        
+        return File_handler::save_file($inputs_names, $upload_path, "gif|jpg|png");
 
     }
 

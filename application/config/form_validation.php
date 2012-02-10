@@ -6,7 +6,6 @@
  */
 
 $config = array(
-    
     "cms_video_validation" => array(
         array(
             'field' => 'video-title',
@@ -14,10 +13,17 @@ $config = array(
             'rules' => 'required|max_length[70]'
         ),
         array(
-            'field' => 'video-description',
-            'label' => 'descripción del video',
-            'rules' => 'required|max_length[100]'
-        ),       
+             'field' => 'video-description',
+            'label' => 'descipcion del video',
+            'rules' => 'required'
+        )
+    ),
+    "cms_document" => array(
+        array(
+            'field' => 'title',
+            'label' => 'título del documento',
+            'rules' => 'required|max_length[70]'
+        )
     ),
     "articles" => array(
         array(
@@ -29,7 +35,7 @@ $config = array(
             'field' => 'preview-title',
             'label' => 'titulo de preview en la portada',
             'rules' => 'required|max_length[30]'
-        ),       
+        ),
         array(
             'field' => 'title',
             'label' => 'titulo',
@@ -40,8 +46,6 @@ $config = array(
             'label' => 'cuerpo',
             'rules' => 'required'
         )
-        
-        
     ),
     'user_signup_common' => array(
         array(
@@ -64,17 +68,14 @@ $config = array(
             'label' => 'email',
             'rules' => 'required|max_length[30]|valid_email'
         )
-        
     ),
-    
-    'signupCompany' => array(       
+    'signupCompany' => array(
         array(
             'field' => 'signup-company-name',
             'label' => 'nombre de la compañía',
             'rules' => 'required|max_length[39]'
         )
     ),
-    
     'signupClient' => array(
         array(
             'field' => 'signup-name',
@@ -82,12 +83,12 @@ $config = array(
             'rules' => 'required|max_length[39]'
         )
     ),
-   'edit_client' => array(
+    'edit_client' => array(
         array(
             'field' => 'signup-name',
             'label' => 'nombre',
             'rules' => 'required|max_length[39]'
-        ),        
+        ),
         array(
             'field' => 'signup-email',
             'label' => 'email',
@@ -99,8 +100,8 @@ $config = array(
             'rules' => 'matches[signup-password]'
         )
     ),
-       'edit_company' => array(
-       array(
+    'edit_company' => array(
+        array(
             'field' => 'signup-company-name',
             'label' => 'nombre de la compañía',
             'rules' => 'required|max_length[39]'
@@ -116,7 +117,7 @@ $config = array(
             'rules' => 'required|max_length[30]|valid_email'
         )
     ),
-    "property_common" =>array(
+    "property_common" => array(
         array(
             'field' => 'property-title',
             'label' => 'título',
@@ -142,9 +143,7 @@ $config = array(
             'label' => 'dirección',
             'rules' => 'required'
         )
-
     ),
-    
     "property_sell" => array(
         array(
             'field' => 'property-sell-price-dr',
@@ -200,13 +199,12 @@ $config = array(
             'field' => 'property-parkings',
             'label' => 'Parqueos',
             'rules' => 'required|numeric|max_length[2]')
-        
     ),
-    "property_apartment" => array(      
+    "property_apartment" => array(
         array(
             'field' => 'property-construction',
             'label' => 'Construcción',
-            'rules' => 'required|numeric|max_length[4]'),   
+            'rules' => 'required|numeric|max_length[4]'),
         array(
             'field' => 'property-bedrooms',
             'label' => 'Habitaciones',
@@ -227,16 +225,14 @@ $config = array(
             'field' => 'property-parkings',
             'label' => 'Parqueos',
             'rules' => 'required|numeric|max_length[2]')
-        
     ),
     "property_lot" => array(
         array(
             'field' => 'property-terrain',
             'label' => 'Terreno',
-            'rules' => 'required|numeric|max_length[6]')           
+            'rules' => 'required|numeric|max_length[6]')
     ),
-    
-    "property_penthouse" => array(    
+    "property_penthouse" => array(
         array(
             'field' => 'property-construction',
             'label' => 'Construcción',
@@ -265,10 +261,8 @@ $config = array(
             'field' => 'property-parkings',
             'label' => 'Parqueos',
             'rules' => 'required|numeric|max_length[2]')
-        
     ),
     "property_mall" => array(
-
         array(
             'field' => 'property-construction',
             'label' => 'Construcción',
@@ -277,13 +271,10 @@ $config = array(
             'field' => 'property-stories',
             'label' => 'Niveles',
             'rules' => 'required|numeric|max_length[2]'),
-  
         array(
             'field' => 'property-bathrooms',
             'label' => 'Baños',
             'rules' => 'required|numeric|max_length[2]')
- 
-        
     ),
     "property_building" => array(
         array(
@@ -318,7 +309,6 @@ $config = array(
             'field' => 'property-parkings',
             'label' => 'Parqueos',
             'rules' => 'required|numeric|max_length[2]')
-        
     ),
     "property_warehouse" => array(
         array(
@@ -332,7 +322,7 @@ $config = array(
         array(
             'field' => 'property-stories',
             'label' => 'Niveles',
-            'rules' => 'required|numeric|max_length[2]'),    
+            'rules' => 'required|numeric|max_length[2]'),
         array(
             'field' => 'property-bathrooms',
             'label' => 'Baños',
@@ -349,7 +339,6 @@ $config = array(
             'field' => 'property-parkings',
             'label' => 'Parqueos',
             'rules' => 'required|numeric|max_length[2]')
-        
     ),
     "property_office" => array(
         array(
@@ -380,13 +369,12 @@ $config = array(
             'field' => 'property-parkings',
             'label' => 'Parqueos',
             'rules' => 'required|numeric|max_length[2]')
-        
     ),
     "property_land" => array(
         array(
             'field' => 'property-terrain',
             'label' => 'Terreno',
-            'rules' => 'required|numeric|max_length[6]'),       
+            'rules' => 'required|numeric|max_length[6]'),
     ),
     "property_construction_project" => array(
         array(
@@ -421,7 +409,6 @@ $config = array(
             'field' => 'property-parkings',
             'label' => 'Parqueos',
             'rules' => 'required|numeric|max_length[2]'),
-        
     )
 );
 ?>

@@ -13,7 +13,18 @@ class Centro_de_herramientas extends CI_Controller {
         
         $tools_center_video_variables['cms_video']  = $random_video;
         $blocks['topLeftSide'] = $this->load->view('blocks/tools_center_video',$tools_center_video_variables,true); 
+        
+        $cms_documents = new Cms_document();
+        $cms_documents->get_iterated();
+        $cms_documents_pager_view_variables['cms_documents'] = $cms_documents;
+        
+        
+        
+        $tools_center_tabs_view_variables['cms_documents_pager_view'] = $this->load->view("blocks/cms_documents_pager",$cms_documents_pager_view_variables, true);
+        $blocks['topLeftSide'] .= $this->load->view("blocks/tools_center_tabs",$tools_center_tabs_view_variables, true);
+        
         $blocks['topRightSide'] = $this->load->view('blocks/interests_calculator','',true); 
+        
         
         $tutorial_video_server = $this->get_tutorial_video_pager_variables();
         $blocks['topRightSide'] .= $this->load->view('blocks/tutorial_video_pager',$tutorial_video_server,true); 
@@ -31,5 +42,7 @@ class Centro_de_herramientas extends CI_Controller {
         
     }
 }
+
+
 
 ?>
