@@ -491,11 +491,9 @@ Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, a
     thisObject.setClearButtonBehaviour();
     
     
-    bindEvent(thisObject.sendButton, "click", function(event){
-            
-            
+    bindEvent(thisObject.sendButton, "click", function(event){                        
         formRecolectorButtonBehaviour(event, formWrapperSelector, recivingScriptUrl, alertMessageCallbackFunction,ajax);
-    })
+    });
 
     
     
@@ -778,7 +776,11 @@ initializeForms = function(){
 
     
     var searchPropertyByRefNumber  = new Form("#overlay-search-by-ref-number", "#overlay-search-by-ref-number-button", "", false, "/propiedades/buscar");
-    var property_contact = new Form("#property-contact-form","#property-contact-submit","",true,"/ajax/property_contact_emailer",alertMessageCallback);
+    var property_contact = new Form("#property-contact-form","#property-contact-submit","",true,"/ajax/property_contact_emailer",function(response){
+        
+        
+        printCallbackMessageInContainer(response, '', "#property-contact-errors");
+    });
 }
 
 appendHtml = function (selector,newHtml)
