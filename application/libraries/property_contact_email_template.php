@@ -35,7 +35,7 @@ class Property_contact_email_template  implements Iemail_template
     {
         
         
-        $propiedom_logo = base_url().'/images/common/logo.png';
+        $propiedom_logo = base_url().'images/common/logo.png';
         
          date_default_timezone_set("America/La_Paz");
         $date = date("j/n/Y g:s A");
