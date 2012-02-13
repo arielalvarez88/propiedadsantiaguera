@@ -28,7 +28,7 @@ class Property_contact_email_template  implements Iemail_template
     
     public function get_subject()
     {
-        return utf8_encode('Notificación de contacto a su propiedad');
+        return utf8_decode('Notificación de contacto a su propiedad');
     }
     
     public function email_template($client_name)
