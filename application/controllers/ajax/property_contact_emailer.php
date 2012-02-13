@@ -38,6 +38,10 @@ class Property_contact_emailer extends CI_Controller
         
         $success = $mailer->send_email($template, '', $filtered_post['owner-email']);
         
+        if(isset($filtered_post['company-email']))
+        $mailer->send_email($template, '', $filtered_post['owner-email']);
+        
+        
         if($success)
         {
             $response->success = true;
