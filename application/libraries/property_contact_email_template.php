@@ -40,7 +40,7 @@ class Property_contact_email_template  implements Iemail_template
          date_default_timezone_set("America/La_Paz");
         $date = date("j/n/Y g:s A");
         $html = <<<EOD
-        <div style="background-color:#76bc3b; padding:40px; width:500px; height: 625px;">
+        <div style="background-color:#76bc3b; padding:40px; width:500px; height: 625px; text-align:center;">
             <div style="background-color: white; padding:30px; width:375px; height: 391px; position: relative; margin-right: auto; margin-left: auto;">
                 <img href="{$propiedom_logo}" alt="logo"/>
                 <div style="text-align:center;">
