@@ -35,13 +35,13 @@ class Property_contact_email_template  implements Iemail_template
     {
         
         
-        $propiedom_url = base_url();
+        $propiedom_logo = base_url();
         
          date_default_timezone_set("America/La_Paz");
         $date = date("j/n/Y g:s A");
         $html = <<<EOD
         <div style="background-color:#76bc3b; padding:40px; width:500px; height: 625px;">
-            <div style="background-color: white; text-align:center;padding:30px; width:375px; height: 391px; position: relative;">
+            <div style="background-color: white; padding:30px; width:375px; height: 391px; position: relative; margin-right: auto; margin-left: auto;">
                 <img href="{$propiedom_url}" />
                 <div style="text-align:center;">
                     <h2 style="background-color:76bb3a;">Notificaci&oacute;n de Contacto</h2>
@@ -69,7 +69,7 @@ class Property_contact_email_template  implements Iemail_template
                 </div>
                 
             </div>
-            <p>&#169; 2012 Propiedom - Política de seguridad - Términos de uso</p>
+            <p color: white;>&#169; 2012 Propiedom - Política de seguridad - Términos de uso</p>
         </div>
 EOD;
         return $html;
