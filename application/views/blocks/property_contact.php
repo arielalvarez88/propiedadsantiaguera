@@ -21,6 +21,10 @@ $company = isset($company) ? $company : null;
         <div id="property-contact-errors" class=" error-messages hidden">
             
         </div>
+        
+        <div id="property-contact-info" class=" info-messages hidden">
+            
+        </div>
 
         <label class="property-contact-label" for="property-contact-nombre">Nombre </label>
         <input class="property-contact-usuario-info" name="name" type="text" id="property-contact-nombre"/>

@@ -779,7 +779,7 @@ initializeForms = function(){
     var property_contact = new Form("#property-contact-form","#property-contact-submit","",true,"/ajax/property_contact_emailer",function(response){
         
         
-        printCallbackMessageInContainer(response, '', "#property-contact-errors");
+        printCallbackMessageInContainer(response, '#property-contact-info', "#property-contact-errors");
     });
 }
 
