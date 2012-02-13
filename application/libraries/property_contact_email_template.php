@@ -40,17 +40,17 @@ class Property_contact_email_template  implements Iemail_template
          date_default_timezone_set("America/La_Paz");
         $date = date("j/n/Y g:s A");
         $html = <<<EOD
-        <div style="background-color:#76bc3b; padding:40px;">
-            <div style="background-color: white; text-align:center;padding:30px;">
+        <div style="background-color:#76bc3b; padding:40px; width:500px; height: 625px;">
+            <div style="background-color: white; text-align:center;padding:30px; width:375px; height: 391px; position: relative;">
                 <img href="{$propiedom_url}" />
                 <div style="text-align:center;">
                     <h2 style="background-color:76bb3a;">Notificaci&oacute;n de Contacto</h2>
                     <p>La siguiente persona le ha enviadoun mensaje a trav&eacute;s de su propiedad <span style="font-weight:bold;">"{$this->property_name}" </span> No. de Referencia <span style="font-weight:bold;">#{$this->property_id}</span></p>
                      
                      <p>
-                        <span style="font-weight:bold;">{$this->contactor_name}</span>
+                        <span style="font-weight:bold;">{$this->contactors_name}</span>
                             <br/>
-                            {$this->contactor_email}
+                            {$this->contactors_email}
                                 <br/>
                                 {$this->contactors_number}
                             
@@ -67,7 +67,9 @@ class Property_contact_email_template  implements Iemail_template
 
                         
                 </div>
+                
             </div>
+            <p>&#169; 2012 Propiedom - Política de seguridad - Términos de uso</p>
         </div>
 EOD;
         return $html;
