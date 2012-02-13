@@ -28,7 +28,7 @@ class Property_contact_email_template  implements Iemail_template
     
     public function get_subject()
     {
-        return 'Notificación de contacto a su propiedad';
+        return utf8_encode('Notificación de contacto a su propiedad');
     }
     
     public function email_template($client_name)
@@ -70,7 +70,7 @@ class Property_contact_email_template  implements Iemail_template
                 </div>
                 
             </div>
-            <p color: white;>&#169; 2012 Propiedom - <a style="text-decoration: none;" href="{$politics_url}"> Política de seguridad </a>- <a style="text-decoration: none;" href="{$politics_url}"> Términos de uso </a> </p>
+            <p color: white;>&#169; 2012 Propiedom - <a style="text-decoration: none;" href="{$politics_url}"> Política de seguridad </a>- <a style="text-decoration: none;" href="{$terms_url}"> Términos de uso </a> </p>
         </div>
 EOD;
         return $html;
