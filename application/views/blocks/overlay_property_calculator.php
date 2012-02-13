@@ -55,7 +55,7 @@ $us_price = isset($us_price) ? $us_price : '';
     </table>
     
     <div id="overlay-property-calculator-years-container">
-        <p>A&ntilde;os de financiamiento<br/> <span id="overlay-property-calculator-moths">12 meses</span></p>
+        <p>A&ntilde;os de financiamiento<br/> <span id="overlay-property-calculator-moths" class="red-text"></span></p>
         <input type="text" id="overlay-property-calculator-years" name="years"/>
          
     </div>

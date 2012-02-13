@@ -7,11 +7,11 @@
             <p>MONTO A FINANCIAR</p>
             <input id="interests-calculator-mount" name="interest-calculator-mount" type="text"/>
 
-            <p>TASA DE INTERES</p>
+            <p>TASA DE INTERES (Mensual)</p>
             <input id="interests-calculator-rate" name="interest-calculator-rate" type="text"/>
 
             <p>A&Ntilde;OS A FINANCIAR</p>
-            <input id="interests-calculator-years" type="text"/>
+            <input id="interests-calculator-years" type="text"/><span id="moths-display" class="red-text"></span>
 
 
             <a href="#javascript" class="no-decoration-anchor" id="interests-calculator-calculate-button" >CALCULAR</a>

@@ -6,6 +6,40 @@
  */
 
 $config = array(
+    
+    "property-contact"=>array(
+        array(
+            'field' => 'name',
+            'label' => 'Nombre',
+            'rules' => 'required|max_length[70]'
+        ),
+        array(
+            'field' => 'email',
+            'label' => 'Email',
+            'rules' => 'required|valid_email'
+        ),
+        array(
+            'field' => 'owner-email',
+            'label' => 'Email del dueño',
+            'rules' => 'required|valid_email'
+        ),
+        array(
+            'field' => 'property-id',
+            'label' => 'No. de referencia de la propiedad',
+            'rules' => 'required|numeric'
+        ),
+        array(
+            'field' => 'property-title',
+            'label' => 'Titulo de la propiedad',
+            'rules' => 'required'
+        ),     array(
+            'field' => 'company-email',
+            'label' => 'Email de la compañía',
+            'rules' => 'valid_email'
+        )
+        
+    ),
+    
     "cms_video_validation" => array(
         array(
             'field' => 'video-title',

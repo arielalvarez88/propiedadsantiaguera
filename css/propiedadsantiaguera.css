@@ -252,6 +252,28 @@ body, html
 }
 /**** article-viewer ENDS****/
 
+/**** tools-center-articles-pager****/
+.tools-center-articles-pager-article-container {
+    padding-top: 20px;
+}
+
+
+.tools-center-articles-pager-body {
+    margin-bottom: 15px;
+}
+
+.tool-center-tab-body {
+    height: 390px;
+}
+
+.tools-center-articles-pager-actions {
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    padding: 5px 0;
+}
+/**** tools-center-articles-pager ENDS****/
+
+
 /*** articles-thumbs-pager ***/
 
 #articles-thumbs-pager {
@@ -946,7 +968,7 @@ overflow: hidden;
 
 
 
-#panels-property-section-menu-tabs {
+#panels-property-section-tab-tabs {
     border-bottom: 2px solid #76BC3B;
     height: 28px;
     margin-bottom: 20px;
@@ -1050,12 +1072,12 @@ overflow: hidden;
 }
 
 
-#panels-property-section-menu-tabs a:hover
+#panels-property-section-tab-tabs a:hover
 {
     text-decoration: underline;
 }
 
-#panels-property-section-menu-tabs a {
+#panels-property-section-tab-tabs a {
     background-color: #F5F5F5;
     border-radius: 5px 5px 0 0;
     color: #8EC55C;
@@ -1066,14 +1088,14 @@ overflow: hidden;
     padding: 6px 20px;
 }
 
-#panels-property-section-menu-tabs a.selected
+#panels-property-section-tab-tabs a.selected
 {
     background-color: #76bc3b;
     color: white;
 
 }
 
-#panels-property-section-menu {
+#panels-property-section-tab {
     height: 185px;
 
 }
@@ -1088,7 +1110,7 @@ overflow: hidden;
 
 }
 
-#panels-property-section-menu-properties-counter
+#panels-property-section-properties-counter
 {
     background-image: url("/images/common/greenPattern.jpg");
     float: left;
@@ -1099,7 +1121,7 @@ overflow: hidden;
 }
 
 
-#panels-property-section-menu-properties-counter h2
+#panels-property-section-properties-counter h2
 {
     background-image: url("/images/common/stripesGradient_H496.jpg");
     background-position: 0 64px;
@@ -1110,14 +1132,14 @@ overflow: hidden;
     text-align: center;
 }
 
-#panels-property-section-menu-properties-counter div{
+#panels-property-section-properties-counter div{
     border-right: 1px solid #D9E1D2;
     float: left;
     text-align: center;
     width: 81px;
 }
 
-#panels-property-section-menu-properties-counter div.last
+#panels-property-section-properties-counter div.last
 {
     border: none;
 }
@@ -1126,18 +1148,18 @@ overflow: hidden;
 {
 
 }
-#panels-property-section-menu-properties-counter p, #panels-property-section-menu-properties-counter span
+#panels-property-section-properties-counter p, #panels-property-section-properties-counter span
 {
     display: block;
 }
 
-#panels-property-section-menu-properties-counter p
+#panels-property-section-properties-counter p
 {
     color: #595959;
     margin-bottom: 10px;
 }
 
-#panels-property-section-menu-properties-counter span
+#panels-property-section-properties-counter span
 {
     color: #76B939;
     font-size: 3em;
@@ -4058,38 +4080,38 @@ green-button properties-search-results-pager-bottom
 /***** upload-vide ENDS ****/
 
 
-/*solicitud-de-info*/
-#solicitud-de-info
+/*property-contact*/
+#property-contact
 {
   border: 1px solid #cccccc;
   width: 273px;
   margin-top: 5px;
 
 }
-#solicitud-de-info-ciudad
+#property-contact-ciudad
 {}
-#solicitud-de-info-comentario
+#property-contact-comentario
 {
     display: block;
     height: 90px;
     width: 207px;
 
 }
-#solicitud-de-info-email{}
-#solicitud-de-info-form{
+#property-contact-email{}
+#property-contact-form{
     padding: 10px 5px 5px;
     color: black;
 }
 
-#solicitud-de-info-conociste{
+#property-contact-conociste{
     
     margin-top: 10px;
 }
-#solicitud-de-info-header{
+#property-contact-header{
     background-color: #999999;
 }
-#solicitud-de-info-nombre{}
-#solicitud-de-info-comentario-label
+#property-contact-nombre{}
+#property-contact-comentario-label
 {
     clear: both;
     
@@ -4097,7 +4119,7 @@ green-button properties-search-results-pager-bottom
 
 
 }
-#solicitud-de-info-submit
+#property-contact-submit
 {
     background-color: #CCCCCC;
     display: block;
@@ -4106,15 +4128,15 @@ green-button properties-search-results-pager-bottom
     text-align: center;
     width: 56px;
 }
-#solicitud-de-info-submit-container{
+#property-contact-submit-container{
     
     margin-top: 10px;
 }
 
-.solicitud-de-info-comentario-info{
+.property-contact-comentario-info{
     color: black;
 }
-.solicitud-de-info-usuario-info{
+.property-contact-usuario-info{
     color: black;
     display: block;
     float: left;
@@ -4122,13 +4144,13 @@ green-button properties-search-results-pager-bottom
     margin-right: 20px;
     width: 220px;
 }
-.solicitud-de-info-label{
+.property-contact-label{
 
     display: block;
     float: left;
     width: 75px;
 }
-/*solicitud-de-info END*/
+/*property-contact END*/
 
 /*members-header*/
 
@@ -4566,7 +4588,10 @@ green-button properties-search-results-pager-bottom
     margin-bottom: 10px;
     width: 165px;
 }
-
+#signup-how-you-met {
+    clear: both;
+    padding: 10px 0;
+}
 
 #signup-descripcion{
     clear: both;
@@ -5321,6 +5346,7 @@ span.required{
     font-weight: bold;
     height: 16px;
     padding: 6px 20px;
+    cursor: pointer;
 }
 
 .red-text{

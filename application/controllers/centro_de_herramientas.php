@@ -14,21 +14,34 @@ class Centro_de_herramientas extends CI_Controller {
         $tools_center_video_variables['cms_video']  = $random_video;
         $blocks['topLeftSide'] = $this->load->view('blocks/tools_center_video',$tools_center_video_variables,true); 
         
-        $cms_documents = new Cms_document();
-        $cms_documents->get_iterated();
-        $cms_documents_pager_view_variables['cms_documents'] = $cms_documents;
         
         
-        
-        $tools_center_tabs_view_variables['cms_documents_pager_view'] = $this->load->view("blocks/cms_documents_pager",$cms_documents_pager_view_variables, true);
+        $tools_center_tabs_view_variables = $this->get_tools_center_tabs_view_variables(); 
+
         $blocks['topLeftSide'] .= $this->load->view("blocks/tools_center_tabs",$tools_center_tabs_view_variables, true);
         
         $blocks['topRightSide'] = $this->load->view('blocks/interests_calculator','',true); 
-        
-        
+
         $tutorial_video_server = $this->get_tutorial_video_pager_variables();
         $blocks['topRightSide'] .= $this->load->view('blocks/tutorial_video_pager',$tutorial_video_server,true); 
         $this->load->view('page',$blocks);
+        
+    }
+    
+    public function get_tools_center_tabs_view_variables()
+    {
+        $cms_documents = new Cms_document();
+        $cms_documents->get_iterated();
+        $cms_documents_pager_view_variables['cms_documents'] = $cms_documents;                        
+        $tools_center_tabs_view_variables['cms_documents_pager_view'] = $this->load->view("blocks/cms_documents_pager",$cms_documents_pager_view_variables, true);
+        
+        
+        $articles = new Article();
+        $articles->get_iterated();
+        $tools_center_articles_pager_view_variables['articles'] = $articles;
+        $tools_center_tabs_view_variables['articles_pager_view'] = $this->load->view("blocks/tools_center_articles_pager",$tools_center_articles_pager_view_variables, true);
+        
+        return $tools_center_tabs_view_variables;
         
     }
        

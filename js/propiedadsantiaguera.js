@@ -778,7 +778,7 @@ initializeForms = function(){
 
     
     var searchPropertyByRefNumber  = new Form("#overlay-search-by-ref-number", "#overlay-search-by-ref-number-button", "", false, "/propiedades/buscar");
-    
+    var property_contact = new Form("#property-contact-form","#property-contact-submit","",true,"/ajax/property_contact_emailer",alertMessageCallback);
 }
 
 appendHtml = function (selector,newHtml)
@@ -852,17 +852,6 @@ initializeViewLoaderElements = function(){
         value: '', 
         url:'/ajax/form_getter/passwordRecovery'
     }],'#login','a');
-
-
-    var propertiesPanelPublishedButton = new ViewLoaderElement('#panels-property-section-menu-tabs-published','click',[{
-        value: '', 
-        url:'/panel/get_user_published_properties_pager/print'
-    }],'#panels-property-section-pager','a');
-
-    var propertiesPanelCreatedButton = new ViewLoaderElement('#panels-property-section-menu-tabs-created','click',[{
-        value: '', 
-        url:'/panel/get_user_created_properties_pager/print'
-    }],'#panels-property-section-pager','a');
 
 
 
@@ -1315,7 +1304,7 @@ initializeSliders = function () {
 
 
 
-InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInputSelector, calculateButtonSelector, responseDisplaySelector)
+InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInputSelector, calculateButtonSelector, responseDisplaySelector, monthsDisplays)
 {
     var thisObject = this;
     this.mountInput = $(mountInputSelector);
@@ -1326,13 +1315,33 @@ InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInpu
     this.responseDisplay= $(responseDisplaySelector);
     
     
+    this.showMonths = function(event){
+        
+        
+        var yearsInString = thisObject.yearsInput.val();
+        
+        var months = Number(yearsInString) * 12;
+        
+        if(!isNaN(months))
+            {
+                $(monthsDisplays).html(months + " meses");
+            }
+        
+    };
     
+
+    
+   bindEvent(thisObject.yearsInput, "keyup", thisObject.showMonths);
+    
+
     this.calculateEvent = function(event){
         event.preventDefault();
         var mount = Number(thisObject.mountInput.val());
         var rate = Number(thisObject.rateInput.val());
-        var years = Number(thisObject.yearsInput.val());
         
+        rate = rate/100;
+        var years = Number(thisObject.yearsInput.val());
+        var months = years/12;
         
         
         var valiidateForInterest = function(mount,rate,years)
@@ -1340,9 +1349,7 @@ InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInpu
             
             for(index in arguments)
             {
-                
-                    
-                    
+                                                        
                 if(typeof arguments[index] != 'number')
                 {
                     
@@ -1359,9 +1366,9 @@ InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInpu
         {
             
             if(thisObject.responseDisplay.is(":input"))
-                thisObject.responseDisplay.val(mount * rate *  years *  12);
+                thisObject.responseDisplay.val(mount * (( 1+rate) * months) );
             else
-                thisObject.responseDisplay.html(mount * rate *  years *  12);
+                thisObject.responseDisplay.html(mount * (( 1+rate) * months));
         }
         
         
@@ -1375,10 +1382,10 @@ InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInpu
 
 initializeInterestsCalculators = function()
 {
-    var interestCalculator = new InterestsCalculator("#interests-calculator-mount", "#interests-calculator-rate", "#interests-calculator-years", "#interests-calculator-calculate-button", "#interests-calculator-result");
-    var overlayPropertyDrCalculator = new InterestsCalculator("#overlay-property-calculator-dr", "#overlay-property-calculator-interest", "#overlay-property-calculator-interest", "#overlay-property-calculator-calculate-button", "#overlay-property-calculator-rd-display");
+    var interestCalculator = new InterestsCalculator("#interests-calculator-mount", "#interests-calculator-rate", "#interests-calculator-years", "#interests-calculator-calculate-button", "#interests-calculator-result", "#moths-display");
+    var overlayPropertyDrCalculator = new InterestsCalculator("#overlay-property-calculator-dr", "#overlay-property-calculator-interest", "#overlay-property-calculator-years", "#overlay-property-calculator-calculate-button", "#overlay-property-calculator-rd-display","#overlay-property-calculator-moths");
     
-    var overlayPropertyUsCalculator = new InterestsCalculator("#overlay-property-calculator-us", "#overlay-property-calculator-interest", "#overlay-property-calculator-interest", "#overlay-property-calculator-calculate-button", "#overlay-property-calculator-us-display");
+    var overlayPropertyUsCalculator = new InterestsCalculator("#overlay-property-calculator-us", "#overlay-property-calculator-interest", "#overlay-property-calculator-years", "#overlay-property-calculator-calculate-button", "#overlay-property-calculator-us-display");
 };
 
 
@@ -1993,6 +2000,8 @@ initializeWysiwyg = function(){
 initializeTabs = function()
 {
     var toolsCenterTab = new Tab(".tool-center-tab-item", ".tool-center-tab-body", "data-show-selector");
+    
+    var panelsPropertiesTab = new Tab(".panels-properties-tab-item", ".panels-properties-tab-body", "data-show-selector");
 }
 
 initializeEvents= function(){
