@@ -6,7 +6,7 @@ $user = $user? $user : nuill;
 
 <?php if($user->id):?>
 
-<div id="panels-property-section-menu-properties-counter">
+<div id="panels-property-section-properties-counter">
             <h2>Menu de propiedades</h2>
             
             <div id="panels-property-section-properties-counter-menu-created">

@@ -15,12 +15,16 @@ class Panel extends CI_Controller {
         $section_info['subsession'] = $user;
         $section_info['messages'] = $messages;
         
-        $section_info['pager'] = empty($subsection) || $subsection == 'publicadas' ? $this->get_user_published_properties_pager() : $this->get_user_created_properties_pager();
+        
 
         $panel_view['topLeftSide'] = $this->load->view('blocks/panels_properties_header', $section_info, true);
  
         $panel_view['topRightSide'] = $this->load->view('blocks/user_properties_counter', $section_info, true);
-        $panel_view['bottomLeftSide'] = $this->load->view('blocks/panels_properties_tabs', $section_info, true);
+        
+        
+        $panels_properties_tab_view_variables['published_pager'] = $this->get_user_published_properties_pager();
+        $panels_properties_tab_view_variables['created_pager'] = $this->get_user_created_properties_pager();
+        $panel_view['bottomLeftSide'] = $this->load->view('blocks/panels_properties_tab', $panels_properties_tab_view_variables, true);
 
 
 
@@ -49,7 +53,6 @@ class Panel extends CI_Controller {
             $account_panel_view ['topRightSide'] = $this->load->view("blocks/offers", $view_variables, true);
             $account_panel_view ['bottom'] = $this->load->view("blocks/user_presentation_card", $view_variables, true);
         }
-
 
         $this->load->view("page", $account_panel_view);
     }

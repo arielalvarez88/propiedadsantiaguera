@@ -243,7 +243,8 @@ class Propiedades extends CI_Controller {
         $data['topRightSide'] .=$this->load->view('blocks/pdf_and_share', $propertyInfo, true);
         $data['topRightSide'] .=$this->load->view('blocks/property_calculator', $propertyInfo, true);
 $data['topRightSide'] .= $this->load->view('blocks/property_advertise', $propertyInfo, true);
-        $data['topRightSide'] .= $this->load->view('blocks/solicitudDeInformacion', $propertyInfo, true);
+
+        $data['topRightSide'] .= $this->load->view('blocks/property_contact', $propertyInfo, true);
 
         $data['topLeftSide'] .= $this->load->view('blocks/property_info', $property_info_view_variables, true);
         $data['topLeftSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propertyInfo, true);
