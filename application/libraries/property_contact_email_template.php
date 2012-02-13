@@ -35,14 +35,14 @@ class Property_contact_email_template  implements Iemail_template
     {
         
         
-        $propiedom_logo = base_url();
+        $propiedom_logo = base_url().'/images/common/logo.png';
         
          date_default_timezone_set("America/La_Paz");
         $date = date("j/n/Y g:s A");
         $html = <<<EOD
         <div style="background-color:#76bc3b; padding:40px; width:500px; height: 625px;">
             <div style="background-color: white; padding:30px; width:375px; height: 391px; position: relative; margin-right: auto; margin-left: auto;">
-                <img href="{$propiedom_url}" />
+                <img href="{$propiedom_logo}" alt="logo"/>
                 <div style="text-align:center;">
                     <h2 style="background-color:76bb3a;">Notificaci&oacute;n de Contacto</h2>
                     <p>La siguiente persona le ha enviadoun mensaje a trav&eacute;s de su propiedad <span style="font-weight:bold;">"{$this->property_name}" </span> No. de Referencia <span style="font-weight:bold;">#{$this->property_id}</span></p>
