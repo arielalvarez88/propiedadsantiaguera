@@ -720,9 +720,9 @@ printCallbackMessageInContainer = function(response, successMessageContainer, er
         if(response.message)
             $(successMessageContainer).show().html(response.message);
         else
-        {
-            $(successMessageContainer+", "+ errorMessageContainer).hide();
-        }
+             $(successMessageContainer).hide();
+         
+        $(errorMessageContainer).hide();
             
     }
     else
