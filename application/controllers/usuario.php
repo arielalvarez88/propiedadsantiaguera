@@ -286,7 +286,7 @@ class Usuario extends CI_Controller {
     
     
     public function editar($user_id=null) {
-        if(!$_SERVER['HTTPS'])
+        if(isset($_SERVER['HTTPS']) && !$_SERVER['HTTPS'] &&  Environment_vars::$environment != "production")
             redirect(Environment_vars::$paths['https_base_site'].'/usuario/editar/'.$user_id);
 
         $logged_user = $this->get_logged_user_or_redirect_to_please_login();
