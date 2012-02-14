@@ -25,6 +25,9 @@ require_once realpath('./application/libraries/Invalid_photos_exception.php');
 require_once realpath('./application/libraries/User_info_getter_from_object.php');
 require_once realpath('./application/libraries/User_info_getter_from_post.php');
 
+require_once realpath('./application/libraries/Welcome_email_template.php');
+require_once realpath('./application/libraries/Bill_email_template.php');
+
 
 class Buy_form_handler extends CI_Controller {
     
@@ -51,6 +54,13 @@ class Buy_form_handler extends CI_Controller {
     public function validate_user_info($ajax = false, $upgrading_user =false, $save= false) {
       
         $logged_user = User_handler::getLoggedUser();
+        
+        $already_an_user = $logged_user && !$logged_user instanceof IUser_requests_only;
+        if($already_an_user)
+        {
+            $this->process_buy();
+            return;
+        }
 
         $logged_user_type = $logged_user ? $logged_user->type : Environment_vars::$maps['texts_to_id']['user_types']['Particular'];
 
@@ -120,7 +130,7 @@ class Buy_form_handler extends CI_Controller {
            
            $plan = new Plan($plan_id);
 
-
+           $plan_name = $plan->name;
            
            if(!$plan->id)
            {
@@ -141,14 +151,21 @@ class Buy_form_handler extends CI_Controller {
             $user->posts_left += $posts_to_ad;
             
             
+            $subtotal = $plan->taxless_price * $factor;
+            
+            $total = $plan->price * $factor;
+            
+            
+            $taxes = $total - $subtotal;
             
             $user->save();
             
-            User_handler::refresh_logged_user();
+            User_handler::refresh_logged_user();    
             
-           $response->success= true;
-           redirect("/panel/propiedades");
-                    
+            ;
+            $this->send_buy_confirmation($plan_id, $plan_name, $factor, $total, $subtotal, $taxes, $posts_to_ad);
+                        
+           redirect("/panel/propiedades");                    
             
     }
     
@@ -175,7 +192,7 @@ class Buy_form_handler extends CI_Controller {
         $user_handler->save_password($user, $user_info_getter);
         $user_handler->save_website($user, $user_info_getter);
         $user_handler->save_tel($user, $user_info_getter);
-
+        $user_handler->save_usa_tel($user, $user_info_getter);
         $user_handler->save_cels($user, $user_info_getter);
         
         $user_handler->save_fax($user, $user_info_getter);
@@ -189,14 +206,52 @@ class Buy_form_handler extends CI_Controller {
 
         $user->save();
         
+        $this->send_welcome_email($user);        
+        
+        
         User_handler::loginAndSaveInCookies($user->email, $user->password);
-                
-        $this->process_buy();
 
     }
     
-
     
+    public function send_buy_confirmation($user,$plan_id, $plan_name,$plan_factor,$total,$subtotal,$publcations_bought){
+        
+        
+            $filtered_post = $this->input->post();
+        $mailer = new Mailer();      
+        
+        $template = new Bill_email_template($user->name, $user->email,$plan_name , $plan_factor, $publications_bought, $subtotal, $taxes, $total);
+        
+        $mailer->send_email($template, '', $user->email);
+    }
+
+    public function send_welcome_email($user){
+        
+        $filtered_post = $this->input->post();
+        $mailer = new Mailer();
+        $plan_id = isset($filtered_post['plan-id']) ? $filtered_post['plan-id'] : null;
+        $plan_name = new Plan($plan_id);
+        
+        $plan_factor = isset($filtered_post['number-of-posts']) ? $filtered_post['number-of-posts'] : null;
+                
+
+        if(!$plan_id || !$plan_factor)
+            return;
+                        
+        
+        $plan = new Plan($plan_id);
+        $plan_name = $plan->name;
+        
+        $publications_bought = $plan->number_of_posts * $plan_factor;
+        
+        $subtotal = $plan->taxless_price * $plan_factor;
+       
+        $total = $plan->price * $plan_factor;
+        
+        $taxes = $total - $subtotal;
+        
+        $template = new Welcome_email_template($user->name, $user->email,$plan_name , $plan_factor, $publications_bought, $subtotal, $taxes, $total);
+    }
     
     public function register_user($edit=null){
         

@@ -65,6 +65,15 @@ class Property_contact_email_template  implements Iemail_template
                         <br/>
                         {$date}
                     </p>
+                        
+                        
+                        <p>
+                            Siéntase en la libertad de contactarnos al 809.582.2690 si tiene alguna pregunta relacionada con nuestros planes y precios.
+                            <br/>  
+                            Esperamos que este disfrutando de los beneficios de Propiedom.
+                            <br/>
+                            Equipo de Propiedom
+                        </p>
 
                         
                 </div>

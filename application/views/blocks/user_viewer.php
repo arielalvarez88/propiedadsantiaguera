@@ -1,4 +1,5 @@
 <?php
+$user = isset($user) ? $user : null;
 $user_type = $user_type  ? $user_type : null;
 $user_photo =  $user_photo ? $user_photo : null;
 $user_name = $user_name ? $user_name : null;
@@ -26,7 +27,7 @@ $company_or_particular_view = isset($company_or_particular_view) ? $company_or_p
                 <h2 id="user-viewer-user-name-header"><?php echo $user_name;?></h2>
                 
                 <?php if($user_tel):?>
-                <p><span class="bold">Telefono:</span> <br/> <?php echo $user_tel;?></p>
+                <p><span class="bold">Tel&eacute;fono:</span> <br/> <?php echo $user_tel;?></p>
                 <?php endif;?>
                     
                  <?php if($user_cel || $user_cel2):?>
@@ -42,8 +43,8 @@ $company_or_particular_view = isset($company_or_particular_view) ? $company_or_p
                         
                 <?php endif;?>
                         
-                        <?php if($user_fax):?>
-                        <p id="user-viewer-fax"><span class="bold">Fax:</span> <br/> <?php echo $user_fax;?></p>
+                        <?php if($user->usa_tel):?>
+                        <p id="user-viewer-fax"><span class="bold">Tel&eacute;fono desde USA::</span> <br/> <?php echo $user->usa_tel;?></p>
                     <?php endif;?>
                       
             </div>

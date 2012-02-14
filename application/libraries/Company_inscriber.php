@@ -81,6 +81,10 @@ class Company_inscriber implements IUser_inscriber{
     public function save_tel($user_object, $user_info_getter) {
         $this->base_behavior->save_tel($user_object, $user_info_getter);
     }
+    
+    public function save_usa_tel($user_object, $user_info_getter) {
+        $this->base_behavior->save_usa_tel($user_object, $user_info_getter);
+    }
 
     public function save_website($user_object, $user_info_getter) {
         $this->base_behavior->save_website($user_object, $user_info_getter);
