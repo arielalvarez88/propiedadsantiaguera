@@ -876,8 +876,9 @@ Tab = function(tabsCategoriesSelector, tabsBodiesSelector,tabsCategoriesAtrribut
     this.tabsCategories = $(tabsCategoriesSelector);
     this.tabsBodiesSelector = $(tabsBodiesSelector);
     
-    this.tabsCategoriesClickHandler = function(){
+    this.tabsCategoriesClickHandler = function(defaultEvent){
         
+        defaultEvent.preventDefault();
         var tabCategoryItem = $(this);
         
         

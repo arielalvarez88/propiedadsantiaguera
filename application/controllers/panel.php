@@ -2,7 +2,7 @@
 
 class Panel extends CI_Controller {
 
-    public function propiedades($subsection = 'publicadas', $messages = array()) {
+    public function propiedades($section = 'publicadas', $messages = array()) {
 
         $messages = $messages ? $messages : $this->session->userdata("messages");
 
@@ -12,7 +12,7 @@ class Panel extends CI_Controller {
         
 
         $section_info['user'] = $user;
-        $section_info['subsession'] = $user;
+        $section_info['section'] = $section;
         $section_info['messages'] = $messages;
         
         
@@ -24,6 +24,10 @@ class Panel extends CI_Controller {
         
         $panels_properties_tab_view_variables['published_pager'] = $this->get_user_published_properties_pager();
         $panels_properties_tab_view_variables['created_pager'] = $this->get_user_created_properties_pager();
+        $panels_properties_tab_view_variables['section'] = $section;
+        
+       
+        
         $panel_view['bottomLeftSide'] = $this->load->view('blocks/panels_properties_tab', $panels_properties_tab_view_variables, true);
 
 

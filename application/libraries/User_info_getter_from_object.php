@@ -66,6 +66,10 @@ class User_info_getter_from_object implements IUser_info_getter
        public function get_type(){
         return $this->user_object->type;
     }
+    
+    public function get_usa_tel() {
+        return $this->usa_tel;
+    }
 
     public function get_id() {
           return $this->user_object->id;

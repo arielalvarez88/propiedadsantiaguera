@@ -76,6 +76,9 @@ $section = isset($section) ? $section : '';
 
             <label for="signup-tel" class="agent-particular-field  company-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>">Tel&eacute;fono:</label> 
             <input class="agent-particular-field  company-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>" <?php echo isset($tel) ? 'value="' . $tel . '"' : ''; ?>  type="text" id="signup-telefono" name="signup-tel"/>
+            
+            <label for="signup-usa-tel" class="company-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>">Tel&eacute;fono desde USA:</label> 
+            <input class="company-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>" <?php echo isset($usa_tel) ? 'value="' . $usa_tel . '"' : ''; ?>  type="text" id="signup-use-tel" name="signup-usa-tel"/>
 
             <label class="company-agent-field agent-particular-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>" for="signup-celular">Celular 1:</label> 
             <input class="company-agent-field agent-particular-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>" <?php echo isset($cel) ? 'value="' . $cel . '"' : ''; ?> type="text" id="signup-celular" name="signup-cel"/>

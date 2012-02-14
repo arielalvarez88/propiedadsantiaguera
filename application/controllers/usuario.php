@@ -241,6 +241,7 @@ class Usuario extends CI_Controller {
         $user_handler->save_password($user, $user_info_getter);
         $user_handler->save_website($user, $user_info_getter);
         $user_handler->save_tel($user, $user_info_getter);
+        $user_handler->save_usa_tel($user, $user_info_getter);
 
         $user_handler->save_cels($user, $user_info_getter);
         

@@ -22,6 +22,7 @@ interface IUser_info_getter
     public function get_rnc();
     public function get_address();
     public function get_type();
+    public function get_usa_tel();
             
 }
 ?>

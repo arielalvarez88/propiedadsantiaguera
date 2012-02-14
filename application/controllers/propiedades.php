@@ -105,6 +105,8 @@ class Propiedades extends CI_Controller {
     
     
     private function get_user_viewer_view_variables($property_owner){
+        
+        $user_viewer_view_data['user'] = $property_owner;
          $user_viewer_view_data['user_name'] = $property_owner->name;
         $user_viewer_view_data['company_or_particular_view'] = $property_owner instanceof Company_user ? 'company-' : 'particular-';
         $user_viewer_view_data['user_type'] = array_search($property_owner->type, Environment_vars::$maps['texts_to_id']['user_types']);

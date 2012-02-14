@@ -78,6 +78,15 @@ class Base_user_inscriber implements IUser_inscriber {
         
     }
     
+    
+     public function save_usa_tel($user_object,$user_info_getter) {
+        
+        $user_object->usa_tel = $user_info_getter->get_usa_tel();
+        
+    }
+    
+    
+    
     public function save_address($user_object, $user_info_getter) {
         $user_object->address = $user_info_getter->get_address();
     }

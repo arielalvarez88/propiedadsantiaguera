@@ -77,5 +77,10 @@ class User_info_getter_from_post implements IUser_info_getter
     public function get_id() {        
         return isset($this->post_array['edit-client-id']) ? $this->post_array['edit-client-id'] : false;
     }
+
+    public function get_usa_tel() {
+        
+        return isset($this->post_array['signup-usa-tel']) ? $this->post_array['signup-usa-tel'] : false;
+    }
 }
 ?>
