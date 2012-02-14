@@ -163,7 +163,7 @@ class Buy_form_handler extends CI_Controller {
             User_handler::refresh_logged_user();    
             
             
-            $this->send_buy_confirmation($plan_id, $plan_name, $factor, $total, $subtotal, $taxes, $posts_to_ad);
+            $this->send_buy_confirmation($user, $plan_id, $plan_name, $factor, $total, $subtotal, $taxes, $posts_to_ad);
                         
            redirect("/panel/propiedades");                    
             
@@ -222,13 +222,13 @@ class Buy_form_handler extends CI_Controller {
     }
     
     
-    public function send_buy_confirmation($user,$plan_id, $plan_name,$plan_factor,$total,$subtotal,$publcations_bought){
+    public function send_buy_confirmation($user,$plan_id, $plan_name,$plan_factor,$total,$subtotal, $taxes, $publcations_bought){
         
         
-            $filtered_post = $this->input->post();
+        $filtered_post = $this->input->post();
         $mailer = new Mailer();      
         
-        $template = new Bill_email_template($user->name, $user->email,$plan_name , $plan_factor, $publications_bought, $subtotal, $taxes, $total);
+        $template = new Bill_email_template($user->name, $user->email,$plan_name , $plan_factor, $publcations_bought, $subtotal, $taxes, $total);
         
         $mailer->send_email($template, '', $user->email);
     }
