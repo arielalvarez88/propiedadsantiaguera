@@ -162,7 +162,7 @@ class Buy_form_handler extends CI_Controller {
             
             User_handler::refresh_logged_user();    
             
-            ;
+            
             $this->send_buy_confirmation($plan_id, $plan_name, $factor, $total, $subtotal, $taxes, $posts_to_ad);
                         
            redirect("/panel/propiedades");                    
@@ -174,6 +174,8 @@ class Buy_form_handler extends CI_Controller {
 
 
         $user = new User();
+        
+        
         
         $inscriber = User_handler::getLoggedUser();
         $user_info_getter = new User_info_getter_from_post($this->input->post());
@@ -206,10 +208,16 @@ class Buy_form_handler extends CI_Controller {
 
         $user->save();
         
+        $user = User_factory::get_user_from_object($user);
+        User_handler::loginAndSaveInCookies($user->email, $user->password);
+        
+        
         $this->send_welcome_email($user);        
         
+        $this->process_buy();        
+    
         
-        User_handler::loginAndSaveInCookies($user->email, $user->password);
+        
 
     }
     
@@ -227,30 +235,12 @@ class Buy_form_handler extends CI_Controller {
 
     public function send_welcome_email($user){
         
-        $filtered_post = $this->input->post();
-        $mailer = new Mailer();
-        $plan_id = isset($filtered_post['plan-id']) ? $filtered_post['plan-id'] : null;
-        $plan_name = new Plan($plan_id);
+      
+        $mailer = new Mailer();              
+        $template = new Welcome_email_template($user->name, $user->get_type_text(), $user->email);
+                                
         
-        $plan_factor = isset($filtered_post['number-of-posts']) ? $filtered_post['number-of-posts'] : null;
-                
-
-        if(!$plan_id || !$plan_factor)
-            return;
-                        
-        
-        $plan = new Plan($plan_id);
-        $plan_name = $plan->name;
-        
-        $publications_bought = $plan->number_of_posts * $plan_factor;
-        
-        $subtotal = $plan->taxless_price * $plan_factor;
-       
-        $total = $plan->price * $plan_factor;
-        
-        $taxes = $total - $subtotal;
-        
-        $template = new Welcome_email_template($user->name, $user->email,$plan_name , $plan_factor, $publications_bought, $subtotal, $taxes, $total);
+        return  $mailer->send_email($template, '', $user->email);
     }
     
     public function register_user($edit=null){
