@@ -7,7 +7,8 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
     <div id="propiedad-viewer-top">
         <div id="propiedad-viewer-header">
             <h2> <?php echo $property->title; ?> </h2>
-            <span id="propiedad-viewer-sector"><?php echo array_search($property->province, Environment_vars::$maps['texts_to_id']['provinces']); ?>, <?php echo array_search($property->neighborhood, Environment_vars::$maps['texts_to_id']['property_neighborhoods']); ?></span>
+            <?php $province_text =   array_search($property->province, Environment_vars::$maps['texts_to_id']['provinces']);?>
+            <span id="propiedad-viewer-sector"><?php echo $province_text;?>, <?php echo array_search($property->neighborhood, Environment_vars::$maps['texts_to_id']['property_neighborhoods'][$province_text]); ?></span>
         </div>
 
 
@@ -102,8 +103,6 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
             <img  id="propiedad-viewer-previous-pager" src="<?php base_url();?>/images/propiedadesViewer/previousPager.png" class="propiedad-viewer-pager-selector"/>
             <div id="propiedad-viewer-slidesshow-pager">
 
-                
-            
                 <?php foreach ($property_photos_pagers_groups as $property_photos_pagers_group): ?>
                     <ul>
                         <?php foreach ($property_photos_pagers_group as $property_pager_photo): ?>
@@ -119,8 +118,6 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
                 
             <img  id="propiedad-viewer-next-pager" src="<?php base_url();?>/images/propiedadesViewer/nextPager.png" class="propiedad-viewer-pager-selector"/>
   
-            
-            
         </div>
     </div>
 

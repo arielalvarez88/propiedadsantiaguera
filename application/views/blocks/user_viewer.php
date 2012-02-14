@@ -44,7 +44,7 @@ $company_or_particular_view = isset($company_or_particular_view) ? $company_or_p
                 <?php endif;?>
                         
                         <?php if($user->usa_tel):?>
-                        <p id="user-viewer-fax"><span class="bold">Tel&eacute;fono desde USA::</span> <br/> <?php echo $user->usa_tel;?></p>
+                        <p id="user-viewer-fax"><span class="bold">Tel&eacute;fono desde USA:</span> <br/> <?php echo $user->usa_tel;?></p>
                     <?php endif;?>
                       
             </div>

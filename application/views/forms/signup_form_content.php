@@ -96,7 +96,7 @@ $section = isset($section) ? $section : '';
             <textarea class="agent-particular-field  company-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>" id="signup-address" name="signup-address" id="signup-address"><?php echo isset($address) ? $address : ''; ?></textarea>
             
             
-        <div id="signup-how-you-met">
+        <div id="signup-how-you-met" class="<?php echo $edit ? 'hidden' : '';?>">
                 <p>&#191;C&oacute;mo conociste a Propiedom?</p>
                 <select name="how-i-met">
                     <option value="Internet">Internet</option>
