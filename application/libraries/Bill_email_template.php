@@ -30,7 +30,7 @@ class Bill_email_template  implements Iemail_template
     
     public function get_subject()
     {
-        return utf8_decode('PropiedomComprobante de Pago');
+        return utf8_decode('Propiedom Comprobante de Pago');
     }
     
     public function email_template($client_name)
@@ -52,7 +52,7 @@ class Bill_email_template  implements Iemail_template
                     </p>
                     
                     <p style="font-weight: bold; margin-bottom: 20px;">
-                        <span style="font-weight: bold;">Su número de confirmación de su orden es:</span> 4838468
+                        <span style="font-weight: bold;">El número de confirmación de su orden es:</span> 4838468
                     </p>
                 
                      <p>
@@ -76,15 +76,12 @@ class Bill_email_template  implements Iemail_template
                         La descripci&oacute;n de su orden su detalla a continuaci&oacute;n:
                     </p>
                         
-                        <table>
+                        <table style="text-align:center;">
                             <tr>
                                 <td style="font-weight: bold;">
                                     Detalle
                                 </td>
-                        
-                                <td style="font-weight: bold;">
-                                    Detalle
-                                </td>
+                                                       
                         
                                 <td style="font-weight: bold;">
                                     Cantidad
