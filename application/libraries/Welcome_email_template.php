@@ -13,7 +13,7 @@ class Welcome_email_template  implements Iemail_template
     public function __construct($user_name,$user_type,$user_email)
     {
         $this->user_name = $user_name;
-        $this->user_mail = $user_email;
+        $this->user_email = $user_email;
         $this->user_type = $user_type;
         
         
@@ -43,7 +43,7 @@ class Welcome_email_template  implements Iemail_template
                     </p>
                     
                     <p>
-                        Usted ha creado una cuenta {$this->user_type} en nuestra plataforma a nombre de {$this->user_name}. En caso de que necesite publicaciones adicionales para agregar o publicar nuevamente sus propiedades, no dude en echarle un vistazo a <a href="{$planes_url}" style="text-decoration: underline; color: #76bb3a;>nuestro planes de publicaciones</a>
+                        Usted ha creado una cuenta {$this->user_type} en nuestra plataforma a nombre de {$this->user_name}. En caso de que necesite publicaciones adicionales para agregar o publicar nuevamente sus propiedades, no dude en echarle un vistazo a <a href="{$planes_url}" style="text-decoration: underline; color: #76bb3;">nuestro planes de publicaciones</a>
                     </p>
                      
                      <p>
@@ -53,7 +53,7 @@ class Welcome_email_template  implements Iemail_template
                     
 
                     <p>
-                        Si necesita asistencia o tiene alguna pregunta relacionada con su reciente compra, no dude en enviarnos un e-mail a servicios@propiedom.com, en nustra sección de ayuda o llámanos al 809-582-2690.
+                        Si necesita asistencia o tiene alguna pregunta relacionada con su reciente compra, no dude en enviarnos un e-mail a servicios@propiedom.com, en nuestra sección de ayuda o llámanos al 809-582-2690.
                     </p>
                         
                     <p>
