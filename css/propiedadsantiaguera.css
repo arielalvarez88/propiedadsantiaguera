@@ -107,11 +107,11 @@ body, html
     float: right;
 }
 
-#content
-{
+#content {
+    background-color: white;
+    float: left;
+    overflow: visible;
     padding: 0 10px 10px;
-    overflow: auto;
-
 }
 
 #bottom-section
@@ -3749,17 +3749,20 @@ properties-pager
 
 
 #pdf-and-share {
-    background-color: #EEEEEE;
+   background-color: #EEEEEE;
     border: 1px solid #CCCCCC;
-    padding: 25px 25px 0;
+    
+    padding: 25px 3px 0;
+    width: 267px;
+    
 }
 
 #pdf-and-share-share
 {
-    height: 40px;
+    
     margin-right: auto;
     margin-left: auto;
-    width: 220px;
+
 
 }
 

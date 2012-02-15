@@ -30,6 +30,7 @@ class Welcome_email_template  implements Iemail_template
         $propiedom_page = base_url();
         $propiedom_logo = base_url().'images/common/logo.png';
         $planes_url = $propiedom_page.'planes';
+        $soporte_url = $propiedom_page.'soporte';
         
          date_default_timezone_set("America/La_Paz");
         $date = date("j/n/Y g:s A");
@@ -43,21 +44,22 @@ class Welcome_email_template  implements Iemail_template
                     </p>
                     
                     <p>
-                        Usted ha creado una cuenta {$this->user_type} en nuestra plataforma a nombre de {$this->user_name}. En caso de que necesite publicaciones adicionales para agregar o publicar nuevamente sus propiedades, no dude en echarle un vistazo a <a href="{$planes_url}" style="text-decoration: underline; color: #76bb3;">nuestro planes de publicaciones</a>
+                        Usted ha creado una cuenta <span style="font-weight:bold">{$this->user_type}</span> en nuestra plataforma a nombre de <span style="font-weight:bold">{$this->user_name}</span>. En caso de que necesite publicaciones adicionales para agregar o publicar nuevamente sus propiedades, no dude en echarle un vistazo a <a href="{$planes_url}" style="text-decoration: underline; color: #76bb3;">nuestro planes de publicaciones</a>
                     </p>
                      
                      <p>
                         Usuario: {$this->user_email}
+                        <br/>
                         <span style="font-weight: bold;">¿Olvidó su contraseña?</span> No hay problema, <span style="text-decoration:underline; font-weight: bold;">resetéela ahora</span>
                     </p>
                     
 
                     <p>
-                        Si necesita asistencia o tiene alguna pregunta relacionada con su reciente compra, no dude en enviarnos un e-mail a servicios@propiedom.com, en nuestra sección de ayuda o llámanos al 809-582-2690.
+                        Si necesita asistencia o tiene alguna pregunta relacionada con su reciente compra, no dude en enviarnos un e-mail a soporte@propiedom.com, dir&iacute;jase a la secci&oacuteln de <a href="{$soporte_url}" style="text-decoration:none;"> soporte</a> o llámanos al 809-582-2690.
                     </p>
                         
                     <p>
-                        Sincermente,<br/>
+                        Atentamente,<br/>
                         Equipo de Propiedom
                      </p>
 

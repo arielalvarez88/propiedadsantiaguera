@@ -264,6 +264,23 @@ $data['topRightSide'] .= $this->load->view('blocks/property_advertise', $propert
 
 
         $data['top'] .= $this->load->view('blocks/breadcrumb', $breadcrumb_view_variables, true);
+        
+        $propiedom_url = base_url();
+        $property_images = $property->file->get()->all;
+        
+        
+        $property_first_image_relative_path = isset($property_images[0])? $property_images[0]->path : Environment_vars::$paths['default_company_photo'];
+        
+        $property_first_image = $propiedom_url.$property_first_image_relative_path;
+        
+        
+        $data['head'] = <<<EOD
+        <meta property="og:title" content="{$property->title}"/>
+        <meta property="og:image" content="{$property_first_image}"/>
+        <meta property="og:site_name" content="Propiedom"/>
+        <meta property="og:description" content="Propiedom - Red de Propiedades Dominicanas"/>
+EOD;
+        
         $this->load->view('page', $data);
     }
 

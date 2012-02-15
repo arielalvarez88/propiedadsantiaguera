@@ -38,6 +38,12 @@ require_once realpath("./application/libraries/User_factory.php");
             })();
 
         </script>
+        
+        
+        <?php if(isset($head) && $head):?>
+            <?php echo $head;?>
+        <?php endif;?>
+        
     </head>
     <body>
 
