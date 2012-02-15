@@ -3,19 +3,22 @@ $info_messages = isset($info_messages) ? $info_messages : null;
 $error_messages = isset($error_messages) ? $error_messages : null;
 ?>
 
+
+
+
 <div id="articles-template-container">
     <h1>Crear Art&iacute;culo</h1>
-<?php if ($error_messages): ?>
+    <?php if ($error_messages): ?>
         <div class="error-messages">
-        <?php echo $error_messages; ?> 
+            <?php echo $error_messages; ?> 
         </div>
-        <?php endif; ?>
+    <?php endif; ?>
 
     <?php if ($info_messages): ?>
         <div class="info-messages">
-        <?php echo $info_messages; ?> 
+            <?php echo $info_messages; ?> 
         </div>
-        <?php endif; ?>
+    <?php endif; ?>
 
     <form id="articles-template" method="post" action="<?php echo base_url(); ?>cms/validate_article" enctype="multipart/form-data" accept-charset="UTF-8"> 
 

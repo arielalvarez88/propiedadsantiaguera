@@ -2007,7 +2007,13 @@ initializeTabs = function()
     var panelsPropertiesTab = new Tab(".panels-properties-tab-item", ".panels-properties-tab-body", "data-show-selector");
 }
 
+
+moveMetasToHead = function (){
+    $("head").append($('.move-to-head').html());
+}
+
 initializeEvents= function(){
+    moveMetasToHead();
     initilizeSlideShows();
     initializePropiedadViewer();       
     initializeViewLoaderElements();

@@ -9,6 +9,8 @@ $article = isset($article)? $article : null;
 ?>
 
 <?php if($article):?>
+
+
 <div id="article-viewer-container">
     <h1 class="green-text"><?php echo $article->title;?></h1>
     <?php if($article->subtitle):?>
