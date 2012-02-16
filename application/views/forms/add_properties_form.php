@@ -260,6 +260,12 @@ $property_coordenates = isset($property_coordenates) ? $property_coordenates : "
             <ul id="property-form-description-features-column1" class="property-form-description-features-column">
 
                 <li>
+                    <input id="property-form-description-features-elevator" type="checkbox" name="fernatured" <?php echo isset($fernatured) && $fernatured? 'checked="on"' : ''; ?>/>
+                    <label for="property-form-description-features-fernatured">Amueblada</label> 
+                </li>
+                
+                
+                <li>
                     <input id="property-form-description-features-elevator" type="checkbox" name="elevator" <?php echo isset($elevator) && $elevator ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-elevator">Ascensor</label> 
                 </li>

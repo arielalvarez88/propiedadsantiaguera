@@ -190,6 +190,7 @@ class Usuario extends CI_Controller {
         $repopulateForm['tel'] = $user_info_getter->get_tel();
         $repopulateForm['address'] = $user_info_getter->get_address();
         $repopulateForm['description'] = $user_info_getter->get_description();
+        $repopulateForm['usa_tel'] = $user_info_getter->get_usa_tel();
 
         $repopulateForm['cel'] = $user_info_getter->get_cel();
         $repopulateForm['cel2'] = $user_info_getter->get_cel2();
