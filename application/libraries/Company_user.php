@@ -64,6 +64,9 @@ class Company_user extends User_base_class {
         
     }
 
+    
+    
+    
     //Override
     public function get_published_properties() {
         $own_published_properties = parent::get_published_properties();
@@ -107,6 +110,40 @@ class Company_user extends User_base_class {
             $number_of_agents_posted_properties += $agent->get_number_of_posted_properties();
         
         return $number_of_own_posted_properties + $number_of_agents_posted_properties;
+        
+    }
+
+    
+    //Override
+    public function get_property($property_id) {
+        
+        if(!$property_id)
+            return false;
+        
+        
+        
+        $property = $this->user->property->where("id", $property_id)->get();
+        
+        $property_belongs_to_company = $property->id;
+        
+        if($property_belongs_to_company)
+            return $property;
+        
+        $company_agents = $this->get_agents();
+       
+        
+        foreach ($company_agents as $agent)
+        {
+            
+            $property = $agent->property->where("id" , $property_id)->get();
+            if($property->id)
+                    return $property;
+            
+        }
+        
+        return false;
+        
+        
         
     }
 

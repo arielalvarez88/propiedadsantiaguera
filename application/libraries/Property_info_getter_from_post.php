@@ -94,7 +94,7 @@ class Property_info_getter_from_post implements IProperty_info_getter {
 
         $property_features = array();
         
-        $all_features = Environment_vars::$maps['ids_to_text']["property_feature_to_name"];
+        $all_features = Environment_vars::$maps['ids_to_text']["property_feature"];
         foreach ($all_features as $id => $name)
         {
             if(isset($this->post[$name]))
@@ -114,8 +114,10 @@ class Property_info_getter_from_post implements IProperty_info_getter {
         $features = new Property_feature();
         
         $features_on = 0;
-        foreach (Environment_vars::$maps['ids_to_text']["property_feature_to_name"] as $id => $name)
+        foreach (Environment_vars::$maps['ids_to_text']["property_feature"] as $id => $name)
         {
+        
+        
             if(isset($this->post[$name]))
             {
                 $features->or_where("id", $id);
@@ -123,6 +125,7 @@ class Property_info_getter_from_post implements IProperty_info_getter {
             }
         }
         
+    
         
         if($features_on > 0)
             return $features->get()->all;

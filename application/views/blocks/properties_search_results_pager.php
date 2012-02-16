@@ -65,6 +65,9 @@ $order_by_default_value = isset($order_by_default_value) ? $order_by_default_val
                 <ul>
                     <li>Tipo: <?php echo Environment_vars::$maps['id_to_html']['property_types'][$property->type];?></li>
                     
+                    <?php $fernatured = $property->property_feature->where("id",Environment_vars::$maps['texts_to_id']['property_features']['fernatured'])->count();?>                                
+                    <li>Amueblada: <?php echo $fernatured ? 'Si' : 'No'; ?></li>            
+                    
                     <?php if($property->livingrooms):?>
                         <li>Habitaciones: <?php echo $property->livingrooms;?></li>
                     <?php endif;?>
@@ -77,13 +80,14 @@ $order_by_default_value = isset($order_by_default_value) ? $order_by_default_val
                     <li>Pisos: <?php echo $property->stories;?></li>
                     <?php endif;?>
                     
-                    <?php if($property->kitchens):?>
-                    <li>Cocinas: <?php echo $property->kitchens;?></li>
-                    <?php endif;?>
+                  
             </ul>
             <img class="properties-search-results-pager-property-divisor" src="<?php base_url();?>/images/common/diagonalDivisor.png" alt="divisor-diagonal"/>
             <ul>
-                
+                  <?php if($property->kitchens):?>
+                    <li>Cocinas: <?php echo $property->kitchens;?></li>
+                    <?php endif;?>
+                    
                 <?php if($property->bathrooms):?>
                 <li>Salas: <?php echo $property->bathrooms;?></li>
                 <?php endif;?>

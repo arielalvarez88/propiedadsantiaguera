@@ -78,6 +78,19 @@ public function __call($name, $arguments) {
             
     }
     
+            public function get_property($property_id) {
+        
+        $property = $this->user->property->where("id", $property_id)->get();
+        
+        $property_belongs_to_user = $property->id;
+        
+        if($property_belongs_to_user)
+            return $property;
+        else
+            return false;
+        
+    }
+    
      public function get_company_object()
     {
        

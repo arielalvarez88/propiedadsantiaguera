@@ -35,11 +35,11 @@ class Property_contact_emailer extends CI_Controller
         $filtered_post['number'] = isset($filtered_post['number'])? $filtered_post['number'] : '';
         $filtered_post['message'] = isset($filtered_post['message'])? $filtered_post['message'] : '';
         $template = new Property_contact_email_template($filtered_post['property-id'], $filtered_post['property-title'], $filtered_post['name'], $filtered_post['email'], $filtered_post['number'], $filtered_post['message']);
-        
+
         $success = $mailer->send_email($template, '', $filtered_post['owner-email']);
         
         if(isset($filtered_post['company-email']))
-        $mailer->send_email($template, '', $filtered_post['owner-email']);
+        $mailer->send_email($template, '', $filtered_post['company-email']);
         
         
         if($success)

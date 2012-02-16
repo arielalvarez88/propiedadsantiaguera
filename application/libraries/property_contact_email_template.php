@@ -38,6 +38,8 @@ class Property_contact_email_template  implements Iemail_template
         $propiedom_logo = base_url().'images/common/logo.png';
         $politics_url = $propiedom_page.'politicas';
         $terms_url = $propiedom_page.'terminos';
+        $planes = $propiedom_page.'planes';
+        
          date_default_timezone_set("America/La_Paz");
         $date = date("j/n/Y g:s A");
         $html = <<<EOD
@@ -68,8 +70,10 @@ class Property_contact_email_template  implements Iemail_template
                         
                         
                         <p>
-                            Siéntase en la libertad de contactarnos al 809.582.2690 si tiene alguna pregunta relacionada con nuestros planes y precios.
-                            <br/>  
+                            Siéntase en la libertad de contactarnos al 809.582.2690 si tiene alguna pregunta relacionada con nuestros <a href="{$planes}">planes y precios</a>.
+                            <br/>
+                            <br/>
+                            <br/>
                             Esperamos que este disfrutando de los beneficios de Propiedom.
                             <br/>
                             Equipo de Propiedom
