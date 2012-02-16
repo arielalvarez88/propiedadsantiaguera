@@ -45,7 +45,7 @@ class Property_info_getter_from_object implements IProperty_info_getter {
         $property_features = $this->property->property_features->get_iterated();
         
         $form_variables =array();
-        $all_features_id_to_name = Environment_vars::$maps['ids_to_text']["property_feature_to_name"];
+        $all_features_id_to_name = Environment_vars::$maps['ids_to_text']["property_feature"];
         foreach ($property_features as $property_feature)
         {
             $reppopulate_variable_name = str_replace("-" , "_" , $all_features_id_to_name[$property_feature->id]);
@@ -145,7 +145,7 @@ class Property_info_getter_from_object implements IProperty_info_getter {
         $property_close_places = $this->property->property_close_place->get();
         
         $form_variables =array();
-        $all_features_id_to_name = Environment_vars::$maps['ids_to_text']["property_close_places_to_name"];
+        $all_features_id_to_name = Environment_vars::$maps['ids_to_text']["property_feature"];
         foreach ($property_close_places as $property_close_place)
         {
             $reppopulate_variable_name = str_replace("-" , "_" , $all_features_id_to_name[$property_close_place->id]);

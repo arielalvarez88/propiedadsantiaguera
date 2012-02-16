@@ -3341,7 +3341,7 @@ properties-pager
 #particular-user-viewer-container {
     background-image: url("/images/common/whiteToGrayGradient.png");
     color: black;
-    margin-bottom: -20px;
+    
     padding-bottom: 10px;
     padding-top: 5px;
     position: relative;
@@ -3572,7 +3572,7 @@ properties-pager
     clear: both;
     color: black;
     font-size: 0.8em;
-    margin-top: 5px;
+    margin-top: -15px;
     padding: 10px 10px 20px;
     position: relative;
     top: 20px;

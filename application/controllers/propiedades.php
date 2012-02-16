@@ -227,8 +227,9 @@ class Propiedades extends CI_Controller {
         $property_viewer_data = $this->get_property_viewer_view_variables($property);
         
 
-        if ($user instanceof Company_agent_user)
+        if ($property_owner instanceof Company_agent_user)
             $propertyInfo['company'] = $property_owner->get_company_object();
+                
 
         $data['topLeftSide'] = $this->load->view('blocks/property_viewer', $property_viewer_data, true);
 
@@ -531,9 +532,6 @@ EOD;
 
         $new_property_features = $property_info_getter->get_features_object_array();
 
-
-
-
         $new_property->save(array($new_property_type, $new_property_close_places, $new_property_features, $properties_photos, $user));
 
         redirect("/agregar_video/desea/" . $new_property->id);
@@ -655,21 +653,21 @@ EOD;
     public function editar_propiedades($property_id=0, $messages=array()) {
 
         $logged_user = $this->get_logged_user_or_redirect_to_please_login();
-        $property = $logged_user->property->where("id", $property_id)->get();
-        $property_exist = $property->id;
-
-        if (!$property_exist)
+        
+                
+        
+        
+        $property = $logged_user->get_property($property_id);
+               $property_doesnt_belong_to_user = $property;      
+        if (!$property_doesnt_belong_to_user)
             redirect("/pagina_no_valida");
+        
 
         $property_info_getter = new Property_info_getter_from_object($property);
 
         $view_variables = $this->get_reppopulate_form_variables($property_info_getter);
         $view_variables['edit'] = true;
         $view_variables['property_id'] = $property_info_getter->get_id();
-
-
-
-
 
         $this->load_properties_form($view_variables);
     }

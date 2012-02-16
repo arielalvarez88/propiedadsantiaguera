@@ -52,6 +52,14 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
             <h3 id="propiedad-viewer-detalles-tipo"></h3>
             <ul id="propiedad-viewer-detalles">
                 <li class="propiedad-viewer-detalle"><span>Tipo:</span> <?php echo $property_type; ?></li>
+                
+                <?php $fernatured = $property->property_feature->where("id",Environment_vars::$maps['texts_to_id']['property_features']['fernatured'])->count();?>
+                
+                
+
+                    <li class="propiedad-viewer-detalle"><span>Amueblada:</span> <?php echo $fernatured ? 'Si' : 'No'; ?></li>            
+                
+                
                 <?php if($property->bedrooms):?>
                     <li class="propiedad-viewer-detalle"><span>Habitaciones:</span> <?php echo $property->bedrooms; ?></li>            
                 <?php endif;?>
@@ -76,13 +84,16 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
                 <li class="propiedad-viewer-detalle"><span>Parqueos:</span> <?php echo $property->parkings; ?></li>
                 <?php endif;?>
                 
-                                <?php if($property->terrain):?>
-                <li class="propiedad-viewer-detalle"><span>Terreno:</span> <?php echo $property->terrain;?> Mt2.</li>
+                <?php if($property->terrain):?>
+                    <li class="propiedad-viewer-detalle"><span>Terreno:</span> <?php echo $property->terrain;?> Mt2.</li>
                 <?php endif;?>
                 
                                 <?php if($property->construction):?>
                 <li class="propiedad-viewer-detalle"><span>Construcci&oacute;n:</span> <?php echo $property->construction;?> Mt2.</li>
                 <?php endif;?>
+                
+                
+                
 
             </ul>
 
