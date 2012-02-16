@@ -65,7 +65,7 @@ $order_by_default_value = isset($order_by_default_value) ? $order_by_default_val
                 <ul>
                     <li>Tipo: <?php echo Environment_vars::$maps['id_to_html']['property_types'][$property->type];?></li>
                     
-                    <?php $fernatured = $property->property_feature->where("id",Environment_vars::$maps['texts_to_id']['property_features']['fernatured'])->count();?>                                
+                    <?php $fernatured = $property->property_feature->where("id",Environment_vars::$maps['texts_to_id']['property_feature']['fernatured'])->count();?>                                
                     <li>Amueblada: <?php echo $fernatured ? 'Si' : 'No'; ?></li>            
                     
                     <?php if($property->livingrooms):?>

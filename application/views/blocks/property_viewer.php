@@ -53,7 +53,7 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
             <ul id="propiedad-viewer-detalles">
                 <li class="propiedad-viewer-detalle"><span>Tipo:</span> <?php echo $property_type; ?></li>
                 
-                <?php $fernatured = $property->property_feature->where("id",Environment_vars::$maps['texts_to_id']['property_features']['fernatured'])->count();?>
+                <?php $fernatured = $property->property_feature->where("id",Environment_vars::$maps['texts_to_id']['property_feature']['fernatured'])->count();?>
                 
                 
 
