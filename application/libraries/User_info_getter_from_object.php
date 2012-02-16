@@ -68,7 +68,7 @@ class User_info_getter_from_object implements IUser_info_getter
     }
     
     public function get_usa_tel() {
-        return $this->usa_tel;
+        return $this->user_object->usa_tel;
     }
 
     public function get_id() {

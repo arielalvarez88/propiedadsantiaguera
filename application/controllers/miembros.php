@@ -43,7 +43,8 @@ class Miembros extends CI_Controller {
         
             
         $members = new User();
-        $members->where_in("type", $user_types)->order_by('RAND()')->get_iterated();
+        $members->distinct()->where_in("type", $user_types)->order_by('RAND()')->get(); 
+                        
         
         $variables['members_array'] = array();
         foreach($members as $member)
