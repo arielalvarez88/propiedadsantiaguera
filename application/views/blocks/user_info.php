@@ -12,6 +12,7 @@ if($user_to_view instanceof Company_user)
 elseif($user_company)
     $company_view_object = $user_company;
 
+$image_helper = new Image_helper();
 
 ?>
 
@@ -21,7 +22,7 @@ elseif($user_company)
     
     <?php if($company_agent_view_object):?>
     <div id="user-info-company-agent">
-        <img id="user-info-company-agent-photo" src="<?php echo base_url()."/thumbnail_creator/resize_per_user_type/". urlencode(base64_encode($company_agent_view_object->photo)).'/'.$company_agent_view_object->type?>" alt="foto-agente-de-empresa"/>
+        <img id="user-info-company-agent-photo" src="<?php echo $image_helper->resize_by_user_type($company_agent_view_object->photo, $company_agent_view_object->type);?>" alt="foto-agente-de-empresa"/>
         <div id="user-info-company-agent-info-container">
             <h2><?php echo $company_agent_view_object->name.' '.$company_agent_view_object->lastname;?></h2>
             <p id="user-info-company-agent-type"><?php echo $company_agent_view_object->get_type_text();?></p>
@@ -64,7 +65,7 @@ elseif($user_company)
         <h2><?php echo $company_view_object->name;?></h2>
             <p><?php echo $company_view_object->get_type_text();?></p>
             
-        <img id="user-info-particular-or-company-photo" src="<?php echo base_url()."/thumbnail_creator/resize_per_user_type/". urlencode(base64_encode($company_view_object->photo)).'/'.$company_view_object->type?>" alt="foto-agente-de-empresa"/>
+        <img id="user-info-particular-or-company-photo" src="<?php echo $image_helper->resize_by_user_type($company_view_object->photo, $company_view_object->type);?>" alt="foto-agente-de-empresa"/>
         <div id="user-info-company-agent-info-container">
             
            
