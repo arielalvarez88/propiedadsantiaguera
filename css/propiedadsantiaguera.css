@@ -112,6 +112,7 @@ body, html
     float: left;
     overflow: visible;
     padding: 0 10px 10px;
+    width: 960px;
 }
 
 #bottom-section
@@ -3762,7 +3763,7 @@ properties-pager
     
     margin-right: auto;
     margin-left: auto;
-
+    margin-bottom: 10px;
 
 }
 
@@ -4619,6 +4620,7 @@ green-button properties-search-results-pager-bottom
 #buy-form-step-one-form
 {
     float: left;
+    width: 535px;
 }
 
 #buy-signup-form-content-container #signup-form-content-user-type-header
@@ -6322,11 +6324,18 @@ button.ui-button:-moz-focus-inner { border: 0; padding: 0; } /* reset extra padd
 ul#purchase-steps
 {
     border-bottom:1px solid #76BC3B;
-    color: #76BC3B;
+    color: white;
     padding-bottom:5px;
     font-weight: bold;
     margin-bottom: 20px;
 }
+
+#purchase-step-title
+{
+    color: #76BC3B;
+}
+
+
 ul#purchase-steps li:first-child
 {
     font-weight:bold;
@@ -6431,12 +6440,12 @@ h3#purchase-step-2
     margin-top:50px;
 }
 #purchase-steps-message {
-    background: url("../images/gray-diag-bg.png") no-repeat scroll center bottom transparent;
+    background: url("/images/gray-diag-bg.png") no-repeat scroll center bottom transparent;
     clear: none;
-    float: left;
+    float: right;
     height: 220px;
-    margin-right: 40px;
-    width: 360px;
+    margin-top: 15px;
+    
 }
 
 #buy-form-buy-button
@@ -6465,6 +6474,7 @@ h3#purchase-step-2
 #purchase-steps-message dl
 {
     padding: 35px;
+    width: 300px;
 }
 #purchase-steps-message dl dt
 {

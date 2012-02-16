@@ -17,7 +17,7 @@ $upgrade = isset($upgrade) ? $upgrade : null;
     
 
     <ul id="purchase-steps">
-        <li >Proceso de Compra :</li>
+        <li id="purchase-step-title">Proceso de Compra :</li>
         <li id="buy-form-step-one-indicator" <?php echo $skip_step_one ? '' : 'class="selected"'; ?>>1 - Registro  </li>
         <li id="buy-form-step-two-indicator"  <?php echo $skip_step_one ? 'class="selected"' : ''; ?>>2 - Informaci&oacute;n de Pago  </li>
         <li id="buy-form-step-three-indicator" class="">3 - Compra  </li>
