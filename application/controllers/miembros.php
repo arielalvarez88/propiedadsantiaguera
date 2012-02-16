@@ -41,7 +41,6 @@ class Miembros extends CI_Controller {
         
         $user_types = $section == "companies" ? array(Environment_vars::$maps['texts_to_id']['user_types']['Empresa']) : array(Environment_vars::$maps['texts_to_id']['user_types']['Agente de Empresa'], Environment_vars::$maps['texts_to_id']['user_types']['Agente Independiente']);
         
-            
         $members = new User();
         $members->distinct()->where_in("type", $user_types)->order_by('RAND()')->get(); 
                         
