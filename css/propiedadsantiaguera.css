@@ -6376,10 +6376,16 @@ h3#purchase-step-2
 .purchase-form
 {
 
-    width:350px;
+    
     float:left;
     padding-left: 16px;
 }
+
+#buy-form-disscount-code
+{
+    margin-right: 5px;
+}
+
 .purchase-form input
 {
     margin:5px 0;

@@ -58,12 +58,12 @@ $section = isset($section) ? $section : '';
             <?php $hidder_class_for_agent_or_particular = $client_type == Environment_vars::$maps['texts_to_id']['user_types']['Empresa'] ? 'hidden' : ''; ?>
 
             <label for="signup-client-name" class="agent-particular-field company-agent-field  agent-particular-requester-field <?php echo $hidder_class_for_agent_or_particular; ?> <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>" >Nombre:<span class="required">*</span></label> 
-            <input <?php echo isset($clientName) ? 'value="' . $clientName . '"' : ''; ?> name="signup-name" class=" agent-particular-field required  company-agent-field agent-particular-requester-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?> <?php echo $hidder_class_for_agent_or_particular; ?>" type="text" id="signup-client-name"/>
+            <input <?php echo isset($clientName) ? 'value="' . $clientName . '"' : ''; ?> name="signup-name" class=" agent-particular-field   company-agent-field agent-particular-requester-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?> <?php echo $hidder_class_for_agent_or_particular; ?>" type="text" id="signup-client-name"/>
 
 
 
             <label for="signup-email" class="company-agent-field agent-particular-field company-field company-requester-field agent-particular-requester-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>">Email:<span class="required">*</span></label>
-            <input <?php echo isset($email) ? 'value="' . $email . '"' : ''; ?> name="signup-email" class="required company-agent-field agent-particular-field company-field company-requester-field agent-particular-requester-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>" type="text" id="signup-email" name="signup-email"/>
+            <input <?php echo isset($email) ? 'value="' . $email . '"' : ''; ?> name="signup-email" class="company-agent-field agent-particular-field company-field company-requester-field agent-particular-requester-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>" type="text" id="signup-email" name="signup-email"/>
 
             <label class="company-agent-field agent-particular-field company-field company-requester-field agent-particular-field agent-particular-requester-field" for="signup-password">Contrase&ntilde;a: <span class="required">*</span></label> 
             <input class="company-agent-field agent-particular-field company-field company-requester-field agent-particular-field agent-particular-requester-field" <?php echo isset($password) ? 'value="' . $password . '"' : ''; ?> name="signup-password" type="password" id="signup-password" name="signup-password"/>

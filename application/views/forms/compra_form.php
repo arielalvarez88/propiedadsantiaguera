@@ -4,14 +4,14 @@ $skip_step_one = isset($skip_step_one);
 $step_one_form = isset($step_one_form) ? $step_one_form : null;
 $plan = isset($plan) ? $plan : null;
 $upgrade = isset($upgrade) ? $upgrade : null;
-
+$error_messages = isset($error_messages) ? $error_messages : null;
 ?>
 
 
 
 <div id="buy-form-container">
 
-    <form id="buy-form" action="<?php echo base_url();?>ajax/buy_form_handler/validate_and_save_user<?php echo $upgrade? "/upgrade": '';?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+    <form id="buy-form" action="<?php echo base_url();?>compra/validate_and_save_user<?php echo $upgrade? "/upgrade": '';?>" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
         
     
     
@@ -24,11 +24,16 @@ $upgrade = isset($upgrade) ? $upgrade : null;
     </ul>
 
 
-
+<div id="buy-form-step-one-error-messages" class="error-messages <?php echo $error_messages ? '' : 'hidden';?>">
+    <?php if($error_messages):?>
+    <?php echo $error_messages;?>
+    <?php endif;?>
+    
+</div>
 
     <div id="buy-form-step-one" <?php echo $skip_step_one ? 'class="hidden"' : ''; ?>>
 
-        <div id="buy-form-step-one-error-messages" class="error-messages hidden"></div>
+        
         <h3 class="main-title" id="buy-form-step-one">Informaci&oacute;n Personal</h3>
 
         <div id="buy-form-step-one-form">
@@ -84,7 +89,7 @@ $upgrade = isset($upgrade) ? $upgrade : null;
 
 
             <p id="buy-form-post-number-container"><label>Total de publicaciones: </label> <span id="buy-form-post-number-display"><?php echo $plan->number_of_posts; ?></span> </p>
-            <label>C&oacute;digo de descuento: </label><input type="text" name="disccount-code" id=""/>
+            <label>C&oacute;digo de descuento: </label><input type="text" name="disccount-code" id="buy-form-disscount-code" class="required" title="Por favor ingrese un código."/>
 
             <!--        <label>Fotos y video profesional: </label>
                     <select name="">
