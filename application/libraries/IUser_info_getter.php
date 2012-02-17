@@ -23,6 +23,7 @@ interface IUser_info_getter
     public function get_address();
     public function get_type();
     public function get_usa_tel();
+    public function get_bbpin();
             
 }
 ?>

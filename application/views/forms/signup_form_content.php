@@ -77,6 +77,11 @@ $section = isset($section) ? $section : '';
             <label for="signup-tel" class="agent-particular-field  company-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>">Tel&eacute;fono:</label> 
             <input class="agent-particular-field  company-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>" <?php echo isset($tel) ? 'value="' . $tel . '"' : ''; ?>  type="text" id="signup-telefono" name="signup-tel"/>
             
+            <label for="signup-bbpin" class="company-agent-field agent-particular-field company-field company-requester-field agent-particular-requester-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>">BB pin:</label> 
+            <input class="company-agent-field agent-particular-field company-field company-requester-field agent-particular-requester-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>" <?php echo isset($bbpin) ? 'value="' . $bbpin . '"' : ''; ?>  type="text" id="signup-bbpin" name="signup-bbpin"/>
+            
+            
+            
             <label for="signup-usa-tel" class="company-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>">Tel&eacute;fono desde USA:</label> 
             <input class="company-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>" <?php echo isset($usa_tel) ? 'value="' . $usa_tel . '"' : ''; ?>  type="text" id="signup-use-tel" name="signup-usa-tel"/>
 
@@ -96,8 +101,8 @@ $section = isset($section) ? $section : '';
             <textarea class="agent-particular-field  company-field <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>" id="signup-address" name="signup-address" id="signup-address"><?php echo isset($address) ? $address : ''; ?></textarea>
             
             
-        <div id="signup-how-you-met" class="<?php echo $edit ? 'hidden' : '';?>">
-                <p>&#191;C&oacute;mo conociste a Propiedom?</p>
+        <div id="signup-how-you-met" class=" agent-particular-field company-field  <?php echo $edit ? 'hidden' : '';?> <?php echo $hide_this_field_if_company_agent_is_editing_his_account; ?>">
+                <label>&#191;C&oacute;mo conociste a Propiedom?</label>
                 <select name="how-i-met">
                     <option value="Internet">Internet</option>
                     <option value="Vallas Publicitarias">Vallas publicitarias</option>

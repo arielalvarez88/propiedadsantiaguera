@@ -196,6 +196,7 @@ class Buy_form_handler extends CI_Controller {
         $user_handler->save_tel($user, $user_info_getter);
         $user_handler->save_usa_tel($user, $user_info_getter);
         $user_handler->save_cels($user, $user_info_getter);
+        $user_handler->save_bbpin($user, $user_info_getter);
         
         $user_handler->save_fax($user, $user_info_getter);
 

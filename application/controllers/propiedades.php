@@ -75,6 +75,10 @@ class Propiedades extends CI_Controller {
             $property_pager_slides_html [] = '<img  src="' . $video_thumb_url . '"  class="propiedad-viewer-slideshow-selector propiedad-viewer-slideshow-selector-0"/>';
             $i = 1;
         }
+        
+        $property_image_thumbs_paths [] = array("thumb" =>  $image_helper->resize($property->main_photo, "449", "254"), "image" => $property->main_photo);
+        $property_pager_slides_html[] = '<img  src="' . $image_helper->resize($property->main_photo, "449", "254"). '"  class="propiedad-viewer-slideshow-selector propiedad-viewer-slideshow-selector-' . $i . '"/>';
+        
         foreach ($property_photos as $property_photo) {
 
 
@@ -638,6 +642,7 @@ EOD;
         $repopulateForm['property_kitchens'] = $property_info_getter->get_kitchens();
         $repopulateForm['property_parkings'] = $property_info_getter->get_parkings();
         $repopulateForm['property_id'] = $property_info_getter->get_id();
+        
 
         $editing_exisiting_property = $property_info_getter instanceof Property_info_getter_from_object;
         if ($editing_exisiting_property)

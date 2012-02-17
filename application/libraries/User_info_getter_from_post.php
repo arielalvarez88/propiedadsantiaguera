@@ -82,5 +82,9 @@ class User_info_getter_from_post implements IUser_info_getter
         
         return isset($this->post_array['signup-usa-tel']) ? $this->post_array['signup-usa-tel'] : false;
     }
+    
+    public function get_bbpin(){
+        return isset($this->post_array['signup-bbpin']) ? $this->post_array['signup-bbpin'] : false;
+    }
 }
 ?>

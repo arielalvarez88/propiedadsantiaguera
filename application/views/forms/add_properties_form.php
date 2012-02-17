@@ -47,8 +47,8 @@ $property_coordenates = isset($property_coordenates) ? $property_coordenates : "
                 
                 <?php $class = $i==0? 'property-form-neigborhoods' : 'property-form-neigborhoods hidden';?>
                 <?php $provinces[$province] =  Environment_vars::$maps['texts_to_id']['provinces'][$province]; ?>
-            
-                <?php $neigborhoods_selects[] = Html_helper::get_select_from_key_value($neighborhoods, array("id" => "property-neighborhood-for-province-".Environment_vars::$maps['texts_to_id']['provinces'][$province], "name" => "property-neighborhood", "class" => $class, "data-province"=> Environment_vars::$maps['texts_to_id']['provinces'][$province]), '', $property_neighborhood);?>
+                <?php $neighborhoods_input_name = $i == 0 ? "property-neighborhood" : null;?>
+                <?php $neigborhoods_selects[] = Html_helper::get_select_from_key_value($neighborhoods, array("id" => "property-neighborhood-for-province-".Environment_vars::$maps['texts_to_id']['provinces'][$province], "name" => $neighborhoods_input_name, "class" => $class, "data-province"=> Environment_vars::$maps['texts_to_id']['provinces'][$province]), '', $property_neighborhood);?>
             
                 <?php $i++;?>
             <?php endforeach;?>
@@ -260,7 +260,7 @@ $property_coordenates = isset($property_coordenates) ? $property_coordenates : "
             <ul id="property-form-description-features-column1" class="property-form-description-features-column">
 
                 <li>
-                    <input id="property-form-description-features-elevator" type="checkbox" name="fernatured" <?php echo isset($fernatured) && $fernatured? 'checked="on"' : ''; ?>/>
+                    <input id="property-form-description-features-fernatured" type="checkbox" name="fernatured" <?php echo isset($fernatured) && $fernatured? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-fernatured">Amueblada</label> 
                 </li>
                 

@@ -19,8 +19,8 @@
                 
                 <?php $class = $i==0? 'advanced-filter-neigborhoods' : 'advanced-filter-neigborhoods hidden';?>
                 <?php $provinces[$province] =  Environment_vars::$maps['texts_to_id']['provinces'][$province]; ?>
-            
-                <?php $neigborhoods_selects[] = Html_helper::get_select_from_key_value($neighborhoods, array("id" => "advanced-filter-neighborhood-for-province-".Environment_vars::$maps['texts_to_id']['provinces'][$province], "name" => "neighborhood", "class" => $class, "data-province"=> Environment_vars::$maps['texts_to_id']['provinces'][$province]));?>
+                <?php $neighborhoods_input_name = $i == 0 ? "neighborhood" : null;?>
+                <?php $neigborhoods_selects[] = Html_helper::get_select_from_key_value($neighborhoods, array("id" => "advanced-filter-neighborhood-for-province-".Environment_vars::$maps['texts_to_id']['provinces'][$province], "name" => $neighborhoods_input_name, "class" => $class, "data-province"=> Environment_vars::$maps['texts_to_id']['provinces'][$province]));?>
             
                 <?php $i++;?>
             <?php endforeach;?>

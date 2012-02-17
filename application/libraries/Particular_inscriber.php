@@ -96,6 +96,10 @@ class Particular_inscriber implements IUser_inscriber {
      public function save_usa_tel($user_object, $user_info_getter) {
         $this->base_behaviour->save_usa_tel($user_object, $user_info_getter);
     }
+
+    public function save_bbpin($user_object, $user_info_getter) {
+        $this->base_behaviour->save_bbpin($user_object, $user_info_getter);
+    }
 }
 
 ?>

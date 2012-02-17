@@ -191,15 +191,13 @@ class Usuario extends CI_Controller {
         $repopulateForm['address'] = $user_info_getter->get_address();
         $repopulateForm['description'] = $user_info_getter->get_description();
         $repopulateForm['usa_tel'] = $user_info_getter->get_usa_tel();
-
         $repopulateForm['cel'] = $user_info_getter->get_cel();
         $repopulateForm['cel2'] = $user_info_getter->get_cel2();
         $repopulateForm['fax'] = $user_info_getter->get_fax();
         $repopulateForm['website'] = $user_info_getter->get_website();
         $repopulateForm['description'] = $user_info_getter->get_description();
-
         $repopulateForm['client_type'] = $user_info_getter->get_type();
-        
+        $repopulateForm['bbpin'] = $user_info_getter->get_bbpin();
         $repopulateForm = array_merge($repopulateForm, $extra_parameters);        
     
         $this->load_signup_form ($repopulateForm);

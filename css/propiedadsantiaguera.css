@@ -3339,7 +3339,7 @@ properties-pager
 /*user-viewer*/
 
 #particular-user-viewer-container {
-    background-image: url("/images/common/whiteToGrayGradient.png");
+    background-color: #EEEEEE;
     color: black;
     
     padding-bottom: 10px;
@@ -3439,7 +3439,7 @@ properties-pager
 }
 #user-viewer-info {
     float: left;
-    height: 127px;
+    margin-bottom: 5px;
     padding-left: 10px;
     width: 133px;
 }
@@ -4575,14 +4575,18 @@ green-button properties-search-results-pager-bottom
     color:black;
 }
 
-#signup-form-content label, #signup-form-content input
+#signup-form-content label, #signup-form-content input,
+#signup-form-content select
 {
     display:block;
     float:left;
 
 }
 
-#signup-form-content input {
+#signup-form-content input, 
+#signup-form-content select
+{
+    width: 142px;
     margin-bottom: 8px;
 }
 
