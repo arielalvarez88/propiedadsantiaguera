@@ -431,8 +431,8 @@ formRecolectorButtonBehaviour = function(event,formWrapper,recivingScriptUrl,pos
 
     $(formWrapper).validate({
         errorContainer: "#error-messages",
-        errorLabelContainer: "#error-messages",
-        wrapper: "li"
+        errorLabelContainer: "#error-messages"
+        
     });
     
     
@@ -545,11 +545,13 @@ ConditionalForm = function(formWrapperSelector, conditionalBoolReturningFunction
     bindEvent(thisObject.sendButton, "click", function(event){
             
         if(conditionalBoolReturningFunction())
-        {
-                    
-                    
+        {                                        
             formRecolectorButtonBehaviour(event, formWrapperSelector, recivingScript, alertMessageCallbackFunction,ajax);
         }
+        else
+            {
+                event.preventDefault();
+            }
                 
                 
                 
@@ -1893,15 +1895,17 @@ AcceptTermsButton = function(conditionalCheckbox,buttonSelector,eventName,eventH
 
 initializeConditionalForm = function(){
     
-    //    var buyForm = new ConditionalForm("#buy-form", function(){
-    //        return $("#buy-form-accept-terms").is(":checked");
-    //    }, "#buy-form-buy-button", '', false,function(response){
-    //            
-    //        if(response.success)
-    //            window.location.href=("/panel/propiedades");
-    //        else
-    //            alert(response.message);
-    //    });
+        var buyForm = new ConditionalForm("#buy-form", function(){
+            var conditionsAccepted =  $("#buy-form-accept-terms").is(":checked");
+            
+            if(!conditionsAccepted)
+                {
+                    alert("Debe acceptar los terminos de uso para comprar proseguir con el pago.");
+                    return false;
+                }
+                
+            return true;
+        }, "#buy-form-buy-button", '', false);
    
     };
 
