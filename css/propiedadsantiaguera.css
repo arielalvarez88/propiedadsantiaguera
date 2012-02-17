@@ -2180,10 +2180,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 }
 
 #footer-logo {
-    height: 41px;
     margin-right: 10px;
-    width: 111px;
-    display:none;
 }
 #newsletter h3
 {
