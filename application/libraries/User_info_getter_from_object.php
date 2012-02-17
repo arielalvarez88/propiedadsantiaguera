@@ -74,5 +74,10 @@ class User_info_getter_from_object implements IUser_info_getter
     public function get_id() {
           return $this->user_object->id;
     }
+    
+    public function get_bbpin(){
+                  return $this->user_object->bbpin;
+
+    }
 }
 ?>

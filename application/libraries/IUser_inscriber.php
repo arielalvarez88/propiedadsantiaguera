@@ -25,6 +25,7 @@ interface IUser_inscriber
     public function save_description($user_object,$user_info_getter);
     public function save_inscription_date($user_object,$user_info_getter);
     public function save_usa_tel($user_object,$user_info_getter);
+    public function save_bbpin($user_object,$user_info_getter);
     
 }
 ?>

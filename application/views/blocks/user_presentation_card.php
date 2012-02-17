@@ -36,6 +36,18 @@ $image_helper = new Image_helper();
 
             <p class="user-presentation-card-summary-title">Tel&eacute;fono / Celular 1 / Celular 2</p>
             <p><?php echo $user->tel ? $user->tel : 'N/A'; ?> / <?php echo $user->cel ? $user->cel : 'N/A'; ?> / <?php echo $user->cel2 ? $user->cel2 : 'N/A'?></p>
+            
+            
+            
+            <?php if($user->usa_tel):?>
+                <p class="user-presentation-card-summary-title">Telefono desde USA:</p>
+                <p><?php echo $user->usa_tel;?></p>
+            <?php endif;?>
+            
+            <?php if($user->bbpin):?>
+                <p class="user-presentation-card-summary-title">BBpin:</p>
+                <p><?php echo $user->bbpin;?></p>
+            <?php endif;?>
 
                   
             <?php if($user->address):?>

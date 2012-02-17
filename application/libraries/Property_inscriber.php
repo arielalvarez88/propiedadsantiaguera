@@ -185,6 +185,10 @@ class Property_inscriber implements IProperty_inscriber {
         if ($type)
             $property_object->type = $type;
     }
+    
+      public function save_bbpin($user_object, $user_info_getter) {
+        $this->base_behaviour->save_bbpin($user_object, $user_info_getter);
+    }
 
 }
 

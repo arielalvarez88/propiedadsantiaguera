@@ -163,6 +163,13 @@ class Base_user_inscriber implements IUser_inscriber {
         $date = date('Y-m-d H:i:s');
         $user_object->registration_date = $date;
     }
+
+    public function save_bbpin($user_object, $user_info_getter) {
+        $bbpin = $user_info_getter->get_bbpin();
+        
+        if($bbpin )
+            $user_object->bbpin = $bbpin;
+    }
     
     
     
