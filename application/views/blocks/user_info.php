@@ -34,6 +34,13 @@ $image_helper = new Image_helper();
                 </p>
                 <?php endif;?>
                 
+                
+                <?php if($company_agent_view_object->tel):?>
+                <p>
+                        <span class="bold">Tel&eacute;fono:</span> <?php echo $company_agent_view_object->tel;?>
+                </p>
+                <?php endif;?>
+                
                 <?php if($company_agent_view_object->cel):?>
                 <p>
                         <span class="bold">Celular 1:</span> <?php echo $company_agent_view_object->cel;?>
