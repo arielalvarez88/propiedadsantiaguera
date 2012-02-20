@@ -348,11 +348,7 @@ require_once realpath("./application/libraries/User_factory.php");
         </div>    
 
 
-        <!--[if !IE 7]>
-
-		#wrapper {display:table;height:100%}
-
-<![endif]-->
+       
 
         <script type="text/javascript" src="<?php base_url(); ?>/js/Interfaces.js" type="text/javascript" ></script>
         <script type="text/javascript" src="<?php base_url(); ?>/js/jquery-1.7.1.js" type="text/javascript" ></script>
