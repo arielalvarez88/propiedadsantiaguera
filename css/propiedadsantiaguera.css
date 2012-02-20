@@ -566,8 +566,16 @@ overflow: hidden;
     height: 28px;
     margin-bottom: 6px;
 }
+
+
+#advanced-filter input
+{
+    
+        height: 20px;
+}
+
 #advanced-filter label {
-    margin-right: 8px;
+    
     text-align: right;
     width: 93px;
 }
