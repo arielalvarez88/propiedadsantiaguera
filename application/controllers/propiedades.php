@@ -680,8 +680,8 @@ EOD;
     private function add_property_error($extra_info = array()) {
 
         $repopulateForm = array();
-
-        $repopulateForm['property_title'] = $this->input->post('property-title');
+        $repopulateForm['alarm'] = $this->input->post('alarm');
+        $repopulateForm['walk_in_closet'] = $this->input->post('walk-in-closet');
         $repopulateForm['property_type'] = $this->input->post('property-type');
         $repopulateForm['property_neighborhood'] = $this->input->post('property-neighborhood');
         $repopulateForm['property_livingrooms'] = $this->input->post('property-neighborhood');
