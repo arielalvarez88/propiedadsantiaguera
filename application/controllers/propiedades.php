@@ -672,7 +672,7 @@ EOD;
         $property_info_getter = new Property_info_getter_from_object($property);
 
         $view_variables = $this->get_reppopulate_form_variables($property_info_getter);
-        $view_variables['edit'] = true;
+        $view_variables['editing'] = true;
         $view_variables['property_id'] = $property_info_getter->get_id();
 
         $this->load_properties_form($view_variables);
