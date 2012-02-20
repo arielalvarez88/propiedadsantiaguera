@@ -682,6 +682,7 @@ EOD;
         $repopulateForm = array();
         $repopulateForm['alarm'] = $this->input->post('alarm');
         $repopulateForm['walk_in_closet'] = $this->input->post('walk-in-closet');
+        $repopulateForm['tinaco'] = $this->input->post('tinaco');
         $repopulateForm['property_type'] = $this->input->post('property-type');
         $repopulateForm['property_neighborhood'] = $this->input->post('property-neighborhood');
         $repopulateForm['property_livingrooms'] = $this->input->post('property-neighborhood');
