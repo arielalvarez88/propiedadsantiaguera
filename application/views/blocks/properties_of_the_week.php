@@ -9,7 +9,9 @@ $property = isset($property) ? $property : null;
     <h2 id="properties-of-the-week-header"><?php echo $this->lang->line("properties_of_the_week_header");?></h2>
     
             <div id="properties-of-the-week-video-container">
+                <?php if($property):?>
                     <iframe id="properties-of-the-week-video" width="403" height="281" src="<?php echo $property->video;?>&wmode=opaque" frameborder="0" allowfullscreen ></iframe>
+                    <?php endif;?>
             </div>
        
 
