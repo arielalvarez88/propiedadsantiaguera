@@ -1346,7 +1346,7 @@ InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInpu
         
         rate = rate/100;
         var years = Number(thisObject.yearsInput.val());
-        var months = years/12;
+        var months = years * 12;
         
         
         var valiidateForInterest = function(mount,rate,years)
@@ -1370,10 +1370,13 @@ InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInpu
         if(valiidateForInterest(mount,rate,years))
         {
             
+            var result = (mount * ( 1+ (rate * months)) )/months;
+            
+            result = result.toFixed(2);
             if(thisObject.responseDisplay.is(":input"))
-                thisObject.responseDisplay.val(mount * (( 1+rate) * months) );
+                thisObject.responseDisplay.val(commify(result));
             else
-                thisObject.responseDisplay.html(mount * (( 1+rate) * months));
+                thisObject.responseDisplay.html(commify(result));
         }
         
         

@@ -7,7 +7,7 @@ $us_price = isset($us_price) ? $us_price : '';
 
 <div id="overlay-property-calculator-container" class="overlay-container">
     
-<h1 class="overlay-header">Calculadora de cuotas para prestamo Hipotecario</h1>
+<h1 class="overlay-header">Calculadora de cuotas para pr&eacute;stamo Hipotecario</h1>
 <div id="overlay-property-calculator" class="overlay-body">
     
     
@@ -40,7 +40,7 @@ $us_price = isset($us_price) ? $us_price : '';
         
          <tr>
             <td>
-                <span>Tasa de Interes (el % mensual)</span> 
+                <span>Tasa de Inter&eacute;s (mensual)</span> 
             </td>
             <td>
                 <input type="text" id="overlay-property-calculator-interest" name="interest"/>
@@ -50,15 +50,24 @@ $us_price = isset($us_price) ? $us_price : '';
             
         </tr>
         
+         <tr>
+            <td>
+                <span>A&ntilde;os de financiamiento<br/> </span> 
+            </td>
+            <td>
+                <input type="text" id="overlay-property-calculator-years" name="years"/>
+            </td>
+            <td>
+                <span id="overlay-property-calculator-moths" class="red-text"></span>
+            </td>
+            
+        </tr>
+        
         
         
     </table>
     
-    <div id="overlay-property-calculator-years-container">
-        <p>A&ntilde;os de financiamiento<br/> <span id="overlay-property-calculator-moths" class="red-text"></span></p>
-        <input type="text" id="overlay-property-calculator-years" name="years"/>
-         
-    </div>
+    
     
     <p id="overlay-property-calculator-calculate-button-container"><a id="overlay-property-calculator-calculate-button" class="green-button" href="">Calcular</a></p>
     <p id="overlay-property-calculator-results-cotainer">
