@@ -38,7 +38,8 @@ class Property_info_getter_from_post implements IProperty_info_getter {
     public function get_close_places_for_reppopulate_form() {
 
         
-         $all_close_places = Environment_vars::$maps['ids_to_text']["property_close_places_to_name"];
+         $all_close_places = Environment_vars::$maps['ids_to_text']["property_close_places"];
+         
         $property_close_places = array();
          foreach ($all_close_places as $id => $name) {
        
@@ -53,7 +54,7 @@ class Property_info_getter_from_post implements IProperty_info_getter {
     
     public function get_close_places_object_array(){
         
-        $all_close_places = Environment_vars::$maps['ids_to_text']["property_close_places_to_name"];
+        $all_close_places = Environment_vars::$maps['ids_to_text']["property_close_places"];
        
         $new_property_close_places = new Property_close_place();
         
