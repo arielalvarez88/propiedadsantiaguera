@@ -6,6 +6,10 @@ $property_condition = isset($property_condition) ? $property_condition : false;
 $property_province = isset($property_province) ? $property_province : null;
 $property_photos = isset($property_photos) ? $property_photos : null;
 $property_coordenates = isset($property_coordenates) ? $property_coordenates : "19.487516,-70.718963";
+
+$editing = isset($editing) ? $editing : false;
+
+$class_to_hide_field_if_editing = $editing? 'hidden' :  '';
 ?>
 
 <?php if (isset($errors) && $errors): ?>
@@ -23,7 +27,8 @@ $property_coordenates = isset($property_coordenates) ? $property_coordenates : "
 <form id="property-form" method="post" action="<?php echo base_url(); ?>propiedades/validate<?php echo isset($property_id) ? '/' . $property_id : ''; ?>" enctype="multipart/form-data" accept-charset="UTF-8">
     <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber1.png"/><span>Detalles de Propiedad</span></p>
     <div id="property-form-description">
-        <div id="property-form-description-column-container">
+        
+        <div id="property-form-description-column-container" class="<?php echo $class_to_hide_field_if_editing;?>">
 
 
             <ul id="property-form-description-column1" class="property-form-description-column">

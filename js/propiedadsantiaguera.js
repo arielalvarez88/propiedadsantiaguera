@@ -327,7 +327,8 @@ JqueryCycleAjaxPager = function(containerSelector,nextButtonSelector,previousBut
                 
             },
             activePagerClass: 'selected',
-            timeout: 0 
+            timeout: 0
+            
             
             
             
