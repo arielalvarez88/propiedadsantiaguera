@@ -469,7 +469,10 @@ $property_coordenates = isset($property_coordenates) ? $property_coordenates : "
                     <input id="property-form-description-features-electric-plant" type="checkbox" name="electric-plant" <?php echo isset($electric_plant) && $electric_plant ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-electric-plant">Planta eléctrica </label> 
                 </li>
-
+        <li>
+                    <input id="property-form-description-features-tinaco" type="checkbox" name="tinaco" <?php echo isset($tinaco) && $tinaco? 'checked="on"' : ''; ?>/>
+                    <label for="property-form-description-features-tinaco">Tinaco</label> 
+                </li>
                 <li>
                     <input id="property-form-description-features-mahogany-terminations" type="checkbox" name="mahogany-terminations" <?php echo isset($mahogany_terminations) && $mahogany_terminations ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-mahogany-terminations">Terminación en caoba</label> 
