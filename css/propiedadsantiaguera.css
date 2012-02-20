@@ -1733,7 +1733,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 {
     display: block;
     float: left;
-    height: 23px;
+    
     width: 43px;
     border: 4px solid #e9e9e9;
     margin-bottom: 9px;
@@ -1851,7 +1851,7 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 
 #property-form-description, #property-form-photos
 {
-    padding-left: 31px;
+    padding-left: 9px;
 }
 
 #property-form-photos
@@ -1944,10 +1944,14 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
 }
 
 
-#property-form-description-column1 select, 
-#property-form-description-column1 input
+#property-form-description-column1 select
 {
     width: 238px;
+}
+
+#property-form-description-column1 input
+{
+    width: 230px;
 }
 
 .property-form-photos-column

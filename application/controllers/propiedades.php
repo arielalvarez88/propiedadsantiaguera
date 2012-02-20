@@ -255,9 +255,6 @@ $data['topRightSide'] .= $this->load->view('blocks/property_advertise', $propert
 
         $data['topLeftSide'] .= $this->load->view('blocks/property_info', $property_info_view_variables, true);
         $data['topLeftSide'] .= $this->load->view('blocks/propertyUbicationGmap', $propertyInfo, true);
-
-
-
         
         $breadcrumb_view_variables = $this->get_breadcrumb_view_viarables($property);
 
@@ -290,11 +287,11 @@ EOD;
     }
 
     private function get_property_info_view_variables($property) {
-        $variables['property_close_places'] = $property->property_close_place->get()->all;
+        $variables['property_close_places'] = $property->property_close_place->order_by('name ASC')->get()->all;
 
         $variables['property_address'] = $property->address;
         $variables['property_description'] = $property->description;
-        $variables['property_features'] = $property->property_feature->get()->all;
+        $variables['property_features'] = $property->property_feature->order_by('name ASC')->get()->all;
         return $variables;
     }
 
