@@ -259,6 +259,13 @@ $property_coordenates = isset($property_coordenates) ? $property_coordenates : "
             <h3>Caracter&iacute;sticas</h3>
             <ul id="property-form-description-features-column1" class="property-form-description-features-column">
 
+                
+                <li>
+                    <input id="property-form-description-features-alarm" type="checkbox" name="alarm" <?php echo isset($alarm) && $alarm? 'checked="on"' : ''; ?>/>
+                    <label for="property-form-description-features-alarm">Alarma</label> 
+                </li>
+                
+                
                 <li>
                     <input id="property-form-description-features-fernatured" type="checkbox" name="fernatured" <?php echo isset($fernatured) && $fernatured? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-fernatured">Amueblada</label> 
