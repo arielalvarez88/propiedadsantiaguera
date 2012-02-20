@@ -533,6 +533,7 @@ EOD;
 
 
         $new_property_close_places = $property_info_getter->get_close_places_object_array();
+      
 
         $new_property_features = $property_info_getter->get_features_object_array();
 
