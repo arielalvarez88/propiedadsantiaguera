@@ -10,7 +10,8 @@ $message = isset($message) ? $message : "Seleccione un video para agregarlo a su
     
 
 
-<h1> <?php echo $message; ?> </h1>
+<h2> <?php echo $message; ?> </h2>
+
 <?php if ($post_url && $token): ?> 
     <form action="<?php echo $post_url; ?>" method="post" enctype="multipart/form-data">
         <input name="file" type="file"/>
@@ -18,6 +19,7 @@ $message = isset($message) ? $message : "Seleccione un video para agregarlo a su
         <input value="Upload Video File" type="submit" /> 
     </form>
 <?php endif; ?>
+<img src="<?php echo base_url();?>images/uploadVideo/videoNote.png"/>
 
 
 </div>
