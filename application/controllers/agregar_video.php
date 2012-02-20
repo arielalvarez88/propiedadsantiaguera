@@ -42,7 +42,7 @@ class Agregar_video extends CI_Controller {
 
         $youtube_helper = new YoutubeVideoUploadHelper(Environment_vars::$youtube['username'], Environment_vars::$youtube['password'], Environment_vars::$google_api['developer_id'], "Propiedom", $user->name);
         $upload_video_form_variables = $youtube_helper->get_form_variables($property->title,$property->description,base_url() . "/agregar_video/youtube_upload_response/" . $property->id);
-        $upload_video_form_variables['message'] = 'Por favor seleccione un video para agregarselo a la propiedad de título: "' . $property->title . '":';
+        $upload_video_form_variables['message'] = 'Por favor seleccione un video para agregarselo a la propiedad de título "' . $property->title . '":';
 
         $blocks["top"] = $this->load->view("blocks/upload_video", $upload_video_form_variables,true);
 

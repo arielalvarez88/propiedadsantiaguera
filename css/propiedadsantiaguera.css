@@ -4096,11 +4096,15 @@ green-button properties-search-results-pager-bottom
 
 /***** upload-vide ****/
 
-#upload-video h1
+#upload-video h2
 {
     margin-bottom: 30px;
+    color: #666666;
 }
 
+#upload-video img{
+    margin-top: 10px;
+}
 /***** upload-vide ENDS ****/
 
 
