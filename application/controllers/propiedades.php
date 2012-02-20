@@ -247,7 +247,7 @@ class Propiedades extends CI_Controller {
         $data['topRightSide'] .=$this->load->view('blocks/price_currency', $moneda_precio_view_variables, true);
 
 
-        $data['topRightSide'] .=$this->load->view('blocks/pdf_and_share', $propertyInfo, true);
+        $data['topRightSide'] .=$this->load->view('blocks/print_and_share', $propertyInfo, true);
         $data['topRightSide'] .=$this->load->view('blocks/property_calculator', $propertyInfo, true);
 $data['topRightSide'] .= $this->load->view('blocks/property_advertise', $propertyInfo, true);
 

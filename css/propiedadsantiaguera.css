@@ -2879,6 +2879,11 @@ properties-pager
     width: 351px;
 }
 
+#interests-calculator input{
+    padding-left: 10px;
+    font-size: 1.3em;
+}
+
 
 #interests-calculator p label
 {
@@ -3610,6 +3615,12 @@ properties-pager
     heihgt: 277px;
 }
 
+#overlay-property-calculator input{
+    padding-left: 10px;
+    font-size: 1.3em;
+}
+
+
 #overlay-property-calculator 
 {
     background-color: #fbfbfb;
@@ -3622,12 +3633,10 @@ properties-pager
     font-size: 1.6em;
     text-align: center;
 }
-
-#overlay-property-calculator-montly-pay-title
-{
-    color: #82cf40;
-    
-    
+#overlay-property-calculator-results-cotainer span#overlay-property-calculator-montly-pay-title {
+    color: #666666;
+    font-size: 1.4em;
+    margin-right: 70px;
 }
 
 
@@ -3639,22 +3648,26 @@ properties-pager
 }
 #overlay-property-calculator table tr th {
     color: #999999;
-    font-size: 0.8em;
+    font-size: 1em;
 }
 #overlay-property-calculator table tr td {
-    padding: 0 10px;
+    padding: 5px 10px;
 }
 
 #overlay-property-calculator table, #overlay-property-calculator {
     color: #666666;
 }
 #overlay-property-calculator-moths {
-    font-size: 0.7em;
+    font-size: 1.2em;
 }
 
 #overlay-property-calculator-interest, #overlay-property-calculator-years {
     width: 35px;
 }
+#overlay-property-calculator input {
+    width: 110px;
+}
+
 
 #overlay-property-calculator table, #overlay-property-calculator {
     font-size: 1em;
@@ -3680,6 +3693,13 @@ properties-pager
 #overlay-property-calculator-results-cotainer span
 {
     margin: 0 5px;
+}
+
+#overlay-property-calculator-rd-display,
+#overlay-property-calculator-us-display
+{
+    color: #76bc3b;
+    font-size: 1.4em;
 }
 
 #overlay-property-calculator-years-container p,
@@ -3736,17 +3756,20 @@ properties-pager
 
 
 
-/******pdf-and-share******/
+/******print-and-share******/
 
-#pdf-and-share p
+#print-and-share p
 {
     text-align: center;
     margin-bottom: 10px;
 }
 
+#print-and-share-print-icon
+{
+    margin-right: 5px;
+}
 
-
-#pdf-and-share {
+#print-and-share {
    background-color: #EEEEEE;
     border: 1px solid #CCCCCC;
     
@@ -3755,7 +3778,7 @@ properties-pager
     
 }
 
-#pdf-and-share-share
+#print-and-share-share
 {
     
     margin-right: auto;
@@ -3764,7 +3787,7 @@ properties-pager
 
 }
 
-#pdf-and-share h2
+#print-and-share h2
 {
     color: #76b939;
     float: left;
@@ -3772,7 +3795,7 @@ properties-pager
 }
 
 
-#pdf-and-share-share a
+#print-and-share-share a
 {
     background-image: url("/images/common/socialSprite.png");
     display: block;
@@ -3783,7 +3806,7 @@ properties-pager
 }
 
 
-#pdf-and-share-pdf-icon
+#print-and-share-pdf-icon
 {
     margin-right:5px;
 }
@@ -3795,7 +3818,7 @@ properties-pager
     height: 30px;
     margin-left: 10px;
 }
-/******pdf-and-share******/
+/******print-and-share******/
 
 /*property-ubication-gmap*/
 #property-ubication-gmap-title
