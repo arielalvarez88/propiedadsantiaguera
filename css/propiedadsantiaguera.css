@@ -207,7 +207,7 @@ body, html
 {
     background: transparent url('/images/login/inputBg.png') top center no-repeat;
     border:0;
-    height:53px;
+    height:23px;
     width:220px;
     border: 0;
     padding: 15px 10px;
@@ -3954,6 +3954,7 @@ green-button properties-search-results-pager-bottom
 
 #properties-search-results-pager-next {
 
+    float: left;
     margin-left: 15px;
 }
 
