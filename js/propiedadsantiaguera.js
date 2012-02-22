@@ -527,6 +527,8 @@ Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanBut
     this.sendButton = $(sendButtonSelector);
     this.recivingScriptUrl = recivingScriptUrl;
     
+    this.form.append('<img class="hidden" src="/images/common/buffering.gif" alt="Espere por favor"/>');
+    
     nowLoadingBehaviour(sendButtonSelector);
     
     thisObject.setClearButtonBehaviour();
