@@ -919,7 +919,7 @@ nowLoadingBehaviour = function(selector)
 {
 
 
-    $(selector).fancybox({content: "<p></p>", title: "Espere mientras procesamos su información", padding:0, showCloseButton: false});
+    $(selector).fancybox({content: '<div style="text-align:center;"><img src="/images/common/buffering.gif" alt="Espere por favor"/></div>', title: "Espere mientras procesamos su información", padding:0, showCloseButton: false});
 }
 
 Overlay = function (selector, optionalClosebuttonSelector,preventDefault)
