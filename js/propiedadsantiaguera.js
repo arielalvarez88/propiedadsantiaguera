@@ -919,7 +919,7 @@ nowLoadingBehaviour = function(selector)
 {
 
 
-    $(selector).fancybox({type: 'ajax', href: "ajax/view_loader/blocks/buffering"});
+    $(selector).fancybox({type: 'ajax', href: "/ajax/view_loader/blocks/buffering"});
 }
 
 Overlay = function (selector, optionalClosebuttonSelector,preventDefault)
