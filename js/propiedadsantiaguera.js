@@ -11,6 +11,9 @@
 bindEvent = function(elementOrSelector,eventName,handler)
 {
     
+    if(!elementOrSelector)
+        return;
+    
     if( typeof elementOrSelector != 'string' &&  typeof elementOrSelector != 'object')
         throw "The first argumnet of bindEvent must be a selector or an element.";
     
@@ -137,6 +140,7 @@ initializePropiedadViewer = function (){
         pagerEvent:    'click',
         activePagerClass: 'propiedad-viewer-active-selector',
         pagerAnchorBuilder: function (idx, slide){
+            
             
             return '.propiedad-viewer-slideshow-selector-'+idx; 
         }
@@ -489,13 +493,7 @@ Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, a
     //    var i=0;
     
     thisObject.init(formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,alertMessageCallbackFunction);
-    thisObject.setClearButtonBehaviour();
     
-    
-    bindEvent(thisObject.sendButton, "click", function(event){                        
-        formRecolectorButtonBehaviour(event, formWrapperSelector, recivingScriptUrl, alertMessageCallbackFunction,ajax);
-    });
-
     
     
 };
@@ -520,12 +518,26 @@ Form.prototype.cleanButton;
 Form.prototype.sendButton;
 Form.prototype.recivingScriptUrl;
 Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,alertMessageCallbackFunction){
+    
+    var thisObject =this;
     this.form = $(formWrapperSelector);
     
     
     this.cleanButton = $(cleanButtonSelector);        
     this.sendButton = $(sendButtonSelector);
     this.recivingScriptUrl = recivingScriptUrl;
+    
+    nowLoadingBehaviour(sendButtonSelector);
+    
+    thisObject.setClearButtonBehaviour();
+    
+    
+    bindEvent(thisObject.sendButton, "click", function(event){                        
+                
+        formRecolectorButtonBehaviour(event, formWrapperSelector, recivingScriptUrl, alertMessageCallbackFunction,ajax);
+        
+    });
+
 };
 
         
@@ -903,7 +915,14 @@ Tab = function(tabsCategoriesSelector, tabsBodiesSelector,tabsCategoriesAtrribut
 }
 
 
-Overlay = function (selector, optionalClosebuttonSelector)
+nowLoadingBehaviour = function(selector)
+{
+
+
+    $(selector).fancybox({type: 'ajax', href: "ajax/view_loader/blocks/buffering"});
+}
+
+Overlay = function (selector, optionalClosebuttonSelector,preventDefault)
 {
     
     $(selector).fancybox({
@@ -919,13 +938,20 @@ Overlay = function (selector, optionalClosebuttonSelector)
             $(".video").show();
         }
         
-        
     });
     
-    $(optionalClosebuttonSelector).unbind('click');
-    $(optionalClosebuttonSelector).click(function(){
+    preventDefault = preventDefault || true;
+    
+    
+    
+    bindEvent(optionalClosebuttonSelector, "click", function(event){
+    
+        if(preventDefault)
+            event.preventDefault();
+        
         $.fancybox.close();
     });
+        
     
 }
 initializeInputsWithDefaultText = function(){

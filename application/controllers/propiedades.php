@@ -67,26 +67,26 @@ class Propiedades extends CI_Controller {
         $image_helper = new Image_helper();
 
         $property_pager_slides_html = array();
-        $i = 0;
+        
 
-
+$i = 0;
         if ($property->video) {
             $video_thumb_url = base_url() . "/images/propiedadesViewer/videoThumb.png";
             $property_pager_slides_html [] = '<img  src="' . $video_thumb_url . '"  class="propiedad-viewer-slideshow-selector propiedad-viewer-slideshow-selector-0"/>';
             $i = 1;
         }
         
+        
         $property_image_thumbs_paths [] = array("thumb" =>  $image_helper->resize($property->main_photo, "449", "254"), "image" => $property->main_photo);
         $property_pager_slides_html[] = '<img  src="' . $image_helper->resize($property->main_photo, "449", "254"). '"  class="propiedad-viewer-slideshow-selector propiedad-viewer-slideshow-selector-' . $i . '"/>';
         
+        $i++;
+        
         foreach ($property_photos as $property_photo) {
 
-
-
             if ($photo_path = $image_helper->resize($property_photo->path, "449", "254")) {
-
+                
                 $property_image_thumbs_paths [] = array("thumb" => $photo_path, "image" => $property_photo->path);
-
                 $property_pager_slides_html [] = '<img  src="' . $photo_path . '"  class="propiedad-viewer-slideshow-selector propiedad-viewer-slideshow-selector-' . $i . '"/>';
                 $i++;
             }
