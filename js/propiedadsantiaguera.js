@@ -919,7 +919,7 @@ nowLoadingBehaviour = function(selector)
 {
 
 
-    $(selector).fancybox({type: 'ajax', href: "/ajax/view_loader/get_view/blocks/buffering"});
+    $(selector).fancybox({content: "<p></p>", title: "Espere mientras procesamos su información", padding:0, showCloseButton: false});
 }
 
 Overlay = function (selector, optionalClosebuttonSelector,preventDefault)
