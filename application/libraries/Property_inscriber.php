@@ -111,6 +111,7 @@ class Property_inscriber implements IProperty_inscriber {
             if ($is_main_photo) {
                 $property_object->main_photo = $photo_filename;
                 $i++;
+                continue;    
             }
 
 
@@ -119,8 +120,6 @@ class Property_inscriber implements IProperty_inscriber {
             $photo->path = $photo_filename;
             $photo->type = Environment_vars::$maps['file_type_to_id']['photo'];
             $photo->save();
-
-
 
             $photos[] = $photo;
         }
