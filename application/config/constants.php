@@ -43,7 +43,7 @@ define('THIRTY_ONE_DAYS_IN_SECONDS', 60 * 60 * 24 * 31);
 define('FIVE_HOURS_IN_SECONDS', 1 * 60 * 60 * 5);
 define('FIVE_DAYS_IN_SECONDS', 60 * 60 * 24 * 5);
 define('ONE_DAY_IN_SECONDS', 60 * 60 * 24);
-define('PHOTOS_PER_PROPERTY', 15);
+define('PHOTOS_PER_PROPERTY', 20);
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
