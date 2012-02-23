@@ -398,6 +398,7 @@ EOD;
 
 
                 $extra_info['errors'] = $e->getMessage();
+                
                 $this->add_property_error($extra_info);
                 return;
             }
@@ -689,6 +690,7 @@ EOD;
         $repopulateForm['walk_in_closet'] = $this->input->post('walk-in-closet');
         $repopulateForm['tinaco'] = $this->input->post('tinaco');
         $repopulateForm['property_type'] = $this->input->post('property-type');
+        $repopulateForm['property_title'] = $this->input->post('property-title');
         $repopulateForm['property_neighborhood'] = $this->input->post('property-neighborhood');
         $repopulateForm['property_livingrooms'] = $this->input->post('property-livingrooms');
         $repopulateForm['property_address'] = $this->input->post('property-address');
