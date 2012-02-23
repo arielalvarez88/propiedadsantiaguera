@@ -3,6 +3,9 @@ $language = Language_handler::get_user_prefered_language();
 
 $this->lang->load("front_properties_pager",$language);
 
+$image_helper = new Image_helper();
+
+
 ?>
 <?php $section = isset($section) ? $section : ''; ?>
 <?php $is_front_page = $section == "" || $section == "front-" ? true : false; ?>
@@ -53,7 +56,7 @@ $this->lang->load("front_properties_pager",$language);
                         <?php $number_of_printed_rows = (int) ($i/$properties_per_row);?>
                             
                         <div  class="properties-pager-property <?php echo $i % $properties_per_row == 0 || $number_of_properties == 1 || $i == $number_of_properties ? 'last' : ''; ?>">
-                            <a class="no-decoration-anchor" href="<?php base_url();?>/propiedades/ver/<?php echo $property->id; ?>"><img class="properties-pager-property-screenshot" alt="property-photo" src="<?php echo $property->main_photo; ?>"/></a>
+                            <a class="no-decoration-anchor" href="<?php base_url();?>/propiedades/ver/<?php echo $property->id; ?>"><img class="properties-pager-property-screenshot" alt="property-photo" src="<?php echo $image_helper->resize($property->main_photo, 164, 248,  Environment_vars::$paths['properties_photos_thumbs_dir_path'] ); ?>"/></a>
                             <a class="no-decoration-anchor" href="<?php base_url();?>/propiedades/ver/<?php echo $property->id; ?>"><h2 class="properties-pager-property-title"><?php echo $property->title; ?></h2></a>
                             <p class="properties-pager-property-type">
                                 <span class="bold"><?php echo capitalize(Environment_vars::$maps['ids_to_text']['property_types'][$property->type]); ?></span>
