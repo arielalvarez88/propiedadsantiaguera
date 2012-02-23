@@ -474,7 +474,13 @@ $class_to_hide_field_if_editing = $editing? 'hidden' :  '';
                     <input id="property-form-description-features-electric-plant" type="checkbox" name="electric-plant" <?php echo isset($electric_plant) && $electric_plant ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-electric-plant">Planta eléctrica </label> 
                 </li>
-        <li>
+                
+                <li>
+                    <input id="property-form-description-features-basic-services" type="checkbox" name="basic-services" <?php echo isset($basic_services) && $basic_services? 'checked="on"' : ''; ?>/>
+                    <label for="property-form-description-features-basic-services">Servicios B&aacute;sicos Pre-instalados</label> 
+                </li>
+                
+                <li>
                     <input id="property-form-description-features-tinaco" type="checkbox" name="tinaco" <?php echo isset($tinaco) && $tinaco? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-tinaco">Tinaco</label> 
                 </li>
@@ -538,7 +544,7 @@ $class_to_hide_field_if_editing = $editing? 'hidden' :  '';
                     <?php endif; ?>
 
                     <div>
-                        <input value="Buscar" type="file" name="property-photo-<?php echo $i; ?>"/>
+                        <input  type="file" name="property-photo-<?php echo $i; ?>"/>
 
                         <?php if ($property_id && isset($property_photos[$zero_based_index])): ?>
                             <a class="no-decoration-anchor" href="/propiedades/delete_property_photo/<?php echo $property_id; ?>/<?php echo $property_photos[$zero_based_index]->id; ?>"><span class="delete-icon"></span>Eliminar Foto</a>

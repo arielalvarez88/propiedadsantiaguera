@@ -357,16 +357,23 @@ EOD;
     public function validate($edit= false, $property_id_to_edit=0) {
 
         $filtered_post = $this->input->post();
-
+        
+        
+        if(!$filtered_post)
+        {
+                 $extra_info['errors'] = utf8_decode("Ha ocurrido un error, por favor inténtelo más tarde");
+                $this->add_property_error($extra_info);
+                return;
+        }
+    
         $property_inscriber_handler = $edit ? new Property_editor() : new Property_inscriber();
         $property_info_getter = new Property_info_getter_from_post($filtered_post);
         $properties_photos_filenames = array();
         $property_condition_for_validation_purposes = '';
 
-
-
-
-
+        
+        
+        
         $type_validation = "property_" . Environment_vars::$maps['ids_to_text']['property_types_validation'][$filtered_post['property-type']];
 
         $sell_rent_validation = "property_" . Environment_vars::$maps['ids_to_text']['sell_rent_validation'][$filtered_post['property-condition']];
