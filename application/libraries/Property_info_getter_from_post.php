@@ -149,7 +149,7 @@ class Property_info_getter_from_post implements IProperty_info_getter {
         
         $photos_inputs_names = array();
         
-        for ($i = 1; $i <= 15; $i++) {                        
+        for ($i = 1; $i <= PHOTOS_PER_PROPERTY; $i++) {                        
             $photos_inputs_names[] = "property-photo-" . $i;
         }
         $photos_inputs_names[] = "property-main-photo";
