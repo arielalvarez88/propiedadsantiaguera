@@ -460,7 +460,7 @@ formRecolectorButtonBehaviour = function(event,formWrapper,recivingScriptUrl,pos
     if(ajax)
     {
         $.post(recivingScriptUrl, info ,function(response){                                
-                
+            
             postCallback(response);
         },'json');
                     
@@ -517,7 +517,7 @@ Form.prototype.form;
 Form.prototype.cleanButton;        
 Form.prototype.sendButton;
 Form.prototype.recivingScriptUrl;
-Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,alertMessageCallbackFunction){
+Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,alertMessageCallbackFunction,showNowLoadingBool){
     
     var thisObject =this;
     this.form = $(formWrapperSelector);
@@ -528,9 +528,7 @@ Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanBut
     this.recivingScriptUrl = recivingScriptUrl;
     
     this.form.append('<img class="hidden" src="/images/common/buffering.gif" alt="Espere por favor"/>');
-    
-    nowLoadingBehaviour(sendButtonSelector);
-    
+        
     thisObject.setClearButtonBehaviour();
     
     
@@ -782,7 +780,7 @@ initializeForms = function(){
         
     });
 
-    var propertyForm = new Form('#property-form','#property-form-send-button','#property-form-clear-button');
+    var propertyForm = new Form('#property-form','#property-form-send-button','#property-form-clear-button',false,'',function(){},true);
     
     var givePosts = new Form('#give-posts-to-agents-overlay', '#give-posts-to-agents-overlay-save-button', '', true, '/miembros/give_posts',  function(response){
         printCallbackMessageInContainer(response,"#give-posts-to-agents-overlay .info-messages","#give-posts-to-agents-overlay .error-messages");
@@ -917,9 +915,8 @@ Tab = function(tabsCategoriesSelector, tabsBodiesSelector,tabsCategoriesAtrribut
 }
 
 
-nowLoadingBehaviour = function(selector)
+NowLoadingBehaviour = function(selector)
 {
-
 
     $(selector).fancybox({content: '<div style="text-align:center;"><img src="/images/common/buffering.gif" alt="Espere por favor"/></div>', title: "Espere mientras procesamos su información", padding:0, showCloseButton: false});
 }
@@ -2048,6 +2045,10 @@ moveMetasToHead = function (){
     $("head").append($('.move-to-head').html());
 }
 
+InitializeNowLoadingBehaviour = function(){
+    propertyForm = new NowLoadingBehaviour("#property-form-send-button");
+}
+
 initializeEvents= function(){
     moveMetasToHead();
     initilizeSlideShows();
@@ -2072,6 +2073,7 @@ initializeEvents= function(){
     initializeProvinceChoosers();
     initializeGetParamatersAdder();
     initializeTabs();
+    InitializeNowLoadingBehaviour();
 };
 
 
@@ -2082,9 +2084,8 @@ $(document).ready(function(){
     if($.browser.msie)
     {
         $('head').append(ieCssFixes);
-    }    
-    
-    
+    }
+        
     initializeEvents();
 /*comentario*/    
 });
