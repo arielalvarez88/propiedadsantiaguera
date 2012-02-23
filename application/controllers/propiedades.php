@@ -690,7 +690,7 @@ EOD;
         $repopulateForm['tinaco'] = $this->input->post('tinaco');
         $repopulateForm['property_type'] = $this->input->post('property-type');
         $repopulateForm['property_neighborhood'] = $this->input->post('property-neighborhood');
-        $repopulateForm['property_livingrooms'] = $this->input->post('property-neighborhood');
+        $repopulateForm['property_livingrooms'] = $this->input->post('property-livingrooms');
         $repopulateForm['property_address'] = $this->input->post('property-address');
         $repopulateForm['property_condition'] = $this->input->post('property-condition');
         $repopulateForm['property_sell_price_us'] = $this->input->post('property-sell-price-us');
