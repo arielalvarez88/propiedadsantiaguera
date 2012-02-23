@@ -23,18 +23,23 @@ class Image_helper {
         $filename_in_pieces = explode("/", $source_image_path);
         $filename = $filename_in_pieces[count($filename_in_pieces) - 1];
         $new_file_name = $width . '_' .$height . '_' . $filename ;
-        $new_file_path = $new_image_path.$filename;
+        $new_file_path = $new_image_path.$new_file_name;
         
+        
+        
+          if($this->file_helper->file_exists($new_file_path))
+                return $new_file_path;
+        
+
+          
         $this->config['source_image'] = realpath("./" . $source_image_path);
-        $this->config['new_image'] = $new_file_path;
+        $this->config['new_image'] = realpath("./".$new_image_path) . '/'.$new_file_name;
         $this->config['width'] = $width;
         $this->config['height'] = $height;
         
         
         
-        
-        if($this->file_helper->file_exists(realpath("./".$new_file_path)))
-                return $new_file_path;
+      
         
 
         $this->config['maintain_ratio'] = $maintain_ratio;
@@ -47,7 +52,7 @@ class Image_helper {
 
         if ($this->CI_Helper->image_lib->resize())
             return $new_file_path;
-
+  
         return false;
     }
 
