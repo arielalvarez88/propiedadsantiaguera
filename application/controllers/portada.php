@@ -14,7 +14,7 @@ require_once realpath("./application/libraries/User_factory.php");
 class Portada extends CI_Controller {
     public function index()
     {
-        
+        $this->output->cache(180);
         $data['header'] = $this->load->view('blocks/header','',true);        
         $data['topLeftSide'] = $this->load->view('blocks/frontPageSlideShow','',true);
         $data['topLeftSide'].= $this->load->view('blocks/basic_filter','',true);
