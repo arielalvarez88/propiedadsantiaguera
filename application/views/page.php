@@ -1,6 +1,5 @@
 <?php
 $loggedUser = User_handler::getLoggedUser();
-
 $thisPage = str_replace('/', '-', uri_string());
 $can_create_properties = !$loggedUser instanceof IUser_requests_only;
 $can_create_agents = $loggedUser instanceof Company_user;
@@ -358,8 +357,7 @@ require_once realpath("./application/libraries/User_factory.php");
         <script type="text/javascript" src="<?php base_url(); ?>/js/jquery.fancybox-1.3.4.js" type="text/javascript" ></script>
         <script type="text/javascript" src="<?php base_url(); ?>/js/jquery.validate.min.js" type="text/javascript" ></script>
         <script type="text/javascript" src="<?php base_url(); ?>/js/tiny_mce/tiny_mce.js" type="text/javascript" ></script>
-
-
+        <script src="<?php echo base_url();?>/js/jquery.scrollTo-min.js"></script>
 
         <script type="text/javascript" src="<?php base_url(); ?>/js/propiedadsantiaguera.js" type="text/javascript" ></script>
         <script type="text/javascript" src="http://use.typekit.com/awd1xwd.js"></script>
