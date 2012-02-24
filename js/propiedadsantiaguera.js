@@ -345,26 +345,26 @@ JqueryCycleAjaxPager = function(containerSelector,nextButtonSelector,previousBut
             
           
             
-        //            prev:   previousPagerGroupSelector, 
-        //            next:   nextPagerGroupSelector, 
+            //            prev:   previousPagerGroupSelector, 
+            //            next:   nextPagerGroupSelector, 
             
-        //            after: function(curr,next,opts){                          
-        //                hideNextorPrevious(curr,next,opts,nextPagerGroupSelector,previousPagerGroupSelector);
-        //            },                        
-        //            activePagerClass: 'selected-pager-group',
+            //            after: function(curr,next,opts){                          
+            //                hideNextorPrevious(curr,next,opts,nextPagerGroupSelector,previousPagerGroupSelector);
+            //            },                        
+            //            activePagerClass: 'selected-pager-group',
             
         });
-    //        
-    //         if(thisObject.numberOfPagerGroups > 1)
-    //            {
-    //                
-    //                thisObject.previousPagerGroup.hide();
-    //            }
-    //            else
-    //                {
-    //                    thisObject.nextPagerGroup.hide();
-    //                    thisObject.previousPagerGroup.hide();
-    //                }
+        //        
+        //         if(thisObject.numberOfPagerGroups > 1)
+        //            {
+        //                
+        //                thisObject.previousPagerGroup.hide();
+        //            }
+        //            else
+        //                {
+        //                    thisObject.nextPagerGroup.hide();
+        //                    thisObject.previousPagerGroup.hide();
+        //                }
         
     })();
     
@@ -395,9 +395,13 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
         defaultEvent.preventDefault();
         var elementValue = thisObject.element.val() || thisObject.element.is(":checked")? thisObject.element.val() : false;
         
-        thisObject.elementsToShowOrHide.hide();
-       
-       
+        
+        
+        var requiredElements = thisObject.elementsToShowOrHide.filter(".required");
+        requiredElements.removeClass("required");
+        requiredElements.addClass("hidden-required");
+        
+        thisObject.elementsToShowOrHide.hide();              
         
         if(emptyElementsValuesWhenHidding)
         {
@@ -406,9 +410,18 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
             
       
         if(elementValue)
-            $(valuesToSelectorsToShowMap[elementValue]).show();
+            {
+                var requiredHiddenElements = $(valuesToSelectorsToShowMap[elementValue] ).filter(".hidden-required").removeClass(".hidden-required");
+                requiredHiddenElements.addClass("required");
+                $(valuesToSelectorsToShowMap[elementValue]).show();
+                
+            }
+            
+            
         else 
         {
+            var requiredHiddenElements = $(valuesToSelectorsToShowMap['selector'] + " .hidden-required").removeClass(".hidden-required");
+                requiredHiddenElements.addClass("required");
             $(valuesToSelectorsToShowMap['selector']).show();
             
         }
@@ -423,9 +436,9 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
 };
 
 
-formRecolectorButtonBehaviour = function(event,formWrapper,recivingScriptUrl,postCallback,ajax){
+formRecolectorButtonBehaviour = function(event,formWrapper,options){
     
-            
+    
     event.preventDefault();
                 
     var info = {};
@@ -434,20 +447,7 @@ formRecolectorButtonBehaviour = function(event,formWrapper,recivingScriptUrl,pos
             
             
 
-    $(formWrapper).validate({
-        errorContainer: "#error-messages",
-        errorLabelContainer: "#error-messages"
-        
-    });
-    
-    
-    
-    var validationPassed =  $(formWrapper).valid();
-    
-    
-          
-    if(!validationPassed)
-        return false;
+  
             
     for(i = 0; i < inputs.length; i++)
     {
@@ -457,11 +457,10 @@ formRecolectorButtonBehaviour = function(event,formWrapper,recivingScriptUrl,pos
         
     }
             
-    if(ajax)
+    if(options.ajax)
     {
-        $.post(recivingScriptUrl, info ,function(response){                                
-            
-            postCallback(response);
+        $.post(options.recivingScriptUrl, info ,function(response){            
+            options.ajaxCallbackFunction(response);
         },'json');
                     
     }
@@ -478,7 +477,14 @@ formRecolectorButtonBehaviour = function(event,formWrapper,recivingScriptUrl,pos
 
 
 
-Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,alertMessageCallbackFunction){
+Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector,options){
+             
+    //Options:
+    // name: validatorOptions, type: json, desc: json with options to pass to de validator plugin.   
+    // name: recivingScriptUrl, type: string
+    // // name: ajax, type: bool
+    //name: ajaxCallbackFunction, type: function
+   
     
     var thisObject = this;
     
@@ -492,9 +498,7 @@ Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector, a
     //    
     //    var i=0;
     
-    thisObject.init(formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,alertMessageCallbackFunction);
-    
-    
+    thisObject.init(formWrapperSelector, sendButtonSelector, cleanButtonSelector, options);
     
 };
 
@@ -517,15 +521,16 @@ Form.prototype.form;
 Form.prototype.cleanButton;        
 Form.prototype.sendButton;
 Form.prototype.recivingScriptUrl;
-Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanButtonSelector, ajax, recivingScriptUrl,alertMessageCallbackFunction,showNowLoadingBool){
+Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanButtonSelector, options){
     
+    options = options? options : {ajax: false, ajaxCallbackFunction: function(){}};
     var thisObject =this;
     this.form = $(formWrapperSelector);
     
     
     this.cleanButton = $(cleanButtonSelector);        
     this.sendButton = $(sendButtonSelector);
-    this.recivingScriptUrl = recivingScriptUrl;
+    this.recivingScriptUrl = typeof options.recivingScript == "string" ? options.recivingScript : '';
     
     this.form.append('<img class="hidden" src="/images/common/buffering.gif" alt="Espere por favor"/>');
         
@@ -533,8 +538,29 @@ Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanBut
     
     
     bindEvent(thisObject.sendButton, "click", function(event){                        
-                
-        formRecolectorButtonBehaviour(event, formWrapperSelector, recivingScriptUrl, alertMessageCallbackFunction,ajax);
+        
+            
+       
+        
+        
+        var validator = $(formWrapperSelector).validate(options.validatorOptions);
+    
+        var validForm=  $(formWrapperSelector).valid();
+               
+        if(!validForm)
+        {
+            event.preventDefault(); 
+            
+            if(typeof options.validatorOptions.errorLabelContainer == "string")
+                $.scrollTo(options.validatorOptions.errorLabelContainer ,800);
+            
+            return false;
+            
+        }
+            
+        
+        $.fancybox({content: '<div style="text-align:center;"><img src="/images/common/buffering.gif" alt="Espere por favor"/></div>', title: "Espere mientras procesamos su información", padding:0, showCloseButton: false});
+        formRecolectorButtonBehaviour(event, formWrapperSelector,options);
         
     });
 
@@ -562,9 +588,9 @@ ConditionalForm = function(formWrapperSelector, conditionalBoolReturningFunction
             formRecolectorButtonBehaviour(event, formWrapperSelector, recivingScript, alertMessageCallbackFunction,ajax);
         }
         else
-            {
-                event.preventDefault();
-            }
+        {
+            event.preventDefault();
+        }
                 
                 
                 
@@ -735,7 +761,7 @@ printCallbackMessageInContainer = function(response, successMessageContainer, er
         if(response.message)
             $(successMessageContainer).show().html(response.message);
         else
-             $(successMessageContainer).hide();
+            $(successMessageContainer).hide();
          
         $(errorMessageContainer).hide();
             
@@ -754,49 +780,149 @@ initializeForms = function(){
     
     initializeInputsWithDefaultText();
 
+  
    
     var  signupForm = new Form('#signup-form-container #signup-form','','#signup-form-container #signup-form-clear-button');
-    var forgotPassword = new Form('#password-reset-form', '#password-reset-submit', '', true, '/usuario/password_reset_request', function(response){
-    
-        new alertMessageCallback(response, 'Email enviado', 'Error trate luego').getMessage();
+    var forgotPassword = new Form('#password-reset-form', '#password-reset-submit', '',{ajax: true, recivingScriptUrl: "/usuario/password_reset_request", ajaxCallbackFunction: function(response){
+            new alertMessageCallback(response, 'Email enviado', 'Error trate luego').getMessage();    
+        }
+    });                
         
+    var loginForm = new Form('#login-form', '#login-submit', '',{ajax: true, recivingScriptUrl: '/usuario/login', ajaxCallbackFunction: function(response){
+        
+        
+            if(response.success)
+            {
+
+                window.location.href = window.location.href;
+
+            }
+            else
+            {
+                alert('Email/Password incorrectos');
+
+            }
+
+        
+        } 
     });
     
-    var loginForm = new Form('#login form', '#login-submit', '', true, '/usuario/login', function(response){
+    
+    
+      
+    
+    var propertyValidationOptions = {
+        rules: {            
+            "property-title": {      
+                
+                maxlength: 41
+            },
+            "property-address" : {
+                required: true
+            },
+            "property-terrain" : {
+                
+                number: true
+                
+            },
+            "property-construction" : {
+                
+                number: true
+                
+            },
+            "property-stories" : {
+
+                number: true
+                
+            },
+            "property-bedrooms" : {
+
+                number: true
+                
+            },
+            "property-bathrooms" : {
+
+                number: true
+                
+            },
+            "property-livingrooms" : {
+
+                number: true
+                
+            },
+            "property-kitchens" : {
+
+                number: true
+                
+            },
+            "property-parkings" : {
+
+                number: true
+                
+            }
+         
+        },
+        messages: {
+            "property-title":{
+                maxlength: jQuery.validator.format("El campo Título debe contener mas de {0} caracteres <br/>"),                
+            },
+            "property-address":{
+                required: "El campo Dirección es requerido<br/>"
+            },
+            "property-terrain":{
+                number: "El campo Terreno debe contener solo números. (representa los mt2)<br/>"
+            },
+            "property-construction":{
+                number: "El campo Construcción debe contener solo números. (representa los mt2)<br/>"
+            },
+            "property-stories":{
+                number: "El campo Niveles debe contener solo números.<br/>"
+            },
+            "property-bedrooms":{
+                number: "El campo Habitaciones debe contener solo números.<br/>"
+            },
+            "property-bathrooms":{
+                number: "El campo Baños debe contener solo números.<br/>"
+            },
+            "property-livingrooms":{
+                number: "El campo Salas debe contener solo números<br/>"
+            },
+            "property-kitches":{
+                number: "El campo Cocinas debe contener solo números.<br/>"
+            },
+            "property-parkings":{
+                number: "El campo Parqueos debe contener solo números.<br/>"
+            }
+     
+        },                
+        errorLabelContainer: "#property-form-error-container"
         
-        
-        if(response.success)
-        {
-            
-            window.location.href = window.location.href;
+    }
+
+  
+    var propertyForm = new Form('#property-form','#property-form-send-button','#property-form-clear-button',{validatorOptions: propertyValidationOptions});
+    
+    
+    
+   
+    var givePosts = new Form('#give-posts-to-agents-overlay', '#give-posts-to-agents-overlay-save-button', '', {ajax: true, recivingSript: '/miembros/give_posts', ajaxCallbackFunction:  function(response){
+            printCallbackMessageInContainer(response,"#give-posts-to-agents-overlay .info-messages","#give-posts-to-agents-overlay .error-messages");
+            if(response.success)
+                window.location.href= window.location.href;
         
         }
-        else
-        {
-            alert('Email/Password incorrectos');
+    });
+
+    
+    
+    var searchPropertyByRefNumber  = new Form("#overlay-search-by-ref-number", "#overlay-search-by-ref-number-button", "");
             
-        }
-
-        
-    });
-
-    var propertyForm = new Form('#property-form','#property-form-send-button','#property-form-clear-button',false,'',function(){},true);
-    
-    var givePosts = new Form('#give-posts-to-agents-overlay', '#give-posts-to-agents-overlay-save-button', '', true, '/miembros/give_posts',  function(response){
-        printCallbackMessageInContainer(response,"#give-posts-to-agents-overlay .info-messages","#give-posts-to-agents-overlay .error-messages");
-        if(response.success)
-            window.location.href= window.location.href;
-        
-    });
-
-    
-    var searchPropertyByRefNumber  = new Form("#overlay-search-by-ref-number", "#overlay-search-by-ref-number-button", "", false, "/propiedades/buscar");
-    var property_contact = new Form("#property-contact-form","#property-contact-submit","",true,"/ajax/property_contact_emailer",function(response){
-        
-        
+    var property_contact = new Form("#property-contact-form","#property-contact-submit","",{ajax: true, recingScriptUrl: "/ajax/property_contact_emailer", ajaxCallbackFunction: function(response){
         printCallbackMessageInContainer(response, '#property-contact-info', "#property-contact-errors");
-    });
+    }
+});
 }
+
 
 appendHtml = function (selector,newHtml)
 {
@@ -866,9 +992,9 @@ initializeViewLoaderElements = function(){
   
 
     var forgotPassword = new ViewLoaderElement('#login-password-reset-button','click',[{
-        value: '', 
-        url:'/ajax/form_getter/passwordRecovery'
-    }],'#login','a');
+            value: '', 
+            url:'/ajax/form_getter/passwordRecovery'
+        }],'#login','a');
 
 
 
@@ -918,7 +1044,7 @@ Tab = function(tabsCategoriesSelector, tabsBodiesSelector,tabsCategoriesAtrribut
 NowLoadingBehaviour = function(selector)
 {
 
-    $(selector).fancybox({content: '<div style="text-align:center;"><img src="/images/common/buffering.gif" alt="Espere por favor"/></div>', title: "Espere mientras procesamos su información", padding:0, showCloseButton: false});
+    
 }
 
 Overlay = function (selector, optionalClosebuttonSelector,preventDefault)
@@ -953,6 +1079,7 @@ Overlay = function (selector, optionalClosebuttonSelector,preventDefault)
         
     
 }
+
 initializeInputsWithDefaultText = function(){
     var loginEmail = new InputsWithDefaultText('#login-email', 'Email');
     var loginPassword = new InputsWithDefaultText('#login-password', 'Contraseña', '#login-password-clear');
@@ -1095,37 +1222,37 @@ function commify(num) {
 
 IFilter = function (){
 
-    };
+};
 IFilter.getMaxPrice= function(){};
 IFilter.getMinPrice= function(){};
 
 
 ProvinceChooser = function(provinceChooserSelector,neighborhoodsSelectsClass,neighborhoodsSelectName,neighborhoodsAttributeWithProvinceId){
         
-        var thisObject = this;
-        this.provinceChosser = $(provinceChooserSelector);
-        this.neighborhoodsChoosers = $(neighborhoodsSelectsClass);
+    var thisObject = this;
+    this.provinceChosser = $(provinceChooserSelector);
+    this.neighborhoodsChoosers = $(neighborhoodsSelectsClass);
             
             
-        bindEvent(provinceChooserSelector, "change", function(){
-            var selectedProvinceId = thisObject.provinceChosser.val();
+    bindEvent(provinceChooserSelector, "change", function(){
+        var selectedProvinceId = thisObject.provinceChosser.val();
         
 
-            if(selectedProvinceId != "null")
-            {
-                thisObject.neighborhoodsChoosers.hide();
-                thisObject.neighborhoodsChoosers.attr("name", "");                        
+        if(selectedProvinceId != "null")
+        {
+            thisObject.neighborhoodsChoosers.hide();
+            thisObject.neighborhoodsChoosers.attr("name", "");                        
         
-        var searchString = neighborhoodsSelectsClass + '['+ neighborhoodsAttributeWithProvinceId+'="' + selectedProvinceId + '"]';
-                var selectedNeighborhoodChooser = $(searchString);
-                selectedNeighborhoodChooser.show();
-                selectedNeighborhoodChooser.attr("name", neighborhoodsSelectName);                        
-            }
-        });
+            var searchString = neighborhoodsSelectsClass + '['+ neighborhoodsAttributeWithProvinceId+'="' + selectedProvinceId + '"]';
+            var selectedNeighborhoodChooser = $(searchString);
+            selectedNeighborhoodChooser.show();
+            selectedNeighborhoodChooser.attr("name", neighborhoodsSelectName);                        
+        }
+    });
             
          
         
-    };
+};
 
 
 Filter = function(filterContainerSelector,sliderChangerElementSelector, provinceChooser, neighborhoodChoosersClass,sliderContainerSelector, searchButtonSelector, valuesToSliderParameters, sliderMinValue,sliderMaxValue,sliderMinInitialValue,sliderMaxInitialValue,step,minValueDisplay,maxValueDisplay,submitUrl){
@@ -1354,15 +1481,15 @@ InterestsCalculator = function (mountInputSelector, rateInputSelector, yearsInpu
         var months = Number(yearsInString) * 12;
         
         if(!isNaN(months))
-            {
-                $(monthsDisplays).html(months + " meses");
-            }
+        {
+            $(monthsDisplays).html(months + " meses");
+        }
         
     };
     
 
     
-   bindEvent(thisObject.yearsInput, "keyup", thisObject.showMonths);
+    bindEvent(thisObject.yearsInput, "keyup", thisObject.showMonths);
     
 
     this.calculateEvent = function(event){
@@ -1498,7 +1625,7 @@ initializeHiderAndShowerElement = function(){
         1:'.sell-condition-field', 
         2 : ".rent-condition-field", 
         3 : ".rent-condition-field, .sell-condition-field"
-    }, "ul #property-form-description-column4 li", false, "change");
+    }, "ul #property-form-description-column4 li", true, "change");
     var signupChooser = new HiderAndShowerElement('#new-user-type-value',{
         1: '.agent-particular-field', 
         2:'.company-field', 
@@ -1881,16 +2008,14 @@ PrizeCalculator = function(prizeResultDisplay,postNumberDisplay,postNumber,planP
 initializePrizeCalculator = function(){
 
     var numberOfPostToBuyCalculator = new PrizeCalculator ("#buy-form-buy-result", "#buy-form-post-number-display",  "#buy-form-post-number", "#buy-form-plan-price", "#buy-form-plan-factor");
-    
 
 };
 
 
 initiazlizeStepByStepForms = function(){
-    
-    
+        
     var buyFormSteps = [new StepOfStepByStepForm("#buy-form", "#buy-form-step-one", "#buy-form-step-one-indicator","#buy-form-step-one-submit-button",'',"#buy-form-step-one-error-messages"),
-    new StepOfStepByStepForm("#buy-form", "#buy-form-step-two", "#buy-form-step-two-indicator"),
+        new StepOfStepByStepForm("#buy-form", "#buy-form-step-two", "#buy-form-step-two-indicator"),
 
     ];
     var buyForm = new StepByStepForm(buyFormSteps);
@@ -1924,19 +2049,19 @@ AcceptTermsButton = function(conditionalCheckbox,buttonSelector,eventName,eventH
 
 initializeConditionalForm = function(){
     
-        var buyForm = new ConditionalForm("#buy-form", function(){
-            var conditionsAccepted =  $("#buy-form-accept-terms").is(":checked");
+    var buyForm = new ConditionalForm("#buy-form", function(){
+        var conditionsAccepted =  $("#buy-form-accept-terms").is(":checked");
             
-            if(!conditionsAccepted)
-                {
-                    alert("Debe acceptar los terminos de uso para comprar proseguir con el pago.");
-                    return false;
-                }
+        if(!conditionsAccepted)
+        {
+            alert("Debe acceptar los terminos de uso para comprar proseguir con el pago.");
+            return false;
+        }
                 
-            return true;
-        }, "#buy-form-buy-button", '', false);
+        return true;
+    }, "#buy-form-buy-button", '', false);
    
-    };
+};
 
 initializePrintButtons = function(){
     var printButtons = $('.print-button');
@@ -1959,13 +2084,13 @@ GetParameterAdder = function(element,event,htmlAttributeWithName,optionalStaticV
         var parameterName = thisObject.element.attr(htmlAttributeWithName) + "=";
         var parameterValue ='';
         if(typeof optionalStaticValue == "undefined")
-            {
-                 parameterValue =  thisObject.element.attr("type") == "radio" ||  thisObject.element.attr("type") == "checkbox"? thisObject.element.is(":checked") : thisObject.element.val();
-            }
-            else
-                {
-                    parameterValue = optionalStaticValue;
-                }
+        {
+            parameterValue =  thisObject.element.attr("type") == "radio" ||  thisObject.element.attr("type") == "checkbox"? thisObject.element.is(":checked") : thisObject.element.val();
+        }
+        else
+        {
+            parameterValue = optionalStaticValue;
+        }
         var actualLocation = window.location.href ;
         
         
@@ -1978,24 +2103,24 @@ GetParameterAdder = function(element,event,htmlAttributeWithName,optionalStaticV
         if(parameterAlreadyInGet)
         {
             
-                var regularExpString  = parameterName + "([a-z A-Z 0-9 _]*)";
+            var regularExpString  = parameterName + "([a-z A-Z 0-9 _]*)";
                 
-                var regularExp = new RegExp(regularExpString);
+            var regularExp = new RegExp(regularExpString);
                 
                 
                 
-                window.location.href = window.location.href.replace(regularExp, parameterName + parameterValue);
+            window.location.href = window.location.href.replace(regularExp, parameterName + parameterValue);
                 
         }
             
-       else
-           {
-               var actualLocationHasGetParameters = actualLocation.indexOf("?") != -1;
+        else
+        {
+            var actualLocationHasGetParameters = actualLocation.indexOf("?") != -1;
         
 
         
-                window.location.href += actualLocationHasGetParameters ?  "&" + parameterName + parameterValue : "?" + parameterName + parameterValue;
-           }
+            window.location.href += actualLocationHasGetParameters ?  "&" + parameterName + parameterValue : "?" + parameterName + parameterValue;
+        }
         
         
             
@@ -2025,13 +2150,14 @@ initializeWysiwyg = function(){
 
     });
 }
-  initializeProvinceChoosers = function(){
-      var propertyFormProvinceChooser = new ProvinceChooser("#property-form-description-province", ".property-form-neigborhoods", "property-neighborhood", "data-province");
-  }
+
+initializeProvinceChoosers = function(){
+    var propertyFormProvinceChooser = new ProvinceChooser("#property-form-description-province", ".property-form-neigborhoods", "property-neighborhood", "data-province");
+}
   
-  initializeGetParamatersAdder =function (){
-      var orderByPrice = new GetParameterAdder("#properties-search-results-pager-order-by-options", "change", "data-name");
-  }
+initializeGetParamatersAdder =function (){
+    var orderByPrice = new GetParameterAdder("#properties-search-results-pager-order-by-options", "change", "data-name");
+}
 
 initializeTabs = function()
 {
@@ -2045,9 +2171,6 @@ moveMetasToHead = function (){
     $("head").append($('.move-to-head').html());
 }
 
-InitializeNowLoadingBehaviour = function(){
-    propertyForm = new NowLoadingBehaviour("#property-form-send-button");
-}
 
 initializeEvents= function(){
     moveMetasToHead();
@@ -2073,7 +2196,7 @@ initializeEvents= function(){
     initializeProvinceChoosers();
     initializeGetParamatersAdder();
     initializeTabs();
-    InitializeNowLoadingBehaviour();
+    
 };
 
 
@@ -2087,7 +2210,7 @@ $(document).ready(function(){
     }
         
     initializeEvents();
-/*comentario*/    
+    /*comentario*/    
 });
 
-
+                
