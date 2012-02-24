@@ -178,28 +178,6 @@ $config = array(
             'rules' => 'required'
         )
     ),
-    "property_sell" => array(
-        array(
-            'field' => 'property-sell-price-dr',
-            'label' => 'Precio de Venta $RD',
-            'rules' => 'required|numeric|max_length[9]')
-    ),
-    "property_rent" => array(
-        array(
-            'field' => 'property-rent-price-dr',
-            'label' => 'Precio de Alquiler $RD',
-            'rules' => 'required|numeric|max_length[9]')
-    ),
-    "property_sell_rent" => array(
-        array(
-            'field' => 'property-rent-price-dr',
-            'label' => 'Precio de Alquiler $RD',
-            'rules' => 'required|numeric|max_length[9]'),
-        array(
-            'field' => 'property-sell-price-dr',
-            'label' => 'Precio de Venta $RD',
-            'rules' => 'required|numeric|max_length[9]')
-    ),
     "property_house" => array(
         array(
             'field' => 'property-terrain',
