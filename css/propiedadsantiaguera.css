@@ -236,7 +236,10 @@ body, html
 /************ Login block end *******************/
 
 
-
+#buffering
+{
+    background-color: #f0f0f0;
+}
 /***** article-viewer ****/
 #article-viewer-container {
     width: 565px;
@@ -4895,6 +4898,10 @@ span.required{
     color: red;
 }
 
+.required-text
+{
+    color: red;
+}
 .required-missing{
     border: 1px solid red;
 }
