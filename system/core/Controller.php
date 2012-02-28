@@ -1,7 +1,4 @@
-<?php
-
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * CodeIgniter
  *
@@ -15,6 +12,7 @@ if (!defined('BASEPATH'))
  * @since		Version 1.0
  * @filesource
  */
+
 // ------------------------------------------------------------------------
 
 /**
@@ -29,75 +27,55 @@ if (!defined('BASEPATH'))
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/general/controllers.html
  */
+
+
 class CI_Controller {
 
-    private static $instance;
+	private static $instance;
 
-    /**
-     * Constructor
-     */
-    public function __construct() {
-        self::$instance = & $this;
+	/**
+	 * Constructor
+	 */
+	public function __construct()
+	{
+		self::$instance =& $this;
+		
+		// Assign all the class objects that were instantiated by the
+		// bootstrap file (CodeIgniter.php) to local class variables
+		// so that CI can run as one big super object.
+		foreach (is_loaded() as $var => $class)
+		{
+			$this->$var =& load_class($class);
+		}
 
-        // Assign all the class objects that were instantiated by the
-        // bootstrap file (CodeIgniter.php) to local class variables
-        // so that CI can run as one big super object.
-        foreach (is_loaded() as $var => $class) {
-            $this->$var = & load_class($class);
-        }
+		$this->load =& load_class('Loader', 'core');
 
-        $this->load = & load_class('Loader', 'core');
+		$this->load->set_base_classes()->ci_autoloader();
+		
+		log_message('debug', "Controller Class Initialized");
+                
+                
+                        require_once realpath("./application/libraries/Company_user.php");
+                        require_once realpath("./application/libraries/Company_requester_user.php");
+                        
+                        
+	}
 
-        $this->load->_base_classes = & is_loaded();
-
-        $this->load->_ci_autoloader();
-
-        $this->load_language();
-        log_message('debug', "Controller Class Initialized");
-        //$this->session->set_flashdata('referer', current_url());  
+	public static function &get_instance()
+	{
+		return self::$instance;
+	}
         
-    }
-    
-    public function load_language()
-    {
-        
-        
-        $language_prefered_by_user = Language_handler::get_user_prefered_language();
-        
-        
-        $this->lang->load("header",$language_prefered_by_user);
-        $this->lang->load("common", $language_prefered_by_user);
-            
-    }
-    
-    
-    
-
-    public static function &get_instance() {
-        return self::$instance;
-    }
-
-    public function show_please_login() {
-        redirect("/please_login");
-        
-    }
-
-    public function get_logged_user_or_redirect_to_please_login() {
+        public function get_logged_user_or_redirect_to_please_login(){
             $user = User_handler::getLoggedUser();
-            $user_is_not_logged = !$user->id;
-            if ($user_is_not_logged) 
-            {
-                $this->show_please_login();
-                
-            }
-                
+            
+            
+            if(!$user)
+                redirect ("/");
             else
                 return $user;
-               
-    }
-
+        }
 }
-
 // END Controller class
 
 /* End of file Controller.php */

@@ -55,7 +55,6 @@ class CI_Session {
 	 */
 	public function __construct($params = array())
 	{
-            
 		log_message('debug', "Session Class Initialized");
 
 		// Set the super object to a local variable for use throughout the class
@@ -190,7 +189,7 @@ class CI_Session {
 		}
 
 		// Does the User Agent Match?
-		if ($this->sess_match_useragent == TRUE AND trim($session['user_agent']) != trim(substr($this->CI->input->user_agent(), 0, 50)))
+		if ($this->sess_match_useragent == TRUE AND trim($session['user_agent']) != trim(substr($this->CI->input->user_agent(), 0, 120)))
 		{
 			$this->sess_destroy();
 			return FALSE;
@@ -317,7 +316,7 @@ class CI_Session {
 		$this->userdata = array(
 							'session_id'	=> md5(uniqid($sessid, TRUE)),
 							'ip_address'	=> $this->CI->input->ip_address(),
-							'user_agent'	=> substr($this->CI->input->user_agent(), 0, 50),
+							'user_agent'	=> substr($this->CI->input->user_agent(), 0, 120),
 							'last_activity'	=> $this->now
 							);
 
@@ -436,11 +435,11 @@ class CI_Session {
 	 * Fetch all session data
 	 *
 	 * @access	public
-	 * @return	mixed
+	 * @return	array
 	 */
 	function all_userdata()
 	{
-		return ( ! isset($this->userdata)) ? FALSE : $this->userdata;
+		return $this->userdata;
 	}
 
 	// --------------------------------------------------------------------
@@ -455,7 +454,6 @@ class CI_Session {
 	 */
 	function set_userdata($newdata = array(), $newval = '')
 	{
-            echo 'en la original';
 		if (is_string($newdata))
 		{
 			$newdata = array($newdata => $newval);
