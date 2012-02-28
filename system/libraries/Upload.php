@@ -484,7 +484,6 @@ class CI_Upload {
 	 */
 	public function set_allowed_types($types)
 	{
-            
 		if ( ! is_array($types) && $types == '*')
 		{
 			$this->allowed_types = '*';
@@ -583,7 +582,6 @@ class CI_Upload {
 	 */
 	public function is_allowed_filetype($ignore_mime = FALSE)
 	{
-                                
 		if ($this->allowed_types == '*')
 		{
 			return TRUE;
@@ -947,13 +945,13 @@ class CI_Upload {
 
 		if (count($this->mimes) == 0)
 		{
-			if (defined('ENVIRONMENT') AND is_file(APPPATH.'config/'.ENVIRONMENT.'/mimes'.EXT))
+			if (defined('ENVIRONMENT') AND is_file(APPPATH.'config/'.ENVIRONMENT.'/mimes.php'))
 			{
-				include(APPPATH.'config/'.ENVIRONMENT.'/mimes'.EXT);
+				include(APPPATH.'config/'.ENVIRONMENT.'/mimes.php');
 			}
-			elseif (is_file(APPPATH.'config/mimes'.EXT))
+			elseif (is_file(APPPATH.'config/mimes.php'))
 			{
-				include(APPPATH.'config//mimes'.EXT);
+				include(APPPATH.'config//mimes.php');
 			}
 			else
 			{

@@ -4,6 +4,11 @@ require_once realpath("./application/libraries/Property_info_getter_from_post.ph
 require_once realpath("./application/libraries/Property_info_getter_from_object.php");
 require_once realpath("./application/libraries/Property_editor.php");
 require_once realpath("./application/libraries/Property_inscriber.php");
+require_once realpath("./application/libraries/Provinces_select_cacheable_section.php");
+require_once realpath("./application/libraries/Neighborhoods_selects_cacheable_section.php");
+require_once realpath("./application/libraries/Cache_manager.php");
+
+
 
 class Propiedades extends CI_Controller {
 
