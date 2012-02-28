@@ -37,7 +37,7 @@ class Particular_user extends User_base_class {
 
      public function get_type_text(){
         
-      return "Agente";
+      return "Particular";
       
     }
     
