@@ -479,11 +479,19 @@ formRecolectorButtonBehaviour = function(event,formWrapper,options){
 
 Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector,options){
              
+             
+   var optionsDefaultValue = {validatorOptions: {}, recivingScriptUrl: '', ajax: false, ajaxCallbackFunction: function(){}, nowLoading: true};
+   
+   
+   options = $.extend(true, optionsDefaultValue, options);
+   
+   
     //Options:
     // name: validatorOptions, type: json, desc: json with options to pass to de validator plugin.   
     // name: recivingScriptUrl, type: string
     // // name: ajax, type: bool
     //name: ajaxCallbackFunction, type: function
+    //name: nowLoading, type: bool, defaultValue: true;
    
     
     var thisObject = this;
@@ -558,8 +566,9 @@ Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanBut
             
         }
             
+        if(options.nowLoading)
+            $.fancybox({content: '<div style="text-align:center;"><img src="/images/common/buffering.gif" alt="Espere por favor"/></div>', title: "Espere mientras procesamos su información", padding:0, showCloseButton: false});
         
-        $.fancybox({content: '<div style="text-align:center;"><img src="/images/common/buffering.gif" alt="Espere por favor"/></div>', title: "Espere mientras procesamos su información", padding:0, showCloseButton: false});
         formRecolectorButtonBehaviour(event, formWrapperSelector,options);
         
     });
@@ -788,7 +797,7 @@ initializeForms = function(){
         }
     });                
         
-    var loginForm = new Form('#login-form', '#login-submit', '',{ajax: true, recivingScriptUrl: '/usuario/login', ajaxCallbackFunction: function(response){
+    var loginForm = new Form('#login-form', '#login-submit', '',{nowLoading: false, ajax: true, recivingScriptUrl: '/usuario/login', ajaxCallbackFunction: function(response){
         
         
             if(response.success)
@@ -817,9 +826,7 @@ initializeForms = function(){
                 
                 maxlength: 41
             },
-            "property-address" : {
-                required: true
-            },
+
             "property-terrain" : {
                 
                 number: true
@@ -864,7 +871,7 @@ initializeForms = function(){
         },
         messages: {
             "property-title":{
-                maxlength: jQuery.validator.format("El campo Título debe contener mas de {0} caracteres <br/>"),                
+                maxlength: jQuery.validator.format("El campo Título debe contener mas de {0} caracteres <br/>")            
             },
             "property-address":{
                 required: "El campo Dirección es requerido<br/>"
