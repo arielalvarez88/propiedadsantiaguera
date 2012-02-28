@@ -23,7 +23,7 @@ class Neighborhoods_selects_cacheable_section implements ICacheableSection
         $this->neighborhood_default_text = $neighborhood_default_text;
         $this->neighborhood_selected_value = $neighborhood_selected_value;
         $this->CI_helper = & get_instance();
-        $this->CI_helper ->load->driver("cache", array("adapter" => "apc", "backup"=> "file"));
+        $this->CI_helper ->load->driver("cache", array("adapter" => "file", "backup"=> "apc"));
     }
     
 public function get_cache_key() {
@@ -33,9 +33,7 @@ public function get_cache_key() {
 public function get_content_to_cache() {
                  
 
-$this->CI_helper->cache->get("all_provinces");
-       
-        
+        $this->CI_helper->cache->get("all_provinces");
         $provinces = $this->CI_helper->cache->get("all_provinces");
 
    

@@ -23,7 +23,7 @@ class Provinces_select_cacheable_section implements ICacheableSection
         $this->provinces_default_text = $provinces_default_text;
         $this->provinces_selected_value = $provinces_selected_value;
               $this->CI_helper = & get_instance();
-        $this->CI_helper ->load->driver("cache", array("adapter" => "apc", "backup"=> "file"));
+        $this->CI_helper ->load->driver("cache", array("adapter" => "file", "backup"=> "apc"));
     }
     
 public function get_cache_key() {
