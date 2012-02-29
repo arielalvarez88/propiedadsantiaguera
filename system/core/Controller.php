@@ -55,8 +55,16 @@ class CI_Controller {
 		log_message('debug', "Controller Class Initialized");
                 
                 
-                        require_once realpath("./application/libraries/Company_user.php");
-                        require_once realpath("./application/libraries/Company_requester_user.php");
+                        require_once realpath("./application/libraries/Company_agent_user.php");
+require_once realpath("./application/libraries/Company_user.php");
+require_once realpath("./application/libraries/Particular_user.php");
+require_once realpath("./application/libraries/Agent_user.php");
+
+
+require_once realpath("./application/libraries/Company_requester_user.php");
+require_once realpath("./application/libraries/Particular_requester_user.php");
+require_once realpath("./application/libraries/Agent_requester_user.php");
+require_once realpath("./application/libraries/Admin_user.php");
                         
                         
 	}
