@@ -1234,7 +1234,7 @@ IFilter.getMaxPrice= function(){};
 IFilter.getMinPrice= function(){};
 
 
-ProvinceChooser = function(provinceChooserSelector,neighborhoodsSelectsClass,neighborhoodsSelectName,neighborhoodsAttributeWithProvinceId){
+ProvinceChooser = function(provinceChooserSelector,neighborhoodsSelectsClass,neighborhoodsSelectName,neighborhoodHtmlAttributeContainingProvinceId, executeEvent){
         
     var thisObject = this;
     this.provinceChosser = $(provinceChooserSelector);
@@ -1244,20 +1244,19 @@ ProvinceChooser = function(provinceChooserSelector,neighborhoodsSelectsClass,nei
     bindEvent(provinceChooserSelector, "change", function(){
         var selectedProvinceId = thisObject.provinceChosser.val();
         
-
-        if(selectedProvinceId != "null")
-        {
-            thisObject.neighborhoodsChoosers.hide();
-            thisObject.neighborhoodsChoosers.attr("name", "");                        
+console.log(thisObject.neighborhoodsChoosers.filter("[" +neighborhoodHtmlAttributeContainingProvinceId +" = "  + selectedProvinceId + "]"));
         
-            var searchString = neighborhoodsSelectsClass + '['+ neighborhoodsAttributeWithProvinceId+'="' + selectedProvinceId + '"]';
-            var selectedNeighborhoodChooser = $(searchString);
+            thisObject.neighborhoodsChoosers.hide();
+            thisObject.neighborhoodsChoosers.attr("name", "");                                        
+            var selectedNeighborhoodChooser = thisObject.neighborhoodsChoosers.filter("[" +neighborhoodHtmlAttributeContainingProvinceId +" = "  + selectedProvinceId + "]");
+            
             selectedNeighborhoodChooser.show();
             selectedNeighborhoodChooser.attr("name", neighborhoodsSelectName);                        
-        }
+        
     });
             
-         
+         if(executeEvent)
+              this.provinceChosser .change();
         
 };
 
@@ -2159,7 +2158,7 @@ initializeWysiwyg = function(){
 }
 
 initializeProvinceChoosers = function(){
-    var propertyFormProvinceChooser = new ProvinceChooser("#property-form-description-province", ".property-form-neigborhoods", "property-neighborhood", "data-province");
+    var propertyFormProvinceChooser = new ProvinceChooser("#property-form-description-province", ".property-form-neigborhoods", "property-neighborhood", "data-province",true);
 }
   
 initializeGetParamatersAdder =function (){
