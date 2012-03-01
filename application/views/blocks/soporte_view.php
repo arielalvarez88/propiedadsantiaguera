@@ -1,17 +1,19 @@
+<?php
+$this->lang->load("support");
+?>
+<div id="support">
 <h2 class="main-title">Soporte</h2>
 <div id="soporte-left-side">
     <ul>
         <li><a href="" id="faq">M&aacute;s frecuentes</a></li>
-        <li><a href="#">Cuenta</a></li>
+        <li><a id="support-account-selector" href="#">Cuenta</a></li>
         <li><a href="#">Pagos</a></li>
-        <li><a href="#">Publicidad</a></li>
-        <li><a href="#">Soporte Te&eacute;nico</a></li>
-        <li><a href="#">Seguridad</a></li>
-        <li><a href="#">Permisos</a></li>
+        <li><a href="#">Publicaciones</a></li>
+        
     </ul>
 </div>
 <div id="soporte-center-side">
-    <div class="faq-data hidden">
+    <div class="faq-data ">
         <h3 class="main-title">¿Cuáles métodos de pagos tienen disponibles?</h3>
         <p>Para lograr facilitarles el proceso, disponemos de varios métodos de pago; procesamos pagos en línea bajo las plataformas de PayPal y Visanet, aceptando las tarjetas Visa, Mastercard y American Express. También estamos disponibles para pagos presenciales dirigiéndose a nuestras oficinas.
         </p>
@@ -25,10 +27,20 @@
         <p>Una vez la propiedad este publicada, sólo tendrá la opción de eliminarla. Al momento de crear una propiedad,  éstas se irán acumulando en la sección de “Propiedades Creadas”, donde el usuario podrá modificar esas propiedades y elegir aquellas que desee publicar. Desde el momento en que una propiedad sea publicada, se bloqueará la opción de modificarla hasta que transcurran los 30 días.  
         </p>
     </div>
+    
+    <div  class="support-account faq-data hidden">
+          <h3 class="main-title"><?php echo $this->lang->line("support_account_question1");?></h3>
+           <p><?php echo $this->lang->line("support_account_answer1");?></p>
+           
+           <h3 class="main-title"><?php echo $this->lang->line("support_account_question3");?></h3>
+           <p><?php echo $this->lang->line("support_account_answer3");?></p>
+           
+
+    </div>
 
 </div>
 <div id="soporte-right-side">    
-    <div class="faq-data hidden">
+    <div class="faq-data ">
     <h3 class="main-title">¿Cómo hago para publicar una propiedad?</h3>
     <p>Sencillo, sólo debe comprar la cantidad de publicaciones que le gustaría publicar y se le habilitará un panel donde podrá agregar todas sus propiedades.
 
@@ -47,4 +59,21 @@
     <p>Debe verificar que las fotos cumplan con los formatos soportados (.JPG, .PNG)  y que cada foto no exceda el tamaño de 2 Megasbytes. Recuerde que sólo tiene permitido subir 15 fotos por propiedad.
     </p>
     </div>    
+    
+    <div  class="support-account faq-data hidden">
+          <h3 class="main-title"><?php echo $this->lang->line("support_account_question2");?></h3>
+           <p><?php echo $this->lang->line("support_account_answer2");?></p>
+           
+           <h3 class="main-title"><?php echo $this->lang->line("support_account_question4");?></h3>
+           <p><?php echo $this->lang->line("support_account_answer4");?></p>
+           
+
+    </div>
+</div>
+
+
+
+
+
+
 </div>

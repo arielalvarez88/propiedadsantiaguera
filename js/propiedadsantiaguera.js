@@ -538,7 +538,7 @@ Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanBut
     
     this.cleanButton = $(cleanButtonSelector);        
     this.sendButton = $(sendButtonSelector);
-    this.recivingScriptUrl = typeof options.recivingScript == "string" ? options.recivingScript : '';
+    this.recivingScriptUrl = typeof options.recivingScriptUrl == "string" ? options.recivingScriptUrl : '';
     
     this.form.append('<img class="hidden" src="/images/common/buffering.gif" alt="Espere por favor"/>');
         
@@ -558,6 +558,7 @@ Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanBut
         if(!validForm)
         {
             event.preventDefault(); 
+            
             
             if(typeof options.validatorOptions.errorLabelContainer == "string")
                 $.scrollTo(options.validatorOptions.errorLabelContainer ,800);
@@ -792,12 +793,12 @@ initializeForms = function(){
   
    
     var  signupForm = new Form('#signup-form-container #signup-form','','#signup-form-container #signup-form-clear-button');
-    var forgotPassword = new Form('#password-reset-form', '#password-reset-submit', '',{ajax: true, recivingScriptUrl: "/usuario/password_reset_request", ajaxCallbackFunction: function(response){
+    var forgotPassword = new Form('#password-reset-form', '#password-reset-submit', '',{ajax: true, recivingScript: "/usuario/password_reset_request", ajaxCallbackFunction: function(response){
             new alertMessageCallback(response, 'Email enviado', 'Error trate luego').getMessage();    
         }
     });                
         
-    var loginForm = new Form('#login-form', '#login-submit', '',{nowLoading: false, ajax: true, recivingScriptUrl: '/usuario/login', ajaxCallbackFunction: function(response){
+    var loginForm = new Form('#login-form', '#login-submit', '',{nowLoading: false, ajax: true, recivingScript: '/usuario/login', ajaxCallbackFunction: function(response){
         
         
             if(response.success)
@@ -909,10 +910,9 @@ initializeForms = function(){
   
     var propertyForm = new Form('#property-form','#property-form-send-button','#property-form-clear-button',{validatorOptions: propertyValidationOptions});
     
-    
-    
-   
-    var givePosts = new Form('#give-posts-to-agents-overlay', '#give-posts-to-agents-overlay-save-button', '', {ajax: true, recivingSript: '/miembros/give_posts', ajaxCallbackFunction:  function(response){
+    var sendPropertyByEmail = new Form("#overlay-share-email","#overlay-share-email-send","",{ajax:true, nowLoading: false,recivingScriptUrl: "/ajax/email_share_property", validatorOptions: {errorLabelContainer: "#overlay-share-email-error-container", errorContainer:"#overlay-share-email-error-container"}});
+       
+    var givePosts = new Form('#give-posts-to-agents-overlay', '#give-posts-to-agents-overlay-save-button', '', {ajax: true, recivingSriptUrl: '/miembros/give_posts', ajaxCallbackFunction:  function(response){
             printCallbackMessageInContainer(response,"#give-posts-to-agents-overlay .info-messages","#give-posts-to-agents-overlay .error-messages");
             if(response.success)
                 window.location.href= window.location.href;
@@ -1119,7 +1119,7 @@ initializeOverlays = function(){
     
     var propertyCalculator = new Overlay("#property-calculator-container");
     var searchByRefNumber = new Overlay("#basic-filter-search-by-ref-number");
-    
+    var sharePropertyByEmail = new Overlay("#print-and-share-email-share");
     
 };
 
@@ -1243,8 +1243,6 @@ ProvinceChooser = function(provinceChooserSelector,neighborhoodsSelectsClass,nei
             
     bindEvent(provinceChooserSelector, "change", function(){
         var selectedProvinceId = thisObject.provinceChosser.val();
-        
-console.log(thisObject.neighborhoodsChoosers.filter("[" +neighborhoodHtmlAttributeContainingProvinceId +" = "  + selectedProvinceId + "]"));
         
             thisObject.neighborhoodsChoosers.hide();
             thisObject.neighborhoodsChoosers.attr("name", "");                                        
@@ -1645,6 +1643,9 @@ initializeHiderAndShowerElement = function(){
     var supportItems = new HiderAndShowerElement("#faq", {
         selector: ".faq-data"
     }, ".hidden", false, "click");
+    
+    var supportCuenta = new HiderAndShowerElement("#support-account-selector", {selector: ".support-account"}, ".faq-data", false, "click", false);
+
 
     var propertyTypeInPropertyForm = new HiderAndShowerElement("#properrty-form-description-type", {
         1 : ".house-field", 

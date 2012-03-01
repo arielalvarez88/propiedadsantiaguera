@@ -18,7 +18,7 @@ $lang["plans_most_popular_photo_src"] = "/images/plans/mostPopularEnglish.png";
 
 $lang["plans_number_of_posts"] = "NUMBER OF POSTS";
 $lang["plans_duration_per_post"] = "DURATION PER POST";
-$lang["plans_number_of_photos_and_videos"] = "PHOTOS (15) AND VIDEOS (1)";
+$lang["plans_number_of_photos_and_videos"] = "PHOTOS (20) AND VIDEOS (1)";
 $lang["plans_administrative_panel"] = "ADMINISTRATIVE PANEL";
 $lang["plans_ingormation_in_english_and_spanish"] = "INFORMATION IN ENGLISH AND SPANISH";
 $lang["plans_google_maps"] = "PROPERTY LOCAZATION IN GOOGLE MAPS";
