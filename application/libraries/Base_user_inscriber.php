@@ -133,7 +133,20 @@ class Base_user_inscriber implements IUser_inscriber {
         {
             $user_type = $user_info_getter->get_type();
             $user_type_is_company = $user_type == Environment_vars::$maps['texts_to_id']["user_types"]["Empresa"] || $user_type == Environment_vars::$maps['texts_to_id']["user_types_requesters"]["Empresa"];
-            $this->user_photo_path =  $user_type_is_company? Environment_vars::$paths['default_company_photo'] : Environment_vars::$paths['default_agent_photo'];             
+            $user_type_is_agent = $user_type == Environment_vars::$maps['texts_to_id']["user_types"]["Agente de Empresa"] || $user_type == Environment_vars::$maps['texts_to_id']["user_types_requesters"]["Agente Independiente"] || $user_type == Environment_vars::$maps['texts_to_id']["user_types"]["Agente Independiente"] || $user_type == Environment_vars::$maps['texts_to_id']["user_types_requesters"]["Agente Independiente"];
+            $user_type_is_particular = $user_type == Environment_vars::$maps['texts_to_id']["user_types"]["Particular"] ||  $user_type == Environment_vars::$maps['texts_to_id']["user_types_requesters"]["Particular"];
+            
+            
+            
+            
+            if($user_type_is_company)
+                $this->user_photo_path = Environment_vars::$paths['default_company_photo'];
+            
+            if($user_type_is_agent)
+                $this->user_photo_path = Environment_vars::$paths['default_agent_photo'];
+            
+            if($user_type_is_particular)
+                $this->user_photo_path = Environment_vars::$paths['default_particular_photo'];
         }
         
         $user_object->photo = $this->user_photo_path;
