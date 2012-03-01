@@ -325,10 +325,7 @@ $error_messages = isset($error_messages)? $error_messages : false;
                 </li>
 
 
-                <li>
-                    <input id="property-form-description-features-white-clothes-closet" type="checkbox" name="white-clothes-closet" <?php echo isset($white_clothes_closet) && $white_clothes_closet ? 'checked="on"' : ''; ?>/>
-                    <label for="property-form-description-features-white-clothes-closet">Closet de ropa Blanca</label> 
-                </li>
+         
 
 
 
@@ -354,11 +351,7 @@ $error_messages = isset($error_messages)? $error_messages : false;
                     <input id="property-form-description-features-plaster-cornices" type="checkbox" name="plaster-cornices" <?php echo isset($plaster_cornices) && $plaster_cornices ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-plaster-cornices">Cornisas en yeso</label> 
                 </li>
-
-                <li>
-                    <input id="property-form-description-features-machine-room" type="checkbox" name="machine-room" <?php echo isset($machine_room) && $machine_room ? 'checked="on"' : ''; ?>/>
-                    <label for="property-form-description-features-machine-room">Cuarto de máquinas</label> 
-                </li>
+              
 
                 <li>
                     <input id="property-form-description-features-utility-room-bathroom" type="checkbox" name="utility-room-bathroom" <?php echo isset($utility_room_bathroom) && $utility_room_bathroom ? 'checked="on"' : ''; ?>/>
@@ -394,20 +387,11 @@ $error_messages = isset($error_messages)? $error_messages : false;
 
             <ul id="property-form-description-featurescolumn2" class="property-form-description-features-column">
 
-
-
-
-
-
                 <li>
                     <input id="property-form-description-features-common-gas" type="checkbox" name="common-gas" <?php echo isset($common_gas) && $common_gas ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-common-gas">Gas común</label> 
                 </li>
 
-                <li>
-                    <input id="property-form-description-features-imported-fittings" type="checkbox" name="imported-fittings" <?php echo isset($imported_fittings) && $imported_fittings ? 'checked="on"' : ''; ?>/>
-                    <label for="property-form-description-features-imported-fittings">Grifería importada</label> 
-                </li>
 
                 <li>
                     <input id="property-form-description-features-intercom" type="checkbox" name="intercom" <?php echo isset($intercom) && $intercom ? 'checked="on"' : ''; ?>/>
@@ -449,10 +433,7 @@ $error_messages = isset($error_messages)? $error_messages : false;
                     <label for="property-form-description-features-receiver">Recibidor</label> 
                 </li>
 
-                <li>
-                    <input id="property-form-description-features-extra-parkings" type="checkbox" name="extra-parkings" <?php echo isset($extra_parkings) && $extra_parkings ? 'checked="on"' : ''; ?>/>
-                    <label for="property-form-description-features-extra-parkings">Parqueos extra</label> 
-                </li>
+        
                 <li>
                     <input id="property-form-description-features-patio-with-garden" type="checkbox" name="patio-with-garden" <?php echo isset($patio_with_garden) && $patio_with_garden ? 'checked="on"' : ''; ?>/>
                     <label for="property-form-description-features-patio-with-garden">Patio con jardín</label> 
