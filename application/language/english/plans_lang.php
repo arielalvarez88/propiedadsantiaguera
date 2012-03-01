@@ -48,8 +48,8 @@ Here are the privacy and security policy and terms of use.";
 
 $lang["plans_important_text"] = "Important Information";
 
-$lang["plans_rules_1"] = "Here are the ";
-$lang["plans_rules_2"] = "and";
+$lang["plans_rules_1"] = 'Please read carefully our <a href="'.base_url() . 'terminos"> Terms of use</a>';
+$lang["plans_rules_2"] = 'and <a href="'.base_url() . 'politicas">security and privacy policy</a>';
 
 $lang["plans_secure_info_header"] = "Your information is safe and secure.";
 $lang["plans_secure_info_text"] = "Our platform has state-of-the-art computer servers located in the USA, which are protected by very high security protocols 24/7.";
