@@ -69,7 +69,7 @@ $this->lang->load("plans",$language);
             
             
             <tr>
-                <td>RD$1,250<br><span>RD$1,250/<?php echo $this->lang->line("common_property_word");?></span></td> <td>RD$5,000</br><span class="white">RD$1,000/<?php echo $this->lang->line("common_property_word");?></span></td> <td>RD$8,000</br><span>RD$800/<?php echo $this->lang->line("common_property_word");?></span></td> <td>RD$12,500</br><span class="white">RD$500/<?php echo $this->lang->line("common_property_word");?></span></td> 
+                <td>RD$1,250<br><span>RD$1,250/<?php echo $this->lang->line("common_listing_name");?></span></td> <td>RD$5,000</br><span class="white">RD$1,000/<?php echo $this->lang->line("common_listing_name");?></span></td> <td>RD$8,000</br><span>RD$800/<?php echo $this->lang->line("common_listing_name");?></span></td> <td>RD$12,500</br><span class="white">RD$500/<?php echo $this->lang->line("common_listing_name");?></span></td> 
             </tr>
             <tr>
                 <td><a class="plans-choose-plan-link" href="/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Basico'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td> 

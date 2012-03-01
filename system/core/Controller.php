@@ -53,7 +53,9 @@ class CI_Controller {
 		$this->load->set_base_classes()->ci_autoloader();
 		
 		log_message('debug', "Controller Class Initialized");
-                         
+                
+                                $language = Language_handler::get_user_prefered_language();
+                                $this->lang->load("common",$language);
                         
 	}
 
@@ -63,9 +65,7 @@ class CI_Controller {
 	}
         
         public function get_logged_user_or_redirect_to_please_login(){
-            $user = User_handler::getLoggedUser();
-            
-            
+            $user = User_handler::getLoggedUser();                        
             if(!$user)
                 redirect ("/");
             else

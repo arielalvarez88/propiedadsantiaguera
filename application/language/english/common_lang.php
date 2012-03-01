@@ -8,6 +8,8 @@
 $lang['common_property_word'] = "Property";
 $lang['common_properties_word'] = "Properties";
 
+$lang['common_listing_name'] = "Listing";
+$lang['common_listings_name'] = "Listings";
 
 $lang['common_agent_word'] = "Agent";
 $lang['common_agents_word'] = "Agents";
