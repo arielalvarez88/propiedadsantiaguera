@@ -58,7 +58,7 @@ $lang["plans_rules_2"] = "y";
 
 
 $lang["plans_secure_info_header"] = "Su información está segura.";
-$lang["plans_secure_info_text"] = "En Propiedad Santiaguera utilizamos servidores de última tecnología localizados en los Estados Unidos, los cuales están protegidos bgajo vigilancia las 24 horas del día. Nuestra infraestructura es constantemente actualizada con los últimos lineamientos de seguridad.";
+$lang["plans_secure_info_text"] = "En Propiedom utilizamos servidores de última tecnología localizados en los Estados Unidos, los cuales están protegidos bgajo vigilancia las 24 horas del día. Nuestra infraestructura es constantemente actualizada con los últimos lineamientos de seguridad.";
 
 
 
