@@ -52,9 +52,8 @@ $lang["plans_question_6_answer"] = "Si tiene alguna pregunta con relación al pr
 
 
 $lang["plans_important_text"] = "Información Importante";
-
-$lang["plans_rules_1"] = "Aquí les detallamos las ";
-$lang["plans_rules_2"] = "y";
+$lang["plans_rules_1"] = 'Aquí les detallamos las <a href="'.base_url() . 'terminos"> Terminos de uso</a>';
+$lang["plans_rules_2"] = 'y <a href="'.base_url() . 'politicas">políticas de seguridad y privacidad</a>';
 
 
 $lang["plans_secure_info_header"] = "Su información está segura.";
