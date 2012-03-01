@@ -30,9 +30,24 @@ require_once realpath("./application/libraries/Neighborhoods_selects_cacheable_s
 
             
             <?php 
-            $provinces_content = new Provinces_select_cacheable_section("front-page-provinces", array("id" => "basic-filter-province", "name" => "province"), "Provincia", $selected_property_province);
+
+            
+            
+            $provinces_content = new Provinces_select_cacheable_section("front-page-provinces", array("id" => "basic-filter-province", "name" => "province"), "Provincia", $selected_property_province);            
             $cache_manager = new Cache_manager($provinces_content);
+            
+            
+            
+            
+            
             $neigborhoods_selects = new Neighborhoods_selects_cacheable_section("front-page-neighborhoods", array("id" => "basic-filter-neighborhood-for-province", "class" => "filter-neigborhoods hidden"), "Sector", $selected_property_neighborhood);
+                        $delete_the_province_section_if_cached = $selected_property_province;
+            $delete_the_neighborhood_section_if_cached = $selected_property_neighborhood; 
+            
+            if($delete_the_province_section_if_cached)
+                $cache_manager->clean_cache_variable ($provinces_content->get_cache_key());
+            if($delete_the_neighborhood_section_if_cached)
+                $cache_manager->clean_cache_variable ($neigborhoods_selects->get_cache_key());
             
             ?>
             
