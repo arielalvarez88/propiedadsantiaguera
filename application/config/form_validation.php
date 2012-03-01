@@ -166,12 +166,7 @@ $config = array(
             'field' => 'property-province',
             'label' => 'provincia',
             'rules' => 'required|numeric'
-        ),
-        array(
-            'field' => 'property-neighborhood',
-            'label' => 'sector',
-            'rules' => 'required|numeric'
-        ),
+        ), 
         array(
             'field' => 'property-address',
             'label' => 'dirección',

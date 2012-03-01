@@ -366,7 +366,7 @@ EOD;
         
         if(!$filtered_post)
         {
-                 $extra_info['errors'] = utf8_decode("Ha ocurrido un error, por favor inténtelo más tarde");
+                 $extra_info['error_messages'] = utf8_decode("Ha ocurrido un error, por favor inténtelo más tarde");
                 $this->add_property_error($extra_info);
                 return;
         }
@@ -389,9 +389,7 @@ EOD;
 
 
         if ($this->form_validation->run("property_common") == false || $this->form_validation->run($type_validation) == false || $this->form_validation->run($sell_rent_validation) == false) {
-
-
-            $this->add_property_error();
+            $this->add_property_error(array("error_messages" => validation_errors()));
             return;
         } else {
 
@@ -402,7 +400,7 @@ EOD;
 
 
 
-                $extra_info['errors'] = $e->getMessage();
+                $extra_info['error_messages'] = $e->getMessage();
                 
                 $this->add_property_error($extra_info);
                 return;
@@ -764,7 +762,9 @@ EOD;
         $repopulateForm['granite_countertops'] = $this->input->post('granite-countertops');
         $repopulateForm['electric_gate'] = $this->input->post('electric-gate');
         $repopulateForm['walk_in_closet'] = $this->input->post('walk-in-closet');
-        $repopulateForm['errors'] = validation_errors();
+        
+        if(isset($extra_info["error_messages"]))
+            $repopulateForm['error_messages'] = $extra_info['error_messages'];
 
         if (isset($extra_info['errors']))
             $repopulateForm['errors'] .= $extra_info['errors'];

@@ -42,7 +42,7 @@ require_once realpath("./application/libraries/Neighborhoods_selects_cacheable_s
             <?php $cache_manager->cacheable_section = $neigborhoods_selects; ?>
             
             <select id="basic-filter-neighborhood-for-province-null" data-province="null" class="filter-neigborhoods" data-null-value ="null" name="neighborhood">
-                <option val="null" >Sector</option>
+                <option value="null" >Sector</option>
             </select>
             
             <?php echo $cache_manager->get_content();?>
