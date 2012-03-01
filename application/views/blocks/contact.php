@@ -11,9 +11,9 @@ $info_messages = isset($info_messages) ? $info_messages : null
     
     <h2 class="main-title">Contacto</h2>
     <p>
-        Nos gustaría escuchar lo que nuestros clientes tienen que decir acerca de la informaci&oacute; que disponemos en nuestro portal. 
+        Nos gustaría escuchar lo que nuestros clientes tienen que decir acerca de la informaci&oacute;n que disponemos en nuestro portal. 
         <br/>
-        Sientase en libretad de enviarnos cualquier mensaje o sugenrencia.
+        Sientase en libertad de enviarnos cualquier mensaje o sugerencia.
 
     </p>
 
