@@ -1,13 +1,4 @@
 
-
-
-
-
-
-
-
-
-
 bindEvent = function(elementOrSelector,eventName,handler)
 {
     
@@ -1644,8 +1635,11 @@ initializeHiderAndShowerElement = function(){
         selector: ".faq-data"
     }, ".hidden", false, "click");
     
-    var supportCuenta = new HiderAndShowerElement("#support-account-selector", {selector: ".support-account"}, ".faq-data", false, "click", false);
-
+    
+    var supportPayments = new HiderAndShowerElement("#support-faq-selector", {selector: ".support-faq"}, ".faq-data", false, "click", false);
+    var supportAccount= new HiderAndShowerElement("#support-account-selector", {selector: ".support-account"}, ".faq-data", false, "click", false);
+    var supportPayments = new HiderAndShowerElement("#support-payments-selector", {selector: ".support-payments"}, ".faq-data", false, "click", false);
+    var supportListings= new HiderAndShowerElement("#support-listings-selector", {selector: ".support-listings"}, ".faq-data", false, "click", false);
 
     var propertyTypeInPropertyForm = new HiderAndShowerElement("#properrty-form-description-type", {
         1 : ".house-field", 
