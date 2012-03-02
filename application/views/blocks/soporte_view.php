@@ -5,10 +5,10 @@ $this->lang->load("support");
 <h2 class="main-title">Soporte</h2>
 <div id="soporte-left-side">
     <ul>
-        <li><a href="" id="support-faq-selector">M&aacute;s frecuentes</a></li>
-        <li><a id="support-account-selector" href="#">Cuenta</a></li>
-        <li><a href="#" id="support-payments-selector">Pagos</a></li>
-        <li><a href="#" id="support-listings-selector">Publicaciones</a></li>
+        <li><a href="" id="support-faq-selector" class="support-section-chooser selected">M&aacute;s frecuentes</a></li>
+        <li><a id="support-account-selector"class="support-section-chooser"  href="#">Cuenta</a></li>
+        <li><a href="#" id="support-payments-selector" class="support-section-chooser" >Pagos</a></li>
+        <li><a href="#" id="support-listings-selector" class="support-section-chooser">Publicaciones</a></li>
         
     </ul>
 </div>

@@ -365,6 +365,17 @@ JqueryCycleAjaxPager = function(containerSelector,nextButtonSelector,previousBut
 }
 
 
+OptionsButtons = function(selectorClass){
+    this.buttons = $(selectorClass);
+    
+    bindEvent(this.buttons, "click", function(){
+        $(selectorClass).removeClass("selected");
+        $(this).addClass('selected');
+    });
+    
+}
+
+
 HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, elementsToShowOrHideSelector, emptyElementsValuesWhenHidding, event, runEventOnLoad){
     
     if(typeof event == "undefined")
@@ -378,11 +389,8 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
     var thisObject = this;
     this.element = $(elementSelector);
     this.elementsToShowOrHide = $(elementsToShowOrHideSelector);
-    
-    
-    this.element.unbind(event);
-    
-    this.element.bind(event,function(defaultEvent){
+            
+    bindEvent( this.element, event,function(defaultEvent){
         defaultEvent.preventDefault();
         var elementValue = thisObject.element.val() || thisObject.element.is(":checked")? thisObject.element.val() : false;
         
@@ -418,6 +426,9 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
         }
             
     });
+    
+    
+  
     
     if(runEventOnLoad)
     {
@@ -2154,6 +2165,7 @@ initializeWysiwyg = function(){
 
 initializeProvinceChoosers = function(){
     var propertyFormProvinceChooser = new ProvinceChooser("#property-form-description-province", ".property-form-neigborhood", "property-neighborhood", "data-province",true);
+    var propertyFor
 }
   
 initializeGetParamatersAdder =function (){
@@ -2172,6 +2184,9 @@ moveMetasToHead = function (){
     $("head").append($('.move-to-head').html());
 }
 
+initializeOptionsButtons = function(){
+    var support = new OptionsButtons(".support-section-chooser");
+};
 
 initializeEvents= function(){
     moveMetasToHead();
@@ -2197,6 +2212,8 @@ initializeEvents= function(){
     initializeProvinceChoosers();
     initializeGetParamatersAdder();
     initializeTabs();
+    
+    initializeOptionsButtons();
     
 };
 

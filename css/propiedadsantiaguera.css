@@ -690,6 +690,9 @@ overflow: hidden;
     height: 377px;
 
 }
+
+
+
 #panels-account-plans {
     background-image: url("/images/common/grayPattern.png");
     border: medium none;
@@ -5115,6 +5118,15 @@ span.required{
 {
     padding:10px;
     list-style-type: none;
+}
+.support-section-chooser
+{
+    font-size: 1.2em;
+}
+
+.support-section-chooser.selected
+{
+    background-color: #f9ca02;
 }
 
 #soporte-center-side p, #soporte-right-side p {
