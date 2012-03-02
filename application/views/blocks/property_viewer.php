@@ -7,8 +7,11 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
     <div id="propiedad-viewer-top">
         <div id="propiedad-viewer-header">
             <h2> <?php echo $property->title; ?> </h2>
-            <?php $province_text =   array_search($property->province, Environment_vars::$maps['texts_to_id']['provinces']);?>
-            <span id="propiedad-viewer-sector"><?php echo $province_text;?>, <?php echo array_search($property->neighborhood, Environment_vars::$maps['texts_to_id']['property_neighborhoods'][$province_text]); ?></span>
+            <?php $province = $property->province->get();?>
+            <?php $neighborhood = $property->neighborhood->get();?>
+            <?php $province_text =   $province->name;?>
+            
+            <span id="propiedad-viewer-sector"><?php echo $province_text;?>, <?php echo $neighborhood->name;?></span>
         </div>
 
 
