@@ -103,8 +103,8 @@ $error_messages = isset($error_messages)? $error_messages : false;
 
                 <li>
 
-                    <label for="property-form-description-stories" class="property-form-optional-field house-field apartment-field hiddable penthouse-field mall-field building-field warehouse-field office-field construction-project" >Niveles:<span class="required-text">*</span></label> 
-                    <input type="text" id="property-form-description-stories" class="property-form-optional-field apartment-field house-field penthouse-field mall-field building-field warehouse-field office-field construction-project hiddable required"  title="El campo Niveles es requerido y debe ser númerico.<br/>" name="property-stories" <?php echo isset($property_stories) ? 'value="' . $property_stories . '"' : ''; ?>/>
+                    <label for="property-form-description-stories" class="property-form-optional-field house-field  hiddable  building-field warehouse-field construction-project" >Niveles:<span class="required-text">*</span></label> 
+                    <input type="text" id="property-form-description-stories" class="property-form-optional-field house-field building-field warehouse-field construction-project hiddable required"  title="El campo Niveles es requerido y debe ser númerico.<br/>" name="property-stories" <?php echo isset($property_stories) ? 'value="' . $property_stories . '"' : ''; ?>/>
                 </li>
                 <li>
                     <label for="property-form-description-bedrooms" class="property-form-optional-field house-field apartment-field hiddable penthouse-field building-field construction-project" >Habitaciones:<span class="required-text" >*</span></label> 

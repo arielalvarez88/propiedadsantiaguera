@@ -301,6 +301,7 @@ EOD;
     }
 
     private function get_moneda_precio_view_variables($property) {
+        $variables['property'] = $property;
         $variables['dr_sell_price'] = Numerizer::numerize($property->sell_price_dr);
         $variables['us_sell_price'] = Numerizer::numerize($property->sell_price_us);
         $variables['us_rent_price'] = Numerizer::numerize($property->rent_price_us);
