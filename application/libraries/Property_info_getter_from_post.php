@@ -92,6 +92,11 @@ class Property_info_getter_from_post implements IProperty_info_getter {
         
         return $this->post["property-maintenance"];
     }
+    
+     public function get_floor() {
+        
+        return $this->post["property-floor"];
+    }
 
     public function get_features_for_reppopulate_form() {
 

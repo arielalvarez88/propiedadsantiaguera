@@ -509,7 +509,8 @@ EOD;
 
         $property_inscriber->save_type($new_property, $property_info_getter);
         $property_inscriber->save_title($new_property, $property_info_getter);
-        $property_inscriber->save_maintenance($new_property, $property_info_getter);                
+        $property_inscriber->save_maintenance($new_property, $property_info_getter);
+        $property_inscriber->save_floor($new_property, $property_info_getter);        
         $property_inscriber->save_province($new_property, $property_info_getter);
         $property_inscriber->save_neighborhood($new_property, $property_info_getter);
         $property_inscriber->save_condition($new_property, $property_info_getter);
@@ -696,7 +697,7 @@ EOD;
         $repopulateForm['property_livingrooms'] = $this->input->post('property-livingrooms');
         $repopulateForm['property_address'] = $this->input->post('property-address');
         $repopulateForm['property_maintenance'] = $this->input->post('property-maintenance');
-        
+        $repopulateForm['property_floor'] = $this->input->post('property-floor');
         $repopulateForm['property_condition'] = $this->input->post('property-condition');
         $repopulateForm['property_sell_price_us'] = $this->input->post('property-sell-price-us');
         $repopulateForm['property_rent_price_us'] = $this->input->post('property-rent-price-us');

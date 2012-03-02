@@ -80,6 +80,15 @@ class Property_inscriber implements IProperty_inscriber {
             $property_object->maintenance = $maintenance;
     }
 
+    
+      public function save_floor($property_object, $property_info_getter)
+    {
+        $floor = $property_info_getter->get_floor();
+        
+        if ($floor)
+            $property_object->floor = $floor;
+    }
+    
     public function save_parkings($property_object, $property_info_getter) {
         $parkings = $property_info_getter->get_parkings();
         if ($parkings)
