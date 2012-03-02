@@ -1,5 +1,6 @@
 <?php
 $loggedUser = User_handler::getLoggedUser();
+
 $thisPage = str_replace('/', '-', uri_string());
 $can_create_properties = !$loggedUser instanceof IUser_requests_only;
 $can_create_agents = $loggedUser instanceof Company_user;
@@ -291,6 +292,10 @@ require_once realpath("./application/libraries/User_factory.php");
 
                         <li>
                             <?php echo $this->lang->line("footer_company_menu_publicity"); ?>
+                        </li>
+                        
+                        <li>
+                            <a href="<?php base_url(); ?>/planes"><?php echo $this->lang->line("footer_company_menu_prices"); ?></a>
                         </li>
                     </ul>
                 </div>

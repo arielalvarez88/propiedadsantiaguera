@@ -21,18 +21,21 @@ class BreadCrumb
         
     public function construct_breadcrumb_for_property($property){
         
+        
+        $province = $property->province->get(); 
+        $neighborhood= $property->neighborhood->get();
+        
         $this->add_link("Inicio", base_url(), "Inicio");
         $this->add_to_section(Environment_vars::$maps['ids_to_text']['property_types'][$property->type], "?type=".$property->type, "Buscar");
-        $this->add_to_section(Environment_vars::$maps['ids_to_text']['provinces'][$property->province], "&province=".$property->province, "Buscar");
+        $this->add_to_section($province->name, "&province=".$province->id, "Buscar");
         
-        $province_name = Environment_vars::$maps['ids_to_text']['provinces'][$property->province];
         
-        $provinces_neighborhoods = Environment_vars::$maps['texts_to_id']['property_neighborhoods'][$province_name];
         
-        $neighborhood_name = $property->neighborhood->get()->name;
+        $province_name = $province->name;
+        $neighborhood_name = $neighborhood->name;
         
         if($neighborhood_name)
-            $this->add_to_section($neighborhood_name, "&neighborhood=".$property->neighborhood, "Buscar");
+            $this->add_to_section($neighborhood_name, "&neighborhood=".$neighborhood->id, "Buscar");
         
         $this->add_link("#".$property->id, base_url()."propiedades/ver/".$property->id, "Propiedad");
         
