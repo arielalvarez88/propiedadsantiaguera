@@ -3812,12 +3812,9 @@ properties-pager
 
 #print-and-share-share a
 {
-    background-image: url("/images/common/socialSprite.png");
+
     display: block;
-    float: left;
-    height: 27px;
-    margin-right: 10px;
-    width: 27px;
+    
 }
 
 
@@ -3858,6 +3855,69 @@ properties-pager
 
 }
 /*property-ubication-gmap END*/
+
+
+/****overlay-share-email****/
+
+#overlay-share-email-you, 
+#overlay-share-email-friend
+{
+    float: left;
+}
+#overlay-share-email-body
+{
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 10px;
+}
+#overlay-share-email ul li {
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+#overlay-share-email
+{
+    width: 495px;   
+    overflow: hidden;
+}
+
+#overlay-share-email textarea
+{
+    width: 100%;
+    height: 63px;
+}
+#overlay-share-email a
+{
+    float: right; 
+    display: block;
+    
+}
+#overlay-share-email ul
+{
+    list-style: none;
+}
+
+#overlay-share-email-body label {
+    display: block;
+    float: left;
+    width: 65px;
+}
+#overlay-share-email-body input {
+    float: left;
+}
+
+#overlay-share-email-you {
+    margin-right: 40px;
+}
+
+
+#overlay-share-email-body label{
+    display: block;
+    floath: left;
+    width: 65px;
+}
+
+
+/**** overlay-share-email ENDS****/
 
 /*property-info*/
 #property-info {
@@ -5056,10 +5116,14 @@ span.required{
     padding:10px;
     list-style-type: none;
 }
-#soporte-left-side li
-{
 
+#soporte-center-side p, #soporte-right-side p {
+    margin-bottom: 20px;
 }
+#soporte-center-side h3, #soporte-right-side h3 {
+    margin-bottom: 10px;
+}
+
 #soporte-left-side li a
 {
     color:#fff;
