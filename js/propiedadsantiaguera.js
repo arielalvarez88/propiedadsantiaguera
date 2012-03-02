@@ -2153,7 +2153,7 @@ initializeWysiwyg = function(){
 }
 
 initializeProvinceChoosers = function(){
-    var propertyFormProvinceChooser = new ProvinceChooser("#property-form-description-province", ".property-form-neigborhoods", "property-neighborhood", "data-province",true);
+    var propertyFormProvinceChooser = new ProvinceChooser("#property-form-description-province", ".property-form-neigborhood", "property-neighborhood", "data-province",true);
 }
   
 initializeGetParamatersAdder =function (){
