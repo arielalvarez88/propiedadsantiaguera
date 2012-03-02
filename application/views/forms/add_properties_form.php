@@ -55,7 +55,7 @@ $error_messages = isset($error_messages)? $error_messages : false;
                    
             $provinces_content = new Provinces_select_cacheable_section("search-results-provinces", array("id" => "property-form-description-province", "name" =>"property-province"), "", $property_province);
             $cache_manager = new Cache_manager($provinces_content);
-            
+            $cache_manager->clean_entire_cache();
             $neigborhoods_selects = new Neighborhoods_selects_cacheable_section("front-page-neighborhoods", array("id" => "property-neighborhood-for-province", "class" => "property-form-neigborhood", "name" =>"property-neighborhood"), "", $property_neighborhood);
             
             ?>
