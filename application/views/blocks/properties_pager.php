@@ -71,14 +71,10 @@ $image_helper = new Image_helper();
                             <p>
                                 <?php
                                 
-                                $province_name =  Environment_vars::$maps['ids_to_text']['provinces'][$property->province];
-                                $neighborhood_name = '';
-                                
-                                if(isset(Environment_vars::$maps['texts_to_id']['property_neighborhoods'][$province_name]))
-                                {
-                                      $provinces_neighborhoods = Environment_vars::$maps['texts_to_id']['property_neighborhoods'][$province_name];
-                                        $neighborhood_name = array_search($property->neighborhood, $provinces_neighborhoods);
-                                }
+                                $province = $property->province->get();
+                                $neighborhood = $property->neighborhood->get();
+                                $province_name =  $province->name;
+                                $neighborhood_name = $neighborhood->name;                                                                
                                       
                                 ?>
                                 <?php echo $province_name; ?> <?php echo $neighborhood_name ? ','.$neighborhood_name : '' ;?>
