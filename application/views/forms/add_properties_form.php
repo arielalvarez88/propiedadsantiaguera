@@ -47,8 +47,6 @@ $error_messages = isset($error_messages)? $error_messages : false;
                     <label for="property-form-description-title">T&iacute;tulo:<span class="required-text">*</span></label> 
                     <input type="text" id="property-form-description-title" name="property-title" class="required" title="El campo Título es requerido y debe poseer menos de 41 caracteres.</br>" <?php echo isset($property_title) ? 'value="' . $property_title . '"' : ''; ?>/>
                 </li>
-
-
                 
                 <li>
                     <label for="property-form-description-neighborhood">Provincia:</label> 
@@ -57,8 +55,8 @@ $error_messages = isset($error_messages)? $error_messages : false;
                    
             $provinces_content = new Provinces_select_cacheable_section("search-results-provinces", array("id" => "property-form-description-province", "name" =>"property-province"), "", $property_province);
             $cache_manager = new Cache_manager($provinces_content);
-
-            $neigborhoods_selects = new Neighborhoods_selects_cacheable_section("front-page-neighborhoods", array("id" => "property-neighborhood-for-province", "class" => "property-form-neigborhood hidden", "name" =>"property-neighborhood"), "", $property_neighborhood);
+            
+            $neigborhoods_selects = new Neighborhoods_selects_cacheable_section("front-page-neighborhoods", array("id" => "property-neighborhood-for-province", "class" => "property-form-neigborhood", "name" =>"property-neighborhood"), "", $property_neighborhood);
             
             ?>
             
@@ -72,11 +70,8 @@ $error_messages = isset($error_messages)? $error_messages : false;
                 </li>
                 
                 <li>
-                    
-<label for="property-form-description-neighborhood">Sector:</label> 
-                      
-            <?php echo $cache_manager->get_content();?>
-                    
+                    <label for="property-form-description-neighborhood">Sector:</label> 
+                    <?php echo $cache_manager->get_content();?>                   
                 </li>
 
                 <li>
