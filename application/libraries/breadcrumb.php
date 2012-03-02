@@ -29,7 +29,7 @@ class BreadCrumb
         
         $provinces_neighborhoods = Environment_vars::$maps['texts_to_id']['property_neighborhoods'][$province_name];
         
-        $neighborhood_name = array_search($property->neighborhood, $provinces_neighborhoods);
+        $neighborhood_name = $property->neighborhood->get()->name;
         
         if($neighborhood_name)
             $this->add_to_section($neighborhood_name, "&neighborhood=".$property->neighborhood, "Buscar");
