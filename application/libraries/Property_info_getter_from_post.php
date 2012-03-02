@@ -36,19 +36,17 @@ class Property_info_getter_from_post implements IProperty_info_getter {
     }
 
     public function get_close_places_for_reppopulate_form() {
-
         
-         $all_close_places = Environment_vars::$maps['ids_to_text']["property_close_places"];
-         
+        $all_close_places = Environment_vars::$maps['ids_to_text']["property_close_places"];
         $property_close_places = array();
          foreach ($all_close_places as $id => $name) {
-       
             if (isset($this->post[$name])) {
                 $reppopulate_variable_name = str_replace("-", "_", $name);
                 $property_close_places[$reppopulate_variable_name]= "checked";
             }
         }
         return $property_close_places;
+        
     }
     
     
@@ -88,6 +86,16 @@ class Property_info_getter_from_post implements IProperty_info_getter {
 
     public function get_description() {
         return $this->post['property-description'];
+    }
+    
+    public function get_maintenance() {
+        
+        return $this->post["property-maintenance"];
+    }
+    
+     public function get_floor() {
+        
+        return $this->post["property-floor"];
     }
 
     public function get_features_for_reppopulate_form() {

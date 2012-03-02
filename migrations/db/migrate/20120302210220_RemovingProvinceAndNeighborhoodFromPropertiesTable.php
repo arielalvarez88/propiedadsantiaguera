@@ -9,8 +9,7 @@ class RemovingProvinceAndNeighborhoodFromPropertiesTable extends Ruckusing_BaseM
 	}//up()
 
 	public function down() {
-                    $this->execute("ALTER TABLE properties ADD COLUMN province VARCHAR(70)");
-                    $this->execute("ALTER TABLE properties DROP COLUMN neighborhood VARCHAR(70)");
+                    
 	}//down()
 }
 ?>

@@ -1951,7 +1951,7 @@ StepByStepForm = function(arrayOfStepObjects){
     $.each(arrayOfStepObjects, function(index,step){
         
             
-        new Form(step.formContainerSelector, step.sendButtonSelector, step.cleanButtonSelector, true, step.recivingScriptUrl,function(response){
+        new Form(step.formContainerSelector, step.sendButtonSelector, step.cleanButtonSelector,{ajax: true, recivingScriptUrl : step.recivingScriptUrl, nowLoading: false, ajaxCallbackFunction: function(response){
                 
             if(index==0)
                 step.select();
@@ -1976,7 +1976,7 @@ StepByStepForm = function(arrayOfStepObjects){
                 
                     
                
-        });
+        }} );
     });
     
     

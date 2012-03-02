@@ -159,6 +159,15 @@ class Property_info_getter_from_object implements IProperty_info_getter {
         return $this->property->property_features->get()->all;
     }
 
+      public function get_maintenance() {
+        return $this->property->maintenance;
+    }
+    
+    public function get_floor() {
+        
+        return $this->property->maintenance;
+    }
+    
     public function get_neighborhood() {
         return $this->property->neighborhood;
     }

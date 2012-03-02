@@ -110,6 +110,10 @@ $error_messages = isset($error_messages)? $error_messages : false;
                     <label for="property-form-description-bedrooms" class="property-form-optional-field house-field apartment-field hiddable penthouse-field building-field construction-project" >Habitaciones:<span class="required-text" >*</span></label> 
                     <input type="text" id="property-form-description-bedrooms" class="property-form-optional-field apartment-field house-field hiddable penthouse-field building-field construction-project required" title="El campo Habitaciones es requerido y debe ser númerico.<br/>" name="property-bedrooms" <?php echo isset($property_bedrooms) ? 'value="' . $property_bedrooms . '"' : ''; ?>/>
                 </li>
+                <li class="apartment-field penthouse-field mall-field office-field hiddable" >
+                        <label for="property-form-description-floor">Nivel No.:</label>
+                        <input type="text" name="property-floor" id="property-form-description-floor" <?php echo isset($property_floor) ? 'value="' . $property_floor . '"' : '' ?>/>
+                    </li>
             </ul>
 
 
@@ -172,8 +176,10 @@ $error_messages = isset($error_messages)? $error_messages : false;
                         <input type="text" name="property-rent-price-dr" id="property-form-description-rent-price-dr" <?php echo isset($property_rent_price_dr) ? 'value="' . $property_rent_price_dr . '"' : '' ?>/>
                     </li>
 
-
-
+                    <li class="apartment-field penthouse-field mall-field office-field hiddable" >
+                        <label for="property-form-description-maintenance">Mantenemiento:</label>
+                        <input type="text" name="property-maintenance" id="property-form-description-maintenance" <?php echo isset($property_maintenance) ? 'value="' . $property_maintenance . '"' : '' ?>/>
+                    </li>                                        
 
                 </ul>                    
 

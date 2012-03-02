@@ -361,8 +361,8 @@ EOD;
 
     public function validate($edit= false, $property_id_to_edit=0) {
 
-        $filtered_post = $this->input->post();
         
+        $filtered_post = $this->input->post();
         
         if(!$filtered_post)
         {
@@ -376,9 +376,6 @@ EOD;
         $properties_photos_filenames = array();
         $property_condition_for_validation_purposes = '';
 
-        
-        
-        
         $type_validation = "property_" . Environment_vars::$maps['ids_to_text']['property_types_validation'][$filtered_post['property-type']];
 
         $sell_rent_validation = "property_" . Environment_vars::$maps['ids_to_text']['sell_rent_validation'][$filtered_post['property-condition']];
@@ -512,6 +509,8 @@ EOD;
 
         $property_inscriber->save_type($new_property, $property_info_getter);
         $property_inscriber->save_title($new_property, $property_info_getter);
+        $property_inscriber->save_maintenance($new_property, $property_info_getter);
+        $property_inscriber->save_floor($new_property, $property_info_getter);        
         $property_inscriber->save_province($new_property, $property_info_getter);
         $property_inscriber->save_neighborhood($new_property, $property_info_getter);
         $property_inscriber->save_condition($new_property, $property_info_getter);
@@ -697,6 +696,8 @@ EOD;
         $repopulateForm['property_neighborhood'] = $this->input->post('property-neighborhood');
         $repopulateForm['property_livingrooms'] = $this->input->post('property-livingrooms');
         $repopulateForm['property_address'] = $this->input->post('property-address');
+        $repopulateForm['property_maintenance'] = $this->input->post('property-maintenance');
+        $repopulateForm['property_floor'] = $this->input->post('property-floor');
         $repopulateForm['property_condition'] = $this->input->post('property-condition');
         $repopulateForm['property_sell_price_us'] = $this->input->post('property-sell-price-us');
         $repopulateForm['property_rent_price_us'] = $this->input->post('property-rent-price-us');
