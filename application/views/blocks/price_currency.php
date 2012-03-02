@@ -3,6 +3,7 @@ $dr_sell_price = isset($dr_sell_price) ? $dr_sell_price : null;
 $us_sell_price = isset($us_sell_price) ? $us_sell_price : null;
 $dr_rent_price = isset($dr_rent_price) ? $dr_rent_price : null;
 $us_rent_price = isset($us_rent_price) ? $us_rent_price : null;
+$property = isset($property) ? $property : null;
 ?>
 
 <div id="price-currency">
@@ -22,6 +23,10 @@ $us_rent_price = isset($us_rent_price) ? $us_rent_price : null;
         <?php if($us_rent_price):?>
         <h1 class="us-price-field">Alquiler: US$ <?php echo $us_rent_price;?></h1>
     <?php endif;?>
+        
+        <?php if($property && $property->maintenance):?>
+            <h1 class="us-price-field dr-price-field">Mantenimiento: RD$ <?php echo $property->maintenance;?></h1>
+        <?php endif;?>
         
     <select>
         <option value="dr">Precio en pesos</option>

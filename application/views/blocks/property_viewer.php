@@ -75,6 +75,10 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
                     <li class="propiedad-viewer-detalle"><span>Niveles:</span> <?php echo $property->stories; ?></li>
                 <?php endif;?>
                     
+                    <?php if($property->floor):?>
+                    <li class="propiedad-viewer-detalle"><span>Nivele No:</span> <?php echo $property->floor; ?></li>
+                <?php endif;?>
+                    
                 <?php if($property->kitchens):?>
                     <li class="propiedad-viewer-detalle"><span>Cocinas:</span> <?php echo $property->kitchens;?></li>
                 <?php endif;?>
