@@ -71,6 +71,14 @@ class Property_inscriber implements IProperty_inscriber {
         if ($neighborhood)
             $property_object->neighborhood = $neighborhood;
     }
+    
+    public function save_maintenance($property_object, $property_info_getter)
+    {
+        $maintenance = $property_info_getter->get_maintenance();
+        
+        if ($maintenance)
+            $property_object->maintenance = $maintenance;
+    }
 
     public function save_parkings($property_object, $property_info_getter) {
         $parkings = $property_info_getter->get_parkings();

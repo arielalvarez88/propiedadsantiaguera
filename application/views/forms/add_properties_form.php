@@ -172,7 +172,10 @@ $error_messages = isset($error_messages)? $error_messages : false;
                         <input type="text" name="property-rent-price-dr" id="property-form-description-rent-price-dr" <?php echo isset($property_rent_price_dr) ? 'value="' . $property_rent_price_dr . '"' : '' ?>/>
                     </li>
 
-
+                    <li class="apartment-field penthouse-field mall-field office-field hiddable" >
+                        <label for="property-form-description-maintenance">Mantenemiento:</label>
+                        <input type="text" name="property-maintenance" id="property-form-maintenance" <?php echo isset($property_maintenance) ? 'value="' . $property_maintenance . '"' : '' ?>/>
+                    </li>
 
 
                 </ul>                    
