@@ -802,7 +802,7 @@ initializeForms = function(){
         }
     });                
         
-    var loginForm = new Form('#login-form', '#login-submit', '',{nowLoading: false, ajax: true, recivingScript: '/usuario/login', ajaxCallbackFunction: function(response){
+    var loginForm = new Form('#login-form', '#login-submit', '',{nowLoading: false, ajax: true, recivingScriptUrl: '/usuario/login', ajaxCallbackFunction: function(response){
         
         
             if(response.success)
