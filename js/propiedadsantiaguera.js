@@ -461,6 +461,8 @@ formRecolectorButtonBehaviour = function(event,formWrapper,options){
             
     if(options.ajax)
     {
+        console.log('test');
+        console.log(options);
         $.post(options.recivingScriptUrl, info ,function(response){            
             options.ajaxCallbackFunction(response);
         },'json');
