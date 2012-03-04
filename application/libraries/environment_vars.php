@@ -389,10 +389,6 @@ class Environment_vars {
     "Zona No Disponible"=>98,
     "Zona Universitaria"=>99
     )
-            
-                
-                
-                
                 ),
             "property_conditions" => array("Venta" => 1, "Alquiler" => 2, "Venta/Alquiler" => 3),
             "property_conditions_for_filter" => array("Venta" => 1, "Alquiler" => 2),
@@ -572,7 +568,7 @@ class Environment_vars {
             "close-public-transport" => 8,
             "close-hardware-stores" => 9,
             "close-drug-stores" => 10
-        ),       
+        ),
         "property_features" => array(
             "elevator" => 1,
             "game-area" => 2,
