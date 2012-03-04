@@ -56,6 +56,7 @@ class Filter_builder {
             case "price_asc":
                 if($condition == Environment_vars::$maps["property_conditions"]["rent"])
                 {
+                    
                     $property_object->order_by("rent_price_dr ASC");
                     $property_object->order_by("sell_price_dr ASC");
                     
@@ -87,10 +88,10 @@ class Filter_builder {
             break;
         
         case "province_asc":
-                $property_object->order_by("province ASC");                
+                $property_object->include_related("province", array("name"),true)->order_by("province_name ASC");
          break;
      case "province_desc":
-                $property_object->order_by("province DESC");                
+                $property_object->include_related("province", array("name"),true)->order_by("province_name DESC");
          break;
         }
         
@@ -185,21 +186,9 @@ class Filter_builder {
         if (!$neighborhood_filter_activated)
             return;
 
-
-        $field_name = 'neighborhood';
-
-
-        $value = isset($post['neighborhood']) ? $post['neighborhood'] : null;
-        if(!$value)
-            return;
-        
-        $province_id = isset($post['province']) ? $post['province'] : null;
-        $province_text = $province_id ? Environment_vars::$maps['ids_to_text']['provinces'][$province_id] : 'Santiago';
-        $neighborhood_text = array_search($value, Environment_vars::$maps['texts_to_id']['property_neighborhoods'][$province_text]);
-        
-        if($neighborhood_text)
-            $breadcrumb->add_to_section($neighborhood_text,'&neighborhood='.$value,"Buscar");
-        
+        $property_object->include_related("neighborhood", array("id"),true);
+        $field_name = "neighborhood_id";
+        $value = $post['neighborhood'];
         
         $filter = new Equal_to_filter($field_name, $value);
         $filter->add_filter($property_object);
@@ -225,13 +214,13 @@ class Filter_builder {
         $province_filter_activated = isset($post['province']);
         if (!$province_filter_activated)
             return;
-
-        $field_name = 'province';
-        $value = isset($post['province']) ? $post['province'] : null;
-        if(!$value)
-            return;
         
-        $breadcrumb->add_to_section(Environment_vars::$maps['ids_to_text']['provinces'][$value],'&province='.$value,"Buscar");
+        
+        
+        $property_object->include_related("province", array("id"),true);
+        $field_name = "province_id";
+        $value = $post['province'];
+        
         $filter = new Equal_to_filter($field_name, $value);
         $filter->add_filter($property_object);
     }
