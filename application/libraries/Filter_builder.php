@@ -88,10 +88,10 @@ class Filter_builder {
             break;
         
         case "province_asc":
-                $property_object->include_related("province", array("name"))->order_by("provinces_table_name ASC");
+                $property_object->include_related("province", array("name"))->order_by("provinces.name ASC");
          break;
      case "province_desc":
-                $property_object->include_related("province", array("name"))->order_by("provinces_table_name DESC");
+                $property_object->include_related("province", array("name"))->order_by("provinces.name DESC");
          break;
         }
         
