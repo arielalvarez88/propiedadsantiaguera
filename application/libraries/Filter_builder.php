@@ -88,10 +88,10 @@ class Filter_builder {
             break;
         
         case "province_asc":
-                $property_object->include_related("province", array("name"),"provinces_table")->order_by("provinces_table_name ASC");
+                $property_object->include_related("province", array("name"))->order_by("provinces_table_name ASC");
          break;
      case "province_desc":
-                $property_object->include_related("province", array("name"),"provinces_table")->order_by("provinces_table_name DESC");
+                $property_object->include_related("province", array("name"))->order_by("provinces_table_name DESC");
          break;
         }
         
@@ -186,8 +186,8 @@ class Filter_builder {
         if (!$neighborhood_filter_activated)
             return;
 
-        $property_object->include_related("neighborhood", array("id"),"neighborhoods_table");
-        $field_name = "neighborhoods_table_id";
+        $property_object->include_related("neighborhood", array("id"));
+        $field_name = "neighborhoods.id";
         $value = $post['neighborhood'];
         
         $filter = new Equal_to_filter($field_name, $value);
@@ -217,8 +217,8 @@ class Filter_builder {
         
         
         
-        $property_object->include_related("province", array("id"),"provinces_table");
-        $field_name = "provinces_table_id";
+        $property_object->include_related("province", array("id"));
+        $field_name = "provinces.id";
         $value = $post['province'];
         
         $filter = new Equal_to_filter($field_name, $value);
