@@ -55,7 +55,9 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
             <h3 id="propiedad-viewer-detalles-tipo"></h3>
             <ul id="propiedad-viewer-detalles">
                 <li class="propiedad-viewer-detalle"><span>Tipo:</span> <?php echo $property_type; ?></li>
-                
+                <?php if($property->floor):?>
+                    <li class="propiedad-viewer-detalle"><span>Nivel No:</span> <?php echo $property->floor; ?></li>
+                <?php endif;?>
                 <?php $fernatured = $property->property_feature->where("id",Environment_vars::$maps['texts_to_id']['property_feature']['fernatured'])->count();?>
                 
                 
@@ -73,11 +75,7 @@ $property_photos_paths= isset($property_photos_paths) ? $property_photos_paths :
                     
                 <?php if($property->stories):?>
                     <li class="propiedad-viewer-detalle"><span>Niveles:</span> <?php echo $property->stories; ?></li>
-                <?php endif;?>
-                    
-                    <?php if($property->floor):?>
-                    <li class="propiedad-viewer-detalle"><span>Nivele No:</span> <?php echo $property->floor; ?></li>
-                <?php endif;?>
+                <?php endif;?>                                        
                     
                 <?php if($property->kitchens):?>
                     <li class="propiedad-viewer-detalle"><span>Cocinas:</span> <?php echo $property->kitchens;?></li>
