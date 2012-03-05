@@ -176,8 +176,8 @@ $error_messages = isset($error_messages)? $error_messages : false;
                         <input type="text" name="property-rent-price-dr" id="property-form-description-rent-price-dr" <?php echo isset($property_rent_price_dr) ? 'value="' . $property_rent_price_dr . '"' : '' ?>/>
                     </li>
 
-                    <li class="apartment-field penthouse-field mall-field office-field hiddable" >
-                        <label for="property-form-description-maintenance">Mantenemiento:</label>
+                    <li class="apartment-field penthouse-field mall-field office-field rent-condition-field sell-condition-field hiddable" >
+                        <label for="property-form-description-maintenance">Mantenimiento:</label>
                         <input type="text" name="property-maintenance" id="property-form-description-maintenance" <?php echo isset($property_maintenance) ? 'value="' . $property_maintenance . '"' : '' ?>/>
                     </li>                                        
 
