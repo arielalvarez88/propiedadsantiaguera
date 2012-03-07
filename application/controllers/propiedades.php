@@ -511,9 +511,7 @@ EOD;
         $property_inscriber->save_type($new_property, $property_info_getter);
         $property_inscriber->save_title($new_property, $property_info_getter);
         $property_inscriber->save_maintenance($new_property, $property_info_getter);
-        $property_inscriber->save_floor($new_property, $property_info_getter);        
-        $property_inscriber->save_province($new_property, $property_info_getter);
-        $property_inscriber->save_neighborhood($new_property, $property_info_getter);
+        $property_inscriber->save_floor($new_property, $property_info_getter);                
         $property_inscriber->save_condition($new_property, $property_info_getter);
         $property_inscriber->save_address($new_property, $property_info_getter);
         $property_inscriber->save_terrain($new_property, $property_info_getter);
@@ -544,8 +542,11 @@ EOD;
       
 
         $new_property_features = $property_info_getter->get_features_object_array();
+        
+        $new_property_province = $property_info_getter->get_province_object_array();
+        $new_property_neighborhood = $property_info_getter->get_neighborhood_object_array();
 
-        $new_property->save(array($new_property_type, $new_property_close_places, $new_property_features, $properties_photos, $user));
+        $new_property->save(array($new_property_type, $new_property_close_places, $new_property_features, $properties_photos, $user, $new_property_province,$new_property_neighborhood));
 
         redirect("/agregar_video/desea/" . $new_property->id);
     }
