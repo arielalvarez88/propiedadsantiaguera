@@ -190,7 +190,7 @@ class Property_info_getter_from_post implements IProperty_info_getter {
         return $this->post["property-rent-price-us"];
     }
 
-     public function get_neightborhood_object_array() {
+     public function get_neighborhood_object_array() {
         
         if(!empty($this->post["property-neighborhood"]))
         {
