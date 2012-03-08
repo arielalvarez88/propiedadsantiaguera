@@ -196,10 +196,11 @@ class Property_info_getter_from_post implements IProperty_info_getter {
         {
             
             $neighborhood_id = $this->post["property-neighborhood"];
-            var_dump($neighborhood_id);
+                        
             $neighborhood = new Neighborhood($neighborhood_id);
-            var_dump($neighborhood);
+
             $neighborhood->get();
+                        var_dump($neighborhood);
             if($neighborhood)
                 return $neighborhood;
                                     
