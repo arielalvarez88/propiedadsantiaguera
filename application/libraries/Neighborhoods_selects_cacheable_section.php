@@ -56,7 +56,7 @@ public function get_content_to_cache() {
         foreach($provinces as $province){            
              
              $neighborhoods = $province->neighborhood->order_by("name")->get();
-             if($province->id == 31 || $propvince->id == 3)
+             if($province->id == 31 || $province->id == 3)
              {
                  var_dump($province->neigborhood->get()->all);
              }
