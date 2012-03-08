@@ -172,7 +172,7 @@ class Property_info_getter_from_post implements IProperty_info_getter {
         {
             $province_id = $this->post["property-province"];
             $province = new Province($province_id);
-            $province->get();
+            
             if($province)
                 return $province;            
         }
@@ -199,8 +199,7 @@ class Property_info_getter_from_post implements IProperty_info_getter {
                         
             $neighborhood = new Neighborhood($neighborhood_id);
 
-            $neighborhood->get();
-                        var_dump($neighborhood);
+            
             if($neighborhood)
                 return $neighborhood;
                                     
