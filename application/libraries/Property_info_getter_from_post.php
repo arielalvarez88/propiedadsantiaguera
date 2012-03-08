@@ -166,7 +166,7 @@ class Property_info_getter_from_post implements IProperty_info_getter {
     
     }
 
-    public function get_province_object_array() {
+    public function get_province_object() {
         
         if(!empty($this->post["property-province"]))
         {
@@ -174,7 +174,7 @@ class Property_info_getter_from_post implements IProperty_info_getter {
             $province = new Province($province_id);
             $province->get();
             if($province)
-                return $province->all;            
+                return $province;            
         }
         
             return array();
@@ -190,7 +190,7 @@ class Property_info_getter_from_post implements IProperty_info_getter {
         return $this->post["property-rent-price-us"];
     }
 
-     public function get_neighborhood_object_array() {
+     public function get_neighborhood_object() {
         
         if(!empty($this->post["property-neighborhood"]))
         {
@@ -198,7 +198,7 @@ class Property_info_getter_from_post implements IProperty_info_getter {
             $neighborhood = new Neighborhood($neighborhood_id);
             $neighborhood->get();
             if($neighborhood)
-                return $neighborhood->all;
+                return $neighborhood;
                                     
         }
        

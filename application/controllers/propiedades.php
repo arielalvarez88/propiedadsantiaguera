@@ -543,8 +543,8 @@ EOD;
 
         $new_property_features = $property_info_getter->get_features_object_array();
         
-        $new_property_province = $property_info_getter->get_province_object_array();
-        $new_property_neighborhood = $property_info_getter->get_neighborhood_object_array();
+        $new_property_province = $property_info_getter->get_province_object();
+        $new_property_neighborhood = $property_info_getter->get_neighborhood_object();
 
         $new_property->save(array($new_property_type, $new_property_close_places, $new_property_features, $properties_photos, $user, $new_property_province,$new_property_neighborhood));
 
