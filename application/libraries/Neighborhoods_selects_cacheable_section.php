@@ -59,6 +59,7 @@ public function get_content_to_cache() {
              if($province->id == 31 || $province->id == 3)
              {
                  var_dump($province->neighborhood->get()->all);
+                 die;
              }
                 
              
