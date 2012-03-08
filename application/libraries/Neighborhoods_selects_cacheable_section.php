@@ -58,7 +58,7 @@ public function get_content_to_cache() {
              $neighborhoods = $province->neighborhood->order_by("name")->get();
              if($province->id == 31 || $province->id == 3)
              {
-                 var_dump($province->neigborhood->get()->all);
+                 var_dump($province->neighborhood->get()->all);
              }
                 
              
