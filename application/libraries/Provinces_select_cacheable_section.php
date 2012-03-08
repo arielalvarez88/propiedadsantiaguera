@@ -33,7 +33,7 @@ public function get_content_to_cache() {
 
         $i = 0;
         $CI_helper = & get_instance();                        
-        
+        $CI_helper->cache->clean();
         $provinces = $this->CI_helper->cache->get("all_provinces");
         
         
