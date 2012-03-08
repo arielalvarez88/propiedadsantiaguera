@@ -128,24 +128,26 @@ class Property_inscriber implements IProperty_inscriber {
             if ($is_main_photo) {
                 $property_object->main_photo = $photo_filename;
                 $i++;
-                continue;    
+                
             }
-
-
-            $photo = new File();
-
+            else{
+                $photo = new File();
             $photo->path = $photo_filename;
             $photo->type = Environment_vars::$maps['file_type_to_id']['photo'];
             $photo->save();
 
             $photos[] = $photo;
+            }
+            
         }
 
         return $photos;
     }
 
     public function save_province($property_object, $property_info_getter) {
+        var_dump($property_info_getter->get_province());
         $province = $property_info_getter->get_province();
+        var_dump($province);
         if ($province)
             $property_object->province = $province;
     }
