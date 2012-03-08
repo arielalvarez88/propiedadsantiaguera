@@ -248,6 +248,14 @@ class Property_info_getter_from_post implements IProperty_info_getter {
         
     }
 
+    public function get_neighborhood() {
+        return $thi->post['property-neighborhood'];
+    }
+
+    public function get_province() {
+     return $thi->post['property-province'];
+    }
+
 }
 
 ?>
