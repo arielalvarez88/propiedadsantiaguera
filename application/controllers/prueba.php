@@ -14,13 +14,18 @@ class Prueba extends CI_Controller{
     //put your code here
     public function index(){
         
-        $province = new Province(31);
-        var_dump($province->neighborhood->get()->all);
-        echo "ola";
+        $provinces = new Province(31);
+        $neighborhoods = $provinces->neighborhood->get();
+        foreach($neighborhoods as $neighborhood)
+        {
+            echo $neighborhood->id;
+        }
         $province = new Province(33);
-                var_dump($province->neighborhood->get()->all);
-       
-        
+                $neighborhoods = $provinces->neighborhood->get();
+        foreach($neighborhoods as $neighborhood)
+        {
+            echo $neighborhood->id;
+        }
     }
 }
 
