@@ -9,8 +9,7 @@ class Neighborhood_generator extends CI_Controller {
 
     public function index() {
         
-phpinfo();
-die;
+
         
         
         
@@ -211,7 +210,7 @@ EOD;
 
         $strings = explode("\n", $replace_string);
         
-        $i = 0;
+        $i = 173;
         foreach ($strings as $string) {
             $i++;
 
