@@ -11,7 +11,7 @@ $property_coordenates = isset($property_coordenates) ? $property_coordenates : "
 
 $editing = isset($editing) ? $editing : false;
 
-$class_to_hide_field_if_editing = $editing? 'hidden' :  '';
+$class_to_hide_field_if_editing = $editing? 'no_hidden' :  '';
 
 $error_messages = isset($error_messages)? $error_messages : false;
 
