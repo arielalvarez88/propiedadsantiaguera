@@ -1452,7 +1452,7 @@ EOD;
         
         $regex = '/(\w+[ \wáéíúóA-ZÁÉÍÓÚñÑ(),\.\/\-\(\)]*)/';
 
-        $replace_regex = "\$this->execute(\"INSERT INTO neighborhoods (name,province_id) VALUES ('$1', 33)\"); <br/> \$this->execute(\"INSERT INTO neighborhoods_provinces (province_id,neighborhood_id) VALUES (30, \$i)\");";
+        $replace_regex = "\$this->execute(\"INSERT INTO neighborhoods (name,province_id) VALUES ('$1', 33)\"); <br/> \$this->execute(\"INSERT INTO neighborhoods_provinces (province_id,neighborhood_id) VALUES (6, \$i)\");";
         
         
         
