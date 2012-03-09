@@ -14,7 +14,11 @@ class Prueba extends CI_Controller{
     //put your code here
     public function index(){
         
-        $user= User_handler::getLoggedUser();
+        $province = new Province(31);
+        var_dump($province->neighborhood->get()->all);
+        echo "ola";
+        $province = new Province(33);
+                var_dump($province->neighborhood->get()->all);
        
         
     }
