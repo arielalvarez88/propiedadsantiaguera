@@ -19,7 +19,7 @@ $ruckusing_db_config = array(
 			'type' 			=> 'mysql',
 			'host' 			=> 'mysql.5050mkt.com',
 			'port'			=> 3306,
-			'database' 	=> 'propiedom',
+			'database' 	=>  'propiedad_santiaguera',
 			'user' 			=> '5050mkt',
 			'password' 	=> 'sle9her'
 	),
