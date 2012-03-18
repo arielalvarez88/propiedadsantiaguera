@@ -16,6 +16,7 @@ $property = isset($property) ? $property : null
         
         <div class="fb-like" data-href="<?php echo base_url();?>/propiedades/ver/<?php echo $property->id;?>" data-send="true" data-layout="button_count" data-width="220" data-show-faces="true" data-action="recommend" data-font="arial"></div>
         
+        <a class="no-decoration-anchor" id="print-and-share-email-share" href="/ajax/view_loader/blocks/overlay_share_email" ><img src="" alt="Icono de compartir"/> Enviar propiedad por correo</a>
 
         
     </div>
