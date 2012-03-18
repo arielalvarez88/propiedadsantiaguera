@@ -16,11 +16,11 @@ abstract class User_base_class implements IUser{
     protected $user;
     public function __construct($user) {
         $this->user = $user;
+ 
     }
     
 public function __call($name, $arguments) {
-         
-    
+             
     return call_user_func_array(array($this->user,$name), $arguments);
     
     }
@@ -29,7 +29,7 @@ public function __call($name, $arguments) {
         $this->user->$name = $value;
     }
     
-    public function __get($name) {
+    public function __get($name) {        
         return $this->user->$name;
     }
     
@@ -151,7 +151,11 @@ public function __call($name, $arguments) {
         
     }
 
-
+    public function get_photo() {
+        
+        $image_helper = new Image_helper();
+        return $image_helper->resize_by_user_type($this->user->photo, $this->user->type);
+    }
     
 }
 
