@@ -343,7 +343,7 @@ class Compra extends CI_Controller {
             User_handler::refresh_logged_user();    
             
             
-            $this->send_buy_confirmation($user, $plan_id, $plan_name, $factor, $total, $subtotal, $taxes, $posts_to_ad);
+            //$this->send_buy_confirmation($user, $plan_id, $plan_name, $factor, $total, $subtotal, $taxes, $posts_to_ad);
                         
            redirect("/panel/propiedades");                    
             
