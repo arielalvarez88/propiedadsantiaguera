@@ -1,4 +1,6 @@
-
+        
+                            
+                                
 bindEvent = function(elementOrSelector,eventName,handler)
 {
     
@@ -60,8 +62,7 @@ initilizeSlideShows = function()
         pagerEvent:    'click',
         activePagerClass: 'front-page-active-selector',
         pagerAnchorBuilder: function (idx, slide){
-            return '<span class="front-page-slide-show-selector"></span>';
-           
+            return '<span class="front-page-slide-show-selector"></span>';           
         }
     });
     
@@ -336,26 +337,26 @@ JqueryCycleAjaxPager = function(containerSelector,nextButtonSelector,previousBut
             
           
             
-            //            prev:   previousPagerGroupSelector, 
-            //            next:   nextPagerGroupSelector, 
+        //            prev:   previousPagerGroupSelector, 
+        //            next:   nextPagerGroupSelector, 
             
-            //            after: function(curr,next,opts){                          
-            //                hideNextorPrevious(curr,next,opts,nextPagerGroupSelector,previousPagerGroupSelector);
-            //            },                        
-            //            activePagerClass: 'selected-pager-group',
+        //            after: function(curr,next,opts){                          
+        //                hideNextorPrevious(curr,next,opts,nextPagerGroupSelector,previousPagerGroupSelector);
+        //            },                        
+        //            activePagerClass: 'selected-pager-group',
             
         });
-        //        
-        //         if(thisObject.numberOfPagerGroups > 1)
-        //            {
-        //                
-        //                thisObject.previousPagerGroup.hide();
-        //            }
-        //            else
-        //                {
-        //                    thisObject.nextPagerGroup.hide();
-        //                    thisObject.previousPagerGroup.hide();
-        //                }
+    //        
+    //         if(thisObject.numberOfPagerGroups > 1)
+    //            {
+    //                
+    //                thisObject.previousPagerGroup.hide();
+    //            }
+    //            else
+    //                {
+    //                    thisObject.nextPagerGroup.hide();
+    //                    thisObject.previousPagerGroup.hide();
+    //                }
         
     })();
     
@@ -409,18 +410,18 @@ HiderAndShowerElement = function(elementSelector,  valuesToSelectorsToShowMap, e
             
       
         if(elementValue)
-            {
-                var requiredHiddenElements = $(valuesToSelectorsToShowMap[elementValue] ).filter(".hidden-required").removeClass(".hidden-required");
-                requiredHiddenElements.addClass("required");
-                $(valuesToSelectorsToShowMap[elementValue]).show();
+        {
+            var requiredHiddenElements = $(valuesToSelectorsToShowMap[elementValue] ).filter(".hidden-required").removeClass(".hidden-required");
+            requiredHiddenElements.addClass("required");
+            $(valuesToSelectorsToShowMap[elementValue]).show();
                 
-            }
+        }
             
             
         else 
         {
             var requiredHiddenElements = $(valuesToSelectorsToShowMap['selector'] + " .hidden-required").removeClass(".hidden-required");
-                requiredHiddenElements.addClass("required");
+            requiredHiddenElements.addClass("required");
             $(valuesToSelectorsToShowMap['selector']).show();
             
         }
@@ -483,10 +484,16 @@ formRecolectorButtonBehaviour = function(event,formWrapper,options){
 Form = function (formWrapperSelector, sendButtonSelector, cleanButtonSelector,options){
              
              
-   var optionsDefaultValue = {validatorOptions: {}, recivingScriptUrl: '', ajax: false, ajaxCallbackFunction: function(){}, nowLoading: true};
+    var optionsDefaultValue = {
+        validatorOptions: {}, 
+        recivingScriptUrl: '', 
+        ajax: false, 
+        ajaxCallbackFunction: function(){}, 
+        nowLoading: true
+    };
    
    
-   options = $.extend(true, optionsDefaultValue, options);
+    options = $.extend(true, optionsDefaultValue, options);
    
    
     //Options:
@@ -534,9 +541,12 @@ Form.prototype.sendButton;
 Form.prototype.recivingScriptUrl;
 Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanButtonSelector, options){
     
-    options = options? options : {ajax: false, ajaxCallbackFunction: function(){}};
-    var thisObject =this;
-    this.form = $(formWrapperSelector);
+    options = options? options : {
+        ajax: false, 
+        ajaxCallbackFunction: function(){}
+    };
+var thisObject =this;
+this.form = $(formWrapperSelector);
     
     
     this.cleanButton = $(cleanButtonSelector);        
@@ -571,7 +581,12 @@ Form.prototype.init = function(formWrapperSelector, sendButtonSelector, cleanBut
         }
             
         if(options.nowLoading)
-            $.fancybox({content: '<div style="text-align:center;"><img src="/images/common/buffering.gif" alt="Espere por favor"/></div>', title: "Espere mientras procesamos su información", padding:0, showCloseButton: false});
+            $.fancybox({
+                content: '<div style="text-align:center;"><img src="/images/common/buffering.gif" alt="Espere por favor"/></div>', 
+                title: "Espere mientras procesamos su información", 
+                padding:0, 
+                showCloseButton: false
+            });
         
         formRecolectorButtonBehaviour(event, formWrapperSelector,options);
         
@@ -654,7 +669,7 @@ InputsWithDefaultText = function (inputSelector,defaultText,optionalClearPasswor
     {
         this.optionalClearPasswordInput.val(defaultText);
     }
-    else
+    else if(this.input.val() == "")
     {
         this.input.val(defaultText);
     }
@@ -791,17 +806,24 @@ printCallbackMessageInContainer = function(response, successMessageContainer, er
 
 initializeForms = function(){
     
-    initializeInputsWithDefaultText();
+    
 
   
    
     var  signupForm = new Form('#signup-form-container #signup-form','','#signup-form-container #signup-form-clear-button');
-    var forgotPassword = new Form('#password-reset-form', '#password-reset-submit', '',{ajax: true, recivingScript: "/usuario/password_reset_request", ajaxCallbackFunction: function(response){
+    var forgotPassword = new Form('#password-reset-form', '#password-reset-submit', '',{
+        ajax: true, 
+        recivingScript: "/usuario/password_reset_request", 
+        ajaxCallbackFunction: function(response){
             new alertMessageCallback(response, 'Email enviado', 'Error trate luego').getMessage();    
         }
     });                
         
-    var loginForm = new Form('#login-form', '#login-submit', '',{nowLoading: false, ajax: true, recivingScriptUrl: '/usuario/login', ajaxCallbackFunction: function(response){
+    var loginForm = new Form('#login-form', '#login-submit', '',{
+        nowLoading: false, 
+        ajax: true, 
+        recivingScriptUrl: '/usuario/login', 
+        ajaxCallbackFunction: function(response){
         
         
             if(response.success)
@@ -911,26 +933,42 @@ initializeForms = function(){
     }
 
   
-    var propertyForm = new Form('#property-form','#property-form-send-button','#property-form-clear-button',{validatorOptions: propertyValidationOptions});
+    var propertyForm = new Form('#property-form','#property-form-send-button','#property-form-clear-button',{
+        validatorOptions: propertyValidationOptions
+    });
     
-    var sendPropertyByEmail = new Form("#overlay-share-email","#overlay-share-email-send","",{ajax:true, nowLoading: false,recivingScriptUrl: "/ajax/email_share_property", validatorOptions: {errorLabelContainer: "#overlay-share-email-error-container", errorContainer:"#overlay-share-email-error-container"}});
-       
-    var givePosts = new Form('#give-posts-to-agents-overlay', '#give-posts-to-agents-overlay-save-button', '', {ajax: true, recivingSriptUrl: '/miembros/give_posts', ajaxCallbackFunction:  function(response){
-            printCallbackMessageInContainer(response,"#give-posts-to-agents-overlay .info-messages","#give-posts-to-agents-overlay .error-messages");
-            if(response.success)
-                window.location.href= window.location.href;
-        
+    var sendPropertyByEmail = new Form("#overlay-share-email","#overlay-share-email-send","",{
+        ajax:true, 
+        nowLoading: false,
+        recivingScriptUrl: "/ajax/email_share_property", 
+        validatorOptions: {
+            errorLabelContainer: "#overlay-share-email-error-container", 
+            errorContainer:"#overlay-share-email-error-container"
         }
     });
+       
+var givePosts = new Form('#give-posts-to-agents-overlay', '#give-posts-to-agents-overlay-save-button', '', {
+    ajax: true, 
+    recivingSriptUrl: '/miembros/give_posts', 
+    ajaxCallbackFunction:  function(response){
+        printCallbackMessageInContainer(response,"#give-posts-to-agents-overlay .info-messages","#give-posts-to-agents-overlay .error-messages");
+        if(response.success)
+            window.location.href= window.location.href;
+        
+    }
+});
 
     
     
-    var searchPropertyByRefNumber  = new Form("#overlay-search-by-ref-number", "#overlay-search-by-ref-number-button", "");
+var searchPropertyByRefNumber  = new Form("#overlay-search-by-ref-number", "#overlay-search-by-ref-number-button", "");
             
-    var property_contact = new Form("#property-contact-form","#property-contact-submit","",{ajax: true, recingScriptUrl: "/ajax/property_contact_emailer", ajaxCallbackFunction: function(response){
-        printCallbackMessageInContainer(response, '#property-contact-info', "#property-contact-errors");
-    }
-});
+    var property_contact = new Form("#property-contact-form","#property-contact-submit","",{
+        ajax: true, 
+        recingScriptUrl: "/ajax/property_contact_emailer", 
+        ajaxCallbackFunction: function(response){
+            printCallbackMessageInContainer(response, '#property-contact-info', "#property-contact-errors");
+        }
+    });
 }
 
 
@@ -954,9 +992,7 @@ ViewLoaderElement = function(elementSelector,eventString,valueToUrlJsonsArray,se
         $.post(scriptUrl,postVariables,function(html){
             thisObject.newFormContainer.find('.optional-form, .optional-view').remove();                        
             thisObject.newFormContainer.append(html);
-            initializeForms();
-            initializeViewLoaderElements();
-            initializeInputsWithDefaultText();
+            initializeEvents();
                 
         });
     };
@@ -1002,9 +1038,9 @@ initializeViewLoaderElements = function(){
   
 
     var forgotPassword = new ViewLoaderElement('#login-password-reset-button','click',[{
-            value: '', 
-            url:'/ajax/form_getter/passwordRecovery'
-        }],'#login','a');
+        value: '', 
+        url:'/ajax/form_getter/passwordRecovery'
+    }],'#login','a');
 
 
 
@@ -1055,7 +1091,7 @@ NowLoadingBehaviour = function(selector)
 {
 
     
-}
+    }
 
 Overlay = function (selector, optionalClosebuttonSelector,preventDefault)
 {
@@ -1090,12 +1126,6 @@ Overlay = function (selector, optionalClosebuttonSelector,preventDefault)
     
 }
 
-initializeInputsWithDefaultText = function(){
-    var loginEmail = new InputsWithDefaultText('#login-email', 'Email');
-    var loginPassword = new InputsWithDefaultText('#login-password', 'Contraseña', '#login-password-clear');
-    var resetPasswordEmail = new InputsWithDefaultText('#password-reset-input', 'Email');
-    
-};
 
 
 Iframe = function(selector){
@@ -1131,6 +1161,7 @@ initializeInputsWithDefaultText = function(){
     var password = new InputsWithDefaultText('#login-password', 'Contraseña','#login-password-clear');
     var resetPasswordEmail = new InputsWithDefaultText('#password-reset-input', 'Email');
     var basicFilterReferenceNumber = new InputsWithDefaultText("#basic-filter-reference-number", "N\xfamero de referencia");
+    var directorySearchAgentsByName = new InputsWithDefaultText("#directory-search-agent-name-field","Nombre del Agente");
 };
 
 
@@ -1232,7 +1263,7 @@ function commify(num) {
 
 IFilter = function (){
 
-};
+    };
 IFilter.getMaxPrice= function(){};
 IFilter.getMinPrice= function(){};
 
@@ -1247,17 +1278,18 @@ ProvinceChooser = function(provinceChooserSelector,neighborhoodsSelectsClass,nei
     bindEvent(provinceChooserSelector, "change", function(){
         var selectedProvinceId = thisObject.provinceChosser.val();
         
-            thisObject.neighborhoodsChoosers.hide();
-            thisObject.neighborhoodsChoosers.attr("name", "");                                        
-            var selectedNeighborhoodChooser = thisObject.neighborhoodsChoosers.filter("[" +neighborhoodHtmlAttributeContainingProvinceId +" = "  + selectedProvinceId + "]");
+        thisObject.neighborhoodsChoosers.hide();
+        thisObject.neighborhoodsChoosers.attr("name", "");                                        
+        var selectedNeighborhoodChooser = thisObject.neighborhoodsChoosers.filter("[" +neighborhoodHtmlAttributeContainingProvinceId +" = "  + selectedProvinceId + "]");
             
-            selectedNeighborhoodChooser.show();
-            selectedNeighborhoodChooser.attr("name", neighborhoodsSelectName);                        
+        selectedNeighborhoodChooser.removeClass("hidden");
+        selectedNeighborhoodChooser.show();
+        selectedNeighborhoodChooser.attr("name", neighborhoodsSelectName);                        
         
     });
             
-         if(executeEvent)
-              this.provinceChosser .change();
+    if(executeEvent)
+        this.provinceChosser .change();
         
 };
 
@@ -1278,7 +1310,7 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, province
     
     
     
-    new ProvinceChooser(provinceChooser, neighborhoodChoosersClass, "neighborhood", "data-province");
+    
     
     
     
@@ -1346,7 +1378,7 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, province
     bindEvent(sliderChangerElementSelector, "change", thisObject.sliderChangerElementEvent);
     bindEvent(searchButtonSelector, "click", thisObject.submitEvent);
    
-   
+    new ProvinceChooser(provinceChooser, neighborhoodChoosersClass, "neighborhood", "data-province", true);
    
    
    
@@ -1648,10 +1680,18 @@ initializeHiderAndShowerElement = function(){
     }, ".hidden", false, "click");
     
     
-    var supportPayments = new HiderAndShowerElement("#support-faq-selector", {selector: ".support-faq"}, ".faq-data", false, "click", false);
-    var supportAccount= new HiderAndShowerElement("#support-account-selector", {selector: ".support-account"}, ".faq-data", false, "click", false);
-    var supportPayments = new HiderAndShowerElement("#support-payments-selector", {selector: ".support-payments"}, ".faq-data", false, "click", false);
-    var supportListings= new HiderAndShowerElement("#support-listings-selector", {selector: ".support-listings"}, ".faq-data", false, "click", false);
+    var supportPayments = new HiderAndShowerElement("#support-faq-selector", {
+        selector: ".support-faq"
+    }, ".faq-data", false, "click", false);
+    var supportAccount= new HiderAndShowerElement("#support-account-selector", {
+        selector: ".support-account"
+    }, ".faq-data", false, "click", false);
+    var supportPayments = new HiderAndShowerElement("#support-payments-selector", {
+        selector: ".support-payments"
+    }, ".faq-data", false, "click", false);
+    var supportListings= new HiderAndShowerElement("#support-listings-selector", {
+        selector: ".support-listings"
+    }, ".faq-data", false, "click", false);
 
     var propertyTypeInPropertyForm = new HiderAndShowerElement("#properrty-form-description-type", {
         1 : ".house-field", 
@@ -1952,32 +1992,37 @@ StepByStepForm = function(arrayOfStepObjects){
     $.each(arrayOfStepObjects, function(index,step){
         
             
-        new Form(step.formContainerSelector, step.sendButtonSelector, step.cleanButtonSelector,{ajax: true, recivingScriptUrl : step.recivingScriptUrl, nowLoading: false, ajaxCallbackFunction: function(response){
+        new Form(step.formContainerSelector, step.sendButtonSelector, step.cleanButtonSelector,{
+            ajax: true, 
+            recivingScriptUrl : step.recivingScriptUrl, 
+            nowLoading: false, 
+            ajaxCallbackFunction: function(response){
                 
-            if(index==0)
-                step.select();
+                if(index==0)
+                    step.select();
                
-            printCallbackMessageInContainer(response,'',step.errorMessagesContainer);
+                printCallbackMessageInContainer(response,'',step.errorMessagesContainer);
 
-            if(response.success)
-            {
+                if(response.success)
+                {
                     
-                step.setAvailable();
-                step.deselect();
-                var nextStepExist = typeof arrayOfStepObjects[index+1] != "undefined"
+                    step.setAvailable();
+                    step.deselect();
+                    var nextStepExist = typeof arrayOfStepObjects[index+1] != "undefined"
                 
                         
-                if(nextStepExist)
-                {
-                    var nextStep = arrayOfStepObjects[index+1];
-                    nextStep.select();
+                    if(nextStepExist)
+                    {
+                        var nextStep = arrayOfStepObjects[index+1];
+                        nextStep.select();
+                    }
                 }
-            }
                     
                 
                     
                
-        }} );
+            }
+        } );
     });
     
     
@@ -2028,7 +2073,7 @@ initializePrizeCalculator = function(){
 initiazlizeStepByStepForms = function(){
         
     var buyFormSteps = [new StepOfStepByStepForm("#buy-form", "#buy-form-step-one", "#buy-form-step-one-indicator","#buy-form-step-one-submit-button",'',"#buy-form-step-one-error-messages"),
-        new StepOfStepByStepForm("#buy-form", "#buy-form-step-two", "#buy-form-step-two-indicator"),
+    new StepOfStepByStepForm("#buy-form", "#buy-form-step-two", "#buy-form-step-two-indicator"),
 
     ];
     var buyForm = new StepByStepForm(buyFormSteps);
@@ -2178,6 +2223,8 @@ initializeTabs = function()
     var toolsCenterTab = new Tab(".tool-center-tab-item", ".tool-center-tab-body", "data-show-selector");
     
     var panelsPropertiesTab = new Tab(".panels-properties-tab-item", ".panels-properties-tab-body", "data-show-selector");
+    
+    //var directory = new Tab(".directory-panel-tab-item",".directory-panel-tab-body", "data-show-selector")
 }
 
 
@@ -2212,12 +2259,30 @@ initializeEvents= function(){
     initializeWysiwyg();
     initializeProvinceChoosers();
     initializeGetParamatersAdder();
-    initializeTabs();
-    
+    initializeTabs();    
+    initializeDirectoryEvents();
     initializeOptionsButtons();
-    
+    initializeInputsWithDefaultText();
 };
 
+
+initializeDirectoryEvents= function(){
+    
+       
+    
+    nameInitialsEventHandler = function(){
+            
+        var letra= $(this).html();
+        $(".directory-name-initialsletters").css("color","black");
+        $(this).css("color","red");
+        $.get("/directorio/get_users_directory_begging_with_letter/"+letra,function(response){
+            $("#director-users-pager-users-container").html(response);
+        });
+            
+    };
+    
+      bindEvent(".directory-name-initialsletters", "click", nameInitialsEventHandler);     
+}
 
 $(document).ready(function(){
 
@@ -2229,7 +2294,8 @@ $(document).ready(function(){
     }
         
     initializeEvents();
-    /*comentario*/    
+/*comentario*/                 
+        
 });
 
                 
