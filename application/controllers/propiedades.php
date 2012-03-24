@@ -223,7 +223,7 @@ $i = 0;
         $errors_view_variables = array();
 
         if (!$property->display_property)
-            $errors_view_variables['errors'] = "Debe publicar su propiedad para que este dipsonible para todo el público.";
+            $errors_view_variables['errors'] = "Debe publicar su propiedad para que esté disponible para todo el público.";
 
 
         if (!$user || ($property_owner->id != $user->id)) {
