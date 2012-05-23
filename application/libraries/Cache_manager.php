@@ -18,7 +18,7 @@ class Cache_manager
     {
         $this->cacheable_section = $cacheable_section;
         $this->CI_helper = & get_instance();
-        $this->CI_helper->load->driver('cache', array("adapter" => "apc", "backup" => "file"));
+        $this->CI_helper->load->driver('cache', array("adapter" => "file", "backup" => "apc"));
         
         
         }

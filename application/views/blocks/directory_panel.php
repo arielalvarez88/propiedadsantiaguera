@@ -12,8 +12,8 @@ $names_initials = isset($names_initials) ? $names_initials : null;
 
 $agents_results = isset($agents_results)? $agents_results : '';
 $searched_agent_name = isset($searched_agent_name) ? $searched_agent_name : '';
-
-
+$basic_filter_view = isset($basic_filter_view) ? $basic_filter_view : '';
+$properties_results_view = isset($properties_results_view) ?$properties_results_view : '';
 ?>
 
 <div id="directory-panel">
@@ -26,35 +26,4 @@ $searched_agent_name = isset($searched_agent_name) ? $searched_agent_name : '';
         <a id="directory-compnanies-selector" class="tab-item no-decoration-anchor directory-panel-tab-item <?php echo $section == "empresas" ? 'selected' : ''; ?>" href="/directorio/empresas">Empresas</a>
     </div>
     
-    <div id="panels-property-tabs-bodies">
-        
-  
-        
-        
-
-    <div id="agents-tab-body" <?php echo $section == "agentes" ? '' : 'class="hidden"'; ?>>
-
-
-
-        <div id="directory-search-agent-header">
-            <form id="directory-search-agent-name" method="post" action="/directorio/buscar_agentes_por_nombre">
-                <input id="directory-search-agent-name-field" type="text" value="<?php echo $searched_agent_name;?>"  name="name" />
-                <input type="submit"  value="Buscar" class="green-button"/>
-
-            </form>   
-            <ul id="initials-container">
-                <?php foreach ($names_initials  as $names_initial): ?>
-                    <li><?php echo $names_initial; ?></li>
-                <?php endforeach; ?>
-
-            </ul>  
-
-           
-
-        </div> 
-                <?php echo $agents_results;?>
-        
-    </div>
-
-  </div>
 </div>
