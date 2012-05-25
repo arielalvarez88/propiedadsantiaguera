@@ -13,7 +13,7 @@
 require_once realpath("./application/libraries/IUser.php");
 require_once realpath("./application/libraries/User_base_class.php");
 
-class Company_agent_user extends User_base_class implements IUser_requests_only{
+class Company_agent_requester_user extends User_base_class implements IUser_requests_only{
     public $user;
     public $company;
     

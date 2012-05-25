@@ -12,7 +12,7 @@ bindEvent = function(elementOrSelector,eventName,handler)
     
     var element;
     element = $(elementOrSelector); 
-    
+     
     
     if(!elementHasHandler(element,eventName,handler))
     {

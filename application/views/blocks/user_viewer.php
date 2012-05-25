@@ -53,9 +53,13 @@ $company_or_particular_view = isset($company_or_particular_view) ? $company_or_p
             </div>
 
 
-
-            <p id="user-viewer-user-email"><span class="bold">Email:</span> <?php echo $user_email; ?></p>
-
+         
+            <p id="user-viewer-user-email">
+                   <?php if ($user->email): ?>
+                <span class="bold">Email:</span> <?php echo $user_email; ?>
+               <?php endif; ?>
+            </p>
+            
 
 
             <?php if ($user_website): ?>

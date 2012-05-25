@@ -14,7 +14,7 @@ class Directorio extends CI_Controller{
         
         $directory_panel_view_variables = $this->get_directory_panel_view_variables($section,$view_variables);
         
-        $view_variables = array_merge($view_variables,$directory_panel_view_variables);
+        $view_variables = array_merge($view_variables,$directory_panel_view_variables); 
         
         $blocks['top'] = $this->load->view("blocks/directory_panel",$view_variables,true);
         
@@ -42,6 +42,8 @@ class Directorio extends CI_Controller{
     {
         
          $plain_users = new User();
+         
+         
         $plain_users->get();
         $functional_users = array();
         foreach($plain_users as $plain_user)

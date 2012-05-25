@@ -88,7 +88,10 @@ require_once realpath("./application/libraries/User_factory.php");
                             <li><a class="no-decoration-anchor" href="<?php base_url(); ?>/panel/agentes">AGENTES</a></li>
 
                         <?php endif; ?>
+                        <?php if ($loggedUser instanceof Admin_user): ?>
+                            <li><a class="no-decoration-anchor" href="<?php echo base_url();?>particulares">| PARTICULARES</a></li>
 
+                        <?php endif; ?>
 
 
                     </ul>
@@ -172,10 +175,6 @@ require_once realpath("./application/libraries/User_factory.php");
 
 
                     </ul>                
-
-
-
-
                 </div>
             </div>
             <div id="content">

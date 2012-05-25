@@ -17,9 +17,18 @@ class Agregar_video extends CI_Controller {
     public function desea($property_id) {
         $user = $this->get_logged_user_or_redirect_to_please_login();
         $property = $user->property->where("id", $property_id)->get();
+        
+        
         $property_belongs_to_user = $user->property->where("id", $property_id)->get()->id;
 
-        if (!$property_belongs_to_user)
+        if($user instanceof Admin_user){
+        $prop = new Property();
+        $property = $prop->where("id", $property_id)->get(); 
+        }
+
+        
+        
+        if (!$property_belongs_to_user && !$user instanceof Admin_user)
             redirect("/pagina_no_valida");
 
         $are_you_sure_view_variables['message'] = '¿Desea agregar un video para la propiedad : "' . $property->title . '" ?';

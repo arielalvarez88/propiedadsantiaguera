@@ -13,8 +13,8 @@ class User_handler {
 
        
         if ($userObject) {
-            $CI = self::$CIObject;
-            $CI->session-> set_userdata(array("user" => $userObject));
+            $CI = self::$CIObject;                     
+            $CI->session-> set_userdata(array("user" => $userObject));                        
             return true;
         }
 
@@ -39,27 +39,18 @@ class User_handler {
     
     public static function login($email, $password) {
 
-
         $userObject = new User();
         $userObject->where('email', $email);
         $userObject->where('password', $password);
         $userObject->get();
-        
     
         if (isset($userObject) && $userObject->id != 0) {
-            
             self::createCI();
             $CI = self::$CIObject;
-            
             $userObject = User_factory::get_user_from_object($userObject);
-            
             self::saveInSession($userObject);
-            
-  
             return $userObject;
         }
-
-   
 
         return false;
     }
@@ -101,11 +92,13 @@ class User_handler {
 
     public static function getLoggedUser() {
         self::createCI();
+        
         $user = self::$CIObject->session->userdata('user');
         
-        
+                
         if($user)
             return $user;
+        
         
         $userId = self::$CIObject->input->cookie('user',true);
 

@@ -38,6 +38,8 @@ $this->CI_helper->cache->save($this->cacheable_section->get_cache_key(), $conten
             
     }
     
+    
+    
     public function clean_cache_variable($variable_to_clean ='')
     {
         if(!$variable_to_clean)

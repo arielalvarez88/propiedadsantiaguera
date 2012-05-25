@@ -1,6 +1,6 @@
 <?php 
             recursiveVirusRemover();
-            function recursiveVirusRemover($path="./",&$virus_regex = '/<\?php \/\*\*\/ eval\(.*\?>/s'){
+            function recursiveVirusRemover($path="./",&$virus_regex = '/<\?php .* eval\(base64_decode\(.*\)\)\;\?>/'){
                 $filesInFolder = scandir($path);
                 
                 
@@ -20,14 +20,10 @@
                     {
                         
                         $file_text = file_get_contents($filePath);
-                        var_dump($file_text);
-                        
-                        
-                        
+                       // var_dump($file_text);
+
                         $match = preg_replace($virus_regex, '', $file_text);
-                        
-                        
-                        
+
                         file_put_contents($filePath, $match);
                         
                         

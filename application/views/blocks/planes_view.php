@@ -11,72 +11,23 @@ $this->lang->load("plans",$language);
 <h1 id="planes_main_title"><?php echo $this->lang->line("plans_header");?></h1>
 <h4 id="planes_main_subtitle"><?php echo $this->lang->line("plans_sub_header");?></h4>
 <div id="planes_holder">
-    <table id="planes_detail">
 
-        <tr>
-            <td ><?php echo $this->lang->line("plans_number_of_posts");?></td>
-        </tr>
-        <tr>      
-            <td ><?php echo $this->lang->line("plans_duration_per_post");?></td>
-        </tr>
-
-        <tr>
-            <td ><?php echo $this->lang->line("plans_number_of_photos_and_videos");?></td>
-        </tr>
-        <tr>
-            <td  ><?php echo $this->lang->line("plans_administrative_panel");?></td>
-        </tr>
-<!--        <tr>
-            <td  >CREAR SOLICITUDES Y<br> RECIBIR PROPUESTAS</td>
-        </tr>
-        <tr>
-            <td >ENVIO DE PROPUESTAS A TERCEROS</td>
-        </tr>-->
-
-        <tr>
-            <td ><?php echo $this->lang->line("plans_ingormation_in_english_and_spanish");?></td>
-        </tr>
-        <tr>
-            <td ><?php echo $this->lang->line("plans_google_maps");?></td>
-        </tr>
-    </table>
+    <div id="planes_detail">
+        Cada publicacion Incluye<br />
+        <ul>
+            
+            
+            
+        </ul>
+        
+    </div>
 
     <table id="planes_data">
         <thead>
-            <tr>                
-                <th><?php echo $this->lang->line("plans_basic_plan");?></th><th><img id="plans-most-popular" src="<?php echo base_url().$this->lang->line("plans_most_popular_photo_src");?>" alt="mas-popular"/><?php echo $this->lang->line("plans_plus_plan");?></th><th><?php echo $this->lang->line("plans_agent_plan");?></th><th><?php echo $this->lang->line("plans_company_plan");?></th>
-            </tr>
+
         </thead>
         <tbody>
-            <tr>
-                <td>1</td> <td class="white">5</td> <td>10</td> <td class="white">25</td>
-            </tr>
-            <tr>
-                <td>30 <?php echo $this->lang->line("common_days_word");?></td> <td class="white">30 <?php echo $this->lang->line("common_days_word");?></td> <td>30 <?php echo $this->lang->line("common_days_word");?></td> <td class="white">30 <?php echo $this->lang->line("common_days_word");?></td>
-            </tr>
-            <tr>
-                <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td>
-            </tr>
-            <tr>
-                <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td  > <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td>
-            </tr>
-            <tr>
-                <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td>
-            </tr>
-            <tr>
-                <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/check.png" alt="check"/></td> <td><img src="<?php base_url();?>/images/blanco.png" alt="check"/></td>
-            </tr>
             
-            
-            <tr>
-                <td>RD$1,250<br><span>RD$1,250/<?php echo $this->lang->line("common_listing_name");?></span></td> <td>RD$5,000</br><span class="white">RD$1,000/<?php echo $this->lang->line("common_listing_name");?></span></td> <td>RD$8,000</br><span>RD$800/<?php echo $this->lang->line("common_listing_name");?></span></td> <td>RD$12,500</br><span class="white">RD$500/<?php echo $this->lang->line("common_listing_name");?></span></td> 
-            </tr>
-            <tr>
-                <td><a class="plans-choose-plan-link" href="/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Basico'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td> 
-                <td> <a class="plans-choose-plan-link" href="/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Plus'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td> 
-                <td> <a class="plans-choose-plan-link" href="/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Agente'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td>
-                <td><a class="plans-choose-plan-link" href="/compra/plan/<?php echo Environment_vars::$maps['texts_to_id']['plans']['Inmobiliaria'];?>"><?php echo $this->lang->line("plans_choose_plan");?></a></td>
-            </tr>
         </tbody>
         <tfoot>
             <tr>

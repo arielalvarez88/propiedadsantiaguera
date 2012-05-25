@@ -56,6 +56,7 @@ class CI_Controller {
                 
                                 $language = Language_handler::get_user_prefered_language();
                                 $this->lang->load("common",$language);
+
                         
 	}
 

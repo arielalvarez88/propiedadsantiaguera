@@ -1982,6 +1982,21 @@ ul.primary-links li a, ul.primary-links li a:link, ul.primary-links li a:visited
     margin-right: 45px;
 }
 
+#property-form-user{
+    width:220px;
+}
+
+
+#property-form-user li{
+    clear:both;
+    padding-bottom: 20px;
+}
+
+#property-form-user input{
+    float: right;
+}
+
+
 /*property-form ENDS*/
 
 /***popular-neighborhoods***/
@@ -5228,27 +5243,26 @@ span.required{
     margin:0 auto;
     position: relative;
 }
+
+
 #planes_detail
 {
-    float:left;
-    width:24%;
-    padding-right: 10px;
-    color:#333;
-    font-size:9pt;
-    text-align:right;
-    margin-top:122px;
+  
 }
+
+
+
 #planes_detail td
 {
     margin-bottom: 1px;
 }
 #planes_data
 {
-    background:url('/images/plans/tableBackground.png') no-repeat top center transparent;
+    background:url('/images/plans/new_prices.png') no-repeat top center transparent;
     color:#333;
-    width:687px;
+    width:738px;
     text-align: center;
-    height: 670px;
+    height: 244px;
 
 }
 
@@ -6820,6 +6834,17 @@ text-decoration: none;
     
 }
 
+
+
+#panel_user_particulares{
+   height: 100px;
+   margin-top: 2px;
+    
+    
+}
+
+
+
 #panel_user img{
     height: 100px;
     width: 117px;
@@ -6855,17 +6880,46 @@ float:left;
   display: block;
 }
 
-
-
-
-#datos2 {
+#particulares_datos1 {
     
   float:left;
- 
+  margin-left: 40px;
+
   width: 315px;
   height: 100px;
   display: block;
 }
+
+#datos3 {
+    padding-top: 30px;
+    float:left;
+    width: 150px;
+}
+
+#datos3  a{
+  width:100px;
+  text-decoration: none;
+}
+
+
+#datos2 {
+  float:left;
+  width: 315px;
+  height: 100px;
+  display: block;
+}
+
+#datos2  ul{
+  padding-top: 20px;
+}
+
+#property_count{
+    background-color:#76BC3B;
+    border-radius: 6px 6px 6px 6px;
+    color:white;
+    padding:10px;
+}
+
 #contenedor{
     
     
