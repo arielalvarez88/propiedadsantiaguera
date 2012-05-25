@@ -12,11 +12,18 @@ class Directorio extends CI_Controller{
     public function index($section="propiedades", $view_variables = array())
     {
         
-        $directory_panel_view_variables = $this->get_directory_panel_view_variables($section,$view_variables);
         
-        $view_variables = array_merge($view_variables,$directory_panel_view_variables); 
+        if(!$view_variables)
+            redirect("/directorio/propiedades");
         
-        $blocks['top'] = $this->load->view("blocks/directory_panel",$view_variables,true);
+        
+        $view_variables_of_directory_panel['section'] = $section;
+        $blocks['top'] = $this->load->view("blocks/directory_panel",$view_variables_of_directory_panel,true);
+        
+        $blocks['topLeftSide'] = isset($view_variables['topLeftSide']) ? $view_variables['topLeftSide'] : null;
+        $blocks['topRightSide'] = isset($view_variables['topRightSide']) ? $view_variables['topRightSide'] : null;
+        $blocks['bottom'] = isset($view_variables['bottom']) ? $view_variables['bottom'] : null;
+        
         
         $this->load->view("page",$blocks);
         
@@ -24,11 +31,11 @@ class Directorio extends CI_Controller{
     
     
     
-     public function propiedades()
+    public function propiedades()
     {
          
-        
-        $this->index("propiedades");
+        $directory_properties_search_variables['basic_filter_view'] = $this->load->view("blocks/basic_filter","",true);
+        $this->index("propiedades",$directory_properties_search_variables);
         
     }
      
@@ -40,10 +47,41 @@ class Directorio extends CI_Controller{
     
     public function agentes()
     {
+
+       
+        $view_variables_for_directory_users_pager = $this->get_view_variables_for_directory_users_pager();
+        $view_variables_for_directory_user_search_filter = $this->get_view_variables_for_directory_agents_search_filter();
+        $view_variables["topLeftSide"] = $this->load->view("blocks/directory_user_search_filter",$view_variables_for_directory_user_search_filter,true);
         
-         $plain_users = new User();
-         
-         
+        $view_variables['bottom'] = $this->load->view("blocks/directory_users_pager",$view_variables_for_directory_users_pager,true);
+       
+        $this->index("agentes",$view_variables);
+        
+    }
+    
+    private function get_view_variables_for_directory_users_pager()
+    {
+        $seach_user_by_initial = $this->input->get("inicial");
+        $seach_user_by_name = $this->input->get("nombre");
+        $view_variables = array();
+        if($seach_user_by_name)
+        {
+            $view_variables['users'] = $this->search_agents_by_name($seach_user_by_name);
+        }
+        else if($seach_user_by_initial)
+        {
+            $view_variables['users'] = $this->search_agents_with_initial($seach_user_by_initial);
+            
+        }
+        else
+            $view_variables['users'] = $this->get_all_agents_as_seach_result();
+        
+        return $view_variables;
+    }
+    
+    private function get_all_agents_as_seach_result()
+    {
+        $plain_users = new User();
         $plain_users->get();
         $functional_users = array();
         foreach($plain_users as $plain_user)
@@ -52,17 +90,18 @@ class Directorio extends CI_Controller{
             $functional_users[] = $functional_user; 
         }
         
-        $agents_results_views_variables['users'] = $functional_users;
-        $view_variables['agents_results'] = $this->load->view("blocks/directory_users_pager",$agents_results_views_variables,true);
-        $this->index("agentes",$view_variables);
+        return $functional_users;
+    }
+    
+    private function get_matching_agents()
+    {
         
     }
     
-    public function buscar_agentes_por_nombre()
+    public function search_agents_by_name($name='')
     {
         
-         $plain_users = new User();
-         $name = $this->input->post("name");
+         $plain_users = new User();        
         $plain_users->like("name",$name)->get();
         $functional_users = array();
         foreach($plain_users as $plain_user)
@@ -71,41 +110,40 @@ class Directorio extends CI_Controller{
             $functional_users[] = $functional_user; 
         }
         
-        $agents_results_views_variables['users'] = $functional_users;
-        
-        $view_variables['agents_results'] = $this->load->view("blocks/directory_users_pager",$agents_results_views_variables,true);
-        $view_variables['searched_agent_name'] = $name;
-        $this->index("agentes",$view_variables);
+        return $functional_users;
         
     }
     
     
-     public function buscar_agentes_por_inicial($letter='a')
+     private function search_agents_with_initial($initial='a')
     {
         
          $plain_users = new User();
          $name = $this->input->post("name");
-        $plain_users->like("name",$letter,'after')->get();
+        $plain_users->like("name",$initial,'after')->get();
         
         $functional_users = array();
         foreach($plain_users as $plain_user)
         {
             $functional_user = User_factory::get_user_from_object($plain_user);
             $functional_users[] = $functional_user; 
-        }
-        
-        $agents_results_views_variables['users'] = $functional_users;
-        $view_variables['agents_results'] = $this->load->view("blocks/directory_users_pager",$agents_results_views_variables,true);
-        $view_variables['selected_initial'] = $letter;
-        $this->index("agentes",$view_variables);
-        
+        }                
+        return $functional_users;                
     }
     
     
-    public function get_directory_panel_view_variables($section="propiedades", $view_variables= array())
+    public function get_view_variables_for_directory_agents_search_filter()
     {
-        $view_variables['names_initials'] = $this->get_initial_letters($view_variables);
-        $view_variables['section'] = $section;
+        $recived_letter_to_search = $this->input->get("inicial");
+        $letter_to_search_agents_for = $recived_letter_to_search ? $recived_letter_to_search : '';
+        
+        
+        $view_variables['names_initials'] = $this->get_initial_letters($letter_to_search_agents_for);
+        
+        $searched_agent_name = $this->input->get("nombre");
+        
+        if($searched_agent_name)
+            $view_variables['searched_agent_name'] = $searched_agent_name;
         
         return $view_variables;
     }
@@ -151,7 +189,7 @@ class Directorio extends CI_Controller{
     }
 
   
-    public function get_initial_letters($view_variables = array())
+    public function get_initial_letters($letter_to_search_agents_for='')
     {
         $ar= array();
       
@@ -162,10 +200,10 @@ class Directorio extends CI_Controller{
             
               
         
-            $selected =$view_variables && isset($view_variables['selected_initial']) && $view_variables['selected_initial'] == $let? 'selected' : '';
+            $selected = strtoupper($letter_to_search_agents_for)== $let? 'selected' : '';
             
             
-            $ar[]="<a  class='directory-name-initialsletters ".$selected."' href='/directorio/buscar_agentes_por_inicial/".$let."'>".$let."</a>";
+            $ar[]="<a  class='directory-name-initialsletters ".$selected."' href='/directorio/agentes?inicial=".$let."'>".$let."</a>";
             
             }
         
