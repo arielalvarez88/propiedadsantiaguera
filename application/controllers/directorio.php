@@ -34,8 +34,14 @@ class Directorio extends CI_Controller{
     public function propiedades()
     {
          
-        $directory_properties_search_variables['basic_filter_view'] = $this->load->view("blocks/basic_filter","",true);
-        $this->index("propiedades",$directory_properties_search_variables);
+        $view_variables['topLeftSide'] = $this->load->view("blocks/basic_filter","",true);
+        
+        
+        $properties = new Property();
+        $properties->get();
+        $view_variables_for_directory_properties_search_result['properties'] = $properties;
+        $view_variables["bottom"] = $this->load->view("blocks/directory_properties_search_result",$view_variables_for_directory_properties_search_result,true);
+        $this->index("propiedades",$view_variables);
         
     }
      

@@ -4210,6 +4210,17 @@ green-button properties-search-results-pager-bottom
 /***** upload-vide ENDS ****/
 
 
+
+/*** directory_properties_search_result ***/
+
+#directory_properties_search_result table td,#directory_properties_search_result table th {
+    padding: 5px 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/*** directory_properties_search_result ENDS***/
+
 /*property-contact*/
 #property-contact
 {
