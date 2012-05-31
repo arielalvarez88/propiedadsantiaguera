@@ -9,11 +9,23 @@ class Directorio extends CI_Controller{
     
     
     
-    public function index()
+    public function index($section="propiedades", $view_variables = array())
     {
         
-        $this->propiedades();
-                                       
+        
+        if(!$view_variables)
+            redirect("/directorio/propiedades");
+        
+        
+        $view_variables_of_directory_panel['section'] = $section;
+        $blocks['top'] = $this->load->view("blocks/directory_panel",$view_variables_of_directory_panel,true);
+        
+        $blocks['topLeftSide'] = isset($view_variables['topLeftSide']) ? $view_variables['topLeftSide'] : null;
+        $blocks['topRightSide'] = isset($view_variables['topRightSide']) ? $view_variables['topRightSide'] : null;
+        $blocks['bottom'] = isset($view_variables['bottom']) ? $view_variables['bottom'] : null;
+        
+        
+        $this->load->view("page",$blocks);
         
     }
     
@@ -25,30 +37,34 @@ class Directorio extends CI_Controller{
         $blocks['top'] = $this->load->view("blocks/directory_panel",$view_variables_of_directory_panel,true);
         $view_variables_for_basic_filter["section"] = "directory-";
         $blocks['topLeftSide'] = $this->load->view("blocks/basic_filter",$view_variables_for_basic_filter,true);
-        $blocks['topRightSide'] = $this->load->view("blocks/properties_statistic","",true);        
+        $blocks['topRightSide'] = $this->load->view("blocks/properties_statistic","",true);
+
+        $properties = new Property();
+        $properties->get();
+        $view_variables_for_directory_properties_search_result['properties'] = $properties;
+        $blocks["bottom"] = $this->load->view("blocks/directory_properties_search_result",$view_variables_for_directory_properties_search_result,true);
+
           $this->load->view("page",$blocks);
         
     }
      
     public function empresas()
     {
-        $view_variables_of_directory_panel['section'] = "empresas";
-        $blocks['top'] = $this->load->view("blocks/directory_panel",$view_variables_of_directory_panel,true);
-        $this->load->view("page",$blocks);
+        
+        $this->index("empresas");
     }
     
     public function agentes()
     {
 
-       $view_variables_of_directory_panel['section'] = "agentes";
-        $blocks['top'] = $this->load->view("blocks/directory_panel",$view_variables_of_directory_panel,true);
+       
         $view_variables_for_directory_users_pager = $this->get_view_variables_for_directory_users_pager();
         $view_variables_for_directory_user_search_filter = $this->get_view_variables_for_directory_agents_search_filter();
-        $blocks["topLeftSide"] = $this->load->view("blocks/directory_user_search_filter",$view_variables_for_directory_user_search_filter,true);
+        $view_variables["topLeftSide"] = $this->load->view("blocks/directory_user_search_filter",$view_variables_for_directory_user_search_filter,true);
         
-        $blocks['bottom'] = $this->load->view("blocks/directory_users_pager",$view_variables_for_directory_users_pager,true);
+        $view_variables['bottom'] = $this->load->view("blocks/directory_users_pager",$view_variables_for_directory_users_pager,true);
        
-        $this->load->view("page",$blocks);
+        $this->index("agentes",$view_variables);
         
     }
     

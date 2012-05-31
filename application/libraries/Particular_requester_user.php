@@ -41,6 +41,8 @@ class Particular_requester_user extends User_base_class implements IUser_request
     public function get_properties() {
         return array();
     }
+
+    
 }
 
 ?>

@@ -7,6 +7,7 @@ require_once realpath("./application/libraries/Property_inscriber.php");
 require_once realpath("./application/libraries/Provinces_select_cacheable_section.php");
 require_once realpath("./application/libraries/Neighborhoods_selects_cacheable_section.php");
 require_once realpath("./application/libraries/Cache_manager.php");
+require_once realpath("./application/libraries/User_factory.php");
 
 
 
@@ -61,6 +62,7 @@ class Propiedades extends CI_Controller {
     }
 
     public function agregar_propiedades() {
+
         $this->load_properties_form();
     }
 
@@ -145,6 +147,7 @@ $i = 0;
         
         return $user_viewer_view_data;
     }
+    
     
     private function get_property_viewer_view_variables($property)
     {
@@ -254,7 +257,7 @@ $i = 0;
 
         $data['topRightSide'] .=$this->load->view('blocks/print_and_share', $propertyInfo, true);
         $data['topRightSide'] .=$this->load->view('blocks/property_calculator', $propertyInfo, true);
-$data['topRightSide'] .= $this->load->view('blocks/property_advertise', $propertyInfo, true);
+        $data['topRightSide'] .= $this->load->view('blocks/property_advertise', $propertyInfo, true);
 
         $data['topRightSide'] .= $this->load->view('blocks/property_contact', $propertyInfo, true);
 
@@ -395,9 +398,7 @@ EOD;
 
                 $property_photos_filenames = $property_inscriber_handler->validate_photos($photos_inputs_names); //$properties_photos_filenames = $this->validate_and_upload_photos();
             } catch (Exception $e) {
-
-
-
+                
                 $extra_info['error_messages'] = $e->getMessage();
                 
                 $this->add_property_error($extra_info);
@@ -490,11 +491,14 @@ EOD;
     }
 
     private function save_property($property_inscriber, $property_photos_filenames) {
-
-
         $user = $this->get_logged_user_or_redirect_to_please_login();
-
+ 
+        
+        
         $post = $this->input->post();
+        
+        
+        
         $property_info_getter = new Property_info_getter_from_post($post);
         $new_property = new Property();
 
@@ -537,7 +541,6 @@ EOD;
 
         $properties_photos = $property_inscriber->save_photos($new_property, $property_photos_filenames);
 
-
         $new_property_close_places = $property_info_getter->get_close_places_object_array();
       
 
@@ -546,6 +549,37 @@ EOD;
         $new_property_province = $property_info_getter->get_province_object();
         $new_property_neighborhood = $property_info_getter->get_neighborhood_object();
 
+        
+        
+                if(is_array($post) && array_key_exists('property-form-user-select', $post)){
+                if($post['property-form-user-select'] == 'NO'){
+                    // Aqui se crea un usuario estatico para que se le asigne la propiedad
+
+                 $user_registry = array(
+                     'name'=> $post['property-owner-name'],
+                     'email'=> $post['property-owner-email'],
+                     'website'=> $post['property-owner-website'],
+                     'tel'=> $post['property-owner-phone'],
+                     'bbpin'=> $post['property-owner-BBpin'],
+                     'cel'=> $post['property-owner-cel'],
+                     'photo' => '/images/common/defaultParticularPhoto.png',
+                     'address' => $post['property-owner-address'],
+                     'type' => '6'
+                    );
+                 
+                 $this->db->insert('users',$user_registry);
+                 $user = new User($this->db->insert_id());
+                    
+  
+                }else{
+                    // Tomamos la info y seleccionamos el usuario en cuestion
+                    $uid = new User($post['property-form-user-select'] );
+                    $user = User_factory::get_user_from_object($uid);                  
+                }
+        }
+        
+        $new_property->display_property = 1;
+        $new_property->post_date = NOW();
         $new_property->save(array($new_property_type, $new_property_close_places, $new_property_features, $properties_photos, $user, $new_property_province,$new_property_neighborhood));
 
         redirect("/agregar_video/desea/" . $new_property->id);
@@ -668,8 +702,6 @@ EOD;
     public function editar_propiedades($property_id=0, $messages=array()) {
 
         $logged_user = $this->get_logged_user_or_redirect_to_please_login();
-        
-                
         
         
         $property = $logged_user->get_property($property_id);

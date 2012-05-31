@@ -21,7 +21,10 @@ class Particular_user extends User_base_class {
             parent::__construct($user);
             $this->user =$user;
     }
-    
+    public function get_company()
+    {
+        return false;
+    }
 
     public function delete(){
         $this->user->delete();

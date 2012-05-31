@@ -6,7 +6,7 @@ class Signup extends CI_Controller {
 
         $signUpData['signUpForm'] = $this->load->view('blocks/newUserType', '', true);
         $clientType['clientType'] = 'client';
-        $signUpData['signUpForm'] .= $this->load->view('forms/signup_informacion_general.php', $clientType, true);
+        $signUpData['signUpForm'] .= $this->load->view('forms/signup_form_content.php', $clientType, true);
         $data['topLeftSide'] = $this->load->view('blocks/signUpForm', $signUpData, true);        
         $this->load->view('page.php', $data);
     }

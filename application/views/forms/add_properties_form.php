@@ -8,12 +8,25 @@ $property_condition = isset($property_condition) ? $property_condition : false;
 $property_province = isset($property_province) ? $property_province : null;
 $property_photos = isset($property_photos) ? $property_photos : null;
 $property_coordenates = isset($property_coordenates) ? $property_coordenates : "19.487516,-70.718963";
-
 $editing = isset($editing) ? $editing : false;
 
 $class_to_hide_field_if_editing = $editing? 'no_hidden' :  '';
 
 $error_messages = isset($error_messages)? $error_messages : false;
+
+// Aqui determinamos si el usuario es un super usuario
+$user = User_handler::getLoggedUser();
+
+// Creamos el opt list de usuarios
+$users = new User();
+$users->where('type',6)->get();
+$option = array();
+
+
+foreach($users as $u){
+    $option .= "<option value={$u->id}>{$u->name}</option>";
+}
+
 
 ?>
 
@@ -30,6 +43,61 @@ $error_messages = isset($error_messages)? $error_messages : false;
 <?php endif; ?>
 
 <form id="property-form" method="post" action="<?php echo base_url(); ?>propiedades/validate<?php echo isset($property_id) ? '/' . $property_id : ''; ?>" enctype="multipart/form-data" accept-charset="UTF-8">
+   
+    
+    <?php if($user instanceof Admin_user): ?>
+    
+    <div id="property-form-user-block">
+    <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber1.png"/><span>Detalles de Usuario </span></p>
+    
+    <ul id="property-form-user">
+        <li>
+            <label for="property-form-user-details-name">Usuario</label>
+            <select name="property-form-user-select">
+                <option value="NO">Sin Usuario</option>
+                <?php echo $option ?>
+            </select>
+        </li>
+        <li>
+            <label for="property-form-user-details-name">Nombre</label>
+            <input type="text" id="property-form-user-details-name" name="property-owner-name" >
+        </li>
+        <li>
+            <label for="property-form-user-details-email">Email</label>
+            <input type="text" id="property-form-user-details-email" name="property-owner-email" >
+        </li> 
+        
+        <li>
+            <label for="property-form-user-details-website">Website</label>
+            <input type="text" id="property-form-user-details-website" name="property-owner-website" >
+        </li>        
+        <li>
+            <label for="property-form-user-details-phone">Telefono</label>
+            <input type="text" id="property-form-user-details-phone" name="property-owner-phone" >
+        </li>        
+        <li>
+            <label for="property-form-user-details-BB pin">BB pin</label>
+            <input type="text" id="property-form-user-details-BBpin" name="property-owner-BBpin" >
+        </li>        
+        <li>
+            <label for="property-form-user-details-cel">Celular</label>
+            <input type="text" id="property-form-user-details-cel" name="property-owner-cel" >
+        </li>          
+        
+        <li>
+            <label for="property-form-user-details-address">Direccion</label>
+            <input type="text" id="property-form-user-details-address" name="property-owner-address" >
+        </li>         
+        
+        
+    </ul>
+    </div>
+    <?php endif; ?>
+    
+    
+    
+    
+    
     <p class="form-section-header"><img class="form-section-number" src="/images/common/greenNumber1.png"/><span>Detalles de Propiedad</span></p>
     <div id="property-form-description">
         

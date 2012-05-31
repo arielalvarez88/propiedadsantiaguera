@@ -21,7 +21,7 @@ $users = isset($users) ? $users : null;
         <?php foreach ($users as $user): ?>
 
             <div id="panel_user">
-                <div id="div_foto" ><img src=<?php echo $user->photo; ?>  alt=""/></div> 
+                <div id="div_foto" ><img src=<?php echo $user->get_photo(); ?>  alt=""/></div> 
 
                 <div id="datos1"> 
                     <ul >

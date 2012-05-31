@@ -16,7 +16,7 @@ class Company_user extends User_base_class {
     
      
      public function __construct(User $user)
-    {
+    {  
             parent::__construct($user);
             $this->user =$user;
     }
