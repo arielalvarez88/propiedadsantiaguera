@@ -3,7 +3,7 @@ require_once realpath("./application/libraries/Provinces_select_cacheable_sectio
 require_once realpath("./application/libraries/Cache_manager.php");
 require_once realpath("./application/libraries/Neighborhoods_selects_cacheable_section.php");
 
-    $selected_property_neighborhood =  isset($selected_property_neighborhood) ? $selected_property_neighborhood : null;
+        $selected_property_neighborhood =  isset($selected_property_neighborhood) ? $selected_property_neighborhood : null;
         
         $selected_property_type = isset($selected_property_type) ? $selected_property_type : null;
         
@@ -13,7 +13,7 @@ require_once realpath("./application/libraries/Neighborhoods_selects_cacheable_s
         
         $selected_property_province =  isset($selected_property_province) ? $selected_property_province : null;
         
-        $section = isset($section) ? $section : null;
+        $section = isset($section) ? $section : 'front-';
 
 
 ?>

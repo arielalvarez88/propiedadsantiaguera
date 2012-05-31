@@ -1463,7 +1463,7 @@ initializeFilters = function(){
     
     
     
-    var basicFilter = new Filter("#basic-filter","#basic-filter-condition","#basic-filter-province", ".filter-neigborhoods", "#basic-filter-price-slider","#basic-filter-search-button",{
+    var basicFilter = new Filter("#front-basic-filter-container #basic-filter","#front-basic-filter-container #basic-filter-condition","#front-basic-filter-container #basic-filter-province", "#front-basic-filter-container .filter-neigborhoods", "#front-basic-filter-container #basic-filter-price-slider","#front-basic-filter-container #basic-filter-search-button",{
         1: {
             minValue: 0, 
             maxValue: 50000000, 
@@ -1478,7 +1478,25 @@ initializeFilters = function(){
             minInitialValue: 0, 
             step: 5000
         }
-    }, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "#basic-filter-price-slider-min-display", "#basic-filter-price-slider-max-display", "/propiedades/buscar");
+    }, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "#front-basic-filter #basic-filter-price-slider-min-display", "#front-basic-filter #basic-filter-price-slider-max-display", "/propiedades/buscar");
+    
+    
+        var directoryBasicFilter = new Filter("#directory-basic-filter-container #basic-filter","#directory-basic-filter-container #basic-filter-condition","#directory-basic-filter-container #basic-filter-province", "#directory-basic-filter-container .filter-neigborhoods", "#directory-basic-filter-container #basic-filter-price-slider","#directory-basic-filter-container #basic-filter-search-button",{
+        1: {
+            minValue: 0, 
+            maxValue: 50000000, 
+            maxInitialValue: 50000000, 
+            minInitialValue: 0, 
+            step: 500000
+        }, 
+        2: {
+            minValue: 0, 
+            maxValue: 300000, 
+            maxInitialValue: 300000, 
+            minInitialValue: 0, 
+            step: 5000
+        }
+    }, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "#directory-basic-filter-container #basic-filter-price-slider-min-display", "#directory-basic-filter-container #basic-filter-price-slider-max-display", "/directorio");
     
  
    

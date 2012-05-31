@@ -240,6 +240,7 @@ body, html
 {
     background-color: #f0f0f0;
 }
+
 /***** article-viewer ****/
 #article-viewer-container {
     width: 565px;
@@ -255,6 +256,73 @@ body, html
     margin-bottom: 10px;
 }
 /**** article-viewer ENDS****/
+
+
+
+/****properties-statistics****/
+#properties-statistics .tab-item.selected
+{
+    background-color: 204 204 204;
+    color: white;
+}
+
+#properties-statistic
+{
+    width: 358px;
+        height: 161px;
+}
+
+#properties-statistic {
+    margin-top: -48px;
+}
+#properties-statistic ul
+{
+    list-style: none;
+    overflow: hidden;
+}
+
+
+#properties-statistic h2 {
+    margin-bottom: 20px;
+}
+
+properties-statistic-tab-container ul li {
+    float: left;
+}
+
+#properties-statistic .tabs-container{
+    margin-bottom: 0;
+    width: auto;
+}
+#properties-statistics .tab-item.selected
+{
+    background-color: rgb(204,204,204);
+    color: white;
+}
+.properties-statistic-tab-body
+{
+    background-color: rgb(230,230,230);
+    
+}
+.properties-statistic-tab-body .first-column
+{
+    margin-right: 10px;
+}
+.properties-statistic-tab-body .column{
+ padding:5px;
+ float:left;
+ 
+}
+
+.properties-statistic-tab-body 
+{
+    padding: 10px;
+    overflow: hidden;
+}
+
+/****properties-statistics ENDS****/
+
+
 
 /**** tools-center-articles-pager****/
 .tools-center-articles-pager-article-container {
@@ -2352,7 +2420,25 @@ div.footer-section a{
 }
 
 /****** basic-filter*******/
+#directory-basic-filter-container h2{
+    display:none;
+}
 
+#directory-basic-filter-container #basic-filter
+{
+    padding-top: 10px;
+    width: 582px;
+    height: 158px;
+    padding: 10px 5px;
+    margin-right: 10px;
+}
+
+.properties-statistic-tab-body ul
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+  
 #basic-filter h2
 {
     color: #76BC3B;

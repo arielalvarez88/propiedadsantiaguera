@@ -8,7 +8,7 @@
 $properties = isset($properties) ? $properties : null;
 ?>
 
-<h2>Resukltados (<?php echo $properties->count();?>)</h2>
+<h2>Resultados (<?php echo $properties->count();?>)</h2>
 <table>
     <thead>
         <tr>
