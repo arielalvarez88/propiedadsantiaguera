@@ -31,8 +31,7 @@ class cron_jobs extends CI_Controller {
             $user_expiring_property_objects_to_send_email = array();
             $user_expired_properties_for_reactivation = 0;
 
-            foreach ($properties as $property) {
-
+            foreach ($properties as $property) { 
 
                 $now_in_timestamp = strtotime('now');
                 $property_post_date_in_timestamp = strtotime($property->post_date);
@@ -42,10 +41,9 @@ class cron_jobs extends CI_Controller {
 
 
                 $property_seconds_left = THIRTY_ONE_DAYS_IN_SECONDS - $seconds_since_property_post;
-
+               
                 
-                
-                if ($property_seconds_left <= FIVE_DAYS_IN_SECONDS && !$property->expiration_email_sent) {
+                if ($property_seconds_left <=  FIVE_DAYS_IN_SECONDS && !$property->expiration_email_sent) {
                     $property->expiration_email_sent = 1;
                     $user_expiring_property_objects_to_send_email[] = $property;
                     
@@ -57,6 +55,7 @@ class cron_jobs extends CI_Controller {
 
                     if ($property->auto_reactivation)
                         $user_expired_properties_for_reactivation++;
+                        
                     else
                         $property->display_property = 0;
                 }
@@ -71,7 +70,6 @@ class cron_jobs extends CI_Controller {
 
             if ($user_expired_properties_for_reactivation <= $user->posts_left) {
                 foreach ($properties as $property) {
-
                     $property->posted_date = NOW();
                     $property->expiration_email_sent = 0;
                     $property->save();
