@@ -47,7 +47,7 @@ class Filter_builder {
         $filter->add_filter($property_object);
     }
 
-    public static function order_by($filtered_get,$property_object)
+    public static function order_by($filtered_get,$property_object,$breadcrumb='')
     {
         $value = isset($filtered_get['orderBy'])? $filtered_get['orderBy'] : '';
         $condition = isset($filtered_get["condition"]) ? $filtered_get["condition"] : Environment_vars::$maps["property_conditions"]["sell"];
@@ -100,7 +100,7 @@ class Filter_builder {
         
     }
     
-    public static function build_property_max_price_filter($post, $property_object,$breadcrumb) {
+    public static function build_property_max_price_filter($post, $property_object,$breadcrumb='') {
 
         $price_limit = isset($post['nopricelimit']) ? false : true;
 
@@ -126,7 +126,7 @@ class Filter_builder {
         $filter->add_filter($property_object);
     }
 
-    public static function build_property_type_filter($post, $property_object,$breadcrumb) {
+    public static function build_property_type_filter($post, $property_object,$breadcrumb='') {
 
         $type_filter_activated = isset($post['type']);
         if (!$type_filter_activated)
@@ -137,8 +137,8 @@ class Filter_builder {
         if(!$value)
             return;
         
-        
-        $breadcrumb->add_to_section(Environment_vars::$maps['ids_to_text']['property_types'][$value],'?type='.$value,"Buscar");
+        if($breadcrumb)
+            $breadcrumb->add_to_section(Environment_vars::$maps['ids_to_text']['property_types'][$value],'?type='.$value,"Buscar");
         $filter = new Equal_to_filter($field_name, $value);
         
         
@@ -180,7 +180,7 @@ class Filter_builder {
    
     }
 
-    public static function build_property_neighborhood_filter($post, $property_object,$breadcrumb) {
+    public static function build_property_neighborhood_filter($post, $property_object,$breadcrumb='') {
 
         $neighborhood_filter_activated = isset($post['neighborhood']);
         if (!$neighborhood_filter_activated)
@@ -194,7 +194,7 @@ class Filter_builder {
         $filter->add_filter($property_object);
     }
 
-    public static function build_property_reference_filter($post, $property_object,$breadcrumb) {
+    public static function build_property_reference_filter($post, $property_object,$breadcrumb='') {
 
         $reference_filter_activated = isset($post['ref-number']);
         if (!$reference_filter_activated)
@@ -209,7 +209,7 @@ class Filter_builder {
     }
     
     
-    public static function build_property_province_filter($post, $property_object,$breadcrumb) {
+    public static function build_property_province_filter($post, $property_object,$breadcrumb='') {
 
         $province_filter_activated = isset($post['province']);
         if (!$province_filter_activated)
@@ -225,9 +225,30 @@ class Filter_builder {
         $filter->add_filter($property_object);
     }
     
+    public static function applyFilters($filtered_get, $properties_filters_container, $breadcrumb=''){
+            
+            Filter_builder::build_property_type_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_province_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_neighborhood_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_posted_filter($properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_max_price_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_min_price_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_condition_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_bedrooms_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_bathrooms_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_parkings_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_kitchens_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_livingrooms_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_stories_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_terrain_filter($filtered_get, $properties_filters_container, $breadcrumb);
+            Filter_builder::build_property_construction_filter($filtered_get, $properties_filters_container, $breadcrumb);            
+            Filter_builder::order_by($filtered_get, $properties_filters_container);
+            return $properties_filters_container;
+        
+    }
     
     
-    public static function build_property_bathrooms_filter($post, $property_object,$breadcrumb) {
+    public static function build_property_bathrooms_filter($post, $property_object,$breadcrumb='') {
 
         $bathrooms_filter_activated = isset($post['bathrooms']);
         if (!$bathrooms_filter_activated)
@@ -244,7 +265,7 @@ class Filter_builder {
     }
     
     
-    public static function build_property_bedrooms_filter($post, $property_object,$breadcrumb) {
+    public static function build_property_bedrooms_filter($post, $property_object,$breadcrumb='') {
 
         $bedrooms_filter_activated = isset($post['bedrooms']);
         if (!$bedrooms_filter_activated)
@@ -260,7 +281,7 @@ class Filter_builder {
         $filter->add_filter($property_object);
     }
     
-     public static function build_property_parkings_filter($post, $property_object,$breadcrumb) {
+     public static function build_property_parkings_filter($post, $property_object,$breadcrumb='') {
 
         $parkings_filter_activated = isset($post['parkings']);
         if (!$parkings_filter_activated )
@@ -277,7 +298,7 @@ class Filter_builder {
     }
     
     
-      public static function build_property_kitchens_filter($post, $property_object,$breadcrumb) {
+      public static function build_property_kitchens_filter($post, $property_object,$breadcrumb='') {
 
         $kitchens_filter_activated = isset($post['kitchens']);
         if (!$kitchens_filter_activated)
@@ -293,7 +314,7 @@ class Filter_builder {
         $filter->add_filter($property_object);
     }
     
-    public static function build_property_livingrooms_filter($post, $property_object,$breadcrumb) {
+    public static function build_property_livingrooms_filter($post, $property_object,$breadcrumb='') {
 
         $livingrooms_filter_activated = isset($post['livingrooms']);
         if (!$livingrooms_filter_activated)
@@ -309,7 +330,7 @@ class Filter_builder {
         $filter->add_filter($property_object);
     }
     
-    public static function build_property_stories_filter($post, $property_object,$breadcrumb) {
+    public static function build_property_stories_filter($post, $property_object,$breadcrumb='') {
 
         $stories_filter_activated = isset($post['stories']);
         if (!$stories_filter_activated)
@@ -326,7 +347,7 @@ class Filter_builder {
     }
     
     
-    public static function build_property_terrain_filter($post, $property_object,$breadcrumb) {
+    public static function build_property_terrain_filter($post, $property_object,$breadcrumb='') {
 
         $terrain_filter_activated = isset($post['terrain']);
         if (!$terrain_filter_activated )
@@ -342,7 +363,7 @@ class Filter_builder {
         $filter->add_filter($property_object);
     }
     
-    public static function build_property_construction_filter($post, $property_object,$breadcrumb) {
+    public static function build_property_construction_filter($post, $property_object,$breadcrumb='') {
 
         $construction_filter_activated = isset($post['construction']);
         if (!$construction_filter_activated )

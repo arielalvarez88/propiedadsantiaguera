@@ -425,26 +425,8 @@ EOD;
             redirect("propiedades/ver/" . $filtered_get['ref-number']);
         } else {
 
-            
-            Filter_builder::build_property_type_filter($filtered_get, $properties_filters_container, $breadcrumb);
-            Filter_builder::build_property_province_filter($filtered_get, $properties_filters_container, $breadcrumb);
-            Filter_builder::build_property_neighborhood_filter($filtered_get, $properties_filters_container, $breadcrumb);
-            Filter_builder::build_property_posted_filter($properties_filters_container, $breadcrumb);
-            Filter_builder::build_property_max_price_filter($filtered_get, $properties_filters_container, $breadcrumb);
-            Filter_builder::build_property_min_price_filter($filtered_get, $properties_filters_container, $breadcrumb);
-            Filter_builder::build_property_condition_filter($filtered_get, $properties_filters_container, $breadcrumb);
-            Filter_builder::build_property_bedrooms_filter($filtered_get, $properties_filters_container, $breadcrumb);
-            Filter_builder::build_property_bathrooms_filter($filtered_get, $properties_filters_container, $breadcrumb);
-            Filter_builder::build_property_parkings_filter($filtered_get, $properties_filters_container, $breadcrumb);
-            Filter_builder::build_property_kitchens_filter($filtered_get, $properties_filters_container, $breadcrumb);
-            Filter_builder::build_property_livingrooms_filter($filtered_get, $properties_filters_container, $breadcrumb);
-            Filter_builder::build_property_stories_filter($filtered_get, $properties_filters_container, $breadcrumb);
-            Filter_builder::build_property_terrain_filter($filtered_get, $properties_filters_container, $breadcrumb);
-            Filter_builder::build_property_construction_filter($filtered_get, $properties_filters_container, $breadcrumb);
-            
-            Filter_builder::order_by($filtered_get, $properties_filters_container);
-            
-            
+            Filter_builder::applyFilters($filtered_get, $properties_filters_container, $breadcrumb);            
+                        
         }
 
 

@@ -4,8 +4,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
+require_once realpath("./application/libraries/Filter_builder.php");
 class Directorio extends CI_Controller{
+    private $propertiesPerPage = 1;
     
     
     
@@ -13,19 +14,7 @@ class Directorio extends CI_Controller{
     {
         
         
-        if(!$view_variables)
-            redirect("/directorio/propiedades");
-        
-        
-        $view_variables_of_directory_panel['section'] = $section;
-        $blocks['top'] = $this->load->view("blocks/directory_panel",$view_variables_of_directory_panel,true);
-        
-        $blocks['topLeftSide'] = isset($view_variables['topLeftSide']) ? $view_variables['topLeftSide'] : null;
-        $blocks['topRightSide'] = isset($view_variables['topRightSide']) ? $view_variables['topRightSide'] : null;
-        $blocks['bottom'] = isset($view_variables['bottom']) ? $view_variables['bottom'] : null;
-        
-        
-        $this->load->view("page",$blocks);
+        $this->agentes();
         
     }
     
@@ -33,38 +22,117 @@ class Directorio extends CI_Controller{
     
     public function propiedades()
     {
+        $pagination_number_page_candidate = $this->input->get("per_page");
+        $page = isset($pagination_number_page_candidate) && intval($pagination_number_page_candidate) ?  intval($pagination_number_page_candidate) : 0;
         $view_variables_of_directory_panel['section'] = "propiedades";
         $blocks['top'] = $this->load->view("blocks/directory_panel",$view_variables_of_directory_panel,true);
-        $view_variables_for_basic_filter["section"] = "directory-";
+        
+        $view_variables_for_basic_filter = $this->get_basic_filter_view_values();                
+        
         $blocks['topLeftSide'] = $this->load->view("blocks/basic_filter",$view_variables_for_basic_filter,true);
+        
         $blocks['topRightSide'] = $this->load->view("blocks/properties_statistic","",true);
+        
+        
+        $view_variables_for_directory_properties_search_result = $this->get_filtered_properties($page);
+        
 
-        $properties = new Property();
-        $properties->get();
-        $view_variables_for_directory_properties_search_result['properties'] = $properties;
         $blocks["bottom"] = $this->load->view("blocks/directory_properties_search_result",$view_variables_for_directory_properties_search_result,true);
+        
 
           $this->load->view("page",$blocks);
         
+    }
+    
+    private function get_basic_filter_view_values()
+    {
+        
+        $variables["section"] = "directory-";
+        
+        if($this->input->get("neighborhood"))
+            $variables['selected_property_neighborhood']=  $this->input->get("neighborhood");
+        
+        if($this->input->get("type"))
+            $variables['selected_property_type']=  $this->input->get("type");                
+                
+        
+        if($this->input->get("condition"))
+            $variables['selected_property_condition']=  $this->input->get("condition");
+        
+        if($this->input->get("province"))
+            $variables['selected_property_province']=  $this->input->get("province");
+        return $variables;        
+    }
+    
+    private function get_filtered_properties($page)
+    {
+        $filtered_properties = new Property();
+        $post = $this->input->post();
+        
+        Filter_builder::applyFilters($post, $filtered_properties);
+        $properties_pagination_offset = ($this->propertiesPerPage * $page);
+        $filtered_properties->get();        
+        $get_parameters = $_SERVER["QUERY_STRING"] ? "?".$_SERVER["QUERY_STRING"] : "?";
+        
+        $get_parameters = preg_replace("/&per_page=\d*/", "", $get_parameters);
+        
+        $config['base_url'] = base_url().'directorio/propiedades'.$get_parameters;        
+        $config['page_query_string'] = TRUE;
+        $config['total_rows'] = $filtered_properties->result_count();        
+        
+        $filtered_properties->limit($this->propertiesPerPage, $properties_pagination_offset)->get();
+        $this->load->library("pagination");
+        
+        
+        
+
+        
+        $config['per_page'] = $this->propertiesPerPage;
+        $config['last_link'] = 'Ultima';
+        $config['next_link'] = 'Siguiente';
+        $config['prev_link'] = 'Anterior';
+        $config['first_link'] = 'Primera';
+        $this->pagination->initialize($config);     
+        
+        
+        
+        
+        
+        
+        
+        
+        $view_variables_for_directory_properties_search_results['properties'] = $filtered_properties;
+        
+        
+        
+        $view_variables_for_directory_properties_search_results["pagination"] = $this->pagination->create_links();
+        
+   
+        
+        return $view_variables_for_directory_properties_search_results;
+           
     }
      
     public function empresas()
     {
         
-        $this->index("empresas");
+                $view_variables_of_directory_panel['section'] = "empresas";
+        $blocks['top'] = $this->load->view("blocks/directory_panel",$view_variables_of_directory_panel,true);
+          $this->load->view("page",$blocks);
     }
     
     public function agentes()
     {
 
-       
+        $view_variables_of_directory_panel['section'] = "agentes";
+        $blocks['top'] = $this->load->view("blocks/directory_panel",$view_variables_of_directory_panel,true);
         $view_variables_for_directory_users_pager = $this->get_view_variables_for_directory_users_pager();
         $view_variables_for_directory_user_search_filter = $this->get_view_variables_for_directory_agents_search_filter();
-        $view_variables["topLeftSide"] = $this->load->view("blocks/directory_user_search_filter",$view_variables_for_directory_user_search_filter,true);
+        $blocks["topLeftSide"] = $this->load->view("blocks/directory_user_search_filter",$view_variables_for_directory_user_search_filter,true);
         
-        $view_variables['bottom'] = $this->load->view("blocks/directory_users_pager",$view_variables_for_directory_users_pager,true);
+        $blocks['bottom'] = $this->load->view("blocks/directory_users_pager",$view_variables_for_directory_users_pager,true);
        
-        $this->index("agentes",$view_variables);
+        $this->load->view("page",$blocks);
         
     }
     

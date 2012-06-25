@@ -818,7 +818,9 @@ initializeForms = function(){
             new alertMessageCallback(response, 'Email enviado', 'Error trate luego').getMessage();    
         }
     });                
-        
+    
+
+
     var loginForm = new Form('#login-form', '#login-submit', '',{
         nowLoading: false, 
         ajax: true, 
@@ -1304,7 +1306,7 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, province
     
     this.provinceChooser = $(provinceChooser);
     this.neighborhoodChoosers = $(neighborhoodChoosersClass);
-    
+    this.submitUrl = submitUrl ? submitUrl : window.location.href;
     
     
     
@@ -1346,7 +1348,7 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, province
         var infoContainersElementsInFilterSelector = filterContainerSelector + " input:not('.input-button'), " + filterContainerSelector + " select";
         var infoContainersElementsInFilter = $(infoContainersElementsInFilterSelector);
        
-        var queryString = "?";
+        var queryString =  thisObject.submitUrl.indexOf("?") == -1 ? "?" : "&";
         
         $.each(infoContainersElementsInFilter, function(index, element){
             var jqueryElement = $(element);
@@ -1367,7 +1369,7 @@ Filter = function(filterContainerSelector,sliderChangerElementSelector, province
             queryString += 'filter-type=advanced';
         
         
-        window.location.href = submitUrl + queryString;
+        window.location.href = thisObject.submitUrl + queryString;
        
        
     };
@@ -1481,6 +1483,8 @@ initializeFilters = function(){
     }, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "#front-basic-filter #basic-filter-price-slider-min-display", "#front-basic-filter #basic-filter-price-slider-max-display", "/propiedades/buscar");
     
     
+    
+        
         var directoryBasicFilter = new Filter("#directory-basic-filter-container #basic-filter","#directory-basic-filter-container #basic-filter-condition","#directory-basic-filter-container #basic-filter-province", "#directory-basic-filter-container .filter-neigborhoods", "#directory-basic-filter-container #basic-filter-price-slider","#directory-basic-filter-container #basic-filter-search-button",{
         1: {
             minValue: 0, 
@@ -1496,7 +1500,7 @@ initializeFilters = function(){
             minInitialValue: 0, 
             step: 5000
         }
-    }, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "#directory-basic-filter-container #basic-filter-price-slider-min-display", "#directory-basic-filter-container #basic-filter-price-slider-max-display", "/directorio");
+    }, basicFilterMinValue, basicFilterMaxValue, basicFilterMinPriceInitialValue, basicFilterMaxPriceInitialValue, basicFilterStep, "#directory-basic-filter-container #basic-filter-price-slider-min-display", "#directory-basic-filter-container #basic-filter-price-slider-max-display");
     
  
    
